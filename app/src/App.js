@@ -1,25 +1,14 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+// import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import './App.css';
-import ItsBedtime from './components/ItsBedtime.js';
+// import ItsBedtime from './components/ItsBedtime.js';
+import Landing from './components/Landing.js';
 
 function App() {
   return (
-      <Router>
-          <nav>
-              <ul>
-                  <li>
-                      <Link to="/bedtimeRoutine">It's bedtime routine</Link>
-                  </li>
-              </ul>
-          </nav>
-
-          <Switch>
-              <Route path ="/bedtimeRoutine">
-                  <ItsBedtime/>
-              </Route>
-          </Switch>
-      </Router>
+      <div>
+          <Landing/>
+      </div>
   );
 }
 export default App;

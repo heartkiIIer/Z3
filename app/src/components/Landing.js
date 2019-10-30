@@ -6,18 +6,17 @@ class Landing extends React.Component {
         return (
             <div>
                 <div className="container">
-                    <div id="Heading">
-                        <div id="login">
-                            <h1>Login</h1>
+                    <div id="Heading" className="row featurette">
+                        <div id="login" className="col-md-6 order-md-1">
+                            <p>login</p>
                         </div>
 
-                        <div id="title">
-                            <h1>Title</h1>
+                        <div id="title" className="col-md-6 order-md-1">
+                            <p>title</p>
                         </div>
                     </div>
 
                     <div id="Features" className="row">
-                        <h1>Features</h1>
                         <div className='col-lg-4'>
                             <span className="dot"></span>
                             <h2>Organize Stuff</h2>

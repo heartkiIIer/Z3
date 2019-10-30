@@ -1,7 +1,55 @@
+html::-webkit-scrollbar{
+    width: 0;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+.container{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
 .dot{
     height: 200px;
     width: 200px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
+}
+#Heading{
+    background: radial-gradient(circle at top left, #c8c8c890, #00183790),
+                url("../resources/background_images/dawn.jpg") no-repeat center center fixed;
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    margin: 0;
+}
+#Features{
+    background-color: #1896BD;
+    height: 100%;
+    width: 100vw;
+    margin: 0;
+}
+#CalSch{
+    background: radial-gradient(circle at top left, #caab51 10%, transparent),
+                url("../resources/background_images/calendar.jpg") no-repeat center center fixed;
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    margin: 0;
+}
+#Exercise{
+    background: radial-gradient(circle at top right, #045a78 10%, transparent),
+                url("../resources/background_images/gym.jpg") no-repeat center center fixed;
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    margin: 0;
+}
+#MindPerson{
+    background: radial-gradient(circle at top left, #4a486f 10%, transparent),
+                url("../resources/background_images/meditation.jpg") no-repeat center center fixed;
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    margin: 0;
 }

@@ -18,9 +18,21 @@ class Landing extends React.Component {
 
                     <div id="Features" className="row">
                         <h1>Features</h1>
-                        <span className="dot"></span>
-                        <span className="dot"></span>
-                        <span className="dot"></span>
+                        <div className='col-lg-4'>
+                            <span className="dot"></span>
+                            <h2>Organize Stuff</h2>
+                            <p>Hello</p>
+                        </div>
+                        <div className='col-lg-4'>
+                            <span className="dot"></span>
+                            <h2>Organize Stuff</h2>
+                            <p>Hello</p>
+                        </div>
+                        <div className='col-lg-4'>
+                            <span className="dot"></span>
+                            <h2>Organize Stuff</h2>
+                            <p>Hello</p>
+                        </div>
                     </div>
 
                     <div id="CalSch" className="row featurette">

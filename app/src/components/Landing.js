@@ -7,12 +7,22 @@ class Landing extends React.Component {
             <div>
                 <div className="container">
                     <div id="Heading" className="row featurette">
-                        <div id="login" className="col-md-6 order-md-1">
-                            <p>login</p>
+                        <div className="col-md-6 order-md-1">
+                            <div id="login">
+                                <h2>Login</h2>
+                                <form>
+                                    Username or Email:
+                                    <input type="text" name="username" placeholder="john or john157@gmail.com"/>
+                                    Password:
+                                    <input type="password" name="password"/>
+                                    <button id="loginbtn">Login</button>
+                                </form>
+                            </div>
                         </div>
-
                         <div id="title" className="col-md-6 order-md-1">
-                            <p>title</p>
+                            <h1>Z<sup>3</sup></h1>
+                            <h3>Stabilize your sleep and bring sleep back into your control! </h3>
+                            <button id="joinbtn">Join Us</button>
                         </div>
                     </div>
 

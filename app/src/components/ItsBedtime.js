@@ -5,13 +5,19 @@ class ItsBedtime extends React.Component {
         return (
             <div>
                 <h1>Test</h1>
-                <ul className="list-group">
-                    <li className="list-group-item">Cras justo odio</li>
-                    <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Morbi leo risus</li>
-                    <li className="list-group-item">Porta ac consectetur ac</li>
-                    <li className="list-group-item">Vestibulum at eros</li>
-                </ul>
+                <div className="list-group">
+                    <button type="button" className="list-group-item list-group-item-action active">
+                        Cras justo odio
+                    </button>
+                    <button type="button" className="list-group-item list-group-item-action">Dapibus ac facilisis in
+                    </button>
+                    <button type="button" className="list-group-item list-group-item-action">Morbi leo risus</button>
+                    <button type="button" className="list-group-item list-group-item-action">Porta ac consectetur ac
+                    </button>
+                    <button type="button" className="list-group-item list-group-item-action" disabled>Vestibulum at
+                        eros
+                    </button>
+                </div>
             </div>
         );
     };

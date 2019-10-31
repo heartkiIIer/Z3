@@ -25,9 +25,6 @@
 }
 #calIcon_h{
     background-color: #caab51;
-    /*margin-left: 20%;*/
-    /*margin-top: 20%;*/
-
 }
 .calIconImg_h{
     background: url("../resources/icons/calendar_icon.png") no-repeat center center;
@@ -35,6 +32,7 @@
 }
 #exerIcon_h{
     background-color: #045a78;
+    transform: rotate(-45deg);
 }
 .exerIconImg_h{
     background: url("../resources/icons/exercise_icon.png") no-repeat center center;
@@ -42,8 +40,7 @@
 }
 #mindIcon_h{
     background-color: #4a486f;
-    /*margin-right: 20%;*/
-    /*margin-top: 20%;*/
+    transform: rotate(-90deg);
 }
 .mindIconImg_h{
     background: url("../resources/icons/mind_icon.png") no-repeat center center;
@@ -51,6 +48,7 @@
 }
 #bedIcon{
     background-color: #09d3ac;
+    transform: rotate(-135deg);
 }
 .bedIconImg{
     background: url("../resources/icons/bedtime_icon.png") no-repeat center center;
@@ -58,6 +56,7 @@
 }
 #coffeeIcon{
     background-color: #caab51;
+    transform: rotate(-180deg);
 }
 .coffeeIconImg{
     background: url("../resources/icons/coffee_icon.png") no-repeat center center;
@@ -65,8 +64,7 @@
 }
 #fitbitIcon{
     background-color: #045a78;
-    /*margin-left: 20%;*/
-    /*margin-bottom: 20%;*/
+    transform: rotate(-225deg);
 }
 .fitbitIconImg{
     background: url("../resources/icons/fitbit.png") no-repeat center center;
@@ -74,6 +72,7 @@
 }
 #sleepIcon{
     background-color: #4a486f;
+    transform: rotate(-270deg);
 }
 .sleepIconImg{
     background: url("../resources/icons/sleep_icon.png") no-repeat center center;
@@ -81,14 +80,51 @@
 }
 #perIcon{
     background-color: #09d3ac;
-    /*margin-right: 20%;*/
-    /*margin-bottom: 20%;*/
+    transform: rotate(-315deg);
 }
 .perIconImg{
     background: url("../resources/icons/person.png") no-repeat center center;
     background-size: contain;
 }
-.circleContainer{
-    width: 90vh;
-    height: 90vh;
+
+
+.circle {
+    position: relative;
+    margin: 2em auto;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    list-style: none;
+}
+.circle li {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    transform-origin: 0% 100%;
+}
+.circle li:nth-child(1) {
+    transform: rotate(0deg);
+}
+.circle li:nth-child(2) {
+    transform: rotate(45deg);
+}
+.circle li:nth-child(3) {
+    transform: rotate(90deg);
+}
+.circle li:nth-child(4) {
+    transform: rotate(135deg);
+}
+.circle li:nth-child(5) {
+    transform: rotate(180deg);
+}
+.circle li:nth-child(6) {
+    transform: rotate(225deg);
+}
+.circle li:nth-child(7) {
+    transform: rotate(270deg);
+}
+.circle li:nth-child(8) {
+    transform: rotate(315deg);
 }

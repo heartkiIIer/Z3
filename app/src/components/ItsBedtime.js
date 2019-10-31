@@ -22,43 +22,45 @@ class ItsBedtime extends React.Component {
 
     render(){
         return (
-            <div class = "itsBedtime">
-               <div class = "outer-circle" id = "outer-circle" onload = "document.getElementById(outer-circle).style.opacity='1'">
-                   <div className="inner-circle">
-                       It's Bedtime
+            <div class = "inner">
+                <div class = "itsBedtime">
+                   <div class = "outer-circle" id = "outer-circle" onload = "document.getElementById(outer-circle).style.opacity='1'">
+                       <div className="inner-circle">
+                           It's Bedtime
+                       </div>
                    </div>
-               </div>
 
-                <div className="list-group">
-                    <button type="button" className="list-group-item list-group-item-action" onClick={() => this.toggleCheckbox("checkbox1")}>
-                        <div class = "align-check-and-label">
-                            <div class = "checkbox checkbox-circle checkbox-primary ">
-                                <input type="checkbox" id = "checkbox1"/>
-                                <label for="checkbox1"/>
+                    <div className="list-group">
+                        <button type="button" className="list-group-item list-group-item-action" onClick={() => this.toggleCheckbox("checkbox1")}>
+                            <div class = "align-check-and-label">
+                                <div class = "checkbox checkbox-circle checkbox-primary ">
+                                    <input type="checkbox" id = "checkbox1"/>
+                                    <label for="checkbox1"/>
+                                </div>
+                                <p> 10 minutes of reading </p>
                             </div>
-                            <p> 10 minutes of reading </p>
-                        </div>
-                    </button>
-                    <button type="button" className="list-group-item list-group-item-action"
-                            onClick={() => this.toggleCheckbox("checkbox2")}>
-                        <div className="align-check-and-label">
-                            <div className="checkbox checkbox-circle checkbox-primary ">
-                                <input type="checkbox" id="checkbox2"/>
-                                <label htmlFor="checkbox2"/>
+                        </button>
+                        <button type="button" className="list-group-item list-group-item-action"
+                                onClick={() => this.toggleCheckbox("checkbox2")}>
+                            <div className="align-check-and-label">
+                                <div className="checkbox checkbox-circle checkbox-primary ">
+                                    <input type="checkbox" id="checkbox2"/>
+                                    <label htmlFor="checkbox2"/>
+                                </div>
+                                <p> Brush teeth </p>
                             </div>
-                            <p> Brush teeth </p>
-                        </div>
-                    </button>
-                    <button type="button" className="list-group-item list-group-item-action"
-                            onClick={() => this.toggleCheckbox("checkbox3")}>
-                        <div className="align-check-and-label">
-                            <div className="checkbox checkbox-circle checkbox-primary ">
-                                <input type="checkbox" id="checkbox3"/>
-                                <label htmlFor="checkbox3"/>
+                        </button>
+                        <button type="button" className="list-group-item list-group-item-action"
+                                onClick={() => this.toggleCheckbox("checkbox3")}>
+                            <div className="align-check-and-label">
+                                <div className="checkbox checkbox-circle checkbox-primary ">
+                                    <input type="checkbox" id="checkbox3"/>
+                                    <label htmlFor="checkbox3"/>
+                                </div>
+                                <p> Meditate </p>
                             </div>
-                            <p> Meditate </p>
-                        </div>
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
         );

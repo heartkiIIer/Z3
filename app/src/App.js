@@ -7,39 +7,9 @@ import Register from './components/Register.js'
 
 function App() {
   return (
-      <Router>
-          <nav>
-              <ul>
-                  <li>
-                      <Link to="/bedtimeRoutine">It's bedtime routine</Link>
-                  </li>
-                  <li>
-                      <Link to="/landing">Landing Page</Link>
-                  </li>
-                  <li>
-                      <Link to="/home">Home Page</Link>
-                  </li>
-                  <li>
-                      <Link to="/register">Register Page</Link>
-                  </li>
-              </ul>
-          </nav>
-
-          <Switch>
-              <Route path ="/bedtimeRoutine">
-                  <ItsBedtime/>
-              </Route>
-              <Route path ="/landing">
-                  <Landing/>
-              </Route>
-              <Route path ="/home">
-                  <Home/>
-              </Route>
-              <Route path ="/register">
-                  <Register/>
-              </Route>
-          </Switch>
-      </Router>
+      <div>
+          <Home/>
+      </div>
   );
 }
 export default App;

@@ -1,0 +1,94 @@
+#homepage{
+    background: radial-gradient(circle at top left, #c8c8c890, #00183790),
+                url("../resources/background_images/dawn.jpg") no-repeat center center fixed;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    margin: 0;
+}
+.dot{
+    height: 150px;
+    width: 150px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot:hover{
+    width: 200px;
+    height: 200px;
+}
+.iconImages{
+    opacity: 0.45;
+    height: 80%;
+    width: 80%;
+    margin: 15px;
+}
+#calIcon{
+    background-color: #caab51;
+    /*margin-left: 20%;*/
+    /*margin-top: 20%;*/
+
+}
+.calIconImg{
+    background: url("../resources/icons/calendar_icon.png") no-repeat center center;
+    background-size: contain;
+}
+#exerIcon{
+    background-color: #045a78;
+}
+.exerIconImg{
+    background: url("../resources/icons/exercise_icon.png") no-repeat center center;
+    background-size: contain;
+}
+#mindIcon{
+    background-color: #4a486f;
+    /*margin-right: 20%;*/
+    /*margin-top: 20%;*/
+}
+.mindIconImg{
+    background: url("../resources/icons/mind_icon.png") no-repeat center center;
+    background-size: contain;
+}
+#bedIcon{
+    background-color: #09d3ac;
+}
+.bedIconImg{
+    background: url("../resources/icons/bedtime_icon.png") no-repeat center center;
+    background-size: contain;
+}
+#coffeeIcon{
+    background-color: #caab51;
+}
+.coffeeIconImg{
+    background: url("../resources/icons/coffee_icon.png") no-repeat center center;
+    background-size: contain;
+}
+#fitbitIcon{
+    background-color: #045a78;
+    /*margin-left: 20%;*/
+    /*margin-bottom: 20%;*/
+}
+.fitbitIconImg{
+    background: url("../resources/icons/fitbit.png") no-repeat center center;
+    background-size: contain;
+}
+#sleepIcon{
+    background-color: #4a486f;
+}
+.sleepIconImg{
+    background: url("../resources/icons/sleep_icon.png") no-repeat center center;
+    background-size: contain;
+}
+#perIcon{
+    background-color: #09d3ac;
+    /*margin-right: 20%;*/
+    /*margin-bottom: 20%;*/
+}
+.perIconImg{
+    background: url("../resources/icons/person.png") no-repeat center center;
+    background-size: contain;
+}
+.circleContainer{
+    width: 90vh;
+    height: 90vh;
+}

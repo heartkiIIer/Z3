@@ -41,15 +41,16 @@ button:focus {
     text-align: center;
     background: white;
     margin-left: 25px;
+    margin-top: -25px;
+
 }
 
 .outer-circle {
-    margin-left: 25px;
     width: 350px;
     height: 350px;
     border-radius: 50%;
     background: black;
-    margin-bottom: 50px;
     transition: opacity 0.5s;
     -webkit-transition: opacity 0.5s;
+    position: relative;
 }

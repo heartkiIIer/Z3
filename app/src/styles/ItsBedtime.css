@@ -12,18 +12,44 @@ h1 {
     color: red;
 }
 
-.customCheckbox{
-    background-color: white;
-    border: 2px solid lightskyblue;
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    vertical-align: middle;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
+.checkbox {
+    height: 38px;
+    width: 38px;
 }
 
-.customCheckbox:checked{
-    background-color: lightskyblue;
+.align-check-and-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+button:focus {
+    outline: none;
+}
+
+.inner-circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    font-size: 40px;
+    color: #337ab7;
+    line-height: 300px;
+    text-align: center;
+    background: white;
+    margin-left: 25px;
+}
+
+.outer-circle {
+    margin-left: 25px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: black;
+    margin-bottom: 50px;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
 }

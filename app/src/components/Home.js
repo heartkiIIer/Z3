@@ -8,48 +8,48 @@ class Home extends React.Component {
                 <h1>Home Page</h1>
                 <div className="circleContainer row justify-content-between align-content-between">
                     <div className="col-md-4">
-                        <span id="calIcon" className="dot">
-                            <div className="iconImages calIconImg"></div>
+                        <span id="calIcon_h" className="dot_h">
+                            <div className="iconImages_h calIconImg_h"></div>
                         </span>
                     </div>
                     <div className="col-md-4">
-                        <span id="exerIcon" className="dot d-flex justify-content-center">
-                            <div className="iconImages exerIconImg"></div>
+                        <span id="exerIcon_h" className="dot_h d-flex justify-content-center">
+                            <div className="iconImages_h exerIconImg_h"></div>
                         </span>
                     </div>
                     <div className="col-md-4">
-                        <span id="mindIcon" className="dot d-flex justify-content-end">
-                            <div className="iconImages mindIconImg"></div>
+                        <span id="mindIcon_h" className="dot_h d-flex justify-content-end">
+                            <div className="iconImages_h mindIconImg_h"></div>
                         </span>
                     </div>
                     <div className='col-md-4'>
-                        <span id="bedIcon" className="dot">
-                            <div className="iconImages bedIconImg"></div>
+                        <span id="bedIcon" className="dot_h">
+                            <div className="iconImages_h bedIconImg"></div>
                         </span>
                     </div>
                     <div className='col-md-4'>
-                        <span className="dot text-center">
+                        <span className="dot_h text-center">
                             <p>Show weather here</p>
                         </span>
                     </div>
                     <div className='col-md-4'>
-                        <span id="coffeeIcon" className="dot">
-                            <div className="iconImages coffeeIconImg"></div>
+                        <span id="coffeeIcon" className="dot_h">
+                            <div className="iconImages_h coffeeIconImg"></div>
                         </span>
                     </div>
                     <div className='col-md-4'>
-                        <span id="fitbitIcon" className="dot">
-                            <div className="iconImages fitbitIconImg"></div>
+                        <span id="fitbitIcon" className="dot_h">
+                            <div className="iconImages_h fitbitIconImg"></div>
                         </span>
                     </div>
                     <div className='col-md-4'>
-                        <span id="sleepIcon" className="dot">
-                            <div className="iconImages sleepIconImg"></div>
+                        <span id="sleepIcon" className="dot_h">
+                            <div className="iconImages_h sleepIconImg"></div>
                         </span>
                     </div>
                     <div className='col-md-4'>
-                        <span id="perIcon" className="dot">
-                            <div className="iconImages perIconImg"></div>
+                        <span id="perIcon" className="dot_h">
+                            <div className="iconImages_h perIconImg"></div>
                         </span>
                     </div>
                 </div>

@@ -6,46 +6,46 @@
     background-size: cover;
     margin: 0;
 }
-.dot{
+.dot_h{
     height: 150px;
     width: 150px;
     background-color: transparent;
     border-radius: 50%;
     display: inline-block;
 }
-.dot:hover{
+.dot_h:hover{
     width: 200px;
     height: 200px;
 }
-.iconImages{
+.iconImages_h{
     opacity: 0.45;
     height: 80%;
     width: 80%;
     margin: 15px;
 }
-#calIcon{
+#calIcon_h{
     background-color: #caab51;
     /*margin-left: 20%;*/
     /*margin-top: 20%;*/
 
 }
-.calIconImg{
+.calIconImg_h{
     background: url("../resources/icons/calendar_icon.png") no-repeat center center;
     background-size: contain;
 }
-#exerIcon{
+#exerIcon_h{
     background-color: #045a78;
 }
-.exerIconImg{
+.exerIconImg_h{
     background: url("../resources/icons/exercise_icon.png") no-repeat center center;
     background-size: contain;
 }
-#mindIcon{
+#mindIcon_h{
     background-color: #4a486f;
     /*margin-right: 20%;*/
     /*margin-top: 20%;*/
 }
-.mindIconImg{
+.mindIconImg_h{
     background: url("../resources/icons/mind_icon.png") no-repeat center center;
     background-size: contain;
 }

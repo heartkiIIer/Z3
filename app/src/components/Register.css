@@ -1,0 +1,71 @@
+html::-webkit-scrollbar{
+    width: 0;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+button{
+    border: none;
+    color: white;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+}
+h1, h2, h3 {
+    color: white;
+}
+.container{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+.dot{
+    height: 200px;
+    width: 200px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot:hover{
+    width: 250px;
+    height: 250px;
+}
+.col-md-4{
+    text-align: center;
+}
+.row{
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    margin: 0;
+}
+.iconImages{
+    opacity: 0.45;
+    height: 80%;
+    width: 80%;
+    margin: 20px;
+}
+.icon{
+    width: 200px;
+    height: 200px;
+}
+.featureInfo{
+    display: flex;
+    flex-direction: column;
+}
+.featureTitle{
+    margin: 30px;
+}
+
+
+#register-btn{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    background: #4a486f;
+}
+#learn-btn{
+    background: #045a78;
+}

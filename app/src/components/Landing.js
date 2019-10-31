@@ -55,7 +55,11 @@ class Landing extends React.Component {
                                 <h3>
                                     Keep track of all your calendar events and plan ahead
                                     so no more all-nighters. Let your body sleep! Set a nightly
-                                    bedtime routine and make it a habit!
+                                    bedtime routine and make it a habit! <br/><br/>
+                                    Z<sup>3</sup> allows for you to enter you schedule and view everything
+                                    in a calendar. You can also sync your google or outlook
+                                    calendar! Z<sup>3</sup> has a feature where it will send you friendly
+                                    reminders to help you stay on a consistent sleep schedule.
                                 </h3>
                             </div>
                         </div>
@@ -67,9 +71,11 @@ class Landing extends React.Component {
                             <div className="image-wrapper float-right pr-3 iconImages exerIconImg icon"></div>
                             <div className="single-post-content-wrapper p-3">
                                 <h3>
-                                    Get walking or do some exercise! Getting fit and improve
-                                    your sleep. Two birds in one stone. Sync it up with fitbit
-                                    and let the device do all the tracking for you.
+                                    Get walking or do some exercise! Get fit and improve
+                                    your sleep. That is hitting two birds in one stone! <br/><br/>
+                                    Z<sup>3</sup> allows you to sync it up to your fitness tracker to track
+                                    both exercise and sleep! If you do not own a fitness tracker, do not fret!
+                                    There are options to self log your sleep hours and exercise amount.
                                 </h3>
                             </div>
                         </div>
@@ -82,8 +88,9 @@ class Landing extends React.Component {
                             <div className="single-post-content-wrapper p-3">
                                 <h3>
                                     Open up your mind and learning more about yourself
-                                    through our Mindfulness Modules and Personality Test
-                                    how that effects your sleep behaviors
+                                    through our Mindfulness Modules and Personality Test. Learn how
+                                    mindfulness and Personality can effects your sleep! <br/><br/>
+
                                 </h3>
                             </div>
                         </div>

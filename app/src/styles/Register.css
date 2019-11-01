@@ -35,33 +35,38 @@ h1, h2, h3 {
 .col-md-4{
     text-align: center;
 }
+
 .row{
     height: 100%;
     width: 100vw;
     background-size: cover;
     margin: 0;
 }
+
 .iconImages{
     opacity: 0.45;
     height: 80%;
     width: 80%;
     margin: 20px;
 }
+
 .icon{
     width: 200px;
     height: 200px;
 }
-.featureInfo{
-    display: flex;
-    flex-direction: column;
-}
-.featureTitle{
-    margin: 30px;
-}
 
+#Register{
+    margin-left: auto;
+    margin-top: 30%;
+    background-color: rgba(24,150,189,0.74);
+    padding: 10pt;
+    align-self: center;
+    height: auto;
+    Width: 50%;
+}
 
 #register-btn{
-    position: absolute;
+    margin-top: 10pt;
     bottom: 10%;
     right: 10%;
     background: #4a486f;

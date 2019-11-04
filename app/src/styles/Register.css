@@ -21,17 +21,6 @@ h1, h2, h3 {
     padding: 0;
     height: 100vh;
 }
-.dot{
-    height: 200px;
-    width: 200px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-}
-.dot:hover{
-    width: 250px;
-    height: 250px;
-}
 .col-md-4{
     text-align: center;
 }
@@ -42,19 +31,6 @@ h1, h2, h3 {
     background-size: cover;
     margin: 0;
 }
-
-.iconImages{
-    opacity: 0.45;
-    height: 80%;
-    width: 80%;
-    margin: 20px;
-}
-
-.icon{
-    width: 200px;
-    height: 200px;
-}
-
 #Register{
     margin-left: auto;
     margin-top: 30%;

@@ -8,29 +8,84 @@ class Home extends React.Component {
                 <div class="col-lg-6">
                     <ul className="circle">
                         <li>
-                            <span id="sleepIcon" className="dot_h">
-                                <div className="iconImages_h sleepIconImg"></div>
-                            </span>
+                            <div className="flip-card">
+                                <div className="flip-card-inner">
+                                    <div className="flip-card-front">
+                                        <span id="sleepIcon" className="dot_h">
+                                            <div className="iconImages_h sleepIconImg"></div>
+                                        </span>
+                                    </div>
+                                    <div className="flip-card-back">
+                                        <span id="sleepIcon" className="dot_h">
+                                            Hello
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            <span id="logIcon_h" className="dot_h">
-                                <div className="iconImages_h logIconImg_h"></div>
-                            </span>
+                            <div className="flip-card">
+                                <div className="flip-card-inner">
+                                    <div className="flip-card-front">
+                                        <span id="logIcon_h" className="dot_h">
+                                            <div className="iconImages_h logIconImg_h"></div>
+                                        </span>
+                                    </div>
+                                    <div className="flip-card-back">
+                                        <span id="sleepIcon" className="dot_h">
+                                            Hello
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            <span id="mindIcon_h" className="dot_h">
-                                <div className="iconImages_h mindIconImg_h"></div>
-                            </span>
+                            <div className="flip-card">
+                                <div className="flip-card-inner">
+                                    <div className="flip-card-front">
+                                        <span id="mindIcon_h" className="dot_h">
+                                            <div className="iconImages_h mindIconImg_h"></div>
+                                        </span>
+                                    </div>
+                                    <div className="flip-card-back">
+                                        <span id="sleepIcon" className="dot_h">
+                                            Hello
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            <span id="perIcon" className="dot_h">
-                                <div className="iconImages_h perIconImg"></div>
-                            </span>
+                            <div className="flip-card">
+                                <div className="flip-card-inner">
+                                    <div className="flip-card-front">
+                                        <span id="perIcon" className="dot_h">
+                                            <div className="iconImages_h perIconImg"></div>
+                                        </span>
+                                    </div>
+                                    <div className="flip-card-back">
+                                        <span id="sleepIcon" className="dot_h">
+                                            Hello
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            <span id="bedIcon" className="dot_h">
-                                <div className="iconImages_h bedIconImg"></div>
-                            </span>
+                            <div className="flip-card">
+                                <div className="flip-card-inner">
+                                    <div className="flip-card-front">
+                                        <span id="bedIcon" className="dot_h">
+                                            <div className="iconImages_h bedIconImg"></div>
+                                        </span>
+                                    </div>
+                                    <div className="flip-card-back">
+                                        <span id="sleepIcon" className="dot_h">
+                                            Hello
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>

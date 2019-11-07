@@ -59,7 +59,7 @@ h1, h2, h3 {
     margin: 30px;
 }
 #Heading{
-    background: radial-gradient(circle at top left, #ffffff90, #00183790),
+    background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
                 url("../resources/background_images/dawn.jpg") no-repeat center center fixed;
     height: 100%;
     width: 100vw;
@@ -88,21 +88,21 @@ h1, h2, h3 {
     background: #001837;
 }
 #Features{
-    background-color: rgba(14, 16, 29, 0.94);
+    background-color: #141629;
     height: 75vh;
 }
 #CalSch{
-    background: radial-gradient(circle at top left, #1f9ce4 10%, transparent),
+    background: radial-gradient(circle at top left, #1f9ce4 30%, transparent),
                 url("../resources/background_images/calendar.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 #Exercise{
-    background: radial-gradient(circle at top right, #625ad8 10%, transparent),
+    background: radial-gradient(circle at top right, #625ad8 30%, transparent),
                 url("../resources/background_images/gym.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 #MindPerson{
-    background: radial-gradient(circle at top left, #7339ab 10%, transparent),
+    background: radial-gradient(circle at top left, #7339ab 30%, transparent),
                 url("../resources/background_images/meditation.jpg") no-repeat center center fixed;
     background-size: cover;
 }

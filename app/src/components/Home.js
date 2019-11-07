@@ -34,8 +34,8 @@ class Home extends React.Component {
                         </li>
                     </ul>
                 </div>
-                <div className="col-lg-6">
-                    <div>
+                <div className="col-lg-6 d-flex justify-content-center align-items-center">
+                    <div id="dailyInfo" className="d-flex justify-content-center">
                         <h2>Home</h2>
                     </div>
                 </div>

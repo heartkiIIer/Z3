@@ -1,3 +1,6 @@
+:root{
+    --iconColor: linear-gradient(180deg, #1f9ce4 0%, #625ad8 40%, #7339ab 100%);
+}
 #homepage{
     background: radial-gradient(circle at top left, #c8c8c890, #00183790),
                 url("../resources/background_images/dawn.jpg") no-repeat center center fixed;
@@ -7,123 +10,84 @@
     margin: 0;
 }
 .dot_h{
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     background-color: transparent;
     border-radius: 50%;
     display: inline-block;
-}
-.dot_h:hover{
-    width: 200px;
-    height: 200px;
+    border: 5px solid white;
 }
 .iconImages_h{
-    opacity: 0.45;
+    /*opacity: 0.45;*/
     height: 80%;
     width: 80%;
     margin: 15px;
 }
-#calIcon_h{
-    background-color: #caab51;
+#sleepIcon{
+    background: var(--iconColor);
 }
-.calIconImg_h{
-    background: url("../resources/icons/calendar_icon.png") no-repeat center center;
+.sleepIconImg{
+    background: url("../resources/icons/sleep_icon_white.png") no-repeat center center;
     background-size: contain;
 }
-#exerIcon_h{
-    background-color: #045a78;
-    transform: rotate(-45deg);
+#logIcon_h{
+    background: var(--iconColor);
+    transform: rotate(-72deg);
 }
-.exerIconImg_h{
+.logIconImg_h{
     background: url("../resources/icons/exercise_icon.png") no-repeat center center;
     background-size: contain;
 }
 #mindIcon_h{
-    background-color: #4a486f;
-    transform: rotate(-90deg);
+    background: var(--iconColor);
+    transform: rotate(-144deg);
 }
 .mindIconImg_h{
-    background: url("../resources/icons/mind_icon.png") no-repeat center center;
-    background-size: contain;
-}
-#bedIcon{
-    background-color: #09d3ac;
-    transform: rotate(-135deg);
-}
-.bedIconImg{
-    background: url("../resources/icons/bedtime_icon.png") no-repeat center center;
-    background-size: contain;
-}
-#coffeeIcon{
-    background-color: #caab51;
-    transform: rotate(-180deg);
-}
-.coffeeIconImg{
-    background: url("../resources/icons/coffee_icon.png") no-repeat center center;
-    background-size: contain;
-}
-#fitbitIcon{
-    background-color: #045a78;
-    transform: rotate(-225deg);
-}
-.fitbitIconImg{
-    background: url("../resources/icons/fitbit.png") no-repeat center center;
-    background-size: contain;
-}
-#sleepIcon{
-    background-color: #4a486f;
-    transform: rotate(-270deg);
-}
-.sleepIconImg{
-    background: url("../resources/icons/sleep_icon.png") no-repeat center center;
+    background: url("../resources/icons/mind_icon_white.png") no-repeat center center;
     background-size: contain;
 }
 #perIcon{
-    background-color: #09d3ac;
-    transform: rotate(-315deg);
+    background: var(--iconColor);
+    transform: rotate(-216deg);
 }
 .perIconImg{
-    background: url("../resources/icons/person.png") no-repeat center center;
+    background: url("../resources/icons/person_white.png") no-repeat center center;
+    background-size: contain;
+}
+#bedIcon{
+    background: var(--iconColor);
+    transform: rotate(-288deg);
+}
+.bedIconImg{
+    background: url("../resources/icons/bedtime_icon_white.png") no-repeat center center;
     background-size: contain;
 }
 
 
 .circle {
-    position: relative;
-    width: 90%;
-    height: 90%;
     border-radius: 50%;
     list-style: none;
 }
 .circle li {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 50%;
+    top: 10%;
+    right: 10%;
+    width: 40%;
+    height: 40%;
     transform-origin: 0% 100%;
 }
 .circle li:nth-child(1) {
     transform: rotate(0deg);
 }
 .circle li:nth-child(2) {
-    transform: rotate(45deg);
+    transform: rotate(72deg);
 }
 .circle li:nth-child(3) {
-    transform: rotate(90deg);
+    transform: rotate(144deg);
 }
 .circle li:nth-child(4) {
-    transform: rotate(135deg);
+    transform: rotate(216deg);
 }
 .circle li:nth-child(5) {
-    transform: rotate(180deg);
-}
-.circle li:nth-child(6) {
-    transform: rotate(225deg);
-}
-.circle li:nth-child(7) {
-    transform: rotate(270deg);
-}
-.circle li:nth-child(8) {
-    transform: rotate(315deg);
+    transform: rotate(288deg);
 }

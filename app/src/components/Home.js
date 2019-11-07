@@ -16,8 +16,8 @@ class Home extends React.Component {
                                         </span>
                                     </div>
                                     <div className="flip-card-back">
-                                        <span id="sleepIcon" className="dot_h">
-                                            Hello
+                                        <span className="dot_h d-flex align-items-center justify-content-center">
+                                            Log Sleep
                                         </span>
                                     </div>
                                 </div>
@@ -32,8 +32,8 @@ class Home extends React.Component {
                                         </span>
                                     </div>
                                     <div className="flip-card-back">
-                                        <span id="sleepIcon" className="dot_h">
-                                            Hello
+                                        <span className="dot_h d-flex align-items-center justify-content-center">
+                                            Log others
                                         </span>
                                     </div>
                                 </div>
@@ -48,8 +48,8 @@ class Home extends React.Component {
                                         </span>
                                     </div>
                                     <div className="flip-card-back">
-                                        <span id="sleepIcon" className="dot_h">
-                                            Hello
+                                        <span className="dot_h d-flex align-items-center justify-content-center">
+                                            Mindfulness
                                         </span>
                                     </div>
                                 </div>
@@ -64,8 +64,8 @@ class Home extends React.Component {
                                         </span>
                                     </div>
                                     <div className="flip-card-back">
-                                        <span id="sleepIcon" className="dot_h">
-                                            Hello
+                                        <span className="dot_h d-flex align-items-center justify-content-center">
+                                            Personality
                                         </span>
                                     </div>
                                 </div>
@@ -80,8 +80,8 @@ class Home extends React.Component {
                                         </span>
                                     </div>
                                     <div className="flip-card-back">
-                                        <span id="sleepIcon" className="dot_h">
-                                            Hello
+                                        <span className="dot_h d-flex align-items-center justify-content-center">
+                                            Bedtime
                                         </span>
                                     </div>
                                 </div>

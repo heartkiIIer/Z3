@@ -13,7 +13,7 @@
 .dot_h{
     height: 200px;
     width: 200px;
-    background-color: transparent;
+    background: var(--iconColor);
     border-radius: 50%;
     display: inline-block;
     /*border: 7px solid white;*/
@@ -24,15 +24,11 @@
     width: 80%;
     margin: 15px;
 }
-#sleepIcon{
-    background: var(--iconColor);
-}
 .sleepIconImg{
     background: url("../resources/icons/sleep_icon_white.png") no-repeat center center;
     background-size: contain;
 }
 #logIcon_h{
-    background: var(--iconColor);
     transform: rotate(-72deg);
 }
 .logIconImg_h{
@@ -40,7 +36,6 @@
     background-size: contain;
 }
 #mindIcon_h{
-    background: var(--iconColor);
     transform: rotate(-144deg);
 }
 .mindIconImg_h{
@@ -48,7 +43,6 @@
     background-size: contain;
 }
 #perIcon{
-    background: var(--iconColor);
     transform: rotate(-216deg);
 }
 .perIconImg{
@@ -56,7 +50,6 @@
     background-size: contain;
 }
 #bedIcon{
-    background: var(--iconColor);
     transform: rotate(-288deg);
 }
 .bedIconImg{

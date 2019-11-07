@@ -8,7 +8,7 @@ import "../styles/ItsBedtime.css";
  * */
 class ItsBedtime extends React.Component {
     toggleCheckbox(element){
-        if(document.getElementById(element).checked == true){
+        if(document.getElementById(element).checked === true){
             document.getElementById(element).checked = false;
         }
         else {

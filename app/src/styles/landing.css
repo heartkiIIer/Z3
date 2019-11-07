@@ -22,15 +22,15 @@ h1, h2, h3 {
     height: 100vh;
 }
 .dot{
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
 }
 .dot:hover{
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
 }
 .col-md-4{
     text-align: center;
@@ -48,8 +48,8 @@ h1, h2, h3 {
     margin: 20px;
 }
 .icon{
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
 }
 .featureInfo{
     display: flex;
@@ -59,14 +59,13 @@ h1, h2, h3 {
     margin: 30px;
 }
 #Heading{
-    background: radial-gradient(circle at top left, #c8c8c890, #00183790),
+    background: radial-gradient(circle at top left, #ffffff90, #00183790),
                 url("../resources/background_images/dawn.jpg") no-repeat center center fixed;
     height: 100%;
     width: 100vw;
     margin: 0;
 }
 #login{
-    background: #f2bc0770;
     padding: 60px 8%;
     height: 40%;
     width:65%;
@@ -75,10 +74,8 @@ h1, h2, h3 {
     top: 30%;
 }
 #loginbtn{
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-    background: #4a486f;
+    background: #001837;
+    margin-top: 20px;
 }
 #title{
     padding-right: 15%;
@@ -88,42 +85,43 @@ h1, h2, h3 {
     color: white;
 }
 #joinbtn{
-    background: #045a78;
+    background: #001837;
 }
 #Features{
-    background-color: #1896BD;
+    background-color: rgba(14, 16, 29, 0.94);
+    height: 75vh;
 }
 #CalSch{
-    background: radial-gradient(circle at top left, #caab51 10%, transparent),
+    background: radial-gradient(circle at top left, #1f9ce4 10%, transparent),
                 url("../resources/background_images/calendar.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 #Exercise{
-    background: radial-gradient(circle at top right, #045a78 10%, transparent),
+    background: radial-gradient(circle at top right, #625ad8 10%, transparent),
                 url("../resources/background_images/gym.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 #MindPerson{
-    background: radial-gradient(circle at top left, #4a486f 10%, transparent),
+    background: radial-gradient(circle at top left, #7339ab 10%, transparent),
                 url("../resources/background_images/meditation.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 #calIcon{
-    background-color: #caab51;
+    background-color: #1f9ce4;
 }
 .calIconImg{
     background: url("../resources/icons/calendar_icon.png") no-repeat center center;
     background-size: contain;
 }
 #exerIcon{
-    background-color: #045a78;
+    background-color: #625ad8;
 }
 .exerIconImg{
     background: url("../resources/icons/exercise_icon.png") no-repeat center center;
     background-size: contain;
 }
 #mindIcon{
-    background-color: #4a486f;
+    background-color: #7339ab;
 }
 .mindIconImg{
     background: url("../resources/icons/mind_icon.png") no-repeat center center;

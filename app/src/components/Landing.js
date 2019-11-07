@@ -11,10 +11,8 @@ class Landing extends React.Component {
                             <div id="login">
                                 <h2>Login</h2>
                                 <form>
-                                    Username or Email:
-                                    <input type="text" name="username" placeholder="john or john157@gmail.com"/>
-                                    Password:
-                                    <input type="password" name="password"/>
+                                    <input type="text" name="username" placeholder="Username or Email"/>
+                                    <input type="password" name="password" placeholder="Password"/>
                                     <button id="loginbtn">Login</button>
                                 </form>
                             </div>

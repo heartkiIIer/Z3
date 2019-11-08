@@ -8,84 +8,84 @@ class Home extends React.Component {
                 <div class="col-lg-6">
                     <ul className="circle">
                         <li>
-                            <div className="flip-card">
-                                <div className="flip-card-inner">
-                                    <div className="flip-card-front">
-                                        <span id="sleepIcon" className="dot_h">
+                            <span id="sleepIcon" className="dot_h">
+                                <div className="flip-card">
+                                    <div className="flip-card-inner">
+                                        <div className="flip-card-front">
                                             <div className="iconImages_h sleepIconImg"></div>
-                                        </span>
-                                    </div>
-                                    <div className="flip-card-back">
-                                        <span className="dot_h d-flex align-items-center justify-content-center">
-                                            Log Sleep
-                                        </span>
+                                        </div>
+                                        <div className="flip-card-back">
+                                            <span className="dot_h text d-flex align-items-center justify-content-center">
+                                                Log Sleep
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </span>
                         </li>
                         <li>
-                            <div className="flip-card">
-                                <div className="flip-card-inner">
-                                    <div className="flip-card-front">
-                                        <span id="logIcon_h" className="dot_h">
+                            <span id="logIcon_h" className="dot_h">
+                                <div className="flip-card">
+                                    <div className="flip-card-inner">
+                                        <div className="flip-card-front">
                                             <div className="iconImages_h logIconImg_h"></div>
-                                        </span>
-                                    </div>
+                                        </div>
                                     <div className="flip-card-back">
-                                        <span className="dot_h d-flex align-items-center justify-content-center">
+                                        <span className="dot_h text d-flex align-items-center justify-content-center">
                                             Log others
-                                        </span>
+                                         </span>
                                     </div>
-                                </div>
-                            </div>
+                                 </div>
+                               </div>
+                            </span>
                         </li>
                         <li>
-                            <div className="flip-card">
-                                <div className="flip-card-inner">
-                                    <div className="flip-card-front">
-                                        <span id="mindIcon_h" className="dot_h">
+                            <span id="mindIcon_h" className="dot_h">
+                                <div className="flip-card">
+                                    <div className="flip-card-inner">
+                                        <div className="flip-card-front">
                                             <div className="iconImages_h mindIconImg_h"></div>
-                                        </span>
-                                    </div>
-                                    <div className="flip-card-back">
-                                        <span className="dot_h d-flex align-items-center justify-content-center">
-                                            Mindfulness
-                                        </span>
+                                        </div>
+                                        <div className="flip-card-back">
+                                            <span className="dot_h text d-flex align-items-center justify-content-center">
+                                                Mindfulness
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </span>
                         </li>
                         <li>
-                            <div className="flip-card">
-                                <div className="flip-card-inner">
-                                    <div className="flip-card-front">
-                                        <span id="perIcon" className="dot_h">
+                            <span id="perIcon" className="dot_h">
+                                <div className="flip-card">
+                                    <div className="flip-card-inner">
+                                        <div className="flip-card-front">
                                             <div className="iconImages_h perIconImg"></div>
-                                        </span>
-                                    </div>
-                                    <div className="flip-card-back">
-                                        <span className="dot_h d-flex align-items-center justify-content-center">
-                                            Personality
-                                        </span>
+                                        </div>
+                                        <div className="flip-card-back">
+                                            <span className="dot_h text d-flex align-items-center justify-content-center">
+                                                Personality
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </span>
                         </li>
                         <li>
-                            <div className="flip-card">
-                                <div className="flip-card-inner">
-                                    <div className="flip-card-front">
-                                        <span id="bedIcon" className="dot_h">
+                            <span id="bedIcon" className="dot_h">
+                                <div className="flip-card">
+                                    <div className="flip-card-inner">
+                                        <div className="flip-card-front">
                                             <div className="iconImages_h bedIconImg"></div>
-                                        </span>
-                                    </div>
-                                    <div className="flip-card-back">
-                                        <span className="dot_h d-flex align-items-center justify-content-center">
-                                            Bedtime
-                                        </span>
+                                        </div>
+                                        <div className="flip-card-back">
+                                            <span className="dot_h text d-flex align-items-center justify-content-center">
+                                                Bedtime
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </span>
                         </li>
                     </ul>
                 </div>

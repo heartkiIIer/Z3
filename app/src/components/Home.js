@@ -16,7 +16,7 @@ class Home extends React.Component {
                                         </div>
                                         <div className="flip-card-back">
                                             <span className="dot_h text d-flex align-items-center justify-content-center">
-                                                Log Sleep
+                                                Log Your Sleep
                                             </span>
                                         </div>
                                     </div>
@@ -32,7 +32,7 @@ class Home extends React.Component {
                                         </div>
                                     <div className="flip-card-back">
                                         <span className="dot_h text d-flex align-items-center justify-content-center">
-                                            Log others
+                                            Log Your Exercise, Caffeine, and Stress Level
                                          </span>
                                     </div>
                                  </div>
@@ -48,7 +48,7 @@ class Home extends React.Component {
                                         </div>
                                         <div className="flip-card-back">
                                             <span className="dot_h text d-flex align-items-center justify-content-center">
-                                                Mindfulness
+                                                Mindfulness Modules
                                             </span>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@ class Home extends React.Component {
                                         </div>
                                         <div className="flip-card-back">
                                             <span className="dot_h text d-flex align-items-center justify-content-center">
-                                                Bedtime
+                                                Your Bedtime Routine
                                             </span>
                                         </div>
                                     </div>

@@ -4,10 +4,11 @@ import ItsBedtime from './components/ItsBedtime.js';
 import Landing from './components/Landing.js';
 import Home from './components/Home.js';
 import Register from './components/Register.js'
+import Header from './components/PlaceholderHeader';
 
 function App() {
   return (
-      <Router>
+      /*<Router>
           <nav>
               <ul>
                   <li>
@@ -39,7 +40,12 @@ function App() {
                   <Register/>
               </Route>
           </Switch>
-      </Router>
+      </Router>*/
+      <div>
+        <Header/>
+        <ItsBedtime/>
+        <Header/>
+      </div>
   );
 }
 export default App;

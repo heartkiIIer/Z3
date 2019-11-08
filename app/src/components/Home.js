@@ -64,7 +64,7 @@ class Home extends React.Component {
                                         </div>
                                         <div className="flip-card-back">
                                             <span className="dot_h text d-flex align-items-center justify-content-center">
-                                                Personality
+                                                Personality Test
                                             </span>
                                         </div>
                                     </div>

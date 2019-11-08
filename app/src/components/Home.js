@@ -8,7 +8,7 @@ class Home extends React.Component {
                 <div class="col-lg-6">
                     <div id="sleepDuration" className="d-flex align-items-center justify-content-center">
                         <div>
-                            <h1>Your Total Sleep Time:</h1>
+                            <h1>Your Sleep Hours:</h1>
                             <h1>8 Hours</h1>
                         </div>
                     </div>

@@ -74,7 +74,6 @@ export default function CustomizedSlider() {
             </Typography>
             <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={50}
                           valueLabelFormat={label}
-                          getAriaValueText={label}
                           step={null}
                           marks={marks}/>
             <div className={classes.margin} />

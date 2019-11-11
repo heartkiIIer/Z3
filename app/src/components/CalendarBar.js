@@ -3,15 +3,11 @@ import "../styles/calendar.css";
 import CSlider from "./CSlider";
 
 const calendarbar = () =>
-    <div>
-        <div class="cal"><h1>Rate Stress Level for Each Event</h1></div>
-        <div class="calendarbar">
+        <div class="calendarbar d-flex justify-content-center align-items-center">
+            <h1>Rate Stress Level for Each Event</h1>
             <br/><br/>
             <CSlider/>
-            <button class='btn'>Submit</button>
+            <button className='btn'>Submit</button>
         </div>
-
-    </div>
-
 
 export default calendarbar

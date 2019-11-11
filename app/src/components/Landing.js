@@ -31,7 +31,7 @@ class Landing extends React.Component {
                                     <div className="iconImages calIconImg"></div>
                                 </span>
                             </a>
-                            <h2>Calendar and Routines</h2>
+                            <h2>Routines</h2>
                         </div>
                         <div className='col-md-4 my-auto'>
                             <a href={"#exerFeature"}>
@@ -39,7 +39,7 @@ class Landing extends React.Component {
                                     <div className="iconImages exerIconImg"></div>
                                 </span>
                             </a>
-                            <h2>Exercise and Activity Trackers</h2>
+                            <h2>Activity Log</h2>
                         </div>
                         <div className='col-md-4 my-auto'>
                             <a href={"#mindFeature"}>

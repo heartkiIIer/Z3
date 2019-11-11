@@ -42,7 +42,7 @@ h1, h2, h3 {
     margin: 0;
 }
 .iconImages{
-    opacity: 0.45;
+    /*opacity: 0.45;*/
     height: 80%;
     width: 80%;
     margin: 20px;
@@ -110,20 +110,20 @@ h1, h2, h3 {
     background-color: #1f9ce4;
 }
 .calIconImg{
-    background: url("../resources/icons/calendar_icon.png") no-repeat center center;
+    background: url("../resources/icons/bedtime_icon_white.png") no-repeat center center;
     background-size: contain;
 }
 #exerIcon{
     background-color: #625ad8;
 }
 .exerIconImg{
-    background: url("../resources/icons/exercise_icon.png") no-repeat center center;
+    background: url("../resources/icons/log_icon_white.png") no-repeat center center;
     background-size: contain;
 }
 #mindIcon{
     background-color: #7339ab;
 }
 .mindIconImg{
-    background: url("../resources/icons/mind_icon.png") no-repeat center center;
+    background: url("../resources/icons/mind_icon_white.png") no-repeat center center;
     background-size: contain;
 }

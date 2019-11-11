@@ -6,9 +6,15 @@ class Home extends React.Component {
         return (
             <div id="homepage" className="row">
                 <div class="col-lg-6">
+                    <div id="sleepDuration" className="d-flex align-items-center justify-content-center">
+                        <div>
+                            <h1>Your Sleep Hours:</h1>
+                            <h1>8 Hours</h1>
+                        </div>
+                    </div>
                     <ul className="circle">
                         <li>
-                            <span id="sleepIcon" className="dot_h">
+                            <span id="sleepIcon_h" className="dot_h">
                                 <div className="flip-card">
                                     <div className="flip-card-inner">
                                         <div className="flip-card-front">
@@ -90,8 +96,9 @@ class Home extends React.Component {
                     </ul>
                 </div>
                 <div className="col-lg-6 d-flex justify-content-center align-items-center">
-                    <div id="dailyInfo" className="d-flex justify-content-center">
-                        <h2>Home</h2>
+                    <div id="dailyInfo" className="d-flex justify-content-center align-items-center">
+                        <h2>Fun Fact of the Day:</h2>
+                        <h3>Did you know?</h3>
                     </div>
                 </div>
             </div>

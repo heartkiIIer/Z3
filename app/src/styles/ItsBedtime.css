@@ -19,8 +19,8 @@
     border-left: 1px solid #e4e4e4;
 }
 
-h1 {
-    color: red;
+.blueHeader {
+    color: #337ab7;
 }
 
 .checkbox {
@@ -83,7 +83,6 @@ body {
 }
 
 .content {
-    background-color: #f2f2f2;
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
     url("../resources/background_images/bedtime.jpg") no-repeat center center fixed;
     background-size: cover;
@@ -133,4 +132,9 @@ input:focus{
     border: none;
     outline: none;
     border-bottom: 3px solid #1f9ce4;
+}
+
+.settings {
+    background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
+    url("../resources/background_images/autumn.jpg") no-repeat center center fixed;
 }

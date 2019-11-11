@@ -9,7 +9,7 @@ import CalendarBar from './components/CalendarBar'
 
 function App() {
   return (
-      /*<Router>
+      <Router>
           <nav>
               <ul>
                   <li>
@@ -53,12 +53,7 @@ function App() {
                   <CalendarBar/>
               </Route>
           </Switch>
-      </Router>*/
-      <div>
-        <Header/>
-        <ItsBedtime/>
-        <Header/>
-      </div>
+      </Router>
   );
 }
 export default App;

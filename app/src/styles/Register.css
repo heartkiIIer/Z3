@@ -16,6 +16,11 @@ form{
 h1, h2, h3 {
     color: white;
 }
+
+footer{
+    background-color: #141629;
+}
+
 .container{
     margin: 0;
     padding: 0;
@@ -33,8 +38,7 @@ h1, h2, h3 {
 }
 #Register{
     margin-left: auto;
-    margin-top: 30%;
-    background-color: rgba(24,150,189,0.74);
+    margin-right: auto;
     padding: 10pt;
     align-self: center;
     height: auto;
@@ -45,8 +49,63 @@ h1, h2, h3 {
     margin-top: 10pt;
     bottom: 10%;
     right: 10%;
-    background: #4a486f;
+    background: #001837;
 }
 #learn-btn{
     background: #045a78;
+}
+
+nav{
+    background: linear-gradient(#1f9ce490 0%,  #7339ab90 100%);
+    font-family: 'Didact Gothic', sans-serif, black, bold;
+}
+
+#page-wrap {
+    overflow: auto;
+}
+
+/* Individual item */
+.bm-item {
+    /* Our sidebar item styling */
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: white;
+    transition: color 0.2s;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 35px;
+    top: 10px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+    background: white;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+    background: #bdc3c7;
+}
+
+/* General sidebar styles */
+.bm-menu {
+    background: #141629;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
 }

@@ -118,3 +118,19 @@ hr {
 .editMe {
     margin-right: 85px;
 }
+
+input {
+    border: none;
+    border-bottom: 2px solid #1f9ce4;
+    -webkit-transition: 0.2s ;
+    -moz-transition:  0.2s;
+    -ms-transition:  0.2s;
+    -o-transition:  0.2s;
+    transition:  0.2s;
+}
+
+input:focus{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #1f9ce4;
+}

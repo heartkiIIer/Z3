@@ -11,11 +11,7 @@ import DeleteButton from "../resources/icons/minus-circle-solid.svg";
  * This component renders the It's Bedtime routine page.
  * */
 
-/*
-* TODO
-*  3. Editable todo list
-*               - delete
-*               - add
+/* Source : https://pixabay.com/photos/bed-linen-sheets-cover-pillows-731162/
 * **/
 
 class ItsBedtime extends React.Component {
@@ -25,11 +21,13 @@ class ItsBedtime extends React.Component {
     }
 
     toggleCheckbox(element){
-        if(document.getElementById(element).checked === true){
-            document.getElementById(element).checked = false;
-        }
-        else {
-            document.getElementById(element).checked = true;
+        if(document.getElementById(element) != null){
+            if(document.getElementById(element).checked === true){
+                document.getElementById(element).checked = false;
+            }
+            else {
+                document.getElementById(element).checked = true;
+            }
         }
     }
 
@@ -39,6 +37,12 @@ class ItsBedtime extends React.Component {
         }, 250);
     }
 
+    deleteItem(id){
+        var element = document.getElementById(id);
+        element.parentNode.removeChild(element);
+
+    }
+
     changeState(){
         console.log(this.state.isEditable);
 
@@ -46,13 +50,17 @@ class ItsBedtime extends React.Component {
             document.getElementById("editAndSave").src = SaveButton;
 
             for(var i = 0; i < document.getElementsByTagName("p").length; i++){
-                document.getElementsByTagName("p").item(i).innerHTML = "<input class = 'editMe'/>";
+                document.getElementsByTagName("p").item(i).innerHTML = "<input class = 'editMe' placeholder ='placeholder'/>";
                 document.getElementsByClassName("delete").item(i).src = DeleteButton;
             }
 
         }
         else{
             document.getElementById("editAndSave").src = EditButton;
+            for(var i = 0; i < document.getElementsByTagName("p").length; i++){
+                document.getElementsByTagName("p").item(i).innerHTML = "hi";
+                document.getElementsByClassName("delete").item(i).src = "";
+            }
         }
     }
 
@@ -85,7 +93,7 @@ class ItsBedtime extends React.Component {
                                         <label for="checkbox1"/>
                                     </div>
                                     <p> 10 minutes of reading </p>
-                                    <img className="delete"/>
+                                    <img className="delete" onClick={()=> this.deleteItem(1)}/>
                                 </div>
                             </button>
                             <button id = "2" type="button" className="list-group-item list-group-item-action"
@@ -96,7 +104,7 @@ class ItsBedtime extends React.Component {
                                         <label htmlFor="checkbox2"/>
                                     </div>
                                     <p> Brush teeth </p>
-                                    <img class = "delete"/>
+                                    <img class = "delete" onClick={()=> this.deleteItem(2)}/>
                                 </div>
                             </button>
                             <button id = "3" type="button" className="list-group-item list-group-item-action"
@@ -107,7 +115,7 @@ class ItsBedtime extends React.Component {
                                         <label htmlFor="checkbox3"/>
                                     </div>
                                     <p> Meditate </p>
-                                    <img className="delete"/>
+                                    <img className="delete" onClick={()=> this.deleteItem(3)}/>
 
                                 </div>
                             </button>

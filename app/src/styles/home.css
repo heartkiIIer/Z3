@@ -1,10 +1,11 @@
 :root{
     --iconColor: linear-gradient(180deg, #1f9ce4 0%, #625ad8 40%, #7339ab 100%);
+    /*--iconColor: white;*/
 }
 #homepage{
-    /*background: linear-gradient(180deg, rgba(228, 186, 147, 0.56) 0%, rgba(216, 100, 84, 0.56) 40%, rgba(171, 0, 136, 0.56) 100%),*/
-                /*url("../resources/background_images/dawn.jpg") no-repeat center center fixed;*/
-    background: #141629;
+    background: linear-gradient(180deg, #ffffff 0%, #625ad890 40%, #7339ab90 100%),
+                url("../resources/background_images/dawn.jpg") no-repeat center center fixed;
+    /*background: #141629;*/
     width: 100vw;
     height: 100vh;
     background-size: cover;

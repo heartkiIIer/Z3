@@ -46,9 +46,8 @@ class ItsBedtime extends React.Component {
             document.getElementById("editAndSave").src = SaveButton;
 
             for(var i = 0; i < document.getElementsByTagName("p").length; i++){
-                document.getElementsByTagName("p").item(i).innerHTML = "<input></input>";
+                document.getElementsByTagName("p").item(i).innerHTML = "<input class = 'editMe'/>";
                 document.getElementsByClassName("delete").item(i).src = DeleteButton;
-
             }
 
         }

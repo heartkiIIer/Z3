@@ -65,3 +65,9 @@ basic button css
     background-color: white;
     font-family: 'Didact Gothic', sans-serif, black;
 }
+
+.delete {
+    justify-content: end;
+    height: 30px;
+    width: 30px;
+}

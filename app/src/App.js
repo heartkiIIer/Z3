@@ -4,6 +4,9 @@ import ItsBedtime from './components/ItsBedtime.js';
 import Landing from './components/Landing.js';
 import Home from './components/Home.js';
 import Register from './components/Register.js'
+import Calendar from './components/Calendar'
+import CalendarBar from './components/CalendarBar'
+import UserSettings from "./components/UserSettings";
 
 function App() {
   return (
@@ -22,6 +25,15 @@ function App() {
                   <li>
                       <Link to="/register">Register Page</Link>
                   </li>
+                  <li>
+                      <Link to="/calendarsign">Calendar Sign-in Page</Link>
+                  </li>
+                  <li>
+                      <Link to="/calendar">Calendar Page</Link>
+                  </li>
+                  <li>
+                      <Link to="/settings">Settings</Link>
+                  </li>
               </ul>
           </nav>
 
@@ -37,6 +49,15 @@ function App() {
               </Route>
               <Route path ="/register">
                   <Register/>
+              </Route>
+              <Route path ="/calendarsign">
+                  <Calendar/>
+              </Route>
+              <Route path ="/calendar">
+                  <CalendarBar/>
+              </Route>
+              <Route path="/settings">
+                  <UserSettings/>
               </Route>
           </Switch>
       </Router>

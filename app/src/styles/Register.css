@@ -30,7 +30,7 @@ footer{
     text-align: center;
 }
 
-.row{
+.container .row{
     height: 100%;
     width: 100vw;
     background-size: cover;

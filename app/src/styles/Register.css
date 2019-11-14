@@ -56,12 +56,11 @@ footer{
 }
 
 nav{
-    background: linear-gradient(#1f9ce490 0%,  #7339ab90 100%);
     font-family: 'Didact Gothic', sans-serif, black, bold;
 }
 
 #page-wrap {
-    overflow: auto;
+    size: auto;
 }
 
 /* Individual item */

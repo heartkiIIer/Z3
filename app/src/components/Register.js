@@ -7,14 +7,9 @@ import SideBar from "./sideMenu";
 class Register extends React.Component{
     render() {
         return(
-            <div>
+            <div id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <Navbar>
-                    <Nav>
-                        <Nav.Link href="/landing">I</Nav.Link>
-                    </Nav>
-                </Navbar>
-                <div className="container">
+                <div className="container" id={"page-wrap"}>
                     <div id="Heading" className="row featurette">
                         <div id="Register">
                             <h2>Join Us</h2>

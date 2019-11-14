@@ -11,6 +11,13 @@
     height: 100vh;
     background-size: cover;
     margin: 0;
+    overflow: auto;
+    padding-bottom: 30px;
+}
+#homepage::-webkit-scrollbar{
+    width: 0;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
 }
 .dot_h{
     height: var(--iconsize);
@@ -64,6 +71,7 @@
 #homepage .col-lg-6{
     overflow: hidden;
     padding: 0;
+    height: 75vh;
 }
 .circle {
     list-style: none;
@@ -96,12 +104,13 @@
 }
 
 #dailyInfo{
-    height: 75%;
+    height: 75vh;
     width: 75%;
     background: var(--iconColor);
     border-radius: 15%;
     display: flex;
     flex-direction: column;
+    padding: 60px;
 }
 
 .flip-card {

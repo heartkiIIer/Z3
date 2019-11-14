@@ -5,7 +5,7 @@ import HomeIcon from "./HomeIcon.js";
 class Home extends React.Component {
     render(){
         return (
-            <div id="homepage" className="row">
+            <div id="homepage" className="row d-flex align-items-center">
                 <div class="col-lg-6">
                     <div id="sleepDuration" className="d-flex align-items-center justify-content-center">
                         <div>
@@ -42,9 +42,25 @@ class Home extends React.Component {
                     </ul>
                 </div>
                 <div className="col-lg-6 d-flex justify-content-center align-items-center">
-                    <div id="dailyInfo" className="d-flex justify-content-center align-items-center">
-                        <h2>Fun Fact of the Day:</h2>
-                        <h3>Did you know?</h3>
+                    <div id="dailyInfo">
+                        <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">
+                            <div className="carousel-inner">
+                                <div className="carousel-item active">
+                                    <h2>Fun Fact of the Day:</h2>
+                                    <h3>Did you know?</h3>
+                                </div>
+                                <div className="carousel-item">
+                                    <h2>Weather Today: Bright and Sunny!</h2>
+                                    <h4 style={{color: "white"}}>We suggest opening the blinds and/or curtains and let
+                                        in some sunshine.</h4>
+                                </div>
+                                <div className="carousel-item">
+                                    <h2>Suggestion of the Day:</h2>
+                                    <h3>Exams are coming up. Study hard but don't forget to
+                                        get enough hours of sleep!</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

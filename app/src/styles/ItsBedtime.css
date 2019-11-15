@@ -26,6 +26,8 @@
 .checkbox {
     height: 38px;
     width: 38px;
+    padding-left: 0px;
+    margin-left: 20px;
 }
 
 .align-check-and-label {
@@ -137,4 +139,13 @@ input:focus{
 .settings {
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
     url("../resources/background_images/autumn.jpg") no-repeat center center fixed;
+}
+
+.add:hover{
+    cursor: pointer;
+}
+
+.add {
+    margin-top: 20px;
+    margin-left: 20px;
 }

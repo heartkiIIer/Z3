@@ -8,7 +8,7 @@ import Calendar from './components/Calendar'
 // import CalendarBar from './components/CalendarBar'
 import Logger from './components/loggers'
 import UserSettings from "./components/UserSettings";
-import logSleep from './components/logSleep';
+import LogSleep from "./components/LogSleep";
 
 function App() {
   return (
@@ -33,14 +33,11 @@ function App() {
                   <li>
                       <Link to="/logging">Logging Page</Link>
                   </li>
-                  {/*<li>*/}
-                  {/*    <Link to="/calendar">Calendar Page</Link>*/}
-                  {/*</li>*/}
                   <li>
                       <Link to="/settings">Settings</Link>
                   </li>
                   <li>
-                      <Link to="/logSleep">Log Sleep</Link>
+                      <Link to = "/LogSleep">Log Sleep</Link>
                   </li>
               </ul>
           </nav>
@@ -64,14 +61,11 @@ function App() {
               <Route path ="/logging">
                   <Logger/>
               </Route>
-              {/*<Route path ="/calendar">*/}
-              {/*    <CalendarBar/>*/}
-              {/*</Route>*/}
               <Route path="/settings">
                   <UserSettings/>
               </Route>
-              <Route path="/logSleep">
-                  <logSleep/>
+              <Route path="/LogSleep">
+                  <LogSleep/>
               </Route>
           </Switch>
       </Router>

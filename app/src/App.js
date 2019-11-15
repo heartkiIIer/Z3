@@ -8,13 +8,17 @@ import Calendar from './components/Calendar'
 import CalendarBar from './components/CalendarBar'
 import UserSettings from "./components/UserSettings";
 import logSleep from './components/logSleep';
+import Chronotype from './components/chronotype';
+import ChronoResults from './components/chronoResults';
 import Personality from './components/Personality';
+import PersonalityIntro from './components/PersonalityIntro';
+import PersonalityResults from './components/PersonalityResults';
 
 function App() {
   return (
       <Router>
           <Switch>
-              <Route path ="/landing" component={Landing}/>
+              <Route exact path="/" component={Landing}/>
               <Route path ="/bedtimeRoutine" component={ItsBedtime}/>
               <Route path ="/home" component={Home}/>
               <Route path ="/register" component={Register}/>
@@ -22,7 +26,11 @@ function App() {
               <Route path ="/calendar" component={CalendarBar}/>
               <Route path="/settings" component={UserSettings}/>
               <Route path="/logSleep" component={logSleep}/>
+              <Route path="/chronotype" component={Chronotype}/>
+              <Route path="/chronoResults" component={ChronoResults}/>
               <Route path="/personality" component={Personality}/>
+              <Route path="/personalityIntro" component={PersonalityIntro}/>
+              <Route path="/personalityResults" component={PersonalityResults}/>
           </Switch>
       </Router>
   );

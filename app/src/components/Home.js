@@ -20,19 +20,25 @@ class Home extends React.Component {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/logging">
                             <HomeIcon spanID={"logIcon_h"}
                                       iconClass={"iconImages_h logIconImg_h"}
                                       iconInfo={"Log Your Exercise, Caffeine, and Stress Level"}/>
+                            </Link>
                         </li>
                         <li>
+                            <Link to="/mindfulnessModules">
                             <HomeIcon spanID={"mindIcon_h"}
                                       iconClass={"iconImages_h mindIconImg_h"}
                                       iconInfo={"Mindfulness Modules"}/>
+                            </Link>
                         </li>
                         <li>
+                            <Link to="personalityIntro">
                             <HomeIcon spanID={"perIcon"}
                                       iconClass={"iconImages_h perIconImg"}
                                       iconInfo={"Personality Test"}/>
+                            </Link>
                         </li>
                         <li>
                             <Link to="/bedtimeRoutine">

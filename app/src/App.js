@@ -8,7 +8,8 @@ import Calendar from './components/Calendar'
 // import CalendarBar from './components/CalendarBar'
 import Logger from './components/loggers'
 import UserSettings from "./components/UserSettings";
-import LogSleep from "./components/LogSleep";
+import LogSleep from "./components/logSleep";
+import MindfulnessModules from "./components/MindfulnessModules";
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
                   <li>
                       <Link to = "/LogSleep">Log Sleep</Link>
                   </li>
+                  <li>
+                      <Link to = "/MindfulnessModules">Modules</Link>
+                  </li>
               </ul>
           </nav>
 
@@ -66,6 +70,9 @@ function App() {
               </Route>
               <Route path="/LogSleep">
                   <LogSleep/>
+              </Route>
+              <Route path="/MindfulnessModules">
+                  <MindfulnessModules/>
               </Route>
           </Switch>
       </Router>

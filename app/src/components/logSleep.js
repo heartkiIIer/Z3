@@ -11,7 +11,7 @@ class LogSleep extends React.Component{
 
     render(){
         return (
-            <div class = "content settings">
+            <div class = "content logSleep">
                 <div class = "inner">
                     <h1 class = "blueHeader" align='center'>Log Sleep</h1>
                     <div class = "time" align='center'>

@@ -109,7 +109,7 @@ body {
     cursor: pointer;
 }
 
-hr {
+.bedtime-hr {
     width: 300px;
     height: 1px;
     background-color: #e4e4e4;
@@ -148,4 +148,27 @@ input:focus{
 .add {
     margin-top: 20px;
     margin-left: 20px;
+}
+
+.hr-settings {
+    width: 750px;
+    margin-left: 0px;
+    height: 1px;
+    background-color: #e4e4e4;
+    margin-bottom: 30px;
+}
+
+#extended {
+    margin-top: 0px;
+    margin-bottom: 40px;
+    margin-right: 40px;
+}
+
+.flex-row-nowrap {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.width80 {
+    width: 200px;
 }

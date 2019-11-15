@@ -1,23 +1,20 @@
 import React from 'react';
 import '../styles/home.css'
 import HomeIcon from "./HomeIcon.js";
+import {Link} from 'react-router-dom';
 
 class Home extends React.Component {
     render(){
         return (
             <div id="homepage" className="row d-flex align-items-center">
                 <div class="col-lg-6">
-                    <div id="sleepDuration" className="d-flex align-items-center justify-content-center">
-                        <div>
-                            <h1>Your Sleep Hours:</h1>
-                            <h1>8 Hours</h1>
-                        </div>
-                    </div>
                     <ul className="circle">
                         <li>
-                            <HomeIcon spanID={"sleepIcon_h"}
-                                      iconClass={"iconImages_h sleepIconImg"}
-                                      iconInfo={"Log Your Sleep"}/>
+                            <Link to="/logSleep">
+                                <HomeIcon spanID={"sleepIcon_h"}
+                                          iconClass={"iconImages_h sleepIconImg"}
+                                          iconInfo={"Log Your Sleep"}/>
+                            </Link>
                         </li>
                         <li>
                             <HomeIcon spanID={"logIcon_h"}
@@ -35,15 +32,22 @@ class Home extends React.Component {
                                       iconInfo={"Personality Test"}/>
                         </li>
                         <li>
-                            <HomeIcon spanID={"bedIcon"}
-                                      iconClass={"iconImages_h bedIconImg"}
-                                      iconInfo={"Your Bedtime Routine"}/>
+                            <Link to="/bedtimeRoutine">
+                                <HomeIcon spanID={"bedIcon"}
+                                          iconClass={"iconImages_h bedIconImg"}
+                                          iconInfo={"Your Bedtime Routine"}/>
+                            </Link>
                         </li>
                     </ul>
                 </div>
                 <div className="col-lg-6 d-flex justify-content-center align-items-center">
                     <div id="dailyInfo">
-                        <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">
+                        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                            <ol className="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
                                     <h2>Fun Fact of the Day:</h2>
@@ -60,6 +64,16 @@ class Home extends React.Component {
                                         get enough hours of sleep!</h3>
                                 </div>
                             </div>
+                            <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                               data-slide="prev">
+                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span className="sr-only">Previous</span>
+                            </a>
+                            <a className="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                               data-slide="next">
+                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span className="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                 </div>

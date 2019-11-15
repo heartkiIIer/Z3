@@ -5,6 +5,10 @@
     margin-left: auto;
 }
 
+.time{
+    padding-top: 100px;
+}
+
 .inner {
     height: 100vh;
     margin-right: auto;

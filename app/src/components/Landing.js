@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/landing.css'
+import {Link} from 'react-router-dom';
 
 class Landing extends React.Component {
     render(){
@@ -13,14 +14,18 @@ class Landing extends React.Component {
                                 <form>
                                     <input type="text" name="username" placeholder="Username or Email"/>
                                     <input type="password" name="password" placeholder="Password"/>
-                                    <button id="loginbtn">Login</button>
+                                    <Link to="/home">
+                                        <button id="loginbtn">Login</button>
+                                    </Link>
                                 </form>
                             </div>
                         </div>
                         <div id="title" className="col-md-6 order-md-1">
                             <h1>Z<sup>3</sup></h1>
                             <h3>Stabilize your sleep and bring sleep back into your control! </h3>
-                            <button id="joinbtn">Join Us</button>
+                            <Link to="/register">
+                                <button id="joinbtn">Join Us</button>
+                            </Link>
                         </div>
                     </div>
 

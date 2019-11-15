@@ -35,7 +35,7 @@ h1, h2, h3 {
 .col-md-4{
     text-align: center;
 }
-.row{
+.container .row{
     height: 100%;
     width: 100vw;
     background-size: cover;

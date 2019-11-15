@@ -8,6 +8,7 @@ import Calendar from './components/Calendar'
 import CalendarBar from './components/CalendarBar'
 import UserSettings from "./components/UserSettings";
 import logSleep from './components/logSleep';
+import Personality from './components/Personality';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path ="/calendar" component={CalendarBar}/>
               <Route path="/settings" component={UserSettings}/>
               <Route path="/logSleep" component={logSleep}/>
+              <Route path="/personality" component={Personality}/>
           </Switch>
       </Router>
   );

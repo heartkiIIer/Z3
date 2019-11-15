@@ -161,3 +161,16 @@
     height: 100%;
     width: 100%;
 }
+#setting_link{
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#setting_icon{
+    background: url("../resources/icons/setting.svg") no-repeat;
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+}

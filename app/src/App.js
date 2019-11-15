@@ -5,7 +5,8 @@ import Landing from './components/Landing.js';
 import Home from './components/Home.js';
 import Register from './components/Register.js'
 import Calendar from './components/Calendar'
-import CalendarBar from './components/CalendarBar'
+// import CalendarBar from './components/CalendarBar'
+import Logger from './components/loggers'
 import UserSettings from "./components/UserSettings";
 import logSleep from './components/logSleep';
 import Chronotype from './components/chronotype';

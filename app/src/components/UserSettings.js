@@ -21,7 +21,56 @@ class UserSettings extends React.Component {
             <div class = "content settings">
                 <div class = "inner">
                     <h1 class = "blueHeader"> Modify your settings</h1>
+                    <hr class = "hr-settings"/>
+                    <h3 class = "blueHeader"> Change password </h3>
+                    <div class = "flex-row-nowrap">
+                        <p class = "blueHeader width80"> Enter old password: </p>
+                        <input className='editMe' placeholder='placeholder'/>
+                    </div>
+                    <div className="flex-row-nowrap">
+                        <p className="blueHeader width80"> Enter new password: </p>
+                        <input className='editMe' placeholder='placeholder'/>
+                    </div>
+                    <div className="flex-row-nowrap">
+                        <p className="blueHeader width80"> Re-enter new password: </p>
+                        <input className='editMe' placeholder='placeholder'/>
+                    </div>
+                    <button className='btn' id = "extended">
+                        Confirm
+                    </button>
 
+                    <h3 className="blueHeader"> Change email </h3>
+                    <div className="flex-row-nowrap">
+                        <p className="blueHeader width80"> Enter password: </p>
+                        <input className='editMe' placeholder='placeholder'/>
+                    </div>
+                    <div className="flex-row-nowrap">
+                        <p className="blueHeader width80"> Enter new email: </p>
+                        <input className='editMe' placeholder='placeholder'/>
+                    </div>
+                    <div className="flex-row-nowrap">
+                        <p className="blueHeader width80"> Re-enter new email: </p>
+                        <input className='editMe' placeholder='placeholder'/>
+                    </div>
+                    <button className='btn' id="extended">
+                        Confirm
+                    </button>
+                    <h1 className="blueHeader"> Account Access</h1>
+                    <hr className="hr-settings"/>
+                    <div class = "flex-row-nowrap">
+                        <button className='btn' id = "extended">
+                            Remove Google Calendar Access
+                        </button>
+                        <button className='btn' id = "extended">
+                            Remove Fitbit Access
+                        </button>
+                    </div>
+
+                    <h1 className="blueHeader"> Delete your account</h1>
+                    <hr className="hr-settings"/>
+                    <button className='btn' id = "extended">
+                        Delete your account
+                    </button>
                 </div>
             </div>
         );

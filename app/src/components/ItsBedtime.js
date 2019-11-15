@@ -91,7 +91,7 @@ class ItsBedtime extends React.Component {
                                It's Bedtime
                            </div>
                        </div>
-                        <hr/>
+                        <hr class = "bedtime-hr"/>
                         <img id = "editAndSave" src = {EditButton} onClick={() => this.toggleEditableState()}/>
                         <div className="list-group">
                             <button id = "1" type="button" className="list-group-item list-group-item-action" onClick={() => this.toggleCheckbox("checkbox1")}>

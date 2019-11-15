@@ -5,6 +5,10 @@
     margin-left: auto;
 }
 
+.time{
+    padding-top: 100px;
+}
+
 .inner {
     height: 100vh;
     margin-right: auto;
@@ -109,7 +113,7 @@ body {
     cursor: pointer;
 }
 
-hr {
+.bedtime-hr {
     width: 300px;
     height: 1px;
     background-color: #e4e4e4;
@@ -138,7 +142,7 @@ input:focus{
 
 .settings {
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
-    url("../resources/background_images/autumn.jpg") no-repeat center center fixed;
+    url("../resources/background_images/beach.jpg") no-repeat center center fixed;
 }
 
 .add:hover{
@@ -148,4 +152,61 @@ input:focus{
 .add {
     margin-top: 20px;
     margin-left: 20px;
+}
+
+.hr-settings {
+    width: 750px;
+    margin-left: 0px;
+    height: 1px;
+    background-color: #e4e4e4;
+    margin-bottom: 30px;
+}
+
+#extended {
+    margin-top: 0px;
+    margin-bottom: 40px;
+    margin-right: 40px;
+}
+
+.flex-row-nowrap {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.width80 {
+    width: 200px;
+}
+
+.logSleep {
+    background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
+    url("../resources/background_images/lake.jpg") no-repeat center center fixed;
+}
+
+.modules {
+    background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
+    url("../resources/background_images/zen.jpg") no-repeat center center fixed;
+}
+
+.tile {
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+    background-color: #1f9ce4;
+    margin-left: 40px;
+    margin-top: 40px;
+    text-align: center;
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    margin-bottom: auto;
+}
+
+.tile:hover {
+    cursor: pointer;
+}
+
+.flex-row-wrap {
+    display: flex;
+    flex-flow: row wrap;
 }

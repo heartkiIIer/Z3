@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 const marks = [
     {
         value: 2,
-        label: 'Low',
+        label: 'Small',
     },
     {
         value: 50,
@@ -25,7 +25,54 @@ const marks = [
     },
     {
         value: 98,
-        label: 'High',
+        label: 'Large',
+    }
+];
+
+const hours = [
+    {
+        value: 2,
+        label: 0
+    },
+    {
+        value: 10,
+        label: 1
+    },
+    {
+        value: 20,
+        label: 2
+    },
+    {
+        value: 30,
+        label: 3
+    },
+    {
+        value: 40,
+        label: 4
+    },
+    {
+        value: 50,
+        label: 5
+    },
+    {
+        value: 60,
+        label: 6
+    },
+    {
+        value: 70,
+        label: 7
+    },
+    {
+        value: 80,
+        label: 8
+    },
+    {
+        value: 90,
+        label: 9
+    },
+    {
+        value: 98,
+        label: 10
     }
 ];
 
@@ -70,21 +117,26 @@ export default function CustomizedSlider() {
         <Paper className={classes.root}>
             <div className={classes.margin} />
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Event 1: Exam
+                Duration of Exercise (minutes)
             </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={50}
-                          step={null}
-                          marks={marks}/>
+            <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
             <div className={classes.margin} />
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Event 2: Presentation
+                Duration of Exercise (hours)
             </Typography>
             <PrettoSlider aria-label="pretto slider" defaultValue={2}
                           step={null}
-                          marks={marks}/>
+                          marks={hours}/>
             <div className={classes.margin} />
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Event 3: Meeting
+                Cups of Coffee Consumed
+            </Typography>
+            <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                          step={null}
+                          marks={hours}/>
+            <div className={classes.margin} />
+            <Typography id="discrete-slider-restrict" gutterBottom>
+                Largest Coffee Cup Size
             </Typography>
             <PrettoSlider aria-label="pretto slider" defaultValue={98}
                           step={null}

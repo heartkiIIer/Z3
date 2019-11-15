@@ -5,7 +5,8 @@ import Landing from './components/Landing.js';
 import Home from './components/Home.js';
 import Register from './components/Register.js'
 import Calendar from './components/Calendar'
-import CalendarBar from './components/CalendarBar'
+// import CalendarBar from './components/CalendarBar'
+import Logger from './components/loggers'
 import UserSettings from "./components/UserSettings";
 
 function App() {
@@ -29,8 +30,11 @@ function App() {
                       <Link to="/calendarsign">Calendar Sign-in Page</Link>
                   </li>
                   <li>
-                      <Link to="/calendar">Calendar Page</Link>
+                      <Link to="/logging">Logging Page</Link>
                   </li>
+                  {/*<li>*/}
+                  {/*    <Link to="/calendar">Calendar Page</Link>*/}
+                  {/*</li>*/}
                   <li>
                       <Link to="/settings">Settings</Link>
                   </li>
@@ -53,9 +57,12 @@ function App() {
               <Route path ="/calendarsign">
                   <Calendar/>
               </Route>
-              <Route path ="/calendar">
-                  <CalendarBar/>
+              <Route path ="/logging">
+                  <Logger/>
               </Route>
+              {/*<Route path ="/calendar">*/}
+              {/*    <CalendarBar/>*/}
+              {/*</Route>*/}
               <Route path="/settings">
                   <UserSettings/>
               </Route>

@@ -4,6 +4,7 @@ import "../styles/ItsBedtime.css";
 import SaveButton from "../resources/icons/save-solid.svg";
 import EditButton from "../resources/icons/edit-solid.svg";
 import DeleteButton from "../resources/icons/minus-circle-solid.svg";
+import AddButton from "../resources/icons/plus-circle-solid.svg";
 
 
 /**
@@ -52,6 +53,8 @@ class ItsBedtime extends React.Component {
             for(var i = 0; i < document.getElementsByTagName("p").length; i++){
                 document.getElementsByTagName("p").item(i).innerHTML = "<input class = 'editMe' placeholder ='placeholder'/>";
                 document.getElementsByClassName("delete").item(i).src = DeleteButton;
+                document.getElementsByClassName("add").item(0).src = AddButton;
+
             }
 
         }
@@ -60,6 +63,7 @@ class ItsBedtime extends React.Component {
             for(var i = 0; i < document.getElementsByTagName("p").length; i++){
                 document.getElementsByTagName("p").item(i).innerHTML = "hi";
                 document.getElementsByClassName("delete").item(i).src = "";
+                document.getElementsByClassName("add").item(0).src = "";
             }
         }
     }
@@ -71,6 +75,10 @@ class ItsBedtime extends React.Component {
         else{
             this.setState( {isEditable : false}, () => {this.changeState()})
         }
+    }
+
+    addItem(id){
+        document.getElementById("here").innerHTML =  '<button id = "4" type="button" class="list-group-item list-group-item-action"> <div class="align-check-and-label"> <div class="checkbox checkbox-circle checkbox-primary "> <input type="checkbox" id="checkbox4"/> <label htmlFor="checkbox4"/> </div> <p> Meditate </p> <img class = "delete"/></div> </button>'
     }
 
     render(){
@@ -119,7 +127,9 @@ class ItsBedtime extends React.Component {
 
                                 </div>
                             </button>
+                            <div id = "here"/>
                         </div>
+                        <img className="add" onClick={()=> this.addItem(4)}/>
                     </div>
                 </div>
             </div>

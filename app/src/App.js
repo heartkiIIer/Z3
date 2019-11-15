@@ -8,6 +8,7 @@ import Calendar from './components/Calendar'
 // import CalendarBar from './components/CalendarBar'
 import Logger from './components/loggers'
 import UserSettings from "./components/UserSettings";
+import logSleep from './components/logSleep';
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
                   <li>
                       <Link to="/settings">Settings</Link>
                   </li>
+                  <li>
+                      <Link to="/logSleep">Log Sleep</Link>
+                  </li>
               </ul>
           </nav>
 
@@ -65,6 +69,9 @@ function App() {
               {/*</Route>*/}
               <Route path="/settings">
                   <UserSettings/>
+              </Route>
+              <Route path="/logSleep">
+                  <logSleep/>
               </Route>
           </Switch>
       </Router>

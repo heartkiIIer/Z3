@@ -181,3 +181,32 @@ input:focus{
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
     url("../resources/background_images/lake.jpg") no-repeat center center fixed;
 }
+
+.modules {
+    background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
+    url("../resources/background_images/zen.jpg") no-repeat center center fixed;
+}
+
+.tile {
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+    background-color: #1f9ce4;
+    margin-left: 40px;
+    margin-top: 40px;
+    text-align: center;
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    margin-bottom: auto;
+}
+
+.tile:hover {
+    cursor: pointer;
+}
+
+.flex-row-wrap {
+    display: flex;
+    flex-flow: row wrap;
+}

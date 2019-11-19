@@ -41,29 +41,36 @@
     background: url("../resources/icons/sleep_icon_white.png") no-repeat center center;
     background-size: contain;
 }
+#calIcon_h{
+    transform: rotate(calc(var(--offsetDeg) - 60deg));
+}
+.calIconImg{
+    background: url("../resources/icons/calendar_icon_white.png") no-repeat center center;
+    background-size: contain;
+}
 #logIcon_h{
-    transform: rotate(calc(var(--offsetDeg) - 72deg));
+    transform: rotate(calc(var(--offsetDeg) - 120deg));
 }
 .logIconImg_h{
     background: url("../resources/icons/log_icon_white.png") no-repeat center center;
     background-size: contain;
 }
 #mindIcon_h{
-    transform: rotate(calc(var(--offsetDeg) - 144deg));
+    transform: rotate(calc(var(--offsetDeg) - 180deg));
 }
 .mindIconImg_h{
     background: url("../resources/icons/mind_icon_white.png") no-repeat center center;
     background-size: contain;
 }
 #perIcon{
-    transform: rotate(calc(var(--offsetDeg) - 216deg));
+    transform: rotate(calc(var(--offsetDeg) - 240deg));
 }
 .perIconImg{
     background: url("../resources/icons/person_white.png") no-repeat center center;
     background-size: contain;
 }
 #bedIcon{
-    transform: rotate(calc(var(--offsetDeg) - 288deg));
+    transform: rotate(calc(var(--offsetDeg) - 300deg));
 }
 .bedIconImg{
     background: url("../resources/icons/bedtime_icon_white.png") no-repeat center center;
@@ -92,16 +99,19 @@
     transform: rotate(calc(0deg - var(--offsetDeg)));
 }
 .circle li:nth-child(2) {
-    transform: rotate(calc(72deg - var(--offsetDeg)));
+    transform: rotate(calc(60deg - var(--offsetDeg)));
 }
 .circle li:nth-child(3) {
-    transform: rotate(calc(144deg - var(--offsetDeg)));
+    transform: rotate(calc(120deg - var(--offsetDeg)));
 }
 .circle li:nth-child(4) {
-    transform: rotate(calc(216deg - var(--offsetDeg)));
+    transform: rotate(calc(180deg - var(--offsetDeg)));
 }
 .circle li:nth-child(5) {
-    transform: rotate(calc(288deg - var(--offsetDeg)));
+    transform: rotate(calc(240deg - var(--offsetDeg)));
+}
+.circle li:nth-child(6) {
+    transform: rotate(calc(300deg - var(--offsetDeg)));
 }
 
 #dailyInfo{

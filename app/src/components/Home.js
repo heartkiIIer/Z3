@@ -20,6 +20,13 @@ class Home extends React.Component {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/calendarsign">
+                                <HomeIcon spanID={"calIcon_h"}
+                                          iconClass={"iconImages_h calIconImg"}
+                                          iconInfo={"See upcoming events and log your stress"}/>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/logging">
                             <HomeIcon spanID={"logIcon_h"}
                                       iconClass={"iconImages_h logIconImg_h"}

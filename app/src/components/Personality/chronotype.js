@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/ItsBedtime.css";
+import "../../styles/ItsBedtime.css";
 
 /**
  * @author Eliazbeth Del Monaco

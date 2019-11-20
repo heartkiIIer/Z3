@@ -24,3 +24,11 @@
     background: url("../resources/img/personality3.jpg") no-repeat center center;
     background-size: cover;
 }
+.lmh_options{
+    margin: 10px;
+}
+.options{
+    border: 2px dotted #337ab7;
+    padding: 10px;
+    /*border-radius: 50px;*/
+}

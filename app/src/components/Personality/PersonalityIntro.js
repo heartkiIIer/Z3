@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {SyntheticEvent} from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 
-/**
- * @author Eliazbeth Del Monaco
- * This component renders the user settings page.
- * */
-
-/* Source : https://pixabay.com/photos/bed-linen-sheets-cover-pillows-731162/
-* **/
-
 class PersonalityIntro extends React.Component {
+    constructor(props) {
+        super(props);
+        this.openURL = this.openURL.bind(this);
+    }
+
+    openURL(event: SyntheticEvent<any>): void {
+        window.open("https://www.truity.com/test/big-five-personality-test");
+    }
 
     render(){
         return (
@@ -30,7 +30,7 @@ class PersonalityIntro extends React.Component {
                         Big Five Personality Test
                     </h5>
                     <Link to="/personality">
-                        <button className="test_btn person_img shadow p-3 mb-5">Personailty Test</button>
+                        <button className="test_btn person_img shadow p-3 mb-5" onClick={(e) => this.openURL(e)}>Personailty Test</button>
                     </Link>
 
                     <br/><br/>

@@ -1,69 +1,39 @@
 import React from 'react';
 import "../../styles/ItsBedtime.css";
-
-
-/**
- * @author Eliazbeth Del Monaco
- * This component renders the user settings page.
- * */
-
-/* Source : https://pixabay.com/photos/bed-linen-sheets-cover-pillows-731162/
-* **/
+import "../../styles/personalityIntro.css";
+import {Link} from 'react-router-dom';
 
 class PersonalityResults extends React.Component {
 
     render(){
         return (
-            <div class = "content settings">
+            <div class = "content personality">
                 <div class = "inner">
-                    <div class="grid-container">
-                        <div class="grid-x">
-                            <div class="cell small-12">
-                                <h2><b>Your Big 5 Personality Results</b></h2>
-                            </div>
-                        </div>
+                    <h1 className="blueHeader">Your Big 5 Personality Results</h1>
+                    <hr className="hr-settings"/>
 
-                        <div class="grid-x align-center">
-                            <div class="small-12 cell text-center">
-                                <h5><b>Openness</b></h5>
-                                <p id="o_score">Score: <span>getOpenness</span></p>
-                            </div>
-                        </div>
+                    <h5 className="blueHeader"><b>Openness</b></h5>
+                    <p id="o_score">Score: <span>getOpenness</span></p>
+                    <br/>
+                    <h5 className="blueHeader"><b>Conscientiousness</b></h5>
+                    <p id="c_score">Score: <span>getConscientiousness</span></p>
+                    <br/>
+                    <h5 className="blueHeader"><b>Extraversion</b></h5>
+                    <p id="e_score">Score: <span>getExtraversion</span></p>
+                    <br/>
+                    <h5 className="blueHeader"><b>Agreeableness</b></h5>
+                    <p id="a_score">Score: <span>getAgreeableness</span></p>
+                    <br/>
+                    <h5 className="blueHeader"><b>Neuroticism</b></h5>
+                    <p id="n_score">Score: <span>getNeuroticism</span></p>
 
-                        <div class="grid-x align-center">
-                            <div class="small-12 cell text-center">
-                                <h5><b>Conscientiousness</b></h5>
-                                <p id="c_score">Score: <span>getConscientiousness</span></p>
-                            </div>
-                        </div>
-                        <div class="grid-x align-center">
-                            <div class="small-12 cell text-center">
-                                <h5><b>Extraversion</b></h5>
-                                <p id="e_score">Score: <span>getExtraversion</span></p>
-                            </div>
-                        </div>
-                        <div class="grid-x align-center">
-                            <div class="small-12 cell text-center">
-                                <h5><b>Agreeableness</b></h5>
-                                <p id="a_score">Score: <span>getAgreeableness</span></p>
-                            </div>
-                        </div>
-                        <div class="grid-x align-center">
-                            <div class="small-12 cell text-center">
-                                <h5><b>Neuroticism</b></h5>
-                                <p id="n_score">Score: <span>getNeuroticism</span></p>
-                            </div>
-                        </div>
+                    <Link to="/personality">
+                        <button className="btn">Retake Personality Test</button>
+                    </Link><br/>
+                    <Link to="/personalityIntro">
+                        <button className="btn">Done</button>
+                    </Link>
 
-                        <div class="grid-x">
-                            <div class="small-12 medium-12 large-4 cell">
-                                <input id="resubmit-pers" name="resubmit-pers" type="button" class="button large expanded default-button-login shadow-d2" value="Retake Personality Test"/>
-                            </div>
-                            <div class="small-12 medium-12 large-4 large-offset-4 cell">
-                                <input id="return-dashboard" name="return-dashboard" type="button" class="button large expanded default-button-login shadow-d2" value="Done"/>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         );

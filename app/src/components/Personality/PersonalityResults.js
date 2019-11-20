@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {SyntheticEvent} from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 
 class PersonalityResults extends React.Component {
+    constructor(props) {
+        super(props);
+        this.openURL = this.openURL.bind(this);
+    }
+
+    openURL(event: SyntheticEvent<any>): void {
+        window.open("https://www.truity.com/test/big-five-personality-test");
+    }
 
     render(){
         return (
@@ -28,7 +36,7 @@ class PersonalityResults extends React.Component {
                     <p id="n_score">Score: <span>getNeuroticism</span></p>
 
                     <Link to="/personality">
-                        <button className="btn">Retake Personality Test</button>
+                        <button className="btn" onClick={(e) => this.openURL(e)}>Retake Personality Test</button>
                     </Link><br/>
                     <Link to="/personalityIntro">
                         <button className="btn">Done</button>

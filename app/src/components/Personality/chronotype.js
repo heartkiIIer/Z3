@@ -13,7 +13,7 @@ class Chronotype extends React.Component {
 
     render(){
         return (
-            <div class = "content settings">
+            <div class = "content chronotype">
                 <div class = "inner">
                     <div class="grid-x align-center">
                         <h3 class="text-center">Chronotype Survey</h3>

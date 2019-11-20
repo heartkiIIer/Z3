@@ -14,7 +14,7 @@ class ChronoResults extends React.Component {
 
     render(){
         return (
-            <div class = "content settings">
+            <div class = "content chronotype">
                 <div class = "inner">
                     <div className="grid-container">
                         <div className="grid-x" >

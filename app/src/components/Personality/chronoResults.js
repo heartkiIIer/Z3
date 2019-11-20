@@ -1,28 +1,18 @@
 import React from 'react';
-import "../styles/ItsBedtime.css";
-
-
-/**
- * @author Eliazbeth Del Monaco
- * This component renders the user settings page.
- * */
-
-/* Source : https://pixabay.com/photos/bed-linen-sheets-cover-pillows-731162/
-* **/
+import "../../styles/ItsBedtime.css";
+import "../../styles/personalityIntro.css";
+import {Link} from 'react-router-dom';
 
 class ChronoResults extends React.Component {
 
     render(){
         return (
-            <div class = "content settings">
+            <div class = "content chronotype">
                 <div class = "inner">
-                    <div className="grid-container">
-                        <div className="grid-x" >
-                            <div className="cell small-12">
-                                <h2 ><b>Your Chronotype Results</b></h2>
-                            </div>
-                        </div>
+                    <h1 className="blueHeader">Chronotype Results</h1>
+                    <hr className="hr-settings"/>
 
+                    <div className="grid-container">
                         <div className="grid-x align-center">
                             <div className="small-12 cell">
                                 <h3>Chronotype Score: <span

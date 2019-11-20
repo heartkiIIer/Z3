@@ -19,7 +19,7 @@ class PersonalityIntro extends React.Component {
                 <div class = "inner">
                     <h1 className="blueHeader">What is Your Personality?</h1>
                     <hr className="hr-settings"/>
-                    <h2 className="blueHeader">What does "Big Five Personality" mean?</h2>
+                    <h3 className="blueHeader">What does "Big Five Personality" mean?</h3>
                     <h5>
                         The Big Five encompasses five characteristics: openness, conscientiousness,
                         extraversion, agreeableness, and neuroticism.<br/><br/>
@@ -30,19 +30,20 @@ class PersonalityIntro extends React.Component {
                         Big Five Personality Test
                     </h5>
                     <Link to="/personality">
-                        <button>Personailty Test</button>
+                        <button className="test_btn person_img shadow p-3 mb-5">Personailty Test</button>
                     </Link>
 
-                    <br/><br/><br/><br/>
+                    <br/><br/>
 
                     <h1 className="blueHeader">What is Your Chonotype?</h1>
                     <hr className="hr-settings"/>
+                    <h3 className="blueHeader">What does "Chronotype" mean?</h3>
                     <h5>
-                        Find out whether you are more of a morning person or a night person
-                        with this quiz!
+                        Chronotype tells you whether you are a morning or evening type. A
+                        short survey will help you find out your chronotype!
                     </h5>
                     <Link to="/chronotype">
-                        <button>Chronotype Test</button>
+                        <button className="test_btn chrono_img shadow p-3 mb-5">Chronotype Test</button>
                     </Link>
                 </div>
 

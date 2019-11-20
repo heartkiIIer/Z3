@@ -254,7 +254,7 @@ class Chronotype extends React.Component {
                     </form>
 
                     <Link to="/chronoResults">
-                        <button className="btn">Next</button>
+                        <button className="btn">Submit</button>
                     </Link>
                 </div>
             </div>

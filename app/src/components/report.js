@@ -4,7 +4,7 @@ import '../styles/ItsBedtime.css'
 class report extends React.Component{
     render(){
         return (
-            <div class = "content">
+            <div class = "reportClass">
                 <div class = "inner" id ="in">
                     <h1 className="blueHeader">Monday</h1>
                     <hr className="hr-settings"/>

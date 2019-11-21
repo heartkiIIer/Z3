@@ -16,6 +16,7 @@ import PersonalityResults from './components/Personality/PersonalityResults';
 import MindfulnessModules from './components/MindfulnessModules';
 import report from "./components/report";
 import ExampleModule from './components/ExampleModule';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
               <Route path="/logging" component={Logger}/>
               <Route path="/report" component={report}/>
               <Route path="/ExampleModule" component={ExampleModule}/>
-
+              <Route component = {NotFound}/>
           </Switch>
       </Router>
   );

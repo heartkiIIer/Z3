@@ -8,14 +8,14 @@ class Landing extends React.Component {
             <div>
                 <div className="container">
                     <div id="Heading" className="row featurette">
-                        <div className="col-md-6 order-md-1">
+                        <div id="loginbox" className="col-md-6 order-md-1">
                             <div id="login">
                                 <h2>Login</h2>
                                 <form>
-                                    <input type="text" name="username" placeholder="Username or Email"/>
-                                    <input type="password" name="password" placeholder="Password"/>
+                                    <input className="inp" type="text" name="username" placeholder="Username or Email"/>
+                                    <input className="inp" type="password" name="password" placeholder="Password"/>
                                     <Link to="/home">
-                                        <button id="loginbtn">Login</button>
+                                        <button className="btn" id="loginbtn">Login</button>
                                     </Link>
                                 </form>
                             </div>
@@ -23,38 +23,44 @@ class Landing extends React.Component {
                         <div id="title" className="col-md-6 order-md-1">
                             <h1>Z<sup>3</sup></h1>
                             <h3>Stabilize your sleep and bring sleep back into your control! </h3>
-                            <Link to="/register">
-                                <button id="joinbtn">Join Us</button>
-                            </Link>
+                            <div>
+                                <Link to="/register">
+                                    <button style={{marginRight: "20px"}} className="btn" id="joinbtn">Join Us! Register Here</button>
+                                </Link>
+                                <a href={"#features"}>
+                                    <button className="btn" id="morebtn">Learn What We Are All About</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
-
-                    <div id="Features" className="row">
-                        <div className='col-md-4 my-auto'>
-                            <a href={"#calFeature"}>
-                                <span id="calIcon" className="dot">
-                                    <div className="iconImages calIconImg"></div>
-                                </span>
-                            </a>
-                            <h2>Routines</h2>
+                    <a name="features">
+                        <div id="Features" className="row">
+                            <div className='col-md-4 my-auto'>
+                                <a href={"#calFeature"}>
+                                    <span id="calIcon" className="dot">
+                                        <div className="iconImages calIconImg"></div>
+                                    </span>
+                                </a>
+                                <h2>Routines</h2>
+                            </div>
+                            <div className='col-md-4 my-auto'>
+                                <a href={"#exerFeature"}>
+                                    <span id="exerIcon" className="dot">
+                                        <div className="iconImages exerIconImg"></div>
+                                    </span>
+                                </a>
+                                <h2>Activity Log</h2>
+                            </div>
+                            <div className='col-md-4 my-auto'>
+                                <a href={"#mindFeature"}>
+                                    <span id="mindIcon" className="dot">
+                                        <div className="iconImages mindIconImg"></div>
+                                    </span>
+                                </a>
+                                <h2>Mindfulness and Personality</h2>
+                            </div>
                         </div>
-                        <div className='col-md-4 my-auto'>
-                            <a href={"#exerFeature"}>
-                                <span id="exerIcon" className="dot">
-                                    <div className="iconImages exerIconImg"></div>
-                                </span>
-                            </a>
-                            <h2>Activity Log</h2>
-                        </div>
-                        <div className='col-md-4 my-auto'>
-                            <a href={"#mindFeature"}>
-                                <span id="mindIcon" className="dot">
-                                    <div className="iconImages mindIconImg"></div>
-                                </span>
-                            </a>
-                            <h2>Mindfulness and Personality</h2>
-                        </div>
-                    </div>
+                    </a>
                     <a name="calFeature">
                         <div id="CalSch" className="row featurette featureInfo">
                             <h1 className="featureTitle">Calendar and Routines</h1>

@@ -3,10 +3,6 @@ html::-webkit-scrollbar{
     overflow: -moz-scrollbars-none;
     -ms-overflow-style: none;
 }
-button{
-    border: none;
-    color: white;
-}
 form{
     display: flex;
     flex-direction: column;
@@ -65,17 +61,15 @@ h1, h2, h3 {
     width: 100vw;
     margin: 0;
 }
+#loginbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #login{
     padding: 60px 8%;
     height: 40%;
-    width:65%;
-    position: absolute;
-    left: 30%;
-    top: 30%;
-}
-#loginbtn{
-    background: #001837;
-    margin-top: 20px;
+    width:80%;
 }
 #title{
     padding-right: 15%;
@@ -83,9 +77,6 @@ h1, h2, h3 {
     flex-direction: column;
     justify-content: center;
     color: white;
-}
-#joinbtn{
-    background: #001837;
 }
 #Features{
     background-color: #141629;
@@ -126,4 +117,38 @@ h1, h2, h3 {
 .mindIconImg{
     background: url("../resources/icons/mind_icon_white.png") no-repeat center center;
     background-size: contain;
+}
+#loginbtn{
+    background: #141629;
+}
+#joinbtn{
+    background: #141629;
+}
+#morebtn{
+    background: #141629;
+}
+#loginbtn:hover {
+    background: #ffffff;
+    border-color: #7339ab;
+    color: #7339ab;
+}
+#joinbtn:hover {
+    background: #ffffff;
+    border-color: #7339ab;
+    color: #7339ab;
+}
+#morebtn:hover {
+    background: #ffffff;
+    border-color: #7339ab;
+    color: #7339ab;
+}
+.inp{
+    background: #ffffff;
+    border-radius: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 15px 25px;
+    width: 100%;
 }

@@ -41,11 +41,11 @@
     background: url("../resources/icons/sleep_icon_white.png") no-repeat center center;
     background-size: contain;
 }
-#calIcon_h{
+#reportIcon_h{
     transform: rotate(calc(var(--offsetDeg) - 60deg));
 }
-.calIconImg{
-    background: url("../resources/icons/calendar_icon_white.png") no-repeat center center;
+.reportIconImg{
+    background: url("../resources/icons/Report_white.png") no-repeat center center;
     background-size: contain;
 }
 #logIcon_h{
@@ -149,6 +149,10 @@
     font-weight: bold;
     font-size: 15pt;
     transition-delay: 0.4s;
+}
+.flip-card:hover .flip-card-front {
+    transition-delay: 0.4s;
+    opacity: 0;
 }
 .text{
     color:transparent;

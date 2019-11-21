@@ -1,18 +1,19 @@
-import React from 'react';
+import React from 'react'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import { Tab } from 'semantic-ui-react'
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: 300 + theme.spacing(3) * 2,
-        padding: theme.spacing(3),
-    },
-    margin: {
-        height: theme.spacing(3),
-    },
-}));
+// const useStyles = makeStyles(theme => ({
+//     root: {
+//         width: 300 + theme.spacing(3) * 2,
+//         padding: theme.spacing(3),
+//     },
+//     margin: {
+//         height: theme.spacing(3),
+//     },
+// }));
 
 const marks = [
     {
@@ -29,7 +30,49 @@ const marks = [
     }
 ];
 
-const hours = [
+const minutes = [
+    {
+        value: 2,
+        label: 0
+    },
+    {
+        value: 10
+    },
+    {
+        value: 20,
+        label: 30
+    },
+    {
+        value: 30
+    },
+    {
+        value: 40,
+        label: 60
+    },
+    {
+        value: 50
+    },
+    {
+        value: 60,
+        label: 90
+    },
+    {
+        value: 70
+    },
+    {
+        value: 80,
+        label: 120
+    },
+    {
+        value: 90
+    },
+    {
+        value: 98,
+        label: 150
+    }
+];
+
+const cups = [
     {
         value: 2,
         label: 0
@@ -110,38 +153,75 @@ const PrettoSlider = withStyles({
     },
 })(Slider);
 
-export default function CustomizedSlider() {
-    const classes = useStyles();
+const panes = [
+    {
+        menuItem: 'Exercise',
+        render: () => <Tab.Pane attached={false}>
+                <Typography id="discrete-slider-restrict" gutterBottom>
+                    Duration of Exercise (minutes)
+                </Typography>
+                <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                              step={null}
+                              marks={minutes}/>
+        </Tab.Pane>,
+    },
+    {
+        menuItem: 'Coffee',
+        render: () => <Tab.Pane attached={false}>
+                <Typography id="discrete-slider-restrict" gutterBottom>
+                    Cups of Coffee Consumed
+                </Typography>
+                <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                              step={null}
+                              marks={cups}/>
 
-    return (
-        <Paper className={classes.root}>
-            <div className={classes.margin} />
-            <Typography id="discrete-slider-restrict" gutterBottom>
-                Duration of Exercise (minutes)
-            </Typography>
-            <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
-            <div className={classes.margin} />
-            <Typography id="discrete-slider-restrict" gutterBottom>
-                Duration of Exercise (hours)
-            </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={2}
-                          step={null}
-                          marks={hours}/>
-            <div className={classes.margin} />
-            <Typography id="discrete-slider-restrict" gutterBottom>
-                Cups of Coffee Consumed
-            </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={2}
-                          step={null}
-                          marks={hours}/>
-            <div className={classes.margin} />
-            <Typography id="discrete-slider-restrict" gutterBottom>
-                Largest Coffee Cup Size
-            </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={98}
-                          step={null}
-                          marks={marks}/>
-            <div className={classes.margin} />
-        </Paper>
-    );
-}
+                <Typography id="discrete-slider-restrict" gutterBottom>
+                    Largest Coffee Cup Size
+                </Typography>
+                <PrettoSlider aria-label="pretto slider" defaultValue={98}
+                              step={null}
+                              marks={marks}/>
+        </Tab.Pane>,
+    },
+    {
+        menuItem: 'Sleep',
+        render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
+    },
+]
+
+const Taboo = () => (
+    <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+)
+
+export default Taboo
+
+// export default function CustomizedSlider() {
+//     const classes = useStyles();
+//
+//     return (
+//         <Paper className={classes.root}>
+//             <div className={classes.margin} />
+//             <Typography id="discrete-slider-restrict" gutterBottom>
+//                 Duration of Exercise (minutes)
+//             </Typography>
+//             <PrettoSlider aria-label="pretto slider" defaultValue={2}
+//                           step={null}
+//                           marks={minutes}/>
+//             <div className={classes.margin} />
+//             <Typography id="discrete-slider-restrict" gutterBottom>
+//                 Cups of Coffee Consumed
+//             </Typography>
+//             <PrettoSlider aria-label="pretto slider" defaultValue={2}
+//                           step={null}
+//                           marks={cups}/>
+//             <div className={classes.margin} />
+//             <Typography id="discrete-slider-restrict" gutterBottom>
+//                 Largest Coffee Cup Size
+//             </Typography>
+//             <PrettoSlider aria-label="pretto slider" defaultValue={98}
+//                           step={null}
+//                           marks={marks}/>
+//             <div className={classes.margin} />
+//         </Paper>
+//     );
+// }

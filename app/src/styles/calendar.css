@@ -10,9 +10,9 @@
     flex-direction: column;
 }
 
-.calendar h1, .logger h1 {
-    text-shadow: -2px 0 #444, 0 2px #444, 2px 0 #444, 0 -2px #444;
-}
+/*.calendar h1, .logger h1 {*/
+/*    text-shadow: -2px 0 #444, 0 2px #444, 2px 0 #444, 0 -2px #444;*/
+/*}*/
 
 .calendar ul {
     padding: 0;

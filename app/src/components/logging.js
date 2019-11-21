@@ -15,7 +15,7 @@ import { Tab } from 'semantic-ui-react'
 //     },
 // }));
 
-const marks = [
+const cupsize = [
     {
         value: 2,
         label: 'Small',
@@ -27,6 +27,21 @@ const marks = [
     {
         value: 98,
         label: 'Large',
+    }
+];
+
+const stresslevel = [
+    {
+        value: 2,
+        label: 'Low',
+    },
+    {
+        value: 50,
+        label: 'Medium',
+    },
+    {
+        value: 98,
+        label: 'High',
     }
 ];
 
@@ -78,40 +93,35 @@ const cups = [
         label: 0
     },
     {
-        value: 10,
-        label: 1
+        value: 10
     },
     {
         value: 20,
         label: 2
     },
     {
-        value: 30,
-        label: 3
+        value: 30
     },
     {
         value: 40,
         label: 4
     },
     {
-        value: 50,
-        label: 5
+        value: 50
     },
     {
         value: 60,
         label: 6
     },
     {
-        value: 70,
-        label: 7
+        value: 70
     },
     {
         value: 80,
         label: 8
     },
     {
-        value: 90,
-        label: 9
+        value: 90
     },
     {
         value: 98,
@@ -163,30 +173,56 @@ const panes = [
                 <PrettoSlider aria-label="pretto slider" defaultValue={2}
                               step={null}
                               marks={minutes}/>
+            <Typography id="discrete-slider-restrict" gutterBottom>
+                Intensity
+            </Typography>
+            <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                          step={null}
+                          marks={stresslevel}/>
+        </Tab.Pane>,
+    },
+    {
+        menuItem: 'Stress',
+        render: () => <Tab.Pane attached={false}>
+                <Typography id="discrete-slider-restrict" gutterBottom>
+                    Event 1
+                </Typography>
+                <PrettoSlider aria-label="pretto slider" defaultValue={98}
+                              step={null}
+                              marks={stresslevel}/>
+
+                <Typography id="discrete-slider-restrict" gutterBottom>
+                    Event 2
+                </Typography>
+                <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                              step={null}
+                              marks={stresslevel}/>
+            <Typography id="discrete-slider-restrict" gutterBottom>
+                Event 3
+            </Typography>
+            <PrettoSlider aria-label="pretto slider" defaultValue={50}
+                          step={null}
+                          marks={stresslevel}/>
         </Tab.Pane>,
     },
     {
         menuItem: 'Coffee',
         render: () => <Tab.Pane attached={false}>
-                <Typography id="discrete-slider-restrict" gutterBottom>
-                    Cups of Coffee Consumed
-                </Typography>
-                <PrettoSlider aria-label="pretto slider" defaultValue={2}
-                              step={null}
-                              marks={cups}/>
+            <Typography id="discrete-slider-restrict" gutterBottom>
+                Cups of Coffee Consumed
+            </Typography>
+            <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                          step={null}
+                          marks={cups}/>
 
-                <Typography id="discrete-slider-restrict" gutterBottom>
-                    Largest Coffee Cup Size
-                </Typography>
-                <PrettoSlider aria-label="pretto slider" defaultValue={98}
-                              step={null}
-                              marks={marks}/>
+            <Typography id="discrete-slider-restrict" gutterBottom>
+                Largest Coffee Cup Size
+            </Typography>
+            <PrettoSlider aria-label="pretto slider" defaultValue={98}
+                          step={null}
+                          marks={cupsize}/>
         </Tab.Pane>,
-    },
-    {
-        menuItem: 'Sleep',
-        render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
-    },
+    }
 ]
 
 const Taboo = () => (

@@ -35,12 +35,14 @@ class PersonalityResults extends React.Component {
                     <h5 className="blueHeader"><b>Neuroticism</b></h5>
                     <p id="n_score">Score: <span>getNeuroticism</span></p>
 
-                    <Link to="/personality">
-                        <button className="btn" onClick={(e) => this.openURL(e)}>Retake Personality Test</button>
-                    </Link><br/>
-                    <Link to="/personalityIntro">
-                        <button className="btn">Done</button>
-                    </Link>
+                    <div className="d-flex justify-content-between">
+                        <Link to="/personality">
+                            <button className="btn" onClick={(e) => this.openURL(e)}>Retake Personality Test</button>
+                        </Link>
+                        <Link to="/personalityIntro">
+                            <button className="btn">Done</button>
+                        </Link>
+                    </div>
 
                 </div>
             </div>

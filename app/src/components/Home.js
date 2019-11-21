@@ -20,10 +20,10 @@ class Home extends React.Component {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/calendarsign">
-                                <HomeIcon spanID={"calIcon_h"}
-                                          iconClass={"iconImages_h calIconImg"}
-                                          iconInfo={"See upcoming events and log your stress"}/>
+                            <Link to="/report">
+                                <HomeIcon spanID={"reportIcon_h"}
+                                          iconClass={"iconImages_h reportIconImg"}
+                                          iconInfo={"Personal Report"}/>
                             </Link>
                         </li>
                         <li>
@@ -58,23 +58,23 @@ class Home extends React.Component {
                 </div>
                 <div className="col-lg-6 d-flex justify-content-center align-items-center">
                     <div id="dailyInfo">
-                        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                        <div id="carouselExampleIndicators" className="carousel slide d-flex align-items-center" data-ride="carousel">
                             <ol className="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                             </ol>
                             <div className="carousel-inner">
-                                <div className="carousel-item active">
+                                <div className="carousel-item text-center active">
                                     <h2>Fun Fact of the Day:</h2>
                                     <h3>Did you know?</h3>
                                 </div>
-                                <div className="carousel-item">
+                                <div className="carousel-item text-center">
                                     <h2>Weather Today: Bright and Sunny!</h2>
                                     <h4 style={{color: "white"}}>We suggest opening the blinds and/or curtains and let
                                         in some sunshine.</h4>
                                 </div>
-                                <div className="carousel-item">
+                                <div className="carousel-item text-center">
                                     <h2>Suggestion of the Day:</h2>
                                     <h3>Exams are coming up. Study hard but don't forget to
                                         get enough hours of sleep!</h3>

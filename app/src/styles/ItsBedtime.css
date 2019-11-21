@@ -13,12 +13,8 @@
     min-height: 100vh;
     margin-right: auto;
     margin-left: auto;
-    width: 700px;
+    min-width: 100px;
     background: white;
-    padding-left: 75px;
-    padding-right: 75px;
-    padding-top: 75px;
-    padding-bottom: 40px;
     border-right: 1px solid #e4e4e4;
     border-left: 1px solid #e4e4e4;
 }
@@ -219,4 +215,9 @@ input:focus{
 .flex-row-wrap {
     display: flex;
     flex-flow: row wrap;
+}
+
+.bedtime-checkbox {
+    padding: 5px;
+    padding-right: 20px;
 }

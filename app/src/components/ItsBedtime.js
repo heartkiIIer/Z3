@@ -5,6 +5,8 @@ import SaveButton from "../resources/icons/save-solid.svg";
 import EditButton from "../resources/icons/edit-solid.svg";
 import DeleteButton from "../resources/icons/minus-circle-solid.svg";
 import AddButton from "../resources/icons/plus-circle-solid.svg";
+import EmptyCheckbox from "../resources/icons/square-regular.svg";
+import CheckedBox from "../resources/icons/check-square-solid.svg";
 
 
 /**
@@ -23,11 +25,11 @@ class ItsBedtime extends React.Component {
 
     toggleCheckbox(element){
         if(document.getElementById(element) != null){
-            if(document.getElementById(element).checked === true){
-                document.getElementById(element).checked = false;
+            if(document.getElementById(element).src.includes('check-square-solid')){
+                document.getElementById(element).src = EmptyCheckbox;
             }
             else {
-                document.getElementById(element).checked = true;
+                document.getElementById(element).src = CheckedBox;
             }
         }
     }
@@ -96,10 +98,7 @@ class ItsBedtime extends React.Component {
                         <div className="list-group">
                             <button id = "1" type="button" className="list-group-item list-group-item-action" onClick={() => this.toggleCheckbox("checkbox1")}>
                                 <div class = "align-check-and-label">
-                                    <div class = "checkbox checkbox-circle checkbox-primary ">
-                                        <input type="checkbox" id = "checkbox1"/>
-                                        <label for="checkbox1"/>
-                                    </div>
+                                    <img src={EmptyCheckbox} class = "bedtime-checkbox" id = "checkbox1"/>
                                     <p> 10 minutes of reading </p>
                                     <img className="delete" onClick={()=> this.deleteItem(1)}/>
                                 </div>
@@ -107,10 +106,7 @@ class ItsBedtime extends React.Component {
                             <button id = "2" type="button" className="list-group-item list-group-item-action"
                                     onClick={() => this.toggleCheckbox("checkbox2")}>
                                 <div className="align-check-and-label">
-                                    <div className="checkbox checkbox-circle checkbox-primary ">
-                                        <input type="checkbox" id="checkbox2"/>
-                                        <label htmlFor="checkbox2"/>
-                                    </div>
+                                    <img src={EmptyCheckbox} id = "checkbox2" class = "bedtime-checkbox" />
                                     <p> Brush teeth </p>
                                     <img class = "delete" onClick={()=> this.deleteItem(2)}/>
                                 </div>
@@ -118,10 +114,7 @@ class ItsBedtime extends React.Component {
                             <button id = "3" type="button" className="list-group-item list-group-item-action"
                                     onClick={() => this.toggleCheckbox("checkbox3")}>
                                 <div className="align-check-and-label">
-                                    <div className="checkbox checkbox-circle checkbox-primary ">
-                                        <input type="checkbox" id="checkbox3"/>
-                                        <label htmlFor="checkbox3"/>
-                                    </div>
+                                    <img src={EmptyCheckbox} id = "checkbox3" class = "bedtime-checkbox" />
                                     <p> Meditate </p>
                                     <img className="delete" onClick={()=> this.deleteItem(3)}/>
 

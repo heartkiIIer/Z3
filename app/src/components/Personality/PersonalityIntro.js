@@ -10,13 +10,13 @@ class PersonalityIntro extends React.Component {
     }
 
     openURL(event: SyntheticEvent<any>): void {
-        window.open("https://www.truity.com/test/big-five-personality-test");
+        window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
     }
 
     render(){
         return (
-            <div class = "content personality">
-                <div class = "inner">
+            <div className = "content personality">
+                <div className = "inner">
                     <h1 className="blueHeader">What is Your Personality?</h1>
                     <hr className="hr-settings"/>
                     <h3 className="blueHeader">What does "Big Five Personality" mean?</h3>

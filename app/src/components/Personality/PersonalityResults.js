@@ -10,13 +10,13 @@ class PersonalityResults extends React.Component {
     }
 
     openURL(event: SyntheticEvent<any>): void {
-        window.open("https://www.truity.com/test/big-five-personality-test");
+        window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
     }
 
     render(){
         return (
-            <div class = "content personality">
-                <div class = "inner">
+            <div className = "content personality">
+                <div className = "inner">
                     <h1 className="blueHeader">Your Big 5 Personality Results</h1>
                     <hr className="hr-settings"/>
 
@@ -35,12 +35,14 @@ class PersonalityResults extends React.Component {
                     <h5 className="blueHeader"><b>Neuroticism</b></h5>
                     <p id="n_score">Score: <span>getNeuroticism</span></p>
 
-                    <Link to="/personality">
-                        <button className="btn" onClick={(e) => this.openURL(e)}>Retake Personality Test</button>
-                    </Link><br/>
-                    <Link to="/personalityIntro">
-                        <button className="btn">Done</button>
-                    </Link>
+                    <div className="d-flex justify-content-between">
+                        <Link to="/personality">
+                            <button className="btn" onClick={(e) => this.openURL(e)}>Retake Personality Test</button>
+                        </Link>
+                        <Link to="/personalityIntro">
+                            <button className="btn">Done</button>
+                        </Link>
+                    </div>
 
                 </div>
             </div>

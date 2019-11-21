@@ -1,4 +1,3 @@
-/* Limit the width of the menu */
 .itsBedtime {
     width: 400px;
     margin-right: auto;
@@ -7,9 +6,10 @@
 
 .time{
     padding-top: 100px;
+    margin-top: 25%;
 }
 
-.inner {
+.inner{
     min-height: 100vh;
     margin-right: auto;
     margin-left: auto;
@@ -25,6 +25,12 @@
 
 .blueHeader {
     color: #337ab7;
+}
+
+.sleepHeader {
+    color: #337ab7;
+    font-size: 75px;
+    padding-bottom: 40px;
 }
 
 .checkbox {

@@ -15,6 +15,7 @@ import PersonalityIntro from './components/Personality/PersonalityIntro';
 import PersonalityResults from './components/Personality/PersonalityResults';
 import MindfulnessModules from './components/MindfulnessModules';
 import report from "./components/report";
+import ExampleModule from './components/ExampleModule';
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
               <Route path="/mindfulnessModules" component={MindfulnessModules}/>
               <Route path="/logging" component={Logger}/>
               <Route path="/report" component={report}/>
+              <Route path="/ExampleModule" component={ExampleModule}/>
+
           </Switch>
       </Router>
   );

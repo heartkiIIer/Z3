@@ -221,3 +221,9 @@ input:focus{
     padding: 5px;
     padding-right: 20px;
 }
+
+#video {
+    margin: auto;
+    text-align: center;
+    display: block;
+}

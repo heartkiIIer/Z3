@@ -14,17 +14,13 @@ class Register extends React.Component{
                         <div id="Register">
                             <h2>Join Us</h2>
                             <form>
-                                First Name:
-                                <input type="text" name="first-name" placeholder="john"/>
-                                Last Name:
-                                <input type="text" name="last-name" placeholder="doe"/>
-                                Email:
-                                <input type="text" name="email" placeholder="john.doe@gmail.com"/>
-                                Username:
-                                <input type="text" name="username" placeholder="john123"/>
-                                Password:
-                                <input type="password" name="password"/>
-                                <button id="register-btn">Register</button>
+                                <input type="text" name="first-name" placeholder="First Name"/>
+                                <input type="text" name="last-name" placeholder="Last Name"/>
+                                <input type="text" name="email" placeholder="Email"/>
+                                <input type="text" name="username" placeholder="Username"/>
+                                <input type="password" name="Password" placeholder="Username"/>
+                                <br/>
+                                <button className='btn' id="extended">Register</button>
                             </form>
                         </div>
                     </div>

@@ -8,12 +8,13 @@ import Calendar from './components/Calendar'
 import Logger from './components/loggers'
 import UserSettings from "./components/UserSettings";
 import logSleep from './components/logSleep';
-import Chronotype from './components/chronotype';
-import ChronoResults from './components/chronoResults';
-import Personality from './components/Personality';
-import PersonalityIntro from './components/PersonalityIntro';
-import PersonalityResults from './components/PersonalityResults';
+import Chronotype from './components/Personality/chronotype';
+import ChronoResults from './components/Personality/chronoResults';
+import Personality from './components/Personality/Personality';
+import PersonalityIntro from './components/Personality/PersonalityIntro';
+import PersonalityResults from './components/Personality/PersonalityResults';
 import MindfulnessModules from './components/MindfulnessModules';
+import report from "./components/report";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/personalityResults" component={PersonalityResults}/>
               <Route path="/mindfulnessModules" component={MindfulnessModules}/>
               <Route path="/logging" component={Logger}/>
+              <Route path="/report" component={report}/>
           </Switch>
       </Router>
   );

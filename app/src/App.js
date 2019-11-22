@@ -17,6 +17,7 @@ import MindfulnessModules from './components/MindfulnessModules';
 import report from "./components/report";
 import ExampleModule from './components/ExampleModule';
 import NotFound from './components/NotFound';
+import logWake from "./components/logWake";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path ="/calendarsign" component={Calendar}/>
               <Route path="/settings" component={UserSettings}/>
               <Route path="/logSleep" component={logSleep}/>
+              <Route path="/logWake" component={logWake}/>
               <Route path="/chronotype" component={Chronotype}/>
               <Route path="/chronoResults" component={ChronoResults}/>
               <Route path="/personality" component={Personality}/>

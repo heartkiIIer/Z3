@@ -1,8 +1,14 @@
 import React from 'react'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 // import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
+import '../styles/calendar.css'
 import Typography from '@material-ui/core/Typography';
+import DirectionsRun from '@material-ui/icons/DirectionsRun';
+import AccessTime from '@material-ui/icons/AccessTime';
+import LocalCafe from '@material-ui/icons/LocalCafe';
+import Delete from '@material-ui/icons/Delete';
 import { Tab } from 'semantic-ui-react'
 
 // const useStyles = makeStyles(theme => ({
@@ -14,7 +20,9 @@ import { Tab } from 'semantic-ui-react'
 //         height: theme.spacing(3),
 //     },
 // }));
-
+const cup = {
+    fontSize: '250%'
+}
 const cupsize = [
     {
         value: 2,
@@ -26,7 +34,7 @@ const cupsize = [
     },
     {
         value: 98,
-        label: 'Large',
+        label: 'Large'
     }
 ];
 
@@ -47,84 +55,58 @@ const stresslevel = [
 
 const minutes = [
     {
-        value: 2,
+        value: 0,
         label: 0
     },
     {
-        value: 10
-    },
-    {
-        value: 20,
+        value: 30,
         label: 30
     },
     {
-        value: 30
-    },
-    {
-        value: 40,
+        value: 60,
         label: 60
     },
     {
-        value: 50
-    },
-    {
-        value: 60,
+        value: 90,
         label: 90
     },
     {
-        value: 70
-    },
-    {
-        value: 80,
+        value: 120,
         label: 120
     },
     {
-        value: 90
+        value: 150,
+        label: 150
     },
     {
-        value: 98,
-        label: 150
+        value: 180,
+        label: 180
     }
 ];
 
 const cups = [
     {
-        value: 2,
+        value: 0,
         label: 0
     },
     {
-        value: 10
-    },
-    {
-        value: 20,
+        value: 2,
         label: 2
     },
     {
-        value: 30
-    },
-    {
-        value: 40,
+        value: 4,
         label: 4
     },
     {
-        value: 50
-    },
-    {
-        value: 60,
+        value: 6,
         label: 6
     },
     {
-        value: 70
-    },
-    {
-        value: 80,
+        value: 8,
         label: 8
     },
     {
-        value: 90
-    },
-    {
-        value: 98,
+        value: 10,
         label: 10
     }
 ];
@@ -167,23 +149,47 @@ const panes = [
     {
         menuItem: 'Exercise',
         render: () => <Tab.Pane attached={false}>
-                <Typography id="discrete-slider-restrict" gutterBottom>
-                    Duration of Exercise (minutes)
-                </Typography>
-                <PrettoSlider aria-label="pretto slider" defaultValue={2}
-                              step={null}
-                              marks={minutes}/>
+            <h5>Rate intensity & duration of exercise.</h5>
+            <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
                 Intensity
             </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={2}
-                          step={null}
-                          marks={stresslevel}/>
-        </Tab.Pane>,
+            <Grid container spacing={3}>
+                <Grid item>
+                    <DirectionsRun style={cup}/>
+                </Grid>
+
+                <Grid item xs>
+                    <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                                  step={null}
+                                  marks={stresslevel}/>
+                </Grid>
+            </Grid>
+            <Typography id="discrete-slider-restrict" gutterBottom>
+                Duration of Exercise (minutes)
+            </Typography>
+            <Grid container spacing={3}>
+                <Grid item>
+                    <AccessTime style={cup}/>
+                </Grid>
+
+                <Grid item xs>
+                    <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                                  valueLabelDisplay="auto"
+                                  step={15}
+                                  min={0}
+                                  max={180}
+                                  marks={minutes}/>
+                </Grid>
+            </Grid>
+
+        </Tab.Pane>
     },
     {
         menuItem: 'Stress',
         render: () => <Tab.Pane attached={false}>
+            <h5>Rate stress level for each event.</h5>
+            <br/>
                 <Typography id="discrete-slider-restrict" gutterBottom>
                     Event 1
                 </Typography>
@@ -208,20 +214,42 @@ const panes = [
     {
         menuItem: 'Coffee',
         render: () => <Tab.Pane attached={false}>
+            <h5>Log the amount of coffee consumed.</h5>
+            <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Cups of Coffee Consumed
+                Cups of Coffee
             </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={2}
-                          step={null}
-                          marks={cups}/>
+            <Grid container spacing={3}>
+                <Grid item>
+                    <LocalCafe style={cup}/>
+                </Grid>
+
+                <Grid item xs>
+                    <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                                  valueLabelDisplay="auto"
+                                  step={1}
+                                  min={0}
+                                  max={10}
+                                  marks={cups}/>
+                </Grid>
+            </Grid>
+
 
             <Typography id="discrete-slider-restrict" gutterBottom>
                 Largest Coffee Cup Size
             </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={98}
-                          step={null}
-                          marks={cupsize}/>
-        </Tab.Pane>,
+            <Grid container spacing={3}>
+                <Grid item>
+                    <Delete style={cup}/>
+                </Grid>
+
+                <Grid item xs>
+                    <PrettoSlider aria-label="pretto slider" defaultValue={98}
+                                  step={null}
+                                  marks={cupsize}/>
+                </Grid>
+            </Grid>
+        </Tab.Pane>
     }
 ]
 

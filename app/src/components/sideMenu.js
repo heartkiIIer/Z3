@@ -7,20 +7,20 @@ export default props => {
             <a className="menu-item" href='/home'>
                 Home
             </a>
-            <a className="menu-item" href="/">
+            <a className="menu-item" href="/logSleep">
                 Log Sleep
             </a>
-            <a className="menu-item" href="/Calendar">
-                Calender
+            <a className="menu-item" href="/logging">
+                Log Other
             </a>
-            <a className="menu-item" href="/CSlider">
-                Calender Slide
+            <a className="menu-item" href="/report">
+                Report
             </a>
-            <a className="menu-item" href="/">
-                Log Others
-            </a>
-            <a className="menu-item" href="/">
+            <a className="menu-item" href="/mindfulnessModules">
                 Mindfulness
+            </a>
+            <a className="menu-item" href="/personalityIntro">
+                Personality Test
             </a>
             <a className="menu-item" href="/bedtimeRoutine">
                 Bedtime Routine

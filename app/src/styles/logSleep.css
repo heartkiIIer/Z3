@@ -23,6 +23,20 @@
     border-left: 1px solid #e4e4e4;
 }
 
+.sleepInner{
+    min-height: 100vh;
+    margin-right: auto;
+    margin-left: auto;
+    width: 700px;
+    background: white;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 75px;
+    padding-bottom: 40px;
+    border-right: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+}
+
 .blueHeader {
     color: #337ab7;
 }
@@ -129,22 +143,6 @@ body {
 
 .editMe {
     margin-right: 85px;
-}
-
-input {
-    border: none;
-    border-bottom: 2px solid #1f9ce4;
-    -webkit-transition: 0.2s ;
-    -moz-transition:  0.2s;
-    -ms-transition:  0.2s;
-    -o-transition:  0.2s;
-    transition:  0.2s;
-}
-
-input:focus{
-    border: none;
-    outline: none;
-    border-bottom: 3px solid #1f9ce4;
 }
 
 .settings {

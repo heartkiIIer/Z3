@@ -234,15 +234,16 @@ input:focus{
 }
 
 .data{
-    max-width: 50%;
+    min-width: 50%;
     float: left;
+    margin-bottom: 20px;
 }
 
 .percentage {
     float:right;
-    max-width: 50%;
-    max-height: 100px;
+    width: 50%;
     align: center;
+    margin-bottom: 20px;
 }
 .smallTimeHeader{
     color: #625ad8;
@@ -258,4 +259,25 @@ input:focus{
     margin: auto;
     text-align: center;
     display: block;
+}
+
+.week{
+    align-content: center;
+    min-height: 300px;
+}
+
+.smallHeader{
+    font-size: 25px;
+    color: #337ab7;
+}
+
+.goalProg{
+    max-width: 250px;
+    align: center;
+    float: left;
+}
+
+.day{
+    align: center;
+    height: 200px;
 }

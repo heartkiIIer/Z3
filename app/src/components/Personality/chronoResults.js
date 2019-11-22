@@ -2,13 +2,15 @@ import React from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
+import SideBar from "../sideMenu";
 
 class ChronoResults extends React.Component {
 
     render(){
         return (
-            <div className = "content chronotype">
-                <div className = "inner">
+            <div className = "content chronotype" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="inner" id="page-wrap">
                     <h1 className="blueHeader">Chronotype Results</h1>
                     <hr className="hr-settings"/>
 

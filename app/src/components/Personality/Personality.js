@@ -2,12 +2,14 @@ import React from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
+import SideBar from "../sideMenu";
 
 class Personality extends React.Component{
     render(){
         return (
-            <div className="content personality">
-                <div className="inner">
+            <div className="content personality" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="inner" id="page-wrap">
                     <h1 className="blueHeader">Your Personality Scores</h1>
                     <hr className="hr-settings"/>
                     <h5>

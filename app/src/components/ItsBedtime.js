@@ -7,6 +7,7 @@ import DeleteButton from "../resources/icons/minus-circle-solid.svg";
 import AddButton from "../resources/icons/plus-circle-solid.svg";
 import EmptyCheckbox from "../resources/icons/square-regular.svg";
 import CheckedBox from "../resources/icons/check-square-solid.svg";
+import SideBar from "./sideMenu";
 
 
 /**
@@ -85,8 +86,9 @@ class ItsBedtime extends React.Component {
 
     render(){
         return (
-            <div class = "content">
-                <div class = "inner">
+            <div class = "content" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="inner" id="page-wrap">
                     <div class = "itsBedtime">
                        <div class = "outer-circle" id = "outer-circle">
                            <div className="inner-circle">

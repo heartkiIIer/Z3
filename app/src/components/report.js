@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import '../styles/ItsBedtime.css';
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import SideBar from "./sideMenu";
 
 
 class report extends React.Component{
     render(){
         return (
-            <div class = "reportClass">
-                <div class = "inner" id ="in">
+            <div class = "reportClass" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="inner" id="page-wrap">
                     <h1 className="blueHeader" align="center">Sleep Goal: 8 hrs</h1>
                     <hr className="hr-settings"/>
                     <h1 className="blueHeader">Weekly Overview</h1>

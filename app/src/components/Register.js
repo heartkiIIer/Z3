@@ -3,12 +3,10 @@ import '../styles/Register.css'
 import { Navbar, Nav} from 'react-bootstrap';
 import SideBar from "./sideMenu";
 
-
 class Register extends React.Component{
     render() {
         return(
             <div id="App">
-                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="container" id={"page-wrap"}>
                     <div id="Heading" className="row featurette">
                         <div id="Register">

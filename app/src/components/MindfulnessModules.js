@@ -2,6 +2,7 @@ import React from 'react';
 import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../styles/ItsBedtime.css";
 import Tile from "./Tile.js";
+import SideBar from "./sideMenu";
 
 
 /**
@@ -13,8 +14,9 @@ class MindfulnessModules extends React.Component {
 
     render(){
         return (
-            <div class = "content modules">
-                <div class = "inner">
+            <div class = "content modules" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="inner" id="page-wrap">
                     <h1 class = "blueHeader"> Mindfulness Modules</h1>
                     <hr class = "hr-settings"/>
                     <div class = "flex-row-wrap">

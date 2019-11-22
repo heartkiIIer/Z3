@@ -2,6 +2,7 @@ import React, {SyntheticEvent} from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
+import SideBar from "../sideMenu";
 
 class PersonalityIntro extends React.Component {
     constructor(props) {
@@ -15,8 +16,9 @@ class PersonalityIntro extends React.Component {
 
     render(){
         return (
-            <div className = "content personality">
-                <div className = "inner">
+            <div className = "content personality" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="inner" id="page-wrap">
                     <h1 className="blueHeader">What is Your Personality?</h1>
                     <hr className="hr-settings"/>
                     <h3 className="blueHeader">What does "Big Five Personality" mean?</h3>

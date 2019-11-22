@@ -2,6 +2,7 @@ import React from 'react';
 import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../styles/ItsBedtime.css";
 import Tile from "./Tile.js";
+import SideBar from "./sideMenu";
 
 
 /**
@@ -13,8 +14,9 @@ class ExampleModule extends React.Component {
 
     render(){
         return (
-            <div class = "content modules">
-                <div class = "inner">
+            <div class = "content modules" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="inner" id="page-wrap">
                     <h1 class = "blueHeader"> Mindful Eating</h1>
                     <hr class = "hr-settings"/>
                     <p>I am so used to being the bad boy. I am so used to fighting Corporate that I forget that I am Corporate. Upper management, Jan made me breakfast this morning. Well, she bought the milk... It's soy! Ah, that baby is just discovering the whole wide world right now.</p>

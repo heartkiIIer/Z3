@@ -4,6 +4,7 @@ import "../styles/ItsBedtime.css";
 import SaveButton from "../resources/icons/save-solid.svg";
 import EditButton from "../resources/icons/edit-solid.svg";
 import DeleteButton from "../resources/icons/minus-circle-solid.svg";
+import SideBar from "./sideMenu";
 
 
 /**
@@ -18,8 +19,9 @@ class UserSettings extends React.Component {
 
     render(){
         return (
-            <div class = "content settings">
-                <div class = "inner">
+            <div class = "content settings" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="inner" id="page-wrap">
                     <h1 class = "blueHeader"> Modify your settings</h1>
                     <hr class = "hr-settings"/>
                     <h3 class = "blueHeader"> Change password </h3>

@@ -118,29 +118,14 @@ h1, h2, h3 {
     background: url("../resources/icons/mind_icon_white.png") no-repeat center center;
     background-size: contain;
 }
-#loginbtn{
-    background: #141629;
-}
-#joinbtn{
-    background: #141629;
-}
-#morebtn{
-    background: #141629;
-}
 #loginbtn:hover {
-    background: #ffffff;
-    border-color: #7339ab;
-    color: #7339ab;
+    border: none;
 }
 #joinbtn:hover {
-    background: #ffffff;
-    border-color: #7339ab;
-    color: #7339ab;
+    border: none;
 }
 #morebtn:hover {
-    background: #ffffff;
-    border-color: #7339ab;
-    color: #7339ab;
+    border: none;
 }
 .inp{
     background: #ffffff;

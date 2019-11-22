@@ -30,8 +30,9 @@
 }
 
 .btn {
-    background: mediumpurple;
-    border: 2px solid #ffffff;
+    background: #337ab7;
+    border: none;
+    box-shadow: 5px 7px #00000030;
     border-radius: 100px;
     color: #ffffff;
     font-size: 13px;
@@ -45,7 +46,7 @@
 
 .btn:hover {
     background: #ffffff;
-    border-color: #444;
+    border: 2px solid #00000030;
     color: #444;
 }
 

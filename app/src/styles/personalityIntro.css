@@ -1,6 +1,7 @@
 .personality{
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
-    url("../resources/background_images/humans.jpg") no-repeat center center fixed;
+    linear-gradient(180deg, #ffffffcc 0%, #ffffffcc 100%),
+    url("../resources/background_images/human.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 .chronotype{
@@ -23,14 +24,10 @@
     font-size: 17pt;
 }
 .chrono_img{
-    /*background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),*/
-    /*url("../resources/background_images/humans_color.jpg") no-repeat center center fixed;*/
     background: url("../resources/img/alarm-clock.jpg") no-repeat center center;
     background-size: cover;
 }
 .person_img{
-    /*background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),*/
-    /*url("../resources/img/personality3.jpg") no-repeat center center fixed;*/
     background: url("../resources/img/personality3.jpg") no-repeat center center;
     background-size: cover;
 }

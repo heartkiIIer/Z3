@@ -6,12 +6,11 @@ import Taboo from "./logging";
 import SideBar from "./sideMenu";
 
 const logger = () =>
-    <div>
-        <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-        <div class="content logging" id="App">
+        <div class="content logging-background" id="App">
+            <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
             <div className="middle">
 
-                <div className="inner" id="page-wrap">
+                <div className="inner " id="page-wrap">
                         <h1 className="blueHeader">Logging </h1>
                         <hr className="hr-settings"/>
                         <h4>Log your exercise, coffee, & stress.</h4>
@@ -21,6 +20,5 @@ const logger = () =>
                 </div>
             </div>
         </div>
-    </div>
 
 export default logger

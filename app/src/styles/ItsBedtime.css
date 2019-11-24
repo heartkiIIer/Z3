@@ -211,20 +211,22 @@ input:focus{
 .tile {
     width: 200px;
     height: 200px;
-    border-radius: 25px;
+    border-radius: 50%;
     background-color: #1f9ce4;
     margin-left: 40px;
     margin-top: 40px;
     text-align: center;
-    padding-top: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
     color: white;
-    margin-bottom: auto;
+    display: inline-block;
+    transition: 0.5s;
 }
 
 .tile:hover {
     cursor: pointer;
+    background: linear-gradient(#1f9ce4 0%,  #7339ab 100%);
 }
 
 .flex-row-wrap {

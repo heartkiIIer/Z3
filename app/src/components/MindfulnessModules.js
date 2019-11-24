@@ -16,9 +16,13 @@ class MindfulnessModules extends React.Component {
         return (
             <div class = "content modules" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="middle">
                 <div className="inner" id="page-wrap">
                     <h1 class = "blueHeader"> Mindfulness Modules</h1>
                     <hr class = "hr-settings"/>
+                    <h4>Explore mindfulness topics: proven to improve sleep!</h4>
+
+
                     <div class = "flex-row-wrap">
                         <Tile name = "Mindful Walking"/>
                         <Tile name = "Daily Mindfulness"/>
@@ -30,6 +34,7 @@ class MindfulnessModules extends React.Component {
                         <Tile name = "Daily Mindfulness"/>
                         <Tile name = "Mindful Eating"/>
                     </div>
+                </div>
                 </div>
             </div>
         );

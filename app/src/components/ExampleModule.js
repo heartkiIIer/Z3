@@ -16,6 +16,7 @@ class ExampleModule extends React.Component {
         return (
             <div class = "content modules" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="middle">
                 <div className="inner" id="page-wrap">
                     <h1 class = "blueHeader"> Mindful Eating</h1>
                     <hr class = "hr-settings"/>
@@ -30,11 +31,8 @@ class ExampleModule extends React.Component {
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" align="center"
                             allowFullScreen>
                     </iframe>
-
-
-
                 </div>
-
+                </div>
             </div>
         );
     };

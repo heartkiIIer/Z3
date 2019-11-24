@@ -185,25 +185,6 @@ body {
     url("../resources/background_images/zen.jpg") no-repeat center center fixed;
 }
 
-.tile {
-    width: 200px;
-    height: 200px;
-    border-radius: 25px;
-    background-color: #1f9ce4;
-    margin-left: 40px;
-    margin-top: 40px;
-    text-align: center;
-    padding-top: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: white;
-    margin-bottom: auto;
-}
-
-.tile:hover {
-    cursor: pointer;
-}
-
 .flex-row-wrap {
     display: flex;
     flex-flow: row wrap;

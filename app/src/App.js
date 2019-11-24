@@ -18,13 +18,14 @@ import report from "./components/report";
 import ExampleModule from './components/ExampleModule';
 import NotFound from './components/NotFound';
 import logWake from "./components/logWake";
+import BedtimeRoutine from "./components/ItsBedtimeRoutine";
 
 function App() {
   return (
       <Router>
           <Switch>
               <Route exact path="/" component={Landing}/>
-              <Route path ="/bedtimeRoutine" component={ItsBedtime}/>
+              <Route path ="/bedtimeRoutine" component={BedtimeRoutine}/>
               <Route path ="/home" component={Home}/>
               <Route path ="/register" component={Register}/>
               <Route path ="/calendarsign" component={Calendar}/>

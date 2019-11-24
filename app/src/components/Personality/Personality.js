@@ -9,6 +9,7 @@ class Personality extends React.Component{
         return (
             <div className="content personality" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="middle">
                 <div className="inner" id="page-wrap">
                     <h1 className="blueHeader">Your Personality Scores</h1>
                     <hr className="hr-settings"/>
@@ -106,6 +107,7 @@ class Personality extends React.Component{
                     <Link to="/personalityResults">
                         <button className="btn">Submit Personality Scores</button>
                     </Link>
+                </div>
                 </div>
             </div>
         );

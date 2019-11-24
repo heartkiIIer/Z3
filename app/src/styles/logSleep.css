@@ -9,19 +9,6 @@
     margin-top: 25%;
 }
 
-.inner{
-    min-height: 100vh;
-    margin-right: auto;
-    margin-left: auto;
-    width: 700px;
-    background: white;
-    padding-left: 75px;
-    padding-right: 75px;
-    padding-top: 75px;
-    padding-bottom: 40px;
-    border-right: 1px solid #e4e4e4;
-    border-left: 1px solid #e4e4e4;
-}
 
 .sleepInner{
     min-height: 100vh;

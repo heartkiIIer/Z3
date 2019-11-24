@@ -10,11 +10,10 @@
 }
 
 .inner {
-    min-height: 100vh;
+    min-height: auto;
     margin-right: auto;
     margin-left: auto;
     width: 700px;
-    min-width: 100px;
     background: white;
     padding-left: 75px;
     padding-right: 75px;
@@ -22,6 +21,12 @@
     padding-bottom: 40px;
     border-right: 1px solid #e4e4e4;
     border-left: 1px solid #e4e4e4;
+    /*height: 100%;*/
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .blueHeader {
@@ -70,10 +75,8 @@ button:focus {
     width: 350px;
     height: 350px;
     border-radius: 50%;
-
     background: #001d5b;
     background: linear-gradient(#1f9ce490 0%,  #7339ab90 100%);
-
     transition: 2s;
     -webkit-transition: 2s;
     margin-left: 25px;
@@ -98,7 +101,10 @@ body {
     url("../resources/background_images/bedtime.jpg") no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
+    width: 100vw;
     overflow: auto;
+    display: table;
+
 }
 
 /*Header styling*/
@@ -123,7 +129,6 @@ body {
     width: 300px;
     height: 1px;
     background-color: #e4e4e4;
-    margin-bottom: 30px;
 }
 
 .editMe {
@@ -206,20 +211,22 @@ input:focus{
 .tile {
     width: 200px;
     height: 200px;
-    border-radius: 25px;
+    border-radius: 50%;
     background-color: #1f9ce4;
     margin-left: 40px;
     margin-top: 40px;
     text-align: center;
-    padding-top: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
     color: white;
-    margin-bottom: auto;
+    display: inline-block;
+    transition: 0.5s;
 }
 
 .tile:hover {
     cursor: pointer;
+    background: linear-gradient(#1f9ce4 0%,  #7339ab 100%);
 }
 
 .flex-row-wrap {
@@ -280,4 +287,31 @@ input:focus{
 .day{
     align: center;
     height: 200px;
+}
+
+#routine-progress{
+    height: 20px;
+    width: 400px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square {
+    width: 400px;
+    height: 375px;
+}
+
+.black {
+    color: black;
+}
+
+.flex-column-nowrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
 }

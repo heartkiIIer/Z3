@@ -1,7 +1,7 @@
 :root{
     --iconColor: linear-gradient(180deg, #1f9ce4 0%, #625ad8 40%, #7339ab 100%);
     /*--iconColor: white;*/
-    --iconsize: 20vh;
+    /*--iconsize: 20vh;*/
     --offsetDeg: 27deg;
 }
 #homepage{
@@ -92,7 +92,8 @@
     top: 15%;
     right: 15%;
     width: 35%;
-    height: 40%;
+    height: 45vw;
+    max-height: 40%;
     transform-origin: 0% 100%;
 }
 .circle li:nth-child(1) {
@@ -126,8 +127,8 @@
 
 .flip-card {
     background-color: transparent;
-    width: var(--iconsize);
-    height: var(--iconsize);
+    /*width: var(--iconsize);*/
+    /*height: var(--iconsize);*/
 }
 
 /* This container is needed to position the front and back side */

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {SyntheticEvent} from 'react';
 import '../styles/home.css'
 
 class HomeIcon extends React.Component {
     constructor(props) {
         super(props);
-        if(window.innerWidth >= 700){
+        if(window.innerWidth >= 580){
             this.state = {
                 height: "20vh",
                 width: "20vh",
@@ -19,7 +19,7 @@ class HomeIcon extends React.Component {
     }
     resize(){
         window.addEventListener('resize', ()=> {
-            if(window.innerWidth < 700){
+            if(window.innerWidth < 580){
                 this.setState({
                     height: "30vw",
                     width: "30vw"

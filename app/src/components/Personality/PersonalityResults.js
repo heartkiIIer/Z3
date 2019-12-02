@@ -8,17 +8,48 @@ class PersonalityResults extends React.Component {
     constructor(props) {
         super(props);
         this.openURL = this.openURL.bind(this);
+        if(window.innerWidth >= 700){
+            this.state = {
+                padding: '75px 75px 40px',
+            };
+        }
+        else{
+            this.state = {
+                padding: '10% 10% 5%',
+            };
+        }
     }
 
     openURL(event: SyntheticEvent<any>): void {
         window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
     }
+    resize(){
+        window.addEventListener('resize', ()=> {
+            if(window.innerWidth < 700){
+                this.setState({
+                    padding: '10% 10% 5%'
+                });
+            }
+            else {
+                this.setState({
+                    padding: '75px 75px 40px'
+                })
+            }
+        })
+    }
 
     render(){
+        this.resize();
+        const styles = {
+            containerStyle:{
+                padding: this.state.padding,
+            }
+        };
+        const { containerStyle } = styles;
         return (
             <div className = "content personality" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <div className="inner" id="page-wrap">
+                <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Your Big 5 Personality Results</h1>
                     <hr className="hr-settings"/>
 

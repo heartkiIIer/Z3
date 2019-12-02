@@ -9,7 +9,9 @@
 /*    display: flex;*/
 /*    flex-direction: column;*/
 /*}*/
-
+/*.MuiSlider-markLabel {*/
+/*    top: 31px;*/
+/*}*/
 .logging {
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
     url("../resources/background_images/notebook.jpg") no-repeat center center fixed;

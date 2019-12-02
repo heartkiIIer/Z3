@@ -40,7 +40,7 @@ const cupsize = [
 
 const stresslevel = [
     {
-        value: 2,
+        value: 0,
         label: 'Low',
     },
     {
@@ -133,7 +133,7 @@ const PrettoSlider = withStyles({
     },
     active: {},
     valueLabel: {
-        left: 'calc(-50% + 4px)',
+        left: 'calc(-50% + 4px)'
     },
     track: {
         height: 8,

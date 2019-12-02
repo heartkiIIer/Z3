@@ -2,16 +2,55 @@ import React from 'react';
 import '../styles/home.css'
 
 class HomeIcon extends React.Component {
+    constructor(props) {
+        super(props);
+        if(window.innerWidth >= 700){
+            this.state = {
+                height: "20vh",
+                width: "20vh",
+            };
+        }
+        else{
+            this.state = {
+                height: "30vw",
+                width: "30vw",
+            };
+        }
+    }
+    resize(){
+        window.addEventListener('resize', ()=> {
+            if(window.innerWidth < 700){
+                this.setState({
+                    height: "30vw",
+                    width: "30vw"
+                });
+            }
+            else {
+                this.setState({
+                    height: "20vh",
+                    width: "20vh"
+                })
+            }
+        })
+    }
     render(){
+        this.resize();
+        const styles = {
+            containerStyle:{
+                height: this.state.height,
+                width: this.state.width,
+            }
+        };
+        const { containerStyle } = styles;
         return (
-            <span id={this.props.spanID} className="dot_h">
-                <div className="flip-card">
+            <span style={containerStyle} id={this.props.spanID} className="dot_h">
+                <div style={containerStyle} className="flip-card">
                     <div className="flip-card-inner">
                         <div className="flip-card-front">
                             <div className={this.props.iconClass}></div>
                         </div>
                         <div className="flip-card-back">
-                            <span className="dot_h text d-flex align-items-center justify-content-center">
+                            <span style={containerStyle} className="dot_h text d-flex align-items-center justify-content-center">
                                 {this.props.iconInfo}
                             </span>
                         </div>

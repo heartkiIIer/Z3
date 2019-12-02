@@ -342,3 +342,8 @@ input:focus{
     height: 100vh;
     overflow: hidden;
 }
+
+.mindfulnessMobile {
+    padding: 15px;
+    padding-top: 40px;
+}

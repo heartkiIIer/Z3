@@ -4,18 +4,13 @@ import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.openURL = this.openURL.bind(this);
-    }
-    openURL(event: SyntheticEvent<any>): void {
-        window.open("/settings", "_self");
-    }
 
     render(){
         return (
             <div id="homepage" className="row d-flex align-items-center">
-                <div id="setting_icon" className="float-right" onClick={(e) => this.openURL(e)}></div>
+                <Link to="/settings" id="setting_link">
+                    <div id="setting_icon" className="float-right"></div>
+                </Link>
                 <div className="col-lg-6">
                     <ul className="circle">
                         <li>

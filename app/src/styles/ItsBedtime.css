@@ -1,6 +1,6 @@
 /* Limit the width of the menu */
 .itsBedtime {
-    width: 400px;
+    max-width: 400px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -16,8 +16,6 @@
     max-width: 700px;
     width: 100%;
     background: white;
-    padding-left: 75px;
-    padding-right: 75px;
     padding-top: 75px;
     padding-bottom: 40px;
     border-right: 1px solid #e4e4e4;
@@ -73,27 +71,40 @@ button:focus {
 }
 
 .outer-circle {
-    width: 350px;
-    height: 350px;
+    max-width: 350px;
+    max-height: 350px;
     border-radius: 50%;
     background: #001d5b;
     background: linear-gradient(#1f9ce490 0%,  #7339ab90 100%);
     transition: 2s;
     -webkit-transition: 2s;
-    margin-left: 25px;
     margin-bottom: 40px;
     display: flex;
     align-items: center;
 }
 
-#outer-circle {
+#outer-circle-mobile {
+     opacity: 0%;
+     margin: 0px;
+     margin-bottom: 20px;
+ }
+
+#outer-circle-mobile {
     opacity: 0%;
+}
+
+#items {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    align-content: center;
 }
 
 body {
     font-family: 'Didact Gothic', sans-serif, black;
     /*background-color: #001d5b;*/
     background: linear-gradient(#1f9ce490 0%,  #7339ab90 100%);
+    position: fixed;
 
 }
 
@@ -105,7 +116,7 @@ body {
     width: 100vw;
     overflow: auto;
     display: table;
-
+    z-index: 1;
 }
 
 /*Header styling*/
@@ -297,7 +308,7 @@ input:focus{
 
 #routine-progress{
     height: 20px;
-    width: 400px;
+    width: 325px;
 }
 
 .center {
@@ -307,7 +318,7 @@ input:focus{
 }
 
 .square {
-    width: 400px;
+    max-width: 400px;
     height: 375px;
 }
 
@@ -320,4 +331,14 @@ input:focus{
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+}
+
+#root {
+    height: 100vh;
+}
+
+.mobilePage {
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
 }

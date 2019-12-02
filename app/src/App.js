@@ -19,6 +19,7 @@ import ExampleModule from './components/ExampleModule';
 import NotFound from './components/NotFound';
 import logWake from "./components/logWake";
 import BedtimeRoutine from "./components/ItsBedtimeRoutine";
+import MobileBedtimeRoutine from "./components/MobileBedtimeRoutine";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               <Route path="/logging" component={Logger}/>
               <Route path="/report" component={report}/>
               <Route path="/ExampleModule" component={ExampleModule}/>
+              <Route path="/MobileBedtimeRoutine" component = {MobileBedtimeRoutine}/>
               <Route component = {NotFound}/>
           </Switch>
       </Router>

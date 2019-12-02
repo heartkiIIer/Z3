@@ -104,7 +104,6 @@ body {
     font-family: 'Didact Gothic', sans-serif, black;
     /*background-color: #001d5b;*/
     background: linear-gradient(#1f9ce490 0%,  #7339ab90 100%);
-    position: fixed;
 
 }
 
@@ -341,4 +340,5 @@ input:focus{
     background-color: white;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }

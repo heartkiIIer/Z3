@@ -49,7 +49,7 @@ class logger extends React.Component{
                     <div style={containerStyle} className="inner " id="page-wrap">
                         <h1 className="blueHeader">Logging </h1>
                         <hr className="hr-settings"/>
-                        <h4>Log your exercise, coffee, & stress.</h4>
+                        <h4>Log your exercise, caffeine, & stress</h4>
                         <br/>
                         <Taboo/>
                         <button className='btn'>Submit</button>

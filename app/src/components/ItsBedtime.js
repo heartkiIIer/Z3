@@ -85,8 +85,9 @@ class ItsBedtime extends React.Component {
     }
 
     render(){
+
         return (
-            <div class = "content" id="App">
+            <div class = "content personality" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner" id="page-wrap">
                     <div class = "itsBedtime">

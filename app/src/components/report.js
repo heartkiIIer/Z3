@@ -6,7 +6,35 @@ import SideBar from "./sideMenu";
 
 
 class report extends React.Component{
+    constructor(props) {
+        super(props);
+        if(window.innerWidth >= 700){
+            this.state = {
+                padding: '75px 75px 40px',
+            };
+        }
+        else{
+            this.state = {
+                padding: '10% 10% 5%',
+            };
+        }
+    }
+    resize(){
+        window.addEventListener('resize', ()=> {
+            if(window.innerWidth < 700){
+                this.setState({
+                    padding: '10% 10% 5%'
+                });
+            }
+            else {
+                this.setState({
+                    padding: '75px 75px 40px'
+                })
+            }
+        })
+    }
     render(){
+        this.resize();
         return (
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -14,7 +42,7 @@ class report extends React.Component{
                     <h1 className="blueHeader" align="center">Sleep Goal: 8 hrs</h1>
                     <hr className="hr-settings"/>
                     <h1 className="blueHeader">Weekly Overview</h1>
-                    <div className="week">
+                    <div className="week" class="flex-report">
                         <div className="goalProg">
                             <CircularProgressbar value={93} text={`${93}%`} />
                         </div>
@@ -30,8 +58,8 @@ class report extends React.Component{
                         </div>
                     </div>
                     <hr className="hr-settings"/>
-                    <div className="day">
-                        <h1 className="blueHeader">Monday</h1>
+                    <h1 className="blueHeader">Monday</h1>
+                    <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Average Sleep:</p>
                             <h1 className="timeHeader">7 hrs 30 min</h1>
@@ -46,8 +74,8 @@ class report extends React.Component{
                         </div>
                     </div>
                     <hr className="hr-settings"/>
-                    <div className="day">
-                        <h1 className="blueHeader">Sunday</h1>
+                    <h1 className="blueHeader" >Sunday</h1>
+                    <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Average Sleep:</p>
                             <h1 className="timeHeader">7 hrs 30 min</h1>
@@ -62,8 +90,8 @@ class report extends React.Component{
                         </div>
                     </div>
                     <hr className="hr-settings"/>
-                    <div className="day">
-                        <h1 className="blueHeader">Saturday</h1>
+                    <h1 className="blueHeader">Saturday</h1>
+                    <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Average Sleep:</p>
                             <h1 className="timeHeader">7 hrs 30 min</h1>
@@ -78,8 +106,8 @@ class report extends React.Component{
                         </div>
                     </div>
                     <hr className="hr-settings"/>
-                    <div className="day">
-                        <h1 className="blueHeader">Friday</h1>
+                    <h1 className="blueHeader">Friday</h1>
+                    <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Average Sleep:</p>
                             <h1 className="timeHeader">7 hrs 30 min</h1>
@@ -94,8 +122,8 @@ class report extends React.Component{
                         </div>
                     </div>
                     <hr className="hr-settings"/>
-                    <div className="day">
-                        <h1 className="blueHeader">Thursday</h1>
+                    <h1 className="blueHeader">Thursday</h1>
+                    <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Average Sleep:</p>
                             <h1 className="timeHeader">7 hrs 30 min</h1>
@@ -110,8 +138,8 @@ class report extends React.Component{
                         </div>
                     </div>
                     <hr className="hr-settings"/>
-                    <div className="day">
-                        <h1 className="blueHeader">Wednesday</h1>
+                    <h1 className="blueHeader">Wednesday</h1>
+                    <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Average Sleep:</p>
                             <h1 className="timeHeader">7 hrs 30 min</h1>
@@ -126,8 +154,8 @@ class report extends React.Component{
                         </div>
                     </div>
                     <hr className="hr-settings"/>
-                    <div className="day">
-                        <h1 className="blueHeader">Tuesday</h1>
+                    <h1 className="blueHeader">Tuesday</h1>
+                    <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Average Sleep:</p>
                             <h1 className="timeHeader">7 hrs 30 min</h1>

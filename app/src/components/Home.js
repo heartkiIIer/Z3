@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {SyntheticEvent} from 'react';
 import '../styles/home.css'
 import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
 
 class Home extends React.Component {
+
     render(){
         return (
             <div id="homepage" className="row d-flex align-items-center">
@@ -66,17 +67,17 @@ class Home extends React.Component {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item text-center active">
-                                    <h2>Fun Fact of the Day:</h2>
-                                    <h3>Did you know?</h3>
+                                    <h2 className="whiteText">Fun Fact of the Day:</h2>
+                                    <h3 className="whiteText">Did you know?</h3>
                                 </div>
                                 <div className="carousel-item text-center">
-                                    <h2>Weather Today: Bright and Sunny!</h2>
-                                    <h4 style={{color: "white"}}>We suggest opening the blinds and/or curtains and let
+                                    <h2 className="whiteText">Weather Today: Bright and Sunny!</h2>
+                                    <h4 className="whiteText">We suggest opening the blinds and/or curtains and let
                                         in some sunshine.</h4>
                                 </div>
                                 <div className="carousel-item text-center">
-                                    <h2>Suggestion of the Day:</h2>
-                                    <h3>Exams are coming up. Study hard but don't forget to
+                                    <h2 className="whiteText">Suggestion of the Day:</h2>
+                                    <h3 className="whiteText">Exams are coming up. Study hard but don't forget to
                                         get enough hours of sleep!</h3>
                                 </div>
                             </div>

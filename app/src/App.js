@@ -22,6 +22,7 @@ import BedtimeRoutine from "./components/ItsBedtimeRoutine";
 import MobileBedtimeRoutine from "./components/MobileBedtimeRoutine";
 import MobileMindfulnessModules from "./components/MobileMindfulnessModules";
 import MobileExampleModule from "./components/MobileExampleModule";
+import MobileLanding from "./components/MobileLanding";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
               <Route path="/MobileBedtimeRoutine" component = {MobileBedtimeRoutine}/>
               <Route path="/MobileMindfulnessModules" component = {MobileMindfulnessModules}/>
               <Route path="/MobileExampleModule" component = {MobileExampleModule}/>
+              <Route path="/mobile" component = {MobileLanding}/>
               <Route component = {NotFound}/>
           </Switch>
       </Router>

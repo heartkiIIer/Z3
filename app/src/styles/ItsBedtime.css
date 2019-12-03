@@ -98,7 +98,9 @@ button:focus {
     align-items: center;
     align-content: center;
 }
-
+.progress {
+    margin-left: 80px;
+}
 body {
     font-family: 'Didact Gothic', sans-serif, black;
     /*background-color: #001d5b;*/

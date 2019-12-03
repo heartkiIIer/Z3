@@ -149,7 +149,7 @@ const panes = [
     {
         menuItem: 'Exercise',
         render: () => <Tab.Pane attached={false}>
-            <h5>Rate intensity & duration of exercise.</h5>
+            <h5>Rate intensity & duration of exercise</h5>
             <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
                 Intensity
@@ -188,7 +188,7 @@ const panes = [
     {
         menuItem: 'Stress',
         render: () => <Tab.Pane attached={false}>
-            <h5>Rate stress level for each event.</h5>
+            <h5>Rate stress level for each event</h5>
             <br/>
                 <Typography id="discrete-slider-restrict" gutterBottom>
                     Event 1
@@ -214,10 +214,10 @@ const panes = [
     {
         menuItem: 'Coffee',
         render: () => <Tab.Pane attached={false}>
-            <h5>Log the amount of coffee consumed.</h5>
+            <h5>Log the amount of caffeine consumed</h5>
             <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Cups of Coffee
+                Cups of Caffeinated Beverages
             </Typography>
             <Grid container spacing={3}>
                 <Grid item>
@@ -236,7 +236,7 @@ const panes = [
 
 
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Largest Coffee Cup Size
+                Largest Beverage Size
             </Typography>
             <Grid container spacing={3}>
                 <Grid item>

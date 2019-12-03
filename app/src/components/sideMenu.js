@@ -25,6 +25,9 @@ export default props => {
             <a className="menu-item" href="/bedtimeRoutine">
                 Bedtime Routine
             </a>
+            <a className="menu-item" href="/settings">
+                Settings
+            </a>
             <a className="menu-item" href="/landing">
                 Log Out
             </a>

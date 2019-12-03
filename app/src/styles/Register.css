@@ -20,21 +20,8 @@ form{
 footer{
     background-color: #141629;
 }
-
-.container{
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-}
 .col-md-4{
     text-align: center;
-}
-
-.container .row{
-    height: 100%;
-    width: 100vw;
-    background-size: cover;
-    margin: 0;
 }
 #Register{
     margin-left: auto;

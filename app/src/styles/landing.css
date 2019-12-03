@@ -9,9 +9,6 @@ form{
     align-self: center;
     justify-self: center;
 }
-/*h1, h2, h3 {
-    color: white;
-}*/
 .container{
     margin: 0;
     padding: 0;
@@ -71,16 +68,12 @@ form{
     align-items: center;
 }
 #login{
-    padding: 60px 8%;
     height: 40%;
     width:80%;
 }
 #title{
-    padding-right: 15%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
+    height: 40%;
+    width:80%;
 }
 #Features{
     background-color: #141629;
@@ -140,4 +133,9 @@ form{
     text-transform: uppercase;
     padding: 15px 25px;
     width: 100%;
+}
+.sidePadding{
+    padding-right: 10%;
+    padding-left: 10%;
+    text-shadow: 2px 2px black;
 }

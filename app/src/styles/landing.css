@@ -53,6 +53,10 @@ form{
 }
 .featureTitle{
     margin: 30px;
+    padding-top: 50px;
+    font-size: 40pt;
+    font-weight: bold;
+    text-shadow: 6px 5px #00000080;
 }
 #Heading{
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
@@ -61,7 +65,7 @@ form{
     width: 100vw;
     margin: 0;
 }
-#loginbox{
+.box{
     display: flex;
     justify-content: center;
     align-items: center;

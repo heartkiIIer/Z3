@@ -37,7 +37,7 @@ class LogWake extends React.Component{
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div class = "sleepInner" id="page-wrap">
                     <div class = "time" align='center'>
-                        <h1 className="wakeHeader" align='center'>Are you up?</h1>
+                        <h1 className="wakeHeader" align='center'>Ready to start your day?</h1>
                         <a href="/logSleep"><button className='btn' id="extended" onClick="myFunction()">Good Morning</button></a>
                     </div>
                 </div>

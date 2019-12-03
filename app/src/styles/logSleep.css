@@ -11,17 +11,16 @@
 
 
 .sleepInner{
-    min-height: 100vh;
+    min-height: auto;
     margin-right: auto;
     margin-left: auto;
-    width: 700px;
+    max-width: 700px;
+    width: 100%;
     background: black;
-    padding-left: 75px;
-    padding-right: 75px;
-    padding-top: 75px;
-    padding-bottom: 40px;
+    padding: 75px 75px 40px;
     border-right: 1px solid black;
     border-left: 1px solid black;
+    height: 100%;
 }
 
 .blueHeader {

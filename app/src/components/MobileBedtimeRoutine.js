@@ -26,44 +26,44 @@ class ItsBedtimeRoutine extends React.Component {
 
     componentDidMount() {
         setTimeout(function () {
-            document.getElementById("outer-circle").style.opacity = 100;
+            document.getElementById("outer-circle-mobile").style.opacity = 100;
         }, 250);
     }
 
-     startTimer(duration) {
+    startTimer(duration) {
         var alerted = 0;
         var timer = duration, minutes, seconds;
-            setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
 
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                if(document.getElementById('timer')!=null) {
-                    document.getElementById('timer').innerText = minutes + ":" + seconds;
+            if(document.getElementById('timer')!=null) {
+                document.getElementById('timer').innerText = minutes + ":" + seconds;
+            }
+            if (--timer < 0) {
+                timer = 0;
+                if(alerted == 0){
+                    alert("Your timer has finished!");
+                    alerted++;
                 }
-                if (--timer < 0) {
-                    timer = 0;
-                    if(alerted == 0){
-                        alert("Your timer has finished!");
-                        alerted++;
-                    }
-                    return;
-                }
-            }, 1000);
+                return;
+            }
+        }, 1000);
 
     }
 
     startRoutine(startTimer){
         if(this.state.stage == 0) {
-                document.getElementById("routine-progress").innerHTML = '<div class = "progress"><div className="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="80"></div></div>';
-                document.getElementById("top").innerHTML = '<h1>Meditate</h1>';
-                document.getElementById("bottom").innerHTML = '<h1><span id = "timer">01:00</span> minutes</h1>';
-                document.getElementById("cycle").innerText = 'Next item';
-                var fiveMinutes = 60 * 1;
-                var interval = this.startTimer(fiveMinutes);
-                this.setState({stage : 1});
+            document.getElementById("routine-progress").innerHTML = '<div class = "progress"><div className="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="80"></div></div>';
+            document.getElementById("top").innerHTML = '<h1>Meditate</h1>';
+            document.getElementById("bottom").innerHTML = '<h1><span id = "timer">01:00</span> minutes</h1>';
+            document.getElementById("cycle").innerText = 'Next item';
+            var fiveMinutes = 60 * 1;
+            var interval = this.startTimer(fiveMinutes);
+            this.setState({stage : 1});
         }
         else if(this.state.stage == 1){
             clearInterval(interval);
@@ -94,23 +94,23 @@ class ItsBedtimeRoutine extends React.Component {
 
     render(){
         return (
-            <div>
+            <div class = "mobilePage">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <div class = "content" id="App">
-                    <div class ="middle">
-                        <div className="inner" id="page-wrap">
-                            <div class = "itsBedtime">
+                <div id="App">
+                    <div>
+                        <div className="inner">
+                            <div>
                                 <div id = "items">
-
-                                   <div class = "outer-circle" id = "outer-circle">
-                                       <div className="inner-circle flex-column-nowrap">
-                                           <div id = "top">It's Bedtime</div>
-                                           <div id = "bottom"/>
-                                       </div>
-                                   </div>
+                                    <div class = "outer-circle" id = "outer-circle-mobile">
+                                        <div className="inner-circle flex-column-nowrap">
+                                            <div id = "top">It's Bedtime</div>
+                                            <div id = "bottom"/>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr class = "bedtime-hr"/>
-                                <div id = "routine-progress">
+                                <div class = "flex-column-nowrap">
+                                    <div id = "routine-progress"></div>
                                 </div>
                                 <div className = "center" id = "button">
                                     <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>

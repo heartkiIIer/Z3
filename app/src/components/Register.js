@@ -1,10 +1,37 @@
 import React, { Component } from 'react';
 import '../styles/Register.css'
-import { Navbar, Nav} from 'react-bootstrap';
-import SideBar from "./sideMenu";
+
 
 class Register extends React.Component{
+    constructor(props) {
+        super(props);
+        if(window.innerWidth >= 700){
+            this.state = {
+                padding: '75px 75px 40px',
+            };
+        }
+        else{
+            this.state = {
+                padding: '10% 10% 5%',
+            };
+        }
+    }
+    resize(){
+        window.addEventListener('resize', ()=> {
+            if(window.innerWidth < 700){
+                this.setState({
+                    padding: '10% 10% 5%'
+                });
+            }
+            else {
+                this.setState({
+                    padding: '75px 75px 40px'
+                })
+            }
+        })
+    }
     render() {
+        this.resize();
         return(
             <div id="App">
                 <div className="container" id={"page-wrap"}>

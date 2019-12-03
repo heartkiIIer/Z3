@@ -19,7 +19,9 @@ import ExampleModule from './components/ExampleModule';
 import NotFound from './components/NotFound';
 import logWake from "./components/logWake";
 import BedtimeRoutine from "./components/ItsBedtimeRoutine";
-import MobileLanding from "./components/MobileLanding";
+import MobileBedtimeRoutine from "./components/MobileBedtimeRoutine";
+import MobileMindfulnessModules from "./components/MobileMindfulnessModules";
+import MobileExampleModule from "./components/MobileExampleModule";
 
 function App() {
   return (
@@ -42,7 +44,9 @@ function App() {
               <Route path="/logging" component={Logger}/>
               <Route path="/report" component={report}/>
               <Route path="/ExampleModule" component={ExampleModule}/>
-              <Route path="/mobile" component={MobileLanding}/>
+              <Route path="/MobileBedtimeRoutine" component = {MobileBedtimeRoutine}/>
+              <Route path="/MobileMindfulnessModules" component = {MobileMindfulnessModules}/>
+              <Route path="/MobileExampleModule" component = {MobileExampleModule}/>
               <Route component = {NotFound}/>
           </Switch>
       </Router>

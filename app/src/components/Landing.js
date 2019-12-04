@@ -110,15 +110,17 @@ class Landing extends React.Component {
                                     <h3 className="whiteText">
                                         Open up your mind and learning more about yourself
                                         through our Mindfulness Modules and Personality Test. Learn how
-                                        mindfulness and Personality can effects your sleep! <br/><br/>
+                                        mindfulness and Personality can effect your sleep! <br/><br/>
 
                                     </h3>
                                 </div>
                             </div>
                         </div>
                     </a>
+
                 </div>
             </div>
+
         );
     };
 }

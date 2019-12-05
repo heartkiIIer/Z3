@@ -76,10 +76,6 @@ form{
     height: 40%;
     width:80%;
 }
-#Features{
-    background-color: #141629;
-    height: 75vh;
-}
 #CalSch{
     background: radial-gradient(circle at top left, #1f9ce4 30%, transparent),
                 url("../resources/background_images/calendar.jpg") no-repeat center center fixed;

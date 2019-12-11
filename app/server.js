@@ -22,8 +22,8 @@ app.use(cors());
 //Google Authentication using passport OAuth
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const googleKey = "971607962726-0bssn9siutmje4hbkmm67frrelgierfc.apps.googleusercontent.com";
-const googlSecret = "y_ceUZoPWNOA4px5H3-wB0zN";
+const googleKey = "818297110349-fr3qb03tk1amb79jqhndupc04cp44m3h.apps.googleusercontent.com";
+const googlSecret = "T2WedJYEzKj2EHi8PeO5QBIq";
 let userProfile = {id: -1, name: "", image: ""};
 
 app.use(passport.initialize());;
@@ -32,12 +32,13 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
         clientID: googleKey,
         clientSecret: googlSecret,
-        callbackURL: "http://www.example.com/auth/google/callback"
+        callbackURL: "http://localhost:3000/home/auth/google/callback"
     },
     function(token, tokenSecret, profile, done) {
-        User.findOrCreate({googleId: profile.id}, function(eer, user){
-           return done(eer, user);
-        });
+        // User.findOrCreate({googleId: profile.id}, function(eer, user){
+        //    return done(eer, user);
+        // });
+        return done(null, profile);
     }
 ));
 

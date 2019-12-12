@@ -3,11 +3,68 @@ import '../styles/landing.css'
 import {Link} from 'react-router-dom';
 
 class Landing extends React.Component {
+    constructor(props) {
+        super(props);
+        if (window.innerWidth >= 775){
+            this.state = {
+                display: "",
+                paddingTop50: "",
+                paddingTop75: "",
+                paddingBm75: "",
+                marginTop75: "",
+                className: "container",
+                alignStart: "",
+                height: "75vh"
+
+            };
+        }
+        else {
+            this.state = {
+                display: "none",
+                paddingTop50: "50px",
+                paddingTop75: "75px",
+                paddingBm75: "75px",
+                marginTop75: "75px",
+                className: "",
+                alignStart: "d-flex align-items-start",
+                height: ""
+            };
+        }
+    }
+    resize(){
+        window.addEventListener('resize', ()=> {
+            if(window.innerWidth < 775){
+                this.setState({
+                    display: "none",
+                    paddingTop50: "50px",
+                    paddingTop75: "75px",
+                    paddingBm75: "75px",
+                    marginTop75: "75px",
+                    className: "",
+                    alignStart: "d-flex align-items-start",
+                    height: ""
+                });
+            }
+            else {
+                this.setState({
+                    display: "",
+                    paddingTop50: "",
+                    paddingTop75: "",
+                    paddingBm75: "",
+                    marginTop75: "",
+                    alignStart: "",
+                    className: "container",
+                    height: "75vh"
+                });
+            }
+        })
+    }
     render(){
+        this.resize();
         return (
             <div>
-                <div className="container">
-                    <div id="Heading" className="row featurette">
+                <div className={this.state.className}>
+                    <div style={{paddingBottom: this.state.paddingBm75}} id="Heading" className="row featurette">
                         <div className="box col-md-6 order-md-1">
                             <div id="login">
                                 <h2 className="whiteText">Login</h2>
@@ -20,7 +77,7 @@ class Landing extends React.Component {
                                 </form>
                             </div>
                         </div>
-                        <div className=" box col-md-6 order-md-1">
+                        <div style={{marginTop: this.state.marginTop75, paddingTop: this.state.paddingTop50}} className={"box col-md-6 order-md-1" + this.state.alignStart}>
                             <div id="title">
                                 <h1 className="whiteText">Z<sup>3</sup></h1>
                                 <h3 className="whiteText">Stabilize your sleep and bring sleep back into your control! </h3>
@@ -36,7 +93,7 @@ class Landing extends React.Component {
                         </div>
                     </div>
                     <a name="features">
-                        <div id="Features" className="row">
+                        <div style={{backgroundColor: "#141629", height: this.state.height, paddingTop: this.state.paddingTop75, paddingBottom: this.state.paddingBm75}} className="row">
                             <div className='col-md-4 my-auto'>
                                 <a href={"#calFeature"}>
                                     <span id="calIcon" className="dot">
@@ -45,7 +102,7 @@ class Landing extends React.Component {
                                 </a>
                                 <h2 className="whiteText">Routines</h2>
                             </div>
-                            <div className='col-md-4 my-auto'>
+                            <div style={{paddingTop: this.state.paddingTop50}} className='col-md-4 my-auto'>
                                 <a href={"#exerFeature"}>
                                     <span id="exerIcon" className="dot">
                                         <div className="iconImages exerIconImg"></div>
@@ -53,7 +110,7 @@ class Landing extends React.Component {
                                 </a>
                                 <h2 className="whiteText">Activity Log</h2>
                             </div>
-                            <div className='col-md-4 my-auto'>
+                            <div style={{paddingTop: this.state.paddingTop50}} className='col-md-4 my-auto'>
                                 <a href={"#mindFeature"}>
                                     <span id="mindIcon" className="dot">
                                         <div className="iconImages mindIconImg"></div>
@@ -64,12 +121,12 @@ class Landing extends React.Component {
                         </div>
                     </a>
                     <a name="calFeature">
-                        <div id="CalSch" className="row featurette featureInfo">
+                        <div style={{paddingBottom: this.state.paddingBm75}} id="CalSch" className="row featurette featureInfo">
                             <h1 className="featureTitle whiteText">Calendar and Routines</h1>
                             <div className="col-md-6">
-                                <div className="image-wrapper float-left pr-3 iconImages calIconImg icon"></div>
+                                <div style={{display: this.state.display}} className="image-wrapper float-left pr-3 iconImages calIconImg icon"></div>
                                 <div className="single-post-content-wrapper p-3">
-                                    <h3 className="whiteText">
+                                    <h3 className="whiteText sidePadding">
                                         Keep track of all your calendar events and plan ahead
                                         so no more all-nighters. Let your body sleep! Set a nightly
                                         bedtime routine and make it a habit! <br/><br/>
@@ -84,12 +141,12 @@ class Landing extends React.Component {
                     </a>
 
                     <a name="exerFeature">
-                        <div id="Exercise" className="row featurette featureInfo text-right">
+                        <div style={{paddingBottom: this.state.paddingBm75}} id="Exercise" className="row featurette featureInfo text-right">
                             <h1 className="featureTitle whiteText">Exercise and Activity Trackers</h1>
                             <div className="col-md-6 align-self-end">
-                                <div className="image-wrapper float-right pr-3 iconImages exerIconImg icon"></div>
+                                <div style={{display: this.state.display}} className="image-wrapper float-right pr-3 iconImages exerIconImg icon"></div>
                                 <div className="single-post-content-wrapper p-3">
-                                    <h3 className="whiteText">
+                                    <h3 className="whiteText sidePadding">
                                         Get walking or do some exercise! Get fit and improve
                                         your sleep. That is hitting two birds in one stone! <br/><br/>
                                         Z<sup>3</sup> allows you to sync it up to your fitness tracker to track
@@ -102,24 +159,26 @@ class Landing extends React.Component {
                     </a>
 
                     <a name="mindFeature">
-                        <div id="MindPerson" className="row featurette featureInfo">
+                        <div style={{paddingBottom: this.state.paddingBm75}} id="MindPerson" className="row featurette featureInfo">
                             <h1 className="featureTitle whiteText">Mindfulness and Personality</h1>
                             <div className="col-md-6">
-                                <div className="image-wrapper float-left pr-3 iconImages mindIconImg icon"></div>
+                                <div style={{display: this.state.display}} className="image-wrapper float-left pr-3 iconImages mindIconImg icon"></div>
                                 <div className="single-post-content-wrapper p-3">
-                                    <h3 className="whiteText">
+                                    <h3 className="whiteText sidePadding">
                                         Open up your mind and learning more about yourself
                                         through our Mindfulness Modules and Personality Test. Learn how
-                                        mindfulness and Personality can effects your sleep! <br/><br/>
+                                        mindfulness and Personality can effect your sleep! <br/><br/>
 
                                     </h3>
                                 </div>
                             </div>
                         </div>
                     </a>
+
                 </div>
             </div>
+
         );
-    };
+    }
 }
 export default Landing;

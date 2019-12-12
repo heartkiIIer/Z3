@@ -7,12 +7,12 @@ class Register extends React.Component{
         super(props);
         if(window.innerWidth >= 700){
             this.state = {
-                padding: '75px 75px 40px',
+                width: "50%",
             };
         }
         else{
             this.state = {
-                padding: '10% 10% 5%',
+                width: "80%",
             };
         }
     }
@@ -20,23 +20,29 @@ class Register extends React.Component{
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    padding: '10% 10% 5%'
+                    width: "80%"
                 });
             }
             else {
                 this.setState({
-                    padding: '75px 75px 40px'
+                    width: "50%"
                 })
             }
         })
     }
     render() {
         this.resize();
+        const styles = {
+            containerStyle:{
+                width: this.state.width,
+            }
+        };
+        const { containerStyle } = styles;
         return(
             <div id="App">
                 <div className="container" id={"page-wrap"}>
                     <div id="Heading" className="row featurette">
-                        <div id="Register">
+                        <div style={containerStyle} id="Register">
                             <h2>Join Us</h2>
                             <form>
                                 <input className="inp" type="text" name="first-name" placeholder="First Name"/>

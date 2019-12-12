@@ -27,16 +27,17 @@ class UserSettings extends React.Component {
                     <h3 class = "blueHeader"> Change password </h3>
                     <div class = "flex-row-nowrap">
                         <p class = "blueHeader width80"> Enter old password: </p>
-                        <input className='editMe' placeholder='placeholder'/>
+                        <input className='editMe' placeholder='old password'/>
                     </div>
                     <div className="flex-row-nowrap">
                         <p className="blueHeader width80"> Enter new password: </p>
-                        <input className='editMe' placeholder='placeholder'/>
+                        <input className='editMe' placeholder='new password'/>
                     </div>
                     <div className="flex-row-nowrap">
                         <p className="blueHeader width80"> Re-enter new password: </p>
-                        <input className='editMe' placeholder='placeholder'/>
+                        <input className='editMe' placeholder='new password'/>
                     </div>
+                    <br/>
                     <button className='btn' id = "extended">
                         Confirm
                     </button>
@@ -44,16 +45,17 @@ class UserSettings extends React.Component {
                     <h3 className="blueHeader"> Change email </h3>
                     <div className="flex-row-nowrap">
                         <p className="blueHeader width80"> Enter password: </p>
-                        <input className='editMe' placeholder='placeholder'/>
+                        <input className='editMe' placeholder='password'/>
                     </div>
                     <div className="flex-row-nowrap">
                         <p className="blueHeader width80"> Enter new email: </p>
-                        <input className='editMe' placeholder='placeholder'/>
+                        <input className='editMe' placeholder='example@gmail.com'/>
                     </div>
                     <div className="flex-row-nowrap">
                         <p className="blueHeader width80"> Re-enter new email: </p>
-                        <input className='editMe' placeholder='placeholder'/>
+                        <input className='editMe' placeholder='example@gmail.com'/>
                     </div>
+                    <br/>
                     <button className='btn' id="extended">
                         Confirm
                     </button>
@@ -64,7 +66,7 @@ class UserSettings extends React.Component {
                             Remove Google Calendar Access
                         </button>
                         <button className='btn' id = "extended">
-                            Remove Fitbit Access
+                            Remove FitBit Access
                         </button>
                     </div>
 

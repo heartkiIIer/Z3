@@ -31,7 +31,7 @@ class Home extends React.Component {
                             <Link to="/logging">
                             <HomeIcon spanID={"logIcon_h"}
                                       iconClass={"iconImages_h logIconImg_h"}
-                                      iconInfo={"Log Your Exercise, Caffeine, and Stress Level"}/>
+                                      iconInfo={"Log Your Exercise, Caffeine, & Stress"}/>
                             </Link>
                         </li>
                         <li>

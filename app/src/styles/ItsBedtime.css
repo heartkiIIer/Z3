@@ -9,6 +9,9 @@
     padding-top: 100px;
 }
 
+.width80 {
+    padding-top: 9px;
+}
 .inner {
     min-height: auto;
     margin-right: auto;
@@ -56,31 +59,31 @@ button:focus {
     outline: none;
 }
 
-.inner-circle {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    font-size: 40px;
-    color: #337ab7;
-    line-height: 300px;
-    text-align: center;
-    background: white;
-    margin-left: 25px;
-    position: relative;
-}
+/*.inner-circle {*/
+/*    width: 300px;*/
+/*    height: 300px;*/
+/*    border-radius: 50%;*/
+/*    font-size: 40px;*/
+/*    color: #337ab7;*/
+/*    line-height: 300px;*/
+/*    text-align: center;*/
+/*    background: white;*/
+/*    margin-left: 25px;*/
+/*    position: relative;*/
+/*}*/
 
-.outer-circle {
-    max-width: 350px;
-    max-height: 350px;
-    border-radius: 50%;
-    background: #001d5b;
-    background: linear-gradient(#1f9ce490 0%,  #7339ab90 100%);
-    transition: 2s;
-    -webkit-transition: 2s;
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-}
+/*.outer-circle {*/
+/*    max-width: 350px;*/
+/*    max-height: 350px;*/
+/*    border-radius: 50%;*/
+/*    background: #001d5b;*/
+/*    background: linear-gradient(#1f9ce490 0%,  #7339ab90 100%);*/
+/*    transition: 2s;*/
+/*    -webkit-transition: 2s;*/
+/*    margin-bottom: 40px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
 
 #outer-circle-mobile {
      opacity: 0%;
@@ -98,7 +101,9 @@ button:focus {
     align-items: center;
     align-content: center;
 }
-
+.progress {
+    margin-left: 80px;
+}
 body {
     font-family: 'Didact Gothic', sans-serif, black;
     /*background-color: #001d5b;*/
@@ -200,6 +205,7 @@ input:focus{
 }
 
 .flex-row-nowrap {
+
     display: flex;
     flex-flow: row nowrap;
 }
@@ -242,6 +248,11 @@ input:focus{
 .tile:hover {
     cursor: pointer;
     background: linear-gradient(#1f9ce4 0%,  #7339ab 100%);
+}
+
+.bm-burger-button {
+    left: 20px !important;
+    top: 20px !important;
 }
 
 .flex-row-wrap {
@@ -304,10 +315,10 @@ input:focus{
     height: 200px;
 }
 
-#routine-progress{
-    height: 20px;
-    width: 325px;
-}
+/*#routine-progress{*/
+/*    height: 20px;*/
+/*    width: 325px;*/
+/*}*/
 
 .center {
     display: flex;
@@ -361,3 +372,4 @@ input:focus{
     -webkit-flex-flow: row wrap;
     justify-content: space-around;
 }
+

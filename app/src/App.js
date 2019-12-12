@@ -1,11 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import ItsBedtime from './components/ItsBedtime.js';
 import Landing from './components/Landing.js';
 import Home from './components/Home.js';
 import Register from './components/Register.js'
-import Calendar from './components/Calendar'
-import Logger from './components/loggers'
+import Logging from './components/logging'
 import UserSettings from "./components/UserSettings";
 import logSleep from './components/logSleep';
 import Chronotype from './components/Personality/chronotype';
@@ -32,7 +30,6 @@ function App() {
               <Route path ="/bedtimeRoutine" component={BedtimeRoutine}/>
               <Route path ="/home" component={Home}/>
               <Route path ="/register" component={Register}/>
-              <Route path ="/calendarsign" component={Calendar}/>
               <Route path="/settings" component={UserSettings}/>
               <Route path="/logSleep" component={logSleep}/>
               <Route path="/logWake" component={logWake}/>
@@ -42,7 +39,7 @@ function App() {
               <Route path="/personalityIntro" component={PersonalityIntro}/>
               <Route path="/personalityResults" component={PersonalityResults}/>
               <Route path="/mindfulnessModules" component={MindfulnessModules}/>
-              <Route path="/logging" component={Logger}/>
+              <Route path="/logging" component={Logging}/>
               <Route path="/report" component={report}/>
               <Route path="/ExampleModule" component={ExampleModule}/>
               <Route path="/MobileBedtimeRoutine" component = {MobileBedtimeRoutine}/>

@@ -38,7 +38,12 @@ class LogWake extends React.Component{
                 <div class = "sleepInner" id="page-wrap">
                     <div class = "time" align='center'>
                         <h1 className="wakeHeader" align='center'>Ready to start your day?</h1>
-                        <a href="/logSleep"><button className='btn' id="extended" onClick="myFunction()">Good Morning</button></a>
+                        <a href="/logSleep"><button className='btn' id="extended2" onClick="myFunction()">I Just Woke Up</button></a>
+                        <form>
+                            <input className="inp2" type="time" name="usr_time" placeholder="Hour"/>
+                            <br/>
+                            <a href="/logSleep"><button className='btn' onClick="myFunction()">I Woke Up At This Time</button></a>
+                        </form>
                     </div>
                 </div>
             </div>

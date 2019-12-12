@@ -5,10 +5,20 @@
 }
 
 .time{
-    padding-top: 100px;
+    padding-top: 40px;
     margin-top: 25%;
 }
 
+.inp2{
+    background: #ffffff;
+    border-radius: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 15px 25px;
+    max-width: 170px;
+}
 
 .sleepInner{
     min-height: auto;
@@ -17,7 +27,7 @@
     max-width: 700px;
     width: 100%;
     background: black;
-    padding: 75px 75px 40px;
+    padding: 25px 75px 40px;
     border-right: 1px solid black;
     border-left: 1px solid black;
     height: 100%;
@@ -159,10 +169,8 @@ body {
     margin-bottom: 30px;
 }
 
-#extended {
-    margin-top: 0px;
+#extended2{
     margin-bottom: 40px;
-    margin-right: 40px;
 }
 
 .flex-row-nowrap {

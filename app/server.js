@@ -9,6 +9,7 @@ const compression = require('compression');
 const cors = require('cors');
 
 app.use(express.static("src/"));
+app.use(express.static("public/"));
 app.use(session({ secret:'google secret', resave:false, saveUninitialized:true}));
 
 app.use(bodyParser.json());

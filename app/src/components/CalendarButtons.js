@@ -122,7 +122,7 @@ export default class DoubleButton extends React.Component {
     render(): ReactNode {
         return (
             <div>
-                <button className='btn' onClick={(e) => this.handleItemClick(e, 'sign-in')}>
+                <button className='btn' id = "extended" onClick={(e) => this.handleItemClick(e, 'sign-in')}>
                     Sync with Google Calendar
                 </button>
                 {/*<ul >*/}

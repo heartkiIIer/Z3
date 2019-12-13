@@ -196,11 +196,11 @@ input:focus{
 }
 
 .hr-settings {
-    width: 100%;
+    max-width: 350px;
     margin-left: 0px;
     height: 1px;
     background-color: #e4e4e4;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #extended {

@@ -34,6 +34,11 @@
     color: #337ab7;
 }
 
+.blueHeaderMobile {
+    color: #337ab7;
+    padding-top: 30px;
+}
+
 .timeHeader {
     color: #625ad8;
 }

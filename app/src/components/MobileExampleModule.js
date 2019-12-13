@@ -18,7 +18,7 @@ class MobileExampleModule extends React.Component {
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="middle">
                 <div className="inner mindfulnessMobile" id="page-wrap">
-                    <h1 class = "blueHeader"> Mindful Eating</h1>
+                    <h1 class = "blueHeaderMobile"> Mindful Eating</h1>
                     <hr class = "hr-settings"/>
                     <h2>Subtopic 1</h2>
                     <p>I am so used to being the bad boy. I am so used to fighting Corporate that I forget that I am Corporate. Upper management, Jan made me breakfast this morning. Well, she bought the milk... It's soy! Ah, that baby is just discovering the whole wide world right now.</p>

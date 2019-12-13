@@ -8,7 +8,7 @@ import AddButton from "../resources/icons/plus-circle-solid.svg";
 import EmptyCheckbox from "../resources/icons/square-regular.svg";
 import CheckedBox from "../resources/icons/check-square-solid.svg";
 import SideBar from "./sideMenu";
-
+import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
 
 /**
  * @author Eliazbeth Del Monaco
@@ -21,8 +21,31 @@ import SideBar from "./sideMenu";
 class ItsBedtimeRoutine extends React.Component {
     constructor(props){
         super(props)
-        this.state = { isEditable: false, stage: 0 };
+        var mobile;
+        if(window.innerWidth >= 700){
+            mobile = false;
+        }
+        else{
+            mobile = true;
+        }
+        this.state = { isEditable: false, stage: 0, isMobile: mobile};
     }
+
+    resize(){
+        window.addEventListener('resize', ()=> {
+            if(window.innerWidth < 700){
+                this.setState({
+                    mobile: true
+                });
+            }
+            else {
+                this.setState({
+                    mobile: false
+                })
+            }
+        })
+    }
+
 
     // componentDidMount() {
     //     setTimeout(function () {
@@ -110,76 +133,84 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     render(){
-        return (
-            <div>
-                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <div class = "content" id="App">
-                    <div class ="middle">
-                        <div className="inner" id="page-wrap">
-                            <div class = "itsBedtime">
-                                <div id = "items">
+        this.resize();
+        if(this.state.isMobile){
+            return (
+                <MobileBedtimeRoutine/>
+            );
+        }
+        else{
+            return (
+                <div>
+                    <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                    <div class = "content" id="App">
+                        <div class ="middle">
+                            <div className="inner" id="page-wrap">
+                                <div class = "itsBedtime">
+                                    <div id = "items">
 
-                                   {/*<div class = "outer-circle" id = "outer-circle">*/}
-                                   {/*    <div className="inner-circle flex-column-nowrap">*/}
-                                   {/*        <div id = "top">It's Bedtime</div>*/}
-                                   {/*        <div id = "bottom"/>*/}
-                                   {/*    </div>*/}
-                                   {/*</div>*/}
-                                    <div id = "itsbedtime" style={{  width: "390px" }}>
-                                        <CircularProgressbar value={100} text={`It's bedtime`} styles={buildStyles({
-                                            textSize: 10
-                                        })}></CircularProgressbar>
+                                       {/*<div class = "outer-circle" id = "outer-circle">*/}
+                                       {/*    <div className="inner-circle flex-column-nowrap">*/}
+                                       {/*        <div id = "top">It's Bedtime</div>*/}
+                                       {/*        <div id = "bottom"/>*/}
+                                       {/*    </div>*/}
+                                       {/*</div>*/}
+                                        <div id = "itsbedtime" style={{  width: "300px" }}>
+                                            <CircularProgressbar value={100} text={`It's Bedtime`} styles={buildStyles({
+                                                textSize: 10
+                                            })}></CircularProgressbar>
+                                        </div>
+                                        <div id = "meditate" style={{  display: "none", width: "390px" }}>
+                                            <CircularProgressbarWithChildren value={0} styles={buildStyles({
+                                                pathColor: "mediumpurple",
+                                                textSize: 10
+                                            })}>
+                                                <div style={{ marginTop: -5 }}>
+                                                        <h1>Meditate</h1>
+                                                </div>
+                                                <div style={{ marginTop: -5 }}>
+                                                        <h1><span id = "timer">01:00</span> minutes</h1>
+                                                </div>
+                                            </CircularProgressbarWithChildren>
+                                        </div>
+                                        <div id = "brushyourteeth" style={{  display: "none", width: "390px" }}>
+                                            <CircularProgressbar value={25} text={`Brush your teeth`} styles={buildStyles({
+                                                pathColor: "mediumpurple",
+                                                textSize: 10
+                                            })}></CircularProgressbar>
+                                        </div>
+                                        <div id = "washyourface" style={{ display: "none", width: "390px" }}>
+                                            <CircularProgressbar value={50} text={`Wash your face`} styles={buildStyles({
+                                                pathColor: "mediumpurple",
+                                                textSize: 10
+                                            })}></CircularProgressbar>
+                                        </div>
+                                        <div id = "turnoffyourcomputer" style={{ display: "none", width: "390px" }}>
+                                            <CircularProgressbar value={75} text={`Turn off laptop`} styles={buildStyles({
+                                                pathColor: "mediumpurple",
+                                                textSize: 10
+                                            })}></CircularProgressbar>
+                                        </div>
+                                        <div id = "youredone" style={{ display: "none", width: "390px" }}>
+                                            <CircularProgressbar value={100} text={`You're done!`} styles={buildStyles({
+                                                pathColor: "mediumpurple",
+                                                textSize: 10
+                                            })}></CircularProgressbar>
+                                        </div>
                                     </div>
-                                    <div id = "meditate" style={{  display: "none", width: "390px" }}>
-                                        <CircularProgressbarWithChildren value={0} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}>
-                                            <div style={{ marginTop: -5 }}>
-                                                    <h1>Meditate</h1>
-                                            </div>
-                                            <div style={{ marginTop: -5 }}>
-                                                    <h1><span id = "timer">01:00</span> minutes</h1>
-                                            </div>
-                                        </CircularProgressbarWithChildren>
+                                    <hr class = "bedtime-hr"/>
+                                    {/*<div id = "routine-progress">*/}
+                                    {/*</div>*/}
+                                    <div className = "center" id = "button">
+                                        <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                                     </div>
-                                    <div id = "brushyourteeth" style={{  display: "none", width: "390px" }}>
-                                        <CircularProgressbar value={25} text={`Brush your teeth`} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                    <div id = "washyourface" style={{ display: "none", width: "390px" }}>
-                                        <CircularProgressbar value={50} text={`Wash your face`} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                    <div id = "turnoffyourcomputer" style={{ display: "none", width: "390px" }}>
-                                        <CircularProgressbar value={75} text={`Turn off laptop`} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                    <div id = "youredone" style={{ display: "none", width: "390px" }}>
-                                        <CircularProgressbar value={100} text={`You're done!`} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                </div>
-                                <hr class = "bedtime-hr"/>
-                                {/*<div id = "routine-progress">*/}
-                                {/*</div>*/}
-                                <div className = "center" id = "button">
-                                    <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
     };
 }
 export default ItsBedtimeRoutine;

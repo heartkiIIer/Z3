@@ -11,7 +11,6 @@ import MobileTile from "./MobileTile";
  * */
 
 class MindfulnessModules extends React.Component {
-
     render(){
         return (
             <div class = "content modules mobilePage " id="App">

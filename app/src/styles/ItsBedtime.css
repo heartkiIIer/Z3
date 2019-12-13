@@ -305,7 +305,7 @@ input:focus{
 }
 
 .goalProg{
-    max-width: 250px;
+    width: 250px;
     align: center;
     float: left;
 }

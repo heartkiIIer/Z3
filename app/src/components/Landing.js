@@ -72,8 +72,9 @@ class Landing extends React.Component {
                                     <input className="inp" type="text" name="username" placeholder="Username or Email"/>
                                     <input className="inp" type="password" name="password" placeholder="Password"/>
                                     <Link to="/home">
-                                        <button className="btn" id="loginbtn">Login</button>
+                                        <button className="btn" id="loginbtn">Login</button><br/>
                                     </Link>
+                                    <a href="http://localhost:5000/auth/google" className="btn">Login with Google</a>
                                 </form>
                             </div>
                         </div>

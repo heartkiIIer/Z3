@@ -27,7 +27,7 @@ const googleKey = "818297110349-fr3qb03tk1amb79jqhndupc04cp44m3h.apps.googleuser
 const googlSecret = "T2WedJYEzKj2EHi8PeO5QBIq";
 let userProfile = {id: -1, name: "", image: ""};
 
-app.use(passport.initialize());;
+app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new GoogleStrategy({
@@ -44,13 +44,20 @@ passport.use(new GoogleStrategy({
 ));
 
 app.get('/auth/google',
-    passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
+    passport.authenticate('google', {
+        scope: ['https://www.googleapis.com/auth/plus.login']
+    })
+);
 
 app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
-        res.redirect('/');
-    });
+        res.redirect('http://localhost:3000');
+});
+app.get('/logout', function(req, res){
+    req.session.destroy();
+    res.redirect('http://localhost:3000');
+});
 
 passport.serializeUser(function(user, done) {
     userProfile = extractProfile(user);
@@ -81,4 +88,12 @@ function extractProfile(profile) {
     };
 }
 
-app.listen(process.env.PORT || 3000);
+app.get('/user', (req, res) => {
+    res.send({
+        username: userProfile.name,
+        userId: userProfile.id,
+        image: userProfile.image
+    });
+});
+
+app.listen(process.env.PORT || 5000);

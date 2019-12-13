@@ -4,13 +4,15 @@ import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
 
 class Home extends React.Component {
-
     render(){
         return (
             <div id="homepage" className="row d-flex align-items-center">
-                <Link to="/settings" id="setting_link">
-                    <div id="setting_icon" className="float-right"></div>
-                </Link>
+                <div id="setting_link">
+                    <a href="http://localhost:5000/logout">Sign out</a>
+                    <Link to="/settings">
+                        <div id="setting_icon" className="float-right"></div>
+                    </Link>
+                </div>
                 <div className="col-lg-6">
                     <ul className="circle">
                         <li>

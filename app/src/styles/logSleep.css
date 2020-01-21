@@ -9,6 +9,10 @@
     margin-top: 25%;
 }
 
+.sideform{
+    float: right;
+}
+
 .inp2{
     background: #ffffff;
     border-radius: 15px;
@@ -47,6 +51,18 @@
     color: white;
     font-size: 75px;
     padding-bottom: 40px;
+}
+
+.wakeHeaderTwo {
+     color: white;
+     font-size: 30px;
+     padding-bottom: 10px;
+ }
+
+.wakeHeaderThree {
+    color: white;
+    font-size: 25px;
+    padding-bottom: 10px;
 }
 
 .checkbox {

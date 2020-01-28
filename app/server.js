@@ -25,7 +25,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const googleKey = "818297110349-fr3qb03tk1amb79jqhndupc04cp44m3h.apps.googleusercontent.com";
 const googlSecret = "T2WedJYEzKj2EHi8PeO5QBIq";
-let userProfile = {id: -1, name: "Invalid User", image: ""}; 
+let userProfile = {id: -1, name: "Invalid User", image: ""};
 
 app.use(passport.initialize());
 app.use(passport.session());

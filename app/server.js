@@ -25,7 +25,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const googleKey = "818297110349-fr3qb03tk1amb79jqhndupc04cp44m3h.apps.googleusercontent.com";
 const googlSecret = "T2WedJYEzKj2EHi8PeO5QBIq";
-let userProfile = {id: -1, name: "", image: ""};
+let userProfile = {id: -1, name: "Invalid User", image: ""}; 
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -33,30 +33,33 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
         clientID: googleKey,
         clientSecret: googlSecret,
-        callbackURL: "http://localhost:3000/home/auth/google/callback"
+        callbackURL: "http://localhost:5000/auth/google/callback"
     },
     function(token, tokenSecret, profile, done) {
-        // User.findOrCreate({googleId: profile.id}, function(eer, user){
-        //    return done(eer, user);
-        // });
         return done(null, profile);
     }
 ));
 
+//request for google authentication
 app.get('/auth/google',
     passport.authenticate('google', {
-        scope: ['https://www.googleapis.com/auth/plus.login']
+        scope: ['profile']
     })
 );
 
+//google authentication request received, check authentication
 app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
+    //google authentication successful, redirect to homepage
     function(req, res) {
-        res.redirect('http://localhost:3000');
+        res.redirect('http://localhost:3006/home');
 });
+
+//user logout
 app.get('/logout', function(req, res){
     req.session.destroy();
-    res.redirect('http://localhost:3000');
+    userProfile = {id: -1, name: "Invalid User", image: ""}; // set user profile to default
+    res.redirect('http://localhost:3006'); // redirect back to landing page
 });
 
 passport.serializeUser(function(user, done) {
@@ -69,18 +72,21 @@ passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
+//extract user's name, profile image and user id from google
 function extractProfile(profile) {
-    if(!profile){
+    if(!profile){ // no profile, set to invalid user
         return {
             id: -1,
-            name: "0",
+            name: "Invalid User",
             image: ""
         }
     }
+    // extract profile image
     let imageUrl = '';
     if (profile.photos && profile.photos.length) {
         imageUrl = profile.photos[0].value;
     }
+
     return {
         id: profile.id,
         name: profile.displayName,
@@ -88,10 +94,11 @@ function extractProfile(profile) {
     };
 }
 
+// retrieve user's profile information: id, name, image
 app.get('/user', (req, res) => {
     res.send({
-        username: userProfile.name,
-        userId: userProfile.id,
+        name: userProfile.name,
+        id: userProfile.id,
         image: userProfile.image
     });
 });

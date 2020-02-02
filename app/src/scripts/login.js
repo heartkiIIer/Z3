@@ -42,7 +42,7 @@ var z3_firebase = require('./firebase.js');
                     name: profile.displayName,
                     image: profile.photoURL});
 
-                fetch('/logUser', {
+                fetch('http://localhost:5000/logUser', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: data

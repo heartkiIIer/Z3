@@ -123,7 +123,7 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Account Access</h1>
                     <hr className="hr-settings"/>
                     <div class = "flex-row-nowrap">
-                        <CalendarButtons />
+                        <CalendarButtons/>
                         <button className='btn' id = "extended">
                             Remove FitBit Access
                         </button>

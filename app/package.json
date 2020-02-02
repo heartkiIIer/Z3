@@ -29,9 +29,10 @@
     "react-native-elements": "^1.2.7",
     "react-native-percentage-circle": "^1.0.7",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "^3.3.0",
     "react-time-picker": "^3.7.2",
-    "reactjs-percentage-circle": "^1.0.0"
+    "reactjs-percentage-circle": "^1.0.0",
+    "react-native": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -59,6 +60,5 @@
     "@material-ui/icons": "^4.5.1",
     "react-bootstrap-sidebar": "0.0.1",
     "semantic-ui-react": "^0.88.1"
-  },
-  "proxy": "http://localhost:5000/"
+  }
 }

@@ -2,15 +2,17 @@ import React, {SyntheticEvent} from 'react';
 import '../styles/home.css'
 import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
+import logout from '../scripts/login'
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             name: "Invalid User",
-            image: "" };
+            image: ""
+        };
     }
-    //get User profile information
+    // //get User profile information
     getUser() {
         fetch('http://localhost:5000/user')
             .then(response => response.json())
@@ -29,7 +31,7 @@ class Home extends React.Component {
                         <h3 style={{color: "#7339AB", marginLeft: "10px"}}>Welcome {this.state.name}</h3>
                     </div>
                     <div>
-                        <a href="http://localhost:5000/logout">Sign out</a>
+                        <button id="logout_icon" onClick={logout}></button>
                         <Link to="/settings">
                             <div id="setting_icon" className="float-right"></div>
                         </Link>

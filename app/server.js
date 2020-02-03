@@ -38,8 +38,6 @@ app.post('/logUser', cors(corsOptions), (req, res) => {
 
 
     res.writeHead( 200, "OK", {'Content-Type': 'text/plain' })
-    return res.json();
-
     res.end()
 });
 

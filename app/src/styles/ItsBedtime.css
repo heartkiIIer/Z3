@@ -176,6 +176,10 @@ input:focus{
     outline: none;
 }
 
+.delete{
+    margin-right: 0px;
+}
+
 .settings {
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
     url("../resources/background_images/beach.jpg") no-repeat center center fixed;
@@ -378,3 +382,6 @@ input:focus{
     justify-content: space-around;
 }
 
+.width300 {
+    max-width: 300px;
+}

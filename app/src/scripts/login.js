@@ -19,7 +19,7 @@ var z3_firebase = require('./firebase.js');
         },
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
         signInFlow: 'popup',
-        signInSuccessUrl: 'http://localhost:3006/home',
+        signInSuccessUrl: 'sleepwebapp.wpi.edu/home',
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
             z3_firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -42,7 +42,7 @@ var z3_firebase = require('./firebase.js');
                     name: profile.displayName,
                     image: profile.photoURL});
 
-                fetch('http://localhost:5000/logUser', {
+                fetch('sleepwebapp.wpi.edu:5000/logUser', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: data
@@ -68,5 +68,5 @@ export default function logout(e){
         console.error('Sign Out Error', error);
     });
 
-    window.open("http://localhost:5000/logout", "_self");
+    window.open("sleep.webapp.wpi.edu:5000/logout", "_self");
 }

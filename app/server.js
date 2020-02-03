@@ -22,7 +22,7 @@ let userProfile = {id: -1, name: "Invalid User", image: ""};
 //user logout
 app.get('/logout', function(req, res){
     userProfile = {id: -1, name: "Invalid User", image: ""}; // set user profile to default
-    res.redirect('http://localhost:3000'); // redirect back to landing page
+    res.redirect('sleepwebapp.wpi.edu:3000'); // redirect back to landing page
 });
 
 app.post('/logUser', (req, res) => {
@@ -48,3 +48,4 @@ app.get('/user', (req, res) => {
 });
 
 app.listen(process.env.PORT || 5000);
+console.log("Listening on port 5000");

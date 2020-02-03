@@ -19,7 +19,7 @@ var z3_firebase = require('./firebase.js');
         },
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
         signInFlow: 'popup',
-        signInSuccessUrl: 'sleepwebapp.wpi.edu/home',
+        signInSuccessUrl: '/home',
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
             z3_firebase.auth.GoogleAuthProvider.PROVIDER_ID,

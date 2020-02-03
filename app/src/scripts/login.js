@@ -42,7 +42,7 @@ var z3_firebase = require('./firebase.js');
                     name: profile.displayName,
                     image: profile.photoURL});
 
-                fetch('sleepwebapp.wpi.edu:5000/logUser', {
+                fetch('http://sleepwebapp.wpi.edu:5000/logUser', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: data

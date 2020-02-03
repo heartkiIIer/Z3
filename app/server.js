@@ -34,7 +34,10 @@ app.post('/logUser', (req, res) => {
         image: data.image
     };
 
+
     res.writeHead( 200, "OK", {'Content-Type': 'text/plain' })
+    return res.json();
+
     res.end()
 });
 

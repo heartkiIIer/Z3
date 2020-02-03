@@ -6,8 +6,6 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const compression = require('compression');
 
-const cors = require('cors');
-
 app.use(express.static("src/"));
 app.use(express.static("public/"));
 app.use(bodyParser.json());

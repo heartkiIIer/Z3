@@ -14,7 +14,7 @@ class Home extends React.Component {
     }
     // //get User profile information
     getUser() {
-        fetch('sleepwebapp.wpi.edu:5000/user')
+        fetch('http://sleepwebapp.wpi.edu:5000/user')
             .then(response => response.json())
             .then(data => this.setState({
                 name: data.name,

@@ -68,5 +68,5 @@ export default function logout(e){
         console.error('Sign Out Error', error);
     });
 
-    window.open("sleep.webapp.wpi.edu:5000/logout", "_self");
+    window.open("http://sleep.webapp.wpi.edu:5000/logout", "_self");
 }

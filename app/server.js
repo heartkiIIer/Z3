@@ -15,7 +15,7 @@ app.use(compression());
 app.use(cors());
 
 var corsOptions = {
-    origin : '^(https?://(?:.+\\.)?sleepwebapp.wpi\\.edu(?::\\d{1,5})?)$',
+    origin : '^(https?://(?:.+\\.)?wpi\\.edu(?::\\d{1,5})?)$',
     optionsSuccessStatus : 200
 }
 

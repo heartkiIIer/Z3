@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require(cors);
 
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
@@ -9,23 +10,26 @@ const cors = require('cors');
 
 app.use(express.static("src/"));
 app.use(express.static("public/"));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(compression());
-
 app.use(cors());
+
+var corsOptions = {
+    origin : 'sleepwebapp.wpi.edu',
+    optionsSuccessStatus : 200
+}
 
 let userProfile = {id: -1, name: "Invalid User", image: ""};
 
 //user logout
-app.get('/logout', function(req, res){
+app.get('/logout', cors(corsOptions), function(req, res){
     userProfile = {id: -1, name: "Invalid User", image: ""}; // set user profile to default
     res.redirect('sleepwebapp.wpi.edu:3000'); // redirect back to landing page
 });
 
-app.post('/logUser', (req, res) => {
+app.post('/logUser', cors(corsOptions), (req, res) => {
     let data = req.body;
 
     userProfile = {
@@ -42,7 +46,7 @@ app.post('/logUser', (req, res) => {
 });
 
 // retrieve user's profile information: id, name, image
-app.get('/user', (req, res) => {
+app.get('/user', cors(corsOptions), (req, res) => {
     res.send({
         name: userProfile.name,
         id: userProfile.id,

@@ -13,7 +13,7 @@ const getUsers = (request, res) => {
         if (error) {
             throw error
         }
-        res.status(200).json(results.rows)
+        res.status(200).send(json(results.rows));
     });
 }
 

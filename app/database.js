@@ -19,20 +19,23 @@ function getUsers(req, res) {
     });
 }
 
-//Get a single user
-function getUser(req, res, id) {
+//Get a single user/add them
+function getUser(req, res, id, first) {
     pool.query('SELECT * FROM users WHERE google_id='+id+';', (error, results) => {
         if (error) {
             throw error
+        }
+        if(results.rows == undefined){
+            addUser(req, res, id, first);
         }
         res.send(results.rows);
     });
 }
 //Add a new user
-function addUser(req, res, id, first, last) {
+function addUser(req, res, id, first) {
 
     //first = "\'" + first + "\'";
-    console.log("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", " + last+");");
+    console.log("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", );");
     pool.query("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", NULL"+");" , (error, results) => {
         if (error) {
             throw error

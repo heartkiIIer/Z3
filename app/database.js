@@ -19,6 +19,15 @@ function getUsers(req, res) {
     });
 }
 
+//Get a single user
+function getUser(req, res, id) {
+    pool.query('SELECT * FROM users WHERE user_id='+id+';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.send(results.rows);
+    });
+}
 //Add a new user
 function addUser(req, res, id, first, last) {
     pool.query('INSERT INTO Users(google_id, first_name, last_name) VALUES('+id+', ' + first+', ' + last+');' , (error, results) => {
@@ -59,6 +68,7 @@ function deleteCaffeineEntriesById(req, res, id) {
         res.status(200).send(results.rows);
     });
 }
+
 /*//Modify a caffeine entry
 function updateCaffeineEntriesById(req, res, id) {
     pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
@@ -132,4 +142,5 @@ module.exports = {
     addUser,
     getCaffeineEntriesById,
     getExerciseEntriesById,
+    getUser,
 }

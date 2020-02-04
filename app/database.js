@@ -26,7 +26,7 @@ function getUser(req, res, id, first) {
             throw error
         }
         console.log(results.rows);
-        if(results.rows == undefined){
+        if(results.rows == []){
             addUser(req, res, id, first);
         }
         res.send(results.rows);

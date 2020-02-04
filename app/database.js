@@ -21,7 +21,7 @@ function getUsers(req, res) {
 
 //Get a single user
 function getUser(req, res, id) {
-    pool.query('SELECT * FROM users WHERE user_id='+id+';', (error, results) => {
+    pool.query('SELECT * FROM users WHERE google_id='+id+';', (error, results) => {
         if (error) {
             throw error
         }

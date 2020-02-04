@@ -19,6 +19,16 @@ function getUsers(req, res) {
     });
 }
 
+//Add a new user
+function addUser(req, res, id, first, last) {
+    pool.query('INSERT INTO Users(google_id, first_name, last_name) VALUES('+id+', ' + first+', ' + last+');' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
+
 //Caffeine entry
 //Get all caffeine entries for a given user
 function getCaffeineEntriesById(req, res, id) {
@@ -31,8 +41,8 @@ function getCaffeineEntriesById(req, res, id) {
 }
 
 //Add a caffeine entry
-function addCaffeineEntriesById(req, res, id) {
-    pool.query('INSERT INTO CaffeineEntry(entry_id, user_id, timestamp, cups) VALUES() ;' , (error, results) => {
+function addCaffeineEntriesById(req, res, id, cups) {
+    pool.query('INSERT INTO CaffeineEntry(user_id, timestamp, cups) VALUES('+id+', current_timestamp,' + cups+');' , (error, results) => {
         if (error) {
             throw error
         }
@@ -49,7 +59,7 @@ function deleteCaffeineEntriesById(req, res, id) {
         res.status(200).send(results.rows);
     });
 }
-//Modify a caffeine entry
+/*//Modify a caffeine entry
 function updateCaffeineEntriesById(req, res, id) {
     pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
         if (error) {
@@ -57,7 +67,8 @@ function updateCaffeineEntriesById(req, res, id) {
         }
         res.status(200).send(results.rows);
     });
-}
+}*/
+
 //Exercise Entry
 //Get all exercise entries for a given user
 function getExerciseEntriesById(req, res, id) {
@@ -70,10 +81,18 @@ function getExerciseEntriesById(req, res, id) {
 }
 
 //Add a exercise entry
+function addExerciseEntriesById(req, res, id, minutes) {
+    pool.query('INSERT INTO CaffeineEntry(user_id, timestamp, cups) VALUES('+id+', current_timestamp,' + minutes+');' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 
 //Remove a exercise entry
-function deleteCaffeineEntriesById(req, res, id) {
-    pool.query('DELETE * FROM CaffeineEntry WHERE entry_id ='+ id +';' , (error, results) => {
+function deleteExerciseEntriesById(req, res, id) {
+    pool.query('DELETE * FROM ExerciseEntry WHERE entry_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error
         }
@@ -106,4 +125,11 @@ function deleteCaffeineEntriesById(req, res, id) {
 
 module.exports = {
     getUsers,
+    deleteCaffeineEntriesById,
+    deleteExerciseEntriesById,
+    addCaffeineEntriesById,
+    addExerciseEntriesById,
+    addUser,
+    getCaffeineEntriesById,
+    getExerciseEntriesById,
 }

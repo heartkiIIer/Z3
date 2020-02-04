@@ -31,11 +31,33 @@ function getCaffeineEntriesById(req, res, id) {
 }
 
 //Add a caffeine entry
+function getCaffeineEntriesById(req, res, id) {
+    pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 
 //Remove a caffeine entry
-
+function deleteCaffeineEntriesById(req, res, id) {
+    pool.query('DELETE * FROM CaffeineEntry WHERE entry_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 //Modify a caffeine entry
-
+function updateCaffeineEntriesById(req, res, id) {
+    pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 //Exercise Entry
 //Get all exercise entries for a given user
 function getExerciseEntriesById(req, res, id) {
@@ -50,7 +72,14 @@ function getExerciseEntriesById(req, res, id) {
 //Add a exercise entry
 
 //Remove a exercise entry
-
+function deleteCaffeineEntriesById(req, res, id) {
+    pool.query('DELETE * FROM CaffeineEntry WHERE entry_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 //Modify a exercise entry
 
 //Sleep Entry

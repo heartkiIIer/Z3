@@ -53,7 +53,7 @@ app.get('/user', cors(corsOptions), (req, res) => {
 });
 
 //DATABASE FUNCTIONALITY
-app.get('/allUsers', cors(corsOptions), db.getUsers());
+//app.get('/allUsers', cors(corsOptions), db.getUsers());
 
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

@@ -60,7 +60,9 @@ app.use(
     })
 )
 
-app.get('/allUsers', cors(corsOptions), db.getUsers());
+app.get('/allUsers', cors(corsOptions), (req, res) => {
+    db.getUsers()
+});
 
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

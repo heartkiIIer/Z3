@@ -37,7 +37,7 @@ function addUser(req, res, id, first) {
 
     //first = "\'" + first + "\'";
     console.log("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", );");
-    pool.query("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", NULL"+");" , (error, results) => {
+    pool.query("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", NULL);" , (error, results) => {
         if (error) {
             throw error
         }

@@ -38,7 +38,7 @@ app.post('/logUser', cors(corsOptions), (req, res) => {
         image: data.image
     };
 
-    db.getUser(req, res, userProfile.id, userProfile.name);
+    db.getUser(req, res, userProfile.id, "\'"+userProfile.name+"\'");
 
     //if(db.getUser(req, res, userProfile.id) == undefined){
     //    db.addUser(req, res, userProfile.id, "\'"+userProfile.name+"\'",  " ");

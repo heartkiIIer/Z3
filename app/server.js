@@ -38,8 +38,8 @@ app.post('/logUser', cors(corsOptions), (req, res) => {
         image: data.image
     };
 
-    if(getUser(req, res, userProfile.id) == NULL){
-        addUser(req, res, userProfile.name,  NULL);
+    if(db.getUser(req, res, userProfile.id) == NULL){
+        db.addUser(req, res, userProfile.name,  NULL);
     }
 
     res.writeHead( 200, "OK", {'Content-Type': 'text/plain' })

@@ -38,13 +38,13 @@ app.post('/logUser', cors(corsOptions), (req, res) => {
         image: data.image
     };
 
-    //if(db.getUser(req, res, userProfile.id) == NULL){
-    //    db.addUser(req, res, userProfile.name,  NULL);
-    //}
-    console.log(db.getUser(req, res, userProfile.id));
+    if(db.getUser(req, res, userProfile.id) == undefined){
+        db.addUser(req, res, userProfile.name,  NULL);
+    }
+    //console.log(db.getUser(req, res, userProfile.id));
 
-    res.writeHead( 200, "OK", {'Content-Type': 'text/plain' })
-    res.end()
+    //res.writeHead( 200, "OK", {'Content-Type': 'text/plain' })
+    //res.end()
 });
 
 // retrieve user's profile information: id, name, image

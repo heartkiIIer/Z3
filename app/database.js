@@ -13,7 +13,7 @@ function getUsers(req, res) {
         if (error) {
             throw error
         }
-        res.status(200).send(json(results.rows));
+        res.status(200).send(results.rows);
     });
 }
 

@@ -31,8 +31,8 @@ function getCaffeineEntriesById(req, res, id) {
 }
 
 //Add a caffeine entry
-function getCaffeineEntriesById(req, res, id) {
-    pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
+function addCaffeineEntriesById(req, res, id) {
+    pool.query('INSERT INTO CaffeineEntry(entry_id, user_id, timestamp, cups) VALUES() ;' , (error, results) => {
         if (error) {
             throw error
         }

@@ -38,10 +38,10 @@ app.post('/logUser', cors(corsOptions), (req, res) => {
         image: data.image
     };
 
-    if(db.getUser(req, res, userProfile.id) == undefined){
-        db.addUser(req, res, userProfile.id, "\'"+userProfile.name+"\'",  " ");
-    }
-    //console.log(db.getUser(req, res, userProfile.id));
+    //if(db.getUser(req, res, userProfile.id) == undefined){
+    //    db.addUser(req, res, userProfile.id, "\'"+userProfile.name+"\'",  " ");
+    //}
+    console.log(db.getUser(req, res, userProfile.id));
 
     //res.writeHead( 200, "OK", {'Content-Type': 'text/plain' })
     //res.end()

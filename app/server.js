@@ -39,7 +39,7 @@ app.post('/logUser', cors(corsOptions), (req, res) => {
     };
 
     if(db.getUser(req, res, userProfile.id) == undefined){
-        db.addUser(req, res, userProfile.name,  NULL);
+        db.addUser(req, res, userProfile.name,  '');
     }
     //console.log(db.getUser(req, res, userProfile.id));
 

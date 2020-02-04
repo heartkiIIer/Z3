@@ -34,7 +34,6 @@ function addUser(req, res, id, first, last) {
         if (error) {
             throw error
         }
-        res.status(200).send(results.rows);
     });
 }
 

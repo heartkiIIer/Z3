@@ -61,7 +61,7 @@ app.use(
 )
 
 app.get('/allUsers', cors(corsOptions), (req, res) => {
-    db.getUsers()
+    db.getUsers(req, res)
 });
 
 app.listen(process.env.PORT || 5000);

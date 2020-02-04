@@ -8,6 +8,8 @@ const pool = new Pool({
 })
 
 //User management
+
+//Test function, gets all users
 function getUsers(req, res) {
     pool.query('SELECT * FROM users ORDER BY user_id ASC', (error, results) => {
         if (error) {
@@ -18,6 +20,15 @@ function getUsers(req, res) {
 }
 
 //Caffeine entry
+//Get all caffeine entries for a given user
+function getCaffeineEntriesById(req, res, id) {
+    pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 
 //Add a caffeine entry
 
@@ -26,6 +37,15 @@ function getUsers(req, res) {
 //Modify a caffeine entry
 
 //Exercise Entry
+//Get all exercise entries for a given user
+function getExerciseEntriesById(req, res, id) {
+    pool.query('SELECT * FROM ExerciseEntry WHERE user_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 
 //Add a exercise entry
 

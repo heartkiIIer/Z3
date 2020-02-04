@@ -8,12 +8,12 @@ const pool = new Pool({
 })
 
 //User management
-const getUsers = (request, {status}) => {
+const getUsers = (request, res) => {
     pool.query('SELECT * FROM users ORDER BY user_id ASC', (error, results) => {
         if (error) {
             throw error
         }
-        status(200).json(results.rows)
+        res.status(200).json(results.rows)
     });
 }
 

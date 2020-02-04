@@ -4,7 +4,7 @@ const pool = new Pool({
     host: 'localhost',
     database: 'sleephealth',
     password: 'sleephealthrox1234',
-    port: 6312,
+    port: 5432,
 })
 
 //User management

@@ -1,3 +1,5 @@
+const db = require('./database');
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -49,6 +51,9 @@ app.get('/user', cors(corsOptions), (req, res) => {
         image: userProfile.image
     });
 });
+
+//DATABASE FUNCTIONALITY
+app.get('/allUsers', cors(corsOptions), db.getUsers());
 
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

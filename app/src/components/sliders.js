@@ -9,6 +9,8 @@ import AccessTime from '@material-ui/icons/AccessTime';
 import LocalCafe from '@material-ui/icons/LocalCafe';
 import Delete from '@material-ui/icons/Delete';
 import { Tab } from 'semantic-ui-react'
+import CalendarButtons from "./CalendarButtons";
+import Display from "./Display";
 
 const cup = {
     fontSize: '250%'
@@ -168,34 +170,43 @@ const panes = [
                                   marks={minutes}/>
                 </Grid>
             </Grid>
-
+            <button className='btn'>Submit</button>
+            <br/><br/>
         </Tab.Pane>
+
     },
     {
         menuItem: 'Stress',
-        render: () => <Tab.Pane attached={false}>
+        render: () =>
+            <Tab.Pane attached={false}>
             <h5>Rate stress level for each event</h5>
             <br/>
-                <Typography id="discrete-slider-restrict" gutterBottom>
-                    Event 1
-                </Typography>
-                <PrettoSlider aria-label="pretto slider" defaultValue={98}
-                              step={null}
-                              marks={stresslevel}/>
+                <Display/>
+                {/*<Typography id="discrete-slider-restrict" gutterBottom>*/}
+                {/*    Event 1*/}
+                {/*    <button >Remove</button>*/}
+                {/*</Typography>*/}
+                {/*<PrettoSlider aria-label="pretto slider" defaultValue={98}*/}
+                {/*              step={null}*/}
+                {/*              marks={stresslevel}/>*/}
 
-                <Typography id="discrete-slider-restrict" gutterBottom>
-                    Event 2
-                </Typography>
-                <PrettoSlider aria-label="pretto slider" defaultValue={2}
-                              step={null}
-                              marks={stresslevel}/>
-            <Typography id="discrete-slider-restrict" gutterBottom>
-                Event 3
-            </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={50}
-                          step={null}
-                          marks={stresslevel}/>
-        </Tab.Pane>,
+                {/*<Typography id="discrete-slider-restrict" gutterBottom>*/}
+                {/*    Event 2*/}
+                {/*    <button >Remove</button>*/}
+                {/*</Typography>*/}
+                {/*<PrettoSlider aria-label="pretto slider" defaultValue={2}*/}
+                {/*              step={null}*/}
+                {/*              marks={stresslevel}/>*/}
+                {/*<Typography id="discrete-slider-restrict" gutterBottom>*/}
+                {/*    Event 3*/}
+                {/*    <button >Remove</button>*/}
+                {/*</Typography>*/}
+                {/*<PrettoSlider aria-label="pretto slider" defaultValue={50}*/}
+                {/*              step={null}*/}
+                {/*              marks={stresslevel}/>*/}
+                <button class='btn'>Submit</button>
+                              <button>Add</button>
+        </Tab.Pane>
     },
     {
         menuItem: 'Caffeine',
@@ -235,6 +246,8 @@ const panes = [
                                   marks={cupsize}/>
                 </Grid>
             </Grid>
+            <button className='btn'>Submit</button>
+            <br/><br/>
         </Tab.Pane>
     }
 ]

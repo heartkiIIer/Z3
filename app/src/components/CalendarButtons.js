@@ -1,4 +1,4 @@
-import React, {ReactNode, SyntheticEvent} from 'react';
+import React, {SyntheticEvent} from 'react';
 import ApiCalendar from 'react-google-calendar-api';
 
 export default class LoginControl extends React.Component {
@@ -28,6 +28,15 @@ export default class LoginControl extends React.Component {
         }
     }
 
+    list() {
+        let events = new Set()
+        if (ApiCalendar.sign)
+            ApiCalendar.listUpcomingEvents(10)
+                .then(({result}: any) => {
+                    events.add(result.items);
+                    console.log(result.items)
+                });
+    }
 
     render() {
         const isLoggedIn = this.state.sign;

@@ -10,7 +10,6 @@ import EmptyCheckbox from "../resources/icons/square-regular.svg";
 import CheckedBox from "../resources/icons/check-square-solid.svg";
 import AddButton from "../resources/icons/plus-circle-solid.svg";
 
-
 /**
  * @author Eliazbeth Del Monaco
  * This component renders the user settings page.

@@ -133,10 +133,36 @@ function deleteExerciseEntriesById(req, res, id) {
 
 //Bedtime Routine Task
 
+function getBedtimeRoutineById(req, res, id) {
+    pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
+
 //Add a task
+
+function addBedtimeRoutineById(req, res, id, minutes, task) {
+    pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+id+', current_timestamp,' + task+');' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 
 //Remove a task
 
+function deleteBedtimeRoutinesById(req, res, id) {
+    pool.query('DELETE * FROM BedtimeRoutineTask WHERE entry_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
 //Modify a task
 
 module.exports = {

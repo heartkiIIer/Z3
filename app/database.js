@@ -33,14 +33,6 @@ function getUser(req, res, id, first) {
     });
 }
 
-function googleIdtoInternal(googleid){
-    pool.query('SELECT * FROM users WHERE google_id='+googleid+';', (error, results) => {
-        if (error) {
-            throw error
-        }
-        return results;
-    });
-}
 //Add a new user
 function addUser(req, res, id, first) {
 
@@ -129,16 +121,31 @@ function deleteExerciseEntriesById(req, res, id) {
 //Add a test result
 
 //Bedtime Routine Task
-
-function getBedtimeRoutineById(req, res, id) {
-    let internalId = googleIdtoInternal(id);
-
-    pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id ='+ internalId +';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
+//builds a promise that converts id
+function promiseBuildergoogleIdtoInternal(googleid){
+    var promise = new Promise(function(resolve, reject){
+        pool.query('SELECT * FROM users WHERE google_id='+googleid+';', (error, results) => {
+            if (error) {
+                reject();
+            }
+            resolve(results);
+        });
     });
+    return promise;
+}
+//retrieve bedtime routine by id
+function getBedtimeRoutineById(req, res, id) {
+    var promise = promiseBuildergoogleIdtoInternal(id);
+    promise.then(function(internalId) {
+        pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id =' + internalId.rows.user_id + ';', (error, results) => {
+            if (error) {
+                throw error
+            }
+            res.status(200).send(results.rows);
+        });
+    }).catch(function(){
+        console.log("Failed to fetch bedtime routine")
+    })
 }
 
 //Add a task

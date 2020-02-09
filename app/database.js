@@ -149,9 +149,9 @@ function getBedtimeRoutineById(req, res, id) {
                 }
                 res.status(200).send(results.rows);
             });
-    }).catch(function(){
-        console.log("Failed to fetch bedtime routine")
-    })
+        }).catch(function(error){
+            console.log(error)
+        })
 }
 
 //Add a task

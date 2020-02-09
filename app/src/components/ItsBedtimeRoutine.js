@@ -28,7 +28,7 @@ class ItsBedtimeRoutine extends React.Component {
         else{
             mobile = true;
         }
-        this.state = { isEditable: false, stage: 0, isMobile: mobile};
+        this.state = { isEditable: false, stage: 0, isMobile: mobile, routine : this.getRoutine()};
     }
 
     resize(){
@@ -45,13 +45,6 @@ class ItsBedtimeRoutine extends React.Component {
             }
         })
     }
-
-
-    // componentDidMount() {
-    //     setTimeout(function () {
-    //         document.getElementById("outer-circle").style.opacity = 100;
-    //     }, 250);
-    // }
 
      startTimer(duration) {
         var alerted = 0;
@@ -80,18 +73,8 @@ class ItsBedtimeRoutine extends React.Component {
 
     startRoutine(startTimer){
         if(this.state.stage == 0) {
-                //document.getElementById("routine-progress").innerHTML = '<div class = "progress"><div className="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="80"></div></div>';
                 document.getElementById("itsbedtime").style.display = "none";
                 document.getElementById("meditate").style.display = "";
-                    //    '<div style="{{ marginTop: -5 }}">' +
-                    //        '<h1>Meditate</h1>' +
-                    //    '</div>' +
-                    //    '<div style="{{ marginTop: -5 }}">' +
-                    //        '<h1><span id = "timer">01:00</span> minutes</h1>' +
-                    //    '</div>' +
-                    // '</CircularProgressbarWithChildren>';
-                //document.getElementById("top").innerHTML = '<h1>Meditate</h1>';
-               // document.getElementById("bottom").innerHTML = '<h1><span id = "timer">01:00</span> minutes</h1>';
                 document.getElementById("cycle").innerText = 'Next item';
                 var fiveMinutes = 60 * 1;
                 var interval = this.startTimer(fiveMinutes);
@@ -101,31 +84,21 @@ class ItsBedtimeRoutine extends React.Component {
             clearInterval(interval);
             document.getElementById("meditate").style.display = "none";
             document.getElementById("brushyourteeth").style.display = "";
-            //document.getElementById("routine-progress").innerHTML = '<div class = "progress">  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>\n</div>';
-            //document.getElementById("top").innerHTML = '<h1>Brush your teeth</h1>';
-            // document.getElementById("bottom").innerHTML = '';
-
             this.setState({stage : 2});
         }
         else if(this.state.stage == 2){
             document.getElementById("brushyourteeth").style.display = "none";
             document.getElementById("washyourface").style.display = "";
-            // document.getElementById("routine-progress").innerHTML = '<div class = "progress">  <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>\n</div>';
-            // document.getElementById("top").innerHTML = '<h1>Wash your face</h1>';
             this.setState({stage : 3});
         }
         else if(this.state.stage == 3){
             document.getElementById("washyourface").style.display = "none";
             document.getElementById("turnoffyourcomputer").style.display = "";
-            // document.getElementById("routine-progress").innerHTML = '<div class = "progress">  <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="60 aria-valuemin="0" aria-valuemax="100"></div>\n</div>';
-            // document.getElementById("top").innerHTML = '<h1>Turn off your computer</h1>';
             this.setState({stage : 4});
         }
         else if(this.state.stage == 4){
             document.getElementById("turnoffyourcomputer").style.display = "none";
             document.getElementById("youredone").style.display = "";
-            // document.getElementById("routine-progress").innerHTML = '<div class = "progress">  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>\n</div>';
-            // document.getElementById("top").innerHTML = "<h1>You're done!</h1>";
             document.getElementById("button").innerHTML = '<a href = "/logSleep"><button class="btn" id = "cycle">Time for bed</button></a>';
 
         }
@@ -143,7 +116,6 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     render(){
-        this.getRoutine();
         this.resize();
         if(this.state.isMobile){
             return (
@@ -159,13 +131,6 @@ class ItsBedtimeRoutine extends React.Component {
                             <div className="inner" id="page-wrap">
                                 <div class = "itsBedtime">
                                     <div id = "items">
-
-                                       {/*<div class = "outer-circle" id = "outer-circle">*/}
-                                       {/*    <div className="inner-circle flex-column-nowrap">*/}
-                                       {/*        <div id = "top">It's Bedtime</div>*/}
-                                       {/*        <div id = "bottom"/>*/}
-                                       {/*    </div>*/}
-                                       {/*</div>*/}
                                         <div id = "itsbedtime" style={{  width: "300px" }}>
                                             <CircularProgressbar value={100} text={`It's Bedtime`} styles={buildStyles({
                                                 textSize: 10

@@ -131,6 +131,23 @@ const PrettoSlider = withStyles({
     },
 })(Slider);
 
+function submitCaffeineEntry(ele1, ele2) {
+    var str1 = ele1.valueOf().toString();
+    var str2 = ele2.valueOf().toString();
+
+    fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            user: str1,
+            cups: str2,
+        })
+    })
+}
+
 const panes = [
     {
         menuItem: 'Exercise',
@@ -215,7 +232,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id = "caffeine1" aria-label="pretto slider" defaultValue={2}
                                   valueLabelDisplay="auto"
                                   step={1}
                                   min={0}
@@ -234,13 +251,13 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider aria-label="pretto slider" defaultValue={98}
+                    <PrettoSlider id = "caffeine2" aria-label="pretto slider" defaultValue={98}
                                   step={null}
                                   marks={cupsize}/>
                 </Grid>
             </Grid>
         </Tab.Pane>
-            <button className='btn' >Submit</button>
+            <button className='btn' onClick={()=>submitCaffeineEntry("caffeine1", "caffeine2")}>Submit</button>
         </div>
     }
 ]

@@ -62,16 +62,14 @@ app.get('/allUsers', cors(corsOptions), (req, res) => {
     db.getUsers(req, res)
 });
 
-app.post('/users/newcaf/:id', cors(corsOptions), (req, res)=> {
-    const id = parseInt(req.params.id)
+app.post('/users/newcaf/', cors(corsOptions), (req, res)=> {
     const { user, cups } = req.body
-    db.addCaffeineEntriesById(req, res, id, cups);
+    db.addCaffeineEntriesById(req, res, user, cups);
 })
 
-app.post('/users/newexer/:id', cors(corsOptions), (req, res)=> {
-    const id = parseInt(req.params.id)
+app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
     const { user, minutes } = req.body
-    db.addExerciseEntriesById(req, res, id, minutes);
+    db.addExerciseEntriesById(req, res, user, minutes);
 })
 
 

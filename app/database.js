@@ -152,8 +152,6 @@ function getBedtimeRoutineById(req, res, id) {
 
 //Add a task
 function addBedtimeRoutineById(req, res, id, minutes, task) {
-
-
     pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+id+', ' + minutes +', ' + task+');' , (error, results) => {
         if (error) {
             throw error

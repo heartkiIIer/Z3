@@ -28,7 +28,7 @@ class ItsBedtimeRoutine extends React.Component {
         else{
             mobile = true;
         }
-        this.state = { isEditable: false, stage: 0, isMobile: mobile, routine : this.getRoutine()};
+        this.state = { isEditable: false, stage: 0, stages: 0, isMobile: mobile, routine : null};
     }
 
     resize(){
@@ -71,7 +71,11 @@ class ItsBedtimeRoutine extends React.Component {
 
     }
 
-    startRoutine(startTimer){
+    startRoutine(){
+        if(this.state.routine == null){
+
+        }
+
         if(this.state.stage == 0) {
                 document.getElementById("itsbedtime").style.display = "none";
                 document.getElementById("meditate").style.display = "";
@@ -112,10 +116,9 @@ class ItsBedtimeRoutine extends React.Component {
                 'Content-Type': 'application/json',
             }
         }).then(function(r){
+            this.setState({routine : r})
             console.log(JSON.stringify(r))
-            document.getElementById("cycle").disabled = false;
         })
-
     }
 
     render(){
@@ -181,7 +184,7 @@ class ItsBedtimeRoutine extends React.Component {
                                     {/*<div id = "routine-progress">*/}
                                     {/*</div>*/}
                                     <div className = "center" id = "button">
-                                        <button className='btn' disabled id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                                        <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                                     </div>
                                 </div>
                             </div>

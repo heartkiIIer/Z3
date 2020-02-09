@@ -137,7 +137,7 @@ function promiseBuildergoogleIdtoInternal(googleid){
 function getBedtimeRoutineById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
-        .then(response => response.rows.parse())
+        .then(response => JSON.parse(response.rows))
         .then(function(internalId) {
             console.log("stuff");
             console.log(internalId.user_id);

@@ -126,7 +126,6 @@ function promiseBuildergoogleIdtoInternal(googleid){
     var promise = new Promise(function(resolve, reject){
         pool.query('SELECT * FROM users WHERE google_id='+googleid+';', (error, results) => {
             if (error) {
-                console.log("failed here")
                 reject();
             }
             resolve(results);
@@ -145,6 +144,7 @@ function getBedtimeRoutineById(req, res, id) {
             console.log(internalId);
         pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id =' + internalId.user_id + ';', (error, results) => {
             if (error) {
+                console.log("failed here")
                 throw error
             }
             res.status(200).send(results.rows);

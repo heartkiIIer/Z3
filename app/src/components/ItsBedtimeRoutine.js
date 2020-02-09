@@ -139,7 +139,7 @@ class ItsBedtimeRoutine extends React.Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-        }).then(r => console.log(r.body))
+        }).then(r => console.log(JSON.stringify(r)))
     }
 
     render(){

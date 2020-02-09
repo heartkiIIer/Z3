@@ -57,7 +57,7 @@ function getCaffeineEntriesById(req, res, id) {
 
 //Add a caffeine entry
 function addCaffeineEntriesById(req, res, id, cups, size) {
-    pool.query('INSERT INTO CaffeineEntry(user_id, timestamp, cups, size) VALUES('+id+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
+    pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, size) VALUES('+id+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
         if (error) {
             throw error
         }
@@ -88,7 +88,7 @@ function getExerciseEntriesById(req, res, id) {
 
 //Add a exercise entry
 function addExerciseEntriesById(req, res, id, minutes) {
-    pool.query('INSERT INTO CaffeineEntry(user_id, timestamp, cups) VALUES('+id+', current_timestamp,' + minutes+');' , (error, results) => {
+    pool.query('INSERT INTO ExerciseEntry(user_id, date, cups) VALUES('+id+', current_timestamp,' + minutes+');' , (error, results) => {
         if (error) {
             throw error
         }

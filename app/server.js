@@ -72,6 +72,5 @@ app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
     db.addExerciseEntriesById(req, res, userProfile.id, minutes, size);
 })
 
-
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

@@ -142,7 +142,7 @@ function submitCaffeineEntry(ele1, ele2) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            user: str1,
+            size: str1,
             cups: str2,
         })
     })

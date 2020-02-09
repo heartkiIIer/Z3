@@ -63,13 +63,13 @@ app.get('/allUsers', cors(corsOptions), (req, res) => {
 });
 
 app.post('/users/newcaf/', cors(corsOptions), (req, res)=> {
-    const { user, cups } = req.body
-    db.addCaffeineEntriesById(req, res, user, cups);
+    const { cups, size} = req.body
+    db.addCaffeineEntriesById(req, res, userProfile.id, cups, size);
 })
 
 app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
     const { user, minutes } = req.body
-    db.addExerciseEntriesById(req, res, user, minutes);
+    db.addExerciseEntriesById(req, res, userProfile.id, minutes, size);
 })
 
 

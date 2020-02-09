@@ -137,11 +137,11 @@ function promiseBuildergoogleIdtoInternal(googleid){
 function getBedtimeRoutineById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
-        .then(response => JSON.parse(response.rows))
+        //.then(response => JSON.parse(response.rows))
         .then(function(internalId) {
             console.log("stuff");
-            console.log(internalId.user_id);
-            pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id =' + internalId.user_id + ';', (error, results) => {
+            console.log(internalId.rows.user_id);
+            pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id =' + internalId.rows.user_id + ';', (error, results) => {
                 if (error) {
                     console.log("failed here")
                     throw error

@@ -126,6 +126,7 @@ function promiseBuildergoogleIdtoInternal(googleid){
     var promise = new Promise(function(resolve, reject){
         pool.query('SELECT * FROM users WHERE google_id='+googleid+';', (error, results) => {
             if (error) {
+                console.log("failed here")
                 reject();
             }
             resolve(results);

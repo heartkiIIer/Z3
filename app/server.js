@@ -62,5 +62,18 @@ app.get('/allUsers', cors(corsOptions), (req, res) => {
     db.getUsers(req, res)
 });
 
+app.post('/users/newcaf/:id', cors(corsOptions), (req, res)=> {
+    const id = parseInt(req.params.id)
+    const { user, cups } = req.body
+    db.addCaffeineEntriesById(req, res, id, cups);
+})
+
+app.post('/users/newexer/:id', cors(corsOptions), (req, res)=> {
+    const id = parseInt(req.params.id)
+    const { user, minutes } = req.body
+    db.addExerciseEntriesById(req, res, id, minutes);
+})
+
+
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

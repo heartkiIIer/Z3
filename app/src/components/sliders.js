@@ -134,7 +134,7 @@ const PrettoSlider = withStyles({
 const panes = [
     {
         menuItem: 'Exercise',
-        render: () => <Tab.Pane attached={false}>
+        render: () => <div><Tab.Pane attached={false}>
             <h5>Rate intensity & duration of exercise</h5>
             <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
@@ -170,10 +170,12 @@ const panes = [
             </Grid>
 
         </Tab.Pane>
+        <button className='btn' >Submit</button>
+        </div>,
     },
     {
         menuItem: 'Stress',
-        render: () => <Tab.Pane attached={false}>
+        render: () =><div> <Tab.Pane attached={false}>
             <h5>Rate stress level for each event</h5>
             <br/>
                 <Typography id="discrete-slider-restrict" gutterBottom>
@@ -195,11 +197,13 @@ const panes = [
             <PrettoSlider aria-label="pretto slider" defaultValue={50}
                           step={null}
                           marks={stresslevel}/>
-        </Tab.Pane>,
+        </Tab.Pane>
+         <button className='btn' >Submit</button>
+        </div>,
     },
     {
         menuItem: 'Caffeine',
-        render: () => <Tab.Pane attached={false}>
+        render: () => <div><Tab.Pane attached={false}>
             <h5>Log the amount of caffeine consumed</h5>
             <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
@@ -236,6 +240,7 @@ const panes = [
                 </Grid>
             </Grid>
         </Tab.Pane>
+        </div>
     }
 ]
 

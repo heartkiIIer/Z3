@@ -32,6 +32,7 @@ class logging extends React.Component{
             }
         })
     }
+
     render() {
         this.resize();
         const styles = {
@@ -51,7 +52,6 @@ class logging extends React.Component{
                         <h4>Log your exercise, caffeine, & stress</h4>
                         <br/>
                         <Tabs/>
-                        <button className='btn'>Submit</button>
                     </div>
                 </div>
             </div>

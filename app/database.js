@@ -75,16 +75,6 @@ function deleteCaffeineEntriesById(req, res, id) {
     });
 }
 
-/*//Modify a caffeine entry
-function updateCaffeineEntriesById(req, res, id) {
-    pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
-}*/
-
 //Exercise Entry
 //Get all exercise entries for a given user
 function getExerciseEntriesById(req, res, id) {
@@ -115,8 +105,6 @@ function deleteExerciseEntriesById(req, res, id) {
         res.status(200).send(results.rows);
     });
 }
-//Modify a exercise entry
-
 //Sleep Entry
 
 //Add a sleep entry

@@ -240,6 +240,7 @@ const panes = [
                 </Grid>
             </Grid>
         </Tab.Pane>
+            <button className='btn' >Submit</button>
         </div>
     }
 ]

@@ -102,7 +102,6 @@ class ItsBedtimeRoutine extends React.Component {
             document.getElementById("button").innerHTML = '<a href = "/logSleep"><button class="btn" id = "cycle">Time for bed</button></a>';
 
         }
-
     }
 
     getRoutine() {
@@ -112,7 +111,11 @@ class ItsBedtimeRoutine extends React.Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-        }).then(r => console.log(JSON.stringify(r)))
+        }).then(function(r){
+            console.log(JSON.stringify(r))
+            document.getElementById("cycle").disabled = false;
+        })
+
     }
 
     render(){
@@ -178,7 +181,7 @@ class ItsBedtimeRoutine extends React.Component {
                                     {/*<div id = "routine-progress">*/}
                                     {/*</div>*/}
                                     <div className = "center" id = "button">
-                                        <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                                        <button className='btn' disabled={true} id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                                     </div>
                                 </div>
                             </div>

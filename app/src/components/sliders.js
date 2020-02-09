@@ -132,8 +132,10 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 function submitCaffeineEntry(ele1, ele2) {
-    var str1 = ele1.valueOf().toString();
-    var str2 = ele2.valueOf().toString();
+    var str1 = document.getElementById(ele1).getAttribute("value");
+    var str2 = document.getElementById(ele2).getAttribute("value");
+    console.log(str1);
+    console.log(str2);
 
     fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
         method: 'POST',

@@ -181,7 +181,7 @@ class ItsBedtimeRoutine extends React.Component {
                                     {/*<div id = "routine-progress">*/}
                                     {/*</div>*/}
                                     <div className = "center" id = "button">
-                                        <button className='btn' disabled={true} id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                                        <button className='btn' disabled id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                                     </div>
                                 </div>
                             </div>

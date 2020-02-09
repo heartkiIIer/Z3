@@ -72,7 +72,7 @@ app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
     db.addExerciseEntriesById(req, res, userProfile.id, minutes, intensity);
 })
 
-app.post('/users/getRoutine/', cors(corsOptions), (req, res)=> {
+app.post('/getRoutine/', cors(corsOptions), (req, res)=> {
     db.getBedtimeRoutineById(req, res, userProfile.id);
 })
 

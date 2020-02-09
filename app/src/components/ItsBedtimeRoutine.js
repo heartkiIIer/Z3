@@ -143,6 +143,7 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     render(){
+        this.getRoutine();
         this.resize();
         if(this.state.isMobile){
             return (

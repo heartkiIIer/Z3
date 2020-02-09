@@ -135,20 +135,20 @@ function promiseBuildergoogleIdtoInternal(googleid){
 }
 //retrieve bedtime routine by id
 function getBedtimeRoutineById(req, res, id) {
-    var promise = promiseBuildergoogleIdtoInternal(id);
+    const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(response => response.json())
         .then(function(internalId) {
             console.log("stuff");
 
             console.log(internalId);
-        pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id =' + internalId.user_id + ';', (error, results) => {
-            if (error) {
-                console.log("failed here")
-                throw error
-            }
-            res.status(200).send(results.rows);
-        });
+            pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id =' + internalId.user_id + ';', (error, results) => {
+                if (error) {
+                    console.log("failed here")
+                    throw error
+                }
+                res.status(200).send(results.rows);
+            });
     }).catch(function(){
         console.log("Failed to fetch bedtime routine")
     })

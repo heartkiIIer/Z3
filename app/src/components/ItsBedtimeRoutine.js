@@ -132,6 +132,16 @@ class ItsBedtimeRoutine extends React.Component {
 
     }
 
+    getRoutine() {
+        fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then(r => console.log(r))
+    }
+
     render(){
         this.resize();
         if(this.state.isMobile){

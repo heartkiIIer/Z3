@@ -68,8 +68,12 @@ app.post('/users/newcaf/', cors(corsOptions), (req, res)=> {
 })
 
 app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
-    const { user, minutes } = req.body
-    db.addExerciseEntriesById(req, res, userProfile.id, minutes, size);
+    const {minutes, intensity } = req.body
+    db.addExerciseEntriesById(req, res, userProfile.id, minutes, intensity);
+})
+
+app.post('/users/getRoutine/', cors(corsOptions), (req, res)=> {
+    db.getBedtimeRoutineById(req, res, userProfile.id);
 })
 
 app.listen(process.env.PORT || 5000);

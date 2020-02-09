@@ -32,6 +32,15 @@ function getUser(req, res, id, first) {
         res.send(results.rows);
     });
 }
+
+function googleIdtoInternal(googleid){
+    pool.query('SELECT * FROM users WHERE google_id='+googleid+';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        return results;
+    });
+}
 //Add a new user
 function addUser(req, res, id, first) {
 
@@ -87,8 +96,8 @@ function getExerciseEntriesById(req, res, id) {
 }
 
 //Add a exercise entry
-function addExerciseEntriesById(req, res, id, minutes) {
-    pool.query('INSERT INTO ExerciseEntry(user_id, date, cups) VALUES('+id+', current_timestamp,' + minutes+');' , (error, results) => {
+function addExerciseEntriesById(req, res, id, minutes, intensity) {
+    pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+id+', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
         if (error) {
             throw error
         }
@@ -122,7 +131,9 @@ function deleteExerciseEntriesById(req, res, id) {
 //Bedtime Routine Task
 
 function getBedtimeRoutineById(req, res, id) {
-    pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id ='+ id +';' , (error, results) => {
+    let internalId = googleIdtoInternal(id);
+
+    pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id ='+ internalId +';' , (error, results) => {
         if (error) {
             throw error
         }
@@ -131,9 +142,10 @@ function getBedtimeRoutineById(req, res, id) {
 }
 
 //Add a task
-
 function addBedtimeRoutineById(req, res, id, minutes, task) {
-    pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+id+', current_timestamp,' + task+');' , (error, results) => {
+
+
+    pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+id+', ' + minutes +', ' + task+');' , (error, results) => {
         if (error) {
             throw error
         }
@@ -142,7 +154,6 @@ function addBedtimeRoutineById(req, res, id, minutes, task) {
 }
 
 //Remove a task
-
 function deleteBedtimeRoutinesById(req, res, id) {
     pool.query('DELETE * FROM BedtimeRoutineTask WHERE entry_id ='+ id +';' , (error, results) => {
         if (error) {
@@ -151,7 +162,6 @@ function deleteBedtimeRoutinesById(req, res, id) {
         res.status(200).send(results.rows);
     });
 }
-//Modify a task
 
 module.exports = {
     getUsers,
@@ -163,4 +173,7 @@ module.exports = {
     getCaffeineEntriesById,
     getExerciseEntriesById,
     getUser,
+    getBedtimeRoutineById,
+    addBedtimeRoutineById,
+    deleteBedtimeRoutinesById,
 }

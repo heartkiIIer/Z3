@@ -18,7 +18,6 @@ import BedtimeProgressBar from "./BedtimeProgressBar";
 class ItsBedtimeRoutine extends React.Component {
     constructor(props){
         super(props)
-        this.getRoutine();
         var mobile;
         if(window.innerWidth >= 700){
             mobile = false;
@@ -27,6 +26,30 @@ class ItsBedtimeRoutine extends React.Component {
             mobile = true;
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null};
+    }
+
+    componentDidMount(){
+        this.getRoutine()
+    }
+
+    getRoutine() {
+        function updateStates(r) {
+            //console.log(JSON.stringify(r))
+            this.setState({routine : r, stages: Object.keys(r).length})
+        }
+
+        fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then((r)=>updateStates(r))
+    }
+
+    startRoutine(){
+        //set size to amount of pieces
+        this.setState({stages: this.state.routine.size(), stage : this.state.stage+1})
     }
 
     resize(){
@@ -93,26 +116,6 @@ class ItsBedtimeRoutine extends React.Component {
                                            minutes={0} timer={false}/>;
             }
         }
-    }
-
-    startRoutine(){
-        //set size to amount of pieces
-        this.setState({stages: this.state.routine.size(), stage : this.state.stage+1})
-    }
-
-    getRoutine() {
-        function updateStates(r) {
-            //console.log(JSON.stringify(r))
-            this.setState({routine : r, stages: Object.keys(r).length})
-        }
-
-        fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then((r)=>updateStates(r))
     }
 
     render(){

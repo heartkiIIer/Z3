@@ -50,7 +50,7 @@ class ItsBedtimeRoutine extends React.Component {
 
     startRoutine(){
         //set size to amount of pieces
-        this.setState({stages: this.state.routine.size(), stage : this.state.stage+1})
+        this.setState({stages: Object.keys(this.state.routine).length, stage : this.state.stage+1})
     }
 
     resize(){

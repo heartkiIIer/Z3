@@ -7,8 +7,6 @@ const pool = new Pool({
     port: 5432,
 })
 
-//User management
-
 //Test function, gets all users
 function getUsers(req, res) {
     pool.query('SELECT * FROM users ORDER BY user_id ASC', (error, results) => {
@@ -35,8 +33,6 @@ function getUser(req, res, id, first) {
 
 //Add a new user
 function addUser(req, res, id, first) {
-
-    //first = "\'" + first + "\'";
     console.log("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", );");
     pool.query("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", NULL);" , (error, results) => {
         if (error) {

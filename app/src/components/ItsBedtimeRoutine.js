@@ -66,7 +66,6 @@ class ItsBedtimeRoutine extends React.Component {
                     return;
                 }
             }, 1000);
-
     }
 
     selectComponent(){
@@ -103,8 +102,8 @@ class ItsBedtimeRoutine extends React.Component {
 
     getRoutine() {
         function updateStates(r) {
-            console.log(JSON.stringify(r))
-            this.setState({routine : r, stages: r.size()})
+            //console.log(JSON.stringify(r))
+            this.setState({routine : r, stages: Object.keys(r).length})
         }
 
         fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {

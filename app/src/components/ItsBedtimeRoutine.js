@@ -29,13 +29,14 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     componentDidMount(){
-        this.getRoutine()
+        let currentComponent = this;
+        this.getRoutine(currentComponent)
     }
 
-    getRoutine() {
+    getRoutine(currentComponent) {
         function updateStates(r) {
             //console.log(JSON.stringify(r))
-            this.setState({routine : r, stages: Object.keys(r).length})
+            currentComponent.setState({routine : r, stages: Object.keys(r).length})
         }
 
         fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {

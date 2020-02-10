@@ -26,7 +26,7 @@ class ItsBedtimeRoutine extends React.Component {
         else{
             mobile = true;
         }
-        this.state = { isEditable: false, stage: 0, stages: 0, isMobile: mobile, routine : null};
+        this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null};
     }
 
     resize(){
@@ -69,20 +69,36 @@ class ItsBedtimeRoutine extends React.Component {
 
     }
 
-    startRoutine(){
+    selectComponent(){
         //if not initialized, show blank
         if(this.state.routine == null){
-
+            return <BedtimeProgressBar id = "items" name = "It's Bedtime" stage = {100} stages = {100} minutes = {0} timer = {false}/>;
         }
 
-        //cycle through all bedtime routine
-        else{
-            //set size to amount of pieces
-            this.setState({stages: this.state.routine.size()})
-            while(this.state.stage != this.state.stages-1){
-
+        else {
+            if(this.state.stage <= this.state.stages){
+                if(this.state.routine[this.state.stage].minutes != 0) {
+                    return <BedtimeProgressBar id="items" name={this.state.routine[this.state.stage].title}
+                                               stage={this.state.stage} stages={this.state.stages}
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={true}/>;
+                }
+                else{
+                    return <BedtimeProgressBar id="items" name={this.state.routine[this.state.stage].title}
+                                               stage={this.state.stage} stages={this.state.stages}
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={false}/>;
+                }
+            }
+            else{
+                return <BedtimeProgressBar id="items" name={"Congratulations! You have finished your routine."}
+                                           stage={100} stages={100}
+                                           minutes={0} timer={false}/>;
             }
         }
+    }
+
+    startRoutine(){
+        //set size to amount of pieces
+        this.setState({stages: this.state.routine.size(), stage : this.state.stage+1})
     }
 
     getRoutine() {
@@ -93,7 +109,7 @@ class ItsBedtimeRoutine extends React.Component {
                 'Content-Type': 'application/json',
             }
         }).then(function(r){
-            this.setState({routine : r})
+            this.setState({routine : r, states: r.size()})
             console.log(JSON.stringify(r))
         })
     }
@@ -113,7 +129,7 @@ class ItsBedtimeRoutine extends React.Component {
                         <div class ="middle">
                             <div className="inner" id="page-wrap">
                                 <div class = "itsBedtime">
-                                    <BedtimeProgressBar id = "items" name = "It's Bedtime" stage = {100} stages = {100} minutes = {0} timer = {false}/>
+                                    {this.selectComponent()}
                                     <hr class = "bedtime-hr"/>
                                     <div className = "center" id = "button">
                                         <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>

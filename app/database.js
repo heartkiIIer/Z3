@@ -7,6 +7,12 @@ const pool = new Pool({
     port: 5432,
 })
 
+function checkQuery(string){
+    if(string.contains(";")){
+        throw new Error("Forbidden character")
+    }
+}
+
 //Test function, gets all users
 function getUsers(req, res) {
     pool.query('SELECT * FROM users ORDER BY user_id ASC', (error, results) => {
@@ -19,6 +25,8 @@ function getUsers(req, res) {
 
 //Get a single user/add them
 function getUser(req, res, id, first) {
+    checkQuery(id);
+    checkQuery(first);
     pool.query('SELECT * FROM users WHERE google_id='+id+';', (error, results) => {
         if (error) {
             throw error
@@ -33,6 +41,8 @@ function getUser(req, res, id, first) {
 
 //Add a new user
 function addUser(req, res, id, first) {
+    checkQuery(id);
+    checkQuery(first);
     console.log("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", );");
     pool.query("INSERT INTO Users(google_id, first_name, last_name) VALUES("+id+", " + first+", NULL);" , (error, results) => {
         if (error) {
@@ -149,6 +159,7 @@ function getBedtimeRoutineById(req, res, id) {
 
 //Add a task
 function addBedtimeRoutineById(req, res, id, minutes, task) {
+    checkQuery(task)
     pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+id+', ' + minutes +', ' + task+');' , (error, results) => {
         if (error) {
             throw error

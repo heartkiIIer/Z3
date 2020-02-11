@@ -48,7 +48,7 @@ class ItsBedtimeRoutine extends React.Component {
                 'Content-Type': 'application/json',
             }
         }).then( r => {
-            currentComponent.setState({routine : r})
+            currentComponent.setState({routine : r.body})
         })
     }
 

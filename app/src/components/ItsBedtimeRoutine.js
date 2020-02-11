@@ -104,7 +104,8 @@ class ItsBedtimeRoutine extends React.Component {
         }
 
         else {
-            console.log(this.state.routine);
+            console.log(this.state.stages);
+            console.log(this.state.stage);
             //Still stages remaining
             if(this.state.stage < this.state.stages){
                 //Timer

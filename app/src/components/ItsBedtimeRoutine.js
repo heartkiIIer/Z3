@@ -29,9 +29,10 @@ class ItsBedtimeRoutine extends React.Component {
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null};
     }
 
-    componentDidMount(){
+     componentDidMount(){
         let currentComponent = this;
         this.getRoutine(currentComponent)
+
     }
 
     getRoutine(currentComponent) {
@@ -46,7 +47,9 @@ class ItsBedtimeRoutine extends React.Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-        }).then((r)=>updateStates(r))
+        }).then( r => {
+            currentComponent.setState({routine : r.json()})
+        })
     }
 
     startRoutine(){

@@ -6,6 +6,7 @@ import "react-circular-progressbar/dist/styles.css"
 import SideBar from "./sideMenu";
 import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
 import BedtimeProgressBar from "./BedtimeProgressBar";
+import Redirect from "react-router-dom/es/Redirect";
 
 /**
  * @author Eliazbeth Del Monaco, Sarah Armstrong
@@ -117,6 +118,11 @@ class ItsBedtimeRoutine extends React.Component {
             }
             //Nothing remains
             else{
+                if(document.getElementById("cycle").innerText == "Log Sleep"){
+                    return <Redirect to ='logSleep'/>
+                }
+
+                document.getElementById("cycle").innerText = "Log Sleep";
                 return <BedtimeProgressBar id="items" title={"You're done!"}
                                            stage={100} stages={100}
                                            minutes={0} timer={false}/>;

@@ -117,7 +117,7 @@ class ItsBedtimeRoutine extends React.Component {
             }
             //Nothing remains
             else{
-                return <BedtimeProgressBar id="items" title={"Congratulations! You have finished your routine."}
+                return <BedtimeProgressBar id="items" title={"You're done!"}
                                            stage={100} stages={100}
                                            minutes={0} timer={false}/>;
             }

@@ -119,7 +119,7 @@ class ItsBedtimeRoutine extends React.Component {
             //Nothing remains
             else{
                 if(document.getElementById("cycle").innerText == "Log Sleep"){
-                    return <Redirect to ='logSleep'/>
+                    window.location.href = "http://sleepwebapp.wpi.edu/logSleep"
                 }
 
                 document.getElementById("cycle").innerText = "Log Sleep";

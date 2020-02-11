@@ -101,6 +101,18 @@ class ItsBedtimeRoutine extends React.Component {
             }, 1000);
     }
 
+    selectComponentWithTimer(){
+        this.selectComponent(() => {
+            if(this.state.stage < this.state.stages){
+                    //Timer
+                    if(this.state.routine[this.state.stage].minutes != 0) {
+                        this.startTimer(this.state.routine[this.state.stage].minutes);
+                    }
+                }
+            }
+        )
+    }
+
     selectComponent(){
         //if not initialized, show blank
         if(this.state.stage == -1){
@@ -109,9 +121,6 @@ class ItsBedtimeRoutine extends React.Component {
         }
 
         else {
-            console.log(this.state.stages);
-            console.log(this.state.stage);
-            console.log(this.state.routine);
             //Still stages remaining
             if(this.state.stage < this.state.stages){
                 //Timer

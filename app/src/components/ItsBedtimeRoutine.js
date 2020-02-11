@@ -51,6 +51,9 @@ class ItsBedtimeRoutine extends React.Component {
 
     startRoutine(){
         //set size to amount of pieces
+        if(document.getElementById("cycle").innerText == "Log Sleep"){
+            window.location.replace("http://sleepwebapp.wpi.edu/logSleep");
+        }
         this.setState({stages: Object.keys(this.state.routine).length, stage : this.state.stage+1})
     }
 
@@ -118,10 +121,6 @@ class ItsBedtimeRoutine extends React.Component {
             }
             //Nothing remains
             else{
-                if(document.getElementById("cycle").innerText == "Log Sleep"){
-                    window.location.replace("http://sleepwebapp.wpi.edu/logSleep");
-                }
-
                 document.getElementById("cycle").innerText = "Log Sleep";
                 return <BedtimeProgressBar id="items" title={"You're done!"}
                                            stage={100} stages={100}

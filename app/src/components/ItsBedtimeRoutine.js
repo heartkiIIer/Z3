@@ -51,7 +51,7 @@ class ItsBedtimeRoutine extends React.Component {
 
     startRoutine(){
         //set size to amount of pieces
-        if(document.getElementById("cycle").innerText == "Log Sleep"){
+        if(this.state.stage > this.state.stages){
             window.location.replace("http://sleepwebapp.wpi.edu/logSleep");
         }
         this.setState({stages: Object.keys(this.state.routine).length, stage : this.state.stage+1})

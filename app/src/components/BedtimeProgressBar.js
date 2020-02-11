@@ -15,7 +15,7 @@ class BedtimeProgressBar extends React.Component {
         if(this.props.timer){
             return(
                 <div style={{ width: "390px" }}>
-                    <CircularProgressbarWithChildren value={this.props.stage/this.props.stages} styles={buildStyles({
+                    <CircularProgressbarWithChildren value={(this.props.stage/this.props.stages)*100} styles={buildStyles({
                         pathColor: "mediumpurple",
                         textSize: 10
                     })}>
@@ -31,7 +31,7 @@ class BedtimeProgressBar extends React.Component {
         else{
             return(
                 <div style={{width: "390px" }}>
-                    <CircularProgressbar value={this.props.stage/this.props.stages} text={this.props.title} styles={buildStyles({
+                    <CircularProgressbar value={(this.props.stage/this.props.stages)*100} text={this.props.title} styles={buildStyles({
                         pathColor: "mediumpurple",
                         textSize: 10
                     })}/>

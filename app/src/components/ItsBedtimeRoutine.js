@@ -96,7 +96,7 @@ class ItsBedtimeRoutine extends React.Component {
         //if not initialized, show blank
         if(this.state.stage == -1){
             console.log("init");
-            return <BedtimeProgressBar id = "items" name = "It's Bedtime" stage = {100} stages = {100} minutes = {0} timer = {false}/>;
+            return <BedtimeProgressBar id = "items" title = "It's Bedtime" stage = {100} stages = {100} minutes = {0} timer = {false}/>;
         }
 
         else {

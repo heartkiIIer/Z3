@@ -35,6 +35,12 @@ class ItsBedtimeRoutine extends React.Component {
 
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.state.routine[this.state.stage].minutes != 0) {
+            this.startTimer(this.state.routine[this.state.stage].minutes);
+        }
+    }
+
     getRoutine(currentComponent) {
         function updateStates(r) {
             //console.log(JSON.stringify(r))
@@ -101,18 +107,6 @@ class ItsBedtimeRoutine extends React.Component {
             }, 1000);
     }
 
-    selectComponentWithTimer(){
-        this.selectComponent(()=>{
-            if(this.state.stage < this.state.stages){
-                    //Timer
-                    if(this.state.routine[this.state.stage].minutes != 0) {
-                        this.startTimer(this.state.routine[this.state.stage].minutes);
-                    }
-                }
-            })
-    }
-
-
     selectComponent(){
         //if not initialized, show blank
         if(this.state.stage == -1){
@@ -162,7 +156,7 @@ class ItsBedtimeRoutine extends React.Component {
                         <div class ="middle">
                             <div className="inner" id="page-wrap">
                                 <div class = "itsBedtime">
-                                    {this.selectComponentWithTimer()}
+                                    {this.selectComponent()}
                                     <hr class = "bedtime-hr"/>
                                     <div className = "center" id = "button">
                                         <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>

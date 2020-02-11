@@ -104,20 +104,20 @@ class ItsBedtimeRoutine extends React.Component {
             if(this.state.stage < this.state.stages){
                 //Timer
                 if(this.state.routine[this.state.stage].minutes != 0) {
-                    return <BedtimeProgressBar id="items" name={this.state.routine[this.state.stage].title}
+                    return <BedtimeProgressBar id="items" title={this.state.routine[this.state.stage].title}
                                                stage={this.state.stage} stages={this.state.stages}
                                                minutes={this.state.routine[this.state.stage].minutes} timer={true}/>;
                 }
                 //No Timer
                 else{
-                    return <BedtimeProgressBar id="items" name={this.state.routine[this.state.stage].title}
+                    return <BedtimeProgressBar id="items" title={this.state.routine[this.state.stage].title}
                                                stage={this.state.stage} stages={this.state.stages}
                                                minutes={this.state.routine[this.state.stage].minutes} timer={false}/>;
                 }
             }
             //Nothing remains
             else{
-                return <BedtimeProgressBar id="items" name={"Congratulations! You have finished your routine."}
+                return <BedtimeProgressBar id="items" title={"Congratulations! You have finished your routine."}
                                            stage={100} stages={100}
                                            minutes={0} timer={false}/>;
             }

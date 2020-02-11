@@ -36,8 +36,12 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.state.routine[this.state.stage].minutes != 0) {
-            this.startTimer(this.state.routine[this.state.stage].minutes);
+        if(this.state.stage == -1){
+            if(this.state.stage < this.state.stages){
+                if(this.state.routine[this.state.stage].minutes != 0) {
+                    this.startTimer(this.state.routine[this.state.stage].minutes);
+                }
+            }
         }
     }
 

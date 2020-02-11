@@ -123,6 +123,7 @@ class ItsBedtimeRoutine extends React.Component {
         else {
             //Still stages remaining
             if(this.state.stage < this.state.stages){
+                document.getElementById("cycle").innerText = "Next Item";
                 //Timer
                 if(this.state.routine[this.state.stage].minutes != 0) {
                     return <BedtimeProgressBar id="items" title={this.state.routine[this.state.stage].title}
@@ -161,7 +162,7 @@ class ItsBedtimeRoutine extends React.Component {
                         <div class ="middle">
                             <div className="inner" id="page-wrap">
                                 <div class = "itsBedtime">
-                                    {this.selectComponent()}
+                                    {this.selectComponentWithTimer()}
                                     <hr class = "bedtime-hr"/>
                                     <div className = "center" id = "button">
                                         <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>

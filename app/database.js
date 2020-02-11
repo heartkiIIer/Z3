@@ -139,6 +139,7 @@ function getBedtimeRoutineById(req, res, id) {
                 if (error) {
                     throw error
                 }
+                console.log(results.rows);
                 res.status(200).send(results.rows);
             });
         }).catch(function(error){

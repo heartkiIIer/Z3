@@ -23,7 +23,7 @@ class BedtimeProgressBar extends React.Component {
                             <h1>{this.props.title}</h1>
                         </div>
                         <div style={{ marginTop: -5 }}>
-                            <h1><span id = "timer">{this.props.time + ':00' }</span> minutes</h1>
+                            <h1><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1>
                         </div>
                     </CircularProgressbarWithChildren>
                 </div>)

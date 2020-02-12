@@ -2,16 +2,40 @@ import React, {SyntheticEvent} from 'react';
 import '../styles/home.css'
 import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
+import logout from '../scripts/login'
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "Invalid User",
+            image: ""
+        };
+    }
+    // //get User profile information
+    getUser() {
+        fetch('http://sleepwebapp.wpi.edu:5000/user')
+            .then(response => response.json())
+            .then(data => this.setState({
+                name: data.name,
+                image: data.image
+            }));
+    }
     render(){
+        this.getUser();
         return (
             <div id="homepage" className="row d-flex align-items-center">
                 <div id="setting_link">
-                    <a href="http://localhost:5000/logout">Sign out</a>
-                    <Link to="/settings">
-                        <div id="setting_icon" className="float-right"></div>
-                    </Link>
+                    <div className="d-flex align-items-center">
+                        <img className="profile_pic" src={this.state.image} alt=""/>
+                        <h3 style={{color: "#7339AB", marginLeft: "10px"}}>Welcome {this.state.name}</h3>
+                    </div>
+                    <div>
+                        <button id="logout_icon" onClick={logout}></button>
+                        <Link to="/settings">
+                            <div id="setting_icon" className="float-right"></div>
+                        </Link>
+                    </div>
                 </div>
                 <div className="col-lg-6">
                     <ul className="circle">

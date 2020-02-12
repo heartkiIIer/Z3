@@ -60,7 +60,7 @@ class ExampleModule extends React.Component {
                             It's a trap, what I wanna do, right now, is try something a little different.  I want you to say whatever you want, take it away. Your meeting.</p>
                         <hr className="hr-settings"/>
 
-                        <iframe id = "video" max-width="400" height="300" src="https://www.youtube.com/embed/CtOU4f3smt4" frameBorder="0"
+                        <iframe id = "video" width="400" height="300" src="https://www.youtube.com/embed/CtOU4f3smt4" frameBorder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" align="center"
                                 allowFullScreen>
                         </iframe>

@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/landing.css'
 import {Link} from 'react-router-dom';
+import '../scripts/firebase'
+import '../scripts/login'
 
 class Landing extends React.Component {
     constructor(props) {
@@ -59,6 +61,7 @@ class Landing extends React.Component {
             }
         })
     }
+    // <a href="http://localhost:5000/auth/google" className="btn">Login with Google</a>
     render(){
         this.resize();
         return (
@@ -67,14 +70,9 @@ class Landing extends React.Component {
                     <div style={{paddingBottom: this.state.paddingBm75}} id="Heading" className="row featurette">
                         <div className="box col-md-6 order-md-1">
                             <div id="login">
-                                <h2 className="whiteText">Login</h2>
                                 <form>
-                                    <input className="inp" type="text" name="username" placeholder="Username or Email"/>
-                                    <input className="inp" type="password" name="password" placeholder="Password"/>
-                                    <Link to="/home">
-                                        <button className="btn" id="loginbtn">Login</button><br/>
-                                    </Link>
-                                    <a href="http://localhost:5000/auth/google" className="btn">Login with Google</a>
+                                    <div id="firebaseui-auth-container"></div>
+                                    <div className="whiteText" id="loader">Loading...</div>
                                 </form>
                             </div>
                         </div>

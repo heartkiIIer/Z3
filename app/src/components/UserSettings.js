@@ -9,6 +9,7 @@ import SideBar from "./sideMenu";
 import EmptyCheckbox from "../resources/icons/square-regular.svg";
 import CheckedBox from "../resources/icons/check-square-solid.svg";
 import AddButton from "../resources/icons/plus-circle-solid.svg";
+import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
 
 /**
  * @author Eliazbeth Del Monaco
@@ -21,7 +22,7 @@ import AddButton from "../resources/icons/plus-circle-solid.svg";
 class UserSettings extends React.Component {
     constructor(props){
         super(props)
-        this.state = { isEditable: false };
+        this.state = { isEditable: false, image: "" };
     }
 
     toggleCheckbox(element){
@@ -77,7 +78,17 @@ class UserSettings extends React.Component {
     addItem(id){
         document.getElementById("here").innerHTML =  '<button id = "4" type="button" class="list-group-item list-group-item-action"> <div class="align-check-and-label"> <div class="checkbox checkbox-circle checkbox-primary "> <input type="checkbox" id="checkbox4"/> <label htmlFor="checkbox4"/> </div> <p> Meditate </p> <img class = "delete"/></div> </button>'
     }
+
+    getUserImage(){
+        fetch('http://localhost:5000/user')
+            .then(response => response.json())
+            .then(data => this.setState({
+                image: data.image
+            }));
+    }
+
     render(){
+        this.getUserImage();
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -86,39 +97,42 @@ class UserSettings extends React.Component {
                     <hr class = "hr-settings"/>
                     <h3 class = "blueHeader"> Change password </h3>
                     <div class = "flex-row-nowrap">
-                        <p class = "blueHeader width80"> Enter old password: </p>
-                        <input className='editMe' placeholder='old password'/>
-                    </div>
-                    <div className="flex-row-nowrap">
-                        <p className="blueHeader width80"> Enter new password: </p>
-                        <input className='editMe' placeholder='new password'/>
+                        <p class = "blueHeader width80"> Enter new password: </p>
+                        <input id="chgPwd-NewPwd" className='editMe' type="password" placeholder='new password'/>
                     </div>
                     <div className="flex-row-nowrap">
                         <p className="blueHeader width80"> Re-enter new password: </p>
-                        <input className='editMe' placeholder='new password'/>
+                        <input id="chgPwd-NewPwd2" className='editMe' type="password" placeholder='new password'/>
                     </div>
                     <br/>
-                    <button className='btn' id = "extended">
+                    <button className='btn' id = "extended" onClick={updatePwd}>
                         Confirm
                     </button>
 
                     <h3 className="blueHeader"> Change email </h3>
                     <div className="flex-row-nowrap">
-                        <p className="blueHeader width80"> Enter password: </p>
-                        <input className='editMe' placeholder='password'/>
-                    </div>
-                    <div className="flex-row-nowrap">
                         <p className="blueHeader width80"> Enter new email: </p>
-                        <input className='editMe' placeholder='example@gmail.com'/>
+                        <input id="chgEmail-NewEmail" className='editMe' placeholder='example@gmail.com'/>
                     </div>
                     <div className="flex-row-nowrap">
                         <p className="blueHeader width80"> Re-enter new email: </p>
-                        <input className='editMe' placeholder='example@gmail.com'/>
+                        <input id="chgEmail-NewEmail2" className='editMe' placeholder='example@gmail.com'/>
                     </div>
                     <br/>
-                    <button className='btn' id="extended">
+                    <button className='btn' id="extended" onClick={updateEmail}>
                         Confirm
                     </button>
+
+                    <h3 className="blueHeader"> Change Profile Image </h3>
+                    <div className="flex-row-nowrap">
+                        <img id="chgImg" style={{marginRight: "20px"}} className="profile_pic" src={this.state.image} alt=""/>
+                        <input id="chgImageURL" className='editMe' type="text" placeholder='https://images.com/example.png'/>
+                    </div>
+                    <br/>
+                    <button className='btn' id="extended" onClick={updateImage}>
+                        Confirm
+                    </button>
+
                     <h1 className="blueHeader"> Account Access</h1>
                     <hr className="hr-settings"/>
                     <div class = "flex-row-nowrap">
@@ -163,7 +177,7 @@ class UserSettings extends React.Component {
 
                     <h1 className="blueHeader"> Delete your account</h1>
                     <hr className="hr-settings"/>
-                    <button className='btn' id = "extended">
+                    <button className='btn' id = "extended" onClick={deleteAcc}>
                         Delete your account
                     </button>
                 </div>

@@ -132,6 +132,25 @@ const PrettoSlider = withStyles({
     },
 })(Slider);
 
+function submitCaffeineEntry(ele1, ele2) {
+    var str1 = document.getElementById(ele1).value;
+    var str2 = document.getElementById(ele2).getAttribute("value");
+    console.log(str1);
+    console.log(str2);
+
+    fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            size: str1,
+            cups: str2,
+        })
+    })
+}
+
 const panes = [
     {
         menuItem: 'Exercise',

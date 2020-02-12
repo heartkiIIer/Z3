@@ -177,19 +177,36 @@
     width: 100%;
 }
 #setting_link{
-    height: 50px;
+    height: 75px;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(#fefefe, #dadaea);
 }
+
 #setting_icon{
     background: url("../resources/icons/setting.svg") no-repeat;
     background-size: contain;
     height: 50px;
     width: 50px;
 }
+#logout_icon{
+    background: url("../resources/icons/logout_icon.svg") no-repeat;
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+}
+
 .whiteText{
     color: white;
+}
+.profile_pic{
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
 }

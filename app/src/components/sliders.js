@@ -9,7 +9,6 @@ import AccessTime from '@material-ui/icons/AccessTime';
 import LocalCafe from '@material-ui/icons/LocalCafe';
 import Delete from '@material-ui/icons/Delete';
 import { Tab } from 'semantic-ui-react'
-import CalendarButtons from "./CalendarButtons";
 import Display from "./Display";
 
 const cup = {
@@ -136,7 +135,9 @@ const PrettoSlider = withStyles({
 const panes = [
     {
         menuItem: 'Exercise',
-        render: () => <Tab.Pane attached={false}>
+        render: () =>
+            <div>
+            <Tab.Pane attached={false}>
             <h5>Rate intensity & duration of exercise</h5>
             <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
@@ -170,47 +171,25 @@ const panes = [
                                   marks={minutes}/>
                 </Grid>
             </Grid>
-            <button className='btn'>Submit</button>
-            <br/><br/>
         </Tab.Pane>
+                <div className='float_center'>
+                    <div className='child'>
+                        <button className='btn'>Submit Exercise</button>
+                        <br/><br/><br/>
+                    </div>
+                </div>
+            </div>
 
     },
     {
         menuItem: 'Stress',
-        render: () =>
-            <Tab.Pane attached={false}>
-            <h5>Rate stress level for each event</h5>
-            <br/>
-                <Display/>
-                {/*<Typography id="discrete-slider-restrict" gutterBottom>*/}
-                {/*    Event 1*/}
-                {/*    <button >Remove</button>*/}
-                {/*</Typography>*/}
-                {/*<PrettoSlider aria-label="pretto slider" defaultValue={98}*/}
-                {/*              step={null}*/}
-                {/*              marks={stresslevel}/>*/}
-
-                {/*<Typography id="discrete-slider-restrict" gutterBottom>*/}
-                {/*    Event 2*/}
-                {/*    <button >Remove</button>*/}
-                {/*</Typography>*/}
-                {/*<PrettoSlider aria-label="pretto slider" defaultValue={2}*/}
-                {/*              step={null}*/}
-                {/*              marks={stresslevel}/>*/}
-                {/*<Typography id="discrete-slider-restrict" gutterBottom>*/}
-                {/*    Event 3*/}
-                {/*    <button >Remove</button>*/}
-                {/*</Typography>*/}
-                {/*<PrettoSlider aria-label="pretto slider" defaultValue={50}*/}
-                {/*              step={null}*/}
-                {/*              marks={stresslevel}/>*/}
-                <button class='btn'>Submit</button>
-                              <button>Add</button>
-        </Tab.Pane>
+        render: () => <Display/>
     },
     {
         menuItem: 'Caffeine',
-        render: () => <Tab.Pane attached={false}>
+        render: () =>
+            <div>
+            <Tab.Pane attached={false}>
             <h5>Log the amount of caffeine consumed</h5>
             <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
@@ -246,14 +225,19 @@ const panes = [
                                   marks={cupsize}/>
                 </Grid>
             </Grid>
-            <button className='btn'>Submit</button>
-            <br/><br/>
         </Tab.Pane>
+                <div className='float_center'>
+                    <div className='child'>
+                        <button className='btn'>Submit Caffeine</button>
+                        <br/><br/><br/>
+                    </div>
+                </div>
+            </div>
     }
 ]
 
 const Tabs = () => (
-    <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+    <Tab menu={{ secondary: true, pointing: true }} panes={panes} defaultActiveIndex={1}/>
 )
 
 export default Tabs

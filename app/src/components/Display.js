@@ -1,61 +1,14 @@
 import React, {useState, useEffect, useRef, SyntheticEvent} from 'react';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
 import ApiCalendar from 'react-google-calendar-api';
-import { withStyles} from '@material-ui/core/styles';
 import { Tab } from 'semantic-ui-react'
-
-const stresslevel = [
-    {
-        value: 0,
-        label: 'Low',
-    },
-    {
-        value: 50,
-        label: 'Medium',
-    },
-    {
-        value: 98,
-        label: 'High',
-    }
-];
-
-const PrettoSlider = withStyles({
-    root: {
-        color: 'mediumpurple',
-        height: 8,
-    },
-    thumb: {
-        height: 24,
-        width: 24,
-        backgroundColor: '#fff',
-        border: '2px solid currentColor',
-        marginTop: -8,
-        marginLeft: -12,
-        '&:focus,&:hover,&$active': {
-            boxShadow: 'inherit',
-        },
-    },
-    active: {},
-    valueLabel: {
-        left: 'calc(-50% + 4px)'
-    },
-    track: {
-        height: 8,
-        borderRadius: 4,
-    },
-    rail: {
-        height: 8,
-        borderRadius: 4,
-    },
-})(Slider);
+import Item from './Item'
 
 export default class LoginControl extends React.Component {
     constructor(props) {
         super(props);
         this.handleItemClick = this.handleItemClick.bind(this);
         this.state = {
-            sign: ApiCalendar.sign,
+            sign: ApiCalendar.sign
         };
         this.signUpdate = this.signUpdate.bind(this);
         ApiCalendar.onLoad(() => {
@@ -79,6 +32,7 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
+        console.log(isLoggedIn)
         let ele;
 
         if (isLoggedIn) {
@@ -95,22 +49,46 @@ export default class LoginControl extends React.Component {
     }
 }
 
+let LoginControlClass = new LoginControl()
+
 function LoginButton(props) {
     return (
+        <div>
+        <Tab.Pane attached={false}>
+            <h5>Rate stress level for each event</h5>
+            <br/>
+            <i><p>You must be logged into your Google Calendar to access this utility.</p></i>
+        </Tab.Pane>
+        <div className='float_center'>
+        <div className='child'>
         <button className='btn' id='extended' onClick={props.onClick}>
-            Sync with Google Calendar
+        Sync with Google Calendar
+    </button>
+    <br/><br/><br/>
+    </div>
+</div>
+        </div>
+    );
+}
+
+function LogoutButton(props) {
+    return (
+        <button className='btn' onClick={props.onClick}>
+            Sign out from your Google Calendar
         </button>
     );
 }
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(10);
-    return result.result.items.map(({summary}) => summary);
+    return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
 }
 
 function Display() {
     const [items, saveItems] = useState([]);
     const isMounted = useRef(true);
+
+    let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
 
     useEffect(() => {
         return () => {
@@ -128,59 +106,26 @@ function Display() {
         })();
     }, []);
 
-    return <>{items.map(item =>
-        <Tab.Pane key={item} attached={false}>
-        <Typography id="discrete-slider-restrict" gutterBottom>
-            {item}
-        <button>Remove</button>
-        </Typography>
-        <PrettoSlider aria-label="pretto slider" defaultValue={98} step={null}marks={stresslevel}/></Tab.Pane>
-    )}</>
+    return (
+        <div>
+        <Tab.Pane style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
+            <h5>Rate stress level for each event</h5>
+            <button className='btn-info' onClick={() => window.location.reload()}>Refresh to Sync</button>
+            <br/><br/>
+            {items.map(item => (
+                <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
+            ))}
+            <button className='btn-success'>Fetch More Events</button>
+            <br/>
+        </Tab.Pane>
+            <div className='float_center'>
+                <div className='child'>
+                    <button className='btn'>Submit Stress</button>
+                    {button}
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </div>
+    )
 }
-
-// function Display() {
-//     let events = new Set()
-//     let tabs = [];
-//     const [items, stateItems] = useState([]);
-//
-//     useEffect(async () => {
-//         const res = await ApiCalendar.listUpcomingEvents(10);
-//         stateItems(res.result.items.summary);
-//     }, []);
-//
-//     return items.map(item =>
-//         <Tab.Pane attached={false}>
-//             <Typography id="discrete-slider-restrict" gutterBottom>
-//                 {item}
-//                 <button>Remove</button>
-//             </Typography>
-//             <PrettoSlider aria-label="pretto slider" defaultValue={98} step={null}marks={stresslevel}/></Tab.Pane>
-//     );
-// }
-
-// function Display() {
-//     let events = new Set()
-//     let tabs = []
-//     ApiCalendar.listUpcomingEvents(10)
-//         .then(({result}: any) => {
-//             result.items.forEach(element => {
-//                     console.log(element.summary)
-//                     events.add(element.summary)
-//                 }
-//             );
-//             console.log(events)
-//             for (let item of events)
-//                 console.log(item)
-//                 tabs.push(
-//                   <Tab.Pane attached={false}>
-//                     <Typography id="discrete-slider-restrict" gutterBottom>
-//                         item
-//                         <button>Remove</button>
-//                     </Typography>
-//                     <PrettoSlider aria-label="pretto slider" defaultValue={98} step={null}marks={stresslevel}/></Tab.Pane>
-//             )
-//             console.log(tabs)
-//             return tabs
-//         });
-// }
 

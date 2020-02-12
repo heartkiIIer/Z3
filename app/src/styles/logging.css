@@ -1,7 +1,12 @@
 .MuiSlider-markLabel{
     top: 35px !important;
 }
-
+.MuiSlider-root{
+    padding: 10px 0px 20px !important;
+}
+.ui.segment{
+    padding: 2em 2em !important;
+}
 .logging {
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
     url("../resources/background_images/notebook.jpg") no-repeat center center fixed;
@@ -24,14 +29,39 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 13px 22px;
-    margin-top: 42px;
+    margin: 20px !important;
     transition: all 0.4s ease-in-out;
+}
+
+.btn-danger, .btn-success, .btn-outline-info{
+    border-radius: 5px;
+}
+
+
+.btn-danger{
+    float: right;
+}
+
+.btn-success, .btn-outline-info{
+    float: left;
 }
 
 .btn:hover {
     background: #ffffff;
     border: 2px solid #00000030;
     color: #444;
+}
+
+.float_center {
+    float: right;
+
+    position: relative;
+    left: -50%; /* or right 50% */
+    text-align: left;
+}
+.float_center > .child {
+    position: relative;
+    left: 50%;
 }
 
 

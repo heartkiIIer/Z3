@@ -5,7 +5,7 @@ import SaveButton from "../resources/icons/save-solid.svg";
 import EditButton from "../resources/icons/edit-solid.svg";
 import DeleteButton from "../resources/icons/minus-circle-solid.svg";
 import SideBar from "./sideMenu";
-import CalendarButtons from "./CalendarButtons";
+// import CalendarButtons from "./CalendarButtons";
 import EmptyCheckbox from "../resources/icons/square-regular.svg";
 import CheckedBox from "../resources/icons/check-square-solid.svg";
 import AddButton from "../resources/icons/plus-circle-solid.svg";
@@ -122,7 +122,6 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Account Access</h1>
                     <hr className="hr-settings"/>
                     <div class = "flex-row-nowrap">
-                        <CalendarButtons/>
                         <button className='btn' id = "extended">
                             Remove FitBit Access
                         </button>

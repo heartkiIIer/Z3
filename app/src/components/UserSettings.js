@@ -82,10 +82,10 @@ class UserSettings extends React.Component {
     }
 
     // retrieves user's profile image to display in settings
-    getUserImage(){
+    getUserImage(currentComponent){
         fetch('http://sleepwebapp.wpi.edu:5000/user')
             .then(response => response.json())
-            .then(data => this.setState({
+            .then(data => currentComponent.setState({
                 image: data.image
             }));
     }
@@ -94,6 +94,7 @@ class UserSettings extends React.Component {
         let currentComponent = this;
         this.getProvider(currentComponent);
         this.getRoutine(currentComponent);
+        this.getUserImage(currentComponent)
     }
 
     // determines which provider the user is using to login: Google, Facebook, or with a password
@@ -133,32 +134,46 @@ class UserSettings extends React.Component {
         })
     }
     addRoutine() {
-        // prompt to enter password for re-authentication
+        // prompt to enter a new routine
         swal({
             title: "Add a Routine",
-            text: "Please enter the task you would like to add: ",
+            text: "Please enter the number of minutes of your new task: ",
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "Brush Teeth",
+                    placeholder: "20",
                     type: "text"
                 }
             },
-        }).then((task) =>{
-            const data = JSON.stringify({
-                minutes: 10,
-                task: task
-            });
-            fetch('http://sleepwebapp.wpi.edu:5000/addRoutine', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+        }).then((minutes) => {
+            swal({
+                title: "Add a Routine",
+                text: "Please enter the task you would like to add: ",
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "Brush Teeth",
+                        type: "text"
+                    }
                 },
-                body: data
-            }).then( r => {
-                console.log("Added Routine: ", r.status)
-            })
+            }).then((task) => {
+                console.log("Task: ", task);
+                console.log("Minutes", minutes);
+                const data = JSON.stringify({
+                    minutes: minutes,
+                    task: task
+                });
+                fetch('http://sleepwebapp.wpi.edu:5000/addRoutine', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data
+                }).then(r => {
+                    console.log("Added Routine: ", r.status)
+                })
+            });
         });
     }
     deleteRoutine(entryId) {
@@ -176,7 +191,6 @@ class UserSettings extends React.Component {
     }
 
     render(){
-        this.getUserImage();
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

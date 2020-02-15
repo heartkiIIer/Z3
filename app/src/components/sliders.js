@@ -132,6 +132,7 @@ const PrettoSlider = withStyles({
     },
 })(Slider);
 
+//this is untested/idk if it works
 function submitCaffeineEntry(ele1, ele2) {
     var str1 = document.getElementById(ele1).value;
     var str2 = document.getElementById(ele2).getAttribute("value");

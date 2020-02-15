@@ -1,4 +1,5 @@
 var z3_firebase = require('./firebase.js');
+var swal = require('sweetalert');
 
 // changes the user's password to new password
 function newPassword(user){
@@ -9,16 +10,25 @@ function newPassword(user){
     // check if new passwords match
     if(newPassword === newPassword2){
         user.updatePassword(newPassword).then(function() { // Update successful.
-            alert("Your password has been updated");
+            swal({
+                text: "Your password has been successfully updated",
+                icon: "success"
+            });
 
             // clear password inputs
             document.getElementById("chgPwd-NewPwd").value = "";
             document.getElementById("chgPwd-NewPwd2").value = "";
         }).catch(function(error) { // An error happened.
-            alert("New " + error.message);
+            swal({
+                text: error.message,
+                icon: "error"
+            });
         });
     }
-    else { alert("Passwords do not match"); }
+    else { swal({
+        text: "The new passwords do not match",
+        icon: "warning",
+    }); }
 }
 // changes the user's email to new email
 function newEmail(user){
@@ -27,51 +37,86 @@ function newEmail(user){
 
     if(newEmail === newEmail2){
         user.updateEmail(newEmail).then(function() { // Update successful.
-            alert("Your Email has been updated");
+            swal({
+                text: "Your Email has been successfully updated",
+                icon: "success"
+            });
 
             // clear email inputs
             document.getElementById("chgEmail-NewEmail").value = "";
             document.getElementById("chgEmail-NewEmail2").value = "";
         }).catch(function(error) { // An error happened.
-            alert(error.message);
+            swal({
+                text: error.message,
+                icon: "error"
+            });
         });
     }
-    else { alert("emails do not match"); }
+    else { swal({
+        text: "The new emails do not match",
+        icon: "warning"
+    }); }
 }
 // deletes user's account
 function deleteUser(user){
-    var confirm = window.confirm("Do you really wish to delete your account?");
-    if(confirm) {
-        user.delete().then(function() {
-            // User deleted.
-            // Delete all database information on user
-            alert("User was successfully deleted");
-            window.open("http://localhost:5000/logout", "_self")
-        }).catch(function(error) {
-            // An error happened.
-            console.log("User cannot be deleted");
-            console.log(error.message);
-        });
-    }
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover your account!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            user.delete().then(function() {
+                // User deleted.
+                // Delete all database information on user
+                swal({
+                    text: "User was successfully deleted",
+                    icon: "success"
+                });
+                window.open("http://localhost:5000/logout", "_self")
+            }).catch(function(error) {
+                // An error happened.
+                console.log("User cannot be deleted");
+                swal({
+                    text: error.message(),
+                    icon: "error"
+                });
+            });
+        }
+    });
 }
 // re-authentications user before updating profile
 function reauthUser(updatefn){
-    // prompt to enter password for re-authentication
-    var password = window.prompt("To confirm changes, please enter your password:", "password")
-
     // retrieve email of the logged in user
     z3_firebase.auth().onAuthStateChanged(function(user) {
         if (user) { // User is signed in.
-            var email = "";
-            // retrieve email of current user
-            user.providerData.forEach(function (profile) { email = profile.email; });
-            // set up credentials for re-authentication
-            var credential = z3_firebase.auth.EmailAuthProvider.credential( email, password );
+            user.providerData.forEach(function (profile) {
+                if(profile.providerId === "password"){
+                    // prompt to enter password for re-authentication
+                    swal({
+                        text: "To confirm changes, please enter your password:",
+                        content: {
+                            element: "input",
+                            attributes: {
+                                placeholder: "Type your password",
+                                type: "password"
+                            }
+                        },
+                    }).then((password) =>{
+                        // set up credentials for re-authentication
+                        var credential = z3_firebase.auth.EmailAuthProvider.credential( profile.email, password );
 
-            user.reauthenticateWithCredential(credential).then(function() { // User re-authenticated.
-                updatefn(user); // update user profile
-            }).catch(function(error) { // An error happened.
-                alert(error.message);
+                        user.reauthenticateWithCredential(credential).then(function() { // User re-authenticated.
+                            updatefn(user); // update user profile
+                        }).catch(function(error) { // An error happened.
+                            swal({text: error.message, icon: "error"});
+                        });
+                    });
+                }
+                else{
+                    updatefn(user);
+                }
             });
         } else { // No user is signed in.
             console.log("No User is signed in");
@@ -107,7 +152,7 @@ function updateImage(e){
     }).then(function() { // Update successful.
         document.getElementById("chgImg").src = image;
     }).catch(function(error) { // An error happened.
-        alert(error.message)
+        swal({text: error.message, icon: "error"})
     });
 }
 

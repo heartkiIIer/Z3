@@ -10,6 +10,7 @@ import EmptyCheckbox from "../resources/icons/square-regular.svg";
 import CheckedBox from "../resources/icons/check-square-solid.svg";
 import AddButton from "../resources/icons/plus-circle-solid.svg";
 import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
+import z3_firebase from "../scripts/firebase"
 
 /**
  * @author Eliazbeth Del Monaco
@@ -22,7 +23,7 @@ import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/Setting
 class UserSettings extends React.Component {
     constructor(props){
         super(props)
-        this.state = { isEditable: false, image: "" };
+        this.state = { isEditable: false, image: ""};
     }
 
     toggleCheckbox(element){
@@ -87,51 +88,78 @@ class UserSettings extends React.Component {
             }));
     }
 
+    componentDidMount(){
+        let currentComponent = this;
+        this.getProvider(currentComponent);
+    }
+
+    getProvider(currentComponent){
+        z3_firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                user.providerData.forEach(function (profile) {
+                    if(profile.providerId !== "password"){
+                        currentComponent.hide();
+                    }
+                });
+            }
+        });
+    }
+
+    hide(){
+        var elements = document.getElementsByClassName("Hidden");
+
+        for (var i = 0; i < elements.length; i++){
+            elements[i].style.display = "none";
+        }
+    }
+
     render(){
         this.getUserImage();
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner" id="page-wrap">
-                    <h1 class = "blueHeader"> Modify your settings</h1>
-                    <hr class = "hr-settings"/>
-                    <h3 class = "blueHeader"> Change password </h3>
-                    <div class = "flex-row-nowrap">
+                    <h1 class = "blueHeader Hidden"> Modify your settings</h1>
+                    <hr class = "hr-settings Hidden"/>
+                    <h3 class = "blueHeader Hidden"> Change password </h3>
+                    <div class = "flex-row-nowrap Hidden">
                         <p class = "blueHeader width80"> Enter new password: </p>
                         <input id="chgPwd-NewPwd" className='editMe' type="password" placeholder='new password'/>
                     </div>
-                    <div className="flex-row-nowrap">
+                    <div className="flex-row-nowrap Hidden">
                         <p className="blueHeader width80"> Re-enter new password: </p>
                         <input id="chgPwd-NewPwd2" className='editMe' type="password" placeholder='new password'/>
                     </div>
-                    <br/>
-                    <button className='btn' id = "extended" onClick={updatePwd}>
-                        Confirm
-                    </button>
+                    <p className="Hidden" style={{color: "#ff6666", marginTop: "10px", size: "10pt"}}>
+                        Password needs to be at least 6 characters long</p>
 
-                    <h3 className="blueHeader"> Change email </h3>
-                    <div className="flex-row-nowrap">
+                    <button className='btn Hidden' id = "extended" onClick={updatePwd}>
+                        Confirm
+                    </button><br className="Hidden"/><br className="Hidden"/>
+
+                    <h3 className="blueHeader Hidden"> Change email </h3>
+                    <div className="flex-row-nowrap Hidden">
                         <p className="blueHeader width80"> Enter new email: </p>
                         <input id="chgEmail-NewEmail" className='editMe' placeholder='example@gmail.com'/>
                     </div>
-                    <div className="flex-row-nowrap">
+                    <div className="flex-row-nowrap Hidden">
                         <p className="blueHeader width80"> Re-enter new email: </p>
                         <input id="chgEmail-NewEmail2" className='editMe' placeholder='example@gmail.com'/>
                     </div>
-                    <br/>
-                    <button className='btn' id="extended" onClick={updateEmail}>
-                        Confirm
-                    </button>
 
-                    <h3 className="blueHeader"> Change Profile Image </h3>
-                    <div className="flex-row-nowrap">
+                    <button className='btn Hidden' id="extended" onClick={updateEmail}>
+                        Confirm
+                    </button><br className="Hidden"/><br className="Hidden"/>
+
+                    <h3 className="blueHeader Hidden"> Change Profile Image </h3>
+                    <div className="flex-row-nowrap Hidden">
                         <img id="chgImg" style={{marginRight: "20px"}} className="profile_pic" src={this.state.image} alt=""/>
                         <input id="chgImageURL" className='editMe' type="text" placeholder='https://images.com/example.png'/>
                     </div>
-                    <br/>
-                    <button className='btn' id="extended" onClick={updateImage}>
+
+                    <button className='btn Hidden' id="extended" onClick={updateImage}>
                         Confirm
-                    </button>
+                    </button><br className="Hidden"/><br className="Hidden"/>
 
                     <h1 className="blueHeader"> Account Access</h1>
                     <hr className="hr-settings"/>
@@ -178,7 +206,7 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Delete your account</h1>
                     <hr className="hr-settings"/>
                     <button className='btn' id = "extended" onClick={deleteAcc}>
-                        Delete your account
+                        Delete
                     </button>
                 </div>
             </div>

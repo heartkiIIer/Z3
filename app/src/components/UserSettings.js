@@ -11,6 +11,7 @@ import CheckedBox from "../resources/icons/check-square-solid.svg";
 import AddButton from "../resources/icons/plus-circle-solid.svg";
 import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
 import z3_firebase from "../scripts/firebase"
+import swal from 'sweetalert'
 
 /**
  * @author Eliazbeth Del Monaco
@@ -131,6 +132,48 @@ class UserSettings extends React.Component {
             currentComponent.setState({routine : r})
         })
     }
+    addRoutine() {
+        // prompt to enter password for re-authentication
+        swal({
+            title: "Add a Routine",
+            text: "Please enter the task you would like to add: ",
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "Brush Teeth",
+                    type: "text"
+                }
+            },
+        }).then((task) =>{
+            const data = JSON.stringify({
+                minutes: 10,
+                task: task
+            });
+            fetch('http://sleepwebapp.wpi.edu:5000/addRoutine', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                console.log("Added Routine: ", r.status)
+            })
+        });
+    }
+    deleteRoutine(entryId) {
+        const data = JSON.stringify({entryId: entryId});
+        fetch('http://sleepwebapp.wpi.edu:5000/deleteRoutine', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            console.log("Deleted Routine: ", r.status)
+        });
+    }
 
     render(){
         this.getUserImage();
@@ -191,7 +234,8 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>
 
-                    <p>{this.state.routine}</p>
+                    <p>Routine: <br/> {this.state.routine}</p>
+                    <button className={'btn'} onClick={this.addRoutine}>+</button>
 
                     <div className="list-group" class ="width300">
                         <button id="1" type="button" className="list-group-item list-group-item-action"

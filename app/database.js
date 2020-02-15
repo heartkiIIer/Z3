@@ -247,6 +247,23 @@ function putChronotypeById(req, res, id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10
     })
 }
 
+//Weekly report
+function getWeekById(req, res, id){
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('SELECT * FROM chronotype WHERE user_id =' + internalId.rows[0].user_id + ';', (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
 module.exports = {
     getUsers,
     deleteCaffeineEntriesById,
@@ -262,4 +279,5 @@ module.exports = {
     deleteBedtimeRoutinesById,
     getChronotypeById,
     putChronotypeById,
+    getWeekById,
 }

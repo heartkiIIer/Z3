@@ -32,7 +32,6 @@ class ItsBedtimeRoutine extends React.Component {
      componentDidMount(){
         let currentComponent = this;
         this.getRoutine(currentComponent)
-
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

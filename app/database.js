@@ -54,22 +54,36 @@ function addUser(req, res, id, first) {
 //Caffeine entry
 //Get all caffeine entries for a given user
 function getCaffeineEntriesById(req, res, id) {
-    pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ internalId +';' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Add a caffeine entry
 function addCaffeineEntriesById(req, res, id, cups, size) {
-    pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, size) VALUES('+id+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, size) VALUES('+internalId+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Remove a caffeine entry
@@ -85,22 +99,36 @@ function deleteCaffeineEntriesById(req, res, id) {
 //Exercise Entry
 //Get all exercise entries for a given user
 function getExerciseEntriesById(req, res, id) {
-    pool.query('SELECT * FROM ExerciseEntry WHERE user_id ='+ id +';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('SELECT * FROM ExerciseEntry WHERE user_id ='+ internalId +';' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Add a exercise entry
 function addExerciseEntriesById(req, res, id, minutes, intensity) {
-    pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+id+', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+internalId+', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Remove a exercise entry
@@ -160,12 +188,19 @@ function getBedtimeRoutineById(req, res, id) {
 //Add a task
 function addBedtimeRoutineById(req, res, id, minutes, task) {
     checkQuery(task)
-    pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+id+', ' + minutes +', ' + task+');' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+internalId+', ' + minutes +', ' + task+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Remove a task
@@ -176,6 +211,40 @@ function deleteBedtimeRoutinesById(req, res, id) {
         }
         res.status(200).send(results.rows);
     });
+}
+
+//Chronotype functions
+//Get chronotype results
+function getChronotypeById(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('SELECT * FROM chronotype WHERE user_id =' + internalId.rows[0].user_id + ';', (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
+function putChronotypeById(req, res, id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('INSERT INTO chronotype(user_id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13) VALUES('+internalId.rows[0].user_id+', ' + q1+', ' + q2+ ', ' + q3+ ', ' + q4+ ', ' + q5+ ', ' + q6+ ', ' + q7+ ', ' + q8+ ', ' + q9+ ', ' + q10+ ', ' + q11+ ', ' + q12+ ', ' + q13+');', (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 module.exports = {
@@ -191,4 +260,6 @@ module.exports = {
     getBedtimeRoutineById,
     addBedtimeRoutineById,
     deleteBedtimeRoutinesById,
+    getChronotypeById,
+    putChronotypeById,
 }

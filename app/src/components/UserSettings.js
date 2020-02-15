@@ -83,7 +83,7 @@ class UserSettings extends React.Component {
 
     // retrieves user's profile image to display in settings
     getUserImage(){
-        fetch('http://localhost:5000/user')
+        fetch('http://sleepwebapp.wpi.edu:5000/user')
             .then(response => response.json())
             .then(data => this.setState({
                 image: data.image

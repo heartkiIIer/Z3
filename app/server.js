@@ -76,12 +76,12 @@ app.post('/getRoutine/', cors(corsOptions), (req, res)=> {
     db.getBedtimeRoutineById(req, res, userProfile.id);
 })
 
-app.post('addRoutine', cors(corsOptions), (req, res) => {
+app.post('/addRoutine/', cors(corsOptions), (req, res) => {
     const {minutes, task} = req.body;
     db.addBedtimeRoutineById(req, res, userProfile.id, minutes, task);
 });
 
-app.post('deleteRoutine', cors(corsOptions), (req, res) => {
+app.post('/deleteRoutine/', cors(corsOptions), (req, res) => {
     const {entryId} = req.body;
     db.deleteBedtimeRoutinesById(req, res, entryId);
 });

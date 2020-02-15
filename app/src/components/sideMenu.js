@@ -29,9 +29,9 @@ export default props => {
             <a className="menu-item" href="/settings">
                 Settings
             </a>
-            <button className="menu-item" onClick={logout}>
+            <a className="menu-item" onClick={logout}>
                 Log Out
-            </button>
+            </a>
     </Menu>
     );
 };

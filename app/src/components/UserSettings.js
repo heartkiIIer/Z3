@@ -22,8 +22,8 @@ import z3_firebase from "../scripts/firebase"
 
 class UserSettings extends React.Component {
     constructor(props){
-        super(props)
-        this.state = { isEditable: false, image: ""};
+        super(props);
+        this.state = { isEditable: false, image: "", routine: null};
     }
 
     toggleCheckbox(element){
@@ -68,7 +68,7 @@ class UserSettings extends React.Component {
     }
 
     toggleEditableState(){
-        if(this.state.isEditable == false){
+        if(this.state.isEditable === false){
             this.setState( {isEditable : true}, () => {this.changeState()})
         }
         else{
@@ -80,6 +80,7 @@ class UserSettings extends React.Component {
         document.getElementById("here").innerHTML =  '<button id = "4" type="button" class="list-group-item list-group-item-action"> <div class="align-check-and-label"> <div class="checkbox checkbox-circle checkbox-primary "> <input type="checkbox" id="checkbox4"/> <label htmlFor="checkbox4"/> </div> <p> Meditate </p> <img class = "delete"/></div> </button>'
     }
 
+    // retrieves user's profile image to display in settings
     getUserImage(){
         fetch('http://localhost:5000/user')
             .then(response => response.json())
@@ -91,8 +92,10 @@ class UserSettings extends React.Component {
     componentDidMount(){
         let currentComponent = this;
         this.getProvider(currentComponent);
+        this.getRoutine(currentComponent);
     }
 
+    // determines which provider the user is using to login: Google, Facebook, or with a password
     getProvider(currentComponent){
         z3_firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
@@ -105,12 +108,28 @@ class UserSettings extends React.Component {
         });
     }
 
+    // hides edit password, email, profile picture options when
+    // the user signs in with Google or Facebook
     hide(){
         var elements = document.getElementsByClassName("Hidden");
 
         for (var i = 0; i < elements.length; i++){
             elements[i].style.display = "none";
         }
+    }
+
+    getRoutine(currentComponent) {
+        fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({routine : r})
+        })
     }
 
     render(){
@@ -171,6 +190,9 @@ class UserSettings extends React.Component {
 
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>
+
+                    <p>{this.state.routine}</p>
+
                     <div className="list-group" class ="width300">
                         <button id="1" type="button" className="list-group-item list-group-item-action"
                                 onClick={() => this.toggleCheckbox("checkbox1")}>
@@ -201,7 +223,6 @@ class UserSettings extends React.Component {
                         <img className="add" onClick={()=> this.addItem(4)}/>
                     </div>
                     <img id = "editAndSave" src = {EditButton} onClick={() => this.toggleEditableState()}/>
-
 
                     <h1 className="blueHeader"> Delete your account</h1>
                     <hr className="hr-settings"/>

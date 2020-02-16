@@ -98,7 +98,7 @@ class UserSettings extends React.Component {
             var task = this.state.routine[i];
             if(task.minutes === 0){
                 routineList += '<button id="task'+ task.task_id+'" type="button" class="list-group-item list-group-item-action"'+
-                    'onClick={() => this.toggleCheckbox("checkbox'+ task.task_id +'")}>'+
+                    'onClick="toggleCheckbox('+ 'checkbox'+ task.task_id +'>'+
                     '<div class="align-check-and-label">' +
                         '<img src='+ EmptyCheckbox + ' id="checkbox' + task.task_id + '" class="bedtime-checkbox"/>' +
                         '<p>' + task.title + '</p>' +
@@ -106,7 +106,7 @@ class UserSettings extends React.Component {
             }
             else{
                 routineList += '<button type="button" class="list-group-item list-group-item-action"'+
-                    'onClick={() => this.toggleCheckbox("checkbox'+ task.task_id +'")}>'+
+                    'onClick="toggleCheckbox('+ 'checkbox'+ task.task_id +'>'+
                     '<div class="align-check-and-label">' +
                     '<img src=' + EmptyCheckbox + ' id="checkbox' + task.task_id + '" class="bedtime-checkbox"/>' +
                     '<p>' + task.minutes + ' minutes of ' + task.title + '</p>' +

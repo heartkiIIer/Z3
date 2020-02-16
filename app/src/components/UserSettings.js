@@ -139,7 +139,13 @@ class UserSettings extends React.Component {
     listRoutine(){
         var routineList = "";
         for(let i = 0; i < this.state.routine.length; i++){
-            routineList += '<p>' + this.state.routine[i].minutes + 'of' + this.state.routine[i].title+ '</p>';
+            var task = this.state.routine[i];
+            if(task.minutes === 0){
+                routineList += '<p>' + this.state.routine[i].title + '</p>';
+            }
+            else{
+                routineList += '<p>' + this.state.routine[i].minutes + ' minutes of ' + this.state.routine[i].title+ '</p>';
+            }
         }
         document.getElementById("here").innerHTML = routineList;
     }
@@ -186,7 +192,6 @@ class UserSettings extends React.Component {
                         body: data
                     }).then(r => {
                         console.log("Added Routine: ", r.status);
-                        this.listRoutine();
                     })
                 }
             });
@@ -203,7 +208,6 @@ class UserSettings extends React.Component {
             body: data
         }).then( r => {
             console.log("Deleted Routine: ", r.status);
-            this.listRoutine();
         });
     }
 

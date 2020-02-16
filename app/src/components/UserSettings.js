@@ -234,15 +234,8 @@ class UserSettings extends React.Component {
                     <hr className="hr-settings"/>
 
                     <div className="list-group" class ="width300">
-                        <button type="button" className="list-group-item list-group-item-action">
-                            <div className="align-check-and-label">
-                                <p>task.title</p>
-                            </div>
-                        </button>
-
                         <div id="here"/>
-                        <button style={{size: "35pt"}} className={'btn'} onClick={this.addRoutine}> + </button>
-                        <button style={{size: "35pt"}} className={'btn'}> - </button>
+                        <button style={{fontSize: "35pt"}} className={'btn'} onClick={this.addRoutine}> + </button>
                     </div>
 
                     <h1 className="blueHeader"> Delete your account</h1>

@@ -38,49 +38,6 @@ class UserSettings extends React.Component {
         }
     }
 
-    deleteItem(id){
-        var element = document.getElementById(id);
-        element.parentNode.removeChild(element);
-
-    }
-
-    changeState(){
-        console.log(this.state.isEditable);
-
-        if(this.state.isEditable){
-            document.getElementById("editAndSave").src = SaveButton;
-
-            for(var i = 0; i < document.getElementsByClassName("align-check-and-label").length; i++){
-                document.getElementsByTagName("p").item(i).innerHTML = "<input class = 'editMe' placeholder ='placeholder'/>";
-                document.getElementsByClassName("delete").item(i).src = DeleteButton;
-                document.getElementsByClassName("add").item(0).src = AddButton;
-
-            }
-
-        }
-        else{
-            document.getElementById("editAndSave").src = EditButton;
-            for(var i = 0; i < document.getElementsByClassName("align-check-and-label").length; i++){
-                document.getElementsByTagName("p").item(i).innerHTML = "hi";
-                document.getElementsByClassName("delete").item(i).src = "";
-                document.getElementsByClassName("add").item(0).src = "";
-            }
-        }
-    }
-
-    toggleEditableState(){
-        if(this.state.isEditable === false){
-            this.setState( {isEditable : true}, () => {this.changeState()})
-        }
-        else{
-            this.setState( {isEditable : false}, () => {this.changeState()})
-        }
-    }
-
-    addItem(id){
-        document.getElementById("here").innerHTML =  '<button id = "4" type="button" class="list-group-item list-group-item-action"> <div class="align-check-and-label"> <div class="checkbox checkbox-circle checkbox-primary "> <input type="checkbox" id="checkbox4"/> <label htmlFor="checkbox4"/> </div> <p> Meditate </p> <img class = "delete"/></div> </button>'
-    }
-
     // retrieves user's profile image to display in settings
     getUserImage(currentComponent){
         fetch('http://sleepwebapp.wpi.edu:5000/user')
@@ -139,10 +96,16 @@ class UserSettings extends React.Component {
         for(let i = 0; i < this.state.routine.length; i++){
             var task = this.state.routine[i];
             if(task.minutes === 0){
-                routineList += '<p>' + this.state.routine[i].title + '</p>';
+                routineList += '<button type="button" class="list-group-item list-group-item-action">'+
+                    '<div class="align-check-and-label">' +
+                        '<p>' + task.title + '</p>' +
+                    '</div></button>';
             }
             else{
-                routineList += '<p>' + this.state.routine[i].minutes + ' minutes of ' + this.state.routine[i].title+ '</p>';
+                routineList += '<button type="button" class="list-group-item list-group-item-action">'+
+                    '<div class="align-check-and-label">' +
+                    '<p>' + task.minutes + ' minutes of ' + task.title + '</p>' +
+                    '</div></button>';
             }
         }
         document.getElementById("here").innerHTML = routineList;
@@ -270,38 +233,19 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>
 
-                    <button className={'btn'} onClick={this.addRoutine}>+</button>
-
                     <div className="list-group" class ="width300">
                         <button id="1" type="button" className="list-group-item list-group-item-action"
                                 onClick={() => this.toggleCheckbox("checkbox1")}>
                             <div className="align-check-and-label">
                                 <img src={EmptyCheckbox} className="bedtime-checkbox" id="checkbox1"/>
                                 <p> 10 minutes of reading </p>
-                                <img className="delete" onClick={() => this.deleteItem(1)}/>
                             </div>
                         </button>
-                        <button id="2" type="button" className="list-group-item list-group-item-action"
-                                onClick={() => this.toggleCheckbox("checkbox2")}>
-                            <div className="align-check-and-label">
-                                <img src={EmptyCheckbox} id="checkbox2" className="bedtime-checkbox"/>
-                                <p> Brush teeth </p>
-                                <img className="delete" onClick={() => this.deleteItem(2)}/>
-                            </div>
-                        </button>
-                        <button id="3" type="button" className="list-group-item list-group-item-action"
-                                onClick={() => this.toggleCheckbox("checkbox3")}>
-                            <div className="align-check-and-label">
-                                <img src={EmptyCheckbox} id="checkbox3" className="bedtime-checkbox"/>
-                                <p> Meditate </p>
-                                <img className="delete" onClick={() => this.deleteItem(3)}/>
 
-                            </div>
-                        </button>
                         <div id="here"/>
-                        <img className="add" onClick={()=> this.addItem(4)}/>
+                        <button style={{size: "35pt"}} className={'btn'} onClick={this.addRoutine}> + </button>
+                        <button style={{size: "35pt"}} className={'btn'}> - </button>
                     </div>
-                    <img id = "editAndSave" src = {EditButton} onClick={() => this.toggleEditableState()}/>
 
                     <h1 className="blueHeader"> Delete your account</h1>
                     <hr className="hr-settings"/>

@@ -98,12 +98,14 @@ class UserSettings extends React.Component {
             if(task.minutes === 0){
                 routineList += '<button type="button" class="list-group-item list-group-item-action">'+
                     '<div class="align-check-and-label">' +
+                        '<img src={EmptyCheckbox} id="checkbox' + i + '" class="bedtime-checkbox"/>' +
                         '<p>' + task.title + '</p>' +
                     '</div></button>';
             }
             else{
                 routineList += '<button type="button" class="list-group-item list-group-item-action">'+
                     '<div class="align-check-and-label">' +
+                    '<img src={EmptyCheckbox} id="checkbox' + i + '" class="bedtime-checkbox"/>' +
                     '<p>' + task.minutes + ' minutes of ' + task.title + '</p>' +
                     '</div></button>';
             }
@@ -235,7 +237,7 @@ class UserSettings extends React.Component {
 
                     <div className="list-group" class ="width300">
                         <div id="here"/>
-                        <button style={{fontSize: "35pt"}} className={'btn'} onClick={this.addRoutine}> + </button>
+                        <button className={'btn'} onClick={this.addRoutine}> + </button>
                     </div>
 
                     <h1 className="blueHeader"> Delete your account</h1>

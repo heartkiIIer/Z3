@@ -100,7 +100,7 @@ class UserSettings extends React.Component {
                 routineList += '<button type="button" class="list-group-item list-group-item-action" onclick='+
                     this.toggleCheckbox("checkbox" + task.task_id)+ '>'+
                     '<div class="align-check-and-label">' +
-                        '<img src='+ EmptyCheckbox + ' id="checkbox' + i + '" class="bedtime-checkbox"/>' +
+                        '<img src='+ EmptyCheckbox + ' id="checkbox' + task.task_id + '" class="bedtime-checkbox"/>' +
                         '<p>' + task.title + '</p>' +
                     '</div></button>';
             }
@@ -108,7 +108,7 @@ class UserSettings extends React.Component {
                 routineList += '<button type="button" class="list-group-item list-group-item-action" onclick='+
                     this.toggleCheckbox("checkbox" + task.task_id)+ '>'+
                     '<div class="align-check-and-label">' +
-                    '<img src=' + EmptyCheckbox + ' id="checkbox' + i + '" class="bedtime-checkbox"/>' +
+                    '<img src=' + EmptyCheckbox + ' id="checkbox' + task.task_id + '" class="bedtime-checkbox"/>' +
                     '<p>' + task.minutes + ' minutes of ' + task.title + '</p>' +
                     '</div></button>';
             }

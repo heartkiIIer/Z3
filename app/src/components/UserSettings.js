@@ -171,21 +171,24 @@ class UserSettings extends React.Component {
             }).then((task) => {
                 console.log("Task: ", task);
                 console.log("Minutes", minutes);
-                const data = JSON.stringify({
-                    minutes: minutes,
-                    task: task
-                });
-                fetch('http://sleepwebapp.wpi.edu:5000/addRoutine', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: data
-                }).then(r => {
-                    console.log("Added Routine: ", r.status);
-                    this.listRoutine();
-                })
+
+                if(task !== null && minutes !== null){
+                    const data = JSON.stringify({
+                        minutes: minutes,
+                        task: task
+                    });
+                    fetch('http://sleepwebapp.wpi.edu:5000/addRoutine', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then(r => {
+                        console.log("Added Routine: ", r.status);
+                        this.listRoutine();
+                    })
+                }
             });
         });
     }

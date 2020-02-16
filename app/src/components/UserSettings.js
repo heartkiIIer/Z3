@@ -210,7 +210,9 @@ class UserSettings extends React.Component {
     }
 
     render(){
-        this.listRoutine();
+        if(this.state.routine !== null){
+            this.listRoutine()
+        }
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

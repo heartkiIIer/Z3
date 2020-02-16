@@ -234,11 +234,9 @@ class UserSettings extends React.Component {
                     <hr className="hr-settings"/>
 
                     <div className="list-group" class ="width300">
-                        <button id="1" type="button" className="list-group-item list-group-item-action"
-                                onClick={() => this.toggleCheckbox("checkbox1")}>
+                        <button type="button" className="list-group-item list-group-item-action">
                             <div className="align-check-and-label">
-                                <img src={EmptyCheckbox} className="bedtime-checkbox" id="checkbox1"/>
-                                <p> 10 minutes of reading </p>
+                                <p>task.title</p>
                             </div>
                         </button>
 

@@ -93,6 +93,7 @@ class UserSettings extends React.Component {
     }
     listRoutine(){
         var routineList = "";
+        console.log(this.state.routine)
         for(let i = 0; i < this.state.routine.length; i++){
             var task = this.state.routine[i];
             if(task.minutes === 0){

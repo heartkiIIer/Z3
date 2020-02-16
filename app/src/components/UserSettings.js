@@ -138,7 +138,7 @@ class UserSettings extends React.Component {
     listRoutine(){
         var routineList = "";
         for(let i = 0; i < this.state.routine.length; i++){
-            routineList += '<p>{this.state.routine[i].minutes} of {this.state.routine[i].title}</p>';
+            routineList += '<p>' + this.state.routine[i].minutes + 'of' + this.state.routine[i].title+ '</p>';
         }
         document.getElementById("here").innerHTML = routineList;
     }

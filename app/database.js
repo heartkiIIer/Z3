@@ -192,6 +192,7 @@ function addBedtimeRoutineById(req, res, id, minutes, task) {
     promise
         .then(function(internalId) {
             console.log('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+internalId+', ' + minutes +', ' + task+');')
+            console.log(internalId.rows[0].user_id);
             pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+internalId+', ' + minutes +', ' + task+');' , (error, results) => {
                 if (error) {
                     throw error

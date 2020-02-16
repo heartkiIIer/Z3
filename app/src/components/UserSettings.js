@@ -97,14 +97,16 @@ class UserSettings extends React.Component {
         for(let i = 0; i < this.state.routine.length; i++){
             var task = this.state.routine[i];
             if(task.minutes === 0){
-                routineList += '<button id="task'+ task.task_id+'" type="button" class="list-group-item list-group-item-action">'+
+                routineList += '<button id="task'+ task.task_id+'" type="button" class="list-group-item list-group-item-action"'+
+                    'onClick={() => this.toggleCheckbox("checkbox'+ task.task_id +'")}>'+
                     '<div class="align-check-and-label">' +
                         '<img src='+ EmptyCheckbox + ' id="checkbox' + task.task_id + '" class="bedtime-checkbox"/>' +
                         '<p>' + task.title + '</p>' +
                     '</div></button>';
             }
             else{
-                routineList += '<button type="button" class="list-group-item list-group-item-action">'+
+                routineList += '<button type="button" class="list-group-item list-group-item-action"'+
+                    'onClick={() => this.toggleCheckbox("checkbox'+ task.task_id +'")}>'+
                     '<div class="align-check-and-label">' +
                     '<img src=' + EmptyCheckbox + ' id="checkbox' + task.task_id + '" class="bedtime-checkbox"/>' +
                     '<p>' + task.minutes + ' minutes of ' + task.title + '</p>' +
@@ -112,13 +114,6 @@ class UserSettings extends React.Component {
             }
         }
         document.getElementById("here").innerHTML = routineList;
-
-        for(let i = 0; i < this.state.routine.length; i++){
-            var task = this.state.routine[i];
-            var buttonID = "task" + task.task_id;
-            var boxID = "checkbox"+ task.task_id;
-            document.getElementById(buttonID).onclick = this.toggleCheckbox(boxID);
-        }
     }
     addRoutine() {
         // prompt to enter a new routine

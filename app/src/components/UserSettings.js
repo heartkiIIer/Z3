@@ -131,6 +131,7 @@ class UserSettings extends React.Component {
             return r.json();
         }).then(r => {
             currentComponent.setState({routine : r})
+            console.log(r);
         })
     }
     addRoutine() {
@@ -248,7 +249,6 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>
 
-                    <p>Routine: <br/> {this.state.routine}</p>
                     <button className={'btn'} onClick={this.addRoutine}>+</button>
 
                     <div className="list-group" class ="width300">

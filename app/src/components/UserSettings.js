@@ -132,9 +132,7 @@ class UserSettings extends React.Component {
             return r.json();
         }).then(r => {
             currentComponent.setState({routine : r})
-        }).then( r =>{
-            this.listRoutine();
-        })
+        });
     }
     listRoutine(){
         var routineList = "";
@@ -212,6 +210,7 @@ class UserSettings extends React.Component {
     }
 
     render(){
+        this.listRoutine();
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

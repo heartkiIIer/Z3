@@ -110,11 +110,15 @@ class UserSettings extends React.Component {
                     '<p>' + task.minutes + ' minutes of ' + task.title + '</p>' +
                     '</div></button>';
             }
+        }
+        document.getElementById("here").innerHTML = routineList;
+
+        for(let i = 0; i < this.state.routine.length; i++){
+            var task = this.state.routine[i];
             var buttonID = "task" + task.task_id;
             var boxID = "checkbox"+ task.task_id;
             document.getElementById(buttonID).onclick = this.toggleCheckbox(boxID);
         }
-        document.getElementById("here").innerHTML = routineList;
     }
     addRoutine() {
         // prompt to enter a new routine

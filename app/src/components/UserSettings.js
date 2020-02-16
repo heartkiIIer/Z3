@@ -94,7 +94,7 @@ class UserSettings extends React.Component {
         let currentComponent = this;
         this.getProvider(currentComponent);
         this.getRoutine(currentComponent);
-        this.getUserImage(currentComponent)
+        this.getUserImage(currentComponent);
     }
 
     // determines which provider the user is using to login: Google, Facebook, or with a password
@@ -132,7 +132,8 @@ class UserSettings extends React.Component {
             return r.json();
         }).then(r => {
             currentComponent.setState({routine : r})
-            this.listRoutine()
+        }).then( r =>{
+            this.listRoutine();
         })
     }
     listRoutine(){
@@ -154,6 +155,7 @@ class UserSettings extends React.Component {
                     type: "text"
                 }
             },
+            buttons: true,
         }).then((minutes) => {
             swal({
                 title: "Add a Routine",
@@ -165,6 +167,7 @@ class UserSettings extends React.Component {
                         type: "text"
                     }
                 },
+                buttons: true,
             }).then((task) => {
                 console.log("Task: ", task);
                 console.log("Minutes", minutes);

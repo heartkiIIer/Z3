@@ -120,6 +120,7 @@ class UserSettings extends React.Component {
         }
     }
 
+    // Bedtime Routine: show, add, delete routine
     getRoutine(currentComponent) {
         fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
             method: 'POST',
@@ -131,8 +132,15 @@ class UserSettings extends React.Component {
             return r.json();
         }).then(r => {
             currentComponent.setState({routine : r})
-            console.log(r);
+            this.listRoutine()
         })
+    }
+    listRoutine(){
+        var routineList = "";
+        for(let i = 0; i < this.state.routine.length; i++){
+            routineList += '<p>{this.state.routine[i].minutes} of {this.state.routine[i].title}</p>';
+        }
+        document.getElementById("here").innerHTML = routineList;
     }
     addRoutine() {
         // prompt to enter a new routine
@@ -172,7 +180,8 @@ class UserSettings extends React.Component {
                     },
                     body: data
                 }).then(r => {
-                    console.log("Added Routine: ", r.status)
+                    console.log("Added Routine: ", r.status);
+                    this.listRoutine();
                 })
             });
         });
@@ -187,7 +196,8 @@ class UserSettings extends React.Component {
             },
             body: data
         }).then( r => {
-            console.log("Deleted Routine: ", r.status)
+            console.log("Deleted Routine: ", r.status);
+            this.listRoutine();
         });
     }
 

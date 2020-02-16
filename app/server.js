@@ -78,7 +78,6 @@ app.post('/getRoutine/', cors(corsOptions), (req, res)=> {
 
 app.post('/addRoutine/', cors(corsOptions), (req, res) => {
     const {minutes, task} = req.body;
-    console.log('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+userProfile.id +', ' + minutes +', ' + task+');')
     db.addBedtimeRoutineById(req, res, userProfile.id, minutes, task);
 });
 

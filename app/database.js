@@ -191,6 +191,7 @@ function addBedtimeRoutineById(req, res, id, minutes, task) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
+            console.log('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+internalId+', ' + minutes +', ' + task+');')
             pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+internalId+', ' + minutes +', ' + task+');' , (error, results) => {
                 if (error) {
                     throw error

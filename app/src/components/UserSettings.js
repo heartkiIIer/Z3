@@ -96,12 +96,12 @@ class UserSettings extends React.Component {
         // prompt to enter a new routine
         swal({
             title: "Add a Routine",
-            text: "Please enter the number of minutes of your new task: ",
+            text: "Please enter the number of minutes of your new task:",
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "20",
-                    type: "text"
+                    placeholder: "0 if the ",
+                    type: "number"
                 }
             },
             buttons: true,
@@ -118,9 +118,6 @@ class UserSettings extends React.Component {
                 },
                 buttons: true,
             }).then((task) => {
-                console.log("Task: ", task);
-                console.log("Minutes", minutes);
-
                 if(task !== null && minutes !== null){
                     const data = JSON.stringify({
                         minutes: minutes,
@@ -202,7 +199,7 @@ class UserSettings extends React.Component {
 
                     <div className="list-group" class ="width300">
                         {this.listRoutine()}
-                        <button className={'btn'} onClick={this.addRoutine}> Add Task </button>
+                        <button className={'btn'} onClick={this.addRoutine.bind(this)}> Add Task </button>
                     </div>
 
                     <h1 className="blueHeader"> Delete your account</h1>

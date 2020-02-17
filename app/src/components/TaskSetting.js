@@ -15,7 +15,7 @@ class TaskSetting extends React.Component {
 
     deleteRoutine(e) {
         e.preventDefault();
-        console.log(this.props)
+        console.log("Delete")
         // const data = JSON.stringify({entryId: entryId});
         // fetch('http://sleepwebapp.wpi.edu:5000/deleteRoutine', {
         //     method: 'POST',
@@ -38,14 +38,14 @@ class TaskSetting extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="d-flex flex-row">
                 <button id={"task" + this.props.id } type="button" className="list-group-item list-group-item-action" disabled={true}>
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         <p>{this.taskLabel()}</p>
                     </div>
                 </button>
-                <button style={{backgroundImage: DeleteButton}} onClick={this.deleteRoutine}></button>
+                <img src={DeleteButton} onClick={this.deleteRoutine}/>
             </div>
         );
     };

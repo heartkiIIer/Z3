@@ -57,7 +57,6 @@ function getCaffeineEntriesById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            console.log('SELECT * FROM CaffeineEntry WHERE user_id ='+ internalId +';');
             pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ internalId +';' , (error, results) => {
                 if (error) {
                     throw error
@@ -134,6 +133,7 @@ function addExerciseEntriesById(req, res, id, minutes, intensity) {
 
 //Remove a exercise entry
 function deleteExerciseEntriesById(req, res, id) {
+    console.log('DELETE * FROM ExerciseEntry WHERE entry_id ='+ id +';');
     pool.query('DELETE * FROM ExerciseEntry WHERE entry_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error

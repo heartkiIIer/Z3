@@ -10,7 +10,6 @@ class TaskSetting extends React.Component {
     }
 
     deleteRoutine(entryId) {
-        this.preventDefault();
         const data = JSON.stringify({entryId: entryId});
         fetch('http://sleepwebapp.wpi.edu:5000/deleteRoutine', {
             method: 'POST',

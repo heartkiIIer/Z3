@@ -87,7 +87,7 @@ class UserSettings extends React.Component {
             console.log(this.state.routine)
             for(let i = 0; i < this.state.routine.length; i++){
                 var task = this.state.routine[i];
-                list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes} refreshList={this.getRoutine(this)}/>);
+                list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes} deletefn={this.deleteRoutine}/>);
             }
         }
         return list;
@@ -136,6 +136,19 @@ class UserSettings extends React.Component {
                     })
                 }
             });
+        });
+    }
+    deleteRoutine(entryId) {
+        const data = JSON.stringify({entryId: entryId});
+        fetch('http://sleepwebapp.wpi.edu:5000/deleteRoutine', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            console.log("Deleted Routine: ", r.status);
         });
     }
 

@@ -12,6 +12,7 @@ import AddButton from "../resources/icons/plus-circle-solid.svg";
 import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
 import z3_firebase from "../scripts/firebase"
 import swal from 'sweetalert'
+import TaskSetting from "./TaskSetting"
 
 /**
  * @author Eliazbeth Del Monaco
@@ -96,20 +97,7 @@ class UserSettings extends React.Component {
         console.log(this.state.routine)
         for(let i = 0; i < this.state.routine.length; i++){
             var task = this.state.routine[i];
-            if(task.minutes === 0){
-                routineList += '<button id="task'+ task.task_id+'" type="button" class="list-group-item list-group-item-action">'+
-                    '<div class="align-check-and-label">' +
-                        '<img src='+ EmptyCheckbox + ' id="checkbox' + task.task_id + '" class="bedtime-checkbox"/>' +
-                        '<p>' + task.title + '</p>' +
-                    '</div></button>';
-            }
-            else{
-                routineList += '<button type="button" class="list-group-item list-group-item-action">'+
-                    '<div class="align-check-and-label">' +
-                    '<img src=' + EmptyCheckbox + ' id="checkbox' + task.task_id + '" class="bedtime-checkbox"/>' +
-                    '<p>' + task.minutes + ' minutes of ' + task.title + '</p>' +
-                    '</div></button>';
-            }
+            routineList += '<TaskSetting id='+ task.task_id +' taskTitle='+ task.title +' taskMin='+ task.minutes +'/>'
         }
         document.getElementById("here").innerHTML = routineList;
     }
@@ -238,7 +226,7 @@ class UserSettings extends React.Component {
 
                     <div className="list-group" class ="width300">
                         <div id="here"/>
-                        <button className={'btn'} onClick={this.addRoutine}> + </button>
+                        <button className={'btn'} onClick={this.addRoutine}> Add Task </button>
                     </div>
 
                     <h1 className="blueHeader"> Delete your account</h1>

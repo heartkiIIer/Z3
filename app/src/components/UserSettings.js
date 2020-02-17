@@ -93,13 +93,10 @@ class UserSettings extends React.Component {
         });
     }
     listRoutine(){
-        var routineList = "";
         console.log(this.state.routine)
-        for(let i = 0; i < this.state.routine.length; i++){
-            var task = this.state.routine[i];
-            routineList += '<TaskSetting id='+ task.task_id +' taskTitle='+ task.title +' taskMin='+ task.minutes +'/>'
-        }
-        document.getElementById("here").innerHTML = routineList;
+        this.state.routine.map(function(task){
+            return <TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>
+        })
     }
     addRoutine() {
         // prompt to enter a new routine
@@ -225,8 +222,7 @@ class UserSettings extends React.Component {
                     <hr className="hr-settings"/>
 
                     <div className="list-group" class ="width300">
-                        <div id="here"/>
-                        <TaskSetting id='1' taskTitle='Reading' taskMin='20'/>
+                        {this.listRoutine()}
                         <button className={'btn'} onClick={this.addRoutine}> Add Task </button>
                     </div>
 

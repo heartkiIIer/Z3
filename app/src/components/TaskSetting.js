@@ -25,7 +25,7 @@ class TaskSetting extends React.Component {
     }
 
     taskLabel(){
-        if(this.props.taskMin === 0){
+        if(this.props.taskMin !== 0){
             return this.props.taskMin + " minutes of " + this.props.taskTitle;
         }
         return this.props.taskTitle;
@@ -38,9 +38,9 @@ class TaskSetting extends React.Component {
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         <p>{this.taskLabel()}</p>
-                        <img className="float_right" src={DeleteButton} onClick={this.deleteRoutine}/>
                     </div>
                 </button>
+                <img src={DeleteButton} onClick={this.deleteRoutine}/>
             </div>
         );
     };

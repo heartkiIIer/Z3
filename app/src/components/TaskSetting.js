@@ -7,6 +7,7 @@ import DeleteButton from "../resources/icons/minus-circle-solid.svg";
 class TaskSetting extends React.Component {
     constructor(props){
         super(props);
+        this.deleteRoutine.bind(this);
     }
 
     deleteRoutine(e) {

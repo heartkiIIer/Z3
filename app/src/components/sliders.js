@@ -133,23 +133,23 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 //this is untested/idk if it works
-function submitCaffeineEntry(ele1, ele2) {
-    var str1 = document.getElementById(ele1).value;
-    var str2 = document.getElementById(ele2).getAttribute("value");
-    console.log(str1);
-    console.log(str2);
+function submitCaffeineEntry() {
+    var cupSize = document.getElementById("cupSize").value;
+    var cupNum = document.getElementById("numCups").value;
+    console.log(cupSize);
+    console.log(cupNum);
 
-    fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            size: str1,
-            cups: str2,
-        })
-    })
+    // fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //         size: str1,
+    //         cups: str2,
+    //     })
+    // })
 }
 
 const panes = [
@@ -221,7 +221,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id="numCups" aria-label="pretto slider" defaultValue={2}
                                   valueLabelDisplay="auto"
                                   step={1}
                                   min={0}
@@ -240,7 +240,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider aria-label="pretto slider" defaultValue={98}
+                    <PrettoSlider id="cupSize" aria-label="pretto slider" defaultValue={98}
                                   step={null}
                                   marks={cupsize}/>
                 </Grid>
@@ -248,7 +248,7 @@ const panes = [
         </Tab.Pane>
                 <div className='float_center'>
                     <div className='child'>
-                        <button className='btn'>Submit Caffeine</button>
+                        <button className='btn' onClick={submitCaffeineEntry()}>Submit Caffeine</button>
                         <br/><br/><br/>
                     </div>
                 </div>

@@ -7,7 +7,10 @@ import DeleteButton from "../resources/icons/minus-circle-solid.svg";
 class TaskSetting extends React.Component {
     constructor(props){
         super(props);
-        this.deleteRoutine.bind(this);
+    }
+
+    componentDidMount() {
+        this.deleteRoutine.bind(this)
     }
 
     deleteRoutine(e) {
@@ -42,7 +45,7 @@ class TaskSetting extends React.Component {
                         <p>{this.taskLabel()}</p>
                     </div>
                 </button>
-                <button style={{background: DeleteButton}} onClick={this.deleteRoutine}></button>
+                <button style={{backgroundImage: DeleteButton}} onClick={this.deleteRoutine}></button>
             </div>
         );
     };

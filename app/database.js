@@ -133,7 +133,6 @@ function addExerciseEntriesById(req, res, id, minutes, intensity) {
 
 //Remove a exercise entry
 function deleteExerciseEntriesById(req, res, id) {
-    console.log('DELETE * FROM ExerciseEntry WHERE entry_id ='+ id +';');
     pool.query('DELETE * FROM ExerciseEntry WHERE entry_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error
@@ -206,6 +205,7 @@ function addBedtimeRoutineById(req, res, id, minutes, task) {
 
 //Remove a task
 function deleteBedtimeRoutinesById(req, res, id) {
+    console.log('DELETE * FROM BedtimeRoutineTask WHERE entry_id ='+ id +';');
     pool.query('DELETE * FROM BedtimeRoutineTask WHERE entry_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error

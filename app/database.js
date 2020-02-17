@@ -57,6 +57,7 @@ function getCaffeineEntriesById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
+            console.log('SELECT * FROM CaffeineEntry WHERE user_id ='+ internalId +';');
             pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ internalId +';' , (error, results) => {
                 if (error) {
                     throw error

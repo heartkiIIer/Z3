@@ -16,9 +16,16 @@ app.use(helmet());
 app.use(compression());
 app.use(cors());
 
+var whitelist = ['http://sleepwebapp.wpi.edu:3000', 'http://api.openweathermap.org/']
+
 var corsOptions = {
-    origin : 'http://sleepwebapp.wpi.edu:3000',
-    optionsSuccessStatus : 200
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
 }
 
 let userProfile = {id: -1, name: "Invalid User", image: ""};

@@ -28,17 +28,6 @@ class UserSettings extends React.Component {
         this.state = { isEditable: false, image: "", routine: null};
     }
 
-    toggleCheckbox(element){
-        if(document.getElementById(element) != null){
-            if(document.getElementById(element).src.includes('check-square-solid')){
-                document.getElementById(element).src = EmptyCheckbox;
-            }
-            else {
-                document.getElementById(element).src = CheckedBox;
-            }
-        }
-    }
-
     // retrieves user's profile image to display in settings
     getUserImage(currentComponent){
         fetch('http://sleepwebapp.wpi.edu:5000/user')
@@ -97,6 +86,7 @@ class UserSettings extends React.Component {
         if(this.state.routine !== null){
             console.log(this.state.routine)
             for(let i = 0; i < this.state.routine.length; i++){
+                var task = this.state.routine[i];
                 list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>);
             }
         }

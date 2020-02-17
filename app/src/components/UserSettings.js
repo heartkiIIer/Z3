@@ -93,12 +93,14 @@ class UserSettings extends React.Component {
         });
     }
     listRoutine(){
+        let list = [];
         if(this.state.routine !== null){
             console.log(this.state.routine)
-            this.state.routine.map(function(task){
-                return <TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>
-            })
+            for(let i = 0; i < this.state.routine.length; i++){
+                list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>);
+            }
         }
+        return list;
     }
     addRoutine() {
         // prompt to enter a new routine
@@ -148,24 +150,8 @@ class UserSettings extends React.Component {
             });
         });
     }
-    deleteRoutine(entryId) {
-        const data = JSON.stringify({entryId: entryId});
-        fetch('http://sleepwebapp.wpi.edu:5000/deleteRoutine', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: data
-        }).then( r => {
-            console.log("Deleted Routine: ", r.status);
-        });
-    }
 
     render(){
-        if(this.state.routine !== null){
-            this.listRoutine()
-        }
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

@@ -13,9 +13,9 @@ class TaskSetting extends React.Component {
         this.deleteRoutine.bind(this)
     }
 
-    deleteRoutine(e, entryId) {
+    deleteRoutine(e) {
         e.preventDefault();
-        console.log(entryId);
+        console.log(this.props);
         // const data = JSON.stringify({entryId: entryId});
         // fetch('http://sleepwebapp.wpi.edu:5000/deleteRoutine', {
         //     method: 'POST',
@@ -45,7 +45,7 @@ class TaskSetting extends React.Component {
                         <p>{this.taskLabel()}</p>
                     </div>
                 </button>
-                <img style={{marginRight: "10px"}} src={DeleteButton} onClick={this.deleteRoutine(this, this.props.id)}/>
+                <img style={{marginRight: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
             </div>
         );
     };

@@ -15,18 +15,17 @@ class TaskSetting extends React.Component {
 
     deleteRoutine(e) {
         e.preventDefault();
-        console.log(this.props);
-        // const data = JSON.stringify({entryId: entryId});
-        // fetch('http://sleepwebapp.wpi.edu:5000/deleteRoutine', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: data
-        // }).then( r => {
-        //     console.log("Deleted Routine: ", r.status);
-        // });
+        const data = JSON.stringify({entryId: this.props.id});
+        fetch('http://sleepwebapp.wpi.edu:5000/deleteRoutine', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            console.log("Deleted Routine: ", r.status);
+        });
     }
 
     taskLabel(){
@@ -45,7 +44,7 @@ class TaskSetting extends React.Component {
                         <p>{this.taskLabel()}</p>
                     </div>
                 </button>
-                <img style={{marginRight: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
+                <img style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
             </div>
         );
     };

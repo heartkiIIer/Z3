@@ -33,11 +33,11 @@ class TaskSetting extends React.Component {
     render(){
         return (
             <div>
-                <button id={"task" + this.props.id } type="button" className="list-group-item list-group-item-action">
+                <button id={"task" + this.props.id } type="button" className="list-group-item list-group-item-action" disabled={true}>
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         <p>{this.taskLabel()}</p>
-                        <img src={DeleteButton} onClick={this.deleteRoutine(this.props.id)}/>
+                        <img className="float_right" src={DeleteButton} onClick={this.deleteRoutine(this.props.id)}/>
                     </div>
                 </button>
             </div>

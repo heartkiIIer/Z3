@@ -87,7 +87,7 @@ class UserSettings extends React.Component {
             console.log(this.state.routine)
             for(let i = 0; i < this.state.routine.length; i++){
                 var task = this.state.routine[i];
-                list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>);
+                list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes} refreshList={this.getRoutine(this)}/>);
             }
         }
         return list;
@@ -100,7 +100,7 @@ class UserSettings extends React.Component {
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "0 if the ",
+                    placeholder: "0 if the task is not timed",
                     type: "number"
                 }
             },

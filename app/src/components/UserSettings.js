@@ -93,10 +93,12 @@ class UserSettings extends React.Component {
         });
     }
     listRoutine(){
-        console.log(this.state.routine)
-        this.state.routine.map(function(task){
-            return <TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>
-        })
+        if(this.state.routine !== null){
+            console.log(this.state.routine)
+            this.state.routine.map(function(task){
+                return <TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>
+            })
+        }
     }
     addRoutine() {
         // prompt to enter a new routine

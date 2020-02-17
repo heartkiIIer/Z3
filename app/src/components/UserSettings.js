@@ -226,6 +226,7 @@ class UserSettings extends React.Component {
 
                     <div className="list-group" class ="width300">
                         <div id="here"/>
+                        <TaskSetting id='1' taskTitle='Reading' taskMin='20'/>
                         <button className={'btn'} onClick={this.addRoutine}> Add Task </button>
                     </div>
 

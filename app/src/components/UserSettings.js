@@ -132,7 +132,7 @@ class UserSettings extends React.Component {
                         body: data
                     }).then(r => {
                         console.log("Added Routine: ", r.status);
-                        this.getRoutine()
+                        this.getRoutine(this)
                     })
                 }
             });

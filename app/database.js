@@ -88,7 +88,7 @@ function addCaffeineEntriesById(req, res, id, cups, size) {
 
 //Remove a caffeine entry
 function deleteCaffeineEntriesById(req, res, id) {
-    pool.query('DELETE * FROM CaffeineEntry WHERE entry_id ='+ id +';' , (error, results) => {
+    pool.query('DELETE FROM CaffeineEntry WHERE entry_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error
         }
@@ -133,7 +133,7 @@ function addExerciseEntriesById(req, res, id, minutes, intensity) {
 
 //Remove a exercise entry
 function deleteExerciseEntriesById(req, res, id) {
-    pool.query('DELETE * FROM ExerciseEntry WHERE entry_id ='+ id +';' , (error, results) => {
+    pool.query('DELETE FROM ExerciseEntry WHERE entry_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error
         }
@@ -205,7 +205,6 @@ function addBedtimeRoutineById(req, res, id, minutes, task) {
 
 //Remove a task
 function deleteBedtimeRoutinesById(req, res, id) {
-    console.log('DELETE * FROM BedtimeRoutineTask WHERE task_id ='+ id +';');
     pool.query('DELETE FROM BedtimeRoutineTask WHERE task_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error

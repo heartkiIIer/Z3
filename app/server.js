@@ -101,5 +101,9 @@ app.post('/getWeek/', cors(corsOptions), (req, res)=> {
     db.getWeekById(req, res, userProfile.id);
 })
 
+app.post('/newSleep/', cors(corsOptions), (req, res)=> {
+    db.getWeekById(req, res, userProfile.id);
+})
+
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

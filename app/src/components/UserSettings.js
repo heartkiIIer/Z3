@@ -87,7 +87,7 @@ class UserSettings extends React.Component {
             console.log(this.state.routine)
             for(let i = 0; i < this.state.routine.length; i++){
                 var task = this.state.routine[i];
-                list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>);
+                list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes} refreshList={this.getRoutine()}/>);
             }
         }
         return list;
@@ -135,6 +135,7 @@ class UserSettings extends React.Component {
                         body: data
                     }).then(r => {
                         console.log("Added Routine: ", r.status);
+                        this.getRoutine()
                     })
                 }
             });

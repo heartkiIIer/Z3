@@ -9,10 +9,6 @@ class TaskSetting extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        this.deleteRoutine.bind(this)
-    }
-
     deleteRoutine(e) {
         e.preventDefault();
         const data = JSON.stringify({entryId: this.props.id});
@@ -25,6 +21,7 @@ class TaskSetting extends React.Component {
             body: data
         }).then( r => {
             console.log("Deleted Routine: ", r.status);
+            this.props.refreshList();
         });
     }
 

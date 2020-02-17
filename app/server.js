@@ -33,7 +33,6 @@ let userProfile = {id: -1, name: "Invalid User", image: ""};
 //user logout
 app.get('/logout', cors(corsOptions), function(req, res){
     userProfile = {id: -1, name: "Invalid User", image: ""}; // set user profile to default
-    res.redirect('http://sleepwebapp.wpi.edu:3000'); // redirect back to landing page
 });
 
 app.post('/logUser', cors(corsOptions), (req, res) => {

@@ -68,6 +68,7 @@ export default function logout(e){
             method: 'GET'
         }).then (function(res){
             console.log("User Logged Out ", res.status);
+            window.location.href("http://sleepwebapp.wpi.edu:3000")
         })
     }, function(error) {
         console.error('Sign Out Error', error);

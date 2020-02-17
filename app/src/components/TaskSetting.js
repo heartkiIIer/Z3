@@ -21,7 +21,6 @@ class TaskSetting extends React.Component {
             body: data
         }).then( r => {
             console.log("Deleted Routine: ", r.status);
-            this.props.refreshList();
         });
     }
 

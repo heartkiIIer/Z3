@@ -3,6 +3,7 @@ import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
+import swal from 'sweetalert'
 
 class Personality extends React.Component{
     constructor(props) {

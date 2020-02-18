@@ -32,7 +32,7 @@ class report extends React.Component{
             currentComponent.setState({week : r.json()})
         }
 
-        fetch('http://sleepwebapp.wpi.edu:5000/get', {
+        fetch('http://sleepwebapp.wpi.edu:5000/getWeek', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -41,7 +41,7 @@ class report extends React.Component{
         }).then( r => {
             return r.json();
         }).then(r => {
-            currentComponent.setState({routine : r})
+            currentComponent.setState({week : r})
         })
     }
 

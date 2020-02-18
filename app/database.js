@@ -119,7 +119,7 @@ function addExerciseEntriesById(req, res, id, minutes, intensity) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+internalId+', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
+            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+internalId.rows[0].user_id+', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -141,13 +141,39 @@ function deleteExerciseEntriesById(req, res, id) {
     });
 }
 //Sleep Entry
-
 //Add a sleep entry
+function addSleepEntryById(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query("INSERT INTO SleepEntry(user_id, initial) VALUES("+internalId.rows[0].user_id+', current_timestamp,' +");" , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
 
-//Remove a sleep entry
-
-//Modify a sleep entry
-
+//Add wake to sleep entry
+function addWakeById(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query("INSERT INTO SleepEntry(user_id, initial) VALUES("+internalId.rows[0].user_id+', current_timestamp,' +");" , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
 //Create user
 
 //Test Result
@@ -280,4 +306,6 @@ module.exports = {
     getChronotypeById,
     putChronotypeById,
     getWeekById,
+    addSleepEntryById,
+    addWakeById,
 }

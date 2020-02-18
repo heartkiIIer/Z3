@@ -41,7 +41,7 @@ class ChronoResults extends React.Component {
     }
 
     getChronoResults(currentComponent){
-        fetch('http://sleepwebapp.wpi.edu:5000/getChornoAnswers', {
+        fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

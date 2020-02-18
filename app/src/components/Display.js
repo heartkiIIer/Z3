@@ -1,7 +1,12 @@
 import React, {useState, useEffect, useRef, SyntheticEvent} from 'react';
 import ApiCalendar from 'react-google-calendar-api';
+import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
 import Item from './Item'
+
+const refresh = {
+    fontSize: '250%'
+}
 
 export default class LoginControl extends React.Component {
     constructor(props) {
@@ -93,33 +98,57 @@ function submitStressEntry() {
     let events = []
     for (let i = 5; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
+        let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
+        switch (date) {
+            case 'Mon':
+                date = 1;
+                break;
+            case 'Tue':
+                date = 2;
+                break;
+            case 'Wed':
+                date = 3;
+                break;
+            case 'Thu':
+                date = 4;
+                break;
+            case 'Fri':
+                date = 5;
+                break;
+            case 'Sat':
+                date = 6;
+                break;
+            case 'Sun':
+                date = 7;
+                break;
+        }
         switch (month) {
             case 'Jan':
-                month = 01;
+                month = 1;
                 break;
             case 'Feb':
-                month = 02;
+                month = 2;
                 break;
             case 'Mar':
-                month = 03;
+                month = 3;
                 break;
             case 'Apr':
-                month = 04;
+                month = 4;
                 break;
             case 'May':
-                month = 05;
+                month = 5;
                 break;
             case 'Jun':
-                month = 06;
+                month = 6;
                 break;
             case 'Jul':
-                month = 07;
+                month = 7;
                 break;
             case 'Aug':
-                month = 08;
+                month = 8;
                 break;
             case 'Sep':
-                month = 09;
+                month = 9;
                 break;
             case 'Oct':
                 month = 10;
@@ -136,7 +165,7 @@ function submitStressEntry() {
                 year: parseInt(parentElement[i].children[0].children[2].innerText.slice(-4)),
                 month: month,
                 day: parseInt(parentElement[i].children[0].children[2].innerText.slice(4, 6)),
-                date: parentElement[i].children[0].children[1].innerText.slice(1, 4),
+                date: date,
                 value: parseInt(parentElement[i].children[1].children[2].value)
             }
             );
@@ -188,7 +217,7 @@ function Display() {
         <div>
             <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                 <h5>Rate stress level for each event</h5>
-                <button className='btn-info' onClick={() => window.location.reload()}>Refresh to Sync</button>
+                <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                 <br/><br/><br/>
                 {items.map(item => (
                     <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />

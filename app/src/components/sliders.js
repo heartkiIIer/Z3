@@ -14,6 +14,7 @@ import Display from "./Display";
 const cup = {
     fontSize: '250%'
 }
+
 const cupSize = [
     {
         value: 2,

@@ -33,6 +33,26 @@ class Chronotype extends React.Component {
         })
     }
 
+    submitChrono(){
+        var ele = document.getElementsByTagName('input');
+        for(let i = 0; i < ele.length; i++) {
+            if(ele[i].type="radio") {
+                if(ele[i].checked)
+                    console.log(ele[i].name + ": " + ele[i].value);
+            }
+        }
+        // fetch('http://sleepwebapp.wpi.edu:5000/submitChronoAnswers', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: data
+        // }).then(r => {
+        //     console.log("Submitted", r.status);
+        // })
+    }
+
     render(){
         this.resize();
         const styles = {
@@ -398,7 +418,7 @@ class Chronotype extends React.Component {
                         </div>
                     </form>
                     <Link to="/chronoResults">
-                        <button className="btn">Submit</button>
+                        <button className="btn" onClick={this.submitChrono}>Submit</button>
                     </Link>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import '../styles/logging.css'
@@ -161,7 +161,7 @@ const panes = [
             <h5>Rate intensity & duration of exercise</h5>
             <br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Intensity
+                Average Intensity
             </Typography>
             <Grid container spacing={3}>
                 <Grid item>
@@ -232,7 +232,7 @@ const panes = [
 
 
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Largest Beverage Size
+                Average Beverage Size
             </Typography>
             <Grid container spacing={3}>
                 <Grid item>

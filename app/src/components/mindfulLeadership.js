@@ -3,15 +3,9 @@ import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.c
 import "../styles/ItsBedtime.css";
 import Tile from "./Tile.js";
 import SideBar from "./sideMenu";
-import MobileMindfulnessModules from "./MobileMindfulnessModules";
+import MobileExampleModule from "./MobileExampleModule";
 
-
-/**
- * @author Eliazbeth Del Monaco
- * This component renders the mindfulness modules page.
- * */
-
-class MindfulnessModules extends React.Component {
+class mindfulLeadership extends React.Component {
     constructor(props){
         super(props)
         var mobile;
@@ -38,12 +32,11 @@ class MindfulnessModules extends React.Component {
             }
         })
     }
-
     render(){
         this.resize();
         if(this.state.isMobile){
             return (
-                <MobileMindfulnessModules/>
+                <MobileExampleModule/>
             );
         }
         else{
@@ -51,30 +44,22 @@ class MindfulnessModules extends React.Component {
                 <div class = "content modules" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
-                    <div className="inner" id="page-wrap">
-                        <h1 class = "blueHeader"> Mindfulness Modules</h1>
-                        <hr class = "hr-settings"/>
-                        <h4>Explore mindfulness topics: proven to improve sleep!</h4>
+                        <div className="inner" id="page-wrap">
+                            <h1 class = "blueHeader"> Mindful Leadership</h1>
+                            <hr class = "hr-settings"/>
+                            <h2>This video from the discusses how mindfulness can be applied to build stronger leadership skills.</h2>
+                            <p></p>
 
-
-                        <div class = "flex-row-wrap">
-                            <Tile name = "Mindful Walking"/>
-                            <Tile name = "Daily Mindfulness"/>
-                            <a href = "/ExampleModule">
-                                <Tile name = "5 Minute Meditation"/>
-                            </a>
-
-                            <Tile name = "Mindful Walking"/>
-                            <Tile name = "Daily Mindfulness"/>
-                            <a href = "/mindfulLeadership">
-                                <Tile name = "Mindful Leadership"/>
-                            </a>
+                            <hr className="hr-settings"/>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/v0CNZLIkIqw"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen></iframe>
                         </div>
-                    </div>
                     </div>
                 </div>
             );
         }
     };
 }
-export default MindfulnessModules;
+export default mindfulLeadership;

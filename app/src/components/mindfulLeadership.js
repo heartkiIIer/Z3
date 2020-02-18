@@ -54,6 +54,9 @@ class mindfulLeadership extends React.Component {
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen></iframe>
+
+                            <hr className="hr-settings"/>
+                            <a href="https://www.youtube.com/watch?v=v0CNZLIkIqw&feature=emb_title">Source</a>
                         </div>
                     </div>
                 </div>

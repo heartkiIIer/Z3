@@ -68,6 +68,9 @@ class MindfulYoga extends React.Component {
                                 a posture before Rossy say to, then do so.  If you find yourself unable to do a particular
                                 posture, please feel free to skip it. We always recommend that you check with your health
                                 care provider before starting a new practice of physical activity.</p>
+
+                            <hr className="hr-settings"/>
+                            <a href="https://www.umassmed.edu/psychiatry/resources/mindfulness/">Source</a>
                         </div>
                     </div>
                 </div>

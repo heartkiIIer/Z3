@@ -8,7 +8,7 @@ const pool = new Pool({
 })
 
 function checkQuery(string){
-    if(string.contains(";")){
+    if(string.includes(";")){
         throw new Error("Forbidden character")
     }
 }

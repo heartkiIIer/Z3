@@ -134,22 +134,22 @@ const PrettoSlider = withStyles({
 
 //this is untested/idk if it works
 function submitCaffeineEntry() {
-    var cupSize = document.getElementById("cupSize").value;
-    var cupNum = document.getElementById("numCups").value;
+    var cups = document.getElementById("cups").children[2].value;
+    var cupSize = document.getElementById("cupSize").children[2].value;
+    console.log(cups);
     console.log(cupSize);
-    console.log(cupNum);
 
-    // fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //         size: str1,
-    //         cups: str2,
-    //     })
-    // })
+    fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            size: cupSize,
+            cups: cups,
+        })
+    })
 }
 
 const panes = [
@@ -221,7 +221,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id="numCups" aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id="cups" aria-label="pretto slider" defaultValue={2}
                                   valueLabelDisplay="auto"
                                   step={1}
                                   min={0}

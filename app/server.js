@@ -103,7 +103,11 @@ app.post('/getWeek/', cors(corsOptions), (req, res)=> {
 })
 
 app.post('/newSleep/', cors(corsOptions), (req, res)=> {
-    db.getWeekById(req, res, userProfile.id);
+    db.addSleepEntryById(req, res, userProfile.id);
+})
+
+app.post('/newWake/', cors(corsOptions), (req, res)=> {
+    db.addWakeById(req, res, userProfile.id);
 })
 
 app.listen(process.env.PORT || 5000);

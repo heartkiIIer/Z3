@@ -57,7 +57,7 @@ function getCaffeineEntriesById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ internalId +';' , (error, results) => {
+            pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ internalId.rows[0].user_id +';' , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -74,7 +74,7 @@ function addCaffeineEntriesById(req, res, id, cups, size) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, size) VALUES('+internalId+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
+            pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, size) VALUES('+internalId.rows[0].user_id+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -102,7 +102,7 @@ function getExerciseEntriesById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('SELECT * FROM ExerciseEntry WHERE user_id ='+ internalId +';' , (error, results) => {
+            pool.query('SELECT * FROM ExerciseEntry WHERE user_id ='+ internalId.rows[0].user_id +';' , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -163,7 +163,7 @@ function addWakeById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, initial) VALUES("+internalId.rows[0].user_id+', current_timestamp,' +");" , (error, results) => {
+            pool.query("UPDATE SleepEntry SET terminate = current_timestamp WHERE user_id = "+internalId.rows[0].user_id+" AND MAX(entry_id));" , (error, results) => {
                 if (error) {
                     throw error
                 }

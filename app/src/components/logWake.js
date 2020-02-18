@@ -30,6 +30,19 @@ class LogWake extends React.Component{
             }
         })
     }
+
+
+    myFunction() {
+        fetch('http://sleepwebapp.wpi.edu:5000/newWake/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            console.log("Completed")
+        })
+    }
     render(){
         this.resize();
         return (
@@ -39,7 +52,7 @@ class LogWake extends React.Component{
                     <div class = "time" align='center'>
                         <h1 className="wakeHeader" align='center'>Good Morning!</h1>
                         <h3 className="wakeHeaderTwo" align='center'>What time did you wake up?</h3>
-                        <a href="/logSleep"><button className='btn' id="extended2" onClick="myFunction()">I just woke up</button></a>
+                        <a href="/logSleep"><button className='btn' id="extended2" onClick={() => this.myFunction()}>I just woke up</button></a>
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
                         <form>
                             <input className="inp2" type="time" name="usr_time" value="07:00"/>

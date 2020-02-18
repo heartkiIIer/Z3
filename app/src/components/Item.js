@@ -57,6 +57,7 @@ const Item = props => {
     let date = props.itemStart.slice(0, 10)
     let dayOfWeek = '(' + String(moment(date)).slice(0, 3)
     let summary = props.itemSum
+    let year = props.itemStart.slice(0, 4)
     let month = props.itemStart[5] + props.itemStart[6]
     switch (month) {
         case '01':
@@ -111,10 +112,10 @@ const Item = props => {
     return (
         <div isvisible={!fading} style={visible ? null : { display: "none" }}>
             <Typography id="discrete-slider-restrict" gutterBottom>
-                <b>{summary}</b> {dayOfWeek} <i>{month} {day}</i> {time}
+                <b>{summary}</b> <span>{dayOfWeek}</span> <i>{month} {day} {year}</i> {time}
                 <button class="btn-danger" style={buttonStyle} onClick={hideMe}>Hide</button>
             </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={50}
+            <PrettoSlider id="" aria-label="pretto slider" defaultValue={50}
                           step={null} marks={stresslevel}/>
                           <br/><br/>
         </div>

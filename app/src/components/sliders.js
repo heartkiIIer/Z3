@@ -14,7 +14,7 @@ import Display from "./Display";
 const cup = {
     fontSize: '250%'
 }
-const cupsize = [
+const cupSize = [
     {
         value: 2,
         label: 'Small',
@@ -132,11 +132,11 @@ const PrettoSlider = withStyles({
     },
 })(Slider);
 
-function submitCaffeineEntry(ele1, ele2) {
-    var str1 = document.getElementById(ele1).value;
-    var str2 = document.getElementById(ele2).getAttribute("value");
-    console.log(str1);
-    console.log(str2);
+function submitExerciseEntry() {
+    let intensity = document.getElementById('intensity').children[2].value;
+    let minutes = document.getElementById('minutes').children[2].value;
+    console.log(intensity);
+    console.log(minutes);
 
     fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
         method: 'POST',
@@ -145,8 +145,27 @@ function submitCaffeineEntry(ele1, ele2) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            size: str1,
-            cups: str2,
+            intensity: intensity,
+            minutes: minutes
+        })
+    })
+}
+
+function submitCaffeineEntry() {
+    let cups = document.getElementById('cups').children[2].value;
+    let cupSize = document.getElementById('cupSize').children[2].value;
+    console.log(cups);
+    console.log(cupSize);
+
+    fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            cups: cups,
+            cupSize: cupSize
         })
     })
 }
@@ -158,9 +177,9 @@ const panes = [
             <div>
             <Tab.Pane attached={false}>
             <h5>Rate intensity & duration of exercise</h5>
-            <br/>
+            <br/><br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Intensity
+                Average Intensity
             </Typography>
             <Grid container spacing={3}>
                 <Grid item>
@@ -168,7 +187,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id="intensity" aria-label="pretto slider" defaultValue={2}
                                   step={null}
                                   marks={stresslevel}/>
                 </Grid>
@@ -182,7 +201,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id="minutes" aria-label="pretto slider" defaultValue={2}
                                   valueLabelDisplay="auto"
                                   step={15}
                                   min={0}
@@ -193,7 +212,7 @@ const panes = [
         </Tab.Pane>
                 <div className='float_center'>
                     <div className='child'>
-                        <button className='btn'>Submit Exercise</button>
+                        <button className='btn' onClick={submitExerciseEntry}>Submit Exercise</button>
                         <br/><br/><br/>
                     </div>
                 </div>
@@ -210,7 +229,7 @@ const panes = [
             <div>
             <Tab.Pane attached={false}>
             <h5>Log the amount of caffeine consumed</h5>
-            <br/>
+            <br/><br/>
             <Typography id="discrete-slider-restrict" gutterBottom>
                 Cups of Caffeinated Beverages
             </Typography>
@@ -220,7 +239,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id='cups' aria-label="pretto slider" defaultValue={2}
                                   valueLabelDisplay="auto"
                                   step={1}
                                   min={0}
@@ -231,7 +250,7 @@ const panes = [
 
 
             <Typography id="discrete-slider-restrict" gutterBottom>
-                Largest Beverage Size
+                Average Beverage Size
             </Typography>
             <Grid container spacing={3}>
                 <Grid item>
@@ -239,15 +258,15 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider aria-label="pretto slider" defaultValue={98}
+                    <PrettoSlider id='cupSize' aria-label="pretto slider" defaultValue={98}
                                   step={null}
-                                  marks={cupsize}/>
+                                  marks={cupSize}/>
                 </Grid>
             </Grid>
         </Tab.Pane>
                 <div className='float_center'>
                     <div className='child'>
-                        <button className='btn'>Submit Caffeine</button>
+                        <button className='btn' onClick={submitCaffeineEntry}>Submit Caffeine</button>
                         <br/><br/><br/>
                     </div>
                 </div>

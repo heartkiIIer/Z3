@@ -63,13 +63,18 @@ app.get('/allUsers', cors(corsOptions), (req, res) => {
 });
 
 app.post('/users/newcaf/', cors(corsOptions), (req, res)=> {
-    const { cups, size} = req.body
-    db.addCaffeineEntriesById(req, res, userProfile.id, cups, size);
+    const {cups, cupSize} = req.body
+    db.addCaffeineEntriesById(req, res, userProfile.id, cups, cupSize);
 })
 
 app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
-    const {minutes, intensity } = req.body
-    db.addExerciseEntriesById(req, res, userProfile.id, minutes, intensity);
+    const {intensity, minutes} = req.body
+    db.addExerciseEntriesById(req, res, userProfile.id, intensity, minutes);
+})
+
+app.post('/users/newstress/', cors(corsOptions), (req, res)=> {
+    const {stressLevel} = req.body
+    db.addExerciseEntriesById(req, res, userProfile.id, stressLevel);
 })
 
 app.post('/getRoutine/', cors(corsOptions), (req, res)=> {

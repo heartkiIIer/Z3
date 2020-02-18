@@ -63,8 +63,8 @@ function getCaffeineEntriesById(req, res, id) {
 }
 
 //Add a caffeine entry
-function addCaffeineEntriesById(req, res, id, cups, size) {
-    pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, size) VALUES('+id+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
+function addCaffeineEntriesById(req, res, id, cups, cupSize) {
+    pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, cupSize) VALUES('+id+', current_timestamp,' + cups+', '+ cupSize+');' , (error, results) => {
         if (error) {
             throw error
         }
@@ -94,8 +94,8 @@ function getExerciseEntriesById(req, res, id) {
 }
 
 //Add a exercise entry
-function addExerciseEntriesById(req, res, id, minutes, intensity) {
-    pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+id+', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
+function addExerciseEntriesById(req, res, id, intensity, minutes) {
+    pool.query('INSERT INTO ExerciseEntry(user_id, date, intensity, minutes) VALUES('+id+', current_timestamp,' + intensity+', ' + minutes+');' , (error, results) => {
         if (error) {
             throw error
         }
@@ -112,6 +112,38 @@ function deleteExerciseEntriesById(req, res, id) {
         res.status(200).send(results.rows);
     });
 }
+
+//Stress entry
+//Get all stress entries for a given user
+function getStressEntriesById(req, res, id) {
+    pool.query('SELECT * FROM StressEntry WHERE user_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
+
+//Add a stress entry
+function addStressEntriesById(req, res, id, stressLevel) {
+    pool.query('INSERT INTO StressEntry(user_id, date, stressLevel) VALUES('+id+', current_timestamp,' +  stressLevel+');' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
+
+//Remove a stress entry
+function deleteStressEntriesById(req, res, id) {
+    pool.query('DELETE * FROM StressEntry WHERE entry_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
+
 //Sleep Entry
 
 //Add a sleep entry
@@ -182,11 +214,14 @@ module.exports = {
     getUsers,
     deleteCaffeineEntriesById,
     deleteExerciseEntriesById,
+    deleteStressEntriesById,
     addCaffeineEntriesById,
     addExerciseEntriesById,
+    addStressEntriesById,
     addUser,
     getCaffeineEntriesById,
     getExerciseEntriesById,
+    getStressEntriesById,
     getUser,
     getBedtimeRoutineById,
     addBedtimeRoutineById,

@@ -33,17 +33,13 @@
     transition: all 0.4s ease-in-out;
 }
 
-.btn-danger, .btn-success, .btn-outline-info{
+.btn-danger, .btn-success, .btn-info{
     border-radius: 5px;
 }
 
 
-.btn-danger{
+.btn-danger, .btn-info{
     float: right;
-}
-
-.btn-success, .btn-outline-info{
-    float: left;
 }
 
 .btn:hover {
@@ -64,5 +60,7 @@
     left: 50%;
 }
 
-
+h5 {
+    display:inline;
+}
 

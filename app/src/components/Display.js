@@ -10,11 +10,20 @@ export default class LoginControl extends React.Component {
         this.state = {
             sign: ApiCalendar.sign
         };
-        this.signUpdate = this.signUpdate.bind(this);
+    }
+
+    componentDidMount() {
+        let currentComponent = this;
+        this.isSignIn(currentComponent);
+    }
+
+    isSignIn(currentComponent){
+        currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
         ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(this.signUpdate);
+            ApiCalendar.listenSign(currentComponent.signUpdate);
         });
     }
+
 
     signUpdate(sign: boolean): any {
         this.setState({
@@ -56,8 +65,8 @@ function LoginButton(props) {
         <div>
         <Tab.Pane attached={false}>
             <h5>Rate stress level for each event</h5>
-            <br/>
-            <i><p>You must be logged into your Google Calendar to access this utility.</p></i>
+            <br/><br/>
+            <i><p>You need to be logged into your Google Calendar to access this utility.</p></i>
         </Tab.Pane>
         <div className='float_center'>
         <div className='child'>
@@ -79,8 +88,77 @@ function LogoutButton(props) {
     );
 }
 
+function submitStressEntry() {
+    let parentElement = document.getElementById('mainTab').children
+    let events = []
+    for (let i = 5; i < parentElement.length; i++) {
+        let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
+        switch (month) {
+            case 'Jan':
+                month = 01;
+                break;
+            case 'Feb':
+                month = 02;
+                break;
+            case 'Mar':
+                month = 03;
+                break;
+            case 'Apr':
+                month = 04;
+                break;
+            case 'May':
+                month = 05;
+                break;
+            case 'Jun':
+                month = 06;
+                break;
+            case 'Jul':
+                month = 07;
+                break;
+            case 'Aug':
+                month = 08;
+                break;
+            case 'Sep':
+                month = 09;
+                break;
+            case 'Oct':
+                month = 10;
+                break;
+            case 'Nov':
+                month = 11;
+                break;
+            case 'Dec':
+                month = 12;
+                break;
+        }
+        events.push({
+                title: parentElement[i].children[0].children[0].innerText,
+                year: parseInt(parentElement[i].children[0].children[2].innerText.slice(-4)),
+                month: month,
+                day: parseInt(parentElement[i].children[0].children[2].innerText.slice(4, 6)),
+                date: parentElement[i].children[0].children[1].innerText.slice(1, 4),
+                value: parseInt(parentElement[i].children[1].children[2].value)
+            }
+            );
+    }
+    console.log(parentElement[5].children[0].children[1]);
+    console.log(events);
+
+    // fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //         cups: cups,
+    //         cupSize: cupSize
+    //     })
+    // })
+}
+
 async function fetchItems() {
-    const result = await ApiCalendar.listUpcomingEvents(10);
+    const result = await ApiCalendar.listEvents(3);
     return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
 }
 
@@ -108,19 +186,17 @@ function Display() {
 
     return (
         <div>
-        <Tab.Pane style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
-            <h5>Rate stress level for each event</h5>
-            <button className='btn-info' onClick={() => window.location.reload()}>Refresh to Sync</button>
-            <br/><br/>
-            {items.map(item => (
-                <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
-            ))}
-            <button className='btn-success'>Fetch More Events</button>
-            <br/>
-        </Tab.Pane>
+            <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
+                <h5>Rate stress level for each event</h5>
+                <button className='btn-info' onClick={() => window.location.reload()}>Refresh to Sync</button>
+                <br/><br/><br/>
+                {items.map(item => (
+                    <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
+                ))}
+            </Tab.Pane>
             <div className='float_center'>
                 <div className='child'>
-                    <button className='btn'>Submit Stress</button>
+                    <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
                     {button}
                     <br/><br/><br/>
                 </div>

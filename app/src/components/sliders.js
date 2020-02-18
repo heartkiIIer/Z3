@@ -248,7 +248,7 @@ const panes = [
         </Tab.Pane>
                 <div className='float_center'>
                     <div className='child'>
-                        <button className='btn' onClick={submitCaffeineEntry()}>Submit Caffeine</button>
+                        <button className='btn' onClick={submitCaffeineEntry}>Submit Caffeine</button>
                         <br/><br/><br/>
                     </div>
                 </div>

@@ -51,7 +51,6 @@ class ChronoResults extends React.Component {
             return r.json();
         }).then(r => {
             currentComponent.setState({chronoAnswers : r});
-            console.log(r);
         });
     }
 
@@ -70,6 +69,8 @@ class ChronoResults extends React.Component {
             return 1;
         else if(value === 4)
             return 2;
+        else if(value === 3)
+            return 3;
         else if(value === 2)
             return 4;
         else
@@ -81,7 +82,6 @@ class ChronoResults extends React.Component {
             return "NaN";
         }
         var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
-        console.log(qAnswers);
         var score = this.reverseScore5(qAnswers.q1);
         score += this.reverseScore5(qAnswers.q2);
         score += qAnswers.q3;
@@ -95,27 +95,14 @@ class ChronoResults extends React.Component {
         score += qAnswers.q11;
         score += this.reverseScore4(qAnswers.q12);
         score += this.reverseScore4(qAnswers.q13);
-
-        console.log(this.reverseScore5(qAnswers.q1));
-        console.log(this.reverseScore5(qAnswers.q2));
-        console.log(qAnswers.q3);
-        console.log(qAnswers.q4);
-        console.log(qAnswers.q5);
-        console.log(this.reverseScore4(qAnswers.q6));
-        console.log(this.reverseScore5(qAnswers.q7));
-        console.log(this.reverseScore4(qAnswers.q8));
-        console.log(this.reverseScore4(qAnswers.q9));
-        console.log(this.reverseScore4(qAnswers.q10));
-        console.log(qAnswers.q11);
-        console.log(this.reverseScore4(qAnswers.q12));
-        console.log(this.reverseScore4(qAnswers.q13));
-
-
         return score;
     }
 
     getMessage(){
         var score = this.calculateScore();
+        if(score === "NaN"){
+            return "";
+        }
         if(score < 22)
             return "You are definitely an evening type (or a night owl as some would say)!";
         else if(score > 44)

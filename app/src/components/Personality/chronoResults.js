@@ -10,11 +10,13 @@ class ChronoResults extends React.Component {
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
+                chronoAnswers: []
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
+                chronoAnswers: []
             };
         }
     }
@@ -33,6 +35,84 @@ class ChronoResults extends React.Component {
         })
     }
 
+    componentDidMount(){
+        let currentComponent = this;
+        this.getChronoResults(currentComponent);
+    }
+
+    getChronoResults(currentComponent){
+        fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({chronoAnswers : r});
+        });
+    }
+
+    reverseScore4(value){
+        if(value === 4)
+            return 1;
+        else if(value === 3)
+            return 2;
+        else if(value === 2)
+            return 3;
+        else
+            return 4;
+    }
+    reverseScore5(value){
+        if(value === 5)
+            return 1;
+        else if(value === 4)
+            return 2;
+        else if(value === 3)
+            return 3;
+        else if(value === 2)
+            return 4;
+        else
+            return 5;
+    }
+
+    calculateScore(){
+        if(this.state.chronoAnswers.length === 0){
+            return "NaN";
+        }
+        var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
+        var score = this.reverseScore5(qAnswers.q1);
+        score += this.reverseScore5(qAnswers.q2);
+        score += qAnswers.q3;
+        score += qAnswers.q4;
+        score += qAnswers.q5;
+        score += this.reverseScore4(qAnswers.q6);
+        score += this.reverseScore5(qAnswers.q7);
+        score += this.reverseScore4(qAnswers.q8);
+        score += this.reverseScore4(qAnswers.q9);
+        score += this.reverseScore4(qAnswers.q10);
+        score += qAnswers.q11;
+        score += this.reverseScore4(qAnswers.q12);
+        score += this.reverseScore4(qAnswers.q13);
+        return score;
+    }
+
+    getMessage(){
+        var score = this.calculateScore();
+        if(score === "NaN"){
+            return "";
+        }
+        if(score < 22)
+            return "You are definitely an evening type (or a night owl as some would say)!";
+        else if(score > 44)
+            return "You are definitely a morning type (or a lark as some would say)!";
+        else if(score < 33)
+            return "You tend towards an evening type but fall somewhere in between a morning or evening type.";
+        else
+            return "You tend towards a morning type but fall somewhere in between a morning or evening type.";
+    }
+
     render(){
         this.resize();
         const styles = {
@@ -48,7 +128,8 @@ class ChronoResults extends React.Component {
                     <h1 className="blueHeader">Chronotype Results</h1>
                     <hr className="hr-settings"/>
 
-                    <h3 className="blueHeader">Chronotype Score: 41</h3>
+                    <h3 className="blueHeader">Chronotype Score: {this.calculateScore()}</h3>
+                    <h4 className="blueHeader">{this.getMessage()}</h4>
 
                     <div className="d-flex justify-content-between">
                         <Link to="/chronotype">

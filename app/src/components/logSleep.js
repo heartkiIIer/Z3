@@ -30,6 +30,18 @@ class LogSleep extends React.Component{
             }
         })
     }
+
+    myFunction() {
+        fetch('http://sleepwebapp.wpi.edu:5000/newSleep/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            console.log("Completed")
+        })
+    }
     render(){
         this.resize();
         return (
@@ -39,7 +51,7 @@ class LogSleep extends React.Component{
                     <div className="inner" id="page-wrap">
                         <div class = "time" align='center'>
                             <h1 className="sleepHeader" align='center'>Ready for bed?</h1>
-                            <a href="/logWake"><button className='btn' onClick="myFunction()">Goodnight</button></a>
+                            <a href="/logWake"><button className='btn' onClick={() => this.myFunction()}>Goodnight</button></a>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import {slide as Menu } from "react-burger-menu";
+import logout from '../scripts/login'
 
 export default props => {
     return (
@@ -28,7 +29,7 @@ export default props => {
             <a className="menu-item" href="/settings">
                 Settings
             </a>
-            <a className="menu-item" href="/landing">
+            <a className="menu-item" onClick={logout}>
                 Log Out
             </a>
     </Menu>

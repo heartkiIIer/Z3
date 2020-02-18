@@ -11,14 +11,40 @@ class report extends React.Component{
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
+                week: null
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
+                week: null
             };
         }
     }
+
+    componentDidMount(){
+        let currentComponent = this;
+        this.getWeek(currentComponent)
+    }
+
+    getWeek(currentComponent) {
+        function updateStates(r) {
+            currentComponent.setState({week : r.json()})
+        }
+
+        fetch('http://sleepwebapp.wpi.edu:5000/getWeek', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({week : r})
+        })
+    }
+
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){

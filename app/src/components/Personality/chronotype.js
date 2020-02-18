@@ -3,6 +3,7 @@ import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
+import swal from 'sweetalert'
 
 class Chronotype extends React.Component {
     constructor(props) {
@@ -33,6 +34,52 @@ class Chronotype extends React.Component {
         })
     }
 
+    submitChrono(){
+        var ele = document.getElementsByTagName('input');
+        let values = [];
+        for(let i = 0; i < ele.length; i++) {
+            if(ele[i].type="radio") {
+                if(ele[i].checked) {
+                    values.push(ele[i].value);
+                }
+            }
+        }
+        if(values.length === 13){
+            const data = JSON.stringify({
+                q1: values[0],
+                q2: values[1],
+                q3: values[2],
+                q4: values[3],
+                q5: values[4],
+                q6: values[5],
+                q7: values[6],
+                q8: values[7],
+                q9: values[8],
+                q10: values[9],
+                q11: values[10],
+                q12: values[11],
+                q13: values[12],
+            });
+            fetch('http://sleepwebapp.wpi.edu:5000/submitChronoAnswers', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(r => {
+                console.log("Submitted Chronotype Quiz", r.status);
+                window.open("http://sleepwebapp.wpi.edu:3000/chronoResults", "_self");
+            })
+        }
+        else{
+            swal({
+                title: "Please make sure all questions are answers and submit again",
+                icon: "error"
+            })
+        }
+    }
+
     render(){
         this.resize();
         const styles = {
@@ -53,7 +100,6 @@ class Chronotype extends React.Component {
                     </h5><br/>
 
                     <form id="chronotype" method="post">
-                        <input type="hidden" id="currQues" name="currQues" value="0"/>
                         <div id="q1" className="row">
                             <fieldset>
                                 <h5 className="blueHeader">
@@ -397,9 +443,7 @@ class Chronotype extends React.Component {
                             </fieldset>
                         </div>
                     </form>
-                    <Link to="/chronoResults">
-                        <button className="btn">Submit</button>
-                    </Link>
+                    <button className="btn" onClick={this.submitChrono}>Submit</button>
                 </div>
             </div>
         );

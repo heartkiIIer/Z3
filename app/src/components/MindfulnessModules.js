@@ -58,15 +58,24 @@ class MindfulnessModules extends React.Component {
 
 
                         <div class = "flex-row-wrap">
-                            <Tile name = "Mindful Walking"/>
-                            <Tile name = "Daily Mindfulness"/>
+                            <a href = "/MindfulnessOverview">
+                                <Tile name = "Mindfulness Overview"/>
+                            </a>
+                            <a href = "/MindfulYoga">
+                                <Tile name = "Mindful Yoga"/>
+                            </a>
                             <a href = "/ExampleModule">
+                                <Tile name = "5 Minute Meditation"/>
+                            </a>
+                            <a href = "/BodyScanMeditation">
+                                <Tile name = "10 Minute Meditation"/>
+                            </a>
+                            <a href = "/MindfulEating">
                                 <Tile name = "Mindful Eating"/>
                             </a>
-
-                            <Tile name = "Mindful Walking"/>
-                            <Tile name = "Daily Mindfulness"/>
-                            <Tile name = "Mindful Eating"/>
+                            <a href = "/mindfulLeadership">
+                                <Tile name = "Mindful Leadership"/>
+                            </a>
                         </div>
                     </div>
                     </div>

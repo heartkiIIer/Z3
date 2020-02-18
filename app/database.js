@@ -229,7 +229,7 @@ function addBedtimeRoutineById(req, res, id, minutes, task) {
 
 //Remove a task
 function deleteBedtimeRoutinesById(req, res, id) {
-    pool.query('DELETE FROM BedtimeRoutineTask WHERE entry_id ='+ id +';' , (error, results) => {
+    pool.query('DELETE FROM BedtimeRoutineTask WHERE task_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error
         }

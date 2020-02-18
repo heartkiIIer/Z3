@@ -81,6 +81,7 @@ class ChronoResults extends React.Component {
             return "NaN";
         }
         var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
+        console.log(qAnswers);
         var score = this.reverseScore5(qAnswers.q1);
         score += this.reverseScore5(qAnswers.q2);
         score += qAnswers.q3;

@@ -50,14 +50,13 @@ class ExampleModule extends React.Component {
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
                     <div className="inner" id="page-wrap">
-                        <h1 class = "blueHeader"> Mindful Eating</h1>
+                        <h1 class = "blueHeader"> 5 Minute Meditation</h1>
                         <hr class = "hr-settings"/>
-                        <h2>Subtopic 1</h2>
-                        <p>This audio from the UCSD Center for Mindfulness will lead you in a 5 minute mindfulness meditation exersize.</p>
+                        <h2>This audio from the UCSD Center for Mindfulness will lead you in a 5 minute mindfulness meditation exercise.</h2>
+                        <p></p>
 
                         <hr className="hr-settings"/>
-                        <iframe width="100%" height="450" scrolling="no" frameBorder="no" allow="autoplay"
-                                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/665221820&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                        <iframe width="100%" height="450" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/665221820&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
                     </div>
                     </div>
                 </div>

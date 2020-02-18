@@ -31,7 +31,9 @@ class MindfulnessModules extends React.Component {
 
                             <MobileTile name = "Mindful Walking"/>
                             <MobileTile name = "Daily Mindfulness"/>
-                            <MobileTile name = "Mindful Eating"/>
+                            <a href = "/mindfulLeadership">
+                                <MobileTile name = "Mindful Leadership"/>
+                            </a>
                         </div>
                     </div>
                 </div>

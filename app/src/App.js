@@ -21,6 +21,7 @@ import MobileBedtimeRoutine from "./components/MobileBedtimeRoutine";
 import MobileMindfulnessModules from "./components/MobileMindfulnessModules";
 import MobileExampleModule from "./components/MobileExampleModule";
 import MobileLanding from "./components/MobileLanding";
+import mindfulLeadership from "./components/mindfulLeadership";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               <Route path="/logging" component={Logging}/>
               <Route path="/report" component={report}/>
               <Route path="/ExampleModule" component={ExampleModule}/>
+              <Route path="/mindfulLeadership" component={mindfulLeadership}/>
               <Route path="/MobileBedtimeRoutine" component = {MobileBedtimeRoutine}/>
               <Route path="/MobileMindfulnessModules" component = {MobileMindfulnessModules}/>
               <Route path="/MobileExampleModule" component = {MobileExampleModule}/>

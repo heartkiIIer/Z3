@@ -177,9 +177,7 @@ class Personality extends React.Component{
                         </div>
 
                     </form>
-                    <Link to="/personalityResults">
-                        <button className="btn" onClick={this.submitPersonality}>Submit Personality Scores</button>
-                    </Link>
+                    <button className="btn" onClick={this.submitPersonality}>Submit Personality Scores</button>
                 </div>
                 </div>
             </div>

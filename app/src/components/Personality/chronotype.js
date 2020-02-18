@@ -40,7 +40,6 @@ class Chronotype extends React.Component {
         for(let i = 0; i < ele.length; i++) {
             if(ele[i].type="radio") {
                 if(ele[i].checked) {
-                    console.log(ele[i].name + ": " + ele[i].value);
                     values.push(ele[i].value);
                 }
             }

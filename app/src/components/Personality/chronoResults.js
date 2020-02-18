@@ -55,12 +55,58 @@ class ChronoResults extends React.Component {
         });
     }
 
+    reverseScore4(value){
+        if(value === 4)
+            return 1;
+        else if(value === 3)
+            return 2;
+        else if(value === 2)
+            return 3;
+        else
+            return 4;
+    }
+    reverseScore5(value){
+        if(value === 5)
+            return 1;
+        else if(value === 4)
+            return 2;
+        else if(value === 2)
+            return 4;
+        else
+            return 5;
+    }
+
     calculateScore(){
         if(this.state.chronoAnswers.length === 0){
             return "NaN";
         }
-        var score = 40;
+        var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
+        var score = this.reverseScore5(qAnswers.q1);
+        score += this.reverseScore5(qAnswers.q2);
+        score += qAnswers.q3;
+        score += qAnswers.q4;
+        score += qAnswers.q5;
+        score += this.reverseScore4(qAnswers.q6);
+        score += this.reverseScore5(qAnswers.q7);
+        score += this.reverseScore4(qAnswers.q8);
+        score += this.reverseScore4(qAnswers.q9);
+        score += this.reverseScore4(qAnswers.q10);
+        score += qAnswers.q11;
+        score += this.reverseScore4(qAnswers.q12);
+        score += this.reverseScore4(qAnswers.q13);
         return score;
+    }
+
+    getMessage(){
+        var score = this.calculateScore();
+        if(score < 22)
+            return "You are definitely an evening type (or a night owl as some would say)!";
+        else if(score > 44)
+            return "You are definitely a morning type (or a lark as some would say)!";
+        else if(score < 33)
+            return "You tend towards an evening type but fall somewhere in between a morning or evening type.";
+        else
+            return "You tend towards a morning type but fall somewhere in between a morning or evening type.";
     }
 
     render(){
@@ -79,6 +125,7 @@ class ChronoResults extends React.Component {
                     <hr className="hr-settings"/>
 
                     <h3 className="blueHeader">Chronotype Score: {this.calculateScore()}</h3>
+                    <h4 className="blueHeader">{this.getMessage()}</h4>
 
                     <div className="d-flex justify-content-between">
                         <Link to="/chronotype">

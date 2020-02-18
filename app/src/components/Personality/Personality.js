@@ -32,18 +32,18 @@ class Personality extends React.Component{
             }
         })
     }
-    submitPersonality(){
+    submitPersonality() {
         var ele = document.getElementsByTagName('input');
         let values = [];
-        for(let i = 0; i < ele.length; i++) {
-            if(ele[i].type="radio") {
-                if(ele[i].checked) {
+        for (let i = 0; i < ele.length; i++) {
+            if (ele[i].type = "radio") {
+                if (ele[i].checked) {
                     console.log(ele[i].name + ": " + ele[i].value);
                     values.push(ele[i].value);
                 }
             }
         }
-        if(values.length === 5){
+        if (values.length === 5) {
             const data = JSON.stringify({
                 open: values[0],
                 cons: values[1],
@@ -62,13 +62,13 @@ class Personality extends React.Component{
             //     console.log("Submitted Personailty Results", r.status);
             //     window.open("http://sleepwebapp.wpi.edu:3000/personalityResults", "_self");
             // })
-        }
-        else{
+        } else {
             swal({
                 title: "Please make sure all fields are filled and submit again",
                 icon: "error"
             })
         }
+    }
 
     render(){
         this.resize();

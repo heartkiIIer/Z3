@@ -101,7 +101,6 @@ class Chronotype extends React.Component {
                     </h5><br/>
 
                     <form id="chronotype" method="post">
-                        <input type="hidden" id="currQues" name="currQues" value="0"/>
                         <div id="q1" className="row">
                             <fieldset>
                                 <h5 className="blueHeader">

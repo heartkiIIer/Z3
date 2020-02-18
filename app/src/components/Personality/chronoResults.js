@@ -10,11 +10,13 @@ class ChronoResults extends React.Component {
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
+                chronoAnswers: []
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
+                chronoAnswers: []
             };
         }
     }
@@ -33,6 +35,34 @@ class ChronoResults extends React.Component {
         })
     }
 
+    componentDidMount(){
+        let currentComponent = this;
+        this.getChronoResults(currentComponent);
+    }
+
+    getChronoResults(currentComponent){
+        fetch('http://sleepwebapp.wpi.edu:5000/getChornoAnswers', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({chronoAnswers : r});
+            console.log(r);
+        });
+    }
+
+    calculateScore(){
+        if(this.state.chronoAnswers.length === 0){
+            return "NaN";
+        }
+        var score = 40;
+        return score;
+    }
+
     render(){
         this.resize();
         const styles = {
@@ -48,7 +78,7 @@ class ChronoResults extends React.Component {
                     <h1 className="blueHeader">Chronotype Results</h1>
                     <hr className="hr-settings"/>
 
-                    <h3 className="blueHeader">Chronotype Score: 41</h3>
+                    <h3 className="blueHeader">Chronotype Score: {this.calculateScore}</h3>
 
                     <div className="d-flex justify-content-between">
                         <Link to="/chronotype">

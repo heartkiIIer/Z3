@@ -115,5 +115,9 @@ app.post('/submitChronoAnswers/', cors(corsOptions), (req, res) => {
     db.putChronotypeById(req, res, userProfile.id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13)
 })
 
+app.post('/getChronoAnswers/', cors(corsOptions), (req, res)=> {
+    db.getChronotypeById(req, res, userProfile.id);
+})
+
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

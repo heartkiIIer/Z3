@@ -11,11 +11,13 @@ class PersonalityResults extends React.Component {
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
+                personality: null
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
+                personality: null
             };
         }
     }
@@ -38,6 +40,54 @@ class PersonalityResults extends React.Component {
         })
     }
 
+    componentDidMount(){
+        let currentComponent = this;
+        this.getPersonality(currentComponent);
+    }
+    getPersonality(currentComponent){
+        // fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     }
+        // }).then( r => {
+        //     return r.json();
+        // }).then(r => {
+        //     currentComponent.setState({personality : r});
+        // });
+    }
+    getOpenness(){
+        if(this.state.personality !== null){
+            return this.state.personality
+        }
+        return "NaN"
+    }
+    getConscientiousness(){
+        if(this.state.personality !== null){
+            return this.state.personality
+        }
+        return "NaN"
+    }
+    getExtraversion(){
+        if(this.state.personality !== null){
+            return this.state.personality
+        }
+        return "NaN"
+    }
+    getAgreeableness(){
+        if(this.state.personality !== null){
+            return this.state.personality
+        }
+        return "NaN"
+    }
+    getNeuroticism(){
+        if(this.state.personality !== null){
+            return this.state.personality
+        }
+        return "NaN"
+    }
+
     render(){
         this.resize();
         const styles = {
@@ -54,19 +104,19 @@ class PersonalityResults extends React.Component {
                     <hr className="hr-settings"/>
 
                     <h5 className="blueHeader"><b>Openness</b></h5>
-                    <p id="o_score">Score: <span>getOpenness</span></p>
+                    <p id="o_score">Score: <span>{this.getOpenness()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Conscientiousness</b></h5>
-                    <p id="c_score">Score: <span>getConscientiousness</span></p>
+                    <p id="c_score">Score: <span>{this.getConscientiousness()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Extraversion</b></h5>
-                    <p id="e_score">Score: <span>getExtraversion</span></p>
+                    <p id="e_score">Score: <span>{this.getExtraversion()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Agreeableness</b></h5>
-                    <p id="a_score">Score: <span>getAgreeableness</span></p>
+                    <p id="a_score">Score: <span>{this.getAgreeableness()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Neuroticism</b></h5>
-                    <p id="n_score">Score: <span>getNeuroticism</span></p>
+                    <p id="n_score">Score: <span>{this.getNeuroticism()}</span></p>
 
                     <div className="d-flex justify-content-between">
                         <Link to="/personality">

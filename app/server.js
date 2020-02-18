@@ -81,5 +81,41 @@ app.post('/getRoutine/', cors(corsOptions), (req, res)=> {
     db.getBedtimeRoutineById(req, res, userProfile.id);
 })
 
+app.post('/addRoutine/', cors(corsOptions), (req, res) => {
+    const {minutes, task} = req.body;
+    db.addBedtimeRoutineById(req, res, userProfile.id, minutes, task);
+});
+
+app.post('/deleteRoutine/', cors(corsOptions), (req, res) => {
+    const {entryId} = req.body;
+    db.deleteBedtimeRoutinesById(req, res, entryId);
+});
+
+app.post('/users/newchrono/', cors(corsOptions), (req, res)=> {
+    const {q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13 } = req.body
+    db.putChronotypeById(req, res, userProfile.id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13);
+})
+
+app.post('/getWeek/', cors(corsOptions), (req, res)=> {
+    db.getWeekById(req, res, userProfile.id);
+})
+
+app.post('/newSleep/', cors(corsOptions), (req, res)=> {
+    db.addSleepEntryById(req, res, userProfile.id);
+})
+
+app.post('/newWake/', cors(corsOptions), (req, res)=> {
+    db.addWakeById(req, res, userProfile.id);
+})
+
+app.post('/submitChronoAnswers/', cors(corsOptions), (req, res) => {
+    const{q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13} = req.body;
+    db.putChronotypeById(req, res, userProfile.id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13)
+})
+
+app.post('/getChronoAnswers/', cors(corsOptions), (req, res)=> {
+    db.getChronotypeById(req, res, userProfile.id);
+})
+
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

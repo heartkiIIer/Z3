@@ -95,6 +95,22 @@ class ChronoResults extends React.Component {
         score += qAnswers.q11;
         score += this.reverseScore4(qAnswers.q12);
         score += this.reverseScore4(qAnswers.q13);
+
+        console.log(this.reverseScore5(qAnswers.q1));
+        console.log(this.reverseScore5(qAnswers.q2));
+        console.log(qAnswers.q3);
+        console.log(qAnswers.q4);
+        console.log(qAnswers.q5);
+        console.log(this.reverseScore4(qAnswers.q6));
+        console.log(this.reverseScore5(qAnswers.q7));
+        console.log(this.reverseScore4(qAnswers.q8));
+        console.log(this.reverseScore4(qAnswers.q9));
+        console.log(this.reverseScore4(qAnswers.q10));
+        console.log(qAnswers.q11);
+        console.log(this.reverseScore4(qAnswers.q12));
+        console.log(this.reverseScore4(qAnswers.q13));
+
+
         return score;
     }
 

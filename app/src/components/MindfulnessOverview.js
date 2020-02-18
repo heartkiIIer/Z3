@@ -47,10 +47,11 @@ class MindfulnessOverview extends React.Component {
                         <div className="inner" id="page-wrap">
                             <h1 class = "blueHeader"> Mindfulness Overview</h1>
                             <hr class = "hr-settings"/>
-                            <p>Mindfulness has been described as “The awareness that emerges through paying attention
+                            <p>     Mindfulness has been described as “The awareness that emerges through paying attention
                                 on purpose, in the present moment, and non-judgmentally to the unfolding of experience
                                 moment to moment.” - Jon Kabat-Zinn, 2003</p>
-                            <p>A growing body of research supports the effectiveness of mindfulness-based interventions
+                            <br/>
+                            <p>     A growing body of research supports the effectiveness of mindfulness-based interventions
                                 for mental health conditions such as, depression, anxiety, and addictions, as well as
                                 problems such as stress and chronic pain. Mindfulness skills allow people to be aware
                                 of their symptoms and respond with self-compassion and wisdom. In combination with

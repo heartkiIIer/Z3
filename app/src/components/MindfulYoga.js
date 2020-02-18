@@ -5,7 +5,7 @@ import Tile from "./Tile.js";
 import SideBar from "./sideMenu";
 import MobileExampleModule from "./MobileExampleModule";
 
-class mindfulLeadership extends React.Component {
+class MindfulYoga extends React.Component {
     constructor(props){
         super(props)
         var mobile;
@@ -45,15 +45,29 @@ class mindfulLeadership extends React.Component {
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
                         <div className="inner" id="page-wrap">
-                            <h1 class = "blueHeader"> Mindful Leadership</h1>
+                            <h1 class = "blueHeader"> Mindful Yoga</h1>
                             <hr class = "hr-settings"/>
-                            <p>This video from the discusses how mindfulness can be applied to build stronger leadership skills.</p>
+                            <p>Grab a chair and follow this video for a mindful yoga routine.</p>
 
                             <hr className="hr-settings"/>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/v0CNZLIkIqw"
+
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/9PPO7mWRRD4"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen></iframe>
+
+                            <p>Video Description: In this version the camera follows Jenny more closely as she
+                                does the chair modification of each pose while Dr. Lynn Rossy, Health Psychologist
+                                for Healthy for Life guides you through the practice of mindful yoga.  Mindful hatha
+                                yoga consists of gentle stretching and strengthening exercises, done slowly, with
+                                moment-to-moment awareness of breathing and of the sensations that arise as you put
+                                your body into various postures.    While you will be following Rossy's instructions,
+                                it is very important to simultaneously listen to your own body in order to discover
+                                your version of each posture--honoring the wisdom of your body and what it tells you
+                                about how to move into a posture, how long to hold it, and if you need to move out of
+                                a posture before Rossy say to, then do so.  If you find yourself unable to do a particular
+                                posture, please feel free to skip it. We always recommend that you check with your health
+                                care provider before starting a new practice of physical activity.</p>
                         </div>
                     </div>
                 </div>
@@ -61,4 +75,4 @@ class mindfulLeadership extends React.Component {
         }
     };
 }
-export default mindfulLeadership;
+export default MindfulYoga;

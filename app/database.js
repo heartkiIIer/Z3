@@ -8,7 +8,7 @@ const pool = new Pool({
 })
 
 function checkQuery(string){
-    if(string.contains(";")){
+    if(string.includes(";")){
         throw new Error("Forbidden character")
     }
 }
@@ -54,22 +54,36 @@ function addUser(req, res, id, first) {
 //Caffeine entry
 //Get all caffeine entries for a given user
 function getCaffeineEntriesById(req, res, id) {
-    pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ id +';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('SELECT * FROM CaffeineEntry WHERE user_id ='+ internalId.rows[0].user_id +';' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Add a caffeine entry
-function addCaffeineEntriesById(req, res, id, cups, cupSize) {
-    pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, cupSize) VALUES('+id+', current_timestamp,' + cups+', '+ cupSize+');' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+function addCaffeineEntriesById(req, res, id, cups, size) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, size) VALUES('+internalId.rows[0].user_id+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Remove a caffeine entry
@@ -85,22 +99,36 @@ function deleteCaffeineEntriesById(req, res, id) {
 //Exercise Entry
 //Get all exercise entries for a given user
 function getExerciseEntriesById(req, res, id) {
-    pool.query('SELECT * FROM ExerciseEntry WHERE user_id ='+ id +';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('SELECT * FROM ExerciseEntry WHERE user_id ='+ internalId.rows[0].user_id +';' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Add a exercise entry
-function addExerciseEntriesById(req, res, id, intensity, minutes) {
-    pool.query('INSERT INTO ExerciseEntry(user_id, date, intensity, minutes) VALUES('+id+', current_timestamp,' + intensity+', ' + minutes+');' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+function addExerciseEntriesById(req, res, id, minutes, intensity) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+internalId.rows[0].user_id+', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Remove a exercise entry
@@ -112,38 +140,6 @@ function deleteExerciseEntriesById(req, res, id) {
         res.status(200).send(results.rows);
     });
 }
-
-//Stress entry
-//Get all stress entries for a given user
-function getStressEntriesById(req, res, id) {
-    pool.query('SELECT * FROM StressEntry WHERE user_id ='+ id +';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
-}
-
-//Add a stress entry
-function addStressEntriesById(req, res, id, stressLevel) {
-    pool.query('INSERT INTO StressEntry(user_id, date, stressLevel) VALUES('+id+', current_timestamp,' +  stressLevel+');' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
-}
-
-//Remove a stress entry
-function deleteStressEntriesById(req, res, id) {
-    pool.query('DELETE FROM StressEntry WHERE entry_id ='+ id +';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
-}
-
 //Sleep Entry
 //Add a sleep entry
 function addSleepEntryById(req, res, id) {
@@ -167,7 +163,7 @@ function addWakeById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("UPDATE SleepEntry SET terminate = current_timestamp WHERE user_id = "+internalId.rows[0].user_id+" AND MAX(entry_id));" , (error, results) => {
+            pool.query("INSERT INTO SleepEntry(user_id, initial) VALUES("+internalId.rows[0].user_id+', current_timestamp,' +");" , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -178,7 +174,6 @@ function addWakeById(req, res, id) {
         console.log(error)
     })
 }
-
 //Create user
 
 //Test Result
@@ -219,17 +214,24 @@ function getBedtimeRoutineById(req, res, id) {
 //Add a task
 function addBedtimeRoutineById(req, res, id, minutes, task) {
     checkQuery(task)
-    pool.query('INSERT INTO BedtimeRoutineTask(user_id, minute, task) VALUES('+id+', ' + minutes +', ' + task+');' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query("INSERT INTO BedtimeRoutineTask(user_id, minutes, title) VALUES("+internalId.rows[0].user_id+", " + minutes +", '" + task+"');" , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
 //Remove a task
 function deleteBedtimeRoutinesById(req, res, id) {
-    pool.query('DELETE FROM BedtimeRoutineTask WHERE entry_id ='+ id +';' , (error, results) => {
+    pool.query('DELETE FROM BedtimeRoutineTask WHERE task_id ='+ id +';' , (error, results) => {
         if (error) {
             throw error
         }
@@ -289,24 +291,21 @@ function getWeekById(req, res, id){
 }
 
 module.exports = {
-    getUser,
     getUsers,
-    getWeekById,
-    getChronotypeById,
-    getStressEntriesById,
-    getBedtimeRoutineById,
-    getCaffeineEntriesById,
-    getExerciseEntriesById,
-    addUser,
-    addWakeById,
-    addSleepEntryById,
-    addStressEntriesById,
-    addBedtimeRoutineById,
-    addCaffeineEntriesById,
-    addExerciseEntriesById,
-    deleteStressEntriesById,
     deleteCaffeineEntriesById,
     deleteExerciseEntriesById,
+    addCaffeineEntriesById,
+    addExerciseEntriesById,
+    addUser,
+    getCaffeineEntriesById,
+    getExerciseEntriesById,
+    getUser,
+    getBedtimeRoutineById,
+    addBedtimeRoutineById,
     deleteBedtimeRoutinesById,
+    getChronotypeById,
     putChronotypeById,
+    getWeekById,
+    addSleepEntryById,
+    addWakeById,
 }

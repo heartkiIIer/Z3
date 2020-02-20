@@ -74,7 +74,7 @@ class Chronotype extends React.Component {
         }
         else{
             swal({
-                title: "Please make sure all questions are answers and submit again",
+                title: "Please make sure all questions are answered and submit again",
                 icon: "error"
             })
         }

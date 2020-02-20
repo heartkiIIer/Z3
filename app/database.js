@@ -119,7 +119,7 @@ function addExerciseEntriesById(req, res, id, minutes, intensity) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+internalId.rows[0].user_id+', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
+            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+ internalId.rows[0].user_id +', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -140,6 +140,52 @@ function deleteExerciseEntriesById(req, res, id) {
         res.status(200).send(results.rows);
     });
 }
+
+//Stress entry
+//Get all stress entries for a given user
+function getStressEntriesById(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function (internalID) {
+            pool.query('SELECT * FROM StressEntry WHERE user_id ='+ internalId.rows[0].user_id +';' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+            console.log(error)
+          })
+}
+
+//Add a stress entry
+function addStressEntriesById(req, res, id, title, year, month, day, date, value) {                                                  
+    promise.then(
+        function (internalID) {
+            pool.query('INSERT INTO StressEntry(user_id, date, stressLevel) VALUES('+ internalId.rows[0].user_id +', current_timestamp,' +  "'" + title + "', " +  month + "-" + day + "-" + year + ", " + date + ", " + value +");", (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }
+    ).catch(function(error){
+        console.log(error)
+    })
+}
+
+//Remove a stress entry
+function deleteStressEntriesById(req, res, id) {
+    pool.query('DELETE FROM StressEntry WHERE entry_id ='+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
+
 //Sleep Entry
 //Add a sleep entry
 function addSleepEntryById(req, res, id) {
@@ -174,6 +220,7 @@ function addWakeById(req, res, id) {
         console.log(error)
     })
 }
+
 //Create user
 
 //Test Result
@@ -291,21 +338,24 @@ function getWeekById(req, res, id){
 }
 
 module.exports = {
+    getUser,
     getUsers,
-    deleteCaffeineEntriesById,
-    deleteExerciseEntriesById,
-    addCaffeineEntriesById,
-    addExerciseEntriesById,
-    addUser,
+    getWeekById,
+    getChronotypeById,
+    getStressEntriesById,
+    getBedtimeRoutineById,
     getCaffeineEntriesById,
     getExerciseEntriesById,
-    getUser,
-    getBedtimeRoutineById,
-    addBedtimeRoutineById,
-    deleteBedtimeRoutinesById,
-    getChronotypeById,
-    putChronotypeById,
-    getWeekById,
-    addSleepEntryById,
+    addUser,
     addWakeById,
+    addSleepEntryById,
+    addStressEntriesById,
+    addBedtimeRoutineById,
+    addCaffeineEntriesById,
+    addExerciseEntriesById,
+    deleteStressEntriesById,
+    deleteCaffeineEntriesById,
+    deleteExerciseEntriesById,
+    deleteBedtimeRoutinesById,
+    putChronotypeById
 }

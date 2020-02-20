@@ -74,7 +74,7 @@ app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
 
 app.post('/users/newstress/', cors(corsOptions), (req, res)=> {
     const {title, year, month, day, date, value} = req.body
-    db.addExerciseEntriesById(req, res, userProfile.id, title, year, month, day, date, value);
+    db.addStressEntriesById(req, res, userProfile.id, title, year, month, day, date, value);
 })
 
 app.post('/getRoutine/', cors(corsOptions), (req, res)=> {

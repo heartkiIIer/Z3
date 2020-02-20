@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const compression = require('compression');
 
-// app.use(express.static("src/"));
+app.use(express.static("src/"));
 app.use(express.static("public/"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,55 +23,8 @@ var corsOptions = {
 
 let userProfile = {id: -1, name: "Invalid User", image: ""};
 
-///////Firebase Session Cookies//////////////////////
-const functions = require('firebase-functions');
-var hbs = require('express-handlebars');
-const admin = require('firebase-admin');
-const cookieParser = require('cookie-parser');
-
-app.set('src', './src');
-app.engine('hbs', hbs());
-app.set('src engine', 'hbs');
-admin.initializeApp(functions.config().firebase);
-
-app.use(cookieParser());
-
-function setCookie(idToken, res) {
-    // Set session expiration to 5 days.
-    // Create the session cookie. This will also verify the ID token in the process.
-    // The session cookie will have the same claims as the ID token.
-    const expiresIn = 60 * 60 * 24 * 5 * 1000;
-    admin.auth().createSessionCookie(idToken, {expiresIn}).then((sessionCookie) => {
-        // Set cookie policy for session cookie and set in response.
-        const options = {maxAge: expiresIn, httpOnly: true, secure: true};
-        res.cookie('__session', sessionCookie, options);
-
-        admin.auth().verifyIdToken(idToken).then(function(decodedClaims) {
-            res.redirect('http://sleepwebapp.wpi.edu:3000/home');
-        });
-    }, error => {
-        res.status(401).send('UNAUTHORIZED REQUEST!');
-    });
-}
-
-// middleware to check cookie
-function checkCookieMiddleware(req, res, next) {
-    const sessionCookie = req.cookies.__session || '';
-    admin.auth().verifySessionCookie(
-        sessionCookie, true).then((decodedClaims) => {
-        req.decodedClaims = decodedClaims;
-        next();
-    }).catch(error => {
-            // Session cookie is unavailable or invalid. Force user to login.
-            res.redirect('http://sleepwebapp.wpi.edu:3000');
-    });
-}
-
-//////////////////////////////////////////////
-
 //user logout
 app.get('/logout', cors(corsOptions), function(req, res){
-    res.clearCookie('__session');
     userProfile = {id: -1, name: "Invalid User", image: ""}; // set user profile to default
     res.send();
 });
@@ -84,8 +37,6 @@ app.post('/logUser', cors(corsOptions), (req, res) => {
         name: data.name,
         image: data.image
     };
-    const idToken = req.query.idToken;
-    setCookie(idToken, res);
 
     db.getUser(req, res, userProfile.id, "\'"+userProfile.name+"\'");
 });

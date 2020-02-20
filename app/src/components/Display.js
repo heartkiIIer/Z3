@@ -5,7 +5,8 @@ import { Tab } from 'semantic-ui-react'
 import Item from './Item'
 
 const refresh = {
-    fontSize: '250%'
+    paddingRight: '6px',
+    fontSize: '175%'
 }
 
 export default class LoginControl extends React.Component {
@@ -170,24 +171,29 @@ function submitStressEntry() {
             }
             );
     }
-    console.log(parentElement[5].children[0].children[1]);
     console.log(events);
 
-    // fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //         cups: cups,
-    //         cupSize: cupSize
-    //     })
-    // })
+    events.forEach(event => {
+        fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: event.title,
+                year: event.year,
+                month: event.month,
+                day: event.day,
+                date: event.date,
+                value: event.value
+            })
+        })
+    })
 }
 
 async function fetchItems() {
-    const result = await ApiCalendar.listEvents(3);
+    const result = await ApiCalendar.listUpcomingEvents(10);
     return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
 }
 
@@ -213,24 +219,38 @@ function Display() {
         })();
     }, []);
 
-    return (
-        <div>
-            <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
-                <h5>Rate stress level for each event</h5>
-                <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
-                <br/><br/><br/>
-                {items.map(item => (
-                    <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
-                ))}
-            </Tab.Pane>
-            <div className='float_center'>
-                <div className='child'>
-                    <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
-                    {button}
-                    <br/><br/><br/>
+    if (items.length != 0) {
+        return (
+            <div>
+                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
+                    <h5>Rate stress level for each event</h5>
+                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
+                    <br/><br/>
+                    <i><p>10 <strong>upcoming</strong> events will be listed. Click the Refresh icon to unhide events and sync latest events.</p></i>
+                    <br/>
+                    {items.map(item => (
+                        <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
+                    ))}
+                </Tab.Pane>
+                <div className='float_center'>
+                    <div className='child'>
+                        <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
+                        {button}
+                        <br/><br/><br/>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
+                    <h5>Rate stress level for each event</h5>
+                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
+                    <br/><br/><br/>
+                    <i><p>You have no upcoming events.</p></i>
+                </Tab.Pane>
+        )
+    }
+
 }
 

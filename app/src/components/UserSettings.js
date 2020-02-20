@@ -1,14 +1,8 @@
 import React from 'react';
 import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../styles/ItsBedtime.css";
-import SaveButton from "../resources/icons/save-solid.svg";
-import EditButton from "../resources/icons/edit-solid.svg";
-import DeleteButton from "../resources/icons/minus-circle-solid.svg";
 import SideBar from "./sideMenu";
 // import CalendarButtons from "./CalendarButtons";
-import EmptyCheckbox from "../resources/icons/square-regular.svg";
-import CheckedBox from "../resources/icons/check-square-solid.svg";
-import AddButton from "../resources/icons/plus-circle-solid.svg";
 import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
 import z3_firebase from "../scripts/firebase"
 import swal from 'sweetalert'
@@ -95,29 +89,29 @@ class UserSettings extends React.Component {
     addRoutine() {
         // prompt to enter a new routine
         swal({
-            title: "Add a Routine",
-            text: "Please enter the number of minutes of your new task:",
+            title: "Add a Routine: Enter Task",
+            text: "Please enter the task you would like to add: ",
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "0 if the task is not timed",
-                    type: "number"
+                    placeholder: "Brush Teeth",
+                    type: "text"
                 }
             },
             buttons: true,
-        }).then((minutes) => {
+        }).then((task) => {
             swal({
-                title: "Add a Routine",
-                text: "Please enter the task you would like to add: ",
+                title: "Add a Routine: Enter Duration",
+                text: "Please enter the number of minutes of your new task:",
                 content: {
                     element: "input",
                     attributes: {
-                        placeholder: "Brush Teeth",
-                        type: "text"
+                        placeholder: "0 if the task is not timed",
+                        type: "number"
                     }
                 },
                 buttons: true,
-            }).then((task) => {
+            }).then((minutes) => {
                 if(task !== null && minutes !== null){
                     const data = JSON.stringify({
                         minutes: minutes,

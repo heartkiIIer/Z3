@@ -13,5 +13,8 @@ var firebase = require('firebase');
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
+    // As httpOnly cookies are to be used, do not persist any state client side.
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
     module.exports = firebase;
 })()

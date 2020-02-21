@@ -55,7 +55,7 @@ class LogWake extends React.Component{
                         <a href="/logSleep"><button className='btn' id="extended2" onClick={() => this.myFunction()}>I just woke up</button></a>
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
                         <form>
-                            <input className="inp2" type="time" name="usr_time" value="07:00"/>
+                            <input className="inp2" type="time" name="usr_time" defaultValue="07:00"/>
                             <a href="/logSleep"><button className='btn' onClick={() => this.myFunction()}>At This Time</button></a>
                         </form>
                     </div>

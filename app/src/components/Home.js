@@ -52,7 +52,7 @@ class Home extends React.Component {
             return r.json();
         }).then(r => {
             let perScore = currentComponent.getRecentPersonality(r);
-            if(perScore !== null || perScore !== undefined){
+            if(perScore !== null || typeof perScore !== "undefined"){
                 currentComponent.setState({
                     open : perScore.openness,
                     cons : perScore.conc,

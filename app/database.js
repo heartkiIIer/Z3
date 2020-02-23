@@ -209,13 +209,13 @@ function addWakeById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, initial) VALUES("+internalId.rows[0].user_id+', current_timestamp' +");" , (error, results) => {
+            pool.query("INSERT INTO SleepEntry(terminate) VALUES(current_timestamp) WHERE user_id ="+internalId+" AND entry_id = SELECT MAX(entry_id) FROM sleepentry WHERE user_id ="+internalId+");" , (error, results) => {
                 if (error) {
                     throw error
                 }
                 console.log(results.rows);
                 res.status(200).send(results.rows);
-            });
+            })
         }).catch(function(error){
         console.log(error)
     })

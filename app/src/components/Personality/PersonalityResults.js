@@ -66,7 +66,6 @@ class PersonalityResults extends React.Component {
             return "high";
     }
     getOpenness(){
-        console.log("hello");
         if(this.state.personality !== null){
             console.log(this.state.personality);
             var perScore = this.state.personality[this.state.personality.length-1];
@@ -119,7 +118,7 @@ class PersonalityResults extends React.Component {
                     <hr className="hr-settings"/>
 
                     <h5 className="blueHeader"><b>Openness</b></h5>
-                    <p id="o_score">Score: <span>{this.getOpenness.bind(this)}</span></p>
+                    <p id="o_score">Score: <span>{this.getOpenness()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Conscientiousness</b></h5>
                     <p id="c_score">Score: <span>{this.getConscientiousness.bind(this)}</span></p>

@@ -378,7 +378,7 @@ function putPersonalityById(req, res, id, open, cons, extra, agree, neuro) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO personality(user_id, openness, conc, extraver, agree, neuro) VALUES("+internalId.rows[0].user_id+", " + open +", '" + cons+", '" + extra+", '" + agree+", '" + neuro+"');" , (error, results) => {
+            pool.query('INSERT INTO personality(user_id, openness, conc, extraver, agree, neuro) VALUES('+internalId.rows[0].user_id+', ' + open +', ' + cons+', ' + extra+', ' + agree+', ' + neuro+');' , (error, results) => {
                 if (error) {
                     throw error
                 }

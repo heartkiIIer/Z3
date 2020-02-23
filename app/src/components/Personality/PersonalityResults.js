@@ -121,16 +121,16 @@ class PersonalityResults extends React.Component {
                     <p id="o_score">Score: <span>{this.getOpenness()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Conscientiousness</b></h5>
-                    <p id="c_score">Score: <span>{this.getConscientiousness.bind(this)}</span></p>
+                    <p id="c_score">Score: <span>{this.getConscientiousness()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Extraversion</b></h5>
-                    <p id="e_score">Score: <span>{this.getExtraversion.bind(this)}</span></p>
+                    <p id="e_score">Score: <span>{this.getExtraversion()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Agreeableness</b></h5>
-                    <p id="a_score">Score: <span>{this.getAgreeableness.bind(this)}</span></p>
+                    <p id="a_score">Score: <span>{this.getAgreeableness()}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Neuroticism</b></h5>
-                    <p id="n_score">Score: <span>{this.getNeuroticism.bind(this)}</span></p>
+                    <p id="n_score">Score: <span>{this.getNeuroticism()}</span></p>
 
                     <div className="d-flex justify-content-between">
                         <Link to="/personality">

@@ -407,6 +407,56 @@ function putPersonalityById(req, res, id, open, cons, extra, agree, neuro) {
     })
 }
 
+//Retrieve data for past 7 days
+function getPastWeekSleep(req, res, id) {
+    pool.query("SELECT * FROM sleepentry WHERE user_id=" + id + "AND terminate > current_date - interval '7 days';", (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+function getPastWeekStress(req, res, id) {
+    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+function getPastWeekExer(req, res, id) {
+    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+function getPastWeekCaff(req, res, id) {
+    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+function getSleepGoal(req, res, id) {
+    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
 
 module.exports = {
     getUser,

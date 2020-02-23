@@ -145,7 +145,7 @@ class UserSettings extends React.Component {
         }).then( r => {
             return r.json();
         }).then(r => {
-            console.log(r.sleepGoal);
+            console.log(r);
             currentComponent.setState({sleepGoal : r.sleepGoal})
         });
     }

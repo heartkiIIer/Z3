@@ -79,7 +79,7 @@ function deleteUser(user){
                 // An error happened.
                 console.log("User cannot be deleted");
                 swal({
-                    text: error.message(),
+                    text: error.message,
                     icon: "error"
                 });
             });

@@ -44,13 +44,15 @@ class Home extends React.Component {
             return r.json();
         }).then(r => {
             let perScore = currentComponent.getRecentPersonality(r);
-            currentComponent.setState({
-                open : perScore.openness,
-                cons : perScore.conc,
-                extr: perScore.extraver,
-                agree: perScore.agree,
-                neuro: perScore.neuro
-            });
+            if(perScore !== null){
+                currentComponent.setState({
+                    open : perScore.openness,
+                    cons : perScore.conc,
+                    extr: perScore.extraver,
+                    agree: perScore.agree,
+                    neuro: perScore.neuro
+                });
+            }
         });
     }
     getChronoResults(currentComponent){
@@ -90,7 +92,7 @@ class Home extends React.Component {
     }
     calculateScore(chronoAnswers){
         if(chronoAnswers.length === 0){
-            return "NaN";
+            return null;
         }
         var qAnswers = chronoAnswers[chronoAnswers.length-1];
         var score = this.reverseScore5(qAnswers.q1);
@@ -112,6 +114,7 @@ class Home extends React.Component {
         if(personalityResults !== null){
             return personalityResults[personalityResults.length-1];
         }
+        return null
     }
 
     getPersonalityBasedMessage(){

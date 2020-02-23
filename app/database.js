@@ -60,21 +60,21 @@ function deleteUser(req, res, id){
                     throw error
                 }
                 console.log(results.rows);
-                res.status(200).send(results.rows);
+                res.status(200);
             });
             pool.query('DELETE FROM sleepEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
                 if (error) {
                     throw error
                 }
                 console.log(results.rows);
-                res.status(200).send(results.rows);
+                res.status(200);
             });
             pool.query('DELETE FROM personality WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
                 if (error) {
                     throw error
                 }
                 console.log(results.rows);
-                res.status(200).send(results.rows);
+                res.status(200);
             });
             pool.query('DELETE FROM CaffeineEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
                 if (error) {
@@ -88,28 +88,28 @@ function deleteUser(req, res, id){
                     throw error
                 }
                 console.log(results.rows);
-                res.status(200).send(results.rows);
+                res.status(200);
             });
             pool.query('DELETE FROM SleepEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
                 if (error) {
                     throw error
                 }
                 console.log(results.rows);
-                res.status(200).send(results.rows);
+                res.status(200);
             });
             pool.query('DELETE FROM StressEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
                 if (error) {
                     throw error
                 }
                 console.log(results.rows);
-                res.status(200).send(results.rows);
+                res.status(200);
             });
             pool.query('DELETE FROM ExerciseEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
                 if (error) {
                     throw error
                 }
                 console.log(results.rows);
-                res.status(200).send(results.rows);
+                res.status(200);
             });
         }).catch(function(error){
         console.log(error)

@@ -55,71 +55,23 @@ function deleteUser(req, res, id){
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('DELETE FROM BedtimeRoutineTask WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200);
-            });
-            pool.query('DELETE FROM sleepEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200);
-            });
-            pool.query('DELETE FROM personality WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200);
-            });
-            pool.query('DELETE FROM CaffeineEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
+            pool.query('DELETE FROM BedtimeRoutineTask WHERE user_id='+internalId.rows[0].user_id+';' +
+                'DELETE FROM sleepEntry WHERE user_id='+internalId.rows[0].user_id+';' +
+                'DELETE FROM personality WHERE user_id='+internalId.rows[0].user_id+';' +
+                'DELETE FROM CaffeineEntry WHERE user_id='+internalId.rows[0].user_id+';' +
+                'DELETE FROM chronotype WHERE user_id='+internalId.rows[0].user_id+';' +
+                'DELETE FROM SleepEntry WHERE user_id='+internalId.rows[0].user_id+';' +
+                'DELETE FROM StressEntry WHERE user_id='+internalId.rows[0].user_id+';' +
+                'DELETE FROM ExerciseEntry WHERE user_id='+internalId.rows[0].user_id+';' +
+                'DELETE FROM users WHERE google_id='+id+';', (error, results) => {
                 if (error) {
                     throw error
                 }
                 console.log(results.rows);
                 res.status(200).send(results.rows);
             });
-            pool.query('DELETE FROM chronotype WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200);
-            });
-            pool.query('DELETE FROM SleepEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200);
-            });
-            pool.query('DELETE FROM StressEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200);
-            });
-            pool.query('DELETE FROM ExerciseEntry WHERE user_id='+internalId.rows[0].user_id+';' , (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200);
-            });
         }).catch(function(error){
         console.log(error)
-    }).then(()=>{
-        pool.query('DELETE FROM users WHERE google_id='+id+';' , (error, results) => {
-            if (error) {
-                throw error
-            }
-            res.status(200).send(results.rows);
-        });
     });
 
 }

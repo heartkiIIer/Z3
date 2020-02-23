@@ -337,7 +337,7 @@ function getWeekById(req, res, id){
 
 // get Sleep goal from db
 function getSleepGoalById(req, res, id) {
-    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
+    pool.query('SELECT sleepgoal FROM users WHERE google_id=' + id + ';', (error, results) => {
         if (error) {
             throw error
         }

@@ -135,8 +135,7 @@ function updateEmail(e){
     reauthUser(newEmail);
 }
 // re-authentications user before deleting account
-function deleteAcc(e){
-    e.preventDefault();
+function deleteAcc(){
     reauthUser(deleteUser);
 }
 

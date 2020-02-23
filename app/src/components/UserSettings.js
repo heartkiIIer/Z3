@@ -191,7 +191,7 @@ class UserSettings extends React.Component {
                     <hr class = "hr-settings"/>
                     <h3 className="blueHeader"> Set Sleep Goal </h3>
                     <p className="blueHeader">Current Sleep Goal: {this.state.sleepGoal}</p>
-                    <button className='btn' id = "extended" onClick={this.addSleepGoal}>
+                    <button className='btn' id = "extended" onClick={this.addSleepGoal.bind(this)}>
                         Edit Sleep Goal
                     </button>
 

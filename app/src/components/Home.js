@@ -9,9 +9,21 @@ class Home extends React.Component {
         super(props);
         this.state = {
             name: "Invalid User",
-            image: ""
+            image: "",
+            chronoResults: null,
+            open: null,
+            cons: null,
+            extr: null,
+            agree: null,
+            neuro: null
         };
     }
+    componentDidMount(){
+        let currentComponent = this;
+        this.getPersonality(currentComponent);
+        this.getChronoResults(currentComponent);
+    }
+
     // //get User profile information
     getUser() {
         fetch('http://sleepwebapp.wpi.edu:5000/user')
@@ -21,6 +33,72 @@ class Home extends React.Component {
                 image: data.image
             }));
     }
+    getPersonality(currentComponent){
+        fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            let perScore = currentComponent.getRecentPersonality(r);
+            currentComponent.setState({open : perScore.openness});
+            currentComponent.setState({open : perScore.conc});
+            currentComponent.setState({open : perScore.extraver});
+            currentComponent.setState({open : perScore.agree});
+            currentComponent.setState({open : perScore.neuro});
+        });
+    }
+    getChronoResults(currentComponent){
+        fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({chronoResults : currentComponent.calculateScore(r)});
+        });
+    }
+    calculateScore(chronoAnswers){
+        if(chronoAnswers.length === 0){
+            return "NaN";
+        }
+        var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
+        var score = this.reverseScore5(qAnswers.q1);
+        score += this.reverseScore5(qAnswers.q2);
+        score += qAnswers.q3;
+        score += qAnswers.q4;
+        score += qAnswers.q5;
+        score += this.reverseScore4(qAnswers.q6);
+        score += this.reverseScore5(qAnswers.q7);
+        score += this.reverseScore4(qAnswers.q8);
+        score += this.reverseScore4(qAnswers.q9);
+        score += this.reverseScore4(qAnswers.q10);
+        score += qAnswers.q11;
+        score += this.reverseScore4(qAnswers.q12);
+        score += this.reverseScore4(qAnswers.q13);
+        return score;
+    }
+    getRecentPersonality(personalityResults){
+        if(personalityResults !== null){
+            return personalityResults[personalityResults.length-1];
+        }
+    }
+
+    getPersonalityBasedMessage(){
+        console.log("Chrono: ", this.state.chronoAnswers);
+        console.log("Open: ", this.state.open);
+        console.log("Conc", this.state.cons);
+        console.log("Extr", this.state.extr);
+        console.log("Agree", this.state.agree);
+        console.log("Neuro", this.state.neuro);
+    }
+
     render(){
         this.getUser();
         return (
@@ -104,7 +182,7 @@ class Home extends React.Component {
                                 <div className="carousel-item text-center">
                                     <h2 className="whiteText">Suggestion of the Day:</h2>
                                     <h3 className="whiteText">Exams are coming up. Study hard but don't forget to
-                                        get enough hours of sleep!</h3>
+                                        get enough hours of sleep! {this.getPersonalityBasedMessage()}</h3>
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"

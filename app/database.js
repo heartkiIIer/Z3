@@ -51,6 +51,77 @@ function addUser(req, res, id, first) {
     });
 }
 
+function deleteUser(req, res, id){
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('DELETE FROM BedtimeRoutineTask WHERE user_id='+internalId.rows[0].user_id+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+            pool.query('DELETE FROM sleepEntry WHERE user_id='+internalId.rows[0].user_id+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+            pool.query('DELETE FROM personality WHERE user_id='+internalId.rows[0].user_id+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+            pool.query('DELETE FROM CaffeineEntry WHERE user_id='+internalId.rows[0].user_id+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+            pool.query('DELETE FROM chronotype WHERE user_id='+internalId.rows[0].user_id+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+            pool.query('DELETE FROM SleepEntry WHERE user_id='+internalId.rows[0].user_id+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+            pool.query('DELETE FROM StressEntry WHERE user_id='+internalId.rows[0].user_id+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+            pool.query('DELETE FROM ExerciseEntry WHERE user_id='+internalId.rows[0].user_id+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    });
+    pool.query('DELETE FROM users WHERE google_id='+id+';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
+
 //Caffeine entry
 //Get all caffeine entries for a given user
 function getCaffeineEntriesById(req, res, id) {
@@ -461,6 +532,7 @@ function getSleepGoal(req, res, id) {
 module.exports = {
     getUser,
     getUsers,
+    deleteUser,
     getWeekById,
     getChronotypeById,
     getStressEntriesById,

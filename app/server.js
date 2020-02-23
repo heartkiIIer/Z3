@@ -135,5 +135,9 @@ app.post('/submitPersonality/', cors(corsOptions), (req, res) => {
     db.putPersonalityById(req, res, userProfile.id, open, cons, extra, agree, neuro);
 });
 
+app.post('/deleteUser/', cors(corsOptions), (req, res) => {
+   db.deleteUser(req, res, userProfile.id);
+});
+
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

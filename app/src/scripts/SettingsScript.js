@@ -74,7 +74,11 @@ function deleteUser(user){
                     text: "User was successfully deleted",
                     icon: "success"
                 });
-                window.open("http://sleepwebapp.wpi.edu:5000/logout", "_self")
+                fetch('http://sleepwebapp.wpi.edu:5000/logout', {
+                    method: 'GET'
+                }).then (function(){
+                    window.open("http://sleepwebapp.wpi.edu:3000", "_self");
+                })
             }).catch(function(error) {
                 // An error happened.
                 console.log("User cannot be deleted");

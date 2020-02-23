@@ -185,10 +185,9 @@ class UserSettings extends React.Component {
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner" id="page-wrap">
-                    <h1 class = "blueHeader"> Modify your settings</h1>
+                    <h1 class = "blueHeader"> Set Sleep Goal</h1>
                     <hr class = "hr-settings"/>
-                    <h3 className="blueHeader"> Set Sleep Goal </h3>
-                    <p className="blueHeader">Current Sleep Goal: {this.state.sleepGoal}</p>
+                    <h3 className="blueHeader">Current Sleep Goal: {this.state.sleepGoal}</h3>
                     <button className='btn' id = "extended" onClick={this.addSleepGoal.bind(this)}>
                         Edit Sleep Goal
                     </button>

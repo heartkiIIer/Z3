@@ -54,37 +54,49 @@ class PersonalityResults extends React.Component {
         }).then( r => {
             return r.json();
         }).then(r => {
-            console.log(r);
-            // currentComponent.setState({personality : r});
+            currentComponent.setState({personality : r});
         });
+    }
+    getValue(perScore){
+        if(perScore === 1)
+            return "low";
+        else if (perScore === 5)
+            return "medium";
+        else
+            return "high";
     }
     getOpenness(){
         if(this.state.personality !== null){
-            return this.state.personality
+            var perScore = this.state.personality[this.state.personality.length-1];
+            return this.getValue(perScore.openness);
         }
         return "NaN"
     }
     getConscientiousness(){
         if(this.state.personality !== null){
-            return this.state.personality
+            var perScore = this.state.personality[this.state.personality.length-1];
+            return this.getValue(perScore.conc);
         }
         return "NaN"
     }
     getExtraversion(){
         if(this.state.personality !== null){
-            return this.state.personality
+            var perScore = this.state.personality[this.state.personality.length-1];
+            return this.getValue(perScore.extraver);
         }
         return "NaN"
     }
     getAgreeableness(){
         if(this.state.personality !== null){
-            return this.state.personality
+            var perScore = this.state.personality[this.state.personality.length-1];
+            return this.getValue(perScore.agree);
         }
         return "NaN"
     }
     getNeuroticism(){
         if(this.state.personality !== null){
-            return this.state.personality
+            var perScore = this.state.personality[this.state.personality.length-1];
+            return this.getValue(perScore.neuro);
         }
         return "NaN"
     }
@@ -105,19 +117,19 @@ class PersonalityResults extends React.Component {
                     <hr className="hr-settings"/>
 
                     <h5 className="blueHeader"><b>Openness</b></h5>
-                    <p id="o_score">Score: <span>{this.getOpenness()}</span></p>
+                    <p id="o_score">Score: <span>{this.getOpenness.bind(this)}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Conscientiousness</b></h5>
-                    <p id="c_score">Score: <span>{this.getConscientiousness()}</span></p>
+                    <p id="c_score">Score: <span>{this.getConscientiousness.bind(this)}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Extraversion</b></h5>
-                    <p id="e_score">Score: <span>{this.getExtraversion()}</span></p>
+                    <p id="e_score">Score: <span>{this.getExtraversion.bind(this)}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Agreeableness</b></h5>
-                    <p id="a_score">Score: <span>{this.getAgreeableness()}</span></p>
+                    <p id="a_score">Score: <span>{this.getAgreeableness.bind(this)}</span></p>
                     <br/>
                     <h5 className="blueHeader"><b>Neuroticism</b></h5>
-                    <p id="n_score">Score: <span>{this.getNeuroticism()}</span></p>
+                    <p id="n_score">Score: <span>{this.getNeuroticism.bind(this)}</span></p>
 
                     <div className="d-flex justify-content-between">
                         <Link to="/personality">

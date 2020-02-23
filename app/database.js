@@ -280,7 +280,7 @@ function addWakeById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(terminate) VALUES(current_timestamp) WHERE user_id ="+internalId+" AND entry_id = SELECT MAX(entry_id) FROM sleepentry WHERE user_id ="+internalId+");" , (error, results) => {
+            pool.query("UPDATE sleepentry SET terminate = current_timestamp WHERE user_id ="+internalId.rows[0].user_id+" AND entry_id = SELECT MAX(entry_id) FROM sleepentry WHERE user_id ="+internalId+");" , (error, results) => {
                 if (error) {
                     throw error
                 }

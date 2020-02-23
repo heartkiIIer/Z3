@@ -46,7 +46,7 @@ class Home extends React.Component {
             let perScore = currentComponent.getRecentPersonality(r);
             currentComponent.setState({
                 open : perScore.openness,
-                conc : perScore.conc,
+                cons : perScore.conc,
                 extr: perScore.extraver,
                 agree: perScore.agree,
                 neuro: perScore.neuro

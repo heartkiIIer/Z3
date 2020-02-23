@@ -64,11 +64,33 @@ class Home extends React.Component {
             currentComponent.setState({chronoResults : currentComponent.calculateScore(r)});
         });
     }
+    reverseScore4(value){
+        if(value === 4)
+            return 1;
+        else if(value === 3)
+            return 2;
+        else if(value === 2)
+            return 3;
+        else
+            return 4;
+    }
+    reverseScore5(value){
+        if(value === 5)
+            return 1;
+        else if(value === 4)
+            return 2;
+        else if(value === 3)
+            return 3;
+        else if(value === 2)
+            return 4;
+        else
+            return 5;
+    }
     calculateScore(chronoAnswers){
         if(chronoAnswers.length === 0){
             return "NaN";
         }
-        var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
+        var qAnswers = chronoAnswers[chronoAnswers.length-1];
         var score = this.reverseScore5(qAnswers.q1);
         score += this.reverseScore5(qAnswers.q2);
         score += qAnswers.q3;

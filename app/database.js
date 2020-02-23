@@ -221,6 +221,23 @@ function addWakeById(req, res, id) {
     })
 }
 
+//Add wake to sleep entry
+function checkSavedState(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query("SELECT * FROM sleepentry WHERE user_id ="+internalId.rows[0].user_id+");" , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
 //Create user
 
 //Test Result
@@ -415,5 +432,6 @@ module.exports = {
     addSleepGoalById,
     getSleepGoalById,
     getPersonalityById,
-    putPersonalityById
+    putPersonalityById,
+    checkSavedState
 }

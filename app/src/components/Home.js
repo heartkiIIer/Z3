@@ -4,6 +4,14 @@ import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
 import logout from '../scripts/login'
 
+
+//TODO
+// call the checkSavedState to determine where to send them
+// what is received is all the rows for that user that are missing a wakeup time
+// the one with the highest entry_id is the most recent
+// date is in postgres timestamp
+// verify the date as yesterday or today if so -> logWake
+
 class Home extends React.Component {
     constructor(props) {
         super(props);

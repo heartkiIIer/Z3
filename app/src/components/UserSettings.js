@@ -45,20 +45,20 @@ class UserSettings extends React.Component {
             if (user) {
                 user.providerData.forEach(function (profile) {
                     if(profile.providerId === "password"){
-                        currentComponent.unhide();
+                        currentComponent.hide();
                     }
                 });
             }
         });
     }
 
-    // unhides edit password, email, profile picture options when
-    // the user signs in with email and password
-    unhide(){
+    // hides edit password, email, profile picture options when
+    // the user signs in with Google and Facebook
+    hide(){
         var elements = document.getElementsByClassName("Hidden");
 
         for (var i = 0; i < elements.length; i++){
-            elements[i].style.display = "";
+            elements[i].style.display = "none";
         }
     }
 

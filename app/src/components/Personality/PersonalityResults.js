@@ -66,6 +66,7 @@ class PersonalityResults extends React.Component {
             return "high";
     }
     getOpenness(){
+        console.log("hello");
         if(this.state.personality !== null){
             console.log(this.state.personality);
             var perScore = this.state.personality[this.state.personality.length-1];

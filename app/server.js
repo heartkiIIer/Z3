@@ -118,7 +118,7 @@ app.post('/getChronoAnswers/', cors(corsOptions), (req, res)=> {
 })
 
 app.post('/getSleepGoal/', cors(corsOptions), (req, res)=> {
-    db.getSleepGoalById(req, res, userProfile.id)
+    db.getUser(req, res, userProfile.id)
 });
 
 app.post('/addSleepGoal/', cors(corsOptions), (req, res) => {

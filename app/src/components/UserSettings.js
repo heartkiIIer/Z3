@@ -79,7 +79,6 @@ class UserSettings extends React.Component {
     listRoutine(){
         let list = [];
         if(this.state.routine !== null){
-            console.log(this.state.routine)
             for(let i = 0; i < this.state.routine.length; i++){
                 var task = this.state.routine[i];
                 list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>);
@@ -145,7 +144,6 @@ class UserSettings extends React.Component {
         }).then( r => {
             return r.json();
         }).then(r => {
-            console.log(r[0].sleepgoal);
             currentComponent.setState({sleepGoal : r[0].sleepgoal})
         });
     }

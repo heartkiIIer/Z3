@@ -54,7 +54,8 @@ class PersonalityResults extends React.Component {
         }).then( r => {
             return r.json();
         }).then(r => {
-            currentComponent.setState({personality : r});
+            console.log(r);
+            // currentComponent.setState({personality : r});
         });
     }
     getOpenness(){

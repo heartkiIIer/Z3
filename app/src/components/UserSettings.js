@@ -145,8 +145,8 @@ class UserSettings extends React.Component {
         }).then( r => {
             return r.json();
         }).then(r => {
-            console.log(r[0].sleepGoal);
-            currentComponent.setState({sleepGoal : r[0].sleepGoal})
+            console.log(r.sleepGoal);
+            currentComponent.setState({sleepGoal : r.sleepGoal})
         });
     }
     addSleepGoal(){
@@ -190,7 +190,7 @@ class UserSettings extends React.Component {
                     <h1 class = "blueHeader"> Modify your settings</h1>
                     <hr class = "hr-settings"/>
                     <h3 className="blueHeader"> Set Sleep Goal </h3>
-                    <h3>Current Sleep Goal: {this.state.sleepGoal}</h3>
+                    <p className="blueHeader">Current Sleep Goal: {this.state.sleepGoal}</p>
                     <button className='btn' id = "extended" onClick={this.addSleepGoal}>
                         Edit Sleep Goal
                     </button>

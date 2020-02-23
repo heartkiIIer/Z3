@@ -44,11 +44,13 @@ class Home extends React.Component {
             return r.json();
         }).then(r => {
             let perScore = currentComponent.getRecentPersonality(r);
-            currentComponent.setState({open : perScore.openness});
-            currentComponent.setState({open : perScore.conc});
-            currentComponent.setState({open : perScore.extraver});
-            currentComponent.setState({open : perScore.agree});
-            currentComponent.setState({open : perScore.neuro});
+            currentComponent.setState({
+                open : perScore.openness,
+                conc : perScore.conc,
+                extr: perScore.extraver,
+                agree: perScore.agree,
+                neuro: perScore.neuro
+            });
         });
     }
     getChronoResults(currentComponent){
@@ -113,7 +115,7 @@ class Home extends React.Component {
     }
 
     getPersonalityBasedMessage(){
-        console.log("Chrono: ", this.state.chronoAnswers);
+        console.log("Chrono: ", this.state.chronoResults);
         console.log("Open: ", this.state.open);
         console.log("Conc", this.state.cons);
         console.log("Extr", this.state.extr);

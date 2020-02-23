@@ -113,13 +113,15 @@ function deleteUser(req, res, id){
             });
         }).catch(function(error){
         console.log(error)
+    }).then(()=>{
+        pool.query('DELETE FROM users WHERE google_id='+id+';' , (error, results) => {
+            if (error) {
+                throw error
+            }
+            res.status(200).send(results.rows);
+        });
     });
-    pool.query('DELETE FROM users WHERE google_id='+id+';' , (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(200).send(results.rows);
-    });
+
 }
 
 //Caffeine entry

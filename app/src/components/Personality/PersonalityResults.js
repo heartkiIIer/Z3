@@ -45,17 +45,17 @@ class PersonalityResults extends React.Component {
         this.getPersonality(currentComponent);
     }
     getPersonality(currentComponent){
-        // fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     }
-        // }).then( r => {
-        //     return r.json();
-        // }).then(r => {
-        //     currentComponent.setState({personality : r});
-        // });
+        fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({personality : r});
+        });
     }
     getOpenness(){
         if(this.state.personality !== null){

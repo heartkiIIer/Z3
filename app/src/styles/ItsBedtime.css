@@ -385,3 +385,7 @@ input:focus{
 .width300 {
     max-width: 300px;
 }
+
+.hidden{
+    display: none;
+}

@@ -117,5 +117,23 @@ app.post('/getChronoAnswers/', cors(corsOptions), (req, res)=> {
     db.getChronotypeById(req, res, userProfile.id);
 })
 
+app.post('/getSleepGoal/', cors(corsOptions), (req, res)=> {
+    db.getSleepGoalById(req, res, userProfile.id)
+});
+
+app.post('/addSleepGoal/', cors(corsOptions), (req, res) => {
+    const {goal} = req.body;
+    db.addSleepGoalById(req, res, userProfile.id, goal);
+});
+
+app.post('/getPersonality/', cors(corsOptions), (req, res)=> {
+    db.getPersonalityById(req, res, userProfile.id)
+});
+
+app.post('/submitPersonality/', cors(corsOptions), (req, res) => {
+    const {open, cons, extra, agree, neuro} = req.body;
+    db.putPersonalityById(req, res, userProfile.id, open, cons, extra, agree, neuro);
+});
+
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

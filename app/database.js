@@ -257,7 +257,6 @@ function getBedtimeRoutineById(req, res, id) {
             console.log(error)
         })
 }
-
 //Add a task
 function addBedtimeRoutineById(req, res, id, minutes, task) {
     checkQuery(task)
@@ -303,7 +302,6 @@ function getChronotypeById(req, res, id) {
         console.log(error)
     })
 }
-
 function putChronotypeById(req, res, id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
@@ -337,6 +335,62 @@ function getWeekById(req, res, id){
     })
 }
 
+// get Sleep goal from db
+function getSleepGoalById(req, res, id) {
+    pool.query('SELECT sleepgoal FROM users WHERE google_id =' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+// add sleep goal from db
+function addSleepGoalById(req, res, id, goal) {
+    pool.query("UPDATE users SET sleepgoal=" + goal + " WHERE google_id=" + id + ";", (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+//retrieve personality by id
+function getPersonalityById(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            console.log(internalId.rows[0].user_id);
+            pool.query('SELECT * FROM personality WHERE user_id =' + internalId.rows[0].user_id + ';', (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+//Add personality scores
+function putPersonalityById(req, res, id, open, cons, extra, agree, neuro) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query("INSERT INTO personality(user_id, openness, conc, extraver, agree, neuro) VALUES("+internalId.rows[0].user_id+", " + open +", '" + cons+", '" + extra+", '" + agree+", '" + neuro+"');" , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
+
 module.exports = {
     getUser,
     getUsers,
@@ -357,5 +411,9 @@ module.exports = {
     deleteCaffeineEntriesById,
     deleteExerciseEntriesById,
     deleteBedtimeRoutinesById,
-    putChronotypeById
+    putChronotypeById,
+    addSleepGoalById,
+    getSleepGoalById,
+    getPersonalityById,
+    putPersonalityById
 }

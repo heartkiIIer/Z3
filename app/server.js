@@ -123,7 +123,7 @@ app.post('/getSleepGoal/', cors(corsOptions), (req, res)=> {
 
 app.post('/addSleepGoal/', cors(corsOptions), (req, res) => {
     const {goal} = req.body;
-    db.addSleepGoalById(req, res, userProfile.id, goal);
+    db.getUser(req, res, userProfile.id, goal);
 });
 
 app.post('/getPersonality/', cors(corsOptions), (req, res)=> {

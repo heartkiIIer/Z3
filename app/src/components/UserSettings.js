@@ -44,7 +44,7 @@ class UserSettings extends React.Component {
         z3_firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 user.providerData.forEach(function (profile) {
-                    if(profile.providerId === "password"){
+                    if(profile.providerId !== "password"){
                         currentComponent.hide();
                     }
                 });

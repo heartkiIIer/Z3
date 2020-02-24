@@ -19,8 +19,8 @@ class Home extends React.Component {
             name: "Invalid User",
             image: "",
             perMessage: {
-                subject: "",
-                message: ""
+                subject: "Personality and Chronotype:",
+                message: "Take the two quizzes under Personality Test! We will make some reminder/suggestions based on your personality type."
             }
         };
     }
@@ -129,8 +129,6 @@ class Home extends React.Component {
                         return r.json();
                     }).then(r => {
                         currentComponent.setState({perMessage : r});
-                        document.getElementById("takenQuizzes").style.display = "";
-                        document.getElementById("notTakenQuizzes").style.display = "none";
                     });
                 }
             });
@@ -217,14 +215,9 @@ class Home extends React.Component {
                                     <h4 className="whiteText">We suggest opening the blinds and/or curtains and let
                                         in some sunshine.</h4>
                                 </div>
-                                <div id="takenQuizzes" className="carousel-item text-center" style={{display: "none"}}>
+                                <div className="carousel-item text-center">
                                     <h2 className="whiteText">{this.state.perMessage.subject}</h2>
                                     <h4 className="whiteText">{this.state.perMessage.message}</h4>
-                                </div>
-                                <div id="notTakenQuizzes" className="carousel-item text-center">
-                                    <h2 className="whiteText">Personality and Chronotype:</h2>
-                                    <h4 className="whiteText"> Take the two quizzes under Personality Test! We will make
-                                    some reminder/suggestions based on your personality type.</h4>
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"

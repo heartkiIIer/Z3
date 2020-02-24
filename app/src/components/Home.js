@@ -129,7 +129,7 @@ class Home extends React.Component {
                         return r.json();
                     }).then(r => {
                         currentComponent.setState({perMessage : r});
-                        document.getElementById("takenQuizzes").style.display = "block";
+                        document.getElementById("takenQuizzes").style.display = "";
                         document.getElementById("notTakenQuizzes").style.display = "none";
                     });
                 }

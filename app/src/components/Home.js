@@ -96,7 +96,6 @@ class Home extends React.Component {
             return r.json();
         }).then(r => {
             let perScore = currentComponent.getRecentPersonality(r);
-            console.log(perScore);
             fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
                 method: 'POST',
                 headers: {
@@ -107,7 +106,6 @@ class Home extends React.Component {
                 return r.json();
             }).then(r => {
                 var chrono = currentComponent.calculateScore(r);
-                console.log("Chrono: ", chrono);
                 if(typeof perScore !== "undefined" && chrono !== null){
                     const data = JSON.stringify({
                         chrono: chrono,
@@ -117,7 +115,6 @@ class Home extends React.Component {
                         agree: perScore.agree,
                         neuro: perScore.neuro
                     });
-                    console.log(data);
                     fetch('http://sleepwebapp.wpi.edu:5000/getMessage', {
                         method: 'POST',
                         headers: {
@@ -128,8 +125,9 @@ class Home extends React.Component {
                     }).then( r => {
                         return r.json();
                     }).then(r => {
-                        console.log(r);
                         currentComponent.setState({perMessage : r});
+                        document.getElementById("takenQuizzes").style.display = "block";
+                        document.getElementById("notTakenQuizzes").style.display = "none";
                     });
                 }
             });
@@ -216,10 +214,14 @@ class Home extends React.Component {
                                     <h4 className="whiteText">We suggest opening the blinds and/or curtains and let
                                         in some sunshine.</h4>
                                 </div>
-                                <div className="carousel-item text-center">
-                                    <h2 className="whiteText">Suggestion of the Day:</h2>
-                                    <h3 className="whiteText">Exams are coming up. Study hard but don't forget to
-                                        get enough hours of sleep! </h3>
+                                <div className="carousel-item text-center takenQuizzes" style={{display: "none"}}>
+                                    <h2 className="whiteText">{this.state.perMessage.subject}</h2>
+                                    <h3 className="whiteText">{this.state.perMessage.message}</h3>
+                                </div>
+                                <div className="carousel-item text-center notTakenQuizzes">
+                                    <h2 className="whiteText">Personality and Chronotype:</h2>
+                                    <h3 className="whiteText"> Take the two quizzes under Personality Test! We will make
+                                    some reminder/suggestions based on your personality type.</h3>
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"

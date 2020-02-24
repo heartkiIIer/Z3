@@ -140,11 +140,11 @@ function getMessage(chrono, o, c, e, a, n) {
         messageList = addToArray(messageList, messageTable.code3);
     if(a === 1)
         messageList = addToArray(messageList, messageTable.code4);
-    if(e === 1 || chrono < 22)
+    if(e === 1 || chrono > 44)
         messageList = addToArray(messageList, messageTable.code5);
     if(c === 1 || o === 10)
         messageList = addToArray(messageList, messageTable.code6);
-    if(chrono > 44)
+    if(chrono < 22)
         messageList = addToArray(messageList, messageTable.code7);
 
     // filter out messages based on current day of the week

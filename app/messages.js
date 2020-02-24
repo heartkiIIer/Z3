@@ -3,7 +3,7 @@
 let code0 = {
     dayofweek: 1,
     subject: "Reach Your Sleep Goal",
-    message: "Your sleep goal is listed below. Try to reach that this week to improve your sleep health! "
+    message: "Your sleep goal is listed in Settings (If you have not set a sleep goal, you can set it in Settings) . Try to reach that this week to improve your sleep health! "
 };
 let code1_1 = {
     dayofweek: 1,
@@ -58,7 +58,7 @@ let code1_10 = {
 let code2_1 = {
     dayofweek: 1,
     subject: "Remember Your Sleep Goal",
-    message: "Remember that your sleep goal is $sleepGoal hours and you should try to reach that every night! Make sure you plan ahead! "
+    message: "Remember your sleep goal and try to reach that every night! Make sure you plan ahead! "
 };
 let code2_2 = {
     dayofweek: 2,
@@ -68,12 +68,12 @@ let code2_2 = {
 let code3_1 = {
     dayofweek: 0,
     subject: "What Does the National Sleep Foundation Say? ",
-    message: "The National Sleep Foundation recommends 8-10 hours per night of sleep. Read HERE for more information! "
+    message: "The National Sleep Foundation recommends 8-10 hours per night of sleep."
 };
 let code4_1 = {
     dayofweek: 3,
     subject: "Compare Your Sleep",
-    message: "Your average sleep per night this week is listed below. Compare that to the recommended average which is at least 8 hours per night."
+    message: "Your average sleep per night can be viewed in the Reports. Compare that to the recommended average which is at least 8 hours per night."
 };
 let code5_1 = {
     dayofweek: 3,

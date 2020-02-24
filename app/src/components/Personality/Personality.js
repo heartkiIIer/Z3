@@ -3,6 +3,7 @@ import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
+import swal from 'sweetalert'
 
 class Personality extends React.Component{
     constructor(props) {
@@ -32,6 +33,43 @@ class Personality extends React.Component{
             }
         })
     }
+    submitPersonality() {
+        var ele = document.getElementsByTagName('input');
+        let values = [];
+        for (let i = 0; i < ele.length; i++) {
+            if (ele[i].type = "radio") {
+                if (ele[i].checked) {
+                    console.log(ele[i].name + ": " + ele[i].value);
+                    values.push(ele[i].value);
+                }
+            }
+        }
+        if (values.length === 5) {
+            const data = JSON.stringify({
+                open: values[0],
+                cons: values[1],
+                extra: values[2],
+                agree: values[3],
+                neuro: values[4]
+            });
+            fetch('http://sleepwebapp.wpi.edu:5000/submitPersonality', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(r => {
+                console.log("Submitted Personailty Results", r.status);
+                window.open("http://sleepwebapp.wpi.edu:3000/personalityResults", "_self");
+            })
+        } else {
+            swal({
+                title: "Please make sure all fields are filled and submit again",
+                icon: "error"
+            })
+        }
+    }
 
     render(){
         this.resize();
@@ -57,15 +95,15 @@ class Personality extends React.Component{
                         <h5 className="blueHeader">Openness</h5>
                         <div className="options d-flex justify-content-around">
                             <div>
-                                <input className="lmh_options" type="radio" name="open" value="low" id="low_o"/>
+                                <input className="lmh_options" type="radio" name="open" value="1" id="low_o"/>
                                 <label for="low_o">Low</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="open" value="medium" id="medium_o"/>
+                                <input className="lmh_options" type="radio" name="open" value="5" id="medium_o"/>
                                 <label for="medium_o">Medium</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="open" value="high" id="high_o"/>
+                                <input className="lmh_options" type="radio" name="open" value="10" id="high_o"/>
                                 <label for="high_o">High</label>
                             </div>
                         </div>
@@ -74,15 +112,15 @@ class Personality extends React.Component{
                         <h5 className="blueHeader">Conscientiousness</h5>
                         <div className="options d-flex justify-content-around">
                             <div>
-                                <input className="lmh_options" type="radio" name="cons" value="low" id="low_c"/>
+                                <input className="lmh_options" type="radio" name="cons" value="1" id="low_c"/>
                                 <label for="low_c">Low</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="cons" value="medium" id="medium_c"/>
+                                <input className="lmh_options" type="radio" name="cons" value="5" id="medium_c"/>
                                 <label for="medium_c">Medium</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="cons" value="high" id="high_c"/>
+                                <input className="lmh_options" type="radio" name="cons" value="10" id="high_c"/>
                                 <label for="high_c">High</label>
                             </div>
                         </div>
@@ -91,15 +129,15 @@ class Personality extends React.Component{
                         <h5 className="blueHeader">Extraversion</h5>
                         <div className="options d-flex justify-content-around">
                             <div>
-                                <input className="lmh_options" type="radio" name="extr" value="low" id="low_e"/>
+                                <input className="lmh_options" type="radio" name="extr" value="1" id="low_e"/>
                                 <label for="low_e">Low</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="extr" value="medium" id="medium_e"/>
+                                <input className="lmh_options" type="radio" name="extr" value="5" id="medium_e"/>
                                 <label for="medium_e">Medium</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="extr" value="high" id="high_e"/>
+                                <input className="lmh_options" type="radio" name="extr" value="10" id="high_e"/>
                                 <label for="high_e">High</label>
                             </div>
                         </div>
@@ -108,15 +146,15 @@ class Personality extends React.Component{
                         <h5 className="blueHeader">Agreeableness</h5>
                         <div className="options d-flex justify-content-around">
                             <div>
-                                <input className="lmh_options" type="radio" name="agree" value="low" id="low_a"/>
+                                <input className="lmh_options" type="radio" name="agree" value="1" id="low_a"/>
                                 <label for="low_a">Low</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="agree" value="medium" id="medium_a"/>
+                                <input className="lmh_options" type="radio" name="agree" value="5" id="medium_a"/>
                                 <label for="medium_a">Medium</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="agree" value="high" id="high_a"/>
+                                <input className="lmh_options" type="radio" name="agree" value="10" id="high_a"/>
                                 <label for="high_a">High</label>
                             </div>
                         </div>
@@ -125,23 +163,21 @@ class Personality extends React.Component{
                         <h5 className="blueHeader">Neuroticism</h5>
                         <div className="options d-flex justify-content-around">
                             <div>
-                                <input className="lmh_options" type="radio" name="neur" value="low" id="low_n"/>
+                                <input className="lmh_options" type="radio" name="neur" value="1" id="low_n"/>
                                 <label for="low_n">Low</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="neur" value="medium" id="medium_n"/>
+                                <input className="lmh_options" type="radio" name="neur" value="5" id="medium_n"/>
                                 <label for="medium_n">Medium</label>
                             </div>
                             <div>
-                                <input className="lmh_options" type="radio" name="neur" value="high" id="high_n"/>
+                                <input className="lmh_options" type="radio" name="neur" value="10" id="high_n"/>
                                 <label for="high_n">High</label>
                             </div>
                         </div>
 
                     </form>
-                    <Link to="/personalityResults">
-                        <button className="btn">Submit Personality Scores</button>
-                    </Link>
+                    <button className="btn" onClick={this.submitPersonality}>Submit Personality Scores</button>
                 </div>
                 </div>
             </div>

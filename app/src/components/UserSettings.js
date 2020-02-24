@@ -1,14 +1,8 @@
 import React from 'react';
 import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../styles/ItsBedtime.css";
-import SaveButton from "../resources/icons/save-solid.svg";
-import EditButton from "../resources/icons/edit-solid.svg";
-import DeleteButton from "../resources/icons/minus-circle-solid.svg";
 import SideBar from "./sideMenu";
 // import CalendarButtons from "./CalendarButtons";
-import EmptyCheckbox from "../resources/icons/square-regular.svg";
-import CheckedBox from "../resources/icons/check-square-solid.svg";
-import AddButton from "../resources/icons/plus-circle-solid.svg";
 import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
 import z3_firebase from "../scripts/firebase"
 import swal from 'sweetalert'
@@ -25,7 +19,7 @@ import TaskSetting from "./TaskSetting"
 class UserSettings extends React.Component {
     constructor(props){
         super(props);
-        this.state = { isEditable: false, image: "", routine: null};
+        this.state = { isEditable: false, image: "", routine: null, sleepGoal: null};
     }
 
     // retrieves user's profile image to display in settings
@@ -42,6 +36,7 @@ class UserSettings extends React.Component {
         this.getProvider(currentComponent);
         this.getRoutine(currentComponent);
         this.getUserImage(currentComponent);
+        this.getSleepGoal(currentComponent);
     }
 
     // determines which provider the user is using to login: Google, Facebook, or with a password
@@ -58,7 +53,7 @@ class UserSettings extends React.Component {
     }
 
     // hides edit password, email, profile picture options when
-    // the user signs in with Google or Facebook
+    // the user signs in with Google and Facebook
     hide(){
         var elements = document.getElementsByClassName("Hidden");
 
@@ -84,7 +79,6 @@ class UserSettings extends React.Component {
     listRoutine(){
         let list = [];
         if(this.state.routine !== null){
-            console.log(this.state.routine)
             for(let i = 0; i < this.state.routine.length; i++){
                 var task = this.state.routine[i];
                 list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>);
@@ -95,29 +89,29 @@ class UserSettings extends React.Component {
     addRoutine() {
         // prompt to enter a new routine
         swal({
-            title: "Add a Routine",
-            text: "Please enter the number of minutes of your new task:",
+            title: "Add a Routine: Enter Task",
+            text: "Please enter the task you would like to add: ",
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "0 if the task is not timed",
-                    type: "number"
+                    placeholder: "Brush Teeth",
+                    type: "text"
                 }
             },
             buttons: true,
-        }).then((minutes) => {
+        }).then((task) => {
             swal({
-                title: "Add a Routine",
-                text: "Please enter the task you would like to add: ",
+                title: "Add a Routine: Enter Duration",
+                text: "Please enter the number of minutes of your new task:",
                 content: {
                     element: "input",
                     attributes: {
-                        placeholder: "Brush Teeth",
-                        type: "text"
+                        placeholder: "0 if the task is not timed",
+                        type: "number",
                     }
                 },
                 buttons: true,
-            }).then((task) => {
+            }).then((minutes) => {
                 if(task !== null && minutes !== null){
                     const data = JSON.stringify({
                         minutes: minutes,
@@ -139,13 +133,65 @@ class UserSettings extends React.Component {
         });
     }
 
+    // sleep goal
+    getSleepGoal(currentComponent){
+        fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({sleepGoal : r[0].sleepgoal})
+        });
+    }
+    addSleepGoal(){
+        swal({
+            title: "Add Sleep Goal",
+            text: "Please enter the number of hours you would like to sleep each night: ",
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "8",
+                    type: "number",
+                    max: 24,
+                    min: 0,
+                    step: 0.5,
+                }
+            },
+            buttons: true,
+        }).then((goal) => {
+            const data = JSON.stringify({
+                goal: goal,
+            });
+            fetch('http://sleepwebapp.wpi.edu:5000/addSleepGoal', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(r => {
+                console.log("Added Goal: ", r.status);
+                this.getSleepGoal(this)
+            })
+        });
+    }
+
     render(){
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner" id="page-wrap">
-                    <h1 class = "blueHeader Hidden"> Modify your settings</h1>
-                    <hr class = "hr-settings Hidden"/>
+                    <h1 class = "blueHeader"> Set Sleep Goal</h1>
+                    <hr class = "hr-settings"/>
+                    <h3 className="blueHeader">Current Sleep Goal: {this.state.sleepGoal} hrs</h3>
+                    <button className='btn' id = "extended" onClick={this.addSleepGoal.bind(this)}>
+                        Edit Sleep Goal
+                    </button>
+
                     <h3 class = "blueHeader Hidden"> Change password </h3>
                     <div class = "flex-row-nowrap Hidden">
                         <p class = "blueHeader width80"> Enter new password: </p>

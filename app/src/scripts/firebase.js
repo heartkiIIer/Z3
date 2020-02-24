@@ -13,5 +13,6 @@ var firebase = require('firebase');
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
     module.exports = firebase;
 })()

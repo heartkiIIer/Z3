@@ -4,25 +4,139 @@ import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
 import logout from '../scripts/login'
 
+
+//TODO
+// call the checkSavedState to determine where to send them
+// what is received is all the rows for that user that are missing a wakeup time
+// the one with the highest entry_id is the most recent
+// date is in postgres timestamp
+// verify the date as yesterday or today if so -> logWake
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             name: "Invalid User",
-            image: ""
+            image: "",
+            perMessage: {
+                subject: "Personality and Chronotype:",
+                message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
+            }
         };
     }
+    componentDidMount(){
+        let currentComponent = this;
+        this.getUser(currentComponent);
+        this.getPersonalityBasedMessage(currentComponent);
+    }
+
     // //get User profile information
-    getUser() {
+    getUser(currentComponent) {
         fetch('http://sleepwebapp.wpi.edu:5000/user')
             .then(response => response.json())
-            .then(data => this.setState({
+            .then(data => currentComponent.setState({
                 name: data.name,
                 image: data.image
             }));
     }
+    reverseScore4(value){
+        if(value === 4)
+            return 1;
+        else if(value === 3)
+            return 2;
+        else if(value === 2)
+            return 3;
+        else
+            return 4;
+    }
+    reverseScore5(value){
+        if(value === 5)
+            return 1;
+        else if(value === 4)
+            return 2;
+        else if(value === 3)
+            return 3;
+        else if(value === 2)
+            return 4;
+        else
+            return 5;
+    }
+    calculateScore(chronoAnswers){
+        if(chronoAnswers.length === 0){
+            return null;
+        }
+        var qAnswers = chronoAnswers[chronoAnswers.length-1];
+        var score = this.reverseScore5(qAnswers.q1);
+        score += this.reverseScore5(qAnswers.q2);
+        score += qAnswers.q3;
+        score += qAnswers.q4;
+        score += qAnswers.q5;
+        score += this.reverseScore4(qAnswers.q6);
+        score += this.reverseScore5(qAnswers.q7);
+        score += this.reverseScore4(qAnswers.q8);
+        score += this.reverseScore4(qAnswers.q9);
+        score += this.reverseScore4(qAnswers.q10);
+        score += qAnswers.q11;
+        score += this.reverseScore4(qAnswers.q12);
+        score += this.reverseScore4(qAnswers.q13);
+        return score;
+    }
+    getRecentPersonality(personalityResults){
+        if(personalityResults !== null){
+            return personalityResults[personalityResults.length-1];
+        }
+        return null
+    }
+
+    getPersonalityBasedMessage(currentComponent){
+        fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            let perScore = currentComponent.getRecentPersonality(r);
+            fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                var chrono = currentComponent.calculateScore(r);
+                if(typeof perScore !== "undefined" && chrono !== null){
+                    const data = JSON.stringify({
+                        chrono: chrono,
+                        open : perScore.openness,
+                        cons : perScore.conc,
+                        extr: perScore.extraver,
+                        agree: perScore.agree,
+                        neuro: perScore.neuro
+                    });
+                    fetch('http://sleepwebapp.wpi.edu:5000/getMessage', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then( r => {
+                        return r.json();
+                    }).then(r => {
+                        currentComponent.setState({perMessage : r});
+                    });
+                }
+            });
+
+        });
+    }
+
     render(){
-        this.getUser();
         return (
             <div id="homepage" className="row d-flex align-items-center">
                 <div id="setting_link">
@@ -94,7 +208,7 @@ class Home extends React.Component {
                             <div className="carousel-inner">
                                 <div className="carousel-item text-center active">
                                     <h2 className="whiteText">Fun Fact of the Day:</h2>
-                                    <h3 className="whiteText">Did you know?</h3>
+                                    <h4 className="whiteText">Did you know?</h4>
                                 </div>
                                 <div className="carousel-item text-center">
                                     <h2 className="whiteText">Weather Today: Bright and Sunny!</h2>
@@ -102,9 +216,8 @@ class Home extends React.Component {
                                         in some sunshine.</h4>
                                 </div>
                                 <div className="carousel-item text-center">
-                                    <h2 className="whiteText">Suggestion of the Day:</h2>
-                                    <h3 className="whiteText">Exams are coming up. Study hard but don't forget to
-                                        get enough hours of sleep!</h3>
+                                    <h2 className="whiteText">{this.state.perMessage.subject}</h2>
+                                    <h4 className="whiteText">{this.state.perMessage.message}</h4>
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"

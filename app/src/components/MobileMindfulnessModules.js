@@ -23,15 +23,24 @@ class MindfulnessModules extends React.Component {
 
 
                         <div class = "flex-column-nowrap">
-                            <MobileTile name = "Mindful Walking"/>
-                            <MobileTile name = "Daily Mindfulness"/>
+                            <a href = "/MindfulnessOverview">
+                                <MobileTile name = "Mindfulness Overview"/>
+                            </a>
+                            <a href = "/MindfulYoga">
+                                <MobileTile name = "Mindful Yoga"/>
+                            </a>
+                            <a href = "/BodyScanMeditation">
+                                <MobileTile name = "10 Minute Meditation"/>
+                            </a>
                             <a href = "/ExampleModule">
+                                <MobileTile name = "5 Minute Meditation"/>
+                            </a>
+                            <a href = "/MindfulEating">
                                 <MobileTile name = "Mindful Eating"/>
                             </a>
-
-                            <MobileTile name = "Mindful Walking"/>
-                            <MobileTile name = "Daily Mindfulness"/>
-                            <MobileTile name = "Mindful Eating"/>
+                            <a href = "/mindfulLeadership">
+                                <MobileTile name = "Mindful Leadership"/>
+                            </a>
                         </div>
                     </div>
                 </div>

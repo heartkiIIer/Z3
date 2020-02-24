@@ -129,8 +129,8 @@ class Home extends React.Component {
                         return r.json();
                     }).then(r => {
                         currentComponent.setState({perMessage : r});
-                        document.getElementsByClassName("takenQuizzes").style.display = "block";
-                        document.getElementsByClassName("notTakenQuizzes").style.display = "none";
+                        document.getElementById("takenQuizzes").style.display = "block";
+                        document.getElementById("notTakenQuizzes").style.display = "none";
                     });
                 }
             });
@@ -217,11 +217,11 @@ class Home extends React.Component {
                                     <h4 className="whiteText">We suggest opening the blinds and/or curtains and let
                                         in some sunshine.</h4>
                                 </div>
-                                <div className="carousel-item text-center takenQuizzes" style={{display: "none"}}>
+                                <div id="takenQuizzes" className="carousel-item text-center" style={{display: "none"}}>
                                     <h2 className="whiteText">{this.state.perMessage.subject}</h2>
                                     <h3 className="whiteText">{this.state.perMessage.message}</h3>
                                 </div>
-                                <div className="carousel-item text-center notTakenQuizzes">
+                                <div id="notTakenQuizzes" className="carousel-item text-center">
                                     <h2 className="whiteText">Personality and Chronotype:</h2>
                                     <h3 className="whiteText"> Take the two quizzes under Personality Test! We will make
                                     some reminder/suggestions based on your personality type.</h3>

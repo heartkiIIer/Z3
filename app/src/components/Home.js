@@ -86,6 +86,7 @@ class Home extends React.Component {
     }
 
     getPersonalityBasedMessage(currentComponent){
+        currentComponent.reverseScore4(3);
         fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
             method: 'POST',
             headers: {

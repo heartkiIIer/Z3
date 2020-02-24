@@ -23,14 +23,15 @@ class Home extends React.Component {
     }
     componentDidMount(){
         let currentComponent = this;
-        this.getPersonalityBasedMessage(currentComponent)
+        this.getUser(currentComponent);
+        this.getPersonalityBasedMessage(currentComponent);
     }
 
     // //get User profile information
-    getUser() {
+    getUser(currentComponent) {
         fetch('http://sleepwebapp.wpi.edu:5000/user')
             .then(response => response.json())
-            .then(data => this.setState({
+            .then(data => currentComponent.setState({
                 name: data.name,
                 image: data.image
             }));
@@ -134,7 +135,6 @@ class Home extends React.Component {
     }
 
     render(){
-        this.getUser();
         return (
             <div id="homepage" className="row d-flex align-items-center">
                 <div id="setting_link">

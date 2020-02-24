@@ -18,18 +18,12 @@ class Home extends React.Component {
         this.state = {
             name: "Invalid User",
             image: "",
-            chronoResults: null,
-            open: null,
-            cons: null,
-            extr: null,
-            agree: null,
-            neuro: null
+            perMessage: null
         };
     }
     componentDidMount(){
         let currentComponent = this;
-        this.getPersonality(currentComponent);
-        this.getChronoResults(currentComponent);
+        this.getPersonalityBasedMessage(currentComponent)
     }
 
     // //get User profile information
@@ -40,41 +34,6 @@ class Home extends React.Component {
                 name: data.name,
                 image: data.image
             }));
-    }
-    getPersonality(currentComponent){
-        fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            let perScore = currentComponent.getRecentPersonality(r);
-            if(typeof perScore !== "undefined"){
-                currentComponent.setState({
-                    open : perScore.openness,
-                    cons : perScore.conc,
-                    extr: perScore.extraver,
-                    agree: perScore.agree,
-                    neuro: perScore.neuro
-                });
-            }
-        });
-    }
-    getChronoResults(currentComponent){
-        fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({chronoResults : currentComponent.calculateScore(r)});
-        });
     }
     reverseScore4(value){
         if(value === 4)
@@ -125,13 +84,53 @@ class Home extends React.Component {
         return null
     }
 
-    getPersonalityBasedMessage(){
-        console.log("Chrono: ", this.state.chronoResults);
-        console.log("Open: ", this.state.open);
-        console.log("Conc", this.state.cons);
-        console.log("Extr", this.state.extr);
-        console.log("Agree", this.state.agree);
-        console.log("Neuro", this.state.neuro);
+    getPersonalityBasedMessage(currentComponent){
+        fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            let perScore = currentComponent.getRecentPersonality(r);
+            fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                var chrono = currentComponent.calculateScore(r);
+                if(typeof perScore !== "undefined" && chrono !== null){
+                    const data = JSON.stringify({
+                        chrono: chrono,
+                        open : perScore.openness,
+                        cons : perScore.conc,
+                        extr: perScore.extraver,
+                        agree: perScore.agree,
+                        neuro: perScore.neuro
+                    });
+                    fetch('http://sleepwebapp.wpi.edu:5000/getMessage', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then( r => {
+                        return r.json();
+                    }).then(r => {
+                        console.log(r);
+                        currentComponent.setState({perMessage : r});
+                    });
+                }
+            });
+
+        });
     }
 
     render(){

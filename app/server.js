@@ -1,4 +1,5 @@
 const db = require('./database');
+const message = require('./messages');
 
 const express = require('express');
 const app = express();
@@ -137,6 +138,11 @@ app.post('/submitPersonality/', cors(corsOptions), (req, res) => {
 
 app.post('/deleteUser/', cors(corsOptions), (req, res) => {
    db.deleteUser(req, res, userProfile.id);
+});
+
+app.post('/getMessage/', cors(corsOptions), (req, res) => {
+    const {chrono, open, cons, extr, agree, neuro} = req.body;
+    res.status(200).send(message.getMessage(chrono, open, cons, extr, agree, neuro))
 });
 
 app.listen(process.env.PORT || 5000);

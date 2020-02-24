@@ -115,6 +115,7 @@ class Home extends React.Component {
                         agree: perScore.agree,
                         neuro: perScore.neuro
                     });
+                    console.log(data);
                     fetch('http://sleepwebapp.wpi.edu:5000/getMessage', {
                         method: 'POST',
                         headers: {

@@ -24,7 +24,7 @@ class Home extends React.Component {
     componentDidMount(){
         let currentComponent = this;
         this.getUser(currentComponent);
-        this.getPersonalityBasedMessage(currentComponent);
+        // this.getPersonalityBasedMessage(currentComponent);
     }
 
     // //get User profile information

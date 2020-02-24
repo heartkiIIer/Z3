@@ -24,7 +24,7 @@ class Home extends React.Component {
     componentDidMount(){
         let currentComponent = this;
         this.getUser(currentComponent);
-        // this.getPersonalityBasedMessage(currentComponent);
+        this.getPersonalityBasedMessage(currentComponent);
     }
 
     // //get User profile information
@@ -86,7 +86,6 @@ class Home extends React.Component {
     }
 
     getPersonalityBasedMessage(currentComponent){
-        currentComponent.reverseScore4(3);
         fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
             method: 'POST',
             headers: {
@@ -217,7 +216,7 @@ class Home extends React.Component {
                                 <div className="carousel-item text-center">
                                     <h2 className="whiteText">Suggestion of the Day:</h2>
                                     <h3 className="whiteText">Exams are coming up. Study hard but don't forget to
-                                        get enough hours of sleep! {this.getPersonalityBasedMessage()}</h3>
+                                        get enough hours of sleep! </h3>
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"

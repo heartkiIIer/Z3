@@ -18,7 +18,10 @@ class Home extends React.Component {
         this.state = {
             name: "Invalid User",
             image: "",
-            perMessage: null
+            perMessage: {
+                subject: "",
+                message: ""
+            }
         };
     }
     componentDidMount(){

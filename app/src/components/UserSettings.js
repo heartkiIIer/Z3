@@ -180,18 +180,6 @@ class UserSettings extends React.Component {
         });
     }
 
-    deleteUser(){
-        fetch('http://sleepwebapp.wpi.edu:5000/deleteUser', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( () => {
-            deleteAcc()
-        });
-    }
-
     render(){
         return (
             <div class = "content settings" id="App">
@@ -262,7 +250,7 @@ class UserSettings extends React.Component {
 
                     <h1 className="blueHeader"> Delete your account</h1>
                     <hr className="hr-settings"/>
-                    <button className='btn' id = "extended" onClick={this.deleteUser}>
+                    <button className='btn' id = "extended" onClick={deleteAcc}>
                         Delete
                     </button>
                 </div>

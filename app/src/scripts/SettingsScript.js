@@ -70,15 +70,23 @@ function deleteUser(user){
             user.delete().then(function() {
                 // User deleted.
                 // Delete all database information on user
-                swal({
-                    text: "User was successfully deleted",
-                    icon: "success"
-                }).then(()=>{
-                    fetch('http://sleepwebapp.wpi.edu:5000/logout', {
-                        method: 'GET'
-                    }).then (function(){
-                        window.open("http://sleepwebapp.wpi.edu:3000", "_self");
-                    })
+                fetch('http://sleepwebapp.wpi.edu:5000/deleteUser', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    }
+                }).then( () => {
+                    swal({
+                        text: "User was successfully deleted",
+                        icon: "success"
+                    }).then(()=>{
+                        fetch('http://sleepwebapp.wpi.edu:5000/logout', {
+                            method: 'GET'
+                        }).then (function(){
+                            window.open("http://sleepwebapp.wpi.edu:3000", "_self");
+                        })
+                    });
                 });
             }).catch(function(error) {
                 // An error happened.

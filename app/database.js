@@ -360,23 +360,6 @@ function putChronotypeById(req, res, id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10
     })
 }
 
-//Weekly report
-function getWeekById(req, res, id){
-    const promise = promiseBuildergoogleIdtoInternal(id);
-    promise
-        .then(function(internalId) {
-            pool.query('SELECT * FROM chronotype WHERE user_id =' + internalId.rows[0].user_id + ';', (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200).send(results.rows);
-            });
-        }).catch(function(error){
-        console.log(error)
-    })
-}
-
 // get Sleep goal from db
 function getSleepGoalById(req, res, id) {
     pool.query('SELECT sleepgoal FROM users WHERE google_id=' + id + ';', (error, results) => {
@@ -432,57 +415,41 @@ function putPersonalityById(req, res, id, open, cons, extra, agree, neuro) {
     })
 }
 
-//Retrieve data for past 7 days
-function getPastWeekSleep(req, res, id) {
-    pool.query("SELECT * FROM sleepentry WHERE user_id=" + id + "AND terminate > current_date - interval '7 days';", (error, results) => {
-        if (error) {
-            throw error
-        }
-        console.log(results.rows);
-        res.status(200).send(results.rows);
-    });
+//retrieve personality by id
+function getPersonalityById(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            console.log(internalId.rows[0].user_id);
+            pool.query('SELECT * FROM personality WHERE user_id =' + internalId.rows[0].user_id + ';', (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
 
-function getPastWeekStress(req, res, id) {
-    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
-        if (error) {
-            throw error
-        }
-        console.log(results.rows);
-        res.status(200).send(results.rows);
-    });
+//retrieve sleep entries by id
+function getSleepEntryById(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            console.log(internalId.rows[0].user_id);
+            pool.query('SELECT * FROM sleepentry WHERE user_id =' + internalId.rows[0].user_id + ';', (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
 }
-
-function getPastWeekExer(req, res, id) {
-    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
-        if (error) {
-            throw error
-        }
-        console.log(results.rows);
-        res.status(200).send(results.rows);
-    });
-}
-
-function getPastWeekCaff(req, res, id) {
-    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
-        if (error) {
-            throw error
-        }
-        console.log(results.rows);
-        res.status(200).send(results.rows);
-    });
-}
-
-function getSleepGoal(req, res, id) {
-    pool.query('SELECT * FROM users WHERE google_id=' + id + ';', (error, results) => {
-        if (error) {
-            throw error
-        }
-        console.log(results.rows);
-        res.status(200).send(results.rows);
-    });
-}
-
 module.exports = {
     getUser,
     getUsers,
@@ -509,5 +476,6 @@ module.exports = {
     getSleepGoalById,
     getPersonalityById,
     putPersonalityById,
-    checkSavedState
+    checkSavedState,
+    getSleepEntryById
 }

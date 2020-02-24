@@ -28,9 +28,11 @@ class report extends React.Component{
     }
 
     getWeek(currentComponent) {
-        function updateStates(r) {
-            currentComponent.setState({week : r.json()})
-        }
+        // get past sleep data
+        // get stress data
+        // get sleep goal
+        // get caffiene entries
+        // get exercise data
 
         fetch('http://sleepwebapp.wpi.edu:5000/getWeek', {
             method: 'POST',

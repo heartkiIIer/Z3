@@ -454,7 +454,6 @@ module.exports = {
     getUser,
     getUsers,
     deleteUser,
-    getWeekById,
     getChronotypeById,
     getStressEntriesById,
     getBedtimeRoutineById,

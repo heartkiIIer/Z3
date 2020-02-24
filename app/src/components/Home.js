@@ -20,7 +20,7 @@ class Home extends React.Component {
             image: "",
             perMessage: {
                 subject: "Personality and Chronotype:",
-                message: "Take the two quizzes under Personality Test! We will make some reminder/suggestions based on your personality type."
+                message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
             }
         };
     }

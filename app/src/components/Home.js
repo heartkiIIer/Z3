@@ -96,6 +96,7 @@ class Home extends React.Component {
             return r.json();
         }).then(r => {
             let perScore = currentComponent.getRecentPersonality(r);
+            console.log(perScore);
             fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
                 method: 'POST',
                 headers: {
@@ -106,6 +107,7 @@ class Home extends React.Component {
                 return r.json();
             }).then(r => {
                 var chrono = currentComponent.calculateScore(r);
+                console.log("Chrono: ", chrono);
                 if(typeof perScore !== "undefined" && chrono !== null){
                     const data = JSON.stringify({
                         chrono: chrono,

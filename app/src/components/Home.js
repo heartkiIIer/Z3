@@ -210,7 +210,7 @@ class Home extends React.Component {
                             <div className="carousel-inner">
                                 <div className="carousel-item text-center active">
                                     <h2 className="whiteText">Fun Fact of the Day:</h2>
-                                    <h3 className="whiteText">Did you know?</h3>
+                                    <h4 className="whiteText">Did you know?</h4>
                                 </div>
                                 <div className="carousel-item text-center">
                                     <h2 className="whiteText">Weather Today: Bright and Sunny!</h2>
@@ -219,12 +219,12 @@ class Home extends React.Component {
                                 </div>
                                 <div id="takenQuizzes" className="carousel-item text-center" style={{display: "none"}}>
                                     <h2 className="whiteText">{this.state.perMessage.subject}</h2>
-                                    <h3 className="whiteText">{this.state.perMessage.message}</h3>
+                                    <h4 className="whiteText">{this.state.perMessage.message}</h4>
                                 </div>
                                 <div id="notTakenQuizzes" className="carousel-item text-center">
                                     <h2 className="whiteText">Personality and Chronotype:</h2>
-                                    <h3 className="whiteText"> Take the two quizzes under Personality Test! We will make
-                                    some reminder/suggestions based on your personality type.</h3>
+                                    <h4 className="whiteText"> Take the two quizzes under Personality Test! We will make
+                                    some reminder/suggestions based on your personality type.</h4>
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"

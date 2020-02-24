@@ -11,14 +11,21 @@ class report extends React.Component{
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
-                week: null
+                sleep: null,
+                stress: null,
+                goal: null,
+                caf: null,
+                exer: null,
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
-                week: null
-            };
+                sleep: null,
+                stress: null,
+                goal: null,
+                caf: null,
+                exer: null,            };
         }
     }
 
@@ -34,7 +41,7 @@ class report extends React.Component{
         // get caffiene entries
         // get exercise data
 
-        fetch('http://sleepwebapp.wpi.edu:5000/getWeek', {
+        fetch('http://sleepwebapp.wpi.edu:5000/getWeekExer', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -43,9 +50,21 @@ class report extends React.Component{
         }).then( r => {
             return r.json();
         }).then(r => {
-            currentComponent.setState({week : r})
-        })
-    }
+            currentComponent.setState({exer : r})
+        }).then(function(){
+            return fetch('http://sleepwebapp.wpi.edu:5000/getWeekCaf', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }})
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({caf : r})
+            console.log(this.state.caf);
+            console.log(this.state.exer);
+        })};
 
     resize(){
         window.addEventListener('resize', ()=> {

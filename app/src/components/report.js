@@ -62,10 +62,46 @@ class report extends React.Component{
             return r.json();
         }).then(r => {
             currentComponent.setState({caf : r})
+        }).then(function(){
+            return fetch('http://sleepwebapp.wpi.edu:5000/getWeekSleep', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }})
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({sleep : r})
+        }).then(function(){
+            return fetch('http://sleepwebapp.wpi.edu:5000/getWeekStress', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }})
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({stress : r})
+        }).then(function(){
+            return fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }})
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({goal : r})
+            console.log(this.state.stress);
+            console.log(this.state.goal);
             console.log(this.state.caf);
             console.log(this.state.exer);
-        })};
-
+            console.log(this.state.sleep);
+        })
+    };
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){

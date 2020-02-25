@@ -140,7 +140,7 @@ class report extends React.Component{
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
-                    <reportComponenet date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
+                    <reportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                 </div>
             </div>
         );

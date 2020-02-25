@@ -163,7 +163,7 @@ class Landing extends React.Component {
                                         Are you more of a morning or night person?
                                         How do other traits of your personality line up with your sleep habits?
                                         Take our personality tests and see how your personality affects your sleep needs.
-
+                                        <br/><br/>
                                         Take physical steps to improve your sleep.
                                         We offer in depth mindfulness activities to help calm your body and mind before bed!<br/><br/>
 

@@ -123,13 +123,12 @@ class Landing extends React.Component {
                                 <div style={{display: this.state.display}} className="image-wrapper float-left pr-3 iconImages calIconImg icon"></div>
                                 <div className="single-post-content-wrapper p-3">
                                     <h3 className="whiteText sidePadding">
-                                        Keep track of all your calendar events and plan ahead
-                                        so no more all-nighters. Let your body sleep! Set a nightly
-                                        bedtime routine and make it a habit! <br/><br/>
-                                        Z<sup>3</sup> allows for you to enter you schedule and view everything
-                                        in a calendar. You can also sync your google or outlook
-                                        calendar! Z<sup>3</sup> has a feature where it will send you friendly
-                                        reminders to help you stay on a consistent sleep schedule.
+                                        Keep a nightly routine with or bedtime routine tracker.
+                                        Set your nightly tasks and we will time you to make sure you are getting to bed
+                                        consistently and the right way.<br/><br/>
+                                        Sync Z<sup>3</sup> with your Google Calendar and view all the events you have coming up
+                                        and rate them on stress level. Z<sup>3</sup> We will allow you to visualize your stress level in order to
+                                        accurately adjust your sleep habits.
                                     </h3>
                                 </div>
                             </div>
@@ -143,8 +142,8 @@ class Landing extends React.Component {
                                 <div style={{display: this.state.display}} className="image-wrapper float-right pr-3 iconImages exerIconImg icon"></div>
                                 <div className="single-post-content-wrapper p-3">
                                     <h3 className="whiteText sidePadding">
-                                        Get walking or do some exercise! Get fit and improve
-                                        your sleep. That is hitting two birds in one stone! <br/><br/>
+                                        Did you know that exercise has an effect on your quality of sleep?
+                                        Keeping track of your exercise will allow you to take control of your sleep health.<br/><br/>
                                         Z<sup>3</sup> allows you to sync it up to your fitness tracker to track
                                         both exercise and sleep! If you do not own a fitness tracker, do not fret!
                                         There are options to self log your sleep hours and exercise amount.
@@ -161,9 +160,12 @@ class Landing extends React.Component {
                                 <div style={{display: this.state.display}} className="image-wrapper float-left pr-3 iconImages mindIconImg icon"></div>
                                 <div className="single-post-content-wrapper p-3">
                                     <h3 className="whiteText sidePadding">
-                                        Open up your mind and learning more about yourself
-                                        through our Mindfulness Modules and Personality Test. Learn how
-                                        mindfulness and Personality can effect your sleep! <br/><br/>
+                                        Are you more of a morning or night person?
+                                        How do other traits of your personality line up with your sleep habits?
+                                        Take our personality tests and see how your personality affects your sleep needs.
+
+                                        Take physical steps to improve your sleep.
+                                        We offer in depth mindfulness activities to help calm your body and mind before bed!<br/><br/>
 
                                     </h3>
                                 </div>

@@ -3,7 +3,7 @@ import '../styles/ItsBedtime.css';
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
-
+import reportComponent from "./reportComponent";
 
 class report extends React.Component{
     constructor(props) {
@@ -140,118 +140,7 @@ class report extends React.Component{
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
-                    <hr className="hr-settings"/>
-                    <h1 className="blueHeader">--</h1>
-                    <div className="day" class="flex-report">
-                        <div className="goalProg">
-                            <p>Average Sleep:</p>
-                            <h1 className="timeHeader">-- hrs</h1>
-                            <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">--</h1>
-                        </div>
-                        <div className="percentage">
-                            <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">-- min</h1>
-                            <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">-- Cups</h1>
-                        </div>
-                    </div>
-                    <hr className="hr-settings"/>
-                    <h1 className="blueHeader" >Sunday</h1>
-                    <div className="day" class="flex-report">
-                        <div className="goalProg">
-                            <p>Average Sleep:</p>
-                            <h1 className="timeHeader">7 hrs 30 min</h1>
-                            <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">High</h1>
-                        </div>
-                        <div className="percentage">
-                            <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">30 min</h1>
-                            <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">1 Cup</h1>
-                        </div>
-                    </div>
-                    <hr className="hr-settings"/>
-                    <h1 className="blueHeader">Saturday</h1>
-                    <div className="day" class="flex-report">
-                        <div className="goalProg">
-                            <p>Average Sleep:</p>
-                            <h1 className="timeHeader">7 hrs 30 min</h1>
-                            <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">High</h1>
-                        </div>
-                        <div className="percentage">
-                            <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">30 min</h1>
-                            <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">1 Cup</h1>
-                        </div>
-                    </div>
-                    <hr className="hr-settings"/>
-                    <h1 className="blueHeader">Friday</h1>
-                    <div className="day" class="flex-report">
-                        <div className="goalProg">
-                            <p>Average Sleep:</p>
-                            <h1 className="timeHeader">7 hrs 30 min</h1>
-                            <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">High</h1>
-                        </div>
-                        <div className="percentage">
-                            <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">30 min</h1>
-                            <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">1 Cup</h1>
-                        </div>
-                    </div>
-                    <hr className="hr-settings"/>
-                    <h1 className="blueHeader">Thursday</h1>
-                    <div className="day" class="flex-report">
-                        <div className="goalProg">
-                            <p>Average Sleep:</p>
-                            <h1 className="timeHeader">7 hrs 30 min</h1>
-                            <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">High</h1>
-                        </div>
-                        <div className="percentage">
-                            <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">30 min</h1>
-                            <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">1 Cup</h1>
-                        </div>
-                    </div>
-                    <hr className="hr-settings"/>
-                    <h1 className="blueHeader">Wednesday</h1>
-                    <div className="day" class="flex-report">
-                        <div className="goalProg">
-                            <p>Average Sleep:</p>
-                            <h1 className="timeHeader">7 hrs 30 min</h1>
-                            <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">High</h1>
-                        </div>
-                        <div className="percentage">
-                            <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">30 min</h1>
-                            <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">1 Cup</h1>
-                        </div>
-                    </div>
-                    <hr className="hr-settings"/>
-                    <h1 className="blueHeader">Tuesday</h1>
-                    <div className="day" class="flex-report">
-                        <div className="goalProg">
-                            <p>Average Sleep:</p>
-                            <h1 className="timeHeader">7 hrs 30 min</h1>
-                            <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">High</h1>
-                        </div>
-                        <div className="percentage">
-                            <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">30 min</h1>
-                            <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">1 Cup</h1>
-                        </div>
-                    </div>
+                    <reportComponenet date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                 </div>
             </div>
         );

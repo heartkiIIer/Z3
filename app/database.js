@@ -171,7 +171,7 @@ function deleteExerciseEntriesById(req, res, id) {
 function getStressEntriesById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
-        .then(function (internalID) {
+        .then(function (internalId) {
             pool.query('SELECT * FROM StressEntry WHERE user_id ='+ internalId.rows[0].user_id +';' , (error, results) => {
                 if (error) {
                     throw error
@@ -187,7 +187,7 @@ function getStressEntriesById(req, res, id) {
 //Add a stress entry
 function addStressEntriesById(req, res, id, title, year, month, day, date, value) {                                                  
     promise.then(
-        function (internalID) {
+        function (internalId) {
             pool.query('INSERT INTO StressEntry(user_id, date, stressLevel) VALUES('+ internalId.rows[0].user_id +', current_timestamp,' +  "'" + title + "', " +  month + "-" + day + "-" + year + ", " + date + ", " + value +");", (error, results) => {
                 if (error) {
                     throw error

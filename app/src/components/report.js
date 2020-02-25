@@ -95,15 +95,6 @@ class report extends React.Component{
             return r.json();
         }).then(r => {
             currentComponent.setState({goal : r})
-            for(var i = 0; i < 7; i++){
-                
-            }
-
-            console.log(this.state.stress);
-            console.log(this.state.goal);
-            console.log(this.state.caf);
-            console.log(this.state.exer);
-            console.log(this.state.sleep);
         })
     };
     resize(){
@@ -120,9 +111,11 @@ class report extends React.Component{
             }
         })
     }
+
     render(){
         this.resize();
-        return (
+        if(this.state.sleep == null || this.state.goal == null || this.state.stress == null || this.state.caf == null || this.state.exer == null){
+            return (
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner" id="page-wrap">
@@ -154,6 +147,55 @@ class report extends React.Component{
                 </div>
             </div>
         );
+        }
+        else {
+
+            return (
+                <div class = "reportClass" id="App">
+                    <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                    <div className="inner" id="page-wrap">
+                        <h1 className="blueHeader" align="center">Sleep Goal: -- hrs</h1>
+                        <hr className="hr-settings"/>
+                        <h1 className="blueHeader">Weekly Overview</h1>
+                        <div className="week" class="flex-report">
+                            <div className="goalProg">
+                                <CircularProgressbar value={93} text={`${93}%`} />
+                            </div>
+                            <div className="percentage">
+                                <p>Average Sleep:</p>
+                                <h1 className="timeHeader">-- hrs</h1>
+                                <p>Average Stress Level:</p>
+                                <h1 className="smallTimeHeader">--</h1>
+                                <p>Total Exercise:</p>
+                                <h1 className="smallTimeHeader">-- min</h1>
+                                <p>Average Caffeine Consumption:</p>
+                                <h1 className="smallTimeHeader">-- Cups</h1>
+                            </div>
+                        </div>
+                        {this.generateComponent()}
+                    </div>
+                </div>
+            );
+        }
     };
+
+    generateComponent() {
+        //Iterate through all dates and convert them to Date
+        //Iterate through all entries and fetch only entries that are within the last 7 days
+        //Iterate through all day by day and populate card
+
+        for(var i = 0; i < 7; i++){
+
+
+        }
+
+        console.log(this.state.stress);
+        console.log(this.state.goal);
+        console.log(this.state.caf);
+        console.log(this.state.exer);
+        console.log(this.state.sleep);
+        return <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>;
+
+    }
 }
 export default report;

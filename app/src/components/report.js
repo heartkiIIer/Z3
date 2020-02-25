@@ -95,6 +95,10 @@ class report extends React.Component{
             return r.json();
         }).then(r => {
             currentComponent.setState({goal : r})
+            for(var i = 0; i < 7; i++){
+                
+            }
+
             console.log(this.state.stress);
             console.log(this.state.goal);
             console.log(this.state.caf);

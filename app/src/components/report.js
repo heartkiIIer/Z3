@@ -3,7 +3,7 @@ import '../styles/ItsBedtime.css';
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
-import reportComponent from "./reportComponent";
+import ReportComponent from "./reportComponent";
 
 class report extends React.Component{
     constructor(props) {
@@ -140,7 +140,7 @@ class report extends React.Component{
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
-                    <reportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
+                    <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                 </div>
             </div>
         );

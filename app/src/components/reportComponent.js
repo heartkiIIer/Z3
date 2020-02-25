@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class reportComponent extends React.Component{
+class ReportComponent extends React.Component{
     constructor(props) {
         super(props);
     }
@@ -28,4 +28,4 @@ class reportComponent extends React.Component{
         );
     };
 }
-export default reportComponent;
+export default ReportComponent;

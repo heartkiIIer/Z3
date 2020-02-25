@@ -122,7 +122,7 @@ class report extends React.Component{
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner" id="page-wrap">
-                    <h1 className="blueHeader" align="center">Sleep Goal: 8 hrs</h1>
+                    <h1 className="blueHeader" align="center">Sleep Goal: -- hrs</h1>
                     <hr className="hr-settings"/>
                     <h1 className="blueHeader">Weekly Overview</h1>
                     <div className="week" class="flex-report">
@@ -131,29 +131,29 @@ class report extends React.Component{
                         </div>
                         <div className="percentage">
                             <p>Average Sleep:</p>
-                            <h1 className="timeHeader">7 hrs 30 min</h1>
+                            <h1 className="timeHeader">-- hrs</h1>
                             <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">High</h1>
+                            <h1 className="smallTimeHeader">--</h1>
                             <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">30 min</h1>
+                            <h1 className="smallTimeHeader">-- min</h1>
                             <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">1 Cup</h1>
+                            <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
                     <hr className="hr-settings"/>
-                    <h1 className="blueHeader">Monday</h1>
+                    <h1 className="blueHeader">--</h1>
                     <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Average Sleep:</p>
-                            <h1 className="timeHeader">7 hrs 30 min</h1>
+                            <h1 className="timeHeader">-- hrs</h1>
                             <p>Average Stress Level:</p>
-                            <h1 className="smallTimeHeader">High</h1>
+                            <h1 className="smallTimeHeader">--</h1>
                         </div>
                         <div className="percentage">
                             <p>Total Exercise:</p>
-                            <h1 className="smallTimeHeader">30 min</h1>
+                            <h1 className="smallTimeHeader">-- min</h1>
                             <p>Average Caffeine Consumption:</p>
-                            <h1 className="smallTimeHeader">1 Cup</h1>
+                            <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
                     <hr className="hr-settings"/>

@@ -169,20 +169,5 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     db.getSleepEntryById(req, res, userProfile.id);
 });
 
-const zipcode = "01609";
-const apiKey = "4e527c0cbe65468e44c55d0cb68d6b16";
-
-app.post('/getWeather/', cors(corsOptions), (req, res)=> {
-    const {zipcode} = req.body;
-    let weather = null;
-    request('http://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid=' + apiKey, { json: true }, (err, res, body) => {
-        if (err) { return console.log(err); }
-        // console.log(body.url);
-        // console.log(body.explanation);
-        weather = body;
-    });
-    res.status(200).send(weather);
-});
-
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

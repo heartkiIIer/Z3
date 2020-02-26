@@ -97,10 +97,6 @@ app.post('/users/newchrono/', cors(corsOptions), (req, res)=> {
     db.putChronotypeById(req, res, userProfile.id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13);
 })
 
-app.post('/getWeek/', cors(corsOptions), (req, res)=> {
-    db.getWeekById(req, res, userProfile.id);
-})
-
 app.post('/newSleep/', cors(corsOptions), (req, res)=> {
     db.addSleepEntryById(req, res, userProfile.id);
 })
@@ -144,6 +140,26 @@ app.post('/getMessage/', cors(corsOptions), (req, res) => {
     const {chrono, open, cons, extr, agree, neuro} = req.body;
     res.status(200).send(message.getMessage(chrono, open, cons, extr, agree, neuro))
 });
+
+app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
+    db.getExerciseEntriesById(req, res, userProfile.id);
+})
+
+app.post('/getWeekCaf/', cors(corsOptions), (req, res)=> {
+    db.getCaffeineEntriesById(req, res, userProfile.id);
+})
+
+app.post('/getWeekStress/', cors(corsOptions), (req, res)=> {
+    db.getStressEntriesById(req, res, userProfile.id);
+})
+
+app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
+    db.getExerciseEntriesById(req, res, userProfile.id);
+})
+
+app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
+    db.getSleepEntryById(req, res, userProfile.id);
+})
 
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

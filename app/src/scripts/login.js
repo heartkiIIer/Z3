@@ -1,8 +1,8 @@
 var firebaseui = require('firebaseui');
-var z3_firebase = require('./firebase.js');
+var firebase = require('firebase');
 
 (function(){
-    var ui = new firebaseui.auth.AuthUI(z3_firebase.auth());
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
     var uiConfig = {
         callbacks: {
             signInSuccessWithAuthResult: function(authResult, redirectUrl) {
@@ -22,47 +22,42 @@ var z3_firebase = require('./firebase.js');
         signInSuccessUrl: '/home',
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
-            z3_firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            // z3_firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-            // z3_firebase.auth.TwitterAuthProvider.PROVIDER_ID
-            // z3_firebase.auth.GithubAuthProvider.PROVIDER_ID
-            z3_firebase.auth.EmailAuthProvider.PROVIDER_ID
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            // firebase.auth.TwitterAuthProvider.PROVIDER_ID
+            // firebase.auth.GithubAuthProvider.PROVIDER_ID
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
             // firebase.auth.PhoneAuthProvider.PROVIDER_ID
         ],
     };
+
+    // Install servicerWorker if supported on sign-in/sign-up page.
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js', {scope: '/'});
+    }
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     ui.start('#firebaseui-auth-container', uiConfig);
-
-    z3_firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            // User is signed in.
-            console.log("User is signed in");
-            user.providerData.forEach(function (profile) {
-                const data = JSON.stringify({
-                    id: profile.uid,
-                    name: profile.displayName,
-                    image: profile.photoURL});
-
-                fetch('http://sleepwebapp.wpi.edu:5000/logUser', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: data
-                }).then (function(res){
-                    console.log("Send logged User to Server side: ", res.status);
-                })
-                console.log(profile.displayName);
-            });
-
-        } else {
-            // No user is signed in.
-            console.log("No User is signed in");
-        }
-    });
-})()
+})();
 
 export default function logout(e){
     e.preventDefault();
 
-    z3_firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(function() {
+        console.log('Signed Out');
+        fetch('http://sleepwebapp.wpi.edu:5000/logout', {
+            method: 'GET'
+        }).then (function(){
+            window.open("http://sleepwebapp.wpi.edu:3000", "_self");
+        })
+    }, function(error) {
+        console.error('Sign Out Error', error);
+    });
+}
+
+export default function getUser(e){
+    e.preventDefault();
+
+    firebase.auth().signOut().then(function() {
         console.log('Signed Out');
         fetch('http://sleepwebapp.wpi.edu:5000/logout', {
             method: 'GET'

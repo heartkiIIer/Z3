@@ -28,20 +28,20 @@ class Home extends React.Component {
     }
     componentDidMount(){
         let currentComponent = this;
-        this.getUser(currentComponent);
+        // this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
         this.getWeather(currentComponent, "01609");
     }
 
     // //get User profile information
-    getUser(currentComponent) {
-        fetch('http://sleepwebapp.wpi.edu:5000/user')
-            .then(response => response.json())
-            .then(data => currentComponent.setState({
-                name: data.name,
-                image: data.image
-            }));
-    }
+    // getUser(currentComponent) {
+    //     fetch('http://sleepwebapp.wpi.edu:5000/user')
+    //         .then(response => response.json())
+    //         .then(data => currentComponent.setState({
+    //             name: data.name,
+    //             image: data.image
+    //         }));
+    // }
     reverseScore4(value){
         if(value === 4)
             return 1;

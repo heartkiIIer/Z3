@@ -105,18 +105,19 @@ export function getUserImage(){
 }
 
 export function getUserName(){
-    var name = "";
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            user.providerData.forEach(function (profile) {
-                return profile.displayName;
-                // return name;
-            });
-        } else {
-            console.log("No User is signed in");
-        }
-        console.log("Name 1: ", name);
+    var promise = new Promise( function(resolve, reject){
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                user.providerData.forEach(function (profile) {
+                    resolve(profile.displayName);
+                });
+            } else { reject(); }
+        })
+    });
 
-    })
+    console.log(promise.then(name =>{
+        console.log("Name: ", name);
+        return name;
+    }))
 
 }

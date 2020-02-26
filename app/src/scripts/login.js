@@ -23,7 +23,7 @@ var z3_firebase = require('./firebase.js');
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
             z3_firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            z3_firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            // z3_firebase.auth.FacebookAuthProvider.PROVIDER_ID,
             // z3_firebase.auth.TwitterAuthProvider.PROVIDER_ID
             // z3_firebase.auth.GithubAuthProvider.PROVIDER_ID
             z3_firebase.auth.EmailAuthProvider.PROVIDER_ID

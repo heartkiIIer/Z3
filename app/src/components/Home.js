@@ -29,7 +29,7 @@ class Home extends React.Component {
         let currentComponent = this;
         this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
-        this.getWeather(currentComponent, "01609");
+        this.getWeather(currentComponent, "009");
     }
 
     // //get User profile information
@@ -251,7 +251,7 @@ class Home extends React.Component {
                                 </div>
                                 <div className="carousel-item text-center">
                                     {this.displayWeather()}
-                                    <button onClick={this.changeZip}>Change Location</button>
+                                    <button onClick={this.changeZip.bind(this)}>Change Location</button>
                                 </div>
                                 <div className="carousel-item text-center">
                                     <h2 className="whiteText">{this.state.perMessage.subject}</h2>

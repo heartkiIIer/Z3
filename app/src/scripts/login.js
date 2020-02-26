@@ -75,37 +75,29 @@ export function logout(e){
 }
 
 export function getUserID(){
-    var id = "";
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            user.providerData.forEach(function (profile) {
-                id += profile.uid;
-            });
-        } else {
-            console.log("No User is signed in");
-        }
+    return new Promise( function(resolve, reject){
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                user.providerData.forEach(function (profile) {
+                    resolve(profile.uid);
+                });
+            } else { reject(); }
+        })
     });
-    return id;
 }
-
 export function getUserImage(){
-    var img = "";
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            user.providerData.forEach(function (profile) {
-                img += profile.photoURL;
-            });
-        } else {
-            console.log("No User is signed in");
-        }
-        console.log("ImageUrL 1: ", img);
+    return new Promise( function(resolve, reject){
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                user.providerData.forEach(function (profile) {
+                    resolve(profile.photoURL);
+                });
+            } else { reject(); }
+        })
     });
-    console.log("ImageUrL 2: ", img);
-    return img;
 }
-
 export function getUserName(){
-    var promise = new Promise( function(resolve, reject){
+    return new Promise( function(resolve, reject){
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 user.providerData.forEach(function (profile) {
@@ -114,5 +106,4 @@ export function getUserName(){
             } else { reject(); }
         })
     });
-    return promise;
 }

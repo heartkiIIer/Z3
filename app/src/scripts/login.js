@@ -115,7 +115,7 @@ export function getUserName(){
             console.log("No User is signed in");
         }
         console.log("Name 1: ", name);
-    })
+        return name;
+    });
     console.log("Name 2: ", name);
-    return name;
 }

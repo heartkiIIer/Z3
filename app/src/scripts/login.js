@@ -109,13 +109,16 @@ export function getUserName(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             user.providerData.forEach(function (profile) {
-                name += profile.displayName;
+                return profile.displayName;
+                // return name;
             });
         } else {
             console.log("No User is signed in");
         }
         console.log("Name 1: ", name);
-        return name;
+
+    }).then(function() {
+        console.log("Name 2: ", name);
     });
-    console.log("Name 2: ", name);
+
 }

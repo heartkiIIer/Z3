@@ -4,7 +4,7 @@ import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
 import logout from '../scripts/login'
 import swal from 'sweetalert'
-import weather from './weather'
+import WeatherHome from './weather'
 
 //TODO
 // call the checkSavedState to determine where to send them
@@ -151,7 +151,7 @@ class Home extends React.Component {
         if(this.state.weather !== null){
             if(this.state.weather.cod !== 200)
                 return <h3 className="whiteText">{this.state.weather.message}</h3>
-            return <weather
+            return <WeatherHome
                 city={this.state.weather.name}
                 weather={this.state.weather.weather[0]}
                 main={this.state.weather.main}

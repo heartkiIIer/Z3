@@ -174,11 +174,11 @@ const apiKey = "4e527c0cbe65468e44c55d0cb68d6b16";
 
 app.post('/getWeather/', cors(corsOptions), (req, res)=> {
     const {zipcode} = req.body;
+    console.log("Hello");
     request('http://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid=' + apiKey, { json: true }, (err, res, body) => {
         if (err) { return console.log(err); }
         console.log(body.url);
         console.log(body.explanation);
-        res.status(200).send(body.explanation);
     });
     res.status(200).send("Hello");
 });

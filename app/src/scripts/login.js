@@ -30,31 +30,36 @@ var firebase = require('firebase');
             // firebase.auth.PhoneAuthProvider.PROVIDER_ID
         ],
     };
-
-    // Install servicerWorker if supported on sign-in/sign-up page.
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js', {scope: '/'});
-    }
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     ui.start('#firebaseui-auth-container', uiConfig);
-})();
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // User is signed in.
+            console.log("User is signed in");
+            user.providerData.forEach(function (profile) {
+                const data = JSON.stringify({
+                    id: profile.uid,
+                    name: profile.displayName,
+                    image: profile.photoURL});
+
+                fetch('http://sleepwebapp.wpi.edu:5000/logUser', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: data
+                }).then (function(res){
+                    console.log("Send logged User to Server side: ", res.status);
+                })
+                console.log(profile.displayName);
+            });
+
+        } else {
+            // No user is signed in.
+            console.log("No User is signed in");
+        }
+    });
+})()
 
 export default function logout(e){
-    e.preventDefault();
-
-    firebase.auth().signOut().then(function() {
-        console.log('Signed Out');
-        fetch('http://sleepwebapp.wpi.edu:5000/logout', {
-            method: 'GET'
-        }).then (function(){
-            window.open("http://sleepwebapp.wpi.edu:3000", "_self");
-        })
-    }, function(error) {
-        console.error('Sign Out Error', error);
-    });
-}
-
-export default function getUser(e){
     e.preventDefault();
 
     firebase.auth().signOut().then(function() {

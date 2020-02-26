@@ -9,47 +9,6 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const compression = require('compression');
 
-//Firebase sessions
-const admin = require('firebase-admin');
-const serviceAccount = require('./serviceAccountKey.json');
-
-// The Firebase Admin SDK is used here to verify the ID token.
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
-
-function getIdToken(req) {
-    // Parse the injected ID token from the request header.
-    const authorizationHeader = req.headers.authorization || '';
-    const components = authorizationHeader.split(' ');
-    return components.length > 1 ? components[1] : '';
-}
-
-function checkIfSignedIn(url) {
-    return (req, res, next) => {
-        if (req.url == url) {
-            const idToken = getIdToken(req);
-            // Verify the ID token using the Firebase Admin SDK.
-            // User already logged in. Redirect to profile page.
-            admin.auth().verifyIdToken(idToken).then((decodedClaims) => {
-                // User is authenticated, user claims can be retrieved from
-                // decodedClaims.
-                // In this sample code, authenticated users are always redirected to
-                // the profile page.
-                db.getUser(req, res, idToken, "");
-                res.redirect('http://sleepwebapp.wpi.edu:3000/home');
-            }).catch((error) => {
-                next();
-            });
-        } else {
-            next();
-        }
-    };
-}
-
-// If a user is signed in, redirect to profile page.
-app.use(checkIfSignedIn('http://sleepwebapp.wpi.edu:3000/'));
-
 app.use(express.static("src/"));
 app.use(express.static("public/"));
 app.use(bodyParser.json());
@@ -70,9 +29,33 @@ var corsOptions = {
     }
 };
 
+let userProfile = {id: -1, name: "Invalid User", image: ""};
+
 //user logout
 app.get('/logout', cors(corsOptions), function(req, res){
+    userProfile = {id: -1, name: "Invalid User", image: ""}; // set user profile to default
     res.send();
+});
+
+app.post('/logUser', cors(corsOptions), (req, res) => {
+    let data = req.body;
+
+    userProfile = {
+        id: data.id,
+        name: data.name,
+        image: data.image
+    };
+
+    db.getUser(req, res, userProfile.id, "\'"+userProfile.name+"\'");
+});
+
+// retrieve user's profile information: id, name, image
+app.get('/user', cors(corsOptions), (req, res) => {
+    res.send({
+        name: userProfile.name,
+        id: userProfile.id,
+        image: userProfile.image
+    });
 });
 
 //DATABASE FUNCTIONALITY

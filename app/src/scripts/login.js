@@ -59,7 +59,7 @@ var firebase = require('firebase');
     });
 })()
 
-export default function logout(e){
+export function logout(e){
     e.preventDefault();
 
     firebase.auth().signOut().then(function() {
@@ -72,4 +72,46 @@ export default function logout(e){
     }, function(error) {
         console.error('Sign Out Error', error);
     });
+}
+
+export function getUserID(){
+    var id = null;
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            user.providerData.forEach(function (profile) {
+                id = profile.uid;
+            });
+        } else {
+            console.log("No User is signed in");
+        }
+    });
+    return id;
+}
+
+export function getUserImage(){
+    var img = null;
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            user.providerData.forEach(function (profile) {
+                img = profile.photoURL;
+            });
+        } else {
+            console.log("No User is signed in");
+        }
+    });
+    return img;
+}
+
+export function getUserName(){
+    var name = null;
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            user.providerData.forEach(function (profile) {
+                name = profile.displayName;
+            });
+        } else {
+            console.log("No User is signed in");
+        }
+    });
+    return name;
 }

@@ -150,7 +150,8 @@ class Home extends React.Component {
         }).then( r => {
             return r.json();
         }).then(r => {
-            currentComponent.setState({weather: r});
+            console.log(r);
+            // currentComponent.setState({weather: r});
         });
     }
 

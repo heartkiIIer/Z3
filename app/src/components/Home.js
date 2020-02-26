@@ -138,25 +138,13 @@ class Home extends React.Component {
         });
     }
     getWeather(currentComponent){
-        const data = JSON.stringify({zipcode: "01609"});
-
-        $.getJSON('http://api.openweathermap.org/data/2.5/weather?zip=01609,us&appid=4e527c0cbe65468e44c55d0cb68d6b16', function(data) {
-            console.log(data);
+        fetch('http://api.openweathermap.org/data/2.5/weather?zip=01609,us&appid=4e527c0cbe65468e44c55d0cb68d6b16'
+        ).then( r => {
+            return r.json();
+        }).then(r => {
+            console.log(r);
+            // currentComponent.setState({weather: r});
         });
-
-        // fetch('http://sleepwebapp.wpi.edu:5000/getWeather', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: data
-        // }).then( r => {
-        //     return r.json();
-        // }).then(r => {
-        //     console.log(r);
-        //     // currentComponent.setState({weather: r});
-        // });
     }
 
     render(){

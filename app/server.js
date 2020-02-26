@@ -29,33 +29,14 @@ var corsOptions = {
     }
 };
 
-let userProfile = {id: -1, name: "Invalid User", image: ""};
-
 //user logout
 app.get('/logout', cors(corsOptions), function(req, res){
-    userProfile = {id: -1, name: "Invalid User", image: ""}; // set user profile to default
     res.send();
 });
 
 app.post('/logUser', cors(corsOptions), (req, res) => {
     let data = req.body;
-
-    userProfile = {
-        id: data.id,
-        name: data.name,
-        image: data.image
-    };
-
-    db.getUser(req, res, userProfile.id, "\'"+userProfile.name+"\'");
-});
-
-// retrieve user's profile information: id, name, image
-app.get('/user', cors(corsOptions), (req, res) => {
-    res.send({
-        name: userProfile.name,
-        id: userProfile.id,
-        image: userProfile.image
-    });
+    db.getUser(req, res, data.id, "\'"+data.name+"\'");
 });
 
 //DATABASE FUNCTIONALITY
@@ -71,76 +52,78 @@ app.get('/allUsers', cors(corsOptions), (req, res) => {
 });
 
 app.post('/users/newcaf/', cors(corsOptions), (req, res)=> {
-    const {cups, cupSize} = req.body
-    db.addCaffeineEntriesById(req, res, userProfile.id, cups, cupSize);
+    const {cups, cupSize, uid} = req.body;
+    db.addCaffeineEntriesById(req, res, uid, cups, cupSize);
 });
 
 app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
-    const {intensity, minutes} = req.body
-    db.addExerciseEntriesById(req, res, userProfile.id, intensity, minutes);
+    const {intensity, minutes, uid} = req.body;
+    db.addExerciseEntriesById(req, res, uid, intensity, minutes);
 });
 
 app.post('/users/newstress/', cors(corsOptions), (req, res)=> {
-    const {title, year, month, day, date, value} = req.body
-    db.addStressEntriesById(req, res, userProfile.id, title, year, month, day, date, value);
+    const {title, year, month, day, date, value, uid} = req.body;
+    db.addStressEntriesById(req, res, uid, title, year, month, day, date, value);
 });
 
 app.post('/getRoutine/', cors(corsOptions), (req, res)=> {
-    db.getBedtimeRoutineById(req, res, userProfile.id);
+    const {uid} = req.body;
+    db.getBedtimeRoutineById(req, res, uid);
 });
 
 app.post('/addRoutine/', cors(corsOptions), (req, res) => {
-    const {minutes, task} = req.body;
-    db.addBedtimeRoutineById(req, res, userProfile.id, minutes, task);
+    const {minutes, task, uid} = req.body;
+    db.addBedtimeRoutineById(req, res, uid, minutes, task);
 });
 
 app.post('/deleteRoutine/', cors(corsOptions), (req, res) => {
-    const {entryId} = req.body;
+    const {entryId, uid} = req.body;
     db.deleteBedtimeRoutinesById(req, res, entryId);
 });
 
-app.post('/users/newchrono/', cors(corsOptions), (req, res)=> {
-    const {q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13 } = req.body
-    db.putChronotypeById(req, res, userProfile.id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13);
-});
-
 app.post('/newSleep/', cors(corsOptions), (req, res)=> {
-    db.addSleepEntryById(req, res, userProfile.id);
+    const {uid} = req.body;
+    db.addSleepEntryById(req, res, uid);
 });
 
 app.post('/newWake/', cors(corsOptions), (req, res)=> {
-    db.addWakeById(req, res, userProfile.id);
+    const {uid} = req.body;
+    db.addWakeById(req, res, uid);
 });
 
 app.post('/submitChronoAnswers/', cors(corsOptions), (req, res) => {
-    const{q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13} = req.body;
-    db.putChronotypeById(req, res, userProfile.id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13)
+    const{q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, uid} = req.body;
+    db.putChronotypeById(req, res, uid, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13)
 });
 
 app.post('/getChronoAnswers/', cors(corsOptions), (req, res)=> {
-    db.getChronotypeById(req, res, userProfile.id);
+    const {uid} = req.body;
+    db.getChronotypeById(req, res, uid);
 });
 
 app.post('/getSleepGoal/', cors(corsOptions), (req, res)=> {
-    db.getSleepGoalById(req, res, userProfile.id)
+    const {uid} = req.body;
+    db.getSleepGoalById(req, res, uid)
 });
 
 app.post('/addSleepGoal/', cors(corsOptions), (req, res) => {
-    const {goal} = req.body;
-    db.addSleepGoalById(req, res, userProfile.id, goal);
+    const {goal, uid} = req.body;
+    db.addSleepGoalById(req, res, uid, goal);
 });
 
 app.post('/getPersonality/', cors(corsOptions), (req, res)=> {
-    db.getPersonalityById(req, res, userProfile.id)
+    const {uid} = req.body;
+    db.getPersonalityById(req, res, uid)
 });
 
 app.post('/submitPersonality/', cors(corsOptions), (req, res) => {
-    const {open, cons, extra, agree, neuro} = req.body;
-    db.putPersonalityById(req, res, userProfile.id, open, cons, extra, agree, neuro);
+    const {open, cons, extra, agree, neuro, uid} = req.body;
+    db.putPersonalityById(req, res, uid, open, cons, extra, agree, neuro);
 });
 
 app.post('/deleteUser/', cors(corsOptions), (req, res) => {
-   db.deleteUser(req, res, userProfile.id);
+    const {uid} = req.body;
+   db.deleteUser(req, res, uid);
 });
 
 app.post('/getMessage/', cors(corsOptions), (req, res) => {
@@ -149,22 +132,27 @@ app.post('/getMessage/', cors(corsOptions), (req, res) => {
 });
 
 app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
     db.getExerciseEntriesById(req, res, userProfile.id);
 });
 
 app.post('/getWeekCaf/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
     db.getCaffeineEntriesById(req, res, userProfile.id);
 });
 
 app.post('/getWeekStress/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
     db.getStressEntriesById(req, res, userProfile.id);
 });
 
 app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
     db.getExerciseEntriesById(req, res, userProfile.id);
 });
 
 app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
     db.getSleepEntryById(req, res, userProfile.id);
 });
 

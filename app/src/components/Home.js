@@ -2,7 +2,7 @@ import React, {SyntheticEvent} from 'react';
 import '../styles/home.css'
 import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
-import logout from '../scripts/login'
+import {logout, getUserID, getUserImage, getUserName} from '../scripts/login'
 import swal from 'sweetalert'
 import WeatherHome from './weather'
 
@@ -35,12 +35,10 @@ class Home extends React.Component {
 
     // //get User profile information
     getUser(currentComponent) {
-        fetch('http://sleepwebapp.wpi.edu:5000/user')
-            .then(response => response.json())
-            .then(data => currentComponent.setState({
-                name: data.name,
-                image: data.image
-            }));
+        currentComponent.setState({
+            name: getUserName(),
+            image: getUserImage()
+        });
     }
     reverseScore4(value){
         if(value === 4)
@@ -92,12 +90,15 @@ class Home extends React.Component {
     }
 
     getPersonalityBasedMessage(currentComponent){
+        var uid = getUserID();
+        const data = JSON.stringify({ uid: uid });
         fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-            }
+            },
+            body: data
         }).then( r => {
             return r.json();
         }).then(r => {
@@ -107,7 +108,8 @@ class Home extends React.Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                }
+                },
+                body: data
             }).then( r => {
                 return r.json();
             }).then(r => {

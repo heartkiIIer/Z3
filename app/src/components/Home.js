@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 import {logout, getUserID, getUserImage, getUserName} from '../scripts/login'
 import swal from 'sweetalert'
 import WeatherHome from './weather'
-import firebase from 'firebase'
 
 //TODO
 // call the checkSavedState to determine where to send them
@@ -36,14 +35,11 @@ class Home extends React.Component {
 
     // //get User profile information
     getUser(currentComponent) {
-        var user = firebase.auth.currentUser;
-        if(user !== null){
-            currentComponent.setState({
-                name: user.displayName,
-                image: user.photoURL
-            });
-        }
-        console.log("User is null")
+        console.log("getUserName", getUserName());
+        currentComponent.setState({
+            name: getUserName(),
+            image: getUserImage()
+        });
     }
     reverseScore4(value){
         if(value === 4)

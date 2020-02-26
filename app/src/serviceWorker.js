@@ -10,6 +10,8 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
+import firebase from 'firebase/app';
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -134,8 +136,6 @@ export function unregister() {
   }
 }
 
-import firebase from 'firebase/app';
-
 /**
  * Returns a promise that resolves with an ID token if available.
  * @return {!Promise<?string>} The promise that resolves with an ID token if
@@ -189,9 +189,9 @@ this.addEventListener('fetch', (event) => {
     let req = event.request;
     let processRequestPromise = Promise.resolve();
     // For same origin https requests, append idToken to header.
-    if (self.location.origin == getOriginFromUrl(event.request.url) &&
-        (self.location.protocol == 'http:' ||
-            self.location.hostname == 'sleepwebapp.wpi.edu') &&
+    if (this.location.origin == getOriginFromUrl(event.request.url) &&
+        (this.location.protocol == 'http:' ||
+            this.location.hostname == 'sleepwebapp.wpi.edu') &&
         idToken) {
       // Clone headers as request headers are immutable.
       const headers = new Headers();
@@ -231,6 +231,6 @@ this.addEventListener('fetch', (event) => {
 });
 
 // In service worker script.
-window.self.addEventListener('activate', event => {
+this.addEventListener('activate', event => {
   event.waitUntil(clients.claim());
 });

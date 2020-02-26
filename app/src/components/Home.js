@@ -4,6 +4,7 @@ import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
 import logout from '../scripts/login'
 import swal from 'sweetalert'
+import weather from './weather'
 
 //TODO
 // call the checkSavedState to determine where to send them
@@ -149,7 +150,7 @@ class Home extends React.Component {
     displayWeather(){
         if(this.state.weather !== null){
             if(this.state.weather.cod !== 200)
-                return <h3>{this.state.weather.message}</h3>
+                return <h3 className="whiteText">{this.state.weather.message}</h3>
             return <weather
                 city={this.state.weather.name}
                 weather={this.state.weather.weather[0]}
@@ -251,7 +252,7 @@ class Home extends React.Component {
                                 </div>
                                 <div className="carousel-item text-center">
                                     {this.displayWeather()}
-                                    <button onClick={this.changeZip.bind(this)}>Change Location</button>
+                                    <button style={{background: "transparent", border: "2px solid white"}} onClick={this.changeZip.bind(this)}>Change Location</button>
                                 </div>
                                 <div className="carousel-item text-center">
                                     <h2 className="whiteText">{this.state.perMessage.subject}</h2>

@@ -3,7 +3,7 @@ import '../styles/home.css'
 import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
 import logout from '../scripts/login'
-
+import swal from 'sweetalert'
 
 //TODO
 // call the checkSavedState to determine where to send them
@@ -29,7 +29,7 @@ class Home extends React.Component {
         let currentComponent = this;
         this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
-        this.getWeather(currentComponent);
+        this.getWeather(currentComponent, "01609");
     }
 
     // //get User profile information
@@ -137,14 +137,45 @@ class Home extends React.Component {
 
         });
     }
-    getWeather(currentComponent){
-        fetch('http://api.openweathermap.org/data/2.5/weather?zip=01609,us&appid=4e527c0cbe65468e44c55d0cb68d6b16'
+    getWeather(currentComponent, zipcode){
+        let key = "4e527c0cbe65468e44c55d0cb68d6b16";
+        fetch('http://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid='+key
         ).then( r => {
             return r.json();
         }).then(r => {
-            console.log(r);
-            // currentComponent.setState({weather: r});
+            currentComponent.setState({weather: r});
         });
+    }
+    displayWeather(){
+        if(this.state.weather !== null){
+            if(this.state.weather.cod !== 200)
+                return <h3>{this.state.weather.message}</h3>
+            return <weather
+                city={this.state.weather.name}
+                weather={this.state.weather.weather[0]}
+                main={this.state.weather.main}
+                wind={this.state.weather.wind}
+            />
+        }
+        else{
+            document.getElementById("zip").style.display = "none";
+        }
+    }
+    changeZip(){
+        swal({
+            title: "Weather Location",
+            text: "Please enter the zip code of the location you would like the weather for: ",
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "03741",
+                    type: "text",
+                }
+            },
+            buttons: true,
+        }).then((zipcode) => {
+            this.getWeather(this, zipcode);
+        })
     }
 
     render(){
@@ -222,9 +253,8 @@ class Home extends React.Component {
                                     <h4 className="whiteText">Did you know?</h4>
                                 </div>
                                 <div className="carousel-item text-center">
-                                    <h2 className="whiteText">Weather Today: Bright and Sunny!</h2>
-                                    <h4 className="whiteText">We suggest opening the blinds and/or curtains and let
-                                        in some sunshine.</h4>
+                                    {this.displayWeather()}
+                                    <button id="zip" onClick={this.changeZip}>Change Location</button>
                                 </div>
                                 <div className="carousel-item text-center">
                                     <h2 className="whiteText">{this.state.perMessage.subject}</h2>

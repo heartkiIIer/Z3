@@ -114,10 +114,5 @@ export function getUserName(){
             } else { reject(); }
         })
     });
-
-    console.log(promise.then(name =>{
-        console.log("Name: ", name);
-        return name;
-    }))
-
+    return promise;
 }

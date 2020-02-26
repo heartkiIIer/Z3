@@ -35,9 +35,12 @@ class Home extends React.Component {
 
     // //get User profile information
     getUser(currentComponent) {
-        console.log("getUserName", getUserName());
+        let namePromise = getUserName();
+        namePromise.then(name=>{
+            currentComponent.setState({ name : name })
+        });
+
         currentComponent.setState({
-            name: getUserName(),
             image: getUserImage()
         });
     }

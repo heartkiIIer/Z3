@@ -157,9 +157,6 @@ class Home extends React.Component {
                 wind={this.state.weather.wind}
             />
         }
-        else{
-            document.getElementById("zip").style.display = "none";
-        }
     }
     changeZip(){
         swal({
@@ -254,7 +251,7 @@ class Home extends React.Component {
                                 </div>
                                 <div className="carousel-item text-center">
                                     {this.displayWeather()}
-                                    <button id="zip" onClick={this.changeZip}>Change Location</button>
+                                    <button onClick={this.changeZip}>Change Location</button>
                                 </div>
                                 <div className="carousel-item text-center">
                                     <h2 className="whiteText">{this.state.perMessage.subject}</h2>

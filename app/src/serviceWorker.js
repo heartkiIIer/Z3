@@ -184,7 +184,7 @@ const getBodyContent = (req) => {
   });
 };
 
-self.addEventListener('fetch', (event) => {
+this.addEventListener('fetch', (event) => {
   const requestProcessor = (idToken) => {
     let req = event.request;
     let processRequestPromise = Promise.resolve();
@@ -231,6 +231,6 @@ self.addEventListener('fetch', (event) => {
 });
 
 // In service worker script.
-self.addEventListener('activate', event => {
+window.self.addEventListener('activate', event => {
   event.waitUntil(clients.claim());
 });

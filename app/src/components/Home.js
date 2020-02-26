@@ -21,13 +21,15 @@ class Home extends React.Component {
             perMessage: {
                 subject: "Personality and Chronotype:",
                 message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
-            }
+            },
+            weather: null
         };
     }
     componentDidMount(){
         let currentComponent = this;
         this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
+        this.getWeather(currentComponent);
     }
 
     // //get User profile information
@@ -133,6 +135,22 @@ class Home extends React.Component {
                 }
             });
 
+        });
+    }
+    getWeather(currentComponent){
+        const data = JSON.stringify({zipcode: "01609"});
+
+        fetch('http://sleepwebapp.wpi.edu:5000/getWeather', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            currentComponent.setState({weather: r});
         });
     }
 

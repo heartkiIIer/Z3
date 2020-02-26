@@ -8,6 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const compression = require('compression');
+const request = require('request');
 
 app.use(express.static("src/"));
 app.use(express.static("public/"));
@@ -17,10 +18,17 @@ app.use(helmet());
 app.use(compression());
 app.use(cors());
 
+var whitelist = ['http://sleepwebapp.wpi.edu:3000', 'http://api.openweathermap.org/'];
+
 var corsOptions = {
-    origin : 'http://sleepwebapp.wpi.edu:3000',
-    optionsSuccessStatus : 200
-}
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+};
 
 let userProfile = {id: -1, name: "Invalid User", image: ""};
 
@@ -57,7 +65,7 @@ app.use(
     bodyParser.urlencoded({
         extended: true,
     })
-)
+);
 
 app.get('/allUsers', cors(corsOptions), (req, res) => {
     db.getUsers(req, res)
@@ -66,21 +74,21 @@ app.get('/allUsers', cors(corsOptions), (req, res) => {
 app.post('/users/newcaf/', cors(corsOptions), (req, res)=> {
     const {cups, cupSize} = req.body
     db.addCaffeineEntriesById(req, res, userProfile.id, cups, cupSize);
-})
+});
 
 app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
     const {intensity, minutes} = req.body
     db.addExerciseEntriesById(req, res, userProfile.id, intensity, minutes);
-})
+});
 
 app.post('/users/newstress/', cors(corsOptions), (req, res)=> {
     const {title, year, month, day, date, value} = req.body
     db.addStressEntriesById(req, res, userProfile.id, title, year, month, day, date, value);
-})
+});
 
 app.post('/getRoutine/', cors(corsOptions), (req, res)=> {
     db.getBedtimeRoutineById(req, res, userProfile.id);
-})
+});
 
 app.post('/addRoutine/', cors(corsOptions), (req, res) => {
     const {minutes, task} = req.body;
@@ -95,24 +103,24 @@ app.post('/deleteRoutine/', cors(corsOptions), (req, res) => {
 app.post('/users/newchrono/', cors(corsOptions), (req, res)=> {
     const {q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13 } = req.body
     db.putChronotypeById(req, res, userProfile.id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13);
-})
+});
 
 app.post('/newSleep/', cors(corsOptions), (req, res)=> {
     db.addSleepEntryById(req, res, userProfile.id);
-})
+});
 
 app.post('/newWake/', cors(corsOptions), (req, res)=> {
     db.addWakeById(req, res, userProfile.id);
-})
+});
 
 app.post('/submitChronoAnswers/', cors(corsOptions), (req, res) => {
     const{q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13} = req.body;
     db.putChronotypeById(req, res, userProfile.id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13)
-})
+});
 
 app.post('/getChronoAnswers/', cors(corsOptions), (req, res)=> {
     db.getChronotypeById(req, res, userProfile.id);
-})
+});
 
 app.post('/getSleepGoal/', cors(corsOptions), (req, res)=> {
     db.getSleepGoalById(req, res, userProfile.id)
@@ -143,23 +151,34 @@ app.post('/getMessage/', cors(corsOptions), (req, res) => {
 
 app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
     db.getExerciseEntriesById(req, res, userProfile.id);
-})
+});
 
 app.post('/getWeekCaf/', cors(corsOptions), (req, res)=> {
     db.getCaffeineEntriesById(req, res, userProfile.id);
-})
+});
 
 app.post('/getWeekStress/', cors(corsOptions), (req, res)=> {
     db.getStressEntriesById(req, res, userProfile.id);
-})
+});
 
 app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
     db.getExerciseEntriesById(req, res, userProfile.id);
-})
+});
 
 app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     db.getSleepEntryById(req, res, userProfile.id);
-})
+});
+
+const apiKey = "4e527c0cbe65468e44c55d0cb68d6b16";
+app.post('/getWeather/', cors(corsOptions), (req, res)=> {
+    const {zipcode} = req.body;
+    request('http://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid=' + apiKey, { json: true }, (err, res, body) => {
+        if (err) { return console.log(err); }
+        console.log(body.url);
+        console.log(body.explanation);
+    });
+    res.status(200).send(body.explanation);
+});
 
 app.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

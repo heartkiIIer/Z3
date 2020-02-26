@@ -117,8 +117,6 @@ export function getUserName(){
         }
         console.log("Name 1: ", name);
 
-    }).then(function() {
-        console.log("Name 2: ", name);
-    });
+    })
 
 }

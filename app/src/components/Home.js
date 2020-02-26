@@ -29,7 +29,7 @@ class Home extends React.Component {
         let currentComponent = this;
         this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
-        this.getWeather(currentComponent);
+        // this.getWeather(currentComponent);
     }
 
     // //get User profile information

@@ -75,11 +75,11 @@ export function logout(e){
 }
 
 export function getUserID(){
-    var id = null;
+    var id = "";
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             user.providerData.forEach(function (profile) {
-                id = profile.uid;
+                id += profile.uid;
             });
         } else {
             console.log("No User is signed in");
@@ -89,11 +89,11 @@ export function getUserID(){
 }
 
 export function getUserImage(){
-    var img = null;
+    var img = "";
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             user.providerData.forEach(function (profile) {
-                img = profile.photoURL;
+                img += profile.photoURL;
             });
         } else {
             console.log("No User is signed in");
@@ -103,11 +103,11 @@ export function getUserImage(){
 }
 
 export function getUserName(){
-    var name = null;
+    var name = "";
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             user.providerData.forEach(function (profile) {
-                name = profile.displayName;
+                name += profile.displayName;
             });
         } else {
             console.log("No User is signed in");

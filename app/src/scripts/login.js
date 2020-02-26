@@ -98,7 +98,9 @@ export function getUserImage(){
         } else {
             console.log("No User is signed in");
         }
+        console.log("ImageUrL 1: ", img);
     });
+    console.log("ImageUrL 2: ", img);
     return img;
 }
 
@@ -112,6 +114,8 @@ export function getUserName(){
         } else {
             console.log("No User is signed in");
         }
-    });
+        console.log("Name 1: ", name);
+    })
+    console.log("Name 2: ", name);
     return name;
 }

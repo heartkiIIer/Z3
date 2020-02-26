@@ -184,7 +184,7 @@ app.post('/getWeather/', cors(corsOptions), (req, res)=> {
     //     console.log(body.explanation);
     //     res.status(200).send(body.explanation);
     // });
-    res.status(200).send();
+    res.status(200).send("Hello");
 });
 
 app.listen(process.env.PORT || 5000);

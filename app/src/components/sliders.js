@@ -142,7 +142,7 @@ function submitExerciseEntry() {
 
     let idPromise = getUserID();
     idPromise.then(uid=>{
-        fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+        fetch('http://sleepwebapp.wpi.edu:5000/users/newexer/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -101,7 +101,7 @@ app.post('/getSleepGoal/', cors(corsOptions), (req, res)=> {
     db.getSleepGoalById(req, res, uid)
 });
 
-app.post('/addSleepGoal/', cors(corsOptions), (req, res) => {
+app.post('/addSleepGoal/', cors(corsOptiFons), (req, res) => {
     const {goal, uid} = req.body;
     db.addSleepGoalById(req, res, uid, goal);
 });

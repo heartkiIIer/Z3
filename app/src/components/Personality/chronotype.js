@@ -46,24 +46,24 @@ class Chronotype extends React.Component {
             }
         }
         if(values.length === 13){
-            const data = JSON.stringify({
-                q1: values[0],
-                q2: values[1],
-                q3: values[2],
-                q4: values[3],
-                q5: values[4],
-                q6: values[5],
-                q7: values[6],
-                q8: values[7],
-                q9: values[8],
-                q10: values[9],
-                q11: values[10],
-                q12: values[11],
-                q13: values[12],
-            });
             let idPromise = getUserID();
             idPromise.then(uid =>{
-                const data = JSON.stringify({uid: uid});
+                const data = JSON.stringify({
+                    q1: values[0],
+                    q2: values[1],
+                    q3: values[2],
+                    q4: values[3],
+                    q5: values[4],
+                    q6: values[5],
+                    q7: values[6],
+                    q8: values[7],
+                    q9: values[8],
+                    q10: values[9],
+                    q11: values[10],
+                    q12: values[11],
+                    q13: values[12],
+                    uid: uid
+                });
                 fetch('http://sleepwebapp.wpi.edu:5000/submitChronoAnswers', {
                     method: 'POST',
                     headers: {

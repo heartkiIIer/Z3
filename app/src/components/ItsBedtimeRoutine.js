@@ -64,6 +64,7 @@ class ItsBedtimeRoutine extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
+                console.log(r);
                 currentComponent.setState({routine : r})
             })
         });

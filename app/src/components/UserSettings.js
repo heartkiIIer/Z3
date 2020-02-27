@@ -66,13 +66,14 @@ class UserSettings extends React.Component {
     getRoutine(currentComponent) {
         let idPromise = getUserID();
         idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
             fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
-                body: { uid: uid }
+                body: data
             }).then( r => {
                 return r.json();
             }).then(r => {
@@ -146,13 +147,14 @@ class UserSettings extends React.Component {
     getSleepGoal(currentComponent){
         let idPromise = getUserID();
         idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
             fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
-                body: {uid: uid}
+                body: data
             }).then( r => {
                 return r.json();
             }).then(r => {

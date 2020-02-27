@@ -5,6 +5,7 @@ import {CircularProgressbar, CircularProgressbarWithChildren, buildStyles} from 
 import "react-circular-progressbar/dist/styles.css"
 import SideBar from "./sideMenu";
 import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
+import {getUserID} from "../scripts/login";
 
 /**
  * @author Eliazbeth Del Monaco, Sarah Armstrong
@@ -112,16 +113,21 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     getRoutine() {
-        fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then(function(r){
-            this.setState({routine : r})
-            console.log(JSON.stringify(r))
-        })
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+           const data = JSON.stringify({uid: uid});
+            fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(function(r){
+                this.setState({routine : r})
+                console.log(JSON.stringify(r))
+            })
+        });
     }
 
     render(){

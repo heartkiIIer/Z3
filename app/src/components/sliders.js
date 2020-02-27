@@ -10,6 +10,7 @@ import LocalCafe from '@material-ui/icons/LocalCafe';
 import Delete from '@material-ui/icons/Delete';
 import { Tab } from 'semantic-ui-react'
 import Display from "./Display";
+import {getUserID} from "../scripts/login";
 
 const cup = {
     fontSize: '250%'
@@ -139,17 +140,21 @@ function submitExerciseEntry() {
     console.log(intensity);
     console.log(minutes);
 
-    fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            intensity: intensity,
-            minutes: minutes
+    let idPromise = getUserID();
+    idPromise.then(uid=>{
+        fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                intensity: intensity,
+                minutes: minutes,
+                uid: uid
+            })
         })
-    })
+    });
 }
 
 function submitCaffeineEntry() {
@@ -158,17 +163,21 @@ function submitCaffeineEntry() {
     console.log(cups);
     console.log(cupSize);
 
-    fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            cups: cups,
-            cupSize: cupSize
+    let idPromise = getUserID();
+    idPromise.then(uid=>{
+        fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                cups: cups,
+                cupSize: cupSize,
+                uid: uid
+            })
         })
-    })
+    });
 }
 
 const panes = [

@@ -3,6 +3,7 @@ import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
+import {getUserID} from '../../scripts/login'
 
 class ChronoResults extends React.Component {
     constructor(props) {
@@ -41,16 +42,21 @@ class ChronoResults extends React.Component {
     }
 
     getChronoResults(currentComponent){
-        fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({chronoAnswers : r});
+        let idPromise = getUserID();
+        idPromise.then(uid =>{
+            const data = JSON.stringify({uid: uid});
+            fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({chronoAnswers : r});
+            });
         });
     }
 

@@ -3,6 +3,7 @@ import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
+import {getUserID} from "../../scripts/login";
 
 class PersonalityResults extends React.Component {
     constructor(props) {
@@ -45,16 +46,21 @@ class PersonalityResults extends React.Component {
         this.getPersonality(currentComponent);
     }
     getPersonality(currentComponent){
-        fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({personality : r});
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({personality : r});
+            });
         });
     }
     getValue(perScore){

@@ -29,11 +29,6 @@ var corsOptions = {
     }
 };
 
-//user logout
-app.get('/logout', cors(corsOptions), function(req, res){
-    res.send();
-});
-
 app.post('/logUser', cors(corsOptions), (req, res) => {
     let data = req.body;
     db.getUser(req, res, data.id, "\'"+data.name+"\'");
@@ -77,7 +72,7 @@ app.post('/addRoutine/', cors(corsOptions), (req, res) => {
 });
 
 app.post('/deleteRoutine/', cors(corsOptions), (req, res) => {
-    const {entryId, uid} = req.body;
+    const {entryId} = req.body;
     db.deleteBedtimeRoutinesById(req, res, entryId);
 });
 
@@ -133,27 +128,27 @@ app.post('/getMessage/', cors(corsOptions), (req, res) => {
 
 app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
-    db.getExerciseEntriesById(req, res, userProfile.id);
+    db.getExerciseEntriesById(req, res, uid);
 });
 
 app.post('/getWeekCaf/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
-    db.getCaffeineEntriesById(req, res, userProfile.id);
+    db.getCaffeineEntriesById(req, res, uid);
 });
 
 app.post('/getWeekStress/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
-    db.getStressEntriesById(req, res, userProfile.id);
+    db.getStressEntriesById(req, res, uid);
 });
 
 app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
-    db.getExerciseEntriesById(req, res, userProfile.id);
+    db.getExerciseEntriesById(req, res, uid);
 });
 
 app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
-    db.getSleepEntryById(req, res, userProfile.id);
+    db.getSleepEntryById(req, res, uid);
 });
 
 app.listen(process.env.PORT || 5000);

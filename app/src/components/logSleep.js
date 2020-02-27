@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/logSleep.css'
 import SideBar from "./sideMenu";
+import {getUserID} from "../scripts/login";
 
 class LogSleep extends React.Component{
     constructor(props) {
@@ -32,15 +33,20 @@ class LogSleep extends React.Component{
     }
 
     myFunction() {
-        fetch('http://sleepwebapp.wpi.edu:5000/newSleep/', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            console.log("Completed")
-        })
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+           const data = JSON.stringify({uid: uid});
+            fetch('http://sleepwebapp.wpi.edu:5000/newSleep/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                console.log("Completed")
+            })
+        });
     }
     render(){
         this.resize();

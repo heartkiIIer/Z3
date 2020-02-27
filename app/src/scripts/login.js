@@ -64,16 +64,11 @@ export function logout(e){
 
     firebase.auth().signOut().then(function() {
         console.log('Signed Out');
-        fetch('http://sleepwebapp.wpi.edu:5000/logout', {
-            method: 'GET'
-        }).then (function(){
-            window.open("http://sleepwebapp.wpi.edu:3000", "_self");
-        })
+        window.open("http://sleepwebapp.wpi.edu:3000", "_self");
     }, function(error) {
         console.error('Sign Out Error', error);
     });
 }
-
 export function getUserID(){
     return new Promise( function(resolve, reject){
         firebase.auth().onAuthStateChanged(function(user) {

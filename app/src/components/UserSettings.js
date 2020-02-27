@@ -7,6 +7,7 @@ import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/Setting
 import z3_firebase from "../scripts/firebase"
 import swal from 'sweetalert'
 import TaskSetting from "./TaskSetting"
+import {getUserID, getUserImage} from "../scripts/login";
 
 /**
  * @author Eliazbeth Del Monaco
@@ -24,11 +25,10 @@ class UserSettings extends React.Component {
 
     // retrieves user's profile image to display in settings
     getUserImage(currentComponent){
-        fetch('http://sleepwebapp.wpi.edu:5000/user')
-            .then(response => response.json())
-            .then(data => currentComponent.setState({
-                image: data.image
-            }));
+        let imgPromise = getUserImage();
+        imgPromise.then(img=>{
+            currentComponent.setState({image: img});
+        });
     }
 
     componentDidMount(){
@@ -64,17 +64,22 @@ class UserSettings extends React.Component {
 
     // Bedtime Routine: show, add, delete routine
     getRoutine(currentComponent) {
-        fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({routine : r})
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: { uid: uid }
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({routine : r})
+            });
         });
+
     }
     listRoutine(){
         let list = [];
@@ -113,21 +118,25 @@ class UserSettings extends React.Component {
                 buttons: true,
             }).then((minutes) => {
                 if(task !== null && minutes !== null){
-                    const data = JSON.stringify({
-                        minutes: minutes,
-                        task: task
+                    let idPromise = getUserID();
+                    idPromise.then(uid=>{
+                        const data = JSON.stringify({
+                            minutes: minutes,
+                            task: task,
+                            uid: uid
+                        });
+                        fetch('http://sleepwebapp.wpi.edu:5000/addRoutine', {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            body: data
+                        }).then(r => {
+                            console.log("Added Routine: ", r.status);
+                            this.getRoutine(this)
+                        })
                     });
-                    fetch('http://sleepwebapp.wpi.edu:5000/addRoutine', {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                        },
-                        body: data
-                    }).then(r => {
-                        console.log("Added Routine: ", r.status);
-                        this.getRoutine(this)
-                    })
                 }
             });
         });
@@ -135,16 +144,20 @@ class UserSettings extends React.Component {
 
     // sleep goal
     getSleepGoal(currentComponent){
-        fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({sleepGoal : r[0].sleepgoal})
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: {uid: uid}
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({sleepGoal : r[0].sleepgoal})
+            });
         });
     }
     addSleepGoal(){
@@ -163,20 +176,24 @@ class UserSettings extends React.Component {
             },
             buttons: true,
         }).then((goal) => {
-            const data = JSON.stringify({
-                goal: goal,
+            let idPromise = getUserID();
+            idPromise.then(uid=>{
+                const data = JSON.stringify({
+                    goal: goal,
+                    uid: uid
+                });
+                fetch('http://sleepwebapp.wpi.edu:5000/addSleepGoal', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data
+                }).then(r => {
+                    console.log("Added Goal: ", r.status);
+                    this.getSleepGoal(this)
+                })
             });
-            fetch('http://sleepwebapp.wpi.edu:5000/addSleepGoal', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then(r => {
-                console.log("Added Goal: ", r.status);
-                this.getSleepGoal(this)
-            })
         });
     }
 

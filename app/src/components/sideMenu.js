@@ -1,6 +1,6 @@
 import React from "react";
 import {slide as Menu } from "react-burger-menu";
-import logout from '../scripts/login'
+import {logout} from '../scripts/login'
 
 export default props => {
     return (

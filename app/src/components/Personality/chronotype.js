@@ -4,6 +4,7 @@ import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
 import swal from 'sweetalert'
+import {getUserID} from "../../scripts/login";
 
 class Chronotype extends React.Component {
     constructor(props) {
@@ -60,17 +61,21 @@ class Chronotype extends React.Component {
                 q12: values[11],
                 q13: values[12],
             });
-            fetch('http://sleepwebapp.wpi.edu:5000/submitChronoAnswers', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then(r => {
-                console.log("Submitted Chronotype Quiz", r.status);
-                window.open("http://sleepwebapp.wpi.edu:3000/chronoResults", "_self");
-            })
+            let idPromise = getUserID();
+            idPromise.then(uid =>{
+                const data = JSON.stringify({uid: uid});
+                fetch('http://sleepwebapp.wpi.edu:5000/submitChronoAnswers', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data
+                }).then(r => {
+                    console.log("Submitted Chronotype Quiz", r.status);
+                    window.open("http://sleepwebapp.wpi.edu:3000/chronoResults", "_self");
+                })
+            });
         }
         else{
             swal({

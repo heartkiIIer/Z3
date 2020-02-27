@@ -4,6 +4,7 @@ import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
 import swal from 'sweetalert'
+import {getUserID} from "../../scripts/login";
 
 class Personality extends React.Component{
     constructor(props) {
@@ -45,24 +46,28 @@ class Personality extends React.Component{
             }
         }
         if (values.length === 5) {
-            const data = JSON.stringify({
-                open: values[0],
-                cons: values[1],
-                extra: values[2],
-                agree: values[3],
-                neuro: values[4]
+            let idPromise = getUserID();
+            idPromise.then(uid=>{
+                const data = JSON.stringify({
+                    open: values[0],
+                    cons: values[1],
+                    extra: values[2],
+                    agree: values[3],
+                    neuro: values[4],
+                    uid: uid
+                });
+                fetch('http://sleepwebapp.wpi.edu:5000/submitPersonality', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data
+                }).then(r => {
+                    console.log("Submitted Personailty Results", r.status);
+                    window.open("http://sleepwebapp.wpi.edu:3000/personalityResults", "_self");
+                })
             });
-            fetch('http://sleepwebapp.wpi.edu:5000/submitPersonality', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then(r => {
-                console.log("Submitted Personailty Results", r.status);
-                window.open("http://sleepwebapp.wpi.edu:3000/personalityResults", "_self");
-            })
         } else {
             swal({
                 title: "Please make sure all fields are filled and submit again",

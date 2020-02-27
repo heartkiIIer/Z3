@@ -3,6 +3,7 @@ import ApiCalendar from 'react-google-calendar-api';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
 import Item from './Item'
+import {getUserID} from "../scripts/login";
 
 const refresh = {
     paddingRight: '6px',
@@ -173,23 +174,27 @@ function submitStressEntry() {
     }
     console.log(events);
 
-    events.forEach(event => {
-        fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                title: event.title,
-                year: event.year,
-                month: event.month,
-                day: event.day,
-                date: event.date,
-                value: event.value
+    let idPromise = getUserID();
+    idPromise.then(uid=>{
+        events.forEach(event => {
+            fetch('http://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: event.title,
+                    year: event.year,
+                    month: event.month,
+                    day: event.day,
+                    date: event.date,
+                    value: event.value,
+                    uid: uid
+                })
             })
         })
-    })
+    });
 }
 
 async function fetchItems() {

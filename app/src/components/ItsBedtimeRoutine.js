@@ -7,6 +7,7 @@ import SideBar from "./sideMenu";
 import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
 import BedtimeProgressBar from "./BedtimeProgressBar";
 import Redirect from "react-router-dom/es/Redirect";
+import {getUserID} from "../scripts/login";
 
 /**
  * @author Eliazbeth Del Monaco, Sarah Armstrong
@@ -50,17 +51,22 @@ class ItsBedtimeRoutine extends React.Component {
             currentComponent.setState({routine : r.json()})
         }
 
-        fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({routine : r})
-        })
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({routine : r})
+            })
+        });
     }
 
     startRoutine(){

@@ -4,6 +4,7 @@ import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
+import {getUserID} from "../scripts/login";
 
 class report extends React.Component{
     constructor(props) {
@@ -41,61 +42,71 @@ class report extends React.Component{
         // get caffiene entries
         // get exercise data
 
-        fetch('http://sleepwebapp.wpi.edu:5000/getWeekExer', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({exer : r})
-        }).then(function(){
-            return fetch('http://sleepwebapp.wpi.edu:5000/getWeekCaf', {
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('http://sleepwebapp.wpi.edu:5000/getWeekExer', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                }})
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({caf : r})
-        }).then(function(){
-            return fetch('http://sleepwebapp.wpi.edu:5000/getWeekSleep', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                }})
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({sleep : r})
-        }).then(function(){
-            return fetch('http://sleepwebapp.wpi.edu:5000/getWeekStress', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                }})
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({stress : r})
-        }).then(function(){
-            return fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                }})
-        }).then( r => {
-            return r.json();
-        }).then(r => {
-            currentComponent.setState({goal : r})
-        })
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({exer : r})
+            }).then(function(){
+                return fetch('http://sleepwebapp.wpi.edu:5000/getWeekCaf', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data})
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({caf : r})
+            }).then(function(){
+                return fetch('http://sleepwebapp.wpi.edu:5000/getWeekSleep', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data})
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({sleep : r})
+            }).then(function(){
+                return fetch('http://sleepwebapp.wpi.edu:5000/getWeekStress', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data})
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({stress : r})
+            }).then(function(){
+                return fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data})
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({goal : r})
+            })
+        });
+
     };
     resize(){
         window.addEventListener('resize', ()=> {

@@ -6,6 +6,7 @@ import SideBar from "./sideMenu";
 import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
 import z3_firebase from "../scripts/firebase"
 import swal from 'sweetalert'
+import {OAUTH, sleepLogs} from "../scripts/FitbitScript"
 import TaskSetting from "./TaskSetting"
 import {getUserID, getUserImage} from "../scripts/login";
 
@@ -20,7 +21,7 @@ import {getUserID, getUserImage} from "../scripts/login";
 class UserSettings extends React.Component {
     constructor(props){
         super(props);
-        this.state = { isEditable: false, image: "", routine: null, sleepGoal: null};
+        this.state = { isEditable: false, image: "", routine: null, sleepGoal: null, fitbitSigned: sleepLogs.a.length};
     }
 
     // retrieves user's profile image to display in settings
@@ -36,6 +37,9 @@ class UserSettings extends React.Component {
         this.getProvider(currentComponent);
         this.getRoutine(currentComponent);
         this.getUserImage(currentComponent);
+        sleepLogs.registerListener(function(val) {
+            currentComponent.setState({fitbitSigned: val.length})
+        });
         this.getSleepGoal(currentComponent);
     }
 
@@ -113,7 +117,7 @@ class UserSettings extends React.Component {
                     element: "input",
                     attributes: {
                         placeholder: "0 if the task is not timed",
-                        type: "number",
+                        type: "number"
                     }
                 },
                 buttons: true,
@@ -200,6 +204,12 @@ class UserSettings extends React.Component {
     }
 
     render(){
+        let ele;
+        if (this.state.fitbitSigned === 0) {
+            ele = <SyncButton/>
+        } else {
+            ele = <RemoveButton/>
+        }
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -254,11 +264,9 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Account Access</h1>
                     <hr className="hr-settings"/>
                     <div class = "flex-row-nowrap">
-                        <button className='btn' id = "extended">
-                            Remove FitBit Access
-                        </button>
+                        {ele}
                     </div>
-
+                    <br/>
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>
 
@@ -266,6 +274,7 @@ class UserSettings extends React.Component {
                         {this.listRoutine()}
                         <button className={'btn'} onClick={this.addRoutine.bind(this)}> Add Task </button>
                     </div>
+                    <br/>
 
                     <h1 className="blueHeader"> Delete your account</h1>
                     <hr className="hr-settings"/>
@@ -276,5 +285,21 @@ class UserSettings extends React.Component {
             </div>
         );
     };
+}
+
+function SyncButton () {
+    return (
+        <a href={OAUTH} className='btn' id = "extended">
+            Sync your Fitbit Account
+        </a>
+    )
+}
+
+function RemoveButton () {
+    return (
+        <a className='btn' id = "extended">
+            Remove FitBit Access
+        </a>
+    )
 }
 export default UserSettings;

@@ -1,7 +1,7 @@
 import React from 'react';
 import "../styles/ItsBedtime.css";
 import "../styles/logging.css";
-import Tabs from "./sliders";
+import {Tabs} from "./sliders";
 import SideBar from "./sideMenu";
 
 class logging extends React.Component{
@@ -18,6 +18,7 @@ class logging extends React.Component{
             };
         }
     }
+
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -32,6 +33,7 @@ class logging extends React.Component{
             }
         })
     }
+
     render() {
         this.resize();
         const styles = {
@@ -40,6 +42,7 @@ class logging extends React.Component{
             }
         };
         const { containerStyle } = styles;
+
         return(
             <div class="content logging-background" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -51,7 +54,6 @@ class logging extends React.Component{
                         <h4>Log your exercise, caffeine, & stress</h4>
                         <br/>
                         <Tabs/>
-
                     </div>
                 </div>
             </div>

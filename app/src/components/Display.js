@@ -17,24 +17,15 @@ export default class LoginControl extends React.Component {
         this.state = {
             sign: ApiCalendar.sign
         };
-    }
-
-    componentDidMount() {
-        let currentComponent = this;
-        this.isSignIn(currentComponent);
-    }
-
-    isSignIn(currentComponent){
-        currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
+        this.signUpdate = this.signUpdate.bind(this);
         ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(currentComponent.signUpdate);
-        });
+            ApiCalendar.listenSign(this.signUpdate);
+        })
     }
-
 
     signUpdate(sign: boolean): any {
         this.setState({
-            sign
+            sign: ApiCalendar.sign
         })
     }
 
@@ -48,10 +39,10 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
-        console.log(isLoggedIn)
+        console.log(ApiCalendar.sign)
         let ele;
 
-        if (isLoggedIn) {
+        if (ApiCalendar.sign) {
             ele = <Display/>;
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
@@ -229,9 +220,9 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={window.location.reload}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
-                    <i><p>10 <strong>upcoming</strong> events will be listed. Click the Refresh icon to unhide events and sync latest events.</p></i>
+                    <i><p>10 upcoming events will be listed. Click the Refresh icon to unhide events and sync latest events.</p></i>
                     <br/>
                     {items.map(item => (
                         <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
@@ -250,7 +241,7 @@ function Display() {
         return (
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={window.location.reload}><RefreshIcon style={refresh}/></button>
                     <br/><br/><br/>
                     <i><p>You have no upcoming events.</p></i>
                 </Tab.Pane>

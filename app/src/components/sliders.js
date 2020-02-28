@@ -9,6 +9,7 @@ import AccessTime from '@material-ui/icons/AccessTime';
 import LocalCafe from '@material-ui/icons/LocalCafe';
 import Delete from '@material-ui/icons/Delete';
 import { Tab } from 'semantic-ui-react'
+import LoginControl from "./Display";
 import Display from "./Display";
 import {getUserID} from "../scripts/login";
 
@@ -231,7 +232,7 @@ const panes = [
     },
     {
         menuItem: 'Stress',
-        render: () => <Display/>
+        render: () => <LoginControl/>
     },
     {
         menuItem: 'Caffeine',
@@ -288,4 +289,4 @@ const Tabs = () => (
     <Tab menu={{ secondary: true, pointing: true }} panes={panes} defaultActiveIndex={1}/>
 )
 
-export default Tabs
+export {Tabs}

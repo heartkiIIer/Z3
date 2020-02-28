@@ -185,7 +185,7 @@ function getStressEntriesById(req, res, id) {
 }
 
 //Add a stress entry
-function addStressEntriesById(req, res, id, title, year, month, day, date, value) {                                                  
+function addStressEntriesById(req, res, id, title, year, month, day, date, value) {
     promise.then(
         function (internalId) {
             pool.query('INSERT INTO StressEntry(user_id, date, stressLevel) VALUES('+ internalId.rows[0].user_id +', current_timestamp,' +  "'" + title + "', " +  month + "-" + day + "-" + year + ", " + date + ", " + value +");", (error, results) => {

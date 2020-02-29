@@ -21,10 +21,10 @@ import BedtimeProgressBar from "./ItsBedtimeRoutine";
 /* Source : https://pixabay.com/photos/bed-linen-sheets-cover-pillows-731162/
 * **/
 
-class ItsBedtimeRoutine extends React.Component {
+class MobileBedtimeRoutine extends React.Component {
     constructor(props){
         super(props)
-        this.state = { isEditable: false, stage: -1, stages: 0, routine: null };
+        this.state = { isEditable: false, stage: -1, stages: 0, routine : null};
     }
 
     componentDidMount() {
@@ -33,9 +33,9 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.state.stage != -1){
+        if(this.state.stage !== -1){
             if(this.state.stage < this.state.stages){
-                if(this.state.routine[this.state.stage].minutes != 0) {
+                if(this.state.routine[this.state.stage].minutes !== 0) {
                     this.startTimer(this.state.routine[this.state.stage].minutes*60);
                 }
             }
@@ -61,7 +61,6 @@ class ItsBedtimeRoutine extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                console.log(r);
                 currentComponent.setState({routine : r})
             })
         });
@@ -90,7 +89,7 @@ class ItsBedtimeRoutine extends React.Component {
             }
             if (--timer < 0) {
                 timer = 0;
-                if(alerted == 0){
+                if(alerted === 0){
                     alert("Your timer has finished!");
                     alerted++;
                 }
@@ -102,7 +101,7 @@ class ItsBedtimeRoutine extends React.Component {
 
     selectComponent(){
         //if not initialized, show blank
-        if(this.state.stage == -1){
+        if(this.state.stage === -1){
             console.log("init");
             return <BedtimeProgressBar id = "items" title = "It's Bedtime" stage = {100} stages = {100} minutes = {0} timer = {false}/>;
         }
@@ -112,7 +111,7 @@ class ItsBedtimeRoutine extends React.Component {
             if(this.state.stage < this.state.stages){
                 document.getElementById("cycle").innerText = "Next Item";
                 //Timer
-                if(this.state.routine[this.state.stage].minutes != 0) {
+                if(this.state.routine[this.state.stage].minutes !== 0) {
                     return <BedtimeProgressBar id="items" title={this.state.routine[this.state.stage].title}
                                                stage={this.state.stage} stages={this.state.stages}
                                                minutes={this.state.routine[this.state.stage].minutes} timer={true}/>;
@@ -158,4 +157,4 @@ class ItsBedtimeRoutine extends React.Component {
         );
     };
 }
-export default ItsBedtimeRoutine;
+export default MobileBedtimeRoutine;

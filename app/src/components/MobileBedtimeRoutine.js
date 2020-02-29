@@ -27,9 +27,9 @@ class MobileBedtimeRoutine extends React.Component {
         this.state = { isEditable: false, stage: -1, stages: 0, routine : null};
     }
 
-    componentDidMount() {
+    componentDidMount(){
         let currentComponent = this;
-        this.getRoutine(currentComponent);
+        this.getRoutine(currentComponent)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -96,7 +96,6 @@ class MobileBedtimeRoutine extends React.Component {
                 return;
             }
         }, 1000);
-
     }
 
     selectComponent(){
@@ -132,7 +131,6 @@ class MobileBedtimeRoutine extends React.Component {
             }
         }
     }
-
 
     render(){
         return (

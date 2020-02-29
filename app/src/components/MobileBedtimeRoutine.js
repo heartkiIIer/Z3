@@ -9,6 +9,8 @@ import EmptyCheckbox from "../resources/icons/square-regular.svg";
 import CheckedBox from "../resources/icons/check-square-solid.svg";
 import SideBar from "./sideMenu";
 import {buildStyles, CircularProgressbar, CircularProgressbarWithChildren} from "react-circular-progressbar";
+import {getUserID} from "../scripts/login";
+import BedtimeProgressBar from "./ItsBedtimeRoutine";
 
 
 /**
@@ -22,14 +24,56 @@ import {buildStyles, CircularProgressbar, CircularProgressbarWithChildren} from 
 class ItsBedtimeRoutine extends React.Component {
     constructor(props){
         super(props)
-        this.state = { isEditable: false, stage: 0 };
+        this.state = { isEditable: false, stage: -1, stages: 0, routine: null };
     }
 
-    // componentDidMount() {
-    //     setTimeout(function () {
-    //         document.getElementById("outer-circle").style.opacity = 100;
-    //     }, 250);
-    // }
+    componentDidMount() {
+        let currentComponent = this;
+        this.getRoutine(currentComponent);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.state.stage != -1){
+            if(this.state.stage < this.state.stages){
+                if(this.state.routine[this.state.stage].minutes != 0) {
+                    this.startTimer(this.state.routine[this.state.stage].minutes*60);
+                }
+            }
+        }
+    }
+
+    getRoutine(currentComponent) {
+        function updateStates(r) {
+            //console.log(JSON.stringify(r))
+            currentComponent.setState({routine : r.json()})
+        }
+
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                console.log(r);
+                currentComponent.setState({routine : r})
+            })
+        });
+    }
+
+    startRoutine(){
+        //set size to amount of pieces
+        if(this.state.stage >= this.state.stages){
+            window.location.replace("http://sleepwebapp.wpi.edu:3000/logSleep");
+        }
+        this.setState({stages: Object.keys(this.state.routine).length, stage : this.state.stage+1})
+    }
 
     startTimer(duration) {
         var alerted = 0;
@@ -56,58 +100,38 @@ class ItsBedtimeRoutine extends React.Component {
 
     }
 
-    startRoutine(startTimer){
-        if(this.state.stage == 0) {
-            //document.getElementById("routine-progress").innerHTML = '<div class = "progress"><div className="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="80"></div></div>';
-            document.getElementById("itsbedtime").style.display = "none";
-            document.getElementById("meditate").style.display = "";
-            //    '<div style="{{ marginTop: -5 }}">' +
-            //        '<h1>Meditate</h1>' +
-            //    '</div>' +
-            //    '<div style="{{ marginTop: -5 }}">' +
-            //        '<h1><span id = "timer">01:00</span> minutes</h1>' +
-            //    '</div>' +
-            // '</CircularProgressbarWithChildren>';
-            //document.getElementById("top").innerHTML = '<h1>Meditate</h1>';
-            // document.getElementById("bottom").innerHTML = '<h1><span id = "timer">01:00</span> minutes</h1>';
-            document.getElementById("cycle").innerText = 'Next item';
-            var fiveMinutes = 60 * 1;
-            var interval = this.startTimer(fiveMinutes);
-            this.setState({stage : 1});
-        }
-        else if(this.state.stage == 1){
-            clearInterval(interval);
-            document.getElementById("meditate").style.display = "none";
-            document.getElementById("brushyourteeth").style.display = "";
-            //document.getElementById("routine-progress").innerHTML = '<div class = "progress">  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>\n</div>';
-            //document.getElementById("top").innerHTML = '<h1>Brush your teeth</h1>';
-            // document.getElementById("bottom").innerHTML = '';
-
-            this.setState({stage : 2});
-        }
-        else if(this.state.stage == 2){
-            document.getElementById("brushyourteeth").style.display = "none";
-            document.getElementById("washyourface").style.display = "";
-            // document.getElementById("routine-progress").innerHTML = '<div class = "progress">  <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>\n</div>';
-            // document.getElementById("top").innerHTML = '<h1>Wash your face</h1>';
-            this.setState({stage : 3});
-        }
-        else if(this.state.stage == 3){
-            document.getElementById("washyourface").style.display = "none";
-            document.getElementById("turnoffyourcomputer").style.display = "";
-            // document.getElementById("routine-progress").innerHTML = '<div class = "progress">  <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="60 aria-valuemin="0" aria-valuemax="100"></div>\n</div>';
-            // document.getElementById("top").innerHTML = '<h1>Turn off your computer</h1>';
-            this.setState({stage : 4});
-        }
-        else if(this.state.stage == 4){
-            document.getElementById("turnoffyourcomputer").style.display = "none";
-            document.getElementById("youredone").style.display = "";
-            // document.getElementById("routine-progress").innerHTML = '<div class = "progress">  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>\n</div>';
-            // document.getElementById("top").innerHTML = "<h1>You're done!</h1>";
-            document.getElementById("button").innerHTML = '<a href = "/logSleep"><button class="btn" id = "cycle">Time for bed</button></a>';
-
+    selectComponent(){
+        //if not initialized, show blank
+        if(this.state.stage == -1){
+            console.log("init");
+            return <BedtimeProgressBar id = "items" title = "It's Bedtime" stage = {100} stages = {100} minutes = {0} timer = {false}/>;
         }
 
+        else {
+            //Still stages remaining
+            if(this.state.stage < this.state.stages){
+                document.getElementById("cycle").innerText = "Next Item";
+                //Timer
+                if(this.state.routine[this.state.stage].minutes != 0) {
+                    return <BedtimeProgressBar id="items" title={this.state.routine[this.state.stage].title}
+                                               stage={this.state.stage} stages={this.state.stages}
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={true}/>;
+                }
+                //No Timer
+                else{
+                    return <BedtimeProgressBar id="items" title={this.state.routine[this.state.stage].title}
+                                               stage={this.state.stage} stages={this.state.stages}
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={false}/>;
+                }
+            }
+            //Nothing remains
+            else{
+                document.getElementById("cycle").innerText = "Log Sleep";
+                return <BedtimeProgressBar id="items" title={"You're done!"}
+                                           stage={100} stages={100}
+                                           minutes={0} timer={false}/>;
+            }
+        }
     }
 
 
@@ -118,56 +142,13 @@ class ItsBedtimeRoutine extends React.Component {
                 <div id="App">
                     <div>
                         <div className="inner">
-                            <div>
-                                <div id = "items">
-                                    <div id = "itsbedtime" style={{  width: "300px" }}>
-                                        <CircularProgressbar value={100} text={`It's Bedtime`} styles={buildStyles({
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                    <div id = "meditate" style={{  display: "none", width: "390px" }}>
-                                        <CircularProgressbarWithChildren value={0} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}>
-                                            <div style={{ marginTop: -5 }}>
-                                                <h1>Meditate</h1>
-                                            </div>
-                                            <div style={{ marginTop: -5 }}>
-                                                <h1><span id = "timer">01:00</span> minutes</h1>
-                                            </div>
-                                        </CircularProgressbarWithChildren>
-                                    </div>
-                                    <div id = "brushyourteeth" style={{  display: "none", width: "300px" }}>
-                                        <CircularProgressbar value={25} text={`Brush your teeth`} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                    <div id = "washyourface" style={{ display: "none", width: "300px" }}>
-                                        <CircularProgressbar value={50} text={`Wash your face`} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                    <div id = "turnoffyourcomputer" style={{ display: "none", width: "300px" }}>
-                                        <CircularProgressbar value={75} text={`Turn off laptop`} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                    <div id = "youredone" style={{ display: "none", width: "300px" }}>
-                                        <CircularProgressbar value={100} text={`You're done!`} styles={buildStyles({
-                                            pathColor: "mediumpurple",
-                                            textSize: 10
-                                        })}></CircularProgressbar>
-                                    </div>
-                                </div>
-                                <div class = "flex-column-nowrap">
-                                    <div id = "routine-progress"></div>
-                                </div>
-                                <div className = "center" id = "button">
-                                    <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                            <div className="itsBedtime">
+                                {this.selectComponent()}
+                                <hr className="bedtime-hr"/>
+                                <div className="center" id="button">
+                                    <button className='btn' id="cycle" onClick={() => this.startRoutine()}>Begin your
+                                        routine
+                                    </button>
                                 </div>
                             </div>
                         </div>

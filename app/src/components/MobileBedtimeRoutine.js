@@ -10,7 +10,7 @@ import CheckedBox from "../resources/icons/check-square-solid.svg";
 import SideBar from "./sideMenu";
 import {buildStyles, CircularProgressbar, CircularProgressbarWithChildren} from "react-circular-progressbar";
 import {getUserID} from "../scripts/login";
-import BedtimeProgressBar from "./ItsBedtimeRoutine";
+import BedtimeProgressBar from "./BedtimeProgressBar";
 
 
 /**
@@ -99,7 +99,6 @@ class MobileBedtimeRoutine extends React.Component {
     }
 
     selectComponent(){
-        console.log(this.state.stage);
         //if not initialized, show blank
         if(this.state.stage === -1){
             console.log("init");

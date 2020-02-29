@@ -99,6 +99,7 @@ class MobileBedtimeRoutine extends React.Component {
     }
 
     selectComponent(){
+        console.log(this.state.stage);
         //if not initialized, show blank
         if(this.state.stage === -1){
             console.log("init");

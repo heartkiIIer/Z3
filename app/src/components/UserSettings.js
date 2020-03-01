@@ -245,7 +245,7 @@ class UserSettings extends React.Component {
                 },
                 body: data
             }).then(r => {
-                console.log("Added Goal: ", r.status);
+                console.log("Added fitbit boolean: ", r.status);
                 this.getUseFitbit(this)
             })
         });
@@ -265,7 +265,7 @@ class UserSettings extends React.Component {
                 },
                 body: data
             }).then(r => {
-                console.log("Added Goal: ", r.status);
+                console.log("Added fibit boolean: ", r.status);
                 this.getUseFitbit(this)
             })
         });

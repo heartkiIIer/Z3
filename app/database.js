@@ -383,8 +383,8 @@ function addSleepGoalById(req, res, id, goal) {
 }
 
 // set boolean determing if user wants to use fitbit to grab sleep log
-function addUseFitbit(req, res, id, goal) {
-    pool.query("UPDATE users SET sleepgoal=" + goal + " WHERE google_id=" + id + ";", (error, results) => {
+function addUseFitbit(req, res, id, fitbit) {
+    pool.query("UPDATE users SET fitbit=" + fitbit + " WHERE google_id=" + id + ";", (error, results) => {
         if (error) {
             throw error
         }

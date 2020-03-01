@@ -208,6 +208,8 @@ class report extends React.Component{
                     var dateInArr = new Date(cardsToGenerate[j][0]);
                     var dateToEnter = new Date(this.state.caf[i].date);
                     if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                        console.log("date equal");
+
                         //if it is, check to see that there has already been an entry for this element
                         if(cardsToGenerate[j].length >= 2){
                             cardsToGenerate[j][1] = cardsToGenerate[j][1] + this.state.caf[i].cups;

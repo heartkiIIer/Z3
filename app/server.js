@@ -90,6 +90,11 @@ app.post('/newSleep/', cors(corsOptions), (req, res)=> {
     db.addSleepEntryById(req, res, uid);
 });
 
+app.post('/newFitbitSleep/', cors(corsOptions), (req, res)=> {
+    const {start, end, uid} = req.body;
+    db.addFitbitSleepEntryById(req, res, uid, start, end);
+});
+
 app.post('/newWake/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
     db.addWakeById(req, res, uid);

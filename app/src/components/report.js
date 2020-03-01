@@ -212,9 +212,7 @@ class report extends React.Component{
                     var dateInArr = new Date(cardsToGenerate[j][0]);
                     var dateToEnter = new Date(this.state.caf[i].date);
                     if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
-                        console.log("date equal");
                         added=true;
-
                         cardsToGenerate[j][1] = cardsToGenerate[j][1] + this.state.caf[i].cups;
                     }
                 }
@@ -245,9 +243,7 @@ class report extends React.Component{
                         var dateToEnter = new Date(this.state.sleep[i].initial);
                         var terminate = new Date(this.state.sleep[i].terminate);
                         if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
-                            console.log("date equal");
                             added=true;
-
                             cardsToGenerate[j][2] = cardsToGenerate[j][2] + (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
                         }
                     }
@@ -256,6 +252,32 @@ class report extends React.Component{
                         var initial = new Date (this.state.sleep[i].initial);
                         var terminate = new Date(this.state.sleep[i].terminate);
                         cardsToGenerate.push([this.state.sleep[i].initial, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);                }
+                }
+            }
+        }
+
+        //Exercise
+        for(var i = 0; i < Object.keys(this.state.exer).length; i++){
+            //if empty, add to the array
+            if(cardsToGenerate.length == 0){
+                cardsToGenerate.push([this.state.exer[i].date, 0, 0, [], this.state.exer[i].minutes]);
+            }
+            //otherwise
+            else{
+                var added = false; //record true when finished
+
+                //check if that date is already entered
+                for(var j = 0; j < cardsToGenerate.length; j++){
+                    var dateInArr = new Date(cardsToGenerate[j][0]);
+                    var dateToEnter = new Date(this.state.exer[i].date);
+                    if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                        added=true;
+                        cardsToGenerate[j][4] = cardsToGenerate[j][4] + this.state.exer[i].minutes;
+                    }
+                }
+                //otherwise just add a new entry
+                if(!added){
+                    cardsToGenerate.push([this.state.exer[i].date, 0, 0, [], this.state.exer[i].minutes]);
                 }
             }
         }

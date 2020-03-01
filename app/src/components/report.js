@@ -315,7 +315,7 @@ class report extends React.Component{
 
         //Iterate through all day by day and populate card given a range
         cardsToGenerate.sort(function(a, b){
-            return b[0]-a[0];
+            return a>b ? -1 : a<b ? 1 : 0;
         })
 
         console.log(cardsToGenerate);

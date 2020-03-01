@@ -239,7 +239,7 @@ class report extends React.Component{
                 if(cardsToGenerate.length == 0){
                     var initial = new Date (this.state.sleep[i].initial);
                     var terminate = new Date(this.state.sleep[i].terminate);
-                    cardsToGenerate.push([this.state.sleep[i].initial, 0, terminate.getTime() - initial.getTime()]);
+                    cardsToGenerate.push([this.state.sleep[i].initial, 0, (terminate.getTime() - initial.getTime())/(1000*3600)]);
                 }
                 //otherwise
                 else{
@@ -255,11 +255,11 @@ class report extends React.Component{
                             added=true;
                             //if it is, check to see that there has already been an entry for this element
                             if(cardsToGenerate[j].length >= 3){
-                                cardsToGenerate[j][2] = cardsToGenerate[j][2] + terminate.getTime() - dateToEnter.getTime();
+                                cardsToGenerate[j][2] = cardsToGenerate[j][2] + (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
                             }
                             //otherwise just add the element
                             else{
-                                cardsToGenerate[j][2] = terminate.getTime() - dateToEnter.getTime();
+                                cardsToGenerate[j][2] = (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
                             }
                         }
                     }
@@ -267,7 +267,7 @@ class report extends React.Component{
                     if(!added){
                         var initial = new Date (this.state.sleep[i].initial);
                         var terminate = new Date(this.state.sleep[i].terminate);
-                        cardsToGenerate.push([this.state.sleep[i].initial, 0, terminate.getTime() - initial.getTime()]);                }
+                        cardsToGenerate.push([this.state.sleep[i].initial, 0, (terminate.getTime() - initial.getTime())/(1000*3600)]);                }
                 }
             }
         }

@@ -293,7 +293,7 @@ function promiseBuildergoogleIdtoInternal(googleid){
 //builds a promise that gets the highest entry id sleep entry given a user id
 function promiseBuilderMaxEntry(userid){
     var promise = new Promise(function(resolve, reject){
-        pool.query('SELECT MAX(entry_id) FROM sleepentry WHERE user_id='+user_id+';', (error, results) => {
+        pool.query('SELECT MAX(entry_id) FROM sleepentry WHERE user_id='+userid+';', (error, results) => {
             if (error) {
                 reject();
             }

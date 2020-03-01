@@ -12,7 +12,7 @@ class ReportComponent extends React.Component{
                     <h1 className="blueHeader">{this.props.date}</h1>
                     <div className="day" class="flex-report">
                         <div className="goalProg">
-                            <p>Average Sleep:</p>
+                            <p>Total Sleep:</p>
                             <h1 className="timeHeader">{this.props.sleep} hrs</h1>
                             <p>Average Stress Level:</p>
                             <h1 className="smallTimeHeader">{this.props.stress}</h1>
@@ -20,7 +20,7 @@ class ReportComponent extends React.Component{
                         <div className="percentage">
                             <p>Total Exercise:</p>
                             <h1 className="smallTimeHeader">{this.props.exer} min</h1>
-                            <p>Average Caffeine Consumption:</p>
+                            <p>Total Caffeine Consumption:</p>
                             <h1 className="smallTimeHeader">{this.props.caf} Cups</h1>
                         </div>
                     </div>

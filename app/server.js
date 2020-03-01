@@ -23,10 +23,10 @@ app.use(cors());
 
 var whitelist = ['http://sleepwebapp.wpi.edu:3000', 'http://api.openweathermap.org/'];
 
-// var options = {
-//     key: fs.readFileSync("sleepwebapp.wpi.key"),
-//     cert: fs.readFileSync("sleepwebapp.wpi.crt")
-// }
+//var options = {
+//    key: fs.readFileSync("sleepwebapp.wpi.key"),
+//    cert: fs.readFileSync("sleepwebapp.wpi.crt")
+//}
 
 var corsOptions = {
     origin: function (origin, callback) {

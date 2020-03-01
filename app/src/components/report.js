@@ -109,7 +109,7 @@ class report extends React.Component{
                 return r.json();
             }).then(r => {
                 currentComponent.setState({goal : r})
-            })
+            }).catch(error => alert(error.message));
         });
 
     };

@@ -307,18 +307,19 @@ class report extends React.Component{
             }
         }
 
-        console.log(cardsToGenerate);
-
-
-        //Iterate through all day by day and populate card
-
         console.log(this.state.stress);
         console.log(this.state.goal);
         console.log(this.state.caf);
         console.log(this.state.exer);
         console.log(this.state.sleep);
-        var date = new Date(this.state.caf[0].date);
-        console.log(date.getFullYear());
+
+        //Iterate through all day by day and populate card given a range
+        cardsToGenerate.sort(function(a, b){
+            return a[0]-b[0];
+        })
+
+        console.log(cardsToGenerate);
+
         return <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>;
     }
 }

@@ -231,39 +231,46 @@ class report extends React.Component{
             }
         }
 
-        /*//Sleep
+        //Sleep
         for(var i = 0; i < Object.keys(this.state.sleep).length; i++){
-            //if empty, add to the array
-            if(cardsToGenerate.length == 0){
-                cardsToGenerate.push([this.state.caf[i].date, this.state.caf[i].cups]);
-            }
-            //otherwise
-            else{
-                var added = false; //record true when finished
+            //disregard entries where wake up is not recorded
+            if(this.state.sleep[i].terminate != null){
+                //if empty, add to the array
+                if(cardsToGenerate.length == 0){
+                    var initial = new Date (this.state.sleep[i].initial);
+                    var terminate = new Date(this.state.sleep[i].terminate);
+                    cardsToGenerate.push([this.state.sleep[i].initial, 0, terminate.getTime() - initial.getTime()]);
+                }
+                //otherwise
+                else{
+                    var added = false; //record true when finished
 
-                //check if that date is already entered
-                for(var j = 0; j < cardsToGenerate.length; j++){
-                    var dateInArr = new Date(cardsToGenerate[j][0]);
-                    var dateToEnter = new Date(this.state.caf[i].date);
-                    if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
-                        console.log("date equal");
-                        added=true;
-                        //if it is, check to see that there has already been an entry for this element
-                        if(cardsToGenerate[j].length >= 2){
-                            cardsToGenerate[j][1] = cardsToGenerate[j][1] + this.state.caf[i].cups;
-                        }
-                        //otherwise just add the element
-                        else{
-                            cardsToGenerate[j][1] = this.state.caf[i].cups;
+                    //check if that date is already entered
+                    for(var j = 0; j < cardsToGenerate.length; j++){
+                        var dateInArr = new Date(cardsToGenerate[j][0]);
+                        var dateToEnter = new Date(this.state.sleep[i].initial);
+                        var terminate = new Date(this.state.sleep[i].terminate);
+                        if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                            console.log("date equal");
+                            added=true;
+                            //if it is, check to see that there has already been an entry for this element
+                            if(cardsToGenerate[j].length >= 3){
+                                cardsToGenerate[j][2] = cardsToGenerate[j][2] + terminate.getTime() - dateToEnter.getTime();
+                            }
+                            //otherwise just add the element
+                            else{
+                                cardsToGenerate[j][2] = terminate.getTime() - dateToEnter.getTime();
+                            }
                         }
                     }
-                }
-                //otherwise just add a new entry
-                if(!added){
-                    cardsToGenerate.push([this.state.caf[i].date, this.state.sleep[i].cups]);
+                    //otherwise just add a new entry
+                    if(!added){
+                        var initial = new Date (this.state.sleep[i].initial);
+                        var terminate = new Date(this.state.sleep[i].terminate);
+                        cardsToGenerate.push([this.state.sleep[i].initial, 0, terminate.getTime() - initial.getTime()]);                }
                 }
             }
-        }*/
+        }
 
         console.log(cardsToGenerate);
 

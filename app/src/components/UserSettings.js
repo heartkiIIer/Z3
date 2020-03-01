@@ -297,7 +297,9 @@ class UserSettings extends React.Component {
                 <div className="inner" id="page-wrap">
                     <h1 class = "blueHeader"> Set Sleep Goal</h1>
                     <hr class = "hr-settings"/>
-                    <h3 className="blueHeader">Current Sleep Goal: {this.state.sleepGoal} hrs</h3>
+                    <br/>
+                    <h3 className="blueHeader">Current Sleep Goal: </h3>
+                    <h1>{this.state.sleepGoal} hrs</h1>
                     <button className='btn' id = "extended" onClick={this.addSleepGoal.bind(this)}>
                         Edit Sleep Goal
                     </button>
@@ -342,8 +344,9 @@ class UserSettings extends React.Component {
                         Confirm
                     </button><br className="Hidden"/><br className="Hidden"/>
 
-                    <h1 className="blueHeader"> Account Access</h1>
+                    <h1 className="blueHeader"> Fitbit Account Access</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     {this.useFibit()}
                     <div class = "flex-row-nowrap">
                         {ele}

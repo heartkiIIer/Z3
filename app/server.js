@@ -170,7 +170,12 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     db.getSleepEntryById(req, res, uid);
 });
 
+app.listen(process.env.PORT || 5000, function () {
+ console.log('Listening on port 5000');
+});
 module.exports = app;
+
+
 // https.createServer({
 //     key: fs.readFileSync( 'server.key'),
 //     cert: fs.readFileSync('server.cert')

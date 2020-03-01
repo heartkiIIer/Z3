@@ -228,7 +228,7 @@ class report extends React.Component{
                 }
             }
         }
-    }
+
 
         console.log(cardsToGenerate);
 

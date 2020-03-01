@@ -101,7 +101,7 @@ app.post('/getUseFitbit/', cors(corsOptions), (req, res)=> {
     db.getUseFitbit(req, res, uid)
 });
 
-app.post('/addSleepGoal/', cors(corsOptions), (req, res) => {
+app.post('/addUseFitbit/', cors(corsOptions), (req, res) => {
     const {goal, uid} = req.body;
     db.addUseFitbit(req, res, uid, goal);
 });

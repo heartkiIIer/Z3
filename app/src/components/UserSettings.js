@@ -216,7 +216,7 @@ class UserSettings extends React.Component {
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
-            fetch('http://sleepwebapp.wpi.edu:5000/getUseFitbi', {
+            fetch('http://sleepwebapp.wpi.edu:5000/getUseFitbit', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -273,13 +273,13 @@ class UserSettings extends React.Component {
     useFibit(){
         let fitbitele = [];
         if(this.state.fitbit){
-            fitbitele.push(<h3>Do you wish to stop auto logging your sleep through Fitbit? </h3>);
-            fitbitele.push(<button onClick={this.setUserFibitFalse.bind()}>Stop Fitbit</button>);
+            fitbitele.push(<h3 className='blueHeader'>Do you wish to stop auto logging your sleep through Fitbit? </h3>);
+            fitbitele.push(<button className='btn' onClick={this.setUserFibitFalse.bind()}>Stop Fitbit</button>);
         }
         else{
-            fitbitele.push(<h3>Do you own a Fitbit and would like to auto fill your sleep log through Fitbit? </h3>);
+            fitbitele.push(<h3 className='blueHeader'>Do you own a Fitbit and would like to auto fill your sleep log through Fitbit? </h3>);
             fitbitele.push(<p style={{color: "#ff6666", marginTop: "10px", size: "10pt"}}>* Manually logging Sleep will still be available and will take presence over Fibtit data</p>);
-            fitbitele.push(<button onClick={this.setUserFibitTrue.bind(this)}>Use Fitbit</button>);
+            fitbitele.push(<button className='btn' onClick={this.setUserFibitTrue.bind(this)}>Use Fitbit</button>);
         }
         return fitbitele;
     }
@@ -344,8 +344,8 @@ class UserSettings extends React.Component {
 
                     <h1 className="blueHeader"> Account Access</h1>
                     <hr className="hr-settings"/>
+                    {this.useFibit()}
                     <div class = "flex-row-nowrap">
-                        {this.useFibit()}
                         {ele}
                     </div>
                     <br/>

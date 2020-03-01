@@ -170,8 +170,8 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     db.getSleepEntryById(req, res, uid);
 });
 
-// app.listen(process.env.PORT || 5000);
-// console.log("Listening on port 5000");
+app.listen(process.env.PORT || 5000);
+console.log("Listening on port 5000");
 // https.createServer({
 //     key: fs.readFileSync( 'server.key'),
 //     cert: fs.readFileSync('server.cert')
@@ -179,7 +179,7 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
 //     .listen(process.env.PORT || 5000, function () {
 //         console.log('Listening on port 500')
 //     })
-var httpsServer = https.createServer(options, app);
-httpsServer.listen(process.env.PORT || 5000, function () {
-    console.log('Listening on port 5000');
-});
+//var httpsServer = https.createServer(options, app);
+//httpsServer.listen(process.env.PORT || 5000, function () {
+//    console.log('Listening on port 5000');
+//});

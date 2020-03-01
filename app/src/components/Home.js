@@ -148,6 +148,7 @@ class Home extends React.Component {
 
         });
     }
+
     getWeather(currentComponent, zipcode){
         let key = "4e527c0cbe65468e44c55d0cb68d6b16";
         fetch('http://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid='+key
@@ -184,6 +185,109 @@ class Home extends React.Component {
         }).then((zipcode) => {
             this.getWeather(this, zipcode);
         })
+    }
+    displayFunFact(){
+        let rand = Math.floor(Math.random() * 27);
+        switch (rand) {
+            case 0:
+                return <h3 className="whiteText">Man is the only mammal that willingly delays sleep. (SleepFoundation.org)</h3>
+                break
+            case 1:
+                return <h3 className="whiteText">One of the primary causes of excessive sleepiness among Americans is self-imposed sleep deprivation. (SleepFoundation.org)</h3>
+                break
+            case 2:
+                return <h3 className="whiteText">People who don’t get enough sleep are more likely to have bigger appetites due to the fact that their leptin levels
+                    (leptin is an appetite-regulating hormone) fall, promoting appetite increase. (SleepFoundation.org)</h3>
+                break
+            case 3:
+                return <h3 className="whiteText">There are individual differences in the need to nap. Some adults and children need to nap. However, the majority of
+                    teenagers probably nap in the afternoon because they are not sleeping enough at night. (SleepFoundation.org)</h3>
+                break
+            case 4:
+                return <h3 className="whiteText">Snoring is the primary cause of sleep disruption for approximately 90 million American adults;
+                    37 million on a regular basis. (SleepFoundation.org)</h3>
+                break
+            case 5:
+                return <h3 className="whiteText">The body never adjusts to shift work. (SleepFoundation.org)</h3>
+                break
+            case 6:
+                return <h3 className="whiteText">We naturally feel tired at two different times of the day: about 2:00 AM and 2:00 PM. It is this natural dip
+                    in alertness that is primarily responsible for the post-lunch dip. (SleepFoundation.org)</h3>
+                break
+            case 7:
+                return <h3 className="whiteText">Exercising regularly makes it easier to fall asleep and contributes to sounder sleep. However, exercising
+                    sporadically or right before going to bed will make falling asleep more difficult. (SleepFoundation.org)</h3>
+                break
+            case 8:
+                return <h3 className="whiteText">According to the International Classifications of Sleep Disorders, shift workers are at increased risk
+                    for a variety of chronic illnesses such as cardiovascular and gastrointestinal diseases. (SleepFoundation.org)</h3>
+                break
+            case 9:
+                return <h3 className="whiteText">Caffeine has been called the most popular drug in the world. All over the world people consume caffeine
+                    on a daily basis in coffee, tea, cocoa, chocolate, some soft drinks, and some drugs (SleepFoundation.org)</h3>
+                break
+            case 10:
+                return <h3 className="whiteText">According to the results of NSF's 2008 Sleep in America poll, 36 percent of American drive drowsy or fall
+                    asleep while driving. (SleepFoundation.org)</h3>
+                break
+            case 11:
+                return <h3 className="whiteText">Seasonal affective disorder is believed to be influenced by the changing patterns of light and darkness that
+                    occur with the approach of winter. (SleepFoundation.org)</h3>
+                break
+            case 12:
+                return <h3 className="whiteText">Somniphobia is the fear of sleep. (restonic.org)</h3>
+                break
+            case 13:
+                return <h3 className="whiteText">The sensation of falling when half asleep and jerking yourself awake is called "hypnic jerks". (dreams.co.uk)</h3>
+                break
+            case 14:
+                return <h3 className="whiteText">Pain tolerance is reduced by sleep deprivation. (dreams.co.uk)</h3>
+                break
+            case 15:
+                return <h3 className="whiteText">Sleeping on your front can aid digestion. (dreams.co.uk)</h3>
+                break
+            case 16:
+                return <h3 className="whiteText">Ideally falling asleep at night should take you 10-15 minutes. (dreams.co.uk)</h3>
+                break
+            case 17:
+                return <h3 className="whiteText">Sleep deprivation will kill you more quickly than food deprivation. (dreams.co.uk)</h3>
+                break
+            case 18:
+                return <h3 className="whiteText">Avoid alcohol, cigarettes, and heavy meals in the evening. Try
+                    a light snack 45 minutes before bed if you are still hungry. (SleepFoundation.org)</h3>
+                break
+            case 19:
+                return <h3 className="whiteText">Stick to a sleep schedule of the same bedtime and wake up time, even on the weekends. (SleepFoundation.org)</h3>
+                break
+            case 20:
+                return <h3 className="whiteText">A relaxing, routine activity right before bedtime conducted away from bright lights helps separate your
+                    sleep time from activities that can cause excitement, stress or anxiety which can make it more difficult to fall asleep,
+                    get sound and deep sleep or remain asleep.. (SleepFoundation.org)</h3>
+                break
+            case 21:
+                return <h3 className="whiteText">If you have trouble sleeping, avoid naps, especially in the afternoon.
+                    Power napping may help you get through the day, but if you find that you can't fall asleep at bedtime,
+                    eliminating even short catnaps may help. (SleepFoundation.org)</h3>
+                break
+            case 22:
+                return <h3 className="whiteText">Having your bedroom be cool – between 60 and 67 degrees, provides a better environment for sleep. (SleepFoundation.org)</h3>
+                break
+            case 23:
+                return <h3 className="whiteText">Make sure your mattress is comfortable and supportive. The one you have been using for years may have exceeded its life expectancy –
+                    about 9 or 10 years for most good quality mattresses.  (SleepFoundation.org)</h3>
+                break
+            case 24:
+                return <h3 className="whiteText">Avoid bright light in the evening and expose yourself to sunlight in the morning. This will
+                    keep your circadian rhythms in check. (SleepFoundation.org)</h3>
+                break
+            case 25:
+                return <h3 className="whiteText">If you have trouble sleeping, avoid electronics before bed or in the middle of the night. (SleepFoundation.org)</h3>
+                break
+            case 26:
+                return <h3 className="whiteText">Record your sleep in a Sleep Diary to help you better evaluate common patterns or issues you
+                    may see with your sleep or sleeping habits. (SleepFoundation.org)</h3>
+                break
+        }
     }
 
     render(){
@@ -258,7 +362,7 @@ class Home extends React.Component {
                             <div className="carousel-inner">
                                 <div className="carousel-item text-center active">
                                     <h2 className="whiteText">Fun Fact of the Day:</h2>
-                                    <h4 className="whiteText">Did you know?</h4>
+                                    {this.displayFunFact()}
                                 </div>
                                 <div className="carousel-item text-center">
                                     {this.displayWeather()}

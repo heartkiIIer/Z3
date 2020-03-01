@@ -17,6 +17,7 @@ class report extends React.Component{
                 goal: null,
                 caf: null,
                 exer: null,
+                weeksAgo: 0,
             };
         }
         else{
@@ -26,7 +27,9 @@ class report extends React.Component{
                 stress: null,
                 goal: null,
                 caf: null,
-                exer: null,            };
+                exer: null,
+                weeksAgo: 0,
+            };
         }
     }
 
@@ -53,12 +56,7 @@ class report extends React.Component{
                 },
                 body: data
             }).then( r => {
-                if(r.ok){
-                    return r.json();
-                }
-                else {
-                    return null;
-                }
+                return r.json();
             }).then(r => {
                 currentComponent.setState({exer : r})
             }).then(function(){
@@ -109,7 +107,7 @@ class report extends React.Component{
                 return r.json();
             }).then(r => {
                 currentComponent.setState({goal : r})
-            })
+            }).catch(error => alert(error.message));
         });
 
     };
@@ -195,22 +193,98 @@ class report extends React.Component{
     };
 
     generateComponent() {
-        //Iterate through all dates and convert them to Date
-        //Iterate through all entries and fetch only entries that are within the last 7 days
-        //Iterate through all day by day and populate card
+        var cardsToGenerate = []; //2d/3d array
+        //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
-        for(var i = 0; i < 7; i++){
+        //Iterate through all entries and sort them together by date
+        //Caffeine
+        for(var i = 0; i < Object.keys(this.state.caf).length; i++){
+            //if empty, add to the array
+            if(cardsToGenerate.length == 0){
+                cardsToGenerate.push([this.state.caf[i].date, this.state.caf[i].cups]);
+            }
+            //otherwise
+            else{
+                var added = false; //record true when finished
 
-
+                //check if that date is already entered
+                for(var j = 0; j < cardsToGenerate.length; j++){
+                    var dateInArr = new Date(cardsToGenerate[j][0]);
+                    var dateToEnter = new Date(this.state.caf[i].date);
+                    if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                        console.log("date equal");
+                        added=true;
+                        //if it is, check to see that there has already been an entry for this element
+                        if(cardsToGenerate[j].length >= 2){
+                            cardsToGenerate[j][1] = cardsToGenerate[j][1] + this.state.caf[i].cups;
+                        }
+                        //otherwise just add the element
+                        else{
+                            cardsToGenerate[j][1] = this.state.caf[i].cups;
+                        }
+                    }
+                }
+                //otherwise just add a new entry
+                if(!added){
+                    cardsToGenerate.push([this.state.caf[i].date, this.state.caf[i].cups]);
+                }
+            }
         }
+
+        //Sleep
+        for(var i = 0; i < Object.keys(this.state.sleep).length; i++){
+            //disregard entries where wake up is not recorded
+            if(this.state.sleep[i].terminate != null){
+                //if empty, add to the array
+                if(cardsToGenerate.length == 0){
+                    var initial = new Date (this.state.sleep[i].initial);
+                    var terminate = new Date(this.state.sleep[i].terminate);
+                    cardsToGenerate.push([this.state.sleep[i].initial, 0, (terminate.getTime() - initial.getTime())/(1000*3600)]);
+                }
+                //otherwise
+                else{
+                    var added = false; //record true when finished
+
+                    //check if that date is already entered
+                    for(var j = 0; j < cardsToGenerate.length; j++){
+                        var dateInArr = new Date(cardsToGenerate[j][0]);
+                        var dateToEnter = new Date(this.state.sleep[i].initial);
+                        var terminate = new Date(this.state.sleep[i].terminate);
+                        if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                            console.log("date equal");
+                            added=true;
+                            //if it is, check to see that there has already been an entry for this element
+                            if(cardsToGenerate[j].length >= 3){
+                                cardsToGenerate[j][2] = cardsToGenerate[j][2] + (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
+                            }
+                            //otherwise just add the element
+                            else{
+                                cardsToGenerate[j][2] = (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
+                            }
+                        }
+                    }
+                    //otherwise just add a new entry
+                    if(!added){
+                        var initial = new Date (this.state.sleep[i].initial);
+                        var terminate = new Date(this.state.sleep[i].terminate);
+                        cardsToGenerate.push([this.state.sleep[i].initial, 0, (terminate.getTime() - initial.getTime())/(1000*3600)]);                }
+                }
+            }
+        }
+
+        console.log(cardsToGenerate);
+
+
+        //Iterate through all day by day and populate card
 
         console.log(this.state.stress);
         console.log(this.state.goal);
         console.log(this.state.caf);
         console.log(this.state.exer);
         console.log(this.state.sleep);
+        var date = new Date(this.state.caf[0].date);
+        console.log(date.getFullYear());
         return <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>;
-
     }
 }
 export default report;

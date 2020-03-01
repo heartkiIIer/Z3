@@ -250,16 +250,24 @@ function addWakeById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("UPDATE sleepentry SET terminate = current_timestamp WHERE user_id ="+internalId.rows[0].user_id+" AND entry_id = SELECT MAX(entry_id) FROM sleepentry WHERE user_id ="+internalId.rows[0].user_id+");" , (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200).send(results.rows);
+            const promise2 = promiseBuilderMaxEntry(internalId.rows[0].user_id);
+            promise2.then(function(entry_id){
+                console.log("entry id");
+                console.log(entry_id.rows[0].max);
+                console.log("UPDATE sleepentry SET terminate = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";");
+                pool.query("UPDATE sleepentry SET terminate = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                    if (error) {
+                        throw error
+                    }
+                    console.log(results.rows);
+                    res.status(200).send(results.rows);
+                })
+            }).catch(function(error){
+                console.log(error)
             })
         }).catch(function(error){
-        console.log(error)
-    })
+            console.log(error)
+        })
 }
 
 //Add wake to sleep entry
@@ -298,6 +306,20 @@ function promiseBuildergoogleIdtoInternal(googleid){
     });
     return promise;
 }
+
+//builds a promise that gets the highest entry id sleep entry given a user id
+function promiseBuilderMaxEntry(userid){
+    var promise = new Promise(function(resolve, reject){
+        pool.query('SELECT MAX(entry_id) FROM sleepentry WHERE user_id='+userid+';', (error, results) => {
+            if (error) {
+                reject();
+            }
+            resolve(results);
+        });
+    });
+    return promise;
+}
+
 //retrieve bedtime routine by id
 function getBedtimeRoutineById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);

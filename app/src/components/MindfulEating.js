@@ -66,5 +66,6 @@ class MindfulEating extends React.Component {
             );
         }
     };
+
 }
 export default MindfulEating;

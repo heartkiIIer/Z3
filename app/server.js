@@ -1,9 +1,16 @@
 const db = require('./database');
 const message = require('./messages');
 
+const https = require('https');
 const express = require('express');
-const app = express();
 const cors = require('cors');
+
+const privateKey  = fs.readFileSync('key.pem', 'utf8');
+const certificate = fs.readFileSync('cert.pem', 'utf8');
+
+var credentials = {key: privateKey, cert: certificate};
+
+const app = express();
 
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
@@ -161,5 +168,8 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     db.getSleepEntryById(req, res, uid);
 });
 
-app.listen(process.env.PORT || 5000);
+// app.listen(process.env.PORT || 5000);
+// console.log("Listening on port 5000");
+var httpsServer = https.createServer(credentials, app);
+httpServer.listen(process.env.PORT || 5000);
 console.log("Listening on port 5000");

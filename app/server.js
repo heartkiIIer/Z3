@@ -180,6 +180,6 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
 //         console.log('Listening on port 500')
 //     })
 var httpsServer = https.createServer(options, app);
-httpsServer.listen(process.env.PORT || 3443, function () {
-    console.log('Listening on port 3443');
+httpsServer.listen(process.env.PORT || 5000, function () {
+    console.log('Listening on port 5000');
 });

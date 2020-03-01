@@ -21,7 +21,14 @@ import {getUserID, getUserImage} from "../scripts/login";
 class UserSettings extends React.Component {
     constructor(props){
         super(props);
-        this.state = { isEditable: false, image: "", routine: null, sleepGoal: null, fitbitSigned: sleepLogs.a.length};
+        this.state = {
+            isEditable: false,
+            image: "",
+            routine: null,
+            sleepGoal: null,
+            fitbitSigned: sleepLogs.a.length,
+            fibit: null
+        };
     }
 
     // retrieves user's profile image to display in settings
@@ -37,6 +44,7 @@ class UserSettings extends React.Component {
         this.getProvider(currentComponent);
         this.getRoutine(currentComponent);
         this.getUserImage(currentComponent);
+        this.getUseFitbit(currentComponent);
         sleepLogs.registerListener(function(val) {
             currentComponent.setState({fitbitSigned: val.length})
         });
@@ -203,6 +211,79 @@ class UserSettings extends React.Component {
         });
     }
 
+    // sleep goal
+    getUseFitbit(currentComponent){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('http://sleepwebapp.wpi.edu:5000/getUseFitbi', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({fitbit : r[0].fitbit})
+            });
+        });
+    }
+    setUserFibitFalse(){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({
+                fitbit: false,
+                uid: uid
+            });
+            fetch('http://sleepwebapp.wpi.edu:5000/addUseFitbit', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(r => {
+                console.log("Added Goal: ", r.status);
+                this.getUseFitbit(this)
+            })
+        });
+    }
+    setUserFibitTrue(){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({
+                fitbit: true,
+                uid: uid
+            });
+            fetch('http://sleepwebapp.wpi.edu:5000/addUseFitbit', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(r => {
+                console.log("Added Goal: ", r.status);
+                this.getUseFitbit(this)
+            })
+        });
+    }
+    useFibit(){
+        let fitbitele = [];
+        if(this.state.fitbit){
+            fitbitele.push(<h3>Do you wish to stop auto logging your sleep through Fitbit? </h3>);
+            fitbitele.push(<button onClick={this.setUserFibitFalse.bind()}>Stop Fitbit</button>);
+        }
+        else{
+            fitbitele.push(<h3>Do you own a Fitbit and would like to auto fill your sleep log through Fitbit? </h3>);
+            fitbitele.push(<p style={{color: "#ff6666", marginTop: "10px", size: "10pt"}}>* Manually logging Sleep will still be available and will take presence over Fibtit data</p>);
+            fitbitele.push(<button onClick={this.setUserFibitTrue.bind(this)}>Use Fitbit</button>);
+        }
+        return fitbitele;
+    }
+
     render(){
         let ele;
         if (this.state.fitbitSigned === 0) {
@@ -264,6 +345,7 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Account Access</h1>
                     <hr className="hr-settings"/>
                     <div class = "flex-row-nowrap">
+                        {this.useFibit()}
                         {ele}
                     </div>
                     <br/>

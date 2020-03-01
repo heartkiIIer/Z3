@@ -370,6 +370,7 @@ function getSleepGoalById(req, res, id) {
         res.status(200).send(results.rows);
     });
 }
+
 // add sleep goal from db
 function addSleepGoalById(req, res, id, goal) {
     pool.query("UPDATE users SET sleepgoal=" + goal + " WHERE google_id=" + id + ";", (error, results) => {
@@ -381,23 +382,28 @@ function addSleepGoalById(req, res, id, goal) {
     });
 }
 
-//retrieve personality by id
-function getPersonalityById(req, res, id) {
-    const promise = promiseBuildergoogleIdtoInternal(id);
-    promise
-        .then(function(internalId) {
-            console.log(internalId.rows[0].user_id);
-            pool.query('SELECT * FROM personality WHERE user_id =' + internalId.rows[0].user_id + ';', (error, results) => {
-                if (error) {
-                    throw error
-                }
-                console.log(results.rows);
-                res.status(200).send(results.rows);
-            });
-        }).catch(function(error){
-        console.log(error)
-    })
+// set boolean determing if user wants to use fitbit to grab sleep log
+function addUseFitbit(req, res, id, goal) {
+    pool.query("UPDATE users SET sleepgoal=" + goal + " WHERE google_id=" + id + ";", (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
 }
+
+// get boolean determining if user wants to use their Fitbit to store sleep
+function getUseFitbit(req, res, id) {
+    pool.query('SELECT fitbit FROM users WHERE google_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
 //Add personality scores
 function putPersonalityById(req, res, id, open, cons, extra, agree, neuro) {
     const promise = promiseBuildergoogleIdtoInternal(id);
@@ -450,6 +456,8 @@ function getSleepEntryById(req, res, id) {
         console.log(error)
     })
 }
+
+
 module.exports = {
     getUser,
     getUsers,
@@ -473,6 +481,8 @@ module.exports = {
     putChronotypeById,
     addSleepGoalById,
     getSleepGoalById,
+    addUseFitbit,
+    getUseFitbit,
     getPersonalityById,
     putPersonalityById,
     checkSavedState,

@@ -96,6 +96,16 @@ app.post('/getChronoAnswers/', cors(corsOptions), (req, res)=> {
     db.getChronotypeById(req, res, uid);
 });
 
+app.post('/getUseFitbit/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
+    db.getUseFitbit(req, res, uid)
+});
+
+app.post('/addSleepGoal/', cors(corsOptions), (req, res) => {
+    const {goal, uid} = req.body;
+    db.addUseFitbit(req, res, uid, goal);
+});
+
 app.post('/getSleepGoal/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
     db.getSleepGoalById(req, res, uid)

@@ -231,7 +231,7 @@ class report extends React.Component{
             }
         }
 
-        //Sleep
+        /*//Sleep
         for(var i = 0; i < Object.keys(this.state.sleep).length; i++){
             //if empty, add to the array
             if(cardsToGenerate.length == 0){
@@ -263,7 +263,7 @@ class report extends React.Component{
                     cardsToGenerate.push([this.state.caf[i].date, this.state.sleep[i].cups]);
                 }
             }
-        }
+        }*/
 
 
         console.log(cardsToGenerate);

@@ -197,7 +197,7 @@ class report extends React.Component{
         console.log(this.state.goal);
         console.log(this.state.caf);
         console.log(this.state.exer);
-        console.log(this.state.sleep);
+        console.log("hi bb" + this.state.sleep);
         console.log("Look here!" +  this.state.caf[0].date.m);
         return <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>;
     }

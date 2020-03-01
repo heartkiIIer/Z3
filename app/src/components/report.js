@@ -256,6 +256,31 @@ class report extends React.Component{
             }
         }
 
+        //Stress
+        for(var i = 0; i < Object.keys(this.state.stress).length; i++){
+            //if empty, add to the array
+            if(cardsToGenerate.length == 0){
+                cardsToGenerate.push([this.state.stress[i].date, 0, 0, [this.state.stress[i].stress], 0]);
+            }
+            //otherwise
+            else{
+                var added = false; //record true when finished
+
+                //check if that date is already entered
+                for(var j = 0; j < cardsToGenerate.length; j++){
+                    var dateInArr = new Date(cardsToGenerate[j][0]);
+                    var dateToEnter = new Date(this.state.stress[i].date);
+                    if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                        added=true;
+                        cardsToGenerate[j][3] = cardsToGenerate[j][3].push(this.state.stress[i].stress);
+                    }
+                }
+                //otherwise just add a new entry
+                if(!added){
+                    cardsToGenerate.push([this.state.stress[i].date, 0, 0, [this.state.stress[i].stress], 0]);
+                }
+            }
+        }
         //Exercise
         for(var i = 0; i < Object.keys(this.state.exer).length; i++){
             //if empty, add to the array

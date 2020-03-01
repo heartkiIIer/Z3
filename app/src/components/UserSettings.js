@@ -274,7 +274,7 @@ class UserSettings extends React.Component {
         let fitbitele = [];
         if(this.state.fitbit){
             fitbitele.push(<h3 className='blueHeader'>Do you wish to stop auto logging your sleep through Fitbit? </h3>);
-            fitbitele.push(<button className='btn' onClick={this.setUserFibitFalse.bind()}>Stop Fitbit</button>);
+            fitbitele.push(<button className='btn' onClick={this.setUserFibitFalse.bind(this)}>Stop Fitbit</button>);
         }
         else{
             fitbitele.push(<h3 className='blueHeader'>Do you own a Fitbit and would like to auto fill your sleep log through Fitbit? </h3>);

@@ -238,6 +238,7 @@ function addWakeById(req, res, id) {
             promise2.then(function(entry_id){
                 console.log("entry id");
                 console.log(entry_id.rows[0].max);
+                console.log("UPDATE sleepentry SET terminate = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+");");
                 pool.query("UPDATE sleepentry SET terminate = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+");" , (error, results) => {
                     if (error) {
                         throw error

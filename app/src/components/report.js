@@ -193,10 +193,31 @@ class report extends React.Component{
     };
 
     generateComponent() {
-        //Iterate through all entries and fetch only entries that are within the specified week
-        for(var i = 0; i < Object.keys(this.state.stress).length; i++){
+        var cardsToGenerate = [];
 
+        //Iterate through all entries and fetch only entries that are within the specified week
+        for(var i = 0; i < Object.keys(this.state.caf).length; i++){
+            //check if that date is already entered
+            for(var j = 0; j < cardsToGenerate.length; j++){
+                var dateInArr = new Date(cardsToGenerate[j][0]);
+                var dateToEnter = new Date(this.state.caf[i].date);
+                if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                    //if it is, check to see that there has already been an entry for this element
+                    if(cardsToGenerate[j].length >= 2){
+                        cardsToGenerate[j][1] = cardsToGenerate[j][1] + this.state.caf[i].cups;
+                    }
+                    //otherwise just add caffeine
+                    else{
+                        cardsToGenerate[j][1] = this.state.caf[i].cups;
+                    }
+                }
+                else {
+                    cardsToGenerate.push([this.state.caf[i].date, this.state.caf[i].cups]);
+                }
+            }
         }
+
+        console.log(cardsToGenerate);
 
 
         //Iterate through all day by day and populate card

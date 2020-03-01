@@ -190,22 +190,16 @@ class report extends React.Component{
     };
 
     generateComponent() {
-        //Iterate through all dates and convert them to Date
         //Iterate through all entries and fetch only entries that are within the last 7 days
         //Iterate through all day by day and populate card
-
-        for(var i = 0; i < 7; i++){
-
-
-        }
 
         console.log(this.state.stress);
         console.log(this.state.goal);
         console.log(this.state.caf);
         console.log(this.state.exer);
         console.log(this.state.sleep);
+        console.log("Look here!" +  this.state.caf[0].date.m);
         return <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>;
-
     }
 }
 export default report;

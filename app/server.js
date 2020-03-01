@@ -4,9 +4,10 @@ const message = require('./messages');
 const https = require('https');
 const express = require('express');
 const cors = require('cors');
+let path = require('path');
 
-const privateKey  = fs.readFileSync('key.pem', 'utf8');
-const certificate = fs.readFileSync('cert.pem', 'utf8');
+const privateKey  = fs.readFileSync(path.join(__dirname, 'key.pem'), 'utf8');
+const certificate = fs.readFileSync(path.join(__dirname, 'cert.pem'), 'utf8');
 
 var credentials = {key: privateKey, cert: certificate};
 
@@ -172,4 +173,4 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
 // console.log("Listening on port 5000");
 var httpsServer = https.createServer(credentials, app);
 httpServer.listen(process.env.PORT || 5000);
-console.log("Listening on port 5000");
+console.log("Listenin on port 5000");

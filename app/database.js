@@ -245,6 +245,8 @@ function addWakeById(req, res, id) {
                     console.log(results.rows);
                     res.status(200).send(results.rows);
                 })
+            }).catch(function(error){
+                console.log(error)
             })
         }).catch(function(error){
             console.log(error)

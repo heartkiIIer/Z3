@@ -229,6 +229,22 @@ function addSleepEntryById(req, res, id) {
     })
 }
 
+function addFitbitSleepEntryById(req, res, id, start, end) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query("INSERT INTO SleepEntry(user_id, initial, terminate) VALUES("+internalId.rows[0].user_id+", TO_TIMESTAMP('"+start+"', 'YYYY/MM/DD HH24:MI:SS'), TO_TIMESTAMP('"+end+"', 'YYYY/MM/DD HH24:MI:SS'));" , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
 //Add wake to sleep entry
 function addWakeById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
@@ -492,6 +508,7 @@ module.exports = {
     addUser,
     addWakeById,
     addSleepEntryById,
+    addFitbitSleepEntryById,
     addStressEntriesById,
     addBedtimeRoutineById,
     addCaffeineEntriesById,

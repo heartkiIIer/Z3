@@ -53,7 +53,12 @@ class report extends React.Component{
                 },
                 body: data
             }).then( r => {
-                return r.json();
+                if(r.ok){
+                    return r.json();
+                }
+                else {
+                    return null;
+                }
             }).then(r => {
                 currentComponent.setState({exer : r})
             }).then(function(){

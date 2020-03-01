@@ -17,6 +17,7 @@ class report extends React.Component{
                 goal: null,
                 caf: null,
                 exer: null,
+                weeksAgo: 0,
             };
         }
         else{
@@ -26,7 +27,9 @@ class report extends React.Component{
                 stress: null,
                 goal: null,
                 caf: null,
-                exer: null,            };
+                exer: null,
+                weeksAgo: 0,
+            };
         }
     }
 
@@ -190,7 +193,12 @@ class report extends React.Component{
     };
 
     generateComponent() {
-        //Iterate through all entries and fetch only entries that are within the last 7 days
+        //Iterate through all entries and fetch only entries that are within the specified week
+        for(var i = 0; i < Object.keys(this.state.stress).length; i++){
+
+        }
+
+
         //Iterate through all day by day and populate card
 
         console.log(this.state.stress);

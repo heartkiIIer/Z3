@@ -53,7 +53,7 @@ let promise =  new Promise( function(resolve, reject){
                             end: end,
                             uid: uid
                         });
-                        fetch('https://sleepwebapp.wpi.edu:5000/addFitbitSleep', {
+                        fetch('https://sleepwebapp.wpi.edu:5000/newFitbitSleep', {
                             method: 'POST',
                             headers: {
                                 'Accept': 'application/json',
@@ -66,7 +66,7 @@ let promise =  new Promise( function(resolve, reject){
                     });
                 }
                 resolve(sleeplogs);
-                window.history.pushState("object or string", "Settings", "/settings")
+                window.history.pushState("object or string", "Report", "/report")
             }
             else { reject(); }
         };

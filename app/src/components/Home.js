@@ -151,7 +151,7 @@ class Home extends React.Component {
 
     getWeather(currentComponent, zipcode){
         let key = "4e527c0cbe65468e44c55d0cb68d6b16";
-        fetch('http://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid='+key
+        fetch('https://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid='+key
         ).then( r => {
             return r.json();
         }).then(r => {

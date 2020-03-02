@@ -21,7 +21,7 @@ app.use(helmet());
 app.use(compression());
 app.use(cors());
 
-var whitelist = ['http://sleepwebapp.wpi.edu:3000', 'http://api.openweathermap.org/'];
+var whitelist = ['https://sleepwebapp.wpi.edu', 'http://api.openweathermap.org/'];
 
 //var options = {
 //    key: fs.readFileSync("sleepwebapp.wpi.key"),
@@ -175,19 +175,19 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     db.getSleepEntryById(req, res, uid);
 });
 
-app.listen(process.env.PORT || 5000, function () {
- console.log('Listening on port 5000');
-});
-module.exports = app;
+//app.listen(process.env.PORT || 5000, function () {
+// console.log('Listening on port 5000');
+//});
+//module.exports = app;
 
 
-// https.createServer({
-//     key: fs.readFileSync( 'server.key'),
-//     cert: fs.readFileSync('server.cert')
-// }, app)
-//     .listen(process.env.PORT || 5000, function () {
-//         console.log('Listening on port 500')
-//     })
+ https.createServer({
+     key: fs.readFileSync( '../ssl/sleepwebapp.wpi.edu.key'),
+     cert: fs.readFileSync('../ssl/sleepwebapp_wpi_edu_cert_comb.cer')
+ }, app)
+     .listen(process.env.PORT || 5000, function () {
+         console.log('Listening on port 5000')
+     })
 //var httpsServer = https.createServer(options, app);
 //httpsServer.listen(process.env.PORT || 5000, function () {
 //    console.log('Listening on port 5000');

@@ -133,7 +133,7 @@ class report extends React.Component{
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner" id="page-wrap">
-                    <h1 className="blueHeader" align="center">Sleep Goal: -- hrs</h1>
+                    <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-settings"/>
                     <h1 className="blueHeader">Weekly Overview</h1>
                     <div className="week" class="flex-report">
@@ -165,10 +165,10 @@ class report extends React.Component{
         else {
             var sleepGoal;
             if(this.state.goal[0].sleepgoal == null){
-                sleepGoal = "Sleep Goal: -- hrs";
+                sleepGoal = "Sleep Goal: -- hrs per day";
             }
             else{
-                sleepGoal = "Sleep Goal: " + this.state.goal[0].sleepgoal.toString() + " hrs";
+                sleepGoal = "Sleep Goal: " + this.state.goal[0].sleepgoal.toString() + " hrs per day";
             }
 
             return (

@@ -320,7 +320,7 @@ class report extends React.Component{
 
         console.log(cardsToGenerate);
 
-        return <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>;
+        return <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/> ;
     }
 }
 export default report;

@@ -164,11 +164,11 @@ class report extends React.Component{
         }
         else {
             var sleepGoal;
-            if(this.state.goal.length == 0){
+            if(this.state.goal[0].goal == null){
                 sleepGoal = "Sleep Goal: -- hrs";
             }
             else{
-                sleepGoal = "Sleep Goal: " + this.state.goal[0].toString() + " hrs";
+                sleepGoal = "Sleep Goal: " + this.state.goal[0].goal.toString() + " hrs";
             }
 
             return (

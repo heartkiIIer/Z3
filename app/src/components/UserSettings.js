@@ -79,7 +79,7 @@ class UserSettings extends React.Component {
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
-            fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+            fetch('https://sleepwebapp.wpi.edu:5000/getRoutine', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -278,7 +278,7 @@ class UserSettings extends React.Component {
         }
         else{
             fitbitele.push(<h3 className='blueHeader'>Do you own a Fitbit and would like to auto fill your sleep log through Fitbit? </h3>);
-            fitbitele.push(<p style={{color: "#ff6666", marginTop: "10px", size: "10pt"}}>* Manually logging Sleep will still be available and will take presence over Fibtit data</p>);
+            fitbitele.push(<p style={{color: "#ff6666", marginTop: "10px", size: "10pt"}}>* Manually logging Sleep will still be available and will take precedence over Fibtit data</p>);
             fitbitele.push(<button className='btn' onClick={this.setUserFibitTrue.bind(this)}>Use Fitbit</button>);
         }
         return fitbitele;

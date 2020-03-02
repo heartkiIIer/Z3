@@ -233,7 +233,10 @@ function addFitbitSleepEntryById(req, res, id, start, end) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, initial, terminate) VALUES("+internalId.rows[0].user_id+", TO_TIMESTAMP('"+start+"', 'YYYY/MM/DD HH24:MI:SS'), TO_TIMESTAMP('"+end+"', 'YYYY/MM/DD HH24:MI:SS'));" , (error, results) => {
+            pool.query("INSERT INTO SleepEntry(user_id, initial, terminate) VALUES("+
+                internalId.rows[0].user_id+", TO_TIMESTAMP('"+
+                start+"', 'YYYY/MM/DD HH24:MI:SS'), TO_TIMESTAMP('"+
+                end+"', 'YYYY/MM/DD HH24:MI:SS'))" + ' ON CONFLICT (initial) DO NOTHING;' , (error, results) => {
                 if (error) {
                     throw error
                 }

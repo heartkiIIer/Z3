@@ -20,9 +20,9 @@ let sleepLogs = {
 }
 
 if (url.includes("localhost")) {
-    OAUTH = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsettings&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800";
+    OAUTH = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fsettings&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800";
 } else {
-    OAUTH = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=https%3A%2F%2Fsleepwebapp.wpi.edu%3A3000%2Fsettings&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800"
+    OAUTH = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=https%3A%2F%2Fsleepwebapp.wpi.edu%2Fsettings&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800"
 }
 
 let promise =  new Promise( function(resolve, reject){
@@ -46,28 +46,26 @@ let promise =  new Promise( function(resolve, reject){
                     let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
                     sleeplogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
 
-                    // let idPromise = getUserID();
-                    // idPromise.then(uid=>{
-                    //     const data = JSON.stringify({
-                    //         start: start,
-                    //         end: end,
-                    //         uid: uid
-                    //     });
-                    //     fetch('https://sleepwebapp.wpi.edu:5000/addFitbitSleep', {
-                    //         method: 'POST',
-                    //         headers: {
-                    //             'Accept': 'application/json',
-                    //             'Content-Type': 'application/json',
-                    //         },
-                    //         body: data
-                    //     }).then(r => {
-                    //         console.log("Added fitbit sleep data: ", r.status);
-                    //     })
-                    // });
+                    let idPromise = getUserID();
+                    idPromise.then(uid=>{
+                        const data = JSON.stringify({
+                            start: start,
+                            end: end,
+                            uid: uid
+                        });
+                        fetch('https://sleepwebapp.wpi.edu:5000/addFitbitSleep', {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            body: data
+                        }).then(r => {
+                            console.log("Added fitbit sleep data: ", r.status);
+                        })
+                    });
                 }
-
                 resolve(sleeplogs);
-
                 window.history.pushState("object or string", "Settings", "/settings")
             }
             else { reject(); }

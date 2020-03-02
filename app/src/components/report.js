@@ -320,7 +320,52 @@ class report extends React.Component{
 
         console.log(cardsToGenerate);
 
-        return <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/> ;
+        var arrToReturn = [];
+        //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
+
+        for(var i = 7*this.state.weeksAgo; i < (7*this.state.weeksAgo) +7; i++){
+            if(cardsToGenerate[i] != null) {
+                var formatStress;
+                var formatCaf;
+                var formatExer;
+                var formatSleep;
+                var formatDate;
+
+                //Stress
+                if(cardsToGenerate[i][3].length != 0){
+                    var sortArr = Array.sort(cardsToGenerate[i][3]);
+                    var mid = Math.floor(sortArr.length/2)
+                    var median = sortArr[mid];
+
+                    if(median < 40){
+                        formatStress = "Low";
+                    }
+                    else if (median >= 45){
+                        formatStress = "Medium";
+                    }
+                    else {
+                        formatStress = "High";
+                    }
+                }
+                else{
+                    formatStress = "--"
+                }
+
+                //Caf
+                formatCaf = cardsToGenerate[i][1];
+                formatExer = cardsToGenerate[i][4];
+                formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(2);
+                formatDate = cardsToGenerate[i][0].getMonth() + "-"  +cardsToGenerate[i][0].getDate()+ "-" + cardsToGenerate[i][0].getFullYear();
+
+                arrToReturn.push(<ReportComponent date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
+            }
+            else{
+                arrToReturn.push(<ReportComponent date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
+
+            }
+        }
+
+        return (arrToReturn) ;
     }
 }
 export default report;

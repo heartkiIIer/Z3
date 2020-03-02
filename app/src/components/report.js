@@ -362,7 +362,7 @@ class report extends React.Component{
                 //Caf
                 formatCaf = cardsToGenerate[i][1];
                 formatExer = cardsToGenerate[i][4];
-                formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(2);
+                formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(1);
                 var date = new Date (cardsToGenerate[i][0]);
                 formatDate = date.getMonth() + "-"  + date.getDate()+ "-" + date.getFullYear();
 

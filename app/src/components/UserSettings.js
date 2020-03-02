@@ -190,24 +190,27 @@ class UserSettings extends React.Component {
             },
             buttons: true,
         }).then((goal) => {
-            let idPromise = getUserID();
-            idPromise.then(uid=>{
-                const data = JSON.stringify({
-                    goal: goal,
-                    uid: uid
+            console.log(goal);
+            if(goal){
+                let idPromise = getUserID();
+                idPromise.then(uid=>{
+                    const data = JSON.stringify({
+                        goal: goal,
+                        uid: uid
+                    });
+                    fetch('https://sleepwebapp.wpi.edu:5000/addSleepGoal', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then(r => {
+                        console.log("Added Goal: ", r.status);
+                        this.getSleepGoal(this)
+                    })
                 });
-                fetch('https://sleepwebapp.wpi.edu:5000/addSleepGoal', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: data
-                }).then(r => {
-                    console.log("Added Goal: ", r.status);
-                    this.getSleepGoal(this)
-                })
-            });
+            }
         });
     }
 

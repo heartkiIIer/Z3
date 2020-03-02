@@ -64,7 +64,7 @@ class Chronotype extends React.Component {
                     q13: values[12],
                     uid: uid
                 });
-                fetch('http://sleepwebapp.wpi.edu:5000/submitChronoAnswers', {
+                fetch('https://sleepwebapp.wpi.edu:5000/submitChronoAnswers', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -73,7 +73,7 @@ class Chronotype extends React.Component {
                     body: data
                 }).then(r => {
                     console.log("Submitted Chronotype Quiz", r.status);
-                    window.open("http://sleepwebapp.wpi.edu:3000/chronoResults", "_self");
+                    window.open("https://sleepwebapp.wpi.edu/chronoResults", "_self");
                 })
             });
         }

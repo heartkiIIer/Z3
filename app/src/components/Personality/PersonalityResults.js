@@ -49,7 +49,7 @@ class PersonalityResults extends React.Component {
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
-            fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
+            fetch('https://sleepwebapp.wpi.edu:5000/getPersonality', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

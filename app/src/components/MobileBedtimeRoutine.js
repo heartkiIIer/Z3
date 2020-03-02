@@ -51,7 +51,7 @@ class MobileBedtimeRoutine extends React.Component {
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
-            fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+            fetch('https://sleepwebapp.wpi.edu:5000/getRoutine', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -69,7 +69,7 @@ class MobileBedtimeRoutine extends React.Component {
     startRoutine(){
         //set size to amount of pieces
         if(this.state.stage >= this.state.stages){
-            window.location.replace("http://sleepwebapp.wpi.edu:3000/logSleep");
+            window.location.replace("https://sleepwebapp.wpi.edu/logSleep");
         }
         this.setState({stages: Object.keys(this.state.routine).length, stage : this.state.stage+1})
     }

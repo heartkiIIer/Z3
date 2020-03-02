@@ -56,7 +56,7 @@ class Personality extends React.Component{
                     neuro: values[4],
                     uid: uid
                 });
-                fetch('http://sleepwebapp.wpi.edu:5000/submitPersonality', {
+                fetch('https://sleepwebapp.wpi.edu:5000/submitPersonality', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -65,7 +65,7 @@ class Personality extends React.Component{
                     body: data
                 }).then(r => {
                     console.log("Submitted Personailty Results", r.status);
-                    window.open("http://sleepwebapp.wpi.edu:3000/personalityResults", "_self");
+                    window.open("https://sleepwebapp.wpi.edu/personalityResults", "_self");
                 })
             });
         } else {

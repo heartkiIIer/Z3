@@ -98,7 +98,7 @@ class Home extends React.Component {
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({ uid: uid });
-            fetch('http://sleepwebapp.wpi.edu:5000/getPersonality', {
+            fetch('https://sleepwebapp.wpi.edu:5000/getPersonality', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -109,7 +109,7 @@ class Home extends React.Component {
                 return r.json();
             }).then(r => {
                 let perScore = currentComponent.getRecentPersonality(r);
-                fetch('http://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
+                fetch('https://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -129,7 +129,7 @@ class Home extends React.Component {
                             agree: perScore.agree,
                             neuro: perScore.neuro
                         });
-                        fetch('http://sleepwebapp.wpi.edu:5000/getMessage', {
+                        fetch('https://sleepwebapp.wpi.edu:5000/getMessage', {
                             method: 'POST',
                             headers: {
                                 'Accept': 'application/json',

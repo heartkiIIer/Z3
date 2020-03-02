@@ -116,7 +116,7 @@ class ItsBedtimeRoutine extends React.Component {
         let idPromise = getUserID();
         idPromise.then(uid=>{
            const data = JSON.stringify({uid: uid});
-            fetch('http://sleepwebapp.wpi.edu:5000/getRoutine', {
+            fetch('https://sleepwebapp.wpi.edu:5000/getRoutine', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

@@ -42,7 +42,7 @@ var firebase = require('firebase');
                     name: profile.displayName,
                     image: profile.photoURL});
 
-                fetch('http://sleepwebapp.wpi.edu:5000/logUser', {
+                fetch('https://sleepwebapp.wpi.edu:5000/logUser', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: data
@@ -64,7 +64,7 @@ export function logout(e){
 
     firebase.auth().signOut().then(function() {
         console.log('Signed Out');
-        window.open("http://sleepwebapp.wpi.edu:3000", "_self");
+        window.open("https://sleepwebapp.wpi.edu", "_self");
     }, function(error) {
         console.error('Sign Out Error', error);
     });

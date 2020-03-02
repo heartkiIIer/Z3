@@ -70,7 +70,7 @@ function deleteUser(user){
             user.delete().then(function() {
                 // User deleted.
                 // Delete all database information on user
-                fetch('http://sleepwebapp.wpi.edu:5000/deleteUser', {
+                fetch('https://sleepwebapp.wpi.edu:5000/deleteUser', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -81,10 +81,10 @@ function deleteUser(user){
                         text: "User was successfully deleted",
                         icon: "success"
                     }).then(()=>{
-                        fetch('http://sleepwebapp.wpi.edu:5000/logout', {
+                        fetch('https://sleepwebapp.wpi.edu:5000/logout', {
                             method: 'GET'
                         }).then (function(){
-                            window.open("http://sleepwebapp.wpi.edu:3000", "_self");
+                            window.open("https://sleepwebapp.wpi.edu", "_self");
                         })
                     });
                 });

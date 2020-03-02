@@ -48,7 +48,7 @@ class report extends React.Component{
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
-            fetch('http://sleepwebapp.wpi.edu:5000/getWeekExer', {
+            fetch('https://sleepwebapp.wpi.edu:5000/getWeekExer', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -60,7 +60,7 @@ class report extends React.Component{
             }).then(r => {
                 currentComponent.setState({exer : r})
             }).then(function(){
-                return fetch('http://sleepwebapp.wpi.edu:5000/getWeekCaf', {
+                return fetch('https://sleepwebapp.wpi.edu:5000/getWeekCaf', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -72,7 +72,7 @@ class report extends React.Component{
             }).then(r => {
                 currentComponent.setState({caf : r})
             }).then(function(){
-                return fetch('http://sleepwebapp.wpi.edu:5000/getWeekSleep', {
+                return fetch('https://sleepwebapp.wpi.edu:5000/getWeekSleep', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -84,7 +84,7 @@ class report extends React.Component{
             }).then(r => {
                 currentComponent.setState({sleep : r})
             }).then(function(){
-                return fetch('http://sleepwebapp.wpi.edu:5000/getWeekStress', {
+                return fetch('https://sleepwebapp.wpi.edu:5000/getWeekStress', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -96,7 +96,7 @@ class report extends React.Component{
             }).then(r => {
                 currentComponent.setState({stress : r})
             }).then(function(){
-                return fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
+                return fetch('https://sleepwebapp.wpi.edu:5000/getSleepGoal', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

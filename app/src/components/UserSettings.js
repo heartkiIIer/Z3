@@ -138,7 +138,7 @@ class UserSettings extends React.Component {
                             task: task,
                             uid: uid
                         });
-                        fetch('http://sleepwebapp.wpi.edu:5000/addRoutine', {
+                        fetch('https://sleepwebapp.wpi.edu:5000/addRoutine', {
                             method: 'POST',
                             headers: {
                                 'Accept': 'application/json',
@@ -160,7 +160,7 @@ class UserSettings extends React.Component {
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
-            fetch('http://sleepwebapp.wpi.edu:5000/getSleepGoal', {
+            fetch('https://sleepwebapp.wpi.edu:5000/getSleepGoal', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -196,7 +196,7 @@ class UserSettings extends React.Component {
                     goal: goal,
                     uid: uid
                 });
-                fetch('http://sleepwebapp.wpi.edu:5000/addSleepGoal', {
+                fetch('https://sleepwebapp.wpi.edu:5000/addSleepGoal', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -216,7 +216,7 @@ class UserSettings extends React.Component {
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
-            fetch('http://sleepwebapp.wpi.edu:5000/getUseFitbit', {
+            fetch('https://sleepwebapp.wpi.edu:5000/getUseFitbit', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -237,7 +237,7 @@ class UserSettings extends React.Component {
                 fitbit: false,
                 uid: uid
             });
-            fetch('http://sleepwebapp.wpi.edu:5000/addUseFitbit', {
+            fetch('https://sleepwebapp.wpi.edu:5000/addUseFitbit', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -257,7 +257,7 @@ class UserSettings extends React.Component {
                 fitbit: true,
                 uid: uid
             });
-            fetch('http://sleepwebapp.wpi.edu:5000/addUseFitbit', {
+            fetch('https://sleepwebapp.wpi.edu:5000/addUseFitbit', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

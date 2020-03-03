@@ -11,8 +11,8 @@ if (url.includes("localhost")) {
     OAUTH = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=https%3A%2F%2Fsleepwebapp.wpi.edu%2Freport&scope=activity%20heartrate%20location%20nutrition%20profile%20report%20sleep%20social%20weight&expires_in=604800"
 }
 
-function getfibitdata(startdate, enddate){
-    fetch(OAUTH);
+function getfitbitdata(startdate, enddate){
+    window.location.assign(OAUTH);
     if (url.includes("report") && url.includes("#")) {
         //getting the access token from url
         var access_token = url.split("#")[1].split("=")[1].split("&")[0];
@@ -61,4 +61,4 @@ function getfibitdata(startdate, enddate){
     }
 }
 
-export {getfibitdata}
+export {getfitbitdata}

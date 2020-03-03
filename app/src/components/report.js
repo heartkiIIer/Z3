@@ -5,7 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
 import {getUserID} from "../scripts/login";
-import {getfibitdata} from "../scripts/FitbitScript";
+import {getfitbitdata} from "../scripts/FitbitScript";
 
 class report extends React.Component{
     constructor(props) {
@@ -51,7 +51,7 @@ class report extends React.Component{
     componentDidMount(){
         let currentComponent = this;
         this.getWeek(currentComponent);
-        this.getUseFitbit(currentComponent);
+        this.getUseFitbit();
     }
 
     getWeek(currentComponent) {
@@ -142,7 +142,7 @@ class report extends React.Component{
         })
     }
 
-    getUseFitbit(currentComponent){
+    getUseFitbit(){
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
@@ -181,7 +181,7 @@ class report extends React.Component{
                     console.log(enddate);
 
 
-                    getfibitdata(startdate, enddate);
+                    getfitbitdata(startdate, enddate);
                 }
                 else{
                     console.log("Fitbit: False");

@@ -165,6 +165,12 @@ class report extends React.Component{
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
+                    <button className='btn' id = "extended">
+                        Edit Sleep Goal
+                    </button>
+                    <button className='btn' id = "extended">
+                        Edit Sleep Goal
+                    </button>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>

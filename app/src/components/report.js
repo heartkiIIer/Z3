@@ -165,7 +165,7 @@ class report extends React.Component{
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
-                    <div className = "flex-row-wrap">
+                    <div class = "flex-row-wrap">
                         <button className='btn' id = "extended">
                             Prev 7 Days
                         </button>

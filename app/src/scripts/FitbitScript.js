@@ -15,7 +15,7 @@ let today = new Date();
 let yesterday = new Date(today);
 let lastweek = new Date(today);
 lastweek.setDate(lastweek.getDate()-7);
-yesterday.setDate(lastweek.getDate()-1);
+yesterday.setDate(yesterday.getDate()-1);
 
 let startdate = yesterday.getFullYear() + "-";
 if(yesterday.getMonth() < 10)

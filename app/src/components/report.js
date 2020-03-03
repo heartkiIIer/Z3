@@ -157,7 +157,7 @@ class report extends React.Component{
                 return r.json();
             }).then(r => {
                 if(r[0].fitbit){
-                    window.location.assign(OAUTH);
+                    // window.location.assign(OAUTH);
                 }
                 else{
                     console.log("Fitbit: False");

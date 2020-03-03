@@ -180,7 +180,6 @@ class report extends React.Component{
                     console.log(startdate);
                     console.log(enddate);
 
-
                     getfitbitdata(startdate, enddate);
                 }
                 else{

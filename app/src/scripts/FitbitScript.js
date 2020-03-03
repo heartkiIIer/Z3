@@ -12,6 +12,7 @@ if (url.includes("localhost")) {
 }
 
 function getfitbitdata(startdate, enddate){
+    console.log("Called!!!");
     if (url.includes("report") && url.includes("#")) {
         //getting the access token from url
         var access_token = url.split("#")[1].split("=")[1].split("&")[0];

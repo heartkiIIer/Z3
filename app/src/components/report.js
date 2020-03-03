@@ -149,9 +149,7 @@ class report extends React.Component{
                 <div className="inner" id="page-wrap" align="center">
                     <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-settings"/>
-                    <br/>
                     <h1 className="blueHeader">Weekly Overview</h1>
-                    <br/>
                     <div className="week" class="flex-report">
                         <div className="goalProg">
                             <CircularProgressbar value={93} text={`${93}%`} />
@@ -237,7 +235,7 @@ class report extends React.Component{
             return (
                 <div class = "reportClass" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div className="inner" id="page-wrap">
+                    <div className="inner" id="page-wrap" align="center">
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-settings"/>
                         <h1 className="blueHeader">Weekly Overview</h1>
@@ -274,7 +272,7 @@ class report extends React.Component{
             return (
                 <div class = "reportClass" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div className="inner" id="page-wrap">
+                    <div className="inner" id="page-wrap" align="center">
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-settings"/>
                         <h1 className="blueHeader">Weekly Overview</h1>

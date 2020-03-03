@@ -232,6 +232,8 @@ class report extends React.Component{
                 stress = "--";
             }
 
+            console.log((sleep/this.state.goal[0].goal)*10);
+
             return (
                 <div class = "reportClass" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -241,7 +243,7 @@ class report extends React.Component{
                         <h1 className="blueHeader">Weekly Overview</h1>
                         <div className="week" class="flex-report">
                             <div className="goalProg">
-                                <CircularProgressbar value={(sleep/this.state.goal)*10} text={`${(sleep/this.state.goal)*10}%`} />
+                                <CircularProgressbar value={(sleep/this.state.goal[0].goal)*10} text={`${(sleep/this.state.goal[0].goal)*10}%`} />
                             </div>
                             <div className="percentage">
                                 <p>Average Sleep:</p>

@@ -117,7 +117,7 @@ app.post('/getAsleep/', cors(corsOptions), (req, res)=> {
 
 app.post('/addAsleep/', cors(corsOptions), (req, res) => {
     const {uid} = req.body;
-    db.addAsleep(req, res, uid);
+    db.addAsleep(req, res, uid) ;
 });
 
 app.post('/getUseFitbit/', cors(corsOptions), (req, res)=> {

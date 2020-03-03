@@ -12,16 +12,18 @@ if (url.includes("localhost")) {
 }
 
 let today = new Date();
+let yesterday = new Date(today);
 let lastweek = new Date(today);
 lastweek.setDate(lastweek.getDate()-7);
+yesterday.setDate(lastweek.getDate()-1);
 
-let startdate = today.getFullYear() + "-";
-if(today.getMonth() < 10)
+let startdate = yesterday.getFullYear() + "-";
+if(yesterday.getMonth() < 10)
     startdate += "0";
-startdate += today.getMonth()+1 + "-";
+startdate += yesterday.getMonth()+1 + "-";
 if(today.getDate() < 10)
     startdate += "0";
-startdate += today.getDate();
+startdate += yesterday.getDate();
 
 let enddate = lastweek.getFullYear() + "-";
 if(lastweek.getMonth() < 10)

@@ -36,7 +36,7 @@ class LogWake extends React.Component{
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({
-                asleep: false,
+                asleep: true,
                 uid: uid
             });
             fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {

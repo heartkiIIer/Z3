@@ -449,7 +449,7 @@ class report extends React.Component{
 
                 //Stress
                 if(cardsToGenerate[i][3].length != 0){
-                    var sortArr = Array.sort(cardsToGenerate[i][3]);
+                    var sortArr = cardsToGenerate[i][3].sort();
                     var mid = Math.floor(sortArr.length/2)
                     var median = sortArr[mid];
 

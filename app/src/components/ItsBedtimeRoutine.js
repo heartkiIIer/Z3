@@ -38,7 +38,7 @@ class ItsBedtimeRoutine extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.state.stage !== -1){
             if(this.state.stage < this.state.stages){
-                if(this.state.routine[this.state.stage].minutes !== 0) {
+                if(this.state.routine[this.state.stage].minutes !== 0 && !this.state.timerRunning) {
                     this.startTimer(this.state.routine[this.state.stage].minutes*60);
                 }
             }
@@ -93,7 +93,6 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
      startTimer(duration) {
-        console.log(this.state.timerRunning);
         if(!this.state.timerRunning){
             this.setState({
                 timerRunning: true
@@ -122,7 +121,6 @@ class ItsBedtimeRoutine extends React.Component {
             })
         }
         else{
-            console.log("timer runnig");
             this.setState({
                 timer: clearInterval(this.state.timer)
         }, ()=>{

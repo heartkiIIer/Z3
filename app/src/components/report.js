@@ -142,7 +142,7 @@ class report extends React.Component{
 
     render(){
         this.resize();
-        if(this.state.sleep == null || this.state.goal == null || this.state.stress == null || this.state.caf == null || this.state.exer == null){
+        if((this.state.sleep == null || this.state.goal == null || this.state.stress == null || this.state.caf == null || this.state.exer == null) && (this.state.avgCaf == null || this.state.numCaf ==null || this.state.avgSleep == null || this.state.arrStress.length != 0 || this.state.numSleep == null || this.state.avgExer == null || this.state.numExer ==null)){
             return (
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

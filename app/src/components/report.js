@@ -165,12 +165,14 @@ class report extends React.Component{
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
-                    <button className='btn' id = "extended">
-                        Prev 7 Days
-                    </button>
-                    <button className='btn' style={{marginRight:'0px'}}>
-                        Next 7 Days
-                    </button>
+                    <div className = "flex-row-wrap">
+                        <button className='btn' id = "extended">
+                            Prev 7 Days
+                        </button>
+                        <button className='btn' style={{marginRight:'0px'}}>
+                            Next 7 Days
+                        </button>
+                    </div>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>

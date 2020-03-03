@@ -49,7 +49,7 @@ var firebase = require('firebase');
                 }).then (function(res){
                     console.log("Send logged User to Server side: ", res.status);
                 })
-                console.log(profile.displayName);
+                console.log(profile.uid);
             });
 
         } else {

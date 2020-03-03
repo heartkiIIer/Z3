@@ -415,7 +415,7 @@ class Home extends React.Component {
                             {this.setSleepState()}
                         </li>
                         <li>
-                            <a onClick={this.usefitbit}>
+                            <a onClick={this.usefitbit.bind(this)}>
                                 <HomeIcon spanID={"reportIcon_h"}
                                           iconClass={"iconImages_h reportIconImg"}
                                           iconInfo={"Personal Report"}/>

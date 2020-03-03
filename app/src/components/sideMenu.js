@@ -17,7 +17,7 @@ function useFitbit(){
         }).then( r => {
             return r.json();
         }).then(r => {
-            if(this.state.fitbit){
+            if(r[0].fitbit){
                 window.location.assign(OAUTH);
             }
             else{

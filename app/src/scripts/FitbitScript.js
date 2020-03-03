@@ -21,7 +21,7 @@ if(today.getMonth() < 10)
 enddate += today.getMonth()+1 + "-";
 if(today.getDate() < 10)
     enddate += "0";
-enddate += enddate.getDate();
+enddate += today.getDate();
 
 let startdate = lastweek.getFullYear() + "-";
 if(lastweek.getMonth() < 10)

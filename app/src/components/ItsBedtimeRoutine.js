@@ -99,7 +99,30 @@ class ItsBedtimeRoutine extends React.Component {
             var alerted = 0;
             if(this.state.timer != null && alerted == 1){
                 clearInterval(this.state.timer);
+                this.setState({timerRunning:false}, () => {
+                    var timer = duration, minutes, seconds;
+                    this.setState({timer: setInterval(function () {
+                            minutes = parseInt(timer / 60, 10);
+                            seconds = parseInt(timer % 60, 10);
+
+                            minutes = minutes < 10 ? "0" + minutes : minutes;
+                            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                            if(document.getElementById('timer')!=null) {
+                                document.getElementById('timer').innerText = minutes + ":" + seconds;
+                            }
+                            if (--timer < 0) {
+                                timer = 0;
+                                if(alerted === 0){
+                                    alert("Your timer has finished!");
+                                    alerted++;
+                                }
+                                return;
+                            }
+                        }, 1000),})
+                })
             }
+            else {
             var timer = duration, minutes, seconds;
             this.setState({timer: setInterval(function () {
                     minutes = parseInt(timer / 60, 10);
@@ -120,7 +143,7 @@ class ItsBedtimeRoutine extends React.Component {
                         return;
                     }
                 }, 1000),})
-        })
+        })}
     }
 
     selectComponent(){

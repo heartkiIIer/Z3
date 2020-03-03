@@ -44,7 +44,7 @@ if (url.includes("report") && url.includes("#")) {
 
     var xhr = new XMLHttpRequest();
     // dates need to be in YYYY-MM-DD format
-    xhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/2019-08-01/2019-08-07.json');
+    xhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/2020-01-01/2020-01-07.json');
     xhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
     xhr.onload = function () {
         if (xhr.status === 200) {

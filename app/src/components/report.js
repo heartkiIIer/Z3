@@ -544,7 +544,11 @@ class report extends React.Component{
                 numSleep : null,
                 arrStress : null,
                 avgExer : null,
-                numExer : null,            });
+                numExer : null,
+            }, ()=>{
+                let currentComponent = this;
+                this.getWeek(currentComponent)
+            });
         }
         else if(this.state.weeksAgo != 0){
             this.setState({
@@ -561,6 +565,9 @@ class report extends React.Component{
                 arrStress : null,
                 avgExer : null,
                 numExer : null,
+            },  ()=>{
+                let currentComponent = this;
+                this.getWeek(currentComponent)
             });
         }
     }

@@ -151,6 +151,7 @@ class report extends React.Component{
                     <hr className="hr-settings"/>
                     <br/>
                     <h1 className="blueHeader">Weekly Overview</h1>
+                    <br/>
                     <div className="week" class="flex-report">
                         <div className="goalProg">
                             <CircularProgressbar value={93} text={`${93}%`} />

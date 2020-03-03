@@ -381,7 +381,7 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                currentComponent.setState({fitbit: [0].fitbit});
+                currentComponent.setState({fitbit: r[0].fitbit});
             });
         });
     }

@@ -533,13 +533,34 @@ class report extends React.Component{
         if(element == "plus7"){
             this.setState({
                 weeksAgo: this.state.weeksAgo++,
-                avgCaf: null, //recalc weekly summary
-            });
+                sleep: null,
+                stress: null,
+                goal: null,
+                caf: null,
+                exer: null,
+                avgCaf : null,
+                numCaf : null,
+                avgSleep : null,
+                numSleep : null,
+                arrStress : null,
+                avgExer : null,
+                numExer : null,            });
         }
         else if(this.state.weeksAgo != 0){
             this.setState({
                 weeksAgo: this.state.weeksAgo--,
-                avgCaf: null, //recalc weekly summary
+                sleep: null,
+                stress: null,
+                goal: null,
+                caf: null,
+                exer: null,
+                avgCaf : null,
+                numCaf : null,
+                avgSleep : null,
+                numSleep : null,
+                arrStress : null,
+                avgExer : null,
+                numExer : null,
             });
         }
     }

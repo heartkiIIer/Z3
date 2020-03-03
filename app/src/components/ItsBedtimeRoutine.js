@@ -93,6 +93,7 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
      startTimer(duration) {
+        console.log(this.state.timerRunning);
         if(!this.state.timerRunning){
             this.setState({
                 timerRunning: true

@@ -256,10 +256,10 @@ class report extends React.Component{
                                 <h1 className="smallTimeHeader">{caf.toString() + " cups"}</h1>
                             </div>
                         </div>
-                        <button className='btn' id = "extended" onClick={()=>this.changeWeek("minus7")}>
+                        <button className='btn' id = "extended" onClick={()=>this.changeWeek(0)}>
                             Prev 7 Days
                         </button>
-                        <button className='btn' style={{marginRight:'0px'}}  onClick={()=>this.changeWeek("plus7")}>
+                        <button className='btn' style={{marginRight:'0px'}}  onClick={()=>this.changeWeek(1)}>
                             Next 7 Days
                         </button>
                         {this.generateComponent()}
@@ -532,7 +532,7 @@ class report extends React.Component{
     }
 
     changeWeek(element){
-        if(element.equals( "plus7")){
+        if(element == 1){
             this.setState({
                 weeksAgo: this.state.weeksAgo++,
                 sleep: null,

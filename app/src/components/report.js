@@ -5,7 +5,6 @@ import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
 import {getUserID} from "../scripts/login";
-import {OAUTH} from "../scripts/FitbitScript";
 
 class report extends React.Component{
     constructor(props) {
@@ -141,30 +140,6 @@ class report extends React.Component{
             }
         })
     }
-
-    // getUseFitbit(){
-    //     let idPromise = getUserID();
-    //     idPromise.then(uid=>{
-    //         const data = JSON.stringify({uid: uid});
-    //         fetch('https://sleepwebapp.wpi.edu:5000/getUseFitbit', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Accept': 'application/json',
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: data
-    //         }).then( r => {
-    //             return r.json();
-    //         }).then(r => {
-    //             if(r[0].fitbit){
-    //                 // window.location.assign(OAUTH);
-    //             }
-    //             else{
-    //                 console.log("Fitbit: False");
-    //             }
-    //         });
-    //     });
-    // }
 
     render(){
         this.resize();

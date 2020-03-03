@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {logout, getUserID, getUserImage, getUserName} from '../scripts/login'
 import swal from 'sweetalert'
 import WeatherHome from './weather'
+import {OAUTH} from "../scripts/FitbitScript";
 
 //TODO
 // call the checkSavedState to determine where to send them
@@ -23,7 +24,8 @@ class Home extends React.Component {
                 subject: "Personality and Chronotype:",
                 message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
             },
-            weather: null
+            weather: null,
+            fitbit: false
         };
     }
     componentDidMount(){
@@ -31,6 +33,7 @@ class Home extends React.Component {
         this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
         this.getWeather(currentComponent, "01609");
+        this.getUseFitbit(currentComponent)
     }
 
     // //get User profile information
@@ -364,6 +367,31 @@ class Home extends React.Component {
         }
     }
 
+    getUseFitbit(currentComponent){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('https://sleepwebapp.wpi.edu:5000/getUseFitbit', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                currentComponent.setState({fitbit: [0].fitbit});
+            });
+        });
+    }
+    usefitbit(){
+        if(this.state.fitbit){
+            return OAUTH;
+        }
+        return '/report'
+    }
+
     render(){
         return (
             <div id="homepage" className="row d-flex align-items-center">
@@ -385,7 +413,7 @@ class Home extends React.Component {
                             {this.setSleepState()}
                         </li>
                         <li>
-                            <Link to="/report">
+                            <Link to={this.usefitbit()}>
                                 <HomeIcon spanID={"reportIcon_h"}
                                           iconClass={"iconImages_h reportIconImg"}
                                           iconInfo={"Personal Report"}/>

@@ -18,7 +18,7 @@ lastweek.setDate(lastweek.getDate()-7);
 let startdate = today.getFullYear() + "-";
 if(today.getMonth() < 10)
     startdate += "0";
-startdate += today.getMonth() + "-";
+startdate += today.getMonth()+1 + "-";
 if(today.getDate() < 10)
     startdate += "0";
 startdate += today.getDate();
@@ -26,7 +26,7 @@ startdate += today.getDate();
 let enddate = lastweek.getFullYear() + "-";
 if(lastweek.getMonth() < 10)
     enddate += "0";
-enddate += lastweek.getMonth() + "-";
+enddate += lastweek.getMonth()+1 + "-";
 if(lastweek.getDate() < 10)
     enddate += "0";
 enddate += lastweek.getDate();
@@ -44,7 +44,7 @@ if (url.includes("report") && url.includes("#")) {
 
     var xhr = new XMLHttpRequest();
     // dates need to be in YYYY-MM-DD format
-    xhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/2020-01-01/2020-01-07.json');
+    xhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/'+startdate+'/'+enddate+'.json');
     xhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
     xhr.onload = function () {
         if (xhr.status === 200) {

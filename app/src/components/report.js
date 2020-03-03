@@ -165,12 +165,12 @@ class report extends React.Component{
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
-                        <button className='btn' id = "extended">
+                    <button className='btn' id = "extended">
                             Prev 7 Days
-                        </button>
-                        <button className='btn' style={{marginRight:'0px'}}>
+                    </button>
+                    <button className='btn' style={{marginRight:'0px'}}>
                             Next 7 Days
-                        </button>
+                    </button>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
@@ -254,6 +254,12 @@ class report extends React.Component{
                                 <h1 className="smallTimeHeader">{caf.toString() + " cups"}</h1>
                             </div>
                         </div>
+                        <button className='btn' id = "extended">
+                            Prev 7 Days
+                        </button>
+                        <button className='btn' style={{marginRight:'0px'}}>
+                            Next 7 Days
+                        </button>
                         {this.generateComponent()}
                     </div>
                 </div>
@@ -291,6 +297,12 @@ class report extends React.Component{
                                 <h1 className="smallTimeHeader">-- Cups</h1>
                             </div>
                         </div>
+                        <button className='btn' id = "extended">
+                            Prev 7 Days
+                        </button>
+                        <button className='btn' style={{marginRight:'0px'}}>
+                            Next 7 Days
+                        </button>
                         {this.generateComponent()}
                     </div>
                 </div>

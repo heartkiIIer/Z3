@@ -479,7 +479,9 @@ class report extends React.Component{
                     numCaf++;
                     avgSleep += cardsToGenerate[i][2];
                     numSleep++;
-                    arrStress.push(cardsToGenerate[i][3]);
+                    for(var k = 0; k < cardsToGenerate[i][3].length; k++) {
+                        arrStress.push(cardsToGenerate[i][3][k]);
+                    }
                     avgExer += cardsToGenerate[i][4];
                     numExer++;
                 }

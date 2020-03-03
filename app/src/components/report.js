@@ -5,7 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
 import {getUserID} from "../scripts/login";
-import {getfitbitdata} from "../scripts/FitbitScript";
+import {OAUTH} from "../scripts/FitbitScript";
 
 class report extends React.Component{
     constructor(props) {
@@ -157,30 +157,7 @@ class report extends React.Component{
                 return r.json();
             }).then(r => {
                 if(r[0].fitbit){
-                    let today = new Date();
-                    let lastweek = new Date(today);
-                    lastweek.setDate(lastweek.getDate()-7);
-
-                    let startdate = today.getFullYear() + "-";
-                    if(today.getMonth() < 10)
-                        startdate += "0";
-                    startdate += today.getMonth() + "-";
-                    if(today.getDate() < 10)
-                        startdate += "0";
-                    startdate += today.getDate();
-
-                    let enddate = lastweek.getFullYear() + "-";
-                    if(lastweek.getMonth() < 10)
-                        enddate += "0";
-                    enddate += lastweek.getMonth() + "-";
-                    if(lastweek.getDate() < 10)
-                        enddate += "0";
-                    enddate += lastweek.getDate();
-
-                    console.log(startdate);
-                    console.log(enddate);
-
-                    getfitbitdata(startdate, enddate);
+                    window.location.assign(OAUTH);
                 }
                 else{
                     console.log("Fitbit: False");

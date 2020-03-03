@@ -149,7 +149,7 @@ class Home extends React.Component {
         });
     }
 
-    getSleepState(){
+    getAsleep(){
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
@@ -162,6 +162,29 @@ class Home extends React.Component {
                 body: data
             }).then( r => {
                 return r.json();
+            }).then(r => {
+                //currentComponent.setState({fitbit : r[0].fitbit})
+            });
+        });
+    }
+
+    setAsleepFalse(){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({
+                asleep: false,
+                uid: uid
+            });
+            fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(r => {
+                console.log("Added asleep boolean: ", r.status);
+                this.getAsleep(this)
             })
         });
     }
@@ -180,15 +203,18 @@ class Home extends React.Component {
                     'Content-Type': 'application/json',
                 },
                 body: data
+            }).then(r => {
+                console.log("Added asleep boolean: ", r.status);
+                this.getAsleep(this)
             })
         });
     }
 
     setSleepState(){
-        if(this.getSleepState() === true){
+        if(this.getAsleep() === true){
             return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
-        else if(this.getSleepState() === false){
+        else if(this.getAsleep() === false){
             return <Link to="/logWake"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
         else{
@@ -367,23 +393,23 @@ class Home extends React.Component {
                         </li>
                         <li>
                             <Link to="/logging">
-                            <HomeIcon spanID={"logIcon_h"}
-                                      iconClass={"iconImages_h logIconImg_h"}
-                                      iconInfo={"Log Your Exercise, Caffeine, & Stress"}/>
+                                <HomeIcon spanID={"logIcon_h"}
+                                          iconClass={"iconImages_h logIconImg_h"}
+                                          iconInfo={"Log Your Exercise, Caffeine, & Stress"}/>
                             </Link>
                         </li>
                         <li>
                             <Link to="/mindfulnessModules">
-                            <HomeIcon spanID={"mindIcon_h"}
-                                      iconClass={"iconImages_h mindIconImg_h"}
-                                      iconInfo={"Mindfulness Modules"}/>
+                                <HomeIcon spanID={"mindIcon_h"}
+                                          iconClass={"iconImages_h mindIconImg_h"}
+                                          iconInfo={"Mindfulness Modules"}/>
                             </Link>
                         </li>
                         <li>
                             <Link to="personalityIntro">
-                            <HomeIcon spanID={"perIcon"}
-                                      iconClass={"iconImages_h perIconImg"}
-                                      iconInfo={"Personality Test"}/>
+                                <HomeIcon spanID={"perIcon"}
+                                          iconClass={"iconImages_h perIconImg"}
+                                          iconInfo={"Personality Test"}/>
                             </Link>
                         </li>
                         <li>

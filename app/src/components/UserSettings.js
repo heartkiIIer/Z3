@@ -6,7 +6,6 @@ import SideBar from "./sideMenu";
 import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
 import z3_firebase from "../scripts/firebase"
 import swal from 'sweetalert'
-import {OAUTH, sleepLogs} from "../scripts/FitbitScript"
 import TaskSetting from "./TaskSetting"
 import {getUserID, getUserImage} from "../scripts/login";
 
@@ -44,9 +43,6 @@ class UserSettings extends React.Component {
         this.getRoutine(currentComponent);
         this.getUserImage(currentComponent);
         this.getUseFitbit(currentComponent);
-        sleepLogs.registerListener(function(val) {
-            currentComponent.setState({fitbitSigned: val.length})
-        });
         this.getSleepGoal(currentComponent);
     }
 

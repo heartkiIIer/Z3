@@ -489,7 +489,7 @@ class report extends React.Component{
                 formatExer = cardsToGenerate[i][4];
                 formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(1);
                 var date = new Date (cardsToGenerate[i][0]);
-                formatDate = date.getMonth() + "-"  + date.getDate()+ "-" + date.getFullYear();
+                formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
                 //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
                 if((date.getTime() <= lastday.getTime() && date.getTime() >= firstday.getTime())){

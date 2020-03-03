@@ -149,6 +149,35 @@ class Home extends React.Component {
         });
     }
 
+    getSleepState(){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('https://sleepwebapp.wpi.edu:5000/getAsleep', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            })
+        });
+    }
+
+    setSleepState(){
+        if(this.getSleepState() === true){
+            return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
+        }
+        else if(this.getSleepState() === false){
+            return <Link to="/logWake"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
+        }
+        else{
+            return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
+        }
+    }
+
     getWeather(currentComponent, zipcode){
         let key = "4e527c0cbe65468e44c55d0cb68d6b16";
         fetch('https://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid='+key
@@ -308,11 +337,7 @@ class Home extends React.Component {
                 <div className="col-lg-6">
                     <ul className="circle">
                         <li>
-                            <Link to="/logSleep">
-                                <HomeIcon spanID={"sleepIcon_h"}
-                                          iconClass={"iconImages_h sleepIconImg"}
-                                          iconInfo={"Log Your Sleep"}/>
-                            </Link>
+                            {this.setSleepState()}
                         </li>
                         <li>
                             <Link to="/report">

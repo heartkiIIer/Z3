@@ -164,6 +164,9 @@ class report extends React.Component{
                     let startdate = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
                     let enddate = lastweek.getFullYear() + "-" + lastweek.getMonth() + "-" + lastweek.getDate();
 
+                    console.log(startdate);
+                    console.log(enddate);
+
 
                     // getfibitdata("", "");
                 }

@@ -26,7 +26,6 @@ class UserSettings extends React.Component {
             image: "",
             routine: null,
             sleepGoal: null,
-            fitbitSigned: sleepLogs.a.length,
             fibit: null
         };
     }

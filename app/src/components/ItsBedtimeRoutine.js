@@ -123,27 +123,28 @@ class ItsBedtimeRoutine extends React.Component {
                 })
             }
             else {
-            var timer = duration, minutes, seconds;
-            this.setState({timer: setInterval(function () {
-                    minutes = parseInt(timer / 60, 10);
-                    seconds = parseInt(timer % 60, 10);
+                var timer = duration, minutes, seconds;
+                this.setState({timer: setInterval(function () {
+                        minutes = parseInt(timer / 60, 10);
+                        seconds = parseInt(timer % 60, 10);
 
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
+                        minutes = minutes < 10 ? "0" + minutes : minutes;
+                        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                    if(document.getElementById('timer')!=null) {
-                        document.getElementById('timer').innerText = minutes + ":" + seconds;
-                    }
-                    if (--timer < 0) {
-                        timer = 0;
-                        if(alerted === 0){
-                            alert("Your timer has finished!");
-                            alerted++;
+                        if(document.getElementById('timer')!=null) {
+                            document.getElementById('timer').innerText = minutes + ":" + seconds;
                         }
-                        return;
-                    }
-                }, 1000),})
-        })}
+                        if (--timer < 0) {
+                            timer = 0;
+                            if(alerted === 0){
+                                alert("Your timer has finished!");
+                                alerted++;
+                            }
+                            return;
+                        }
+                    }, 1000),})
+            }
+        })
     }
 
     selectComponent(){

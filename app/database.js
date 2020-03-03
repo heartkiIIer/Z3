@@ -27,6 +27,7 @@ function getUsers(req, res) {
 function getUser(req, res, id, first) {
     checkQuery(id);
     checkQuery(first);
+    console.log('SELECT * FROM users WHERE google_id='+id+';');
     pool.query('SELECT * FROM users WHERE google_id='+id+';', (error, results) => {
         if (error) {
             throw error

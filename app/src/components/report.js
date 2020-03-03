@@ -168,7 +168,7 @@ class report extends React.Component{
                     <button className='btn' id = "extended">
                         Prev 7 Days
                     </button>
-                    <button className='btn' id = "extended" style={{marginRight:'0px'}}>
+                    <button className='btn'>
                         Next 7 Days
                     </button>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>

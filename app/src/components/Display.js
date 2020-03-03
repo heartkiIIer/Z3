@@ -168,7 +168,7 @@ function submitStressEntry() {
     let idPromise = getUserID();
     idPromise.then(uid=>{
         events.forEach(event => {
-            fetch('https://sleepwebapp.wpi.edu:5000/users/newcaf/', {
+            fetch('https://sleepwebapp.wpi.edu:5000/users/newstress/', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

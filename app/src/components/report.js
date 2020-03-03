@@ -243,6 +243,7 @@ class report extends React.Component{
                         <h1 className="blueHeader">Weekly Overview</h1>
                         <div className="week" class="flex-report">
                             <div className="goalProg">
+                                <p>Goal Progress:</p>
                                 <CircularProgressbar value={(sleep/this.state.goal[0].sleepgoal)*10} text={`${(sleep/this.state.goal[0].sleepgoal)*10}%`} />
                             </div>
                             <div className="percentage">

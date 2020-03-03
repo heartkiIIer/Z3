@@ -18,6 +18,13 @@ class report extends React.Component{
                 caf: null,
                 exer: null,
                 weeksAgo: 0,
+                avgCaf : null,
+                numCaf : null,
+                avgSleep : null,
+                numSleep : null,
+                arrStress : null,
+                avgExer : null,
+                numExer : null,
             };
         }
         else{
@@ -29,6 +36,13 @@ class report extends React.Component{
                 caf: null,
                 exer: null,
                 weeksAgo: 0,
+                avgCaf : null,
+                numCaf : null,
+                avgSleep : null,
+                numSleep : null,
+                arrStress : null,
+                avgExer : null,
+                numExer : null,
             };
         }
     }
@@ -128,29 +142,35 @@ class report extends React.Component{
 
     render(){
         this.resize();
-        if(this.state.sleep == null || this.state.goal == null || this.state.stress == null || this.state.caf == null || this.state.exer == null){
+        if((this.state.sleep == null || this.state.goal == null || this.state.stress == null || this.state.caf == null || this.state.exer == null) && (this.state.avgCaf == null || this.state.numCaf ==null || this.state.avgSleep == null || this.state.arrStress.length != 0 || this.state.numSleep == null || this.state.avgExer == null || this.state.numExer ==null)){
             return (
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <div className="inner" id="page-wrap">
-                    <h1 className="blueHeader" align="center">Sleep Goal: -- hrs</h1>
+                <div className="inner" id="page-wrap" align="center">
+                    <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-settings"/>
                     <h1 className="blueHeader">Weekly Overview</h1>
                     <div className="week" class="flex-report">
                         <div className="goalProg">
-                            <CircularProgressbar value={93} text={`${93}%`} />
+                            <CircularProgressbar value={0} text={`--`} />
                         </div>
                         <div className="percentage">
                             <p>Average Sleep:</p>
                             <h1 className="timeHeader">-- hrs</h1>
                             <p>Average Stress Level:</p>
                             <h1 className="smallTimeHeader">--</h1>
-                            <p>Total Exercise:</p>
+                            <p>Average Exercise:</p>
                             <h1 className="smallTimeHeader">-- min</h1>
                             <p>Average Caffeine Consumption:</p>
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
+                    <button className='btn' id = "extended">
+                            Prev 7 Days
+                    </button>
+                    <button className='btn' style={{marginRight:'0px'}}>
+                            Next 7 Days
+                    </button>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
@@ -162,37 +182,129 @@ class report extends React.Component{
             </div>
         );
         }
-        else {
+        else if (this.state.avgCaf != null && this.state.numCaf !=null && this.state.avgSleep != null && this.state.arrStress.length != null && this.state.numSleep != null && this.state.avgExer != null && this.state.numExer !=null){
             var sleepGoal;
-            if(this.state.goal == null){
-
+            if(this.state.goal[0].sleepgoal == null){
+                sleepGoal = "Sleep Goal: -- hrs per day";
             }
             else{
-                sleepGoal = "Sleep Goal: " + this.state.goal.toString() + " hrs";
+                sleepGoal = "Sleep Goal: " + this.state.goal[0].sleepgoal.toString() + " hrs per day";
             }
+            var caf;
+            var sleep;
+            var stress;
+            var exer;
+
+            if(this.state.numCaf !=0){
+                caf = Math.round(this.state.avgCaf/this.state.numCaf);
+            }
+            else{
+                caf = 0;
+            }
+            if(this.state.numSleep !=0){
+                sleep = Math.round(this.state.avgSleep/this.state.numSleep);
+            }
+            else{
+                sleep = 0;
+            }
+            if(this.state.numExer !=0){
+                exer = Math.round(this.state.avgExer/this.state.numExer);
+            }
+            else{
+                exer = 0;
+            }
+            if(this.state.arrStress.length !=0){
+                var sortArr = this.state.arrStress.sort();
+                var mid = Math.floor(sortArr.length/2)
+                var median = sortArr[mid];
+
+                if(median < 40){
+                    stress = "Low";
+                }
+                else if (median >= 45){
+                    stress = "Medium";
+                }
+                else {
+                    stress = "High";
+                }
+            }
+            else{
+                stress = "--";
+            }
+
+            console.log((sleep/this.state.goal[0].sleepgoal)*10);
 
             return (
                 <div class = "reportClass" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div className="inner" id="page-wrap">
+                    <div className="inner" id="page-wrap" align="center">
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-settings"/>
                         <h1 className="blueHeader">Weekly Overview</h1>
                         <div className="week" class="flex-report">
                             <div className="goalProg">
-                                <CircularProgressbar value={93} text={`${93}%`} />
+                                <CircularProgressbar value={(sleep/this.state.goal[0].sleepgoal)*10} text={`${(sleep/this.state.goal[0].sleepgoal)*10}%`} />
+                            </div>
+                            <div className="percentage">
+                                <p>Average Sleep:</p>
+                                <h1 className="timeHeader">{sleep+ " hrs"}</h1>
+                                <p>Average Stress Level:</p>
+                                <h1 className="smallTimeHeader">{stress}</h1>
+                                <p>Average Exercise:</p>
+                                <h1 className="smallTimeHeader">{exer.toString() + " min"}</h1>
+                                <p>Average Caffeine Consumption:</p>
+                                <h1 className="smallTimeHeader">{caf.toString() + " cups"}</h1>
+                            </div>
+                        </div>
+                        <button className='btn' id = "extended" onClick={()=>this.changeWeek(0)}>
+                            Prev 7 Days
+                        </button>
+                        <button className='btn' style={{marginRight:'0px'}}  onClick={()=>this.changeWeek(1)}>
+                            Next 7 Days
+                        </button>
+                        {this.generateComponent()}
+                    </div>
+                </div>
+            );
+        }
+
+        else {
+            var sleepGoal;
+            if(this.state.goal[0].sleepgoal == null){
+                sleepGoal = "Sleep Goal: -- hrs per day";
+            }
+            else{
+                sleepGoal = "Sleep Goal: " + this.state.goal[0].sleepgoal.toString() + " hrs per day";
+            }
+
+            return (
+                <div class = "reportClass" id="App">
+                    <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                    <div className="inner" id="page-wrap" align="center">
+                        <h1 className="blueHeader" align="center">{sleepGoal}</h1>
+                        <hr className="hr-settings"/>
+                        <h1 className="blueHeader">Weekly Overview</h1>
+                        <div className="week" class="flex-report">
+                            <div className="goalProg">
+                                <CircularProgressbar value={0} text={`--`} />
                             </div>
                             <div className="percentage">
                                 <p>Average Sleep:</p>
                                 <h1 className="timeHeader">-- hrs</h1>
                                 <p>Average Stress Level:</p>
                                 <h1 className="smallTimeHeader">--</h1>
-                                <p>Total Exercise:</p>
+                                <p>Average Exercise:</p>
                                 <h1 className="smallTimeHeader">-- min</h1>
                                 <p>Average Caffeine Consumption:</p>
                                 <h1 className="smallTimeHeader">-- Cups</h1>
                             </div>
                         </div>
+                        <button className='btn' id = "extended">
+                            Prev 7 Days
+                        </button>
+                        <button className='btn' style={{marginRight:'0px'}}>
+                            Next 7 Days
+                        </button>
                         {this.generateComponent()}
                     </div>
                 </div>
@@ -320,6 +432,8 @@ class report extends React.Component{
         console.log(this.state.caf);
         console.log(this.state.exer);
         console.log(this.state.sleep);
+        console.log(this.state.weeksAgo);
+
 
         //Iterate through all day by day and populate card given a range
         cardsToGenerate.sort(function(a, b){
@@ -327,6 +441,22 @@ class report extends React.Component{
         })
 
         console.log(cardsToGenerate);
+
+        //reference : https://stackoverflow.com/questions/5210376/how-to-get-first-and-last-day-of-the-week-in-javascript
+        var curr = new Date; // get current date
+        var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+        var last = first + 6; // last day is the first day + 6
+
+        var firstday = new Date(curr.setDate(first));
+        var lastday = new Date(curr.setDate(last));
+
+        var avgCaf = 0;
+        var numCaf = 0;
+        var avgSleep = 0;
+        var numSleep = 0;
+        var arrStress = [];
+        var avgExer = 0;
+        var numExer = 0;
 
         var arrToReturn = [];
         //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
@@ -341,7 +471,7 @@ class report extends React.Component{
 
                 //Stress
                 if(cardsToGenerate[i][3].length != 0){
-                    var sortArr = Array.sort(cardsToGenerate[i][3]);
+                    var sortArr = cardsToGenerate[i][3].sort();
                     var mid = Math.floor(sortArr.length/2)
                     var median = sortArr[mid];
 
@@ -359,12 +489,24 @@ class report extends React.Component{
                     formatStress = "--"
                 }
 
-                //Caf
                 formatCaf = cardsToGenerate[i][1];
                 formatExer = cardsToGenerate[i][4];
-                formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(2);
+                formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(1);
                 var date = new Date (cardsToGenerate[i][0]);
-                formatDate = date.getMonth() + "-"  + date.getDate()+ "-" + date.getFullYear();
+                formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
+                //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
+
+                if((date.getTime() <= lastday.getTime() && date.getTime() >= firstday.getTime())){
+                    avgCaf += cardsToGenerate[i][1];
+                    numCaf++;
+                    avgSleep += cardsToGenerate[i][2];
+                    numSleep++;
+                    for(var k = 0; k < cardsToGenerate[i][3].length; k++) {
+                        arrStress.push(cardsToGenerate[i][3][k]);
+                    }
+                    avgExer += cardsToGenerate[i][4];
+                    numExer++;
+                }
 
                 arrToReturn.push(<ReportComponent date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
             }
@@ -374,7 +516,62 @@ class report extends React.Component{
             }
         }
 
+        if(this.state.avgCaf == null){
+            this.setState({
+                avgCaf : avgCaf,
+                numCaf : numCaf,
+                avgSleep : avgSleep,
+                numSleep : numSleep,
+                arrStress : arrStress,
+                avgExer : avgExer,
+                numExer : numExer,
+            })
+        }
+
         return (arrToReturn) ;
+    }
+
+    changeWeek(element){
+        if(element == 1){
+            this.setState({
+                weeksAgo: this.state.weeksAgo + 1,
+                sleep: null,
+                stress: null,
+                goal: null,
+                caf: null,
+                exer: null,
+                avgCaf : null,
+                numCaf : null,
+                avgSleep : null,
+                numSleep : null,
+                arrStress : null,
+                avgExer : null,
+                numExer : null,
+            }, ()=>{
+                let currentComponent = this;
+                this.getWeek(currentComponent)
+            });
+        }
+        else if(this.state.weeksAgo != 0){
+            this.setState({
+                weeksAgo: this.state.weeksAgo - 1,
+                sleep: null,
+                stress: null,
+                goal: null,
+                caf: null,
+                exer: null,
+                avgCaf : null,
+                numCaf : null,
+                avgSleep : null,
+                numSleep : null,
+                arrStress : null,
+                avgExer : null,
+                numExer : null,
+            },  ()=>{
+                let currentComponent = this;
+                this.getWeek(currentComponent)
+            });
+        }
     }
 }
 export default report;

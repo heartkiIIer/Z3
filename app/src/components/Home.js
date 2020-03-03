@@ -387,9 +387,11 @@ class Home extends React.Component {
     }
     usefitbit(){
         if(this.state.fitbit){
-            return OAUTH;
+            window.location.assign(OAUTH);
         }
-        return '/report'
+        else {
+            window.location.assign("https://sleepwebapp.wpi.edu/report");
+        }
     }
 
     render(){
@@ -413,11 +415,11 @@ class Home extends React.Component {
                             {this.setSleepState()}
                         </li>
                         <li>
-                            <Link to={this.usefitbit()}>
+                            <a onClick={this.usefitbit}>
                                 <HomeIcon spanID={"reportIcon_h"}
                                           iconClass={"iconImages_h reportIconImg"}
                                           iconInfo={"Personal Report"}/>
-                            </Link>
+                            </a>
                         </li>
                         <li>
                             <Link to="/logging">

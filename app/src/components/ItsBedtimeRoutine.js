@@ -27,7 +27,7 @@ class ItsBedtimeRoutine extends React.Component {
         else{
             mobile = true;
         }
-        this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null};
+        this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null};
     }
 
      componentDidMount(){
@@ -93,9 +93,12 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
      startTimer(duration) {
+        if(this.state.timer != null){
+            clearInterval(this.state.timer);
+        }
         var alerted = 0;
         var timer = duration, minutes, seconds;
-            setInterval(function () {
+        this.setState({timer: setInterval(function () {
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
 
@@ -113,7 +116,7 @@ class ItsBedtimeRoutine extends React.Component {
                     }
                     return;
                 }
-            }, 1000);
+            }, 1000),})
     }
 
     selectComponent(){

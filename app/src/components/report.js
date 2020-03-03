@@ -208,7 +208,7 @@ class report extends React.Component{
                 exer = 0;
             }
             if(this.state.arrStress.length !=0){
-                var sortArr = Array.sort(this.state.arrStress);
+                var sortArr = this.state.arrStress.sort();
                 var mid = Math.floor(sortArr.length/2)
                 var median = sortArr[mid];
 

@@ -21,7 +21,7 @@ app.use(helmet());
 app.use(compression());
 app.use(cors());
 
-var whitelist = ['https://sleepwebapp.wpi.edu', 'http://api.openweathermap.org/'];
+var whitelist = ['https://sleepwebapp.wpi.edu', 'https://api.openweathermap.org/', 'https://www.fitbit.com/'];
 
 //var options = {
 //    key: fs.readFileSync("sleepwebapp.wpi.key"),

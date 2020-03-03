@@ -36,7 +36,7 @@ class LogSleep extends React.Component{
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({
-                asleep: true,
+                asleep: false,
                 uid: uid
             });
             fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {

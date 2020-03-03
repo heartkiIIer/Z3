@@ -532,7 +532,7 @@ class report extends React.Component{
     }
 
     changeWeek(element){
-        if(element == "plus7"){
+        if(element.equals( "plus7")){
             this.setState({
                 weeksAgo: this.state.weeksAgo++,
                 sleep: null,

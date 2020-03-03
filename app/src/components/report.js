@@ -161,8 +161,21 @@ class report extends React.Component{
                     let lastweek = new Date(today);
                     lastweek.setDate(lastweek.getDate()-7);
 
-                    let startdate = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
-                    let enddate = lastweek.getFullYear() + "-" + lastweek.getMonth() + "-" + lastweek.getDate();
+                    let startdate = today.getFullYear() + "-";
+                    if(today.getMonth() < 10)
+                        startdate += "0";
+                    startdate += today.getMonth() + "-";
+                    if(today.getDate() < 10)
+                        startdate += "0";
+                    startdate += today.getDate();
+
+                    let enddate = lastweek.getFullYear() + "-";
+                    if(lastweek.getMonth() < 10)
+                        enddate += "0";
+                    enddate += lastweek.getMonth() + "-";
+                    if(lastweek.getDate() < 10)
+                        enddate += "0";
+                    enddate += lastweek.getDate();
 
                     console.log(startdate);
                     console.log(enddate);

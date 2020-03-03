@@ -432,6 +432,8 @@ class report extends React.Component{
         console.log(this.state.caf);
         console.log(this.state.exer);
         console.log(this.state.sleep);
+        console.log(this.state.weeksAgo);
+
 
         //Iterate through all day by day and populate card given a range
         cardsToGenerate.sort(function(a, b){

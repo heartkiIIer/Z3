@@ -1,6 +1,31 @@
 import React from "react";
 import {slide as Menu } from "react-burger-menu";
-import {logout} from '../scripts/login'
+import {getUserID, logout} from '../scripts/login'
+import {OAUTH} from "../scripts/FitbitScript";
+
+function useFitbit(){
+    let idPromise = getUserID();
+    idPromise.then(uid=>{
+        const data = JSON.stringify({uid: uid});
+        fetch('https://sleepwebapp.wpi.edu:5000/getUseFitbit', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            if(this.state.fitbit){
+                window.location.assign(OAUTH);
+            }
+            else{
+                window.location.assign('https://sleepwebapp.wpi.edu/report')
+            }
+        });
+    });
+}
 
 export default props => {
     return (
@@ -14,7 +39,7 @@ export default props => {
             <a className="menu-item" href="/logging">
                 Log Other
             </a>
-            <a className="menu-item" href="/report">
+            <a className="menu-item" onClick={useFitbit}>
                 Report
             </a>
             <a className="menu-item" href="/mindfulnessModules">

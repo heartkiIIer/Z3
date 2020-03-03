@@ -46,8 +46,6 @@ class LogSleep extends React.Component{
                     'Content-Type': 'application/json',
                 },
                 body: data
-            }).then(r => {
-                this.getUseFitbit(this)
             })
         });
     }

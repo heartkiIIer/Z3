@@ -166,6 +166,24 @@ class Home extends React.Component {
         });
     }
 
+    setAsleepTrue(){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({
+                asleep: true,
+                uid: uid
+            });
+            fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            })
+        });
+    }
+
     setSleepState(){
         if(this.getSleepState() === true){
             return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
@@ -174,6 +192,7 @@ class Home extends React.Component {
             return <Link to="/logWake"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
         else{
+            this.setAsleepTrue();
             return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
     }

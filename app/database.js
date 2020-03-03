@@ -448,6 +448,28 @@ function getUseFitbit(req, res, id) {
     });
 }
 
+// set boolean determening if user is asleep
+function addAsleep(req, res, id, asleep) {
+    pool.query("UPDATE users SET asleep=" + asleep +" WHERE google_id=" + id + ";", (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+// get boolean determining if user is asleep sleep
+function getAsleep(req, res, id) {
+    pool.query('SELECT asleep FROM users WHERE google_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
 //Add personality scores
 function putPersonalityById(req, res, id, open, cons, extra, agree, neuro) {
     const promise = promiseBuildergoogleIdtoInternal(id);
@@ -530,6 +552,8 @@ module.exports = {
     getUseFitbit,
     getPersonalityById,
     putPersonalityById,
+    getAsleep,
+    addAsleep,
     checkSavedState,
     getSleepEntryById
 }

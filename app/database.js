@@ -189,7 +189,9 @@ function getStressEntriesById(req, res, id) {
 function addStressEntriesById(req, res, id, title, year, month, day, date, value) {
     promise.then(
         function (internalId) {
-            pool.query('INSERT INTO StressEntry(user_id, date, stressLevel) VALUES('+ internalId.rows[0].user_id +', current_timestamp,' +  "'" + title + "', " +  month + "-" + day + "-" + year + ", " + date + ", " + value +");", (error, results) => {
+            pool.query('INSERT INTO stressEntry(user_id, event, month, day, year, dayofweek, stressLevel) VALUES('+ internalId.rows[0].user_id +', ' +
+                "'" + title + "', " +  month + "," + day + "," + year + ", " + date + ", " + value +
+                ") ON CONFLICT (user_id, event, month, day, year) DO NOTHING;", (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -446,6 +448,28 @@ function getUseFitbit(req, res, id) {
     });
 }
 
+// set boolean determening if user is asleep
+function addAsleep(req, res, id, asleep) {
+    pool.query("UPDATE users SET asleep=" + asleep +" WHERE google_id=" + id + ";", (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+// get boolean determining if user is asleep sleep
+function getAsleep(req, res, id) {
+    pool.query('SELECT asleep FROM users WHERE google_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
 //Add personality scores
 function putPersonalityById(req, res, id, open, cons, extra, agree, neuro) {
     const promise = promiseBuildergoogleIdtoInternal(id);
@@ -528,6 +552,8 @@ module.exports = {
     getUseFitbit,
     getPersonalityById,
     putPersonalityById,
+    getAsleep,
+    addAsleep,
     checkSavedState,
     getSleepEntryById
 }

@@ -110,6 +110,16 @@ app.post('/getChronoAnswers/', cors(corsOptions), (req, res)=> {
     db.getChronotypeById(req, res, uid);
 });
 
+app.post('/getAsleep/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
+    db.getAsleep(req, res, uid)
+});
+
+app.post('/addAsleep/', cors(corsOptions), (req, res) => {
+    const {uid} = req.body;
+    db.addAsleep(req, res, uid);
+});
+
 app.post('/getUseFitbit/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
     db.getUseFitbit(req, res, uid)

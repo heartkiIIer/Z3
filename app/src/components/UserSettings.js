@@ -344,7 +344,6 @@ class UserSettings extends React.Component {
                     <hr className="hr-settings"/>
                     <br/>
                     {this.useFibit()}
-                    <button className='btn' onClick={this.toreport}>To Report </button>
                     <br/>
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>

@@ -181,7 +181,7 @@ class report extends React.Component{
                     console.log(enddate);
 
 
-                    // getfibitdata("", "");
+                    getfibitdata(startdate, enddate);
                 }
                 else{
                     console.log("Fitbit: False");

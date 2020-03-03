@@ -29,6 +29,7 @@ function getfibitdata(startdate, enddate){
             if (xhr.status === 200) {
                 let sleeplogs = [];
                 let logs = JSON.parse(xhr.responseText).sleep;
+                console.log(logs);
                 for(let i = 0; i < logs.length; i++){
                     let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
                     let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);

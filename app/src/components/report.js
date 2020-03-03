@@ -492,15 +492,17 @@ class report extends React.Component{
             }
         }
 
-        this.setState({
-            avgCaf : avgCaf,
-            numCaf : numCaf,
-            avgSleep : avgSleep,
-            numSleep : numSleep,
-            arrStress : arrStress,
-            avgExer : avgExer,
-            numExer : numExer,
-        })
+        if(this.state.avgCaf == null){
+            this.setState({
+                avgCaf : avgCaf,
+                numCaf : numCaf,
+                avgSleep : avgSleep,
+                numSleep : numSleep,
+                arrStress : arrStress,
+                avgExer : avgExer,
+                numExer : numExer,
+            })
+        }
 
         return (arrToReturn) ;
     }

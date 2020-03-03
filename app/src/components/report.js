@@ -176,7 +176,7 @@ class report extends React.Component{
             </div>
         );
         }
-        else if (this.state.avgCaf != null && this.state.numCaf !=null && this.state.avgSleep != null && this.state.arrStress.length != 0 && this.state.numSleep != null && this.state.avgExer != null && this.state.numExer !=null){
+        else if (this.state.avgCaf != null && this.state.numCaf !=null && this.state.avgSleep != null && this.state.arrStress.length != null && this.state.numSleep != null && this.state.avgExer != null && this.state.numExer !=null){
             var sleepGoal;
             if(this.state.goal[0].sleepgoal == null){
                 sleepGoal = "Sleep Goal: -- hrs per day";
@@ -479,9 +479,9 @@ class report extends React.Component{
                     numCaf++;
                     avgSleep += cardsToGenerate[i][2];
                     numSleep++;
-                    //for(var k = 0; k < cardsToGenerate[i][3].length; k++) {
-                        arrStress.push(cardsToGenerate[i][3]);
-                    //}
+                    for(var k = 0; k < cardsToGenerate[i][3].length; k++) {
+                        arrStress.push(cardsToGenerate[i][3][k]);
+                    }
                     avgExer += cardsToGenerate[i][4];
                     numExer++;
                 }

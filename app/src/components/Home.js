@@ -386,6 +386,7 @@ class Home extends React.Component {
         });
     }
     usefitbit(){
+        console.log(this.state.fitbit);
         if(this.state.fitbit){
             window.location.assign(OAUTH);
         }

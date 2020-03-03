@@ -8,6 +8,7 @@ import z3_firebase from "../scripts/firebase"
 import swal from 'sweetalert'
 import TaskSetting from "./TaskSetting"
 import {getUserID, getUserImage} from "../scripts/login";
+import {OAUTH} from "../scripts/FitbitScript";
 
 /**
  * @author Eliazbeth Del Monaco
@@ -281,6 +282,9 @@ class UserSettings extends React.Component {
         }
         return fitbitele;
     }
+    toreport(){
+        window.location.assign(OAUTH);
+    }
 
     render(){
         return (
@@ -340,6 +344,7 @@ class UserSettings extends React.Component {
                     <hr className="hr-settings"/>
                     <br/>
                     {this.useFibit()}
+                    <button className='btn' onClick={this.toreport}>To Report </button>
                     <br/>
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>

@@ -51,7 +51,7 @@ class report extends React.Component{
     componentDidMount(){
         let currentComponent = this;
         this.getWeek(currentComponent);
-        this.getUseFitbit();
+        // this.getUseFitbit();
     }
 
     getWeek(currentComponent) {
@@ -142,29 +142,29 @@ class report extends React.Component{
         })
     }
 
-    getUseFitbit(){
-        let idPromise = getUserID();
-        idPromise.then(uid=>{
-            const data = JSON.stringify({uid: uid});
-            fetch('https://sleepwebapp.wpi.edu:5000/getUseFitbit', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then( r => {
-                return r.json();
-            }).then(r => {
-                if(r[0].fitbit){
-                    // window.location.assign(OAUTH);
-                }
-                else{
-                    console.log("Fitbit: False");
-                }
-            });
-        });
-    }
+    // getUseFitbit(){
+    //     let idPromise = getUserID();
+    //     idPromise.then(uid=>{
+    //         const data = JSON.stringify({uid: uid});
+    //         fetch('https://sleepwebapp.wpi.edu:5000/getUseFitbit', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: data
+    //         }).then( r => {
+    //             return r.json();
+    //         }).then(r => {
+    //             if(r[0].fitbit){
+    //                 // window.location.assign(OAUTH);
+    //             }
+    //             else{
+    //                 console.log("Fitbit: False");
+    //             }
+    //         });
+    //     });
+    // }
 
     render(){
         this.resize();

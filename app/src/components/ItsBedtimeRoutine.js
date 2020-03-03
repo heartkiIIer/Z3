@@ -97,6 +97,7 @@ class ItsBedtimeRoutine extends React.Component {
             this.setState({
                 timerRunning: true
             }, ()=>{
+                var alerted = 0;
                 var timer = duration, minutes, seconds;
                 this.setState({timer: setInterval(function () {
                         minutes = parseInt(timer / 60, 10);

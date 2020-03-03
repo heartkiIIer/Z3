@@ -425,8 +425,8 @@ class report extends React.Component{
         var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
         var last = first + 6; // last day is the first day + 6
 
-        var firstday = new Date(curr.setDate(first)).toUTCString();
-        var lastday = new Date(curr.setDate(last)).toUTCString();
+        var firstday = new Date(curr.setDate(first));
+        var lastday = new Date(curr.setDate(last));
 
         var avgCaf = 0;
         var numCaf = 0;

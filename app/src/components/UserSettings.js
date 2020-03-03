@@ -214,7 +214,7 @@ class UserSettings extends React.Component {
         });
     }
 
-    // sleep goal
+    // get if user is willing to use fitbit to log sleep
     getUseFitbit(currentComponent){
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -288,12 +288,6 @@ class UserSettings extends React.Component {
     }
 
     render(){
-        let ele;
-        if (this.state.fitbitSigned === 0) {
-            ele = <SyncButton/>
-        } else {
-            ele = <RemoveButton/>
-        }
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -351,9 +345,6 @@ class UserSettings extends React.Component {
                     <hr className="hr-settings"/>
                     <br/>
                     {this.useFibit()}
-                    <div class = "flex-row-nowrap">
-                        {ele}
-                    </div>
                     <br/>
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>
@@ -373,21 +364,5 @@ class UserSettings extends React.Component {
             </div>
         );
     };
-}
-
-function SyncButton () {
-    return (
-        <a href={OAUTH} className='btn' id = "extended">
-            Sync your Fitbit Account
-        </a>
-    )
-}
-
-function RemoveButton () {
-    return (
-        <a className='btn' id = "extended">
-            Remove FitBit Access
-        </a>
-    )
 }
 export default UserSettings;

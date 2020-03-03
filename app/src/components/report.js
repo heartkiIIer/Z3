@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
 import {getUserID} from "../scripts/login";
+import {getfibitdata} from "../scripts/FitbitScript";
 
 class report extends React.Component{
     constructor(props) {
@@ -49,7 +50,8 @@ class report extends React.Component{
 
     componentDidMount(){
         let currentComponent = this;
-        this.getWeek(currentComponent)
+        this.getWeek(currentComponent);
+        this.getUseFitbit(currentComponent);
     }
 
     getWeek(currentComponent) {
@@ -138,6 +140,38 @@ class report extends React.Component{
                 })
             }
         })
+    }
+
+    getUseFitbit(currentComponent){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('https://sleepwebapp.wpi.edu:5000/getUseFitbit', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                if(r[0].fitbit){
+                    let today = new Date();
+                    let lastweek = new Date(today);
+                    lastweek.setDate(lastweek.getDate()-7);
+
+                    let startdate = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
+                    let enddate = lastweek.getFullYear() + "-" + lastweek.getMonth() + "-" + lastweek.getDate();
+
+
+                    // getfibitdata("", "");
+                }
+                else{
+                    console.log("Fitbit: False");
+                }
+            });
+        });
     }
 
     render(){

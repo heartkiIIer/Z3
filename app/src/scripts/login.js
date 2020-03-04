@@ -39,6 +39,7 @@ var firebase = require('firebase');
             user.providerData.forEach(function (profile) {
                 const data = JSON.stringify({
                     id: profile.uid,
+                    // id: user.uid,
                     name: profile.displayName,
                     image: profile.photoURL});
 
@@ -99,6 +100,7 @@ export function getUserName(){
                 user.providerData.forEach(function (profile) {
                     resolve(profile.displayName);
                 });
+                // resolve(user.uid);
             } else { reject(); }
         })
     });

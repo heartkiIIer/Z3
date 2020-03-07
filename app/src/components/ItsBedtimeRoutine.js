@@ -78,7 +78,9 @@ class ItsBedtimeRoutine extends React.Component {
         if(this.state.stage >= this.state.stages){
             window.location.replace("https://sleepwebapp.wpi.edu/logSleep");
         }
-        this.setState({stages: Object.keys(this.state.routine).length, stage : this.state.stage+1})
+        if(this.state.routine != null){
+            this.setState({stages: Object.keys(this.state.routine).length, stage : this.state.stage+1})
+        }
     }
 
     resize(){

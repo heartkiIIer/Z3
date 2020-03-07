@@ -4,6 +4,7 @@ import "../styles/ItsBedtime.css";
 import Tile from "./Tile.js";
 import SideBar from "./sideMenu";
 import MobileExampleModule from "./MobileExampleModule";
+import {getUserID} from "../scripts/login";
 
 class MindfulEating extends React.Component {
     constructor(props){
@@ -16,6 +17,13 @@ class MindfulEating extends React.Component {
             mobile = true;
         }
         this.state = { isEditable: false, stage: 0, isMobile: mobile};
+    }
+
+    componentDidMount() {
+        let idPromise = getUserID();
+        idPromise.then().catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
     }
 
     resize(){

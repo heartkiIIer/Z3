@@ -3,6 +3,7 @@ import "../styles/ItsBedtime.css";
 import "../styles/logging.css";
 import {Tabs} from "./sliders";
 import SideBar from "./sideMenu";
+import {getUserID} from "../scripts/login";
 
 class logging extends React.Component{
     constructor(props) {
@@ -17,6 +18,13 @@ class logging extends React.Component{
                 padding: '10% 10% 5%',
             };
         }
+    }
+
+    componentDidMount() {
+        let idPromise = getUserID();
+        idPromise.then().catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
     }
 
     resize(){

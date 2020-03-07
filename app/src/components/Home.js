@@ -30,6 +30,10 @@ class Home extends React.Component {
     }
     componentDidMount(){
         let currentComponent = this;
+        let idPromise = getUserID();
+        idPromise.then().catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
         this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
         this.getWeather(currentComponent, "01609");

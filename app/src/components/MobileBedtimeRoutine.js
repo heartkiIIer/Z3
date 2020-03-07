@@ -29,7 +29,12 @@ class MobileBedtimeRoutine extends React.Component {
 
     componentDidMount(){
         let currentComponent = this;
+        let idPromise = getUserID();
+        idPromise.then().catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
         this.getRoutine(currentComponent)
+
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

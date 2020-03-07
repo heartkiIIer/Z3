@@ -17,6 +17,14 @@ class LogSleep extends React.Component{
             };
         }
     }
+
+    componentDidMount() {
+        let idPromise = getUserID();
+        idPromise.then().catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
+    }
+
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){

@@ -3,6 +3,7 @@ import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.c
 import "../styles/ItsBedtime.css";
 import SideBar from "./sideMenu";
 import MobileTile from "./MobileTile";
+import {getUserID} from "../scripts/login";
 
 
 /**
@@ -11,6 +12,13 @@ import MobileTile from "./MobileTile";
  * */
 
 class MindfulnessModules extends React.Component {
+    componentDidMount() {
+        let idPromise = getUserID();
+        idPromise.then().catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
+    }
+
     render(){
         return (
             <div class = "content modules mobilePage " id="App">

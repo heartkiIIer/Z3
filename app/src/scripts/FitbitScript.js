@@ -30,16 +30,17 @@ if(lastweek.getDate() < 10)
     startdate += "0";
 startdate += lastweek.getDate();
 
-let year = startdate.getFullYear(),
-    month = startdate.getMonth()
-    day = startdate.getDate(),
-    dates = [startdate];
+// let year = startdate.getFullYear(),
+//     month = startdate.getMonth()
+//     day = startdate.getDate(),
+//     dates = [startdate];
+//
+// while(dates[dates.length-1] < enddate) {
+//     dates.push(new Date(year, month, ++day));
+// }
 
-while(dates[dates.length-1] < enddate) {
-    dates.push(new Date(year, month, ++day));
-}
-
-console.log(dates)
+console.log(startdate)
+console.log(enddate)
 
 if (url.includes("report") && url.includes("#")) {
     //getting the access token from url

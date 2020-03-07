@@ -82,13 +82,14 @@ if (url.includes("report") && url.includes("#")) {
 
     var exerciseXhr = new XMLHttpRequest();
     // dates need to be in YYYY-MM-DD format
-    exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/-/activities/list.json?beforeDate=' + enddate + '&afterDate=' + startdate + '&sort=asc&offset=0&limit=100');
+    exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/activities/list.json?beforeDate=' + enddate + '&afterDate=' + startdate + '&sort=asc&offset=0&limit=100');
+    exerciseXhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
     exerciseXhr.onload = function () {
         if (exerciseXhr.status === 200) {
-            let exerciselogs = [];
-            let logs = JSON.parse(exerciseXhr.responseText).activities;
-            console.log(logs);
+            //      let exerciselogs = [];
+            //    let logs = JSON.parse(exerciseXhr.responseText).activities;
+            console.log(exerciseXhr.responseText);
             // for(let i = 0; i < logs.length; i++){
             //     let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
             //     let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);

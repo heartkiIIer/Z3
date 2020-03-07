@@ -12,7 +12,6 @@ class BedtimeProgressBar extends React.Component {
         this.state = {timer: null, timerRunning: false};
     }
 
-
     componentDidMount() {
         console.log("mounted")
         if(this.props.timer){

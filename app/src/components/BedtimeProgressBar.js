@@ -19,6 +19,14 @@ class BedtimeProgressBar extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        if(this.props.timer){
+            clearInterval(this.state.timer, ()=>{
+                this.setState({timerRunning: false})}
+            )
+        }
+    }
+
     startTimer(duration) {
         console.log("start timer")
 

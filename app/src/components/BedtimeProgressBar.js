@@ -9,7 +9,9 @@ import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
 class BedtimeProgressBar extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {timer: null, timerRunning: false};
     }
+
 
     componentDidMount() {
         if(this.props.timer){

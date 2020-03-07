@@ -96,46 +96,6 @@ class ItsBedtimeRoutine extends React.Component {
         })
     }
 
-     startTimer(duration) {
-         console.log("start timer")
-
-         if(!this.state.timerRunning){
-            this.setState({
-                timerRunning: true
-            }, ()=>{
-                var alerted = 0;
-                var timer = duration, minutes, seconds;
-                var interval = setInterval(function () {
-                    minutes = parseInt(timer / 60, 10);
-                    seconds = parseInt(timer % 60, 10);
-
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                    if(document.getElementById('timer')!=null) {
-                        document.getElementById('timer').innerText = minutes + ":" + seconds;
-                    }
-                    if (--timer < 0) {
-                        timer = 0;
-                        if(alerted === 0){
-                            alert("Your timer has finished!");
-                            alerted++;
-                        }
-                        return;
-                    }
-                }, 1000)
-                this.setState({timer: interval})
-            })
-        }
-        else{
-            console.log("clear interval")
-            clearInterval(this.state.timer, ()=>{
-                this.setState({timerRunning: false})}
-            )
-             this.startTimer(duration)
-        }
-    }
-
     selectComponent(){
         //if not initialized, show blank
         if(this.state.stage === -1){
@@ -151,7 +111,7 @@ class ItsBedtimeRoutine extends React.Component {
                 if(this.state.routine[this.state.stage].minutes !== 0) {
                     return <BedtimeProgressBar id="items" title={this.state.routine[this.state.stage].title}
                                                stage={this.state.stage} stages={this.state.stages}
-                                               minutes={this.state.routine[this.state.stage].minutes} timer={true} onLoad = {this.startTimer(this.state.routine[this.state.stage].minutes*60)}/>;
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={true}/>;
                 }
                 //No Timer
                 else{

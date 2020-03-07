@@ -32,6 +32,11 @@ class ItsBedtimeRoutine extends React.Component {
 
      componentDidMount(){
         let currentComponent = this;
+        let idPromise = getUserID();
+        idPromise.then(()=>this.getRoutine(currentComponent)
+        ).catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -183,11 +188,6 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     render(){
-        let idPromise = getUserID();
-        idPromise.then(()=>this.getRoutine(currentComponent)
-        ).catch(err =>{
-            window.location.replace("https://sleepwebapp.wpi.edu/");
-        })
         this.resize();
         if(this.state.isMobile){
             return (

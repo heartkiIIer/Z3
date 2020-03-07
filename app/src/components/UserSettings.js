@@ -372,14 +372,12 @@ class UserSettings extends React.Component {
     };
 }
 
-let UserSettingsClass = new UserSettings();
-
 function BlankEle() {
     return (<h1>-- hrs</h1>)
 }
 
 function Ele() {
-    return (<h1>{UserSettingsClass.state.sleepGoal} hrs</h1>)
+    return (<h1>{UserSettings.state.sleepGoal} hrs</h1>)
 }
 
 export default UserSettings;

@@ -32,7 +32,11 @@ class ItsBedtimeRoutine extends React.Component {
 
      componentDidMount(){
         let currentComponent = this;
-        this.getRoutine(currentComponent)
+        let idPromise = getUserID();
+        idPromise.then(()=>this.getRoutine(currentComponent)
+        ).catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

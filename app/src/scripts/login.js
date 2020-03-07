@@ -78,7 +78,7 @@ export function getUserID(){
                 user.providerData.forEach(function (profile) {
                     resolve(profile.uid);
                 });
-            } else { reject(); }
+            } else { reject(new Error("No user logged in")); }
         })
     });
 }

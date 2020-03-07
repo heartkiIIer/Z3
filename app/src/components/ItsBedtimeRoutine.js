@@ -40,13 +40,13 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.state.stage !== -1){
+        /*if(this.state.stage !== -1){
             if(this.state.stage < this.state.stages){
-                if(this.state.routine[this.state.stage].minutes !== 0 && !this.state.timerRunning) {
+                if(this.state.routine[this.state.stage].minutes !== 0) {
                     this.startTimer(this.state.routine[this.state.stage].minutes*60);
                 }
             }
-        }
+        }*/
     }
 
     getRoutine(currentComponent) {
@@ -132,6 +132,7 @@ class ItsBedtimeRoutine extends React.Component {
             clearInterval(this.state.timer, ()=>{
                 this.setState({timerRunning: false})}
             )
+             this.startTimer(duration)
         }
     }
 
@@ -150,7 +151,7 @@ class ItsBedtimeRoutine extends React.Component {
                 if(this.state.routine[this.state.stage].minutes !== 0) {
                     return <BedtimeProgressBar id="items" title={this.state.routine[this.state.stage].title}
                                                stage={this.state.stage} stages={this.state.stages}
-                                               minutes={this.state.routine[this.state.stage].minutes} timer={true}/>;
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={true} onLoad = {this.startTimer(this.state.routine[this.state.stage].minutes*60)}/>;
                 }
                 //No Timer
                 else{

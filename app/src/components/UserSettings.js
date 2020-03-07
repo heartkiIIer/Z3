@@ -293,7 +293,7 @@ class UserSettings extends React.Component {
     render(){
         let sleepGoalEle;
         if (!this.state.sleepGoal) sleepGoalEle = <BlankEle/>;
-        else sleepGoalEle = <Ele/>;
+        else sleepGoalEle = <h1>{this.state.sleepGoal} hrs</h1>;
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -374,10 +374,6 @@ class UserSettings extends React.Component {
 
 function BlankEle() {
     return (<h1>-- hrs</h1>)
-}
-
-function Ele() {
-    return (<h1>{UserSettings.state.sleepGoal} hrs</h1>)
 }
 
 export default UserSettings;

@@ -52,9 +52,9 @@ console.log(dates)
 // while(dates[dates.length-1] < enddate) {
 //     dates.push(new Date(year, month, ++day));
 // }
-
-console.log(startdate)
-console.log(enddate)
+//
+// console.log(startdate)
+// console.log(enddate)
 
 if (url.includes("report") && url.includes("#")) {
     //getting the access token from url

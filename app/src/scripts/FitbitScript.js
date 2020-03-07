@@ -30,6 +30,17 @@ if(lastweek.getDate() < 10)
     startdate += "0";
 startdate += lastweek.getDate();
 
+let year = startdate.getFullYear(),
+    month = startdate.getMonth()
+    day = startdate.getDate(),
+    dates = [startdate];
+
+while(dates[dates.length-1] < enddate) {
+    dates.push(new Date(year, month, ++day));
+}
+
+console.log(dates)
+
 if (url.includes("report") && url.includes("#")) {
     //getting the access token from url
     var access_token = url.split("#")[1].split("=")[1].split("&")[0];
@@ -74,41 +85,41 @@ if (url.includes("report") && url.includes("#")) {
     // };
     // sleepXhr.send();
 
-    var exerciseXhr = new XMLHttpRequest();
+    // var exerciseXhr = new XMLHttpRequest();
     // dates need to be in YYYY-MM-DD format
-    exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/activities/list.json?beforeDate=' + enddate + '&afterDate=' + startdate + '&sort=desc&limit=100&offset=0');
-    exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
-    exerciseXhr.onload = function () {
-        if (exerciseXhr.status === 200) {
-            console.log(exerciseXhr.responseText);
-            // for(let i = 0; i < logs.length; i++){
-            //     let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-            //     let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-            //     exerciselogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
-            //
-            //     let idPromise = getUserID();
-            //     idPromise.then(uid=>{
-            //         const data = JSON.stringify({
-            //             start: start,
-            //             end: end,
-            //             uid: uid
-            //         });
-            //         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
-            //             method: 'POST',
-            //             headers: {
-            //                 'Accept': 'application/json',
-            //                 'Content-Type': 'application/json',
-            //             },
-            //             body: data
-            //         }).then(r => {
-            //             console.log("Added fitbit exercise data: ", r.status);
-            //         })
-            //     });
-            // }
-            window.history.pushState("object or string", "Report", "/report")
-        }
-    };
-    exerciseXhr.send();
+    // exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/activities/list.json?beforeDate=' + enddate + '&afterDate=' + startdate + '&sort=desc&limit=100&offset=0');
+    // exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
+    // exerciseXhr.onload = function () {
+    //     if (exerciseXhr.status === 200) {
+    //         console.log(exerciseXhr.responseText);
+    //         // for(let i = 0; i < logs.length; i++){
+    //         //     let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+    //         //     let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+    //         //     exerciselogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
+    //         //
+    //         //     let idPromise = getUserID();
+    //         //     idPromise.then(uid=>{
+    //         //         const data = JSON.stringify({
+    //         //             start: start,
+    //         //             end: end,
+    //         //             uid: uid
+    //         //         });
+    //         //         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
+    //         //             method: 'POST',
+    //         //             headers: {
+    //         //                 'Accept': 'application/json',
+    //         //                 'Content-Type': 'application/json',
+    //         //             },
+    //         //             body: data
+    //         //         }).then(r => {
+    //         //             console.log("Added fitbit exercise data: ", r.status);
+    //         //         })
+    //         //     });
+    //         // }
+    //         window.history.pushState("object or string", "Report", "/report")
+    //     }
+    // };
+    // exerciseXhr.send();
 }
 
 export {OAUTH}

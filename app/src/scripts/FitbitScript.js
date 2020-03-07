@@ -12,23 +12,37 @@ if (url.includes("localhost")) {
 
 let today = new Date();
 let lastweek = new Date(today);
-lastweek.setDate(lastweek.getDate()-7);
+let dates = []
+for (let i = 7; i > 0; i--) {
+    lastweek.setDate(lastweek.getDate()-i);
+    let date = lastweek.getFullYear() + "-";
+    if(lastweek.getMonth() < 10)
+        date += "0";
+    date += lastweek.getMonth()+1 + "-";
+    if(lastweek.getDate() < 10)
+        date += "0";
+    date += lastweek.getDate();
+    dates.push(date)
+}
 
-let enddate = today.getFullYear() + "-";
-if(today.getMonth() < 10)
-    enddate += "0";
-enddate += today.getMonth()+1 + "-";
-if(today.getDate() < 10)
-    enddate += "0";
-enddate += today.getDate();
-
-let startdate = lastweek.getFullYear() + "-";
-if(lastweek.getMonth() < 10)
-    startdate += "0";
-startdate += lastweek.getMonth()+1 + "-";
-if(lastweek.getDate() < 10)
-    startdate += "0";
-startdate += lastweek.getDate();
+console.log(dates)
+// let enddate = today.getFullYear() + "-";
+// if(today.getMonth() < 10)
+//     enddate += "0";
+// enddate += today.getMonth()+1 + "-";
+// if(today.getDate() < 10)
+//     enddate += "0";
+// enddate += today.getDate();
+// dates.push(enddate)
+//
+// let startdate = lastweek.getFullYear() + "-";
+// if(lastweek.getMonth() < 10)
+//     startdate += "0";
+// startdate += lastweek.getMonth()+1 + "-";
+// if(lastweek.getDate() < 10)
+//     startdate += "0";
+// startdate += lastweek.getDate();
+// dates.push(startdate)
 
 // let year = startdate.getFullYear(),
 //     month = startdate.getMonth()

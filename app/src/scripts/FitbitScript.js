@@ -11,9 +11,9 @@ if (url.includes("localhost")) {
 }
 
 let today = new Date();
-let lastweek = new Date(today);
 let dates = []
 for (let i = 7; i > 0; i--) {
+    let lastweek = new Date(today);
     lastweek.setDate(lastweek.getDate()-i);
     let date = lastweek.getFullYear() + "-";
     if(lastweek.getMonth() < 10)

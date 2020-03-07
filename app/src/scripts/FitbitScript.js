@@ -2,7 +2,6 @@
 import {getUserID} from "./login";
 
 var url = window.location.href;
-console.log(url);
 let OAUTH = "";
 
 if (url.includes("localhost")) {
@@ -31,16 +30,11 @@ if(lastweek.getDate() < 10)
     startdate += "0";
 startdate += lastweek.getDate();
 
-console.log(startdate);
-console.log(enddate);
-
 if (url.includes("report") && url.includes("#")) {
     //getting the access token from url
     var access_token = url.split("#")[1].split("=")[1].split("&")[0];
     // get the userid
     var userId = url.split("#")[1].split("=")[2].split("&")[0];
-    console.log(access_token);
-    console.log(userId);
 
     // var sleepXhr = new XMLHttpRequest();
     // // dates need to be in YYYY-MM-DD format
@@ -82,7 +76,7 @@ if (url.includes("report") && url.includes("#")) {
 
     var exerciseXhr = new XMLHttpRequest();
     // dates need to be in YYYY-MM-DD format
-    exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/'+ userId +'/activities/list.json?afterDate=' + startdate + '&beforeDate=' + enddate + '&sort=asc&limit=100&offset=0');
+    exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/'+ userId +'/activities/list.json?afterDate=' + startdate + '&sort=asc&limit=100&offset=0');
     exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
     exerciseXhr.onload = function () {
         if (exerciseXhr.status === 200) {

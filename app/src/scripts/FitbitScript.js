@@ -82,7 +82,7 @@ if (url.includes("report") && url.includes("#")) {
 
     var exerciseXhr = new XMLHttpRequest();
     // dates need to be in YYYY-MM-DD format
-    exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2019-11-26&sort=asc&limit=10&offset=0');
+    exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/'+ userId +'/activities/list.json?afterDate=' + startdate + '&beforeDate=' + enddate + '&sort=asc&limit=100&offset=0');
     exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
     exerciseXhr.onload = function () {
         if (exerciseXhr.status === 200) {

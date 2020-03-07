@@ -241,7 +241,7 @@ function Display() {
         return (
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={window.location.reload}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/><br/>
                     <i><p>You have no upcoming events.</p></i>
                 </Tab.Pane>

@@ -18,7 +18,7 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "Invalid User",
+            name: "",
             image: "",
             perMessage: {
                 subject: "Personality and Chronotype:",
@@ -405,7 +405,7 @@ class Home extends React.Component {
                 <div id="setting_link">
                     <div className="d-flex align-items-center">
                         <img className="profile_pic" src={this.state.image} alt=""/>
-                        <h3 style={{color: "#7339AB", marginLeft: "10px"}}>Welcome {this.state.name}</h3>
+                        <h3 style={{color: "#7339AB", marginLeft: "10px"}}>Welcome <b>{this.state.name}</b></h3>
                     </div>
                     <div>
                         <button id="logout_icon" onClick={logout}></button>

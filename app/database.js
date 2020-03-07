@@ -448,7 +448,7 @@ function getUseFitbit(req, res, id) {
     });
 }
 
-// set boolean determening if user is asleep
+// set boolean determining if user is asleep
 function addAsleep(req, res, id, asleep) {
     pool.query("UPDATE users SET asleep=" + asleep +" WHERE google_id=" + id + ";", (error, results) => {
         if (error) {

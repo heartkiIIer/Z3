@@ -42,43 +42,81 @@ if (url.includes("report") && url.includes("#")) {
     console.log(access_token);
     console.log(userId);
 
-    var xhr = new XMLHttpRequest();
-    // dates need to be in YYYY-MM-DD format
-    xhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/'+startdate+'/'+enddate+'.json');
-    xhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            let sleeplogs = [];
-            let logs = JSON.parse(xhr.responseText).sleep;
-            console.log(logs);
-            for(let i = 0; i < logs.length; i++){
-                let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-                let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-                sleeplogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
+    // var sleepXhr = new XMLHttpRequest();
+    // // dates need to be in YYYY-MM-DD format
+    // sleepXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/'+startdate+'/'+enddate+'.json');
+    // sleepXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
+    // sleepXhr.onload = function () {
+    //     if (sleepXhr.status === 200) {
+    //         let sleeplogs = [];
+    //         let logs = JSON.parse(sleepXhr.responseText).sleep;
+    //         console.log(logs);
+    //         for(let i = 0; i < logs.length; i++){
+    //             let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+    //             let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+    //             sleeplogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
+    //
+    //             let idPromise = getUserID();
+    //             idPromise.then(uid=>{
+    //                 const data = JSON.stringify({
+    //                     start: start,
+    //                     end: end,
+    //                     uid: uid
+    //                 });
+    //                 fetch('https://sleepwebapp.wpi.edu:5000/newFitbitSleep', {
+    //                     method: 'POST',
+    //                     headers: {
+    //                         'Accept': 'application/json',
+    //                         'Content-Type': 'application/json',
+    //                     },
+    //                     body: data
+    //                 }).then(r => {
+    //                     console.log("Added fitbit sleep data: ", r.status);
+    //                 })
+    //             });
+    //         }
+    //         window.history.pushState("object or string", "Report", "/report")
+    //     }
+    // };
+    // sleepXhr.send();
 
-                let idPromise = getUserID();
-                idPromise.then(uid=>{
-                    const data = JSON.stringify({
-                        start: start,
-                        end: end,
-                        uid: uid
-                    });
-                    fetch('https://sleepwebapp.wpi.edu:5000/newFitbitSleep', {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                        },
-                        body: data
-                    }).then(r => {
-                        console.log("Added fitbit sleep data: ", r.status);
-                    })
-                });
-            }
+    var exerciseXhr = new XMLHttpRequest();
+    // dates need to be in YYYY-MM-DD format
+    exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/activities/list.json?afterDate=' + startdate + '&sort=asc&offset=0&limit=7');
+    exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
+    exerciseXhr.onload = function () {
+        if (exerciseXhr.status === 200) {
+            let exerciselogs = [];
+            let logs = JSON.parse(exerciseXhr.responseText).activities;
+            console.log(logs);
+            // for(let i = 0; i < logs.length; i++){
+            //     let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+            //     let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+            //     exerciselogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
+            //
+            //     let idPromise = getUserID();
+            //     idPromise.then(uid=>{
+            //         const data = JSON.stringify({
+            //             start: start,
+            //             end: end,
+            //             uid: uid
+            //         });
+            //         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
+            //             method: 'POST',
+            //             headers: {
+            //                 'Accept': 'application/json',
+            //                 'Content-Type': 'application/json',
+            //             },
+            //             body: data
+            //         }).then(r => {
+            //             console.log("Added fitbit exercise data: ", r.status);
+            //         })
+            //     });
+            // }
             window.history.pushState("object or string", "Report", "/report")
         }
     };
-    xhr.send();
+    exerciseXhr.send();
 }
 
 export {OAUTH}

@@ -351,7 +351,7 @@ class report extends React.Component{
         //Sleep
         for(var i = 0; i < Object.keys(this.state.sleep).length; i++){
             //disregard entries where wake up is not recorded
-            if(this.state.sleep[i].end_sleep != null || this.state[i].sleep != undefined){
+            if(this.state.sleep[i].end_sleep != null || this.state.sleep[i].end_sleep != undefined){
                 //if empty, add to the array
                 if(cardsToGenerate.length == 0){
                     var initial = new Date (this.state.sleep[i].start_sleep);

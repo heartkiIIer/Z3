@@ -351,12 +351,12 @@ class report extends React.Component{
         //Sleep
         for(var i = 0; i < Object.keys(this.state.sleep).length; i++){
             //disregard entries where wake up is not recorded
-            if(this.state.sleep[i].terminate != null){
+            if(this.state.sleep[i].end_sleep != null){
                 //if empty, add to the array
                 if(cardsToGenerate.length == 0){
-                    var initial = new Date (this.state.sleep[i].initial);
-                    var terminate = new Date(this.state.sleep[i].terminate);
-                    cardsToGenerate.push([this.state.sleep[i].initial, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);
+                    var initial = new Date (this.state.sleep[i].start_sleep);
+                    var terminate = new Date(this.state.sleep[i].end_sleep);
+                    cardsToGenerate.push([this.state.sleep[i].start_sleep, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);
                 }
                 //otherwise
                 else{
@@ -366,7 +366,7 @@ class report extends React.Component{
                     for(var j = 0; j < cardsToGenerate.length; j++){
                         var dateInArr = new Date(cardsToGenerate[j][0]);
                         var dateToEnter = new Date(this.state.sleep[i].initial);
-                        var terminate = new Date(this.state.sleep[i].terminate);
+                        var terminate = new Date(this.state.sleep[i].end_sleep);
                         if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
                             added=true;
                             cardsToGenerate[j][2] = cardsToGenerate[j][2] + (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
@@ -374,9 +374,9 @@ class report extends React.Component{
                     }
                     //otherwise just add a new entry
                     if(!added){
-                        var initial = new Date (this.state.sleep[i].initial);
-                        var terminate = new Date(this.state.sleep[i].terminate);
-                        cardsToGenerate.push([this.state.sleep[i].initial, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);                }
+                        var initial = new Date (this.state.sleep[i].start_sleep);
+                        var terminate = new Date(this.state.sleep[i].end_sleep);
+                        cardsToGenerate.push([this.state.sleep[i].start_sleep, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);                }
                 }
             }
         }

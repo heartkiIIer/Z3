@@ -254,6 +254,7 @@ class UserSettings extends React.Component {
         });
     }
     setUserFibitTrue(){
+        this.toreport();
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({

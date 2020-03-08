@@ -4,6 +4,8 @@ import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 
 class LogWake extends React.Component{
+    state = { width: 0, height: 0 };
+
     constructor(props) {
         super(props);
         if(window.innerWidth >= 700){
@@ -18,11 +20,16 @@ class LogWake extends React.Component{
         }
     }
 
+    updateDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    };
+
     componentDidMount() {
         let idPromise = getUserID();
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
+        window.addEventListener('resize', this.updateDimensions);
     }
 
     resize(){
@@ -40,6 +47,28 @@ class LogWake extends React.Component{
         })
     }
 
+    setAsleepFalse(){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({
+                asleep: false,
+                uid: uid
+            });
+            fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(r => {
+                console.log("Added asleep boolean: ", r.status);
+                this.getAsleep(this)
+            })
+        });
+    }
+
+
     myFunction() {
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -52,13 +81,13 @@ class LogWake extends React.Component{
                 },
                 body: data
             }).then( r => {
+                this.setAsleepFalse();
                 console.log("Completed")
             })
         });
-        //Home.call(this.setAsleepTrue())
     }
     render(){
-        this.resize();
+        //this.resize();
         return (
             <div class = "content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

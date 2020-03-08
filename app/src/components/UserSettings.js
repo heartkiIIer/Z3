@@ -8,7 +8,7 @@ import z3_firebase from "../scripts/firebase"
 import swal from 'sweetalert'
 import TaskSetting from "./TaskSetting"
 import {getUserID, getUserImage} from "../scripts/login";
-import {OAUTH} from "../scripts/FitbitScript";
+import {OAUTHSettings} from "../scripts/FitbitScript";
 
 /**
  * @author Eliazbeth Del Monaco
@@ -288,7 +288,7 @@ class UserSettings extends React.Component {
         return fitbitele;
     }
     toreport(){
-        window.location.assign(OAUTH);
+        window.location.assign(OAUTHSettings);
     }
 
     render(){

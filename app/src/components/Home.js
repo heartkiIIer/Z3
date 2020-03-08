@@ -38,6 +38,7 @@ class Home extends React.Component {
         this.getPersonalityBasedMessage(currentComponent);
         this.getWeather(currentComponent, "01609");
         this.getUseFitbit(currentComponent)
+        this.getAsleep(currentComponent)
     }
 
     // //get User profile information
@@ -156,7 +157,7 @@ class Home extends React.Component {
         });
     }
 
-    getAsleep(){
+    getAsleep(currentComponent){
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
@@ -170,62 +171,19 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                //currentComponent.setState({fitbit : r[0].fitbit})
+                currentComponent.setState({asleep : r[0].asleep})
             });
-        });
-    }
-
-    setAsleepFalse(){
-        let idPromise = getUserID();
-        idPromise.then(uid=>{
-            const data = JSON.stringify({
-                asleep: false,
-                uid: uid
-            });
-            fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then(r => {
-                console.log("Added asleep boolean: ", r.status);
-                this.getAsleep(this)
-            })
-        });
-    }
-
-    setAsleepTrue(){
-        let idPromise = getUserID();
-        idPromise.then(uid=>{
-            const data = JSON.stringify({
-                asleep: true,
-                uid: uid
-            });
-            fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then(r => {
-                console.log("Added asleep boolean: ", r.status);
-                this.getAsleep(this)
-            })
         });
     }
 
     setSleepState(){
-        if(this.getAsleep() === true){
+        if(this.getAsleep()===true){
             return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
         else if(this.getAsleep() === false){
             return <Link to="/logWake"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
         else{
-            this.setAsleepTrue();
             return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
     }

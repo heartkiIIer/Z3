@@ -26,6 +26,7 @@ class Home extends React.Component {
             },
             weather: null,
             fitbit: false
+            asleep: false
         };
     }
     componentDidMount(){

@@ -25,7 +25,7 @@ class Home extends React.Component {
                 message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
             },
             weather: null,
-            fitbit: false
+            fitbit: false,
             asleep: false
         };
     }

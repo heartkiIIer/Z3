@@ -356,6 +356,9 @@ class report extends React.Component{
                 if(cardsToGenerate.length == 0){
                     var initial = new Date (this.state.sleep[i].start_sleep);
                     var terminate = new Date(this.state.sleep[i].end_sleep);
+                    console.log("sleep entry info");
+                    console.log(initial)
+                    console.log(terminate)
                     cardsToGenerate.push([this.state.sleep[i].start_sleep, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);
                 }
                 //otherwise
@@ -371,9 +374,11 @@ class report extends React.Component{
                             added=true;
                             cardsToGenerate[j][2] = cardsToGenerate[j][2] + (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
                         }
+                        console.log("found a same date entry")
                     }
                     //otherwise just add a new entry
                     if(!added){
+                        console.log("adding a new entry")
                         var initial = new Date (this.state.sleep[i].start_sleep);
                         var terminate = new Date(this.state.sleep[i].end_sleep);
                         cardsToGenerate.push([this.state.sleep[i].start_sleep, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);                }

@@ -13,83 +13,86 @@ import {getUserID} from "../scripts/login";
  * */
 
 class MindfulnessModules extends React.Component {
+    state = { width: 0, height: 0 };
+
     constructor(props){
-        super(props)
-        var mobile;
+        super(props);
         if(window.innerWidth >= 700){
-            mobile = false;
+            this.state = {
+                padding: '75px 75px 40px',
+            };
         }
         else{
-            mobile = true;
+            this.state = {
+                padding: '10% 10% 5%',
+            };
         }
-        this.state = { isEditable: false, stage: 0, isMobile: mobile};
     }
+
+    updateDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    };
 
     componentDidMount() {
         let idPromise = getUserID();
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
+        window.addEventListener('resize', this.updateDimensions);
     }
+
 
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    mobile: true
+
                 });
             }
             else {
                 this.setState({
-                    mobile: false
+                    //padding: '75px 75px 40px'
                 })
             }
         })
     }
 
-    render(){
-        this.resize();
-        if(this.state.isMobile){
-            return (
-                <MobileMindfulnessModules/>
-            );
-        }
-        else{
-            return (
-                <div class = "content modules" id="App">
-                    <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div className="middle">
+    render() {
+        //this.resize();
+        return (
+            <div class="content modules" id="App">
+                <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                <div className="middle">
                     <div className="inner" id="page-wrap">
-                        <h1 class = "blueHeader"> Mindfulness Modules</h1>
-                        <hr class = "hr-settings"/>
+                        <h1 class="blueHeader"> Mindfulness Modules</h1>
+                        <hr class="hr-settings"/>
                         <h4>Explore mindfulness topics: proven to improve sleep!</h4>
 
 
-                        <div class = "flex-row-wrap">
-                            <a href = "/MindfulnessOverview">
-                                <Tile name = "Mindfulness Overview"/>
+                        <div class="flex-row-wrap">
+                            <a href="/MindfulnessOverview">
+                                <Tile name="Mindfulness Overview"/>
                             </a>
-                            <a href = "/MindfulYoga">
-                                <Tile name = "Mindful Yoga"/>
+                            <a href="/MindfulYoga">
+                                <Tile name="Mindful Yoga"/>
                             </a>
-                            <a href = "/ExampleModule">
-                                <Tile name = "5 Minute Meditation"/>
+                            <a href="/ExampleModule">
+                                <Tile name="5 Minute Meditation"/>
                             </a>
-                            <a href = "/BodyScanMeditation">
-                                <Tile name = "10 Minute Meditation"/>
+                            <a href="/BodyScanMeditation">
+                                <Tile name="10 Minute Meditation"/>
                             </a>
-                            <a href = "/MindfulEating">
-                                <Tile name = "Mindful Eating"/>
+                            <a href="/MindfulEating">
+                                <Tile name="Mindful Eating"/>
                             </a>
-                            <a href = "/mindfulLeadership">
-                                <Tile name = "Mindful Leadership"/>
+                            <a href="/mindfulLeadership">
+                                <Tile name="Mindful Leadership"/>
                             </a>
                         </div>
                     </div>
-                    </div>
                 </div>
-            );
-        }
-    };
+            </div>
+        );
+    }
 }
 export default MindfulnessModules;

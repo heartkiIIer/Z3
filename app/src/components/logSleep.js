@@ -56,7 +56,7 @@ class LogSleep extends React.Component{
                 console.log("Completed")
             })
         });
-        Home.call(this.setAsleepFalse())
+        //Home.call(this.setAsleepFalse())
     }
 
     render(){

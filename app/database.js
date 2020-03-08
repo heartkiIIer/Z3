@@ -145,7 +145,7 @@ function addExerciseEntriesById(req, res, id, minutes, intensity) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, intensity) VALUES('+ internalId.rows[0].user_id +', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
+            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, avg_intensity) VALUES('+ internalId.rows[0].user_id +', current_timestamp,' + minutes+', ' + intensity+');' , (error, results) => {
                 if (error) {
                     throw error
                 }

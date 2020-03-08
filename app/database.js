@@ -100,7 +100,7 @@ function addCaffeineEntriesById(req, res, id, cups, size) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, size) VALUES('+internalId.rows[0].user_id+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
+            pool.query('INSERT INTO CaffeineEntry(user_id, date, cups, avg_size) VALUES('+internalId.rows[0].user_id+', current_timestamp,' + cups+', '+size+');' , (error, results) => {
                 if (error) {
                     throw error
                 }

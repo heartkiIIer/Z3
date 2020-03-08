@@ -55,7 +55,7 @@ class LogWake extends React.Component{
                 console.log("Completed")
             })
         });
-        Home.call(this.setAsleepTrue())
+        //Home.call(this.setAsleepTrue())
     }
     render(){
         this.resize();

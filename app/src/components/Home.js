@@ -178,10 +178,10 @@ class Home extends React.Component {
     }
 
     setSleepState(){
-        if(this.getAsleep()===true){
+        if(this.state.getAsleep()===true){
             return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
-        else if(this.getAsleep() === false){
+        else if(this.state.getAsleep() === false){
             return <Link to="/logWake"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
         else{

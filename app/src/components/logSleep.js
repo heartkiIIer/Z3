@@ -88,7 +88,7 @@ class LogSleep extends React.Component{
                     <div className="inner" id="page-wrap">
                         <div class = "time" align='center'>
                             <h1 className="sleepHeader" align='center'>Are you going to sleep now?</h1>
-                            <a href="/logWake"><button className='btn' onClick={() => this.myFunction()}>Goodnight</button></a>
+                            <a href="/LogWake"><button className='btn' onClick={() => this.myFunction()}>Goodnight</button></a>
                         </div>
                     </div>
                 </div>

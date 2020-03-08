@@ -368,7 +368,7 @@ class report extends React.Component{
                     //check if that date is already entered
                     for(var j = 0; j < cardsToGenerate.length; j++){
                         var dateInArr = new Date(cardsToGenerate[j][0]);
-                        var dateToEnter = new Date(this.state.sleep[i].initial);
+                        var dateToEnter = new Date(this.state.sleep[i].start_sleep);
                         var terminate = new Date(this.state.sleep[i].end_sleep);
                         if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
                             added=true;

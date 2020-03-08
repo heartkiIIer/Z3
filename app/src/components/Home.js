@@ -172,7 +172,7 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                currentComponent.setState({asleep : r[0].asleep})
+                //currentComponent.setState({asleep : r[0].asleep})
             });
         });
     }

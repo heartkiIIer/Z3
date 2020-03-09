@@ -12,6 +12,7 @@ import { Tab } from 'semantic-ui-react'
 import LoginControl from "./Display";
 import Display from "./Display";
 import {getUserID} from "../scripts/login";
+import swal from "sweetalert";
 
 const cup = {
     fontSize: '250%'
@@ -154,6 +155,14 @@ function submitExerciseEntry() {
                 minutes: minutes,
                 uid: uid
             })
+        }).then(r=>{
+            if(r.status === 200){
+                swal({
+                    title: "Success",
+                    icon: "success",
+                    text: "New exercise entry have been logged."
+                })
+            }
         })
     });
 }
@@ -177,6 +186,14 @@ function submitCaffeineEntry() {
                 cupSize: cupSize,
                 uid: uid
             })
+        }).then(r=>{
+            if(r.status === 200){
+                swal({
+                    title: "Success",
+                    icon: "success",
+                    text: "New caffeine entry have been logged."
+                })
+            }
         })
     });
 }

@@ -4,6 +4,7 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
 import Item from './Item'
 import {getUserID} from "../scripts/login";
+import swal from 'sweetalert'
 
 const refresh = {
     paddingRight: '6px',
@@ -183,6 +184,14 @@ function submitStressEntry() {
                     value: event.value,
                     uid: uid
                 })
+            }).then(r=>{
+                if(r.status === 200){
+                    swal({
+                        title: "Success",
+                        icon: "success",
+                        text: "New stress entries have been logged."
+                    })
+                }
             })
         })
     });

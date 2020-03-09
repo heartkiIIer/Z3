@@ -172,7 +172,7 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                //currentComponent.setState({asleep : r[0].asleep})
+                currentComponent.setState({asleep : r[0].asleep})
             });
         });
     }
@@ -376,7 +376,11 @@ class Home extends React.Component {
                 <div className="col-lg-6">
                     <ul className="circle">
                         <li>
-                            {this.setSleepState()}
+                            <Link to="/sleep">
+                                <HomeIcon spanID={"sleepIcon_h"}
+                                          iconClass={"iconImages_h sleepIconImg"}
+                                          iconInfo={"Log Your Sleep"}/>
+                            </Link>
                         </li>
                         <li>
                             <a onClick={this.usefitbit.bind(this)}>

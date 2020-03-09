@@ -293,17 +293,15 @@ function checkSavedState(req, res, id) {
     })
 }
 
-//Create user
+//puts single quotes around a variable
+function addQuotes(str){
+    return "'" + str + "'";
+}
 
-//Test Result
-
-//Add a test result
-
-//Bedtime Routine Task
 //builds a promise that converts id
 function promiseBuildergoogleIdtoInternal(googleid){
     var promise = new Promise(function(resolve, reject){
-        pool.query("SELECT * FROM users WHERE firebase_id='"+googleid+"';", (error, results) => {
+        pool.query("SELECT * FROM users WHERE firebase_id="+addQuotes(googleid)+";", (error, results) => {
             if (error) {
                 reject();
             }

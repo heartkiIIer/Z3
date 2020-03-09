@@ -30,12 +30,9 @@ function getUser(req, res, id, first) {
     console.log('SELECT * FROM users WHERE firebase_id='+addQuotes(id)+';');
     pool.query('SELECT * FROM users WHERE firebase_id='+addQuotes(id)+';', (error, results) => {
         if (error) {
-            throw error
-        }
-        console.log(results.rows);
-        if(results.rows.length == 0){
             addUser(req, res, id, first);
         }
+        console.log(results.rows);
         res.send(results.rows);
     });
 }

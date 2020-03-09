@@ -79,7 +79,7 @@ if (url.includes("report") && url.includes("#")) {
         exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
         exerciseXhr.onload = function () {
             if (exerciseXhr.status === 200) {
-                let logs = JSON.parse(sleepXhr.responseText);
+                let logs = JSON.parse(exerciseXhr.responseText);
                 console.log(logs);
 
                 let exerciseLog = {

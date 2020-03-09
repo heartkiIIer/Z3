@@ -27,12 +27,15 @@ function getUsers(req, res) {
 function getUser(req, res, id, first) {
     checkQuery(id);
     checkQuery(first);
-    console.log('SELECT * FROM users WHERE firebase_id='+addQuotes(id)+';');
-    pool.query('SELECT * FROM users WHERE firebase_id='+addQuotes(id)+';', (error, results) => {
+    console.log('SELECT * FROM users WHERE firebase_id='+id+';');
+    pool.query('SELECT * FROM users WHERE firebase_id='+id+';', (error, results) => {
         if (error) {
-            addUser(req, res, id, first);
+            throw error
         }
         console.log(results.rows);
+        if(results.rows.length == 0){
+            addUser(req, res, id, first);
+        }
         res.send(results.rows);
     });
 }
@@ -41,8 +44,8 @@ function getUser(req, res, id, first) {
 function addUser(req, res, id, first) {
     checkQuery(id);
     checkQuery(first);
-    console.log("INSERT INTO Users(firebase_id, first_name, last_name) VALUES("+addQuotes(id)+", " + first+", );");
-    pool.query("INSERT INTO Users(firebase_id, first_name, last_name) VALUES("+addQuotes(id)+", " + first+", NULL);" , (error, results) => {
+    console.log("INSERT INTO Users(firebase_id, first_name, last_name) VALUES("+id+", " + first+", );");
+    pool.query("INSERT INTO Users(firebase_id, first_name, last_name) VALUES("+id+", " + first+", NULL);" , (error, results) => {
         if (error) {
             throw error
         }
@@ -61,7 +64,7 @@ function deleteUser(req, res, id){
                 'DELETE FROM SleepEntry WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM StressEntry WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM ExerciseEntry WHERE user_id='+internalId.rows[0].user_id+';' +
-                'DELETE FROM users WHERE firebase_id='+addQuotes(id)+';', (error, results) => {
+                'DELETE FROM users WHERE firebase_id='+id+';', (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -217,7 +220,7 @@ function addSleepEntryById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, start_sleep) VALUES("+internalId.rows[0].user_id+', current_timestamp' +");" , (error, results) => {
+            pool.query("INSERT INTO SleepEntry(user_id, initial) VALUES("+internalId.rows[0].user_id+', current_timestamp' +");" , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -233,10 +236,10 @@ function addFitbitSleepEntryById(req, res, id, start, end) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, start_sleep, end_sleep) VALUES("+
+            pool.query("INSERT INTO SleepEntry(user_id, initial, terminate) VALUES("+
                 internalId.rows[0].user_id+", TO_TIMESTAMP('"+
                 start+"', 'YYYY/MM/DD HH24:MI:SS'), TO_TIMESTAMP('"+
-                end+"', 'YYYY/MM/DD HH24:MI:SS'))" + ' ON CONFLICT (user_id, start_sleep) DO NOTHING;' , (error, results) => {
+                end+"', 'YYYY/MM/DD HH24:MI:SS'))" + ' ON CONFLICT (user_id, initial) DO NOTHING;' , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -257,8 +260,8 @@ function addWakeById(req, res, id) {
             promise2.then(function(entry_id){
                 console.log("entry id");
                 console.log(entry_id.rows[0].max);
-                console.log("UPDATE sleepentry SET end_sleep = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";");
-                pool.query("UPDATE sleepentry SET end_sleep = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                console.log("UPDATE sleepentry SET terminate = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";");
+                pool.query("UPDATE sleepentry SET terminate = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
                     if (error) {
                         throw error
                     }
@@ -290,16 +293,17 @@ function checkSavedState(req, res, id) {
     })
 }
 
-//puts single quotes around a variable
-function addQuotes(str){
-    console.log( "'" + str + "'");
-    return "'" + str + "'";
-}
+//Create user
 
+//Test Result
+
+//Add a test result
+
+//Bedtime Routine Task
 //builds a promise that converts id
 function promiseBuildergoogleIdtoInternal(googleid){
     var promise = new Promise(function(resolve, reject){
-        pool.query("SELECT * FROM users WHERE firebase_id="+addQuotes(googleid)+";", (error, results) => {
+        pool.query('SELECT * FROM users WHERE firebase_id='+googleid+';', (error, results) => {
             if (error) {
                 reject();
             }
@@ -402,7 +406,7 @@ function putChronotypeById(req, res, id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10
 
 // get Sleep goal from db
 function getSleepGoalById(req, res, id) {
-    pool.query('SELECT sleepgoal FROM users WHERE firebase_id=' + addQuotes(id) + ';', (error, results) => {
+    pool.query('SELECT sleepgoal FROM users WHERE firebase_id=' + id + ';', (error, results) => {
         if (error) {
             throw error
         }
@@ -413,7 +417,7 @@ function getSleepGoalById(req, res, id) {
 
 // add sleep goal from db
 function addSleepGoalById(req, res, id, goal) {
-    pool.query("UPDATE users SET sleepgoal=" + goal + " WHERE firebase_id=" + addQuotes(id) + ";", (error, results) => {
+    pool.query("UPDATE users SET sleepgoal=" + goal + " WHERE firebase_id=" + id + ";", (error, results) => {
         if (error) {
             throw error
         }
@@ -424,7 +428,7 @@ function addSleepGoalById(req, res, id, goal) {
 
 // set boolean determing if user wants to use fitbit to grab sleep log
 function addUseFitbit(req, res, id, fitbit) {
-    pool.query("UPDATE users SET fitbit=" + fitbit + " WHERE firebase_id=" + addQuotes(id) + ";", (error, results) => {
+    pool.query("UPDATE users SET fitbit=" + fitbit + " WHERE firebase_id=" + id + ";", (error, results) => {
         if (error) {
             throw error
         }
@@ -435,7 +439,7 @@ function addUseFitbit(req, res, id, fitbit) {
 
 // get boolean determining if user wants to use their Fitbit to store sleep
 function getUseFitbit(req, res, id) {
-    pool.query('SELECT fitbit FROM users WHERE firebase_id=' + addQuotes(id) + ';', (error, results) => {
+    pool.query('SELECT fitbit FROM users WHERE firebase_id=' + id + ';', (error, results) => {
         if (error) {
             throw error
         }
@@ -446,7 +450,7 @@ function getUseFitbit(req, res, id) {
 
 // set boolean determining if user is asleep
 function addAsleep(req, res, id, asleep) {
-    pool.query("UPDATE users SET asleep=" + asleep +" WHERE firebase_id=" + addQuotes(id) + ";", (error, results) => {
+    pool.query("UPDATE users SET asleep=" + asleep +" WHERE firebase_id=" + id + ";", (error, results) => {
         if (error) {
             throw error
         }
@@ -457,7 +461,7 @@ function addAsleep(req, res, id, asleep) {
 
 // get boolean determining if user is asleep sleep
 function getAsleep(req, res, id) {
-    pool.query('SELECT asleep FROM users WHERE firebase_id=' + addQuotes(id) + ';', (error, results) => {
+    pool.query('SELECT asleep FROM users WHERE firebase_id=' + id + ';', (error, results) => {
         if (error) {
             throw error
         }

@@ -79,31 +79,33 @@ if (url.includes("report") && url.includes("#")) {
         exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
         exerciseXhr.onload = function () {
             if (exerciseXhr.status === 200) {
-                console.log(exerciseXhr.responseText);
-                // for(let i = 0; i < logs.length; i++){
-                //     let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-                //     let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-                //     exerciselogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
+                let logs = JSON.parse(sleepXhr.responseText);
+                console.log(logs);
+
+                let exerciseLog = {
+
+                };
+                // let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+                // let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+                // exerciselogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
                 //
-                //     let idPromise = getUserID();
-                //     idPromise.then(uid=>{
-                //         const data = JSON.stringify({
-                //             start: start,
-                //             end: end,
-                //             uid: uid
-                //         });
-                //         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
-                //             method: 'POST',
-                //             headers: {
-                //                 'Accept': 'application/json',
-                //                 'Content-Type': 'application/json',
-                //             },
-                //             body: data
-                //         }).then(r => {
-                //             console.log("Added fitbit exercise data: ", r.status);
-                //         })
+                // let idPromise = getUserID();
+                // idPromise.then(uid=>{
+                //     const data = JSON.stringify({
+                //         start: start,
+                //         end: end,
+                //         uid: uid
                 //     });
-                // }
+                //     fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
+                //         method: 'POST',
+                //         headers: {
+                //             'Accept': 'application/json',
+                //             'Content-Type': 'application/json',
+                //         },
+                //         body: data
+                //     }).then(r => {
+                //         console.log("Added fitbit exercise data: ", r.status);
+                //     })
                 window.history.pushState("object or string", "Report", "/report")
             }
         };

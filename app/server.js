@@ -35,7 +35,7 @@ var corsOptions = {
 
 app.post('/logUser', cors(corsOptions), (req, res) => {
     let data = req.body;
-    db.getUser(req, res, data.uid, "\'"+data.name+"\'");
+    db.getUser(req, res, data.id, "\'"+data.name+"\'");
 });
 
 //DATABASE FUNCTIONALITY

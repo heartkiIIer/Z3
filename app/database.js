@@ -220,7 +220,7 @@ function addSleepEntryById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, initial) VALUES("+internalId.rows[0].user_id+', current_timestamp' +");" , (error, results) => {
+            pool.query("INSERT INTO SleepEntry(user_id, start_sleep) VALUES("+internalId.rows[0].user_id+', current_timestamp' +");" , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -236,10 +236,10 @@ function addFitbitSleepEntryById(req, res, id, start, end) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, initial, terminate) VALUES("+
+            pool.query("INSERT INTO SleepEntry(user_id, start_sleep, start_sleep) VALUES("+
                 internalId.rows[0].user_id+", TO_TIMESTAMP('"+
                 start+"', 'YYYY/MM/DD HH24:MI:SS'), TO_TIMESTAMP('"+
-                end+"', 'YYYY/MM/DD HH24:MI:SS'))" + ' ON CONFLICT (user_id, initial) DO NOTHING;' , (error, results) => {
+                end+"', 'YYYY/MM/DD HH24:MI:SS'))" + ' ON CONFLICT (user_id, start_sleep) DO NOTHING;' , (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -260,8 +260,8 @@ function addWakeById(req, res, id) {
             promise2.then(function(entry_id){
                 console.log("entry id");
                 console.log(entry_id.rows[0].max);
-                console.log("UPDATE sleepentry SET terminate = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";");
-                pool.query("UPDATE sleepentry SET terminate = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                console.log("UPDATE sleepentry SET start_sleep = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";");
+                pool.query("UPDATE sleepentry SET start_sleep = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
                     if (error) {
                         throw error
                     }

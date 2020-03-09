@@ -76,7 +76,7 @@ export function getUserID(){
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 user.providerData.forEach(function (profile) {
-                    resolve(user.uid);
+                    resolve(profile.uid);
                 });
             } else { reject(new Error("No user logged in")); }
         })

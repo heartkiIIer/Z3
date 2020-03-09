@@ -303,7 +303,7 @@ function checkSavedState(req, res, id) {
 //builds a promise that converts id
 function promiseBuildergoogleIdtoInternal(googleid){
     var promise = new Promise(function(resolve, reject){
-        pool.query('SELECT * FROM users WHERE firebase_id='+googleid+';', (error, results) => {
+        pool.query("SELECT * FROM users WHERE firebase_id='"+googleid+"';", (error, results) => {
             if (error) {
                 reject();
             }

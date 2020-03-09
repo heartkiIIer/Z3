@@ -172,7 +172,9 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                currentComponent.setState({asleep : r[0].asleep})
+                if(r.length !== 0){
+                    currentComponent.setState({asleep : r[0].asleep})
+                }
             });
         });
     }
@@ -344,10 +346,9 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                // if(typeof(r) != "undefined"){
-                //     currentComponent.setState({fitbit: r[0].fitbit});
-                // }
-                console.log(r)
+                if(r.length !== 0){
+                    currentComponent.setState({fitbit: r[0].fitbit});
+                }
             });
         });
     }

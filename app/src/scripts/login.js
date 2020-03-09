@@ -39,7 +39,7 @@ var firebase = require('firebase');
             user.providerData.forEach(function (profile) {
                 const data = JSON.stringify({
                     id: profile.uid,
-                    // id: user.uid,
+                    uid: user.uid,
                     name: profile.displayName,
                     image: profile.photoURL});
 
@@ -76,7 +76,7 @@ export function getUserID(){
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 user.providerData.forEach(function (profile) {
-                    resolve(profile.uid);
+                    resolve(user.uid);
                 });
             } else { reject(new Error("No user logged in")); }
         })

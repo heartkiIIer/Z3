@@ -83,7 +83,7 @@ if (url.includes("report") && url.includes("#")) {
                 console.log(activities);
 
                 let idPromise = getUserID();
-                idPromise.then(uid=>{
+                idPromise.then(uid=> {
                     let exerciseLog_low = {
                         timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
                         intensity: 2,
@@ -103,7 +103,7 @@ if (url.includes("report") && url.includes("#")) {
                         uid: uid
                     };
 
-                    if(exerciseLog_low.minutes !== 0) {
+                    if (exerciseLog_low.minutes !== 0) {
                         const data_low = JSON.stringify(exerciseLog_low);
                         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
                             method: 'POST',
@@ -117,7 +117,7 @@ if (url.includes("report") && url.includes("#")) {
                         });
                     }
 
-                    if(exerciseLog_med.minutes !== 0) {
+                    if (exerciseLog_med.minutes !== 0) {
                         const data_med = JSON.stringify(exerciseLog_med);
                         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
                             method: 'POST',
@@ -131,7 +131,7 @@ if (url.includes("report") && url.includes("#")) {
                         });
                     }
 
-                    if(exerciseLog_high.minutes !== 0) {
+                    if (exerciseLog_high.minutes !== 0) {
                         const data_high = JSON.stringify(exerciseLog_high);
                         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
                             method: 'POST',
@@ -144,7 +144,7 @@ if (url.includes("report") && url.includes("#")) {
                             console.log("Added fitbit high intensity exercise data: ", r.status);
                         });
                     }
-
+                });
                 window.history.pushState("object or string", "Report", "/report")
             }
         };

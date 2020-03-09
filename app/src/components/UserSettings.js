@@ -99,7 +99,7 @@ class UserSettings extends React.Component {
         if(this.state.routine !== null){
             for(let i = 0; i < this.state.routine.length; i++){
                 var task = this.state.routine[i];
-                list.push(<TaskSetting id={task.task_id} taskTitle={task.title} taskMin={task.minutes}/>);
+                list.push(<TaskSetting id={task.task_id} taskTitle={task.task_name} taskMin={task.minutes}/>);
             }
         }
         return list;

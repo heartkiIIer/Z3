@@ -60,6 +60,10 @@ app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
     db.addExerciseEntriesById(req, res, uid, intensity, minutes);
 });
 
+app.post('/newFitbitExercise/', cors(corsOptions), (req, res) => {
+   const {intensity, minutes, uid, timestamp} = req.body;
+});
+
 app.post('/users/newstress/', cors(corsOptions), (req, res)=> {
     const {title, year, month, day, date, value, uid} = req.body;
     db.addStressEntriesById(req, res, uid, title, year, month, day, date, value);

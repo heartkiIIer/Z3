@@ -295,6 +295,7 @@ function checkSavedState(req, res, id) {
 
 //puts single quotes around a variable
 function addQuotes(str){
+    console.log( "'" + str + "'");
     return "'" + str + "'";
 }
 

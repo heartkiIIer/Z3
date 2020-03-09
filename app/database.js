@@ -41,8 +41,8 @@ function getUser(req, res, id, first) {
 function addUser(req, res, id, first) {
     checkQuery(id);
     checkQuery(first);
-    console.log("INSERT INTO Users(firebase_id, first_name, last_name) VALUES("+id+", " + first+", );");
-    pool.query("INSERT INTO Users(firebase_id, first_name, last_name) VALUES("+id+", " + first+", NULL);" , (error, results) => {
+    console.log("INSERT INTO Users(firebase_id, first_name, last_name) VALUES("+addQuotes(id)+", " + first+", );");
+    pool.query("INSERT INTO Users(firebase_id, first_name, last_name) VALUES("+addQuotes(id)+", " + first+", NULL);" , (error, results) => {
         if (error) {
             throw error
         }
@@ -457,7 +457,7 @@ function addAsleep(req, res, id, asleep) {
 
 // get boolean determining if user is asleep sleep
 function getAsleep(req, res, id) {
-    pool.query('SELECT asleep FROM users WHERE firebase_id=' + id + ';', (error, results) => {
+    pool.query('SELECT asleep FROM users WHERE firebase_id=' + addQuotes(id) + ';', (error, results) => {
         if (error) {
             throw error
         }

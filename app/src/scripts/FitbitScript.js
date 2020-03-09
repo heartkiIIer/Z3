@@ -43,7 +43,6 @@ if (url.includes("report") && url.includes("#")) {
         if (sleepXhr.status === 200) {
             let sleeplogs = [];
             let logs = JSON.parse(sleepXhr.responseText).sleep;
-            console.log(logs);
             for(let i = 0; i < logs.length; i++){
                 let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
                 let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
@@ -68,6 +67,7 @@ if (url.includes("report") && url.includes("#")) {
                     })
                 });
             }
+            console.log(sleeplogs);
             window.history.pushState("object or string", "Report", "/report")
         }
     };
@@ -79,33 +79,49 @@ if (url.includes("report") && url.includes("#")) {
         exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
         exerciseXhr.onload = function () {
             if (exerciseXhr.status === 200) {
-                let logs = JSON.parse(exerciseXhr.responseText);
-                console.log(logs);
+                let activities = JSON.parse(exerciseXhr.responseText).summary;
+                console.log(activities);
 
-                let exerciseLog = {
+                for(let i = 0; i < activities.length; i++){
+                    let exerciseLog_low = {
+                        timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
+                        intensity: 2,
+                        minutes: activities.lightlyActiveMinutes
+                    };
+                    let exerciseLog_med = {
+                        timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
+                        intensity: 50,
+                        minutes: activities.fairlyActiveMinutes
+                    };
+                    let exerciseLog_high = {
+                        timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
+                        intensity: 98,
+                        minutes: activities.veryActiveMinutes
+                    };
 
-                };
-                // let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-                // let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-                // exerciselogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
-                //
-                // let idPromise = getUserID();
-                // idPromise.then(uid=>{
-                //     const data = JSON.stringify({
-                //         start: start,
-                //         end: end,
-                //         uid: uid
-                //     });
-                //     fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
-                //         method: 'POST',
-                //         headers: {
-                //             'Accept': 'application/json',
-                //             'Content-Type': 'application/json',
-                //         },
-                //         body: data
-                //     }).then(r => {
-                //         console.log("Added fitbit exercise data: ", r.status);
-                //     })
+                    console.log(exerciseLog_low);
+                    console.log(exerciseLog_med);
+                    console.log(exerciseLog_high);
+                    //
+                    // let idPromise = getUserID();
+                    // idPromise.then(uid=>{
+                    //     const data = JSON.stringify({
+                    //         start: start,
+                    //         end: end,
+                    //         uid: uid
+                    //     });
+                    //     fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
+                    //         method: 'POST',
+                    //         headers: {
+                    //             'Accept': 'application/json',
+                    //             'Content-Type': 'application/json',
+                    //         },
+                    //         body: data
+                    //     }).then(r => {
+                    //         console.log("Added fitbit exercise data: ", r.status);
+                    //     })
+                }
+
                 window.history.pushState("object or string", "Report", "/report")
             }
         };

@@ -62,6 +62,7 @@ app.post('/users/newexer/', cors(corsOptions), (req, res)=> {
 
 app.post('/newFitbitExercise/', cors(corsOptions), (req, res) => {
    const {intensity, minutes, uid, timestamp} = req.body;
+   // db.addFitbitExerciseEntriesById(req, res, uid, intensity, minutes, timestamp);
 });
 
 app.post('/users/newstress/', cors(corsOptions), (req, res)=> {

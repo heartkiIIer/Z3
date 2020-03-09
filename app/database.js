@@ -157,6 +157,24 @@ function addExerciseEntriesById(req, res, id, minutes, intensity) {
     })
 }
 
+//Add a exercise entry through fibit
+function addFitbitExerciseEntriesById(req, res, id, minutes, intensity, timestamp) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, avg_intensity) VALUES('+ internalId.rows[0].user_id +", TO_TIMESTAMP('"+
+                timestamp+"', 'YYYY/MM/DD HH24:MI:SS')," + minutes+', ' + intensity+');' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
 //Remove a exercise entry
 function deleteExerciseEntriesById(req, res, id) {
     pool.query('DELETE FROM ExerciseEntry WHERE entry_id ='+ id +';' , (error, results) => {
@@ -236,7 +254,7 @@ function addFitbitSleepEntryById(req, res, id, start, end) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, start_sleep, start_sleep) VALUES("+
+            pool.query("INSERT INTO SleepEntry(user_id, start_sleep, end_sleep) VALUES("+
                 internalId.rows[0].user_id+", TO_TIMESTAMP('"+
                 start+"', 'YYYY/MM/DD HH24:MI:SS'), TO_TIMESTAMP('"+
                 end+"', 'YYYY/MM/DD HH24:MI:SS'))" + ' ON CONFLICT (user_id, start_sleep) DO NOTHING;' , (error, results) => {
@@ -260,8 +278,8 @@ function addWakeById(req, res, id) {
             promise2.then(function(entry_id){
                 console.log("entry id");
                 console.log(entry_id.rows[0].max);
-                console.log("UPDATE sleepentry SET start_sleep = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";");
-                pool.query("UPDATE sleepentry SET start_sleep = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                console.log("UPDATE sleepentry SET end_sleep = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";");
+                pool.query("UPDATE sleepentry SET end_sleep = current_timestamp WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
                     if (error) {
                         throw error
                     }
@@ -541,6 +559,7 @@ module.exports = {
     addBedtimeRoutineById,
     addCaffeineEntriesById,
     addExerciseEntriesById,
+    addFitbitExerciseEntriesById,
     deleteStressEntriesById,
     deleteCaffeineEntriesById,
     deleteExerciseEntriesById,

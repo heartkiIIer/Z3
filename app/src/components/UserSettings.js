@@ -26,7 +26,7 @@ class UserSettings extends React.Component {
             image: "",
             routine: null,
             sleepGoal: null,
-            fibit: null
+            fibit: false
         };
     }
 
@@ -170,7 +170,9 @@ class UserSettings extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                currentComponent.setState({sleepGoal : r[0].sleepgoal})
+                if(r.length !== 0){
+                    currentComponent.setState({sleepGoal : r[0].sleepgoal})
+                }
             });
         });
     }
@@ -229,7 +231,9 @@ class UserSettings extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                currentComponent.setState({fitbit : r[0].fitbit})
+                if(r.length !== 0){
+                    currentComponent.setState({fitbit : r[0].fitbit})
+                }
             });
         });
     }

@@ -17,11 +17,13 @@ function useFitbit(){
         }).then( r => {
             return r.json();
         }).then(r => {
-            if(r[0].fitbit){
-                window.location.assign(OAUTH);
-            }
-            else{
-                window.location.assign('https://sleepwebapp.wpi.edu/report')
+            if(r.length !== 0){
+                if(r[0].fitbit){
+                    window.location.assign(OAUTH);
+                }
+                else{
+                    window.location.assign('https://sleepwebapp.wpi.edu/report')
+                }
             }
         });
     });

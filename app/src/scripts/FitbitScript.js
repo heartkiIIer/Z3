@@ -13,50 +13,21 @@ if (url.includes("localhost")) {
 }
 
 let today = new Date();
-let dates = []
-for (let i = 7; i > 0; i--) {
-    let lastweek = new Date(today);
-    lastweek.setDate(lastweek.getDate()-i);
-    let date = lastweek.getFullYear() + "-";
-    if(lastweek.getMonth() < 10)
-        date += "0";
-    date += lastweek.getMonth()+1 + "-";
-    if(lastweek.getDate() < 10)
-        date += "0";
-    date += lastweek.getDate();
-    dates.push(date)
+let dates = [];
+
+for (let i = 7; i >= 0; i--) {
+    let previousDay = new Date(today);
+    previousDay.setDate(previousDay.getDate()-i);
+    let day = previousDay.getFullYear() + "-";
+    if(previousDay.getMonth()+1 < 10)
+        day += "0";
+    day += previousDay.getMonth()+1 + "-";
+    if(previousDay.getDate() < 10)
+        day += "0";
+    day += previousDay.getDate();
+    dates.push(day)
 }
-
-console.log(dates)
-// let enddate = today.getFullYear() + "-";
-// if(today.getMonth() < 10)
-//     enddate += "0";
-// enddate += today.getMonth()+1 + "-";
-// if(today.getDate() < 10)
-//     enddate += "0";
-// enddate += today.getDate();
-// dates.push(enddate)
-//
-// let startdate = lastweek.getFullYear() + "-";
-// if(lastweek.getMonth() < 10)
-//     startdate += "0";
-// startdate += lastweek.getMonth()+1 + "-";
-// if(lastweek.getDate() < 10)
-//     startdate += "0";
-// startdate += lastweek.getDate();
-// dates.push(startdate)
-
-// let year = startdate.getFullYear(),
-//     month = startdate.getMonth()
-//     day = startdate.getDate(),
-//     dates = [startdate];
-//
-// while(dates[dates.length-1] < enddate) {
-//     dates.push(new Date(year, month, ++day));
-// }
-//
-// console.log(startdate)
-// console.log(enddate)
+console.log(dates);
 
 if (url.includes("report") && url.includes("#")) {
     //getting the access token from url

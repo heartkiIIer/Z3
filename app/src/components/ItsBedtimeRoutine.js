@@ -134,12 +134,6 @@ class ItsBedtimeRoutine extends React.Component {
 
     render(){
         this.resize();
-        if(this.state.isMobile){
-            return (
-                <MobileBedtimeRoutine/>
-            );
-        }
-        else{
             return (
                 <div>
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -158,7 +152,6 @@ class ItsBedtimeRoutine extends React.Component {
                     </div>
                 </div>
             );
-        }
     };
 }
 export default ItsBedtimeRoutine;

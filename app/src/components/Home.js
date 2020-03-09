@@ -344,7 +344,7 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                if(r){
+                if(typeof(r) != "undefined"){
                     currentComponent.setState({fitbit: r[0].fitbit});
                 }
             });

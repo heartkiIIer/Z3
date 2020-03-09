@@ -82,43 +82,68 @@ if (url.includes("report") && url.includes("#")) {
                 let activities = JSON.parse(exerciseXhr.responseText).summary;
                 console.log(activities);
 
-                let exerciseLog_low = {
-                    timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
-                    intensity: 2,
-                    minutes: activities.lightlyActiveMinutes
-                };
-                let exerciseLog_med = {
-                    timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
-                    intensity: 50,
-                    minutes: activities.fairlyActiveMinutes
-                };
-                let exerciseLog_high = {
-                    timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
-                    intensity: 98,
-                    minutes: activities.veryActiveMinutes
-                };
+                let idPromise = getUserID();
+                idPromise.then(uid=>{
+                    let exerciseLog_low = {
+                        timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
+                        intensity: 2,
+                        minutes: activities.lightlyActiveMinutes,
+                        uid: uid
+                    };
+                    let exerciseLog_med = {
+                        timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
+                        intensity: 50,
+                        minutes: activities.fairlyActiveMinutes,
+                        uid: uid
+                    };
+                    let exerciseLog_high = {
+                        timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
+                        intensity: 98,
+                        minutes: activities.veryActiveMinutes,
+                        uid: uid
+                    };
 
-                console.log(exerciseLog_low);
-                console.log(exerciseLog_med);
-                console.log(exerciseLog_high);
-                
-                // let idPromise = getUserID();
-                // idPromise.then(uid=>{
-                //     const data = JSON.stringify({
-                //         start: start,
-                //         end: end,
-                //         uid: uid
-                //     });
-                //     fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
-                //         method: 'POST',
-                //         headers: {
-                //             'Accept': 'application/json',
-                //             'Content-Type': 'application/json',
-                //         },
-                //         body: data
-                //     }).then(r => {
-                //         console.log("Added fitbit exercise data: ", r.status);
-                //     })
+                    if(exerciseLog_low.minutes !== 0) {
+                        const data_low = JSON.stringify(exerciseLog_low);
+                        fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            body: data_low
+                        }).then(r => {
+                            console.log("Added fitbit low intensity exercise data: ", r.status);
+                        });
+                    }
+
+                    if(exerciseLog_med.minutes !== 0) {
+                        const data_med = JSON.stringify(exerciseLog_med);
+                        fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            body: data_med
+                        }).then(r => {
+                            console.log("Added fitbit medium intensity exercise data: ", r.status);
+                        });
+                    }
+
+                    if(exerciseLog_high.minutes !== 0) {
+                        const data_high = JSON.stringify(exerciseLog_high);
+                        fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            body: data_high
+                        }).then(r => {
+                            console.log("Added fitbit high intensity exercise data: ", r.status);
+                        });
+                    }
 
                 window.history.pushState("object or string", "Report", "/report")
             }

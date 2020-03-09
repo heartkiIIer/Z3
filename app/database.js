@@ -163,7 +163,8 @@ function addFitbitExerciseEntriesById(req, res, id, minutes, intensity, timestam
     promise
         .then(function(internalId) {
             pool.query('INSERT INTO ExerciseEntry(user_id, date, minutes, avg_intensity) VALUES('+ internalId.rows[0].user_id +", TO_TIMESTAMP('"+
-                timestamp+"', 'YYYY/MM/DD HH24:MI:SS')," + minutes+', ' + intensity+');' , (error, results) => {
+                timestamp+"', 'YYYY/MM/DD HH24:MI:SS')," + minutes+', ' + intensity+')'
+                + ' ON CONFLICT (user_id, date, avg_intensity) DO UPDATE SET minutes='+ minutes +';' , (error, results) => {
                 if (error) {
                     throw error
                 }

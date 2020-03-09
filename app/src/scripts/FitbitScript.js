@@ -15,7 +15,7 @@ if (url.includes("localhost")) {
 let today = new Date();
 let dates = [];
 
-for (let i = 7; i >= 0; i--) {
+for (let i = 6; i >= 0; i--) {
     let previousDay = new Date(today);
     previousDay.setDate(previousDay.getDate()-i);
     let day = previousDay.getFullYear() + "-";
@@ -35,43 +35,43 @@ if (url.includes("report") && url.includes("#")) {
     // get the userid
     var userId = url.split("#")[1].split("=")[2].split("&")[0];
 
-    // var sleepXhr = new XMLHttpRequest();
-    // // dates need to be in YYYY-MM-DD format
-    // sleepXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/'+dates[0]+'/'+dates[6]+'.json');
-    // sleepXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
-    // sleepXhr.onload = function () {
-    //     if (sleepXhr.status === 200) {
-    //         let sleeplogs = [];
-    //         let logs = JSON.parse(sleepXhr.responseText).sleep;
-    //         console.log(logs);
-    //         for(let i = 0; i < logs.length; i++){
-    //             let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-    //             let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-    //             sleeplogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
-    //
-    //             let idPromise = getUserID();
-    //             idPromise.then(uid=>{
-    //                 const data = JSON.stringify({
-    //                     start: start,
-    //                     end: end,
-    //                     uid: uid
-    //                 });
-    //                 fetch('https://sleepwebapp.wpi.edu:5000/newFitbitSleep', {
-    //                     method: 'POST',
-    //                     headers: {
-    //                         'Accept': 'application/json',
-    //                         'Content-Type': 'application/json',
-    //                     },
-    //                     body: data
-    //                 }).then(r => {
-    //                     console.log("Added fitbit sleep data: ", r.status);
-    //                 })
-    //             });
-    //         }
-    //         window.history.pushState("object or string", "Report", "/report")
-    //     }
-    // };
-    // sleepXhr.send();
+    var sleepXhr = new XMLHttpRequest();
+    // dates need to be in YYYY-MM-DD format
+    sleepXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/'+dates[0]+'/'+dates[6]+'.json');
+    sleepXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
+    sleepXhr.onload = function () {
+        if (sleepXhr.status === 200) {
+            let sleeplogs = [];
+            let logs = JSON.parse(sleepXhr.responseText).sleep;
+            console.log(logs);
+            for(let i = 0; i < logs.length; i++){
+                let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+                let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
+                sleeplogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
+
+                let idPromise = getUserID();
+                idPromise.then(uid=>{
+                    const data = JSON.stringify({
+                        start: start,
+                        end: end,
+                        uid: uid
+                    });
+                    fetch('https://sleepwebapp.wpi.edu:5000/newFitbitSleep', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then(r => {
+                        console.log("Added fitbit sleep data: ", r.status);
+                    })
+                });
+            }
+            window.history.pushState("object or string", "Report", "/report")
+        }
+    };
+    sleepXhr.send();
 
     for(let i = 0; i < dates.length; i++) {
         let exerciseXhr = new XMLHttpRequest();

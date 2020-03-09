@@ -61,7 +61,7 @@ function deleteUser(req, res, id){
                 'DELETE FROM SleepEntry WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM StressEntry WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM ExerciseEntry WHERE user_id='+internalId.rows[0].user_id+';' +
-                'DELETE FROM users WHERE firebase_id='+id+';', (error, results) => {
+                'DELETE FROM users WHERE firebase_id='+addQuotes(id)+';', (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -402,7 +402,7 @@ function putChronotypeById(req, res, id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10
 
 // get Sleep goal from db
 function getSleepGoalById(req, res, id) {
-    pool.query('SELECT sleepgoal FROM users WHERE firebase_id=' + id + ';', (error, results) => {
+    pool.query('SELECT sleepgoal FROM users WHERE firebase_id=' + addQuotes(id) + ';', (error, results) => {
         if (error) {
             throw error
         }
@@ -413,7 +413,7 @@ function getSleepGoalById(req, res, id) {
 
 // add sleep goal from db
 function addSleepGoalById(req, res, id, goal) {
-    pool.query("UPDATE users SET sleepgoal=" + goal + " WHERE firebase_id=" + id + ";", (error, results) => {
+    pool.query("UPDATE users SET sleepgoal=" + goal + " WHERE firebase_id=" + addQuotes(id) + ";", (error, results) => {
         if (error) {
             throw error
         }
@@ -424,7 +424,7 @@ function addSleepGoalById(req, res, id, goal) {
 
 // set boolean determing if user wants to use fitbit to grab sleep log
 function addUseFitbit(req, res, id, fitbit) {
-    pool.query("UPDATE users SET fitbit=" + fitbit + " WHERE firebase_id=" + id + ";", (error, results) => {
+    pool.query("UPDATE users SET fitbit=" + fitbit + " WHERE firebase_id=" + addQuotes(id) + ";", (error, results) => {
         if (error) {
             throw error
         }
@@ -435,7 +435,7 @@ function addUseFitbit(req, res, id, fitbit) {
 
 // get boolean determining if user wants to use their Fitbit to store sleep
 function getUseFitbit(req, res, id) {
-    pool.query('SELECT fitbit FROM users WHERE firebase_id=' + id + ';', (error, results) => {
+    pool.query('SELECT fitbit FROM users WHERE firebase_id=' + addQuotes(id) + ';', (error, results) => {
         if (error) {
             throw error
         }
@@ -446,7 +446,7 @@ function getUseFitbit(req, res, id) {
 
 // set boolean determining if user is asleep
 function addAsleep(req, res, id, asleep) {
-    pool.query("UPDATE users SET asleep=" + asleep +" WHERE firebase_id=" + id + ";", (error, results) => {
+    pool.query("UPDATE users SET asleep=" + asleep +" WHERE firebase_id=" + addQuotes(id) + ";", (error, results) => {
         if (error) {
             throw error
         }

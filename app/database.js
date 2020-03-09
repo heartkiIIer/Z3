@@ -27,8 +27,8 @@ function getUsers(req, res) {
 function getUser(req, res, id, first) {
     checkQuery(id);
     checkQuery(first);
-    console.log('SELECT * FROM users WHERE firebase_id='+id+';');
-    pool.query('SELECT * FROM users WHERE firebase_id='+id+';', (error, results) => {
+    console.log('SELECT * FROM users WHERE firebase_id='+addQuotes(id)+';');
+    pool.query('SELECT * FROM users WHERE firebase_id='+addQuotes(id)+';', (error, results) => {
         if (error) {
             throw error
         }

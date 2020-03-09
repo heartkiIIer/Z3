@@ -7,16 +7,18 @@ import MobileExampleModule from "./MobileExampleModule";
 import {getUserID} from "../scripts/login";
 
 class MindfulnessOverview extends React.Component {
-    constructor(props){
-        super(props)
-        var mobile;
+    constructor(props) {
+        super(props);
         if(window.innerWidth >= 700){
-            mobile = false;
+            this.state = {
+                padding: '75px 75px 40px',
+            };
         }
         else{
-            mobile = true;
+            this.state = {
+                padding: '10% 10% 5%',
+            };
         }
-        this.state = { isEditable: false, stage: 0, isMobile: mobile};
     }
 
     componentDidMount() {
@@ -30,24 +32,19 @@ class MindfulnessOverview extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    mobile: true
+                    padding: '10% 10% 5%'
                 });
             }
             else {
                 this.setState({
-                    mobile: false
+                    padding: '75px 75px 40px'
                 })
             }
         })
     }
+
     render(){
         this.resize();
-        if(this.state.isMobile){
-            return (
-                <MobileExampleModule/>
-            );
-        }
-        else{
             return (
                 <div class = "content modules" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -74,7 +71,6 @@ class MindfulnessOverview extends React.Component {
                     </div>
                 </div>
             );
-        }
     };
 }
 export default MindfulnessOverview;

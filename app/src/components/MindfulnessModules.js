@@ -13,8 +13,6 @@ import {getUserID} from "../scripts/login";
  * */
 
 class MindfulnessModules extends React.Component {
-    state = { width: 0, height: 0 };
-
     constructor(props){
         super(props);
         if(window.innerWidth >= 700){

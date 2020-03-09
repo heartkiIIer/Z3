@@ -4,42 +4,47 @@ import "../styles/ItsBedtime.css";
 import Tile from "./Tile.js";
 import SideBar from "./sideMenu";
 import MobileExampleModule from "./MobileExampleModule";
+import {getUserID} from "../scripts/login";
 
 class BodyScanMeditation extends React.Component {
-    constructor(props){
-        super(props)
-        var mobile;
+    constructor(props) {
+        super(props);
         if(window.innerWidth >= 700){
-            mobile = false;
+            this.state = {
+                padding: '75px 75px 40px',
+            };
         }
         else{
-            mobile = true;
+            this.state = {
+                padding: '10% 10% 5%',
+            };
         }
-        this.state = { isEditable: false, stage: 0, isMobile: mobile};
+    }
+
+    componentDidMount() {
+        let idPromise = getUserID();
+        idPromise.then().catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        })
     }
 
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    mobile: true
+                    padding: '10% 10% 5%'
                 });
             }
             else {
                 this.setState({
-                    mobile: false
+                    padding: '75px 75px 40px'
                 })
             }
         })
     }
+
     render(){
         this.resize();
-        if(this.state.isMobile){
-            return (
-                <MobileExampleModule/>
-            );
-        }
-        else{
             return (
                 <div class = "content modules" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -59,7 +64,6 @@ class BodyScanMeditation extends React.Component {
                     </div>
                 </div>
             );
-        }
     };
 }
 export default BodyScanMeditation;

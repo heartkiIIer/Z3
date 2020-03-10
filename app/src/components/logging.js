@@ -20,11 +20,16 @@ class logging extends React.Component{
         }
     }
 
+    updateDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    };
+
     componentDidMount() {
         let idPromise = getUserID();
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
+        window.addEventListener('resize', this.updateDimensions);
     }
 
     resize(){

@@ -55,10 +55,10 @@ class logging extends React.Component{
             <div class="content logging-background" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="middle">
-
                     <div style={containerStyle} className="inner " id="page-wrap">
                         <h1 className="blueHeader">Logging </h1>
                         <hr className="hr-settings"/>
+                        <br/>
                         <h4>Log your exercise, caffeine, & stress</h4>
                         <br/>
                         <Tabs/>

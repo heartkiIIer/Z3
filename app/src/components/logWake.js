@@ -34,7 +34,7 @@ class LogWake extends React.Component{
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
-       window.addEventListener('resize', this.updateDimensions);
+      // window.addEventListener('resize', this.updateDimensions);
     }
 
     resize(){

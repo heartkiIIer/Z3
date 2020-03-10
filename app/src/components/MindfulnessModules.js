@@ -18,11 +18,13 @@ class MindfulnessModules extends React.Component {
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
+                tilePaddingLeft: '40px'
             };
         }
         else{
             this.state = {
                 padding: '17% 17% 5%',
+                tilePaddingLeft: '25px'
             };
         }
     }
@@ -44,12 +46,14 @@ class MindfulnessModules extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    padding: '17% 17% 5%'
+                    padding: '17% 17% 5%',
+                    tilePaddingLeft: '40px'
                 });
             }
             else {
                 this.setState({
-                    padding: '75px 75px 40px'
+                    padding: '75px 75px 40px',
+                    tilePaddingLeft: '25px'
                 })
             }
         })
@@ -63,6 +67,14 @@ class MindfulnessModules extends React.Component {
             }
         };
         const { containerStyle } = styles;
+
+        const style = {
+            containerStyles:{
+                paddingLeft: this.state.tilePaddingLeft,
+            }
+        };
+        const { containerStyles } = style;
+
         return (
             <div class="content modules" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -73,7 +85,7 @@ class MindfulnessModules extends React.Component {
                         <br/>
                         <h4>Explore mindfulness topics: proven to improve sleep!</h4>
                         
-                        <div class="flex-row-wrap">
+                        <div style={containerStyles} class="flex-row-wrap">
                             <a href="/MindfulnessOverview">
                                 <Tile name="Mindfulness Overview"/>
                             </a>

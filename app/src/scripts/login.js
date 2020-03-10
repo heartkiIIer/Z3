@@ -39,10 +39,8 @@ var convert = require('./number');
             console.log("User is signed in");
             user.providerData.forEach(function (profile) {
                 let uid = null;
-                console.log(typeof profile.uid);
                 if(typeof profile.uid === "string"){
                     uid = convert.toID_Number(profile.uid);
-                    console.log(uid);
                 }
                 else{
                     uid = profile.uid;
@@ -83,7 +81,14 @@ export function getUserID(){
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 user.providerData.forEach(function (profile) {
-                    resolve(profile.uid);
+                    let uid = null;
+                    if(typeof profile.uid === "string"){
+                        uid = convert.toID_Number(profile.uid);
+                    }
+                    else{
+                        uid = profile.uid;
+                    }
+                    resolve(uid);
                 });
             } else { reject(); }
         })

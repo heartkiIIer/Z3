@@ -12,12 +12,12 @@ class BedtimeProgressBar extends React.Component {
         this.state = {timer: null, timerRunning: false};
         if(window.innerWidth >= 700){
             this.state = {
-                width: '100px',
+                width: '390px',
             };
         }
         else{
             this.state = {
-                width: '50px',
+                width: '200px',
             };
         }
     }
@@ -80,12 +80,12 @@ class BedtimeProgressBar extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    width: '50px'
+                    width: '200px'
                 });
             }
             else {
                 this.setState({
-                    width: '100px'
+                    width: '390px'
                 })
             }
         })
@@ -117,7 +117,7 @@ class BedtimeProgressBar extends React.Component {
         }
         else{
             return(
-                <div style={{width: "390px" }}>
+                <div style={containerStyle}>
                     <CircularProgressbar value={(this.props.stage/this.props.stages)*100} text={this.props.title} styles={buildStyles({
                         pathColor: "mediumpurple",
                         textSize: 10

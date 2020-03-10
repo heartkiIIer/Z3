@@ -25,17 +25,31 @@ const h3 = {
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            name: "",
-            image: "",
-            perMessage: {
-                subject: "Personality and Chronotype:",
-                message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
-            },
-            weather: null,
-            fitbit: false,
-            asleep: false
-        };
+        if (window.innerWidth >= 775) {
+            this.state = {
+                name: "",
+                image: "",
+                perMessage: {
+                    subject: "Personality and Chronotype:",
+                    message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
+                },
+                weather: null,
+                fitbit: false,
+                asleep: false
+            }
+        } else {
+            this.state = {
+                name: "",
+                image: "",
+                perMessage: {
+                    subject: "Personality and Chronotype:",
+                    message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
+                },
+                weather: null,
+                fitbit: false,
+                asleep: false
+            }
+        }
     }
     componentDidMount(){
         let currentComponent = this;

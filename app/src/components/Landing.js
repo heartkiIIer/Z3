@@ -17,7 +17,6 @@ class Landing extends React.Component {
                 className: "container",
                 alignStart: "",
                 height: "75vh"
-
             };
         }
         else {

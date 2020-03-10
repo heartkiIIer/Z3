@@ -82,7 +82,7 @@
     overflow: hidden;
     padding: 0;
     margin-top: 70px;
-    height: 75vh;
+    height: 85vh;
 }
 
 .circle {
@@ -126,7 +126,7 @@
     background: var(--iconColor);
     border-radius: 15%;
     display: flex;
-    margin-top: 10px;
+    margin-top: 30px;
     flex-direction: column;
 }
 
@@ -182,7 +182,7 @@
     width: 100%;
 }
 #setting_link{
-    height: 100px;
+    height: 103px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -209,7 +209,7 @@
 
 .whiteText{
     color: white;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 .profile_pic{
     border-radius: 50%;
@@ -229,13 +229,13 @@
 
 .carousel-inner {
     width: 70%;
-    margin-left: 80px;
+    margin-left: 16.2%;
 }
 
 .carousel-inner h2 {
     font-size: 22px !important;
 }
 
-.carousel-inner h3 {
+.carousel-inner h3, h4, h5 {
     font-size: 18px !important;
 }

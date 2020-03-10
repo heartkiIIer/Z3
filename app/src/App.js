@@ -26,7 +26,7 @@ import MindfulYoga from "./components/MindfulYoga";
 import BodyScanMeditation from "./components/BodyScanMeditation";
 import MindfulnessOverview from "./components/MindfulnessOverview";
 import MindfulEating from "./components/MindfulEating";
-import { TitleComponent } from './TitleComponent.jsx';
+import TitleComponent from "./components/TitleComponent";
 
 // withTitle function
 const withTitle = ({ component: Component, title }) => {

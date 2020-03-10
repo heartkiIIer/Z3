@@ -10,4 +10,4 @@ const TitleComponent = ({ title }) => {
     );
 };
 
-export { TitleComponent };
+export default TitleComponent;

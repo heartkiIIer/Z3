@@ -54,7 +54,7 @@ class ExampleModule extends React.Component {
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
                     <div className="inner" id="page-wrap">
-                        <h1 class = "blueHeader"> 5 Minute Meditation</h1>
+                        <h1 class = "blueHeader"> 5-minute Meditation</h1>
                         <hr class = "hr-settings"/>
                         <br/>
                         <p>This audio from the UCSD Center for Mindfulness will lead you in a 5 minute mindfulness meditation exercise.</p>

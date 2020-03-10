@@ -50,7 +50,7 @@ class BodyScanMeditation extends React.Component {
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
                         <div className="inner" id="page-wrap">
-                            <h1 class = "blueHeader"> 10 Minute Body Scan Meditation</h1>
+                            <h1 class = "blueHeader"> 10-minute Body Scan Meditation</h1>
                             <hr class = "hr-settings"/>
                             <br/>
                             <p>This audio from the UCSD Center for Mindfulness will lead you in a 10 minute body scan meditation exercise.</p>

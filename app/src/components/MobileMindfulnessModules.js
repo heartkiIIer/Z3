@@ -27,8 +27,8 @@ class MindfulnessModules extends React.Component {
                     <div className="inner mindfulnessMobile" id="page-wrap">
                         <h1 class = "blueHeader"> Mindfulness Modules</h1>
                         <hr class = "hr-settings"/>
+                        <br/>
                         <h4>Explore mindfulness topics: proven to improve sleep!</h4>
-
 
                         <div class = "flex-column-nowrap">
                             <a href = "/MindfulnessOverview">

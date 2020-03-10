@@ -52,6 +52,7 @@ class MindfulnessOverview extends React.Component {
                         <div className="inner" id="page-wrap">
                             <h1 class = "blueHeader"> Mindfulness Overview</h1>
                             <hr class = "hr-settings"/>
+                            <br/>
                             <p>     Mindfulness has been described as “The awareness that emerges through paying attention
                                 on purpose, in the present moment, and non-judgmentally to the unfolding of experience
                                 moment to moment.” - Jon Kabat-Zinn, 2003</p>

@@ -52,6 +52,7 @@ class MindfulEating extends React.Component {
                         <div className="inner" id="page-wrap">
                             <h1 class = "blueHeader"> Mindful Eating</h1>
                             <hr class = "hr-settings"/>
+                            <br/>
                             <p>Watch this video to learn more about mindful eating!</p>
 
                             <hr className="hr-settings"/>

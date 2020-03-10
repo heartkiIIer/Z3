@@ -51,6 +51,7 @@ class mindfulLeadership extends React.Component {
                         <div className="inner" id="page-wrap">
                             <h1 class = "blueHeader"> Mindful Leadership</h1>
                             <hr class = "hr-settings"/>
+                            <br/>
                             <p>This video from the discusses how mindfulness can be applied to build stronger leadership skills.</p>
 
                             <hr className="hr-settings"/>

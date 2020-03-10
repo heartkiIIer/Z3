@@ -154,6 +154,7 @@ class report extends React.Component{
                 <div className="inner" id="page-wrap" align="center">
                     <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     <h1 className="blueHeader">Weekly Overview</h1>
                     <div className="week" class="flex-report">
                         <div className="goalProg">

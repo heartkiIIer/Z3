@@ -99,6 +99,7 @@ class Chronotype extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Chronotype Survey</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     <h5>
                         Find where you fall on the scale from morning to evening
                         type by answering the questions below

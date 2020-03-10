@@ -52,6 +52,7 @@ class MindfulYoga extends React.Component {
                         <div className="inner" id="page-wrap">
                             <h1 class = "blueHeader"> Mindful Yoga</h1>
                             <hr class = "hr-settings"/>
+                            <br/>
                             <p>Grab a chair and follow this video for a mindful yoga routine.</p>
 
                             <hr className="hr-settings"/>

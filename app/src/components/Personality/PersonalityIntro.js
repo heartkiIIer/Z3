@@ -53,6 +53,7 @@ class PersonalityIntro extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">What is Your Personality?</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     <h3 className="blueHeader">What does "Big Five Personality" mean?</h3>
                     <h5>
                         The Big Five encompasses five characteristics: openness, conscientiousness,
@@ -71,6 +72,7 @@ class PersonalityIntro extends React.Component {
 
                     <h1 className="blueHeader">What is Your Chonotype?</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     <h3 className="blueHeader">What does "Chronotype" mean?</h3>
                     <h5>
                         Chronotype tells you whether you are a morning or evening type. A

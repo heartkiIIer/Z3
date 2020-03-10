@@ -312,7 +312,7 @@ class UserSettings extends React.Component {
                     <button className='btn' id = "extended" onClick={this.addSleepGoal.bind(this)}>
                         Edit Sleep Goal
                     </button>
-
+                    <br/>
                     <h3 class = "blueHeader Hidden"> Change password </h3>
                     <div class = "flex-row-nowrap Hidden">
                         <p class = "blueHeader width80"> Enter new password: </p>
@@ -355,18 +355,15 @@ class UserSettings extends React.Component {
 
                     <h1 className="blueHeader"> Fitbit Account Access</h1>
                     <hr className="hr-settings"/>
-                    <br/>
                     {this.useFibit()}
-                    <br/>
+                    <br/><br/>
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>
-                    <br/>
                     <div className="list-group" class ="width300">
                         {this.listRoutine()}
                         <button className={'btn'} onClick={this.addRoutine.bind(this)}> Add Task </button>
                     </div>
                     <br/>
-
                     <h1 className="blueHeader"> Delete your account</h1>
                     <hr className="hr-settings"/>
                     <button className='btn' id = "extended" onClick={deleteAcc}>

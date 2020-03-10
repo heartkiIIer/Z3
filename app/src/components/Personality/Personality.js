@@ -91,6 +91,7 @@ class Personality extends React.Component{
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Your Personality Scores</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     <h5>
                         Use the results from the Big 5 quiz to fill
                         in your scores below.

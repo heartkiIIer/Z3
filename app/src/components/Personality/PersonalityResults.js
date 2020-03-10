@@ -122,6 +122,7 @@ class PersonalityResults extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Your Big 5 Personality Results</h1>
                     <hr className="hr-settings"/>
+                    <br/>
 
                     <h5 className="blueHeader"><b>Openness</b></h5>
                     <p id="o_score">Score: <span>{this.getOpenness()}</span></p>

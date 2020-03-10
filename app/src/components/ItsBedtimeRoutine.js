@@ -148,15 +148,15 @@ class ItsBedtimeRoutine extends React.Component {
         this.resize();
         const hrStyle = {
             hrContainer:{
-                hrWidth: this.state.hrWidth,
+                hr: this.state.hrWidth,
             }
         };
         const { hrContainer } = hrStyle;
 
         const btnStyle = {
             btnContainer:{
-                btnFontSize: this.state.btnFontSize,
-                padding: this.state.padding
+                btn: this.state.btnFontSize,
+                pad: this.state.padding
             }
         };
         const { btnContainer } = btnStyle;

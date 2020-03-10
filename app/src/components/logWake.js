@@ -8,10 +8,6 @@ class LogWake extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-            width: window.innerWidth,
-            height: window.innerHeight
-        };
 
         if(window.innerWidth >= 700){
             this.state = {
@@ -41,15 +37,11 @@ class LogWake extends React.Component{
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    width: window.innerWidth,
-                    height: window.innerHeight,
                     padding: '10% 10% 5%'
                 });
             }
             else {
                 this.setState({
-                    width: window.innerWidth,
-                    height: window.innerHeight,
                     padding: '75px 75px 40px'
                 })
             }
@@ -99,9 +91,10 @@ class LogWake extends React.Component{
         //this.updateDimensions();
         this.resize();
         return (
-            <div class = "content logSleep" id="App">
+            <div className = "content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <div class = "sleepInner" id="page-wrap">
+                <div className="middle">
+                <div className = "inner" id="page-wrap">
                     <div class = "time" align='center'>
                         <h1 className="wakeHeader" align='center'>Good Morning!</h1>
                         <h3 className="wakeHeaderTwo" align='center'>What time did you wake up?</h3>
@@ -112,6 +105,7 @@ class LogWake extends React.Component{
                             <a href="/logSleep"><button className='btn' onClick={() => this.myFunction()}>At This Time</button></a>
                         </form>
                     </div>
+                </div>
                 </div>
             </div>
         );

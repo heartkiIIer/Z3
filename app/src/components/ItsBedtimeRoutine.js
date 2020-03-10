@@ -30,9 +30,9 @@ class ItsBedtimeRoutine extends React.Component {
         }
         else{
             this.state = {
-                hrWidth: '170px',
-                btnFontSize: '9px',
-                padding: '12px 10px'
+                hrWidth: '170px !important',
+                btnFontSize: '9px !important',
+                padding: '12px 10px !important'
             };
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
@@ -95,9 +95,9 @@ class ItsBedtimeRoutine extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    hrWidth: '170px',
-                    btnFontSize: '9px',
-                    padding: '12px 10px'
+                    hrWidth: '170px !important',
+                    btnFontSize: '9px !important',
+                    padding: '12px 10px !important'
                 });
             }
             else {

@@ -36,7 +36,7 @@ class logging extends React.Component{
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    padding: '10% 10% 5%'
+                    padding: '17% 17% 5%'
                 });
             }
             else {

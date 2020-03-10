@@ -17,7 +17,7 @@ class PersonalityResults extends React.Component {
         }
         else{
             this.state = {
-                padding: '10% 10% 5%',
+                padding: '17% 17% 5%',
                 personality: null
             };
         }
@@ -30,7 +30,7 @@ class PersonalityResults extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    padding: '10% 10% 5%'
+                    padding: '17% 17% 5%'
                 });
             }
             else {

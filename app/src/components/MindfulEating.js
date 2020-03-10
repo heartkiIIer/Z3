@@ -16,7 +16,7 @@ class MindfulEating extends React.Component {
         }
         else{
             this.state = {
-                padding: '10% 10% 5%',
+                padding: '17% 17% 5%',
             };
         }
     }
@@ -32,7 +32,7 @@ class MindfulEating extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    padding: '10% 10% 5%'
+                    padding: '17% 17% 5%'
                 });
             }
             else {
@@ -45,11 +45,17 @@ class MindfulEating extends React.Component {
 
     render(){
         this.resize();
+        const styles = {
+            containerStyle:{
+                padding: this.state.padding,
+            }
+        };
+        const { containerStyle } = styles;
             return (
                 <div class = "content modules" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div className="middle">
-                        <div className="inner" id="page-wrap">
+                    <div className="middle" >
+                        <div style={containerStyle} className="inner" id="page-wrap">
                             <h1 class = "blueHeader"> Mindful Eating</h1>
                             <hr class = "hr-settings"/>
                             <br/>

@@ -16,7 +16,7 @@ class Personality extends React.Component{
         }
         else{
             this.state = {
-                padding: '10% 10% 5%',
+                padding: '17% 17% 5%',
             };
         }
     }
@@ -24,7 +24,7 @@ class Personality extends React.Component{
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    padding: '10% 10% 5%'
+                    padding: '17% 17% 5%'
                 });
             }
             else {
@@ -96,7 +96,7 @@ class Personality extends React.Component{
                         Use the results from the Big 5 quiz to fill
                         in your scores below.
                     </h5>
-                    <br/>
+                    <br/><br/>
                     <form id="personality" method="post">
                         <h5 className="blueHeader">Openness</h5>
                         <div className="options d-flex justify-content-around">
@@ -183,6 +183,7 @@ class Personality extends React.Component{
                         </div>
 
                     </form>
+                    <br/><br/>
                     <button className="btn" onClick={this.submitPersonality}>Submit Personality Scores</button>
                 </div>
                 </div>

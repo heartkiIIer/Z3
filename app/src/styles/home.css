@@ -78,11 +78,12 @@
     background: url("../resources/icons/bedtime_icon_white.png") no-repeat center center;
     background-size: contain;
 }
-#homepage .col-lg-6{
+
+.circleview{
     overflow: hidden;
     padding: 0;
     margin-top: 70px;
-    height: 85vh;
+    height: 75vh;
 }
 
 .circle {
@@ -121,12 +122,12 @@
 }
 
 #dailyInfo{
-    height: 75vh;
+    height: 85vh;
     width: 75%;
     background: var(--iconColor);
     border-radius: 15%;
     display: flex;
-    margin-top: 30px;
+    margin-top: 70px;
     flex-direction: column;
 }
 
@@ -233,7 +234,7 @@
 }
 
 .carousel-inner h2 {
-    font-size: 22px !important;
+    font-size: 25px !important;
 }
 
 .carousel-inner h3, h4, h5 {

@@ -399,7 +399,7 @@ class Home extends React.Component {
                         </Link>
                     </div>
                 </div>
-                <div className="col-lg-6" >
+                <div className="col-lg-6 circleview" >
                     <ul className="circle">
                         <li>
                             <Link to="/sleep">

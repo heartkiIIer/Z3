@@ -29,10 +29,6 @@
     /*border: 7px solid white;*/
 }
 
-.text {
-    font-size: 15px;
-}
-
 .iconImages_h{
     /*opacity: 0.45;*/
     height: 80%;
@@ -223,14 +219,18 @@
 }
 
 .carousel-control-next {
-    margin-right: -20px;
+    margin-right: -5px;
 }
 
 .carousel-control-prev {
-    margin-left: -20px;
+    margin-left: -5px;
 }
 
 .carousel-inner {
     width: 70%;
     margin-left: 80px;
+}
+
+.carousel-inner h2 {
+    font-size: 22px !important;
 }

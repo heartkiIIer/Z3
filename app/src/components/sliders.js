@@ -273,6 +273,12 @@ const panes = [
                                   min={0}
                                   max={10}
                                   marks={cups}/>
+                    <PrettoSlider id="ms" aria-label="pretto slider" defaultValue={5}
+                                  valueLabelDisplay="auto"
+                                  step={1}
+                                  min={0}
+                                  max={10}
+                                  marks={cups}/>
                 </Grid>
             </Grid>
 

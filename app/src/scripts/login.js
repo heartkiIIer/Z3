@@ -81,14 +81,12 @@ export function getUserID(){
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 user.providerData.forEach(function (profile) {
-                    let uid = null;
                     if(typeof profile.uid === "string"){
-                        uid = convert.toID_Number(profile.uid);
+                        resolve(convert.toID_Number(profile.uid));
                     }
                     else{
-                        uid = profile.uid;
+                        resolve(profile.uid);
                     }
-                    resolve(uid);
                 });
             } else { reject(); }
         })

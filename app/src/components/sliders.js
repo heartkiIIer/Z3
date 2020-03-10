@@ -163,11 +163,9 @@ function submitExerciseEntry() {
                     text: "New exercise entry have been logged."
                 })
             }
-        }).then(r=>{
-            if(r.status === 200){
+        }).then(()=>{
                 document.getElementById('intensity').children[2].value = '50';
-                document.getElementById('minutes').children[2].value = '50';
-            }
+                document.getElementById('minutes').children[2].value = '90';
         })
     });
 }
@@ -199,11 +197,9 @@ function submitCaffeineEntry() {
                     text: "New caffeine entry have been logged."
                 })
             }
-        }).then(r=>{
-            if(r.status === 200){
-                document.getElementById('cups').children[2].value = '50';
+        }).then(()=>{
+                document.getElementById('cups').children[2].value = '5';
                 document.getElementById('cupSize').children[2].value = '50';
-            }
         })
     });
 }

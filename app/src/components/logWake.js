@@ -8,8 +8,8 @@ class LogWake extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0
+            width: window.innerWidth,
+            height: window.innerHeight
         };
 
         if(window.innerWidth >= 700){
@@ -93,7 +93,7 @@ class LogWake extends React.Component{
     render(){
         this.resize();
         return (
-            <div class = "content logSleep" id="App">
+            <div class = "content logSleep" style={this.updateDimensions()}id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div class = "sleepInner" id="page-wrap">
                     <div class = "time" align='center'>

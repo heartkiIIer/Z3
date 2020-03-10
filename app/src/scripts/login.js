@@ -1,5 +1,6 @@
 var firebaseui = require('firebaseui');
 var firebase = require('firebase');
+var convert = require('../../number');
 
 (function(){
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -37,8 +38,17 @@ var firebase = require('firebase');
             // User is signed in.
             console.log("User is signed in");
             user.providerData.forEach(function (profile) {
+                let uid = null;
+                console.log(typeof profile.uid);
+                if(typeof profile.uid === "string"){
+                    uid = convert.toID_Number(profile.uid);
+                    console.log(uid);
+                }
+                else{
+                    uid = profile.uid;
+                }
                 const data = JSON.stringify({
-                    id: profile.uid,
+                    id: uid,
                     name: profile.displayName,
                     image: profile.photoURL});
 
@@ -48,9 +58,7 @@ var firebase = require('firebase');
                     body: data
                 }).then (function(res){
                     console.log("Send logged User to Server side: ", res.status);
-                })
-                console.log(profile.uid);
-                console.log(user.uid);
+                });
             });
 
         } else {

@@ -56,11 +56,12 @@ class ExampleModule extends React.Component {
                     <div className="inner" id="page-wrap">
                         <h1 class = "blueHeader"> 5 Minute Meditation</h1>
                         <hr class = "hr-settings"/>
+                        <br/>
                         <p>This audio from the UCSD Center for Mindfulness will lead you in a 5 minute mindfulness meditation exercise.</p>
 
-                        <hr className="hr-settings"/>
                         <iframe width="100%" height="450" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/665221820&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
                         <hr className="hr-settings"/>
+                        <br/>
                         <a href="https://medschool.ucsd.edu/som/fmph/research/mindfulness/programs/mindfulness-programs/MBSR-programs/Pages/audio.aspx">Source</a>
                     </div>
                     </div>

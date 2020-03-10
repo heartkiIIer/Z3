@@ -55,14 +55,14 @@ class MindfulYoga extends React.Component {
                             <br/>
                             <p>Grab a chair and follow this video for a mindful yoga routine.</p>
 
-                            <hr className="hr-settings"/>
 
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/9PPO7mWRRD4"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen></iframe>
+                            <br/>
 
-                            <p>Video Description: In this version the camera follows Jenny more closely as she
+                            <p><b>Video Description:</b> In this version the camera follows Jenny more closely as she
                                 does the chair modification of each pose while Dr. Lynn Rossy, Health Psychologist
                                 for Healthy for Life guides you through the practice of mindful yoga.  Mindful hatha
                                 yoga consists of gentle stretching and strengthening exercises, done slowly, with
@@ -76,6 +76,7 @@ class MindfulYoga extends React.Component {
                                 care provider before starting a new practice of physical activity.</p>
 
                             <hr className="hr-settings"/>
+                            <br/>
                             <a href="https://www.umassmed.edu/psychiatry/resources/mindfulness/">Source</a>
                         </div>
                     </div>

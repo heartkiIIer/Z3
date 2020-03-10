@@ -67,6 +67,7 @@ class MindfulnessOverview extends React.Component {
                                 mindfulness can also be part of a holistic approach to wellness through self-care and
                                 personal responsibility for one’s health and well-being.</p>
                             <hr className="hr-settings"/>
+                            <br/>
                             <a href="https://www.umassmed.edu/psychiatry/resources/mindfulness/">Source</a>
                         </div>
                     </div>

@@ -377,6 +377,7 @@ class Home extends React.Component {
                         </Link>
                     </div>
                 </div>
+                <br/><br/>
                 <div className="col-lg-6">
                     <ul className="circle">
                         <li>
@@ -423,6 +424,7 @@ class Home extends React.Component {
                         </li>
                     </ul>
                 </div>
+                <br/><br/>
                 <div className="col-lg-6 d-flex justify-content-center align-items-center">
                     <div id="dailyInfo">
                         <div id="carouselExampleIndicators" className="carousel slide d-flex align-items-center" data-ride="carousel">

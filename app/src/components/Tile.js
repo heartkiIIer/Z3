@@ -12,12 +12,12 @@ class Tile extends React.Component {
         super(props);
         if(window.innerWidth >= 700){
             this.state = {
-                marginLeft: '40px'
+                marginLeft: '43px'
             };
         }
         else{
             this.state = {
-                marginLeft: '25px'
+                marginLeft: '23px'
             };
         }
     }
@@ -26,12 +26,12 @@ class Tile extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    marginLeft: '25px'
+                    marginLeft: '23px'
                 });
             }
             else {
                 this.setState({
-                    marginLeft: '40px'
+                    marginLeft: '43px'
                 })
             }
         })

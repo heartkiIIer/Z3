@@ -1,6 +1,6 @@
 var firebaseui = require('firebaseui');
 var firebase = require('firebase');
-var convert = require('../../number');
+var convert = require('./number');
 
 (function(){
     var ui = new firebaseui.auth.AuthUI(firebase.auth());

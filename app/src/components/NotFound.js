@@ -17,6 +17,8 @@ class NotFound extends React.Component {
                 <div class = "inner">
                     <h1 class = "blueHeader"> File not Found</h1>
                     <hr class = "hr-settings"/>
+                    <br/>
+                    <h3>Sorry, the page you are looking for does not exist or no longer exists.</h3>
 
                 </div>
             </div>

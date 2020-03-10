@@ -3,6 +3,7 @@ import '../styles/logSleep.css'
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 
+
 class LogWake extends React.Component{
 
     constructor(props) {
@@ -91,9 +92,10 @@ class LogWake extends React.Component{
         });
     }
     render(){
+        this.updateDimensions();
         this.resize();
         return (
-            <div class = "content logSleep" style={this.updateDimensions()}id="App">
+            <div class = "content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div class = "sleepInner" id="page-wrap">
                     <div class = "time" align='center'>

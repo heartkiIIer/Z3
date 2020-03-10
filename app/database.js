@@ -61,7 +61,6 @@ function deleteUser(req, res, id){
                 'DELETE FROM personality WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM CaffeineEntry WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM chronotype WHERE user_id='+internalId.rows[0].user_id+';' +
-                'DELETE FROM SleepEntry WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM StressEntry WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM ExerciseEntry WHERE user_id='+internalId.rows[0].user_id+';' +
                 'DELETE FROM users WHERE firebase_id='+id+';', (error, results) => {
@@ -255,10 +254,15 @@ function addFitbitSleepEntryById(req, res, id, start, end) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query("INSERT INTO SleepEntry(user_id, start_sleep, end_sleep) VALUES("+
+            pool.query("INSERT INTO SleepEntry(user_id, start_sleep, end_sleep) SELECT "+
                 internalId.rows[0].user_id+", TO_TIMESTAMP('"+
                 start+"', 'YYYY/MM/DD HH24:MI:SS'), TO_TIMESTAMP('"+
-                end+"', 'YYYY/MM/DD HH24:MI:SS'))" + ' ON CONFLICT (user_id, start_sleep) DO NOTHING;' , (error, results) => {
+                end+"', 'YYYY/MM/DD HH24:MI:SS')" + ' WHERE NOT EXISTS(SELECT 1 FROM exerciseentry WHERE'+
+                "start_sleep <= TO_TIMESTAMP('"+start
+                +", 'YYYY/MM/DD HH24:MI:SS') AND end_sleep >= TO_TIMESTAMP('"
+                +start+", 'YYYY/MM/DD HH24:MI:SS') OR start_sleep >= TO_TIMESTAMP('"
+                +end+", 'YYYY/MM/DD HH24:MI:SS') AND end_sleep <= TO_TIMESTAMP('"
+                +end+", 'YYYY/MM/DD HH24:MI:SS');" , (error, results) => {
                 if (error) {
                     throw error
                 }

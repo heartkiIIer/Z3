@@ -8,11 +8,11 @@ import WeatherHome from './weather'
 import {OAUTH} from "../scripts/FitbitScript";
 
 const h2 = {
-    fontSize: '15px'
+    fontSize: '15px !important'
 }
 
 const h3 = {
-    fontSize: '10px'
+    fontSize: '10px !important'
 }
 
 //TODO
@@ -376,7 +376,7 @@ class Home extends React.Component {
                 <div id="setting_link">
                     <div className="d-flex align-items-center">
                         <img className="profile_pic" src={this.state.image} alt=""/>
-                        <h3 style={{color: "#7339AB", marginLeft: "10px", size: '15px !important'}}>Welcome <b>{this.state.name}</b></h3>
+                        <h3 style={{color: "#7339AB", marginLeft: "10px"}}>Welcome <b>{this.state.name}</b></h3>
                     </div>
                     <div>
                         <button id="logout_icon" className="float-right" onClick={logout}></button>

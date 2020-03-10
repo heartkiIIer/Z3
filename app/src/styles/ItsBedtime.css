@@ -249,7 +249,7 @@ input:focus{
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-color: #1f9ce4;
+    background: linear-gradient(#1f9ce4 0%,  #7339ab 100%);
     margin-left: 40px;
     margin-top: 40px;
     text-align: center;
@@ -263,7 +263,7 @@ input:focus{
 
 .tile:hover {
     cursor: pointer;
-    background: linear-gradient(#1f9ce4 0%,  #7339ab 100%);
+    background: #1f9ce4;
 }
 
 .bm-burger-button {

@@ -8,8 +8,10 @@ class ReportComponent extends React.Component{
     render(){
         return (
             <div>
-                    <hr className="hr-settings"/>
+                    <hr className="hr-report"/>
+                    <br/>
                     <h1 className="blueHeader">{this.props.date}</h1>
+                    <br/>
                     <div className="day" class="flex-report">
                         <div className="goalProg">
                             <p>Total Sleep:</p>

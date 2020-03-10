@@ -4,7 +4,7 @@ import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 
 class LogWake extends React.Component{
-   // state = { width: 0, height: 0 };
+    state = { width: 0, height: 0 };
 
     constructor(props) {
         super(props);
@@ -87,7 +87,7 @@ class LogWake extends React.Component{
         });
     }
     render(){
-        this.resize();
+        // this.resize();
         return (
             <div class = "content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

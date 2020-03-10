@@ -7,9 +7,6 @@ import swal from 'sweetalert'
 import WeatherHome from './weather'
 import {OAUTH} from "../scripts/FitbitScript";
 
-const style = {
-    marginTop: '20px'
-}
 //TODO
 // call the checkSavedState to determine where to send them
 // what is received is all the rows for that user that are missing a wakeup time
@@ -371,20 +368,17 @@ class Home extends React.Component {
                 <div id="setting_link">
                     <div className="d-flex align-items-center">
                         <img className="profile_pic" src={this.state.image} alt=""/>
-                        <h3 style={{color: "#7339AB", marginLeft: "10px"}}>Welcome <b>{this.state.name}</b></h3>
+                        <h3 style={{color: "#7339AB", marginLeft: "10px", size: '20px';}}>Welcome <b>{this.state.name}</b></h3>
                     </div>
                     <div>
-                        {/*<button id="logout_icon" onClick={logout}></button>*/}
-                        <Link to="/settings">
-                            <div id="setting_icon" className="float-right"></div>
-                        </Link>
+                        <button id="logout_icon" className="float-right" onClick={logout}></button>
                         <Link to="/settings">
                             <div id="setting_icon" className="float-right"></div>
                         </Link>
                     </div>
                 </div>
                 <div className="col-lg-6">
-                    <ul className="circle" style={style}>
+                    <ul className="circle">
                         <li>
                             <Link to="/sleep">
                                 <HomeIcon spanID={"sleepIcon_h"}

@@ -79,6 +79,7 @@
 #homepage .col-lg-6{
     overflow: hidden;
     padding: 0;
+    margin-top: 50px;
     height: 75vh;
 }
 .circle {
@@ -204,6 +205,7 @@
 
 .whiteText{
     color: white;
+    size: 20px;
 }
 .profile_pic{
     border-radius: 50%;

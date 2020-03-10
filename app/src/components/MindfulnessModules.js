@@ -47,13 +47,13 @@ class MindfulnessModules extends React.Component {
             if(window.innerWidth < 700){
                 this.setState({
                     padding: '17% 17% 5%',
-                    tilePaddingLeft: '40px'
+                    tilePaddingLeft: '25px'
                 });
             }
             else {
                 this.setState({
                     padding: '75px 75px 40px',
-                    tilePaddingLeft: '25px'
+                    tilePaddingLeft: '40px'
                 })
             }
         })

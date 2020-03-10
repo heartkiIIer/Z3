@@ -312,7 +312,7 @@ class UserSettings extends React.Component {
                     <button className='btn' id = "extended" onClick={this.addSleepGoal.bind(this)}>
                         Edit Sleep Goal
                     </button>
-                    <br/>
+                    <br/><br/>
                     <h3 class = "blueHeader Hidden"> Change password </h3>
                     <div class = "flex-row-nowrap Hidden">
                         <p class = "blueHeader width80"> Enter new password: </p>
@@ -355,6 +355,7 @@ class UserSettings extends React.Component {
 
                     <h1 className="blueHeader"> Fitbit Account Access</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     {this.useFibit()}
                     <br/><br/>
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>

@@ -182,8 +182,9 @@ class ItsBedtimeRoutine extends React.Component {
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div class = "content" id="App">
                         <div class ="middle">
-                            <div className="inner" id="page-wrap">
-                                <div style={bdContainer} class = "itsBedtime">
+                            <div style={bdContainer}
+                                 className="inner" id="page-wrap">
+                                <div class = "itsBedtime">
                                     {this.selectComponent()}
                                     <hr style={hrContainer} class = "bedtime-hr"/>
                                     <div className = "center" id = "button">

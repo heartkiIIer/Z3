@@ -48,7 +48,7 @@ class logging extends React.Component{
     }
 
     render() {
-        //this.resize();
+        this.resize();
         const styles = {
             containerStyle:{
                 padding: this.state.padding,

@@ -44,19 +44,19 @@ class MindfulnessModules extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-
+                    padding: '10% 10% 5%'
                 });
             }
             else {
                 this.setState({
-                    //padding: '75px 75px 40px'
+                    padding: '75px 75px 40px'
                 })
             }
         })
     }
 
     render() {
-        //this.resize();
+        this.resize();
         return (
             <div class="content modules" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

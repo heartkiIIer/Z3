@@ -79,6 +79,7 @@
 #homepage .col-lg-6{
     overflow: hidden;
     padding: 0;
+    margin-top: 50px;
     height: 75vh;
 }
 
@@ -123,7 +124,7 @@
     background: var(--iconColor);
     border-radius: 15%;
     display: flex;
-    margin-top: 20px;
+    margin-top: 60px;
     flex-direction: column;
     padding: 10%;
 }
@@ -180,7 +181,7 @@
     width: 100%;
 }
 #setting_link{
-    height: 95px;
+    height: 98px;
     width: 100%;
     position: absolute;
     top: 0;

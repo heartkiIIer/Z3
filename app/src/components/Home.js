@@ -7,6 +7,14 @@ import swal from 'sweetalert'
 import WeatherHome from './weather'
 import {OAUTH} from "../scripts/FitbitScript";
 
+const h2 = {
+    fontSize: '15px'
+}
+
+const h3 = {
+    fontSize: '10px'
+}
+
 //TODO
 // call the checkSavedState to determine where to send them
 // what is received is all the rows for that user that are missing a wakeup time
@@ -377,7 +385,7 @@ class Home extends React.Component {
                         </Link>
                     </div>
                 </div>
-                <div className="col-lg-6">
+                <div className="col-lg-6" style={ h3 }>
                     <ul className="circle">
                         <li>
                             <Link to="/sleep">
@@ -434,7 +442,7 @@ class Home extends React.Component {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item text-center active">
-                                    <h2 className="whiteText">Fun Fact of the Day:</h2>
+                                    <h2 style={h2} className="whiteText">Fun Fact of the Day:</h2>
                                     {this.displayFunFact()}
                                 </div>
                                 <div className="carousel-item text-center">
@@ -442,8 +450,8 @@ class Home extends React.Component {
                                     <button style={{marginTop: "20px", background: "transparent", border: "2px solid white"}} onClick={this.changeZip.bind(this)}>Change Location</button>
                                 </div>
                                 <div className="carousel-item text-center">
-                                    <h2 className="whiteText">{this.state.perMessage.subject}</h2>
-                                    <h4 className="whiteText">{this.state.perMessage.message}</h4>
+                                    <h2 style={h2} className="whiteText">{this.state.perMessage.subject}</h2>
+                                    <h4 style={h3} className="whiteText">{this.state.perMessage.message}</h4>
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"

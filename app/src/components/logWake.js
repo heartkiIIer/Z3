@@ -4,7 +4,7 @@ import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 
 class LogWake extends React.Component{
-    state = { width: 0, height: 0 };
+   // state = { width: 0, height: 0 };
 
     constructor(props) {
         super(props);

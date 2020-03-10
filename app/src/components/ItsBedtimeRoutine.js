@@ -22,10 +22,18 @@ class ItsBedtimeRoutine extends React.Component {
         super(props)
         var mobile;
         if(window.innerWidth >= 700){
-            mobile = false;
+            this.state = {
+                hrWidth: '300px',
+                btnFontSize: '13px',
+                padding: '13px 22px'
+            };
         }
         else{
-            mobile = true;
+            this.state = {
+                hrWidth: '170px',
+                btnFontSize: '9px',
+                padding: '12px 10px'
+            };
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
     }
@@ -87,12 +95,16 @@ class ItsBedtimeRoutine extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    mobile: true
+                    hrWidth: '170px',
+                    btnFontSize: '9px',
+                    padding: '12px 10px'
                 });
             }
             else {
                 this.setState({
-                    mobile: false
+                    hrWidth: '300px',
+                    btnFontSize: '13px',
+                    padding: '13px 22px'
                 })
             }
         })
@@ -134,6 +146,20 @@ class ItsBedtimeRoutine extends React.Component {
 
     render(){
         this.resize();
+        const hrStyle = {
+            hrContainer:{
+                hrWidth: this.state.hrWidth,
+            }
+        };
+        const { hrContainer } = hrStyle;
+
+        const btnStyle = {
+            btnContainer:{
+                btnFontSize: this.state.btnFontSize,
+                padding: this.state.padding
+            }
+        };
+        const { btnContainer } = btnStyle;
             return (
                 <div>
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -142,9 +168,9 @@ class ItsBedtimeRoutine extends React.Component {
                             <div className="inner" id="page-wrap">
                                 <div class = "itsBedtime">
                                     {this.selectComponent()}
-                                    <hr class = "bedtime-hr"/>
+                                    <hr style={hrContainer} class = "bedtime-hr"/>
                                     <div className = "center" id = "button">
-                                        <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                                        <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                                     </div>
                                 </div>
                             </div>

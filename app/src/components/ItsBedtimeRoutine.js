@@ -47,6 +47,7 @@ class ItsBedtimeRoutine extends React.Component {
         ).catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
+         window.addEventListener('resize', this.updateDimensions);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -82,6 +83,11 @@ class ItsBedtimeRoutine extends React.Component {
             })
         });
     }
+
+    updateDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    };
+
 
     startRoutine(){
         //set size to amount of pieces

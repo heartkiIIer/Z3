@@ -392,8 +392,3 @@ input:focus{
 .width300 {
     max-width: 300px;
 }
-
-.mind {
-    display: flex;
-    justify-content: center;
-}

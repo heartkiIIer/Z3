@@ -195,6 +195,14 @@ body {
     url("../resources/background_images/milky-way.jpg") no-repeat center center fixed;
 }
 
+.wakeHeader, .sleepHeader {
+    font-size: 45px;
+}
+
+.wakeHeaderTwo {
+    font-size: 25px;
+}
+
 .modules {
     background: linear-gradient(180deg, #1f9ce490 0%, #625ad890 40%, #7339ab90 100%),
     url("../resources/background_images/zen.jpg") no-repeat center center fixed;

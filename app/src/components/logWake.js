@@ -4,10 +4,14 @@ import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 
 class LogWake extends React.Component{
-    //state = { width: 0, height: 0 };
 
     constructor(props) {
         super(props);
+        this.state = {
+            width: 0,
+            height: 0
+        };
+
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
@@ -29,7 +33,7 @@ class LogWake extends React.Component{
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
-       // window.addEventListener('resize', this.updateDimensions);
+       window.addEventListener('resize', this.updateDimensions);
     }
 
     resize(){

@@ -60,14 +60,12 @@ class MindfulYoga extends React.Component {
                             <hr class = "hr-settings"/>
                             <br/>
                             <p>Grab a chair and follow this video for a mindful yoga routine.</p>
-
-
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/9PPO7mWRRD4"
+                            <br/>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/9PPO7mWRRD4"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen></iframe>
-                            <br/>
-
+                                    allowFullScreen/>
+                            <br/><br/>
                             <p><b>Video Description:</b> In this version the camera follows Jenny more closely as she
                                 does the chair modification of each pose while Dr. Lynn Rossy, Health Psychologist
                                 for Healthy for Life guides you through the practice of mindful yoga.  Mindful hatha

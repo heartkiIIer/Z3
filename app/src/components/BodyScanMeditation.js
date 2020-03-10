@@ -54,9 +54,9 @@ class BodyScanMeditation extends React.Component {
                             <hr class = "hr-settings"/>
                             <br/>
                             <p>This audio from the UCSD Center for Mindfulness will lead you in a 10 minute body scan meditation exercise.</p>
-
+                            <br/>
                             <iframe width="100%" height="450" scrolling="no" frameBorder="no" allow="autoplay"
-                                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/665222738&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/665222738&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"/>
 
                             <hr className="hr-settings"/>
                             <br/>

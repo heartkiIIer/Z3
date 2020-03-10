@@ -60,12 +60,13 @@ class MindfulEating extends React.Component {
                             <hr class = "hr-settings"/>
                             <br/>
                             <p>Watch this video to learn more about mindful eating!</p>
+                            <br/>
 
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/oEJ6HT11w3s"
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/oEJ6HT11w3s"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen></iframe>
-                            <br/>
+                                    allowFullScreen/>
+                            <br/><br/>
                             <p><b>Video Description:</b> UW Health psychologist Shilagh Mirgain explains how you can develop
                                 healthier eating habits by using the technique of mindful eating. If you really savor
                                 and enjoy your food, you're more likely to eat less and feel more satisfied.</p>

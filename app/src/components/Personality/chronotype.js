@@ -113,7 +113,7 @@ class Chronotype extends React.Component {
                                     1. Considering your own "feeling best" rhythm, at what time
                                     would you get up if you were entirely free to plan your day?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques1" value="1" id="ans1A" required/>
                                     <label for="ans1A">5:00-6:30 a.m</label>
@@ -143,7 +143,7 @@ class Chronotype extends React.Component {
                                     2. Considering your only "feeling best" rhythm, at what time would
                                     you go to bed if you were entirely free to plan your evening?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques2" value="1" id="ans2A" required/>
                                     <label for="ans2A">8:00-9:00 p.m</label>
@@ -173,7 +173,7 @@ class Chronotype extends React.Component {
                                     3. Assuming normal circumstance, how easy do you find
                                     getting up in the morning?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques3" value="1" id="ans3A" required/>
                                     <label for="ans3A">Not at all easy</label>
@@ -199,7 +199,7 @@ class Chronotype extends React.Component {
                                     4. How alert do you feel during the first half
                                     hour after having awakened in the morning?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques4" value="1" id="ans4A" required/>
                                     <label for="ans4A">Not at all alert</label>
@@ -225,7 +225,7 @@ class Chronotype extends React.Component {
                                     5. During the first half hour after having awakened in the
                                     morning, how tired do you feel?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques5" value="1" id="ans5A" required/>
                                     <label for="ans5A">Very tired</label>
@@ -253,7 +253,7 @@ class Chronotype extends React.Component {
                                     7:00-8:00 a.m. Bearing in mind nothing else but your own "feeling best"
                                     rhythm, how do you think you would perform?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques6" value="1" id="ans6A" required/>
                                     <label for="ans6A">Would be in good form</label>
@@ -279,7 +279,7 @@ class Chronotype extends React.Component {
                                     7. At what time in the evening do you feel tired
                                     and, as a result, in need of sleep?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques7" value="1" id="ans7A" required/>
                                     <label for="ans1A">8:00-9:00 p.m</label>
@@ -312,7 +312,7 @@ class Chronotype extends React.Component {
                                     only you own "feeling best" rhythm, which ONE of the four testing
                                     times would you choose?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques8" value="1" id="ans8A" required/>
                                     <label for="ans8A">8:00-10:00 a.m</label>
@@ -338,7 +338,7 @@ class Chronotype extends React.Component {
                                     9. One hears about "morning" and "evening" types of people.
                                     Which ONE of these types do you consider yourself to be?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques9" value="1" id="ans9A" required/>
                                     <label for="ans9A">Definitively a morning type</label>
@@ -364,7 +364,7 @@ class Chronotype extends React.Component {
                                     10. When would you prefer to rise (provided you have a full day's
                                     work - 8 hours) if you were totally free to arrange your time?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques10" value="1" id="ans10A" required/>
                                     <label for="ans10A">Before 6:30 a.m</label>
@@ -390,7 +390,7 @@ class Chronotype extends React.Component {
                                     11. If you always had to rise at 6:00 a.m.,
                                     what do you think it would be like?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques11" value="1" id="ans11A" required/>
                                     <label for="ans11A">Very difficult and unpleasant</label>
@@ -417,7 +417,7 @@ class Chronotype extends React.Component {
                                     "recover your senses" in the morning after rising
                                     from a night's sleep?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques12" value="1" id="ans12A" required/>
                                     <label for="ans12A">0-10 minutes</label>
@@ -443,7 +443,7 @@ class Chronotype extends React.Component {
                                     13. Please indicate to what extent you are a morning
                                     or evening active individual?
                                 </h5>
-                                <br/>
+                                <br/><br/>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques13" value="1" id="ans13A" required/>
                                     <label for="ans13A">Pronounced morning active (morning alert and evening tired)</label>

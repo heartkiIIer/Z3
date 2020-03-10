@@ -59,11 +59,11 @@ class mindfulLeadership extends React.Component {
                             <hr class = "hr-settings"/>
                             <br/>
                             <p>This video from the discusses how mindfulness can be applied to build stronger leadership skills.</p>
-
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/v0CNZLIkIqw"
+                            <br/>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/v0CNZLIkIqw"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen></iframe>
+                                    allowFullScreen/>
 
                             <hr className="hr-settings"/>
                             <br/>

@@ -192,11 +192,7 @@ function submitStressEntry() {
                         text: "New stress entries have been logged."
                     })
                 }
-            }).then( () => {for(let i = 5; i < document.getElementById('mainTab').children.length; i++) {
-                    document.getElementById('mainTab').children[i].children[1].children[2].value = '50';
-                }}
-
-            )
+            })
         })
     });
 }

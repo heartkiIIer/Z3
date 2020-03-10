@@ -73,7 +73,7 @@ class MindfulnessModules extends React.Component {
                         <br/>
                         <h4>Explore mindfulness topics: proven to improve sleep!</h4>
                         
-                        <div class="flex-row-wrap">
+                        <div class="flex-row-wrap mind">
                             <a href="/MindfulnessOverview">
                                 <Tile name="Mindfulness Overview"/>
                             </a>

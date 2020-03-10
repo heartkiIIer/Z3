@@ -458,7 +458,7 @@ class Chronotype extends React.Component {
                                 </div>
                                 <div>
                                     <input className="lmh_options" type="radio" name="ques13" value="4" id="ans13D"/>
-                                    <label class="radio control-label" for="ans13D">Pronounced evening active (morning tired and evening alert)</label>
+                                    <label class="radio-inline" for="ans13D">Pronounced evening active (morning tired and evening alert)</label>
                                 </div>
                             </fieldset>
                         </div>

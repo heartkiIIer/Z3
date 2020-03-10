@@ -1,5 +1,6 @@
 const db = require('./database');
 const message = require('./messages');
+const convertID = require('./number');
 const fs = require('fs');
 
 const https = require('https');
@@ -34,8 +35,12 @@ var corsOptions = {
 };
 
 app.post('/logUser', cors(corsOptions), (req, res) => {
-    let data = req.body;
-    db.getUser(req, res, data.id, "\'"+data.name+"\'");
+    const{id, name} = req.body;
+    let uid = id;
+    if(typeof id === "string"){
+        uid = convertID.toID_Number(id)
+    }
+    db.getUser(req, res, uid, "\'"+name+"\'");
 });
 
 //DATABASE FUNCTIONALITY

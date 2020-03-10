@@ -12,12 +12,12 @@ class BedtimeProgressBar extends React.Component {
         this.state = {timer: null, timerRunning: false};
         if(window.innerWidth >= 700){
             this.state = {
-                width: '390px',
+                width: '100px',
             };
         }
         else{
             this.state = {
-                width: '200px',
+                width: '50px',
             };
         }
     }
@@ -80,12 +80,12 @@ class BedtimeProgressBar extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    width: '200px'
+                    width: '50px'
                 });
             }
             else {
                 this.setState({
-                    width: '390px'
+                    width: '100px'
                 })
             }
         })

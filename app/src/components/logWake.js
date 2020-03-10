@@ -41,11 +41,15 @@ class LogWake extends React.Component{
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
+                    width: window.innerWidth,
+                    height: window.innerHeight,
                     padding: '10% 10% 5%'
                 });
             }
             else {
                 this.setState({
+                    width: window.innerWidth,
+                    height: window.innerHeight,
                     padding: '75px 75px 40px'
                 })
             }
@@ -92,7 +96,7 @@ class LogWake extends React.Component{
         });
     }
     render(){
-        this.updateDimensions();
+        //this.updateDimensions();
         this.resize();
         return (
             <div class = "content logSleep" id="App">

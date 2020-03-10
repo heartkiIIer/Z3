@@ -119,7 +119,7 @@ form{
     border: none;
 }
 #morebtn:hover {
-    border: none;
+    border: 2px solid #337ab7;
 }
 .inp{
     background: #ffffff;

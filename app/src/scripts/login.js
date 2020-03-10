@@ -1,6 +1,5 @@
 var firebaseui = require('firebaseui');
 var firebase = require('firebase');
-var convert = require('./number');
 
 (function(){
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -38,15 +37,8 @@ var convert = require('./number');
             // User is signed in.
             console.log("User is signed in");
             user.providerData.forEach(function (profile) {
-                let uid = null;
-                if(typeof profile.uid === "string"){
-                    uid = convert.toID_Number(profile.uid);
-                }
-                else{
-                    uid = profile.uid;
-                }
                 const data = JSON.stringify({
-                    id: uid,
+                    id: profile.uid,
                     name: profile.displayName,
                     image: profile.photoURL});
 
@@ -81,12 +73,7 @@ export function getUserID(){
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 user.providerData.forEach(function (profile) {
-                    if(typeof profile.uid === "string"){
-                        resolve(convert.toID_Number(profile.uid));
-                    }
-                    else{
-                        resolve(profile.uid);
-                    }
+                    resolve(profile.uid);
                 });
             } else { reject(); }
         })

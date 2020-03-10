@@ -31,6 +31,7 @@
     "react-circular-progressbar": "^2.0.3",
     "react-dom": "^16.11.0",
     "react-google-calendar-api": "^1.0.10",
+    "react-helmet": "^5.2.1",
     "react-native": "latest",
     "react-native-elements": "^1.2.7",
     "react-native-percentage-circle": "^1.0.7",

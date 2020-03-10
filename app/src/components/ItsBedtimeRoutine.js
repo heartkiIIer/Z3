@@ -25,14 +25,16 @@ class ItsBedtimeRoutine extends React.Component {
             this.state = {
                 hrWidth: '300px',
                 btnFontSize: '13px',
-                padding: '13px 22px'
+                padding: '13px 22px',
+                width: '400px'
             };
         }
         else{
             this.state = {
                 hrWidth: '170px !important',
                 btnFontSize: '9px !important',
-                padding: '12px 10px !important'
+                padding: '12px 10px !important',
+                width: '210px'
             };
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
@@ -97,14 +99,16 @@ class ItsBedtimeRoutine extends React.Component {
                 this.setState({
                     hrWidth: '170px !important',
                     btnFontSize: '9px !important',
-                    padding: '12px 10px !important'
+                    padding: '12px 10px !important',
+                    width: '210px'
                 });
             }
             else {
                 this.setState({
                     hrWidth: '300px',
                     btnFontSize: '13px',
-                    padding: '13px 22px'
+                    padding: '13px 22px',
+                    width: '400px'
                 })
             }
         })
@@ -153,6 +157,13 @@ class ItsBedtimeRoutine extends React.Component {
         };
         const { hrContainer } = hrStyle;
 
+        const bdStyle = {
+            bdContainer:{
+                bd: this.state.width,
+            }
+        };
+        const { bdContainer } = bdStyle;
+
         const btnStyle = {
             btnContainer:{
                 btn: this.state.btnFontSize,
@@ -166,7 +177,7 @@ class ItsBedtimeRoutine extends React.Component {
                     <div class = "content" id="App">
                         <div class ="middle">
                             <div className="inner" id="page-wrap">
-                                <div class = "itsBedtime">
+                                <div style={bdContainer} class = "itsBedtime">
                                     {this.selectComponent()}
                                     <hr style={hrContainer} class = "bedtime-hr"/>
                                     <div className = "center" id = "button">

@@ -163,6 +163,11 @@ function submitExerciseEntry() {
                     text: "New exercise entry have been logged."
                 })
             }
+        }).then(r=>{
+            if(r.status === 200){
+                document.getElementById('intensity').children[2].value = '50';
+                document.getElementById('minutes').children[2].value = '50';
+            }
         })
     });
 }
@@ -194,6 +199,11 @@ function submitCaffeineEntry() {
                     text: "New caffeine entry have been logged."
                 })
             }
+        }).then(r=>{
+            if(r.status === 200){
+                document.getElementById('cups').children[2].value = '50';
+                document.getElementById('cupSize').children[2].value = '50';
+            }
         })
     });
 }
@@ -215,7 +225,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id="intensity" aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id="intensity" aria-label="pretto slider" defaultValue={50}
                                   step={null}
                                   marks={stresslevel}/>
                 </Grid>
@@ -229,7 +239,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id="minutes" aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id="minutes" aria-label="pretto slider" defaultValue={50}
                                   valueLabelDisplay="auto"
                                   step={15}
                                   min={0}
@@ -267,7 +277,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id='cups' aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id='cups' aria-label="pretto slider" defaultValue={50}
                                   valueLabelDisplay="auto"
                                   step={1}
                                   min={0}
@@ -286,7 +296,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id='cupSize' aria-label="pretto slider" defaultValue={98}
+                    <PrettoSlider id='cupSize' aria-label="pretto slider" defaultValue={50}
                                   step={null}
                                   marks={cupSize}/>
                 </Grid>

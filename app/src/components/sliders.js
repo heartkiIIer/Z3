@@ -215,7 +215,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id="intensity" aria-label="pretto slider" defaultValue={2}
+                    <PrettoSlider id="intensity" aria-label="pretto slider" defaultValue={50}
                                   step={null}
                                   marks={stresslevel}/>
                 </Grid>
@@ -267,7 +267,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id='cups' aria-label="pretto slider" defaultValue={4}
+                    <PrettoSlider id='cups' aria-label="pretto slider" defaultValue={8}
                                   valueLabelDisplay="auto"
                                   step={1}
                                   min={0}
@@ -286,7 +286,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id='cupSize' aria-label="pretto slider" defaultValue={50}
+                    <PrettoSlider id='cupSize' aria-label="pretto slider" defaultValue={20}
                                   step={null}
                                   marks={cupSize}/>
                 </Grid>

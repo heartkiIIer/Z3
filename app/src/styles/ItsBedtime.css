@@ -263,8 +263,7 @@ input:focus{
 
 .tile:hover {
     cursor: pointer;
-    background: white;
-    color: #7339ab;
+    opacity: 50%;
 }
 
 .bm-burger-button {

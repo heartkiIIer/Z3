@@ -25,6 +25,7 @@
     /*width: var(--iconsize);*/
     background: var(--iconColor);
     border-radius: 50%;
+    font-size: 15px;
     display: inline-block;
     /*border: 7px solid white;*/
 }
@@ -126,7 +127,6 @@
     display: flex;
     margin-top: 60px;
     flex-direction: column;
-    padding: 10%;
 }
 
 .flip-card {
@@ -177,11 +177,11 @@
     transform: rotateY(180deg);
 }
 .carousel {
-    height: 90%;
+    height: 100%;
     width: 100%;
 }
 #setting_link{
-    height: 98px;
+    height: 100px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -215,4 +215,12 @@
     margin-left: 10px;
     height: 75px;
     object-fit:cover;
+}
+
+.carousel-control-next {
+    margin-right: -30px;
+}
+
+.carousel-control-prev {
+    margin-left: -30px;
 }

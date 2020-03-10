@@ -87,7 +87,7 @@ class LogWake extends React.Component{
         });
     }
     render(){
-        // this.resize();
+        //this.resize();
         return (
             <div class = "content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>

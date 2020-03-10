@@ -239,7 +239,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id="minutes" aria-label="pretto slider" defaultValue={50}
+                    <PrettoSlider id="minutes" aria-label="pretto slider" defaultValue={90}
                                   valueLabelDisplay="auto"
                                   step={15}
                                   min={0}
@@ -277,7 +277,7 @@ const panes = [
                 </Grid>
 
                 <Grid item xs>
-                    <PrettoSlider id='cups' aria-label="pretto slider" defaultValue={50}
+                    <PrettoSlider id='cups' aria-label="pretto slider" defaultValue={5}
                                   valueLabelDisplay="auto"
                                   step={1}
                                   min={0}

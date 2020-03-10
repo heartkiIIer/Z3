@@ -17,14 +17,12 @@ class MindfulnessModules extends React.Component {
         super(props);
         if(window.innerWidth >= 700){
             this.state = {
-                padding: '75px 75px 40px',
-                tileMarginLeft: '40px'
+                padding: '75px 75px 40px'
             };
         }
         else{
             this.state = {
-                padding: '17% 17% 5%',
-                tileMarginLeft: '25px'
+                padding: '17% 17% 5%'
             };
         }
     }
@@ -46,14 +44,12 @@ class MindfulnessModules extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    padding: '17% 17% 5%',
-                    tileMarginLeft: '25px'
+                    padding: '17% 17% 5%'
                 });
             }
             else {
                 this.setState({
-                    padding: '75px 75px 40px',
-                    tileMarginLeft: '40px'
+                    padding: '75px 75px 40px'
                 })
             }
         })
@@ -68,13 +64,6 @@ class MindfulnessModules extends React.Component {
         };
         const { containerStyle } = styles;
 
-        const style = {
-            containerStyles:{
-                marginLeft: this.state.tileMarginLeft,
-            }
-        };
-        const { containerStyles } = style;
-
         return (
             <div class="content modules" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -86,23 +75,23 @@ class MindfulnessModules extends React.Component {
                         <h4>Explore mindfulness topics: proven to improve sleep!</h4>
                         
                         <div class="flex-row-wrap">
-                            <a style={containerStyles} href="/MindfulnessOverview">
+                            <a href="/MindfulnessOverview">
                                 <Tile name="Mindfulness Overview"/>
                             </a>
                             <a href="/MindfulYoga">
-                                <Tile style={containerStyles} name="Mindful Yoga"/>
+                                <Tile name="Mindful Yoga"/>
                             </a>
                             <a href="/ExampleModule">
-                                <Tile style={containerStyles} name="5 Minute Meditation"/>
+                                <Tile name="5 Minute Meditation"/>
                             </a>
                             <a href="/BodyScanMeditation">
-                                <Tile style={containerStyles} name="10 Minute Meditation"/>
+                                <Tile name="10 Minute Meditation"/>
                             </a>
                             <a href="/MindfulEating">
-                                <Tile style={containerStyles} name="Mindful Eating"/>
+                                <Tile name="Mindful Eating"/>
                             </a>
                             <a href="/mindfulLeadership">
-                                <Tile style={containerStyles} name="Mindful Leadership"/>
+                                <Tile name="Mindful Leadership"/>
                             </a>
                         </div>
                     </div>

@@ -281,7 +281,7 @@ let today = new Date();
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
-    console.log(result.result.items.start);
+    console.log(result.result.items[0].start);
     return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
 }
 

@@ -183,6 +183,38 @@ function submitStressEntry() {
 
 }
 
+function addStresstoDatabase(events){
+    let idPromise = getUserID();
+    idPromise.then(uid=>{
+        events.forEach(event => {
+            fetch('https://sleepwebapp.wpi.edu:5000/users/newstress/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: event.title,
+                    year: event.year,
+                    month: event.month,
+                    day: event.day,
+                    date: event.date,
+                    value: event.value,
+                    uid: uid
+                })
+            }).then(r=>{
+                if(r.status === 200){
+                    swal({
+                        title: "Success",
+                        icon: "success",
+                        text: "New stress entries have been logged."
+                    })
+                }
+            })
+        })
+    });
+}
+
 function getStress(events) {
     let idPromise = getUserID();
     let today = new Date();
@@ -198,57 +230,39 @@ function getStress(events) {
         }).then( r => {
             return r.json();
         }).then( r => {
-            // console.log(r)
+            console.log(r);
+            let isduplicate = false;
+            console.log(events.length);
+            console.log(r.length);
             for (let i = 0; i < events.length; i++) {
                  for (let j = 0; j < r.length; j++) {
                      if(events[i].title === r[j].event && events[i].date === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
-                         swal({
-                             title: "Warning: Duplicate Events",
-                             icon: "warning",
-                             text: "Duplicate events will be overwritten upon submission.",
-                             buttons: true, dangerMode: true
-                         }).then( submit => {
-                                 if(submit) {
-                                     let idPromise = getUserID();
-                                     idPromise.then(uid=>{
-                                         events.forEach(event => {
-                                             fetch('https://sleepwebapp.wpi.edu:5000/users/newstress/', {
-                                                 method: 'POST',
-                                                 headers: {
-                                                     'Accept': 'application/json',
-                                                     'Content-Type': 'application/json',
-                                                 },
-                                                 body: JSON.stringify({
-                                                     title: event.title,
-                                                     year: event.year,
-                                                     month: event.month,
-                                                     day: event.day,
-                                                     date: event.date,
-                                                     value: event.value,
-                                                     uid: uid
-                                                 })
-                                             }).then(r=>{
-                                                 if(r.status === 200){
-                                                     swal({
-                                                         title: "Success",
-                                                         icon: "success",
-                                                         text: "New stress entries have been logged."
-                                                     })
-                                                 }
-                                             })
-                                         })
-                                     });
-                                 }
-                             }
-                         )
+                         isduplicate = true;
                          break;
                      }
                  }
             }
-
+            console.log("duplicate?: ", isduplicate);
+            if(isduplicate){
+                swal({
+                    title: "Warning: Duplicate Events",
+                    icon: "warning",
+                    text: "Duplicate events will be overwritten upon submission.",
+                    buttons: true, dangerMode: true
+                }).then( submit => {
+                        if(submit) {
+                            addStresstoDatabase(events);
+                        }
+                    }
+                )
+            }
+            else{
+                addStresstoDatabase(events);
+            }
             console.log(names)
             }
-        )})
+        )
+    })
 }
 
 async function fetchItems() {

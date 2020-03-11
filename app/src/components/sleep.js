@@ -47,11 +47,13 @@ class sleep extends React.Component{
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="middle">
                     <div className="inner" id="page-wrap">
-                        <div class = "time" align='center'>
-                            <h2 className="sleepHeader" align='center'>Waking up?</h2>
+                        <div class = "new-time" align='center'>
+                            <h2 className="newsleepHeader" align='center'>Waking up?</h2>
                             <a href="/LogWake"><button className='btn'>Log wake time</button></a>
-                            <hr />
-                            <h2 className="sleepHeader" align='center'>Going to Sleep?</h2>
+                            <br/>
+                            <hr/>
+                            <br/>
+                            <h2 className="newsleepHeader" align='center'>Going to Sleep?</h2>
                             <a href="/LogSleep"><button className='btn'>Log sleep time</button></a>
                         </div>
                     </div>

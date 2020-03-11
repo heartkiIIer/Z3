@@ -327,7 +327,7 @@ function Display() {
                     <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest events from the calendar.</p></i>
-                    <br/>
+                    <br/><br/>
                     {items.map(item => (
                         <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
                     ))}

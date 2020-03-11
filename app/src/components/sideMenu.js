@@ -35,7 +35,7 @@ export default props => {
             <a className="menu-item" href='/home'>
                 Home
             </a>
-            <a className="menu-item" href="/logSleep">
+            <a className="menu-item" href="/sleep">
                 Log Sleep
             </a>
             <a className="menu-item" href="/logging">

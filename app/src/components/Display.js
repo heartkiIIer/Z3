@@ -280,8 +280,21 @@ function getStress(events) {
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
-    console.log(result.result.items[result.result.items.length-1].start);
-    return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
+    // console.log(result.result.items[result.result.items.length-1].start);
+    let approved = [];
+    let todayDate = new Date().getDate();
+    let todayMonth = new Date().getMonth();
+    let todayYear = new Date().getFullYear();
+    for(let i = 0; i < result.result.items.length; i++) {
+        let calEvent = result.result.items[i].start.dateTime;
+        let calDate = new Date(calEvent).getDate();
+        let calMonth = new Date(calEvent).getMonth();
+        let calYear = new Date(calEvent).getFullYear();
+        if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
+            approved.push(result.result.items[i])
+        }
+    }
+    return approved.map(({summary, start, end}) => ({summary, start, end}));
 }
 
 function Display() {

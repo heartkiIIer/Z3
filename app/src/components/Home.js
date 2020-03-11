@@ -402,7 +402,7 @@ class Home extends React.Component {
                 <div className="col-lg-6 circleview" >
                     <ul className="circle">
                         <li>
-                            <Link to="/logsleep">
+                            <Link to="/sleep">
                                 <HomeIcon spanID={"sleepIcon_h"}
                                           iconClass={"iconImages_h sleepIconImg"}
                                           iconInfo={"Log Your Sleep"}/>

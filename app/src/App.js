@@ -13,6 +13,7 @@ import PersonalityIntro from './components/Personality/PersonalityIntro';
 import PersonalityResults from './components/Personality/PersonalityResults';
 import MindfulnessModules from './components/MindfulnessModules';
 import report from "./components/report";
+import sleep from "./components/sleep";
 import ExampleModule from './components/ExampleModule';
 import NotFound from './components/NotFound';
 import logWake from "./components/logWake";
@@ -48,7 +49,7 @@ const BedtimeRoutineComponent = withTitle({ component: BedtimeRoutine, title: 'B
 const HomeComponent = withTitle({ component: Home, title: 'Home – Z³' });
 const RegisterComponent = withTitle({ component: Register, title: 'Sign Up – Z³' });
 const UserSettingsComponent = withTitle({ component: UserSettings, title: 'Settings – Z³' });
-const logSleepComponent = withTitle({ component: logSleep, title: 'Log Sleep – Z³' });
+const logSleepComponent = withTitle({ component: sleep, title: 'Log Sleep – Z³' });
 const logWakeComponent = withTitle({ component: logWake, title: 'Log Wake – Z³' });
 const ChronotypeComponent = withTitle({ component: Chronotype, title: 'Chronotype Test– Z³' });
 const ChronoResultsComponent = withTitle({ component: ChronoResults, title: 'Chronotype Results– Z³' });

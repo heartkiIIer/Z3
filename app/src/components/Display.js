@@ -324,9 +324,9 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={"window.location.reload();"}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
-                    <i><p>10 upcoming events will be listed. Click the Refresh icon to unhide events and sync latest events.</p></i>
+                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest events from the calendar.</p></i>
                     <br/>
                     {items.map(item => (
                         <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
@@ -345,9 +345,9 @@ function Display() {
         return (
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={"window.location.reload();"}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/><br/>
-                    <i><p>You have no upcoming events.</p></i>
+                    <i><p>You have no upcoming events for today.</p></i>
                 </Tab.Pane>
         )
     }

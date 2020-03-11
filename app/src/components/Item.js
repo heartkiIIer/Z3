@@ -5,7 +5,6 @@ import { withStyles} from '@material-ui/core/styles';
 import moment from "moment";
 import {getUserID} from "../scripts/login";
 
-
 const buttonStyle = {
     borderRadius: '5px'
 }

@@ -256,10 +256,13 @@ function getStress(events) {
                 Swal.fire({
                     title: "Warning: Duplicate Events",
                     icon: "warning",
-                    html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on \'Hide\'. Otherwise your old data will be overwritten upon submission.",
-                    buttons: true, dangerMode: true
-                }).then( submit => {
-                        if(submit) {
+                    html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, overwrite!',
+                    cancelButtonColor: '#d33'
+                }).then(result => {
+                        if(result.value) {
                             addStresstoDatabase(events);
                         }
                     }

@@ -11,7 +11,7 @@ const refresh = {
     fontSize: '175%'
 }
 
-let events = []
+let events, names = []
 
 export default class LoginControl extends React.Component {
     constructor(props) {
@@ -42,6 +42,10 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
+        let duplicates = ""
+        for(let i = 0; i < names.length; i++) {
+            duplicates += names[i];
+        }
         console.log(ApiCalendar.sign)
         let ele;
 
@@ -49,6 +53,14 @@ export default class LoginControl extends React.Component {
             ele = <Display/>;
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
+        }
+
+        if(names.length !== 0) {
+            swal({
+                title: "Warning",
+                icon: "warning",
+                text: "You have already logged some of the events listed here. You can hide the events you have already submitted by clicking on \'Hide\'. If you choose to re-submit them, your old data will be overwritten."
+            })
         }
 
         return (
@@ -198,10 +210,9 @@ function submitStressEntry() {
     });
 }
 
-let today = new Date();
-
 function getStress() {
     let idPromise = getUserID();
+    let today = new Date();
     idPromise.then((uid)=>{
         const data = JSON.stringify({uid: uid, month: today.getMonth(), day: today.getDate(), year: today.getFullYear()});
         fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
@@ -214,13 +225,20 @@ function getStress() {
         }).then( r => {
             return r.json();
         }).then( r => {
-            console.log(r)
+            // console.log(r)
+            for (let i = 0; i < events.length; i++) {
+                 for (let j = 0; j < r.length; j++) {
+                     if(events[i].title === r[j].event && events[i].date === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
+                          names.push(events[i].title);
+                     }
+                 }
+            }
+            console.log(names)
             }
         )})
 }
 
 async function fetchItems() {
-    let r = getStress();
     const result = await ApiCalendar.listUpcomingEvents(10);
     return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
 }

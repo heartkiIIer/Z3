@@ -73,7 +73,7 @@ const minutes = [
 
 const cups = [
     {
-        value: 2,
+        value: 0.2,
         label: 0
     },
     {

@@ -90,7 +90,7 @@ function LogoutButton(props) {
 function submitStressEntry() {
     let parentElement = document.getElementById('mainTab').children
     let events = []
-    for (let i = 7; i < parentElement.length; i++) {
+    for (let i = 6; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
         let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
         switch (date) {

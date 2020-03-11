@@ -34,6 +34,7 @@ if (url.includes("report") && url.includes("#")) {
     var access_token = url.split("#")[1].split("=")[1].split("&")[0];
     // get the userid
     var userId = url.split("#")[1].split("=")[2].split("&")[0];
+    console.log(userId)
 
     var sleepXhr = new XMLHttpRequest();
     // dates need to be in YYYY-MM-DD format

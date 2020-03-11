@@ -280,7 +280,7 @@ function getStress(events) {
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
-    console.log(result.result.items[items.length-1].start);
+    console.log(result.result.items[result.result.items.length-1].start);
     return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
 }
 

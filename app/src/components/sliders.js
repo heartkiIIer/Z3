@@ -35,7 +35,7 @@ const cupSize = [
 
 const stresslevel = [
     {
-        value: 0,
+        value: 2,
         label: 'Low',
     },
     {
@@ -50,7 +50,7 @@ const stresslevel = [
 
 const minutes = [
     {
-        value: 0,
+        value: 2,
         label: 0
     },
     {
@@ -66,14 +66,14 @@ const minutes = [
         label: 135
     },
     {
-        value: 180,
+        value: 178,
         label: 180
     }
 ];
 
 const cups = [
     {
-        value: 0,
+        value: 2,
         label: 0
     },
     {
@@ -93,7 +93,7 @@ const cups = [
         label: 8
     },
     {
-        value: 10,
+        value: 9.8,
         label: 10
     }
 ];

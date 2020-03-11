@@ -8,6 +8,7 @@ import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
 import BedtimeProgressBar from "./BedtimeProgressBar";
 import Redirect from "react-router-dom/es/Redirect";
 import {getUserID} from "../scripts/login";
+import {Link} from "react-router-dom";
 
 /**
  * @author Eliazbeth Del Monaco, Sarah Armstrong
@@ -168,22 +169,37 @@ class ItsBedtimeRoutine extends React.Component {
         };
         const { btnContainer } = btnStyle;
             return (
-                <div>
+                <div className = "content personality" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div class = "content" id="App">
-                        <div class ="middle">
-                            <div className="inner" id="page-wrap">
-                                <div style={bdContainer} class = "itsBedtime">
-                                    {this.selectComponent()}
-                                    <hr className="bedtime-hr"/>
-                                    <div className = "center" id = "button">
-                                        <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
-                                    </div>
-                                </div>
+                    <div className="middle">
+                        <div style={bdContainer} className="inner" id="page-wrap">
+                            {this.selectComponent()}
+                            <hr className="bedtime-hr"/>
+                            <div className = "center" id = "button">
+                                <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                             </div>
                         </div>
                     </div>
+
                 </div>
+
+
+                // <div>
+                //     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                //     <div class = "content" id="App">
+                //         <div class ="middle">
+                //             <div className="inner" id="page-wrap">
+                //                 <div style={bdContainer} class = "itsBedtime">
+                //                     {this.selectComponent()}
+                //                     <hr className="bedtime-hr"/>
+                //                     <div className = "center" id = "button">
+                //                         <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>
+                //     </div>
+                // </div>
             );
     };
 }

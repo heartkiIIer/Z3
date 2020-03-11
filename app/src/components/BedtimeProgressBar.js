@@ -113,6 +113,8 @@ class BedtimeProgressBar extends React.Component {
                             <h1><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1>
                         </div>
                     </CircularProgressbarWithChildren>
+                    <br/>
+                    <hr className="bedtime-hr"/>
                 </div>)
         }
         else{

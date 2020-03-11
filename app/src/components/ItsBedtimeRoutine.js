@@ -31,7 +31,7 @@ class ItsBedtimeRoutine extends React.Component {
         else{
             this.state = {
                 width: '170px',
-                paddingTop: '200px'
+                paddingTop: '300px'
             };
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
@@ -101,7 +101,7 @@ class ItsBedtimeRoutine extends React.Component {
             if(window.innerWidth < 700){
                 this.setState({
                     width: '170px',
-                    paddingTop: '200px'
+                    paddingTop: '300px'
                 });
             }
             else {

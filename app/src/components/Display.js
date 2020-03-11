@@ -55,13 +55,14 @@ export default class LoginControl extends React.Component {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
         }
 
-        if(names.length !== 0) {
-            swal({
-                title: "Warning",
-                icon: "warning",
-                text: "You have already logged some of the events listed here. You can hide the events you have already submitted by clicking on \'Hide\'. If you choose to re-submit them, your old data will be overwritten."
-            })
-        }
+        // if(names.length !== 0) {
+        //     swal({
+        //         title: "Warning",
+        //         icon: "warning",
+        //         text: "You have already logged some of the events listed here. You can hide the events you have already submitted by clicking on \'Hide\'. If you choose to re-submit them, your old data will be overwritten."
+        //     })
+        // }
+        getStress()
 
         return (
             <div>
@@ -229,10 +230,16 @@ function getStress() {
             for (let i = 0; i < events.length; i++) {
                  for (let j = 0; j < r.length; j++) {
                      if(events[i].title === r[j].event && events[i].date === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
-                          names.push(events[i].title);
+                         swal({
+                             title: "Warning",
+                             icon: "warning",
+                             text: "You have already logged some of the events listed here. You can hide the events you have already submitted by clicking on \'Hide\'. If you choose to re-submit them, your old data will be overwritten."
+                         })
+                         break;
                      }
                  }
             }
+
             console.log(names)
             }
         )})

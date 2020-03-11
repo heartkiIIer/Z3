@@ -26,7 +26,7 @@ class ItsBedtimeRoutine extends React.Component {
                 hrWidth: '300px',
                 btnFontSize: '13px',
                 padding: '13px 22px',
-                width: '400px'
+                innerWidth: '400px'
             };
         }
         else{
@@ -34,7 +34,7 @@ class ItsBedtimeRoutine extends React.Component {
                 hrWidth: '170px !important',
                 btnFontSize: '9px !important',
                 padding: '12px 10px !important',
-                width: '210px !important'
+                innerWidth: '210px !important'
             };
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
@@ -106,7 +106,7 @@ class ItsBedtimeRoutine extends React.Component {
                     hrWidth: '170px !important',
                     btnFontSize: '9px !important',
                     padding: '12px 10px !important',
-                    width: '210px !important'
+                    innerWidth: '210px !important'
                 });
             }
             else {
@@ -114,7 +114,7 @@ class ItsBedtimeRoutine extends React.Component {
                     hrWidth: '300px',
                     btnFontSize: '13px',
                     padding: '13px 22px',
-                    width: '400px'
+                    innerWidth: '400px'
                 })
             }
         })
@@ -165,7 +165,7 @@ class ItsBedtimeRoutine extends React.Component {
 
         const bdStyle = {
             bdContainer:{
-                width: this.state.width,
+                innerWidth: this.state.innerWidth,
             }
         };
         const { bdContainer } = bdStyle;

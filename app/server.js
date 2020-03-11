@@ -175,6 +175,11 @@ app.post('/getWeekStress/', cors(corsOptions), (req, res)=> {
     db.getStressEntriesById(req, res, uid);
 });
 
+app.post('getStressByDate', cors(corsOptions), (req, res) => {
+    const {uid, month, day, year} = req.body;
+    db.getStressEntriesByDate(req, res, uid, month, day, year);
+});
+
 app.post('/getWeekExer/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
     db.getExerciseEntriesById(req, res, uid);

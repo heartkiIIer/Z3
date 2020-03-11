@@ -175,7 +175,7 @@ class ItsBedtimeRoutine extends React.Component {
                             <div className="inner" id="page-wrap">
                                 <div style={bdContainer} class = "itsBedtime">
                                     {this.selectComponent()}
-                                    <hr style={hrContainer} class = "bedtime-hr"/>
+                                    <hr class = "bedtime-hr"/>
                                     <div className = "center" id = "button">
                                         <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                                     </div>

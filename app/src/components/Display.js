@@ -11,6 +11,8 @@ const refresh = {
     fontSize: '175%'
 }
 
+let events = []
+
 export default class LoginControl extends React.Component {
     constructor(props) {
         super(props);
@@ -89,7 +91,6 @@ function LogoutButton(props) {
 
 function submitStressEntry() {
     let parentElement = document.getElementById('mainTab').children
-    let events = []
     for (let i = 6; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
         let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
@@ -197,7 +198,29 @@ function submitStressEntry() {
     });
 }
 
+let today = new Date();
+
+function getStress() {
+    let idPromise = getUserID();
+    idPromise.then((uid)=>{
+        const data = JSON.stringify({uid: uid, month: today.getMonth(), day: today.getDate(), year: today.getFullYear()});
+        fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            return r.json();
+        }).then( r => {
+            console.log(r)
+            }
+        )})
+}
+
 async function fetchItems() {
+    let r = getStress();
     const result = await ApiCalendar.listUpcomingEvents(10);
     return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
 }

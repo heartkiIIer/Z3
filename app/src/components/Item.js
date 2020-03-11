@@ -3,6 +3,8 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { withStyles} from '@material-ui/core/styles';
 import moment from "moment";
+import {getUserID} from "../scripts/login";
+
 
 const buttonStyle = {
     borderRadius: '5px'
@@ -52,6 +54,8 @@ const PrettoSlider = withStyles({
         borderRadius: 4,
     }
 })(Slider);
+
+let datesArray = [];
 
 const Item = props => {
     let date = props.itemStart.slice(0, 10)

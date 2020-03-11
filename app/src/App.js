@@ -49,7 +49,8 @@ const BedtimeRoutineComponent = withTitle({ component: BedtimeRoutine, title: 'B
 const HomeComponent = withTitle({ component: Home, title: 'Home – Z³' });
 const RegisterComponent = withTitle({ component: Register, title: 'Sign Up – Z³' });
 const UserSettingsComponent = withTitle({ component: UserSettings, title: 'Settings – Z³' });
-const logSleepComponent = withTitle({ component: sleep, title: 'Log Sleep – Z³' });
+const SleepComponent = withTitle({ component: sleep, title: 'Log Sleep – Z³' });
+const LogSleepComponent = withTitle({ component: logSleep, title: 'Log Sleep – Z³' });
 const logWakeComponent = withTitle({ component: logWake, title: 'Log Wake – Z³' });
 const ChronotypeComponent = withTitle({ component: Chronotype, title: 'Chronotype Test– Z³' });
 const ChronoResultsComponent = withTitle({ component: ChronoResults, title: 'Chronotype Results– Z³' });
@@ -80,6 +81,7 @@ function App() {
               <Route path ="/home" component={HomeComponent}/>
               <Route path ="/register" component={RegisterComponent}/>
               <Route path="/settings" component={UserSettingsComponent}/>
+              <Route path="/sleep" component={SleepComponent}/>
               <Route path="/logSleep" component={logSleepComponent}/>
               <Route path="/logWake" component={logWakeComponent}/>
               <Route path="/chronotype" component={ChronotypeComponent}/>

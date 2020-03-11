@@ -21,7 +21,7 @@ class ItsBedtimeRoutine extends React.Component {
     constructor(props){
         super(props)
         var mobile;
-        if(window.innerWidth >= 700){
+        if(window.innerWidth >= 400){
             this.state = {
                 fontSize: '13px',
                 padding: '13px 22px',
@@ -99,7 +99,7 @@ class ItsBedtimeRoutine extends React.Component {
 
     resize(){
         window.addEventListener('resize', ()=> {
-            if(window.innerWidth < 700){
+            if(window.innerWidth < 400){
                 this.setState({
                     fontSize: '9px',
                     padding: '12px 10px',

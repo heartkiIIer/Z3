@@ -90,7 +90,7 @@ function LogoutButton(props) {
 function submitStressEntry() {
     let parentElement = document.getElementById('mainTab').children
     let events = []
-    for (let i = 5; i < parentElement.length; i++) {
+    for (let i = 7; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
         let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
         switch (date) {
@@ -229,7 +229,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={window.location.reload()}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={"window.location.reload();"}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>10 upcoming events will be listed. Click the Refresh icon to unhide events and sync latest events.</p></i>
                     <br/>
@@ -250,7 +250,7 @@ function Display() {
         return (
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={window.location.reload()}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={"window.location.reload();"}><RefreshIcon style={refresh}/></button>
                     <br/><br/><br/>
                     <i><p>You have no upcoming events.</p></i>
                 </Tab.Pane>

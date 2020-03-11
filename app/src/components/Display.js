@@ -5,6 +5,7 @@ import { Tab } from 'semantic-ui-react'
 import Item from './Item'
 import {getUserID} from "../scripts/login";
 import swal from 'sweetalert'
+import Swal from "sweetalert2";
 
 const refresh = {
     paddingRight: '6px',
@@ -233,7 +234,7 @@ function getStress(events) {
                      console.log(r[j].year);
                      if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
                          isduplicate = true;
-                         reps.push(events[i].title)
+                         reps.push('<b>' + events[i].title + '</b>')
                          //break;
                      }
                  }
@@ -245,17 +246,17 @@ function getStress(events) {
                 if(i === reps.length - 2) {
                     duplicates += reps[i] + ", and "
                 } else if (i === reps.length - 1){
-                    duplicates += reps[i] + "."
+                    duplicates += reps[i] + ". "
                 } else {
                     duplicates += reps[i] + ", "
                 }
             }
             console.log(duplicates)
             if(isduplicate){
-                swal({
+                Swal.fire({
                     title: "Warning: Duplicate Events",
                     icon: "warning",
-                    text: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on \'Hide\'. Otherwise your old data will be overwritten upon submission.",
+                    html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on \'Hide\'. Otherwise your old data will be overwritten upon submission.",
                     buttons: true, dangerMode: true
                 }).then( submit => {
                         if(submit) {

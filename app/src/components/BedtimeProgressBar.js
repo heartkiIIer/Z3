@@ -17,7 +17,7 @@ class BedtimeProgressBar extends React.Component {
         }
         else{
             this.state = {
-                width: '210px',
+                width: '230px',
             };
         }
     }
@@ -80,7 +80,7 @@ class BedtimeProgressBar extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    width: '210px'
+                    width: '230px'
                 });
             }
             else {

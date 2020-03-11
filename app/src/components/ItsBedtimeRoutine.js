@@ -25,17 +25,13 @@ class ItsBedtimeRoutine extends React.Component {
         var mobile;
         if(window.innerWidth >= 700){
             this.state = {
-                fontSize: '13px',
-                padding: '13px 22px',
                 width: '350px'
             };
         }
         else{
             this.state = {
-                fontSize: '9px',
-                padding: '12px 10px',
                 width: '170px',
-                paddingTop: '100px'
+                paddingTop: '200px'
             };
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
@@ -104,16 +100,12 @@ class ItsBedtimeRoutine extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    fontSize: '9px',
-                    padding: '12px 10px',
                     width: '170px',
-                    paddingTop: '100px'
+                    paddingTop: '200px'
                 });
             }
             else {
                 this.setState({
-                    fontSize: '13px',
-                    padding: '13px 22px',
                     width: '350px'
                 })
             }
@@ -172,13 +164,6 @@ class ItsBedtimeRoutine extends React.Component {
 
         const { bdContainer } = bdStyle;
 
-        const btnStyle = {
-            btnContainer:{
-                fontSize: this.state.fontSize,
-                padding: this.state.padding
-            }
-        };
-        const { btnContainer } = btnStyle;
             return (
                 <div className = "content personality" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -186,7 +171,7 @@ class ItsBedtimeRoutine extends React.Component {
                         <div style={bdContainer} className="inner" id="page-wrap" align='center'>
                             {this.selectComponent()}
                             <hr style={hrContainer} className='hr-settings'/>
-                            <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                            <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                         </div>
                     </div>
                 </div>

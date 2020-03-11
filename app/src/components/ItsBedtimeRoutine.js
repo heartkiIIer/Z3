@@ -23,17 +23,17 @@ class ItsBedtimeRoutine extends React.Component {
     constructor(props){
         super(props)
         var mobile;
-        if(window.innerWidth >= 700){
-            this.state = {
-                width: '350px'
-            };
-        }
-        else{
-            this.state = {
-                width: '170px',
-                paddingTop: '300px'
-            };
-        }
+        // if(window.innerWidth >= 700){
+        //     this.state = {
+        //         width: '350px'
+        //     };
+        // }
+        // else{
+        //     this.state = {
+        //         width: '170px',
+        //         paddingTop: '300px'
+        //     };
+        // }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
     }
 
@@ -168,9 +168,9 @@ class ItsBedtimeRoutine extends React.Component {
                 <div className = "content personality" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
-                        <div style={bdContainer} className="inner" id="page-wrap" align='center'>
+                        <div className="inner" id="page-wrap" align='center'>
                             {this.selectComponent()}
-                            <hr style={hrContainer} className='hr-settings'/>
+                            <hr className='hr-settings'/>
                             <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                         </div>
                     </div>

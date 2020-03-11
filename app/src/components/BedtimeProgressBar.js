@@ -7,7 +7,7 @@ import SideBar from "./sideMenu";
 import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
 
 const h1 = {
-    fontSize: '10px',
+    fontSize: '30px',
     color: '#337ab7'
 }
 
@@ -114,6 +114,7 @@ class BedtimeProgressBar extends React.Component {
                         <div style={{ marginTop: -5 }}>
                             <h1 style={h1}>{this.props.title}</h1>
                         </div>
+                        <br/>
                         <div style={{ marginTop: -5 }}>
                             <h1 style={h1}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1>
                         </div>

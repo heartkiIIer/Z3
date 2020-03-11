@@ -11,7 +11,7 @@ const refresh = {
     fontSize: '175%'
 }
 
-let events, names = []
+let calevents, names = []
 
 export default class LoginControl extends React.Component {
     constructor(props) {
@@ -103,6 +103,7 @@ function LogoutButton(props) {
 }
 
 function submitStressEntry() {
+    let events = []
     let parentElement = document.getElementById('mainTab').children
     for (let i = 6; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
@@ -212,6 +213,83 @@ function submitStressEntry() {
 }
 
 function getStress() {
+    let parentElement = document.getElementById('mainTab').children
+    for (let i = 6; i < parentElement.length; i++) {
+        let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
+        let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
+        switch (date) {
+            case 'Mon':
+                date = 1;
+                break;
+            case 'Tue':
+                date = 2;
+                break;
+            case 'Wed':
+                date = 3;
+                break;
+            case 'Thu':
+                date = 4;
+                break;
+            case 'Fri':
+                date = 5;
+                break;
+            case 'Sat':
+                date = 6;
+                break;
+            case 'Sun':
+                date = 7;
+                break;
+        }
+        switch (month) {
+            case 'Jan':
+                month = 1;
+                break;
+            case 'Feb':
+                month = 2;
+                break;
+            case 'Mar':
+                month = 3;
+                break;
+            case 'Apr':
+                month = 4;
+                break;
+            case 'May':
+                month = 5;
+                break;
+            case 'Jun':
+                month = 6;
+                break;
+            case 'Jul':
+                month = 7;
+                break;
+            case 'Aug':
+                month = 8;
+                break;
+            case 'Sep':
+                month = 9;
+                break;
+            case 'Oct':
+                month = 10;
+                break;
+            case 'Nov':
+                month = 11;
+                break;
+            case 'Dec':
+                month = 12;
+                break;
+        }
+        calevents.push({
+                title: parentElement[i].children[0].children[0].innerText,
+                year: parseInt(parentElement[i].children[0].children[2].innerText.slice(-4)),
+                month: month,
+                day: parseInt(parentElement[i].children[0].children[2].innerText.slice(4, 6)),
+                date: date,
+                value: parseInt(parentElement[i].children[1].children[2].value)
+            }
+        );
+    }
+    console.log(calevents);
+
     let idPromise = getUserID();
     let today = new Date();
     idPromise.then((uid)=>{
@@ -227,9 +305,9 @@ function getStress() {
             return r.json();
         }).then( r => {
             // console.log(r)
-            for (let i = 0; i < events.length; i++) {
+            for (let i = 0; i < calevents.length; i++) {
                  for (let j = 0; j < r.length; j++) {
-                     if(events[i].title === r[j].event && events[i].date === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
+                     if(calevents[i].title === r[j].event && calevents[i].date === r[j].day && calevents[i].month === r[j].month && calevents[i].year === r[j].year) {
                          swal({
                              title: "Warning",
                              icon: "warning",

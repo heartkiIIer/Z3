@@ -203,6 +203,24 @@ function getStressEntriesById(req, res, id) {
           })
 }
 
+//Get all stress entries for a given user and past the given day
+function getStressEntriesByDate(req, res, id, month, day, year) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function (internalId) {
+            pool.query('SELECT * FROM StressEntry WHERE user_id ='+ internalId.rows[0].user_id +
+                'AND month >='+month+' AND day >='+day+' AND year >='+year+';' , (error, results) => {
+                if (error) {
+                    throw error
+                }
+                console.log(results.rows);
+                res.status(200).send(results.rows);
+            });
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
 //Add a stress entry
 function addStressEntriesById(req, res, id, title, year, month, day, date, value) {
     const promise = promiseBuildergoogleIdtoInternal(id);
@@ -554,6 +572,7 @@ module.exports = {
     deleteUser,
     getChronotypeById,
     getStressEntriesById,
+    getStressEntriesByDate,
     getBedtimeRoutineById,
     getCaffeineEntriesById,
     getExerciseEntriesById,

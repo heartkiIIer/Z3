@@ -82,7 +82,7 @@ function App() {
               <Route path ="/register" component={RegisterComponent}/>
               <Route path="/settings" component={UserSettingsComponent}/>
               <Route path="/sleep" component={SleepComponent}/>
-              <Route path="/logSleep" component={logSleepComponent}/>
+              <Route path="/logSleep" component={LogSleepComponent}/>
               <Route path="/logWake" component={logWakeComponent}/>
               <Route path="/chronotype" component={ChronotypeComponent}/>
               <Route path="/chronoResults" component={ChronoResultsComponent}/>

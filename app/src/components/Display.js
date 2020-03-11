@@ -42,10 +42,6 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
-        let duplicates = ""
-        for(let i = 0; i < names.length; i++) {
-            duplicates += names[i];
-        }
         console.log(ApiCalendar.sign)
         let ele;
 
@@ -54,14 +50,6 @@ export default class LoginControl extends React.Component {
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
         }
-
-        // if(names.length !== 0) {
-        //     swal({
-        //         title: "Warning",
-        //         icon: "warning",
-        //         text: "You have already logged some of the events listed here. You can hide the events you have already submitted by clicking on \'Hide\'. If you choose to re-submit them, your old data will be overwritten."
-        //     })
-        // }
 
         return (
             <div>
@@ -232,6 +220,7 @@ function getStress(events) {
         }).then( r => {
             console.log(r);
             let isduplicate = false;
+            let reps = [];
             for (let i = 0; i < events.length; i++) {
                  for (let j = 0; j < r.length; j++) {
                      console.log(i + " : " + events[i].title);
@@ -244,16 +233,29 @@ function getStress(events) {
                      console.log(r[j].year);
                      if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
                          isduplicate = true;
-                         break;
+                         reps.push(events[i].title)
+                         //break;
                      }
                  }
             }
+            console.log(reps)
             console.log("duplicate?: ", isduplicate);
+            let duplicates = ''
+            for (let i = 0; i < reps.length; i++) {
+                if(i === reps.length - 2) {
+                    duplicates += reps[i] + ", and "
+                } else if (i === reps.length - 1){
+                    duplicates += reps[i] + "."
+                } else {
+                    duplicates += reps[i] + ", "
+                }
+            }
+            console.log(duplicates)
             if(isduplicate){
                 swal({
                     title: "Warning: Duplicate Events",
                     icon: "warning",
-                    text: "Duplicate events will be overwritten upon submission.",
+                    text: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on \'Hide\'. Otherwise your old data will be overwritten upon submission.",
                     buttons: true, dangerMode: true
                 }).then( submit => {
                         if(submit) {

@@ -27,14 +27,15 @@ class ItsBedtimeRoutine extends React.Component {
             this.state = {
                 fontSize: '13px',
                 padding: '13px 22px',
-                width: '400px'
+                width: '350px'
             };
         }
         else{
             this.state = {
                 fontSize: '9px',
                 padding: '12px 10px',
-                width: '210px'
+                width: '170px',
+                paddingTop: '100px'
             };
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
@@ -105,14 +106,15 @@ class ItsBedtimeRoutine extends React.Component {
                 this.setState({
                     fontSize: '9px',
                     padding: '12px 10px',
-                    width: '210px'
+                    width: '170px',
+                    paddingTop: '100px'
                 });
             }
             else {
                 this.setState({
                     fontSize: '13px',
                     padding: '13px 22px',
-                    width: '400px'
+                    width: '350px'
                 })
             }
         })
@@ -155,11 +157,19 @@ class ItsBedtimeRoutine extends React.Component {
     render(){
         this.resize();
 
-        const bdStyle = {
-            bdContainer:{
+        const hrStyle = {
+            hrContainer:{
                 width: this.state.width,
             }
         };
+        const { hrContainer } = hrStyle;
+
+        const bdStyle = {
+            bdContainer:{
+                paddingTop: this.state.paddingTop,
+            }
+        };
+
         const { bdContainer } = bdStyle;
 
         const btnStyle = {
@@ -175,7 +185,7 @@ class ItsBedtimeRoutine extends React.Component {
                     <div className="middle">
                         <div style={bdContainer} className="inner" id="page-wrap" align='center'>
                             {this.selectComponent()}
-                            <hr className="bedtime-hr"/>
+                            <hr style={hrContainer} className='hr-settings'/>
                             <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                         </div>
                     </div>

@@ -23,18 +23,16 @@ class ItsBedtimeRoutine extends React.Component {
         var mobile;
         if(window.innerWidth >= 700){
             this.state = {
-                hrWidth: '300px',
-                btnFontSize: '13px',
+                fontSize: '13px',
                 padding: '13px 22px',
-                innerWidth: '400px'
+                width: '400px'
             };
         }
         else{
             this.state = {
-                hrWidth: '170px !important',
-                btnFontSize: '9px !important',
+                fontSize: '9px !important',
                 padding: '12px 10px !important',
-                innerWidth: '210px !important'
+                width: '210px !important'
             };
         }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
@@ -47,7 +45,7 @@ class ItsBedtimeRoutine extends React.Component {
         ).catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
-         window.addEventListener('resize', this.updateDimensions);
+         // window.addEventListener('resize', this.updateDimensions);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -103,18 +101,16 @@ class ItsBedtimeRoutine extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    hrWidth: '170px !important',
-                    btnFontSize: '9px !important',
+                    fontSize: '9px !important',
                     padding: '12px 10px !important',
-                    innerWidth: '210px !important'
+                    width: '210px !important'
                 });
             }
             else {
                 this.setState({
-                    hrWidth: '300px',
-                    btnFontSize: '13px',
+                    fontSize: '13px',
                     padding: '13px 22px',
-                    innerWidth: '400px'
+                    width: '400px'
                 })
             }
         })
@@ -156,23 +152,17 @@ class ItsBedtimeRoutine extends React.Component {
 
     render(){
         this.resize();
-        const hrStyle = {
-            hrContainer:{
-                hrWidth: this.state.hrWidth,
-            }
-        };
-        const { hrContainer } = hrStyle;
 
         const bdStyle = {
             bdContainer:{
-                innerWidth: this.state.innerWidth,
+                width: this.state.width,
             }
         };
         const { bdContainer } = bdStyle;
 
         const btnStyle = {
             btnContainer:{
-                btnFontSize: this.state.btnFontSize,
+                fontSize: this.state.fontSize,
                 padding: this.state.padding
             }
         };
@@ -186,8 +176,8 @@ class ItsBedtimeRoutine extends React.Component {
                                 <div style={bdContainer} class = "itsBedtime">
                                     {this.selectComponent()}
                                     <hr style={hrContainer} class = "bedtime-hr"/>
-                                    <div style={btnContainer} className = "center" id = "button">
-                                        <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                                    <div className = "center" id = "button">
+                                        <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                                     </div>
                                 </div>
                             </div>

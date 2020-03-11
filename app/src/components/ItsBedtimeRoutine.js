@@ -45,7 +45,7 @@ class ItsBedtimeRoutine extends React.Component {
         ).catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
-         // window.addEventListener('resize', this.updateDimensions);
+         window.addEventListener('resize', this.updateDimensions);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

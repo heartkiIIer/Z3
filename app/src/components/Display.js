@@ -232,10 +232,16 @@ function getStress(events) {
         }).then( r => {
             console.log(r);
             let isduplicate = false;
-            console.log(events.length);
-            console.log(r.length);
             for (let i = 0; i < events.length; i++) {
                  for (let j = 0; j < r.length; j++) {
+                     console.log(i + " : " + events[i].title);
+                     console.log(j + " : " + r[j].event);
+                     console.log(events[i].date);
+                     console.log(r[j].day);
+                     console.log(events[i].month);
+                     console.log(r[i].month);
+                     console.log(events[i].year);
+                     console.log(r[i].year);
                      if(events[i].title === r[j].event && events[i].date === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
                          isduplicate = true;
                          break;

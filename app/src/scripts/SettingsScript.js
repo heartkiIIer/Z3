@@ -1,5 +1,6 @@
 var z3_firebase = require('./firebase.js');
 var swal = require('sweetalert');
+var Swal = require('sweetalert2');
 
 // changes the user's password to new password
 function newPassword(user){
@@ -59,7 +60,7 @@ function newEmail(user){
 }
 // deletes user's account
 function deleteUser(user){
-    swal({
+    Swal.fire({
         title: "Are you sure?",
         text: "Once deleted, you will not be able to recover your account!",
         icon: "warning",

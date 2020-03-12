@@ -82,6 +82,7 @@ function deleteUser(user){
                         'Content-Type': 'application/json',
                     }
                 }).then( () => {
+                    console.log("after fetch");
                     Swal.fire({
                         text: "User was successfully deleted",
                         icon: "success"

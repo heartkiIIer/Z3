@@ -5,6 +5,7 @@ import { Tab } from 'semantic-ui-react'
 import Item from './Item'
 import {getUserID} from "../scripts/login";
 import swal from 'sweetalert'
+import Swal from "sweetalert2";
 
 const refresh = {
     paddingRight: '6px',
@@ -42,10 +43,6 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
-        let duplicates = ""
-        for(let i = 0; i < names.length; i++) {
-            duplicates += names[i];
-        }
         console.log(ApiCalendar.sign)
         let ele;
 
@@ -54,14 +51,6 @@ export default class LoginControl extends React.Component {
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
         }
-
-        // if(names.length !== 0) {
-        //     swal({
-        //         title: "Warning",
-        //         icon: "warning",
-        //         text: "You have already logged some of the events listed here. You can hide the events you have already submitted by clicking on \'Hide\'. If you choose to re-submit them, your old data will be overwritten."
-        //     })
-        // }
 
         return (
             <div>
@@ -232,6 +221,7 @@ function getStress(events) {
         }).then( r => {
             console.log(r);
             let isduplicate = false;
+            let reps = [];
             for (let i = 0; i < events.length; i++) {
                  for (let j = 0; j < r.length; j++) {
                      console.log(i + " : " + events[i].title);
@@ -244,19 +234,35 @@ function getStress(events) {
                      console.log(r[j].year);
                      if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
                          isduplicate = true;
-                         break;
+                         reps.push('<b>' + events[i].title + '</b>')
+                         //break;
                      }
                  }
             }
+            console.log(reps)
             console.log("duplicate?: ", isduplicate);
+            let duplicates = ''
+            for (let i = 0; i < reps.length; i++) {
+                if(i === reps.length - 2) {
+                    duplicates += reps[i] + ", and "
+                } else if (i === reps.length - 1){
+                    duplicates += reps[i] + ". "
+                } else {
+                    duplicates += reps[i] + ", "
+                }
+            }
+            console.log(duplicates)
             if(isduplicate){
-                swal({
+                Swal.fire({
                     title: "Warning: Duplicate Events",
                     icon: "warning",
-                    text: "Duplicate events will be overwritten upon submission.",
-                    buttons: true, dangerMode: true
-                }).then( submit => {
-                        if(submit) {
+                    html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, overwrite!',
+                    cancelButtonColor: '#d33'
+                }).then(result => {
+                        if(result.value) {
                             addStresstoDatabase(events);
                         }
                     }
@@ -271,9 +277,24 @@ function getStress(events) {
     })
 }
 
+
 async function fetchItems() {
-    const result = await ApiCalendar.listUpcomingEvents(10);
-    return result.result.items.map(({summary, start, end}) => ({summary, start, end}));
+    const result = await ApiCalendar.listUpcomingEvents(250);
+    // console.log(result.result.items[result.result.items.length-1].start);
+    let approved = [];
+    let todayDate = new Date().getDate();
+    let todayMonth = new Date().getMonth();
+    let todayYear = new Date().getFullYear();
+    for(let i = 0; i < result.result.items.length; i++) {
+        let calEvent = result.result.items[i].start.dateTime;
+        let calDate = new Date(calEvent).getDate();
+        let calMonth = new Date(calEvent).getMonth();
+        let calYear = new Date(calEvent).getFullYear();
+        if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
+            approved.push(result.result.items[i])
+        }
+    }
+    return approved.map(({summary, start, end}) => ({summary, start, end}));
 }
 
 function Display() {
@@ -303,10 +324,10 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={"window.location.reload();"}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
-                    <i><p>10 upcoming events will be listed. Click the Refresh icon to unhide events and sync latest events.</p></i>
-                    <br/>
+                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest events from the calendar.</p></i>
+                    <br/><br/>
                     {items.map(item => (
                         <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
                     ))}
@@ -324,9 +345,9 @@ function Display() {
         return (
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={"window.location.reload();"}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/><br/>
-                    <i><p>You have no upcoming events.</p></i>
+                    <i><p>You have no upcoming events for today.</p></i>
                 </Tab.Pane>
         )
     }

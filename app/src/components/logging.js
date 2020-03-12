@@ -59,7 +59,6 @@ class logging extends React.Component{
         return(
             <div class="content logging-background" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <div className="middle">
                     <div style={containerStyle} className="inner " id="page-wrap">
                         <h1 className="blueHeader">Logging </h1>
                         <hr className="hr-settings"/>
@@ -68,7 +67,6 @@ class logging extends React.Component{
                         <br/>
                         <Tabs/>
                     </div>
-                </div>
             </div>
         )
     }

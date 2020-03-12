@@ -146,9 +146,11 @@ body {
 }
 
 .bedtime-hr {
-     width: 300px;
+     max-width: 350px;
      height: 1px;
      background-color: #e4e4e4;
+     margin-right: 0px;
+     margin-left: 0px;
  }
 
 .editMe {
@@ -205,6 +207,7 @@ input:focus{
      height: 1px;
      background-color: #e4e4e4;
      margin-bottom: 0px;
+     margin-right: 0px;
  }
 
 .hr-report {

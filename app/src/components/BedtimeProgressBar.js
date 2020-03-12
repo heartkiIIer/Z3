@@ -6,6 +6,11 @@ import "react-circular-progressbar/dist/styles.css"
 import SideBar from "./sideMenu";
 import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
 
+const h1 = {
+    fontSize: '25px',
+    color: '#3e98c7'
+}
+
 class BedtimeProgressBar extends React.Component {
     constructor(props) {
         super(props)
@@ -107,10 +112,11 @@ class BedtimeProgressBar extends React.Component {
                         textSize: 10
                     })}>
                         <div style={{ marginTop: -5 }}>
-                            <h1>{this.props.title}</h1>
+                            <b><h1 style={h1}>{this.props.title}</h1></b>
                         </div>
+                        <br/>
                         <div style={{ marginTop: -5 }}>
-                            <h1><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1>
+                            <h1 style={h1}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1>
                         </div>
                     </CircularProgressbarWithChildren>
                 </div>)

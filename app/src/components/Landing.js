@@ -12,11 +12,12 @@ class Landing extends React.Component {
                 display: "",
                 paddingTop50: "",
                 paddingTop75: "",
-                paddingBm75: "",
+                paddingBottom: "",
                 marginTop75: "",
                 className: "container",
                 alignStart: "",
-                height: "75vh"
+                height: "75vh",
+                width: "100vw"
             };
         }
         else {
@@ -24,11 +25,12 @@ class Landing extends React.Component {
                 display: "none",
                 paddingTop50: "50px",
                 paddingTop75: "75px",
-                paddingBm75: "75px",
+                paddingBottom: "75px",
                 marginTop75: "75px",
                 className: "",
                 alignStart: "d-flex align-items-start",
-                height: ""
+                height: "",
+                width: "104.2%"
             };
         }
     }
@@ -39,11 +41,12 @@ class Landing extends React.Component {
                     display: "none",
                     paddingTop50: "50px",
                     paddingTop75: "75px",
-                    paddingBm75: "75px",
+                    paddingBottom: "75px",
                     marginTop75: "75px",
                     className: "",
                     alignStart: "d-flex align-items-start",
-                    height: ""
+                    height: "",
+                    width: "104.2%"
                 });
             }
             else {
@@ -51,11 +54,12 @@ class Landing extends React.Component {
                     display: "",
                     paddingTop50: "",
                     paddingTop75: "",
-                    paddingBm75: "",
+                    paddingBottom: "",
                     marginTop75: "",
                     alignStart: "",
                     className: "container",
-                    height: "75vh"
+                    height: "75vh",
+                    width: "100vw"
                 });
             }
         })
@@ -63,10 +67,17 @@ class Landing extends React.Component {
     // <a href="http://localhost:5000/auth/google" className="btn">Login with Google</a>
     render(){
         this.resize();
+        const styles = {
+            containerStyle:{
+                width: this.state.width,
+                paddingBottom: this.state.paddingBottom
+            }
+        };
+        const { containerStyle } = styles;
         return (
             <div>
                 <div className={this.state.className}>
-                    <div style={{paddingBottom: this.state.paddingBm75}} id="Heading" className="row featurette">
+                    <div style={containerStyle} id="Heading" className="row featurette">
                         <div className="box col-md-6 order-md-1">
                             <div id="login">
                                 <form>

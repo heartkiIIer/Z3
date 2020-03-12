@@ -1,6 +1,7 @@
 import React from 'react';
 import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../styles/ItsBedtime.css";
+import "../styles/personalityIntro.css";
 import {CircularProgressbar, CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css"
 import SideBar from "./sideMenu";
@@ -8,6 +9,7 @@ import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
 import BedtimeProgressBar from "./BedtimeProgressBar";
 import Redirect from "react-router-dom/es/Redirect";
 import {getUserID} from "../scripts/login";
+import {Link} from "react-router-dom";
 
 /**
  * @author Eliazbeth Del Monaco, Sarah Armstrong
@@ -21,22 +23,17 @@ class ItsBedtimeRoutine extends React.Component {
     constructor(props){
         super(props)
         var mobile;
-        if(window.innerWidth >= 700){
-            this.state = {
-                hrWidth: '300px',
-                btnFontSize: '13px',
-                padding: '13px 22px',
-                width: '400px'
-            };
-        }
-        else{
-            this.state = {
-                hrWidth: '170px !important',
-                btnFontSize: '9px !important',
-                padding: '12px 10px !important',
-                width: '210px !important'
-            };
-        }
+        // if(window.innerWidth >= 700){
+        //     this.state = {
+        //         width: '350px'
+        //     };
+        // }
+        // else{
+        //     this.state = {
+        //         width: '170px',
+        //         paddingTop: '300px'
+        //     };
+        // }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
     }
 
@@ -103,18 +100,13 @@ class ItsBedtimeRoutine extends React.Component {
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    hrWidth: '170px !important',
-                    btnFontSize: '9px !important',
-                    padding: '12px 10px !important',
-                    width: '210px !important'
+                    width: '170px',
+                    paddingTop: '300px'
                 });
             }
             else {
                 this.setState({
-                    hrWidth: '300px',
-                    btnFontSize: '13px',
-                    padding: '13px 22px',
-                    width: '400px'
+                    width: '350px'
                 })
             }
         })
@@ -156,44 +148,53 @@ class ItsBedtimeRoutine extends React.Component {
 
     render(){
         this.resize();
+
         const hrStyle = {
             hrContainer:{
-                hrWidth: this.state.hrWidth,
+                width: this.state.width,
             }
         };
         const { hrContainer } = hrStyle;
 
         const bdStyle = {
             bdContainer:{
-                width: this.state.width,
+                paddingTop: this.state.paddingTop,
             }
         };
+
         const { bdContainer } = bdStyle;
 
-        const btnStyle = {
-            btnContainer:{
-                btnFontSize: this.state.btnFontSize,
-                padding: this.state.padding
-            }
-        };
-        const { btnContainer } = btnStyle;
             return (
-                <div>
+                <div className = "content personality" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div class = "content" id="App">
-                        <div class ="middle">
-                            <div className="inner" id="page-wrap">
-                                <div style={bdContainer} class = "itsBedtime">
-                                    {this.selectComponent()}
-                                    <hr style={hrContainer} class = "bedtime-hr"/>
-                                    <div className = "center" id = "button">
-                                        <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="middle">
+                        <div className="inner" id="page-wrap" align='center'>
+                            {this.selectComponent()}
+                            <br/>
+                            <hr className='hr-settings'/>
+                            <br/>
+                            <button className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
                         </div>
                     </div>
                 </div>
+
+
+                // <div>
+                //     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
+                //     <div class = "content" id="App">
+                //         <div class ="middle">
+                //             <div className="inner" id="page-wrap">
+                //                 <div style={bdContainer} class = "itsBedtime">
+                //                     {this.selectComponent()}
+                //                     <hr className="bedtime-hr"/>
+                //                     <div className = "center" id = "button">
+                //                         <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>
+                //     </div>
+                // </div>
             );
     };
 }

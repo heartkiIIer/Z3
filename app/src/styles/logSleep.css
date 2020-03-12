@@ -9,6 +9,11 @@
     margin-top: 25%;
 }
 
+.new-time{
+    padding-top: 40px;
+    margin-top: 0px !important;
+}
+
 .sideform{
     float: right;
 }
@@ -45,6 +50,12 @@
     color: #337ab7;
     font-size: 75px;
     padding-bottom: 40px;
+}
+
+.newsleepHeader {
+    color: #337ab7;
+    font-size: 75px;
+    padding-bottom: 10px;
 }
 
 .wakeHeader {

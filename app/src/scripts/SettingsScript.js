@@ -66,6 +66,7 @@ function deleteUser(user){
         buttons: true,
         dangerMode: true,
     }).then((willDelete) => {
+        console.log(willDelete);
         if (willDelete) {
             user.delete().then(function() {
                 // User deleted.
@@ -81,11 +82,7 @@ function deleteUser(user){
                         text: "User was successfully deleted",
                         icon: "success"
                     }).then(()=>{
-                        fetch('https://sleepwebapp.wpi.edu:5000/logout', {
-                            method: 'GET'
-                        }).then (function(){
-                            window.open("https://sleepwebapp.wpi.edu", "_self");
-                        })
+                        window.open("https://sleepwebapp.wpi.edu", "_self");
                     });
                 });
             }).catch(function(error) {

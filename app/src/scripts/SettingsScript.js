@@ -70,7 +70,7 @@ function deleteUser(user){
         cancelButtonColor: "#b9b9b9"
     }).then((willDelete) => {
         console.log(willDelete);
-        if (willDelete) {
+        if (willDelete.value) {
             user.delete().then(function() {
                 // User deleted.
                 // Delete all database information on user

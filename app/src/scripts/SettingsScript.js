@@ -74,6 +74,7 @@ function deleteUser(user){
             user.delete().then(function() {
                 // User deleted.
                 // Delete all database information on user
+                console.log("Firebase delete");
                 fetch('https://sleepwebapp.wpi.edu:5000/deleteUser', {
                     method: 'POST',
                     headers: {
@@ -81,7 +82,7 @@ function deleteUser(user){
                         'Content-Type': 'application/json',
                     }
                 }).then( () => {
-                    swal({
+                    Swal.fire({
                         text: "User was successfully deleted",
                         icon: "success"
                     }).then(()=>{

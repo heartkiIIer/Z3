@@ -71,12 +71,11 @@ function deleteUser(user){
         cancelButtonColor: "#b9b9b9"
     }).then((willDelete) => {
         if (willDelete.value) {
-            user.delete().then(function() {
-                // User deleted.
-                // Delete all database information on user
-
-                let promise = getUserID();
-                promise.then((uid)=>{
+            let promise = getUserID();
+            promise.then((uid)=>{
+                user.delete().then(function() {
+                    // User deleted.
+                    // Delete all database information on user
                     fetch('https://sleepwebapp.wpi.edu:5000/deleteUser', {
                         method: 'POST',
                         headers: {
@@ -93,13 +92,13 @@ function deleteUser(user){
                             window.open("https://sleepwebapp.wpi.edu", "_self");
                         });
                     });
-                });
-            }).catch(function(error) {
-                // An error happened.
-                console.log("User cannot be deleted");
-                swal({
-                    text: error.message,
-                    icon: "error"
+                }).catch(function(error) {
+                    // An error happened.
+                    console.log("User cannot be deleted");
+                    swal({
+                        text: error.message,
+                        icon: "error"
+                    });
                 });
             });
         }

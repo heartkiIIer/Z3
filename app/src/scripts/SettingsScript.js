@@ -64,8 +64,10 @@ function deleteUser(user){
         title: "Are you sure?",
         text: "Once deleted, you will not be able to recover your account!",
         icon: "warning",
-        buttons: true,
-        dangerMode: true,
+        showCancelButton: true,
+        confirmButtonText: "Delete",
+        confirmButtonColor: "#cb1634",
+        cancelButtonColor: "#b9b9b9"
     }).then((willDelete) => {
         console.log(willDelete);
         if (willDelete) {

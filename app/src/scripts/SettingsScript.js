@@ -1,6 +1,7 @@
 var z3_firebase = require('./firebase.js');
 var swal = require('sweetalert');
 var Swal = require('sweetalert2');
+import {getUserID} from "./login";
 
 // changes the user's password to new password
 function newPassword(user){
@@ -69,25 +70,28 @@ function deleteUser(user){
         confirmButtonColor: "#cb1634",
         cancelButtonColor: "#b9b9b9"
     }).then((willDelete) => {
-        console.log(willDelete);
         if (willDelete.value) {
             user.delete().then(function() {
                 // User deleted.
                 // Delete all database information on user
-                console.log("Firebase delete");
-                fetch('https://sleepwebapp.wpi.edu:5000/deleteUser', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    }
-                }).then( () => {
-                    console.log("after fetch");
-                    Swal.fire({
-                        text: "User was successfully deleted",
-                        icon: "success"
-                    }).then(()=>{
-                        window.open("https://sleepwebapp.wpi.edu", "_self");
+
+                let promise = getUserID();
+                promise.then((uid)=>{
+                    fetch('https://sleepwebapp.wpi.edu:5000/deleteUser', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({uid: uid})
+                    }).then( () => {
+                        console.log("after fetch");
+                        Swal.fire({
+                            text: "User was successfully deleted",
+                            icon: "success"
+                        }).then(()=>{
+                            window.open("https://sleepwebapp.wpi.edu", "_self");
+                        });
                     });
                 });
             }).catch(function(error) {

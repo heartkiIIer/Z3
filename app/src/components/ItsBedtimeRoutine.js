@@ -165,7 +165,7 @@ class ItsBedtimeRoutine extends React.Component {
         const { bdContainer } = bdStyle;
 
             return (
-                <div className = "content personality" id="App">
+                <div className = "content" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
                         <div className="inner" id="page-wrap" align='center'>

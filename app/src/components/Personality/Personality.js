@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
-import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
 import swal from 'sweetalert'
 import {getUserID} from "../../scripts/login";
@@ -20,6 +19,7 @@ class Personality extends React.Component{
             };
         }
     }
+    //re-adjust padding of content div if the page is less than 700 px wide
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -34,19 +34,21 @@ class Personality extends React.Component{
             }
         })
     }
+    //send personality scores to the server to be stored in the database
     submitPersonality() {
         var ele = document.getElementsByTagName('input');
-        let values = [];
+        let values = []; //personality type scores
+        //grab all checked answers
         for (let i = 0; i < ele.length; i++) {
-            if (ele[i].type = "radio") {
+            if (ele[i].type === "radio") {
                 if (ele[i].checked) {
                     console.log(ele[i].name + ": " + ele[i].value);
                     values.push(ele[i].value);
                 }
             }
         }
-        if (values.length === 5) {
-            let idPromise = getUserID();
+        if (values.length === 5) {// check if user has filled all 5 fields
+            let idPromise = getUserID(); //get signed in user's ID
             idPromise.then(uid=>{
                 const data = JSON.stringify({
                     open: values[0],
@@ -56,6 +58,7 @@ class Personality extends React.Component{
                     neuro: values[4],
                     uid: uid
                 });
+                //post request to server to store personailty scores in the database
                 fetch('https://sleepwebapp.wpi.edu:5000/submitPersonality', {
                     method: 'POST',
                     headers: {
@@ -64,18 +67,18 @@ class Personality extends React.Component{
                     },
                     body: data
                 }).then(r => {
-                    console.log("Submitted Personailty Results", r.status);
+                    //redirects the user to the personality results page after submission is completed
                     window.open("https://sleepwebapp.wpi.edu/personalityResults", "_self");
                 })
             });
-        } else {
+        } else { //user has not filled all 5 fields
+            //sends alert to request user to fill in all fields
             swal({
                 title: "Please make sure all fields are filled and submit again",
                 icon: "error"
             })
         }
     }
-
     render(){
         this.resize();
         const styles = {

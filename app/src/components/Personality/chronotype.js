@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
-import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
 import swal from 'sweetalert'
 import {getUserID} from "../../scripts/login";
@@ -20,6 +19,7 @@ class Chronotype extends React.Component {
             };
         }
     }
+    //re-adjust padding of content div if the page is less than 700 px wide
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -34,19 +34,21 @@ class Chronotype extends React.Component {
             }
         })
     }
-
+    //sends the user's chronotype answers to be stored in the database
     submitChrono(){
         var ele = document.getElementsByTagName('input');
-        let values = [];
+        let values = []; //values of checked answers
+        //grabs all the checked answers
         for(let i = 0; i < ele.length; i++) {
-            if(ele[i].type="radio") {
+            if(ele[i].type === "radio") {
                 if(ele[i].checked) {
                     values.push(ele[i].value);
                 }
             }
         }
-        if(values.length === 13){
-            let idPromise = getUserID();
+
+        if(values.length === 13){ //check all questions are answered
+            let idPromise = getUserID(); //get signed in user ID from firebase
             idPromise.then(uid =>{
                 const data = JSON.stringify({
                     q1: values[0],
@@ -64,6 +66,7 @@ class Chronotype extends React.Component {
                     q13: values[12],
                     uid: uid
                 });
+                //post request to store data in the database
                 fetch('https://sleepwebapp.wpi.edu:5000/submitChronoAnswers', {
                     method: 'POST',
                     headers: {
@@ -72,12 +75,12 @@ class Chronotype extends React.Component {
                     },
                     body: data
                 }).then(r => {
-                    console.log("Submitted Chronotype Quiz", r.status);
+                    //once submission is complete redirect user to chronotype results page
                     window.open("https://sleepwebapp.wpi.edu/chronoResults", "_self");
                 })
             });
         }
-        else{
+        else{ //if all 13 questions are not anwsered send an alert to notifiy the user to answer all questions
             swal({
                 title: "Please make sure all questions are answered and submit again",
                 icon: "error"

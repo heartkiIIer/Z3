@@ -21,6 +21,7 @@ class ChronoResults extends React.Component {
             };
         }
     }
+    //re-adjust padding of content div if the page is less than 700 px wide
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -35,16 +36,17 @@ class ChronoResults extends React.Component {
             }
         })
     }
-
     componentDidMount(){
         let currentComponent = this;
         this.getChronoResults(currentComponent);
     }
-
+    //fetch the logged in user's chronotype quiz answers
     getChronoResults(currentComponent){
+        //retrieve logged in user's ID from Firebase
         let idPromise = getUserID();
         idPromise.then(uid =>{
             const data = JSON.stringify({uid: uid});
+            //request chronotype of user data from the server and database
             fetch('https://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
                 method: 'POST',
                 headers: {
@@ -55,11 +57,13 @@ class ChronoResults extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
+                //set user's chronotype answers as a state to calculated and rendered their score on page
                 currentComponent.setState({chronoAnswers : r});
             });
         });
     }
-
+    //takes in a value and sets the "opposite" number in a set of {1, 2, 3, 4}
+    // for example if the input value is 1 the output value would be 4
     reverseScore4(value){
         if(value === 4)
             return 1;
@@ -70,6 +74,7 @@ class ChronoResults extends React.Component {
         else
             return 4;
     }
+    //takes in a value and sets the "opposite" number in a set of {1, 2, 3, 4. 5}
     reverseScore5(value){
         if(value === 5)
             return 1;
@@ -82,33 +87,35 @@ class ChronoResults extends React.Component {
         else
             return 5;
     }
-
+    //takes the answers to the chronotype quiz and calculate the
     calculateScore(){
         if(this.state.chronoAnswers.length === 0){
-            return "NaN";
+            return "NaN"; //user has not taken the chronotype quiz, no answers stored in the database
         }
+        //grabs the users most recent chronotype quiz answers
         var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
-        var score = this.reverseScore5(qAnswers.q1);
-        score += this.reverseScore5(qAnswers.q2);
+        var score = this.reverseScore5(qAnswers.q1); //match evening type answers to have lower score
+        score += this.reverseScore5(qAnswers.q2); //match evening type answers to have lower score
         score += qAnswers.q3;
         score += qAnswers.q4;
         score += qAnswers.q5;
-        score += this.reverseScore4(qAnswers.q6);
-        score += this.reverseScore5(qAnswers.q7);
-        score += this.reverseScore4(qAnswers.q8);
-        score += this.reverseScore4(qAnswers.q9);
-        score += this.reverseScore4(qAnswers.q10);
+        score += this.reverseScore4(qAnswers.q6); //match evening type answers to have lower score
+        score += this.reverseScore5(qAnswers.q7); //match evening type answers to have lower score
+        score += this.reverseScore4(qAnswers.q8); //match evening type answers to have lower score
+        score += this.reverseScore4(qAnswers.q9); //match evening type answers to have lower score
+        score += this.reverseScore4(qAnswers.q10); //match evening type answers to have lower score
         score += qAnswers.q11;
-        score += this.reverseScore4(qAnswers.q12);
-        score += this.reverseScore4(qAnswers.q13);
+        score += this.reverseScore4(qAnswers.q12); //match evening type answers to have lower score
+        score += this.reverseScore4(qAnswers.q13); //match evening type answers to have lower score
         return score;
     }
-
+    //returns a short message based on the user's chronotype score
     getMessage(){
         var score = this.calculateScore();
-        if(score === "NaN"){
+        if(score === "NaN"){ //there is no score so no message
             return "";
         }
+        //lower score indicate evening type and higher score indicate morning type
         if(score < 22)
             return "You are definitely an evening type (or a night owl as some would say)!";
         else if(score > 44)
@@ -118,7 +125,6 @@ class ChronoResults extends React.Component {
         else
             return "You tend towards a morning type but fall somewhere in between a morning or evening type.";
     }
-
     render(){
         this.resize();
         const styles = {

@@ -35,7 +35,6 @@ var firebase = require('firebase');
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             // User is signed in.
-            console.log("User is signed in");
             user.providerData.forEach(function (profile) {
                 const data = JSON.stringify({
                     id: profile.uid,
@@ -46,9 +45,7 @@ var firebase = require('firebase');
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: data
-                }).then (function(res){
-                    console.log("Send logged User to Server side: ", res.status);
-                });
+                })
             });
 
         } else {
@@ -56,18 +53,18 @@ var firebase = require('firebase');
             console.log("No User is signed in");
         }
     });
-})()
+})();
 
+//logs out user
 export function logout(e){
     e.preventDefault();
-
     firebase.auth().signOut().then(function() {
-        console.log('Signed Out');
         window.open("https://sleepwebapp.wpi.edu", "_self");
     }, function(error) {
         console.error('Sign Out Error', error);
     });
 }
+//returns a promise containing the user's id from firebase
 export function getUserID(){
     return new Promise( function(resolve, reject){
         firebase.auth().onAuthStateChanged(function(user) {
@@ -79,6 +76,7 @@ export function getUserID(){
         })
     });
 }
+//returns a promise containing the user's image url from firebase
 export function getUserImage(){
     return new Promise( function(resolve, reject){
         firebase.auth().onAuthStateChanged(function(user) {
@@ -90,6 +88,7 @@ export function getUserImage(){
         })
     });
 }
+//returns a promise containing the user's displayname from firebase
 export function getUserName(){
     return new Promise( function(resolve, reject){
         firebase.auth().onAuthStateChanged(function(user) {

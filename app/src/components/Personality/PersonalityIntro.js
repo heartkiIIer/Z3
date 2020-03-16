@@ -19,11 +19,11 @@ class PersonalityIntro extends React.Component {
             };
         }
     }
-
+    //opens the URL page of the personality test in a different window.
     openURL(event: SyntheticEvent<any>): void {
         window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
     }
-
+    //re-adjust padding of content div if the page is less than 700 px wide
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -38,7 +38,6 @@ class PersonalityIntro extends React.Component {
             }
         })
     }
-
     render(){
         this.resize();
         const styles = {

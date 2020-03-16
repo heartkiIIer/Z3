@@ -17,6 +17,7 @@ class HomeIcon extends React.Component {
             };
         }
     }
+    //re-adjust icon size if the window is smaller than 580 px
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 580){

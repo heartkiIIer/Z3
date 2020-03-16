@@ -1,4 +1,4 @@
-import React, {SyntheticEvent} from 'react';
+import React from 'react';
 import '../styles/home.css'
 import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
@@ -29,7 +29,7 @@ class Home extends React.Component {
             this.state = {
                 name: "",
                 image: "",
-                perMessage: {
+                perMessage: { //default message if the user has not taken the personality and chronotype quizzes
                     subject: "Personality and Chronotype:",
                     message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
                 },
@@ -41,7 +41,7 @@ class Home extends React.Component {
             this.state = {
                 name: "",
                 image: "",
-                perMessage: {
+                perMessage: { //default message if the user has not taken the personality and chronotype quizzes
                     subject: "Personality and Chronotype:",
                     message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
                 },
@@ -54,17 +54,17 @@ class Home extends React.Component {
     componentDidMount(){
         let currentComponent = this;
         let idPromise = getUserID();
+        //if no user signed in redirect them back to landing
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
-        })
+        });
         this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
         this.getWeather(currentComponent, "01609");
-        this.getUseFitbit(currentComponent)
-        this.getAsleep(currentComponent)
+        this.getUseFitbit(currentComponent);
+        this.getAsleep(currentComponent);
     }
-
-    // //get User profile information
+    //get signed in user's display name and image from firebase
     getUser(currentComponent) {
         let namePromise = getUserName();
         namePromise.then(name=>{
@@ -76,7 +76,9 @@ class Home extends React.Component {
             currentComponent.setState({ image : url })
         });
     }
-    reverseScore4(value){
+    //takes in a value and sets the "opposite" number in a set of {1, 2, 3, 4}
+    // for example if the input value is 1 the output value would be 4
+    static reverseScore4(value){
         if(value === 4)
             return 1;
         else if(value === 3)
@@ -86,7 +88,8 @@ class Home extends React.Component {
         else
             return 4;
     }
-    reverseScore5(value){
+    //takes in a value and sets the "opposite" number in a set of {1, 2, 3, 4. 5}
+    static reverseScore5(value){
         if(value === 5)
             return 1;
         else if(value === 4)
@@ -98,37 +101,41 @@ class Home extends React.Component {
         else
             return 5;
     }
-    calculateScore(chronoAnswers){
+    //takes the answers to the chronotype quiz and calculate the
+    static calculateScore(chronoAnswers){
         if(chronoAnswers.length === 0){
-            return null;
+            return null; //user has not taken the chronotype quiz, no answers stored in the database
         }
+        //grabs the user's latest chronotype quiz results if user submitted multiple times
         var qAnswers = chronoAnswers[chronoAnswers.length-1];
-        var score = this.reverseScore5(qAnswers.q1);
-        score += this.reverseScore5(qAnswers.q2);
+        var score = Home.reverseScore5(qAnswers.q1); //match evening type answers to have lower score
+        score += Home.reverseScore5(qAnswers.q2); //match evening type answers to have lower score
         score += qAnswers.q3;
         score += qAnswers.q4;
         score += qAnswers.q5;
-        score += this.reverseScore4(qAnswers.q6);
-        score += this.reverseScore5(qAnswers.q7);
-        score += this.reverseScore4(qAnswers.q8);
-        score += this.reverseScore4(qAnswers.q9);
-        score += this.reverseScore4(qAnswers.q10);
+        score += Home.reverseScore4(qAnswers.q6); //match evening type answers to have lower score
+        score += Home.reverseScore5(qAnswers.q7); //match evening type answers to have lower score
+        score += Home.reverseScore4(qAnswers.q8); //match evening type answers to have lower score
+        score += Home.reverseScore4(qAnswers.q9); //match evening type answers to have lower score
+        score += Home.reverseScore4(qAnswers.q10); //match evening type answers to have lower score
         score += qAnswers.q11;
-        score += this.reverseScore4(qAnswers.q12);
-        score += this.reverseScore4(qAnswers.q13);
+        score += Home.reverseScore4(qAnswers.q12); //match evening type answers to have lower score
+        score += Home.reverseScore4(qAnswers.q13); //match evening type answers to have lower score
         return score;
     }
-    getRecentPersonality(personalityResults){
+    //return the user's latest personality scores if they submitted multiple times
+    static getRecentPersonality(personalityResults){
         if(personalityResults !== null){
             return personalityResults[personalityResults.length-1];
         }
         return null
     }
-
+    //get message based on personality and chronotype results (Holly's Personality reminders)
     getPersonalityBasedMessage(currentComponent){
-        let idPromise = getUserID();
+        let idPromise = getUserID(); //get signed in user's ID
         idPromise.then(uid=>{
             const data = JSON.stringify({ uid: uid });
+            //get personality results
             fetch('https://sleepwebapp.wpi.edu:5000/getPersonality', {
                 method: 'POST',
                 headers: {
@@ -139,7 +146,8 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                let perScore = currentComponent.getRecentPersonality(r);
+                let perScore = Home.getRecentPersonality(r);
+                //get chronotype results
                 fetch('https://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
                     method: 'POST',
                     headers: {
@@ -150,7 +158,7 @@ class Home extends React.Component {
                 }).then( r => {
                     return r.json();
                 }).then(r => {
-                    var chrono = currentComponent.calculateScore(r);
+                    var chrono = Home.calculateScore(r);
                     if(typeof perScore !== "undefined" && chrono !== null){
                         const data = JSON.stringify({
                             chrono: chrono,
@@ -160,6 +168,7 @@ class Home extends React.Component {
                             agree: perScore.agree,
                             neuro: perScore.neuro
                         });
+                        //get message based on chronotype and personality
                         fetch('https://sleepwebapp.wpi.edu:5000/getMessage', {
                             method: 'POST',
                             headers: {
@@ -213,8 +222,10 @@ class Home extends React.Component {
         }
     }
 
+    //gets weather information from the weatheropen API
     getWeather(currentComponent, zipcode){
-        let key = "018f2f13d72d615f6e4a3cd93e72b859";
+        let key = "018f2f13d72d615f6e4a3cd93e72b859"; //API specific Key
+        //request basic weather data using zip code to determine a location
         fetch('https://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid='+key
         ).then( r => {
             return r.json();
@@ -222,9 +233,10 @@ class Home extends React.Component {
             currentComponent.setState({weather: r});
         });
     }
+    //displays weather information on home page
     displayWeather(){
         if(this.state.weather !== null){
-            if(this.state.weather.cod !== 200)
+            if(this.state.weather.cod !== 200) //no city found or invalid zip code
                 return <h3 style={h3} className="whiteText">{this.state.weather.message}</h3>
             return <WeatherHome style={h3}
                 city={this.state.weather.name}
@@ -234,7 +246,9 @@ class Home extends React.Component {
             />
         }
     }
+    //allow user to change zip code to see weather of different location. Current default is Worcester, MA
     changeZip(){
+        //prompt user to input zip code
         swal({
             title: "Weather Location",
             text: "Please enter the zip code of the location you would like the weather for: ",
@@ -250,6 +264,7 @@ class Home extends React.Component {
             this.getWeather(this, zipcode);
         })
     }
+
     displayFunFact(){
         let rand = Math.floor(Math.random() * 27);
         switch (rand) {
@@ -354,6 +369,7 @@ class Home extends React.Component {
         }
     }
 
+    //grab fitbit boolean from database to check if the user has set true to use their fitbit
     getUseFitbit(currentComponent){
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -374,10 +390,10 @@ class Home extends React.Component {
             });
         });
     }
+    //set report link to grab fitbit data if fitbit value is true, otherwise link to report page
     usefitbit(){
-        console.log(this.state.fitbit);
         if(this.state.fitbit){
-            window.location.assign(OAUTH);
+            window.location.assign(OAUTH); //authenticate user for fibit and grab fitbit data
         }
         else {
             window.location.assign("https://sleepwebapp.wpi.edu/report");

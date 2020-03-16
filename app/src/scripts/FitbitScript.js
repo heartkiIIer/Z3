@@ -1,9 +1,10 @@
-// get the url
+// get user ID
 import {getUserID} from "./login";
 
 var url = window.location.href;
 let OAUTH = "", OAUTHSettings = "";
 
+//authenticate the user with fitbit API
 if (url.includes("localhost")) {
     OAUTH = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Freport&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=31536000";
     OAUTHSettings = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fsettings&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=31536000";
@@ -14,7 +15,7 @@ if (url.includes("localhost")) {
 
 let today = new Date();
 let dates = [];
-
+//get dates of the past week including current day
 for (let i = 6; i >= 0; i--) {
     let previousDay = new Date(today);
     previousDay.setDate(previousDay.getDate()-i);
@@ -27,14 +28,12 @@ for (let i = 6; i >= 0; i--) {
     day += previousDay.getDate();
     dates.push(day)
 }
-console.log(dates);
 
 if (url.includes("report") && url.includes("#")) {
     //getting the access token from url
     var access_token = url.split("#")[1].split("=")[1].split("&")[0];
     // get the userid
     var userId = url.split("#")[1].split("=")[2].split("&")[0];
-    console.log(userId)
 
     var sleepXhr = new XMLHttpRequest();
     // dates need to be in YYYY-MM-DD format
@@ -42,12 +41,12 @@ if (url.includes("report") && url.includes("#")) {
     sleepXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
     sleepXhr.onload = function () {
         if (sleepXhr.status === 200) {
-            let sleeplogs = [];
             let logs = JSON.parse(sleepXhr.responseText).sleep;
+            //each sleep log data, parse and store in database
             for(let i = 0; i < logs.length; i++){
+                //parse date and time, reformat date and time to allow translation to timestamp in database
                 let start = logs[i].startTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
                 let end = logs[i].endTime.replace(/-/g, "/").replace(/T/, " ").substring(0, 19);
-                sleeplogs.push({ date: logs[i].dateOfSleep, startTime: start, endTime: end });
 
                 let idPromise = getUserID();
                 idPromise.then(uid=>{
@@ -63,26 +62,21 @@ if (url.includes("report") && url.includes("#")) {
                             'Content-Type': 'application/json',
                         },
                         body: data
-                    }).then(r => {
-                        console.log("Added fitbit sleep data: ", r.status);
                     })
                 });
             }
-            console.log(sleeplogs);
             window.history.pushState("object or string", "Report", "/report")
         }
     };
     sleepXhr.send();
 
-    for(let i = 0; i < dates.length; i++) {
+    for(let i = 0; i < dates.length; i++) { //get exercise activity for each 7 days of the week
         let exerciseXhr = new XMLHttpRequest();
         exerciseXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/activities/date/' + dates[i] + '.json');
         exerciseXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
         exerciseXhr.onload = function () {
             if (exerciseXhr.status === 200) {
                 let activities = JSON.parse(exerciseXhr.responseText).summary;
-                console.log(activities);
-
                 let idPromise = getUserID();
                 idPromise.then(uid=> {
                     let exerciseLog_med = {
@@ -97,7 +91,7 @@ if (url.includes("report") && url.includes("#")) {
                         minutes: activities.veryActiveMinutes,
                         uid: uid
                     };
-
+                    //store fairy active minutes as medium intensity
                     if (exerciseLog_med.minutes !== 0) {
                         const data_med = JSON.stringify(exerciseLog_med);
                         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
@@ -107,11 +101,9 @@ if (url.includes("report") && url.includes("#")) {
                                 'Content-Type': 'application/json',
                             },
                             body: data_med
-                        }).then(r => {
-                            console.log("Added fitbit medium intensity exercise data: ", r.status);
-                        });
+                        })
                     }
-
+                    //store very active minutes as high intensity
                     if (exerciseLog_high.minutes !== 0) {
                         const data_high = JSON.stringify(exerciseLog_high);
                         fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
@@ -121,9 +113,7 @@ if (url.includes("report") && url.includes("#")) {
                                 'Content-Type': 'application/json',
                             },
                             body: data_high
-                        }).then(r => {
-                            console.log("Added fitbit high intensity exercise data: ", r.status);
-                        });
+                        })
                     }
                 });
                 window.history.pushState("object or string", "Report", "/report")

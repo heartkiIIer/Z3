@@ -2,12 +2,10 @@ import React from 'react';
 import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../styles/ItsBedtime.css";
 import SideBar from "./sideMenu";
-// import CalendarButtons from "./CalendarButtons";
-import {updatePwd, updateEmail, deleteAcc, updateImage} from "../scripts/SettingsScript"
-import z3_firebase from "../scripts/firebase"
+import {deleteAcc} from "../scripts/SettingsScript"
 import swal from 'sweetalert'
 import TaskSetting from "./TaskSetting"
-import {getUserID, getUserImage} from "../scripts/login";
+import {getUserID} from "../scripts/login";
 import {OAUTHSettings} from "../scripts/FitbitScript";
 
 /**
@@ -30,51 +28,20 @@ class UserSettings extends React.Component {
         };
     }
 
-    // retrieves user's profile image to display in settings
-    getUserImage(currentComponent){
-        let imgPromise = getUserImage();
-        imgPromise.then(img=>{
-            currentComponent.setState({image: img});
-        });
-    }
-
     componentDidMount(){
         let idPromise = getUserID();
+        //if no user signed in redirect them back to landing
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
-        })
+        });
         let currentComponent = this;
-        this.getProvider(currentComponent);
         this.getRoutine(currentComponent);
         this.getUserImage(currentComponent);
         this.getUseFitbit(currentComponent);
         this.getSleepGoal(currentComponent);
     }
 
-    // determines which provider the user is using to login: Google, Facebook, or with a password
-    getProvider(currentComponent){
-        z3_firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                user.providerData.forEach(function (profile) {
-                    if(profile.providerId !== "password"){
-                        currentComponent.hide();
-                    }
-                });
-            }
-        });
-    }
-
-    // hides edit password, email, profile picture options when
-    // the user signs in with Google and Facebook
-    hide(){
-        var elements = document.getElementsByClassName("Hidden");
-
-        for (var i = 0; i < elements.length; i++){
-            elements[i].style.display = "none";
-        }
-    }
-
-    // Bedtime Routine: show, add, delete routine
+    //retrieves the user's bedtime routine
     getRoutine(currentComponent) {
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -94,6 +61,7 @@ class UserSettings extends React.Component {
         });
 
     }
+    //returns a list of TaskSetting components which are each task in the bedtime routine
     listRoutine(){
         let list = [];
         if(this.state.routine !== null){
@@ -104,9 +72,10 @@ class UserSettings extends React.Component {
         }
         return list;
     }
+    //adds a routine to the user's bedtime routine
     addRoutine() {
         // prompt to enter a new routine
-        swal({
+        swal({ //prompt user to enter the task name
             title: "Add a Routine: Enter Task",
             text: "Please enter the task you would like to add: ",
             content: {
@@ -118,7 +87,7 @@ class UserSettings extends React.Component {
             },
             buttons: true,
         }).then((task) => {
-            swal({
+            swal({ //the prompts user to enter the duration of the task
                 title: "Add a Routine: Enter Duration",
                 text: "Please enter the number of minutes of your new task:",
                 content: {
@@ -130,7 +99,7 @@ class UserSettings extends React.Component {
                 },
                 buttons: true,
             }).then((minutes) => {
-                if(task !== null && minutes !== null){
+                if(task !== null && minutes !== null){ //if both entered values are not null add routine
                     let idPromise = getUserID();
                     idPromise.then(uid=>{
                         const data = JSON.stringify({
@@ -146,16 +115,14 @@ class UserSettings extends React.Component {
                             },
                             body: data
                         }).then(r => {
-                            console.log("Added Routine: ", r.status);
-                            this.getRoutine(this)
+                            this.getRoutine(this) //get routine again now a new routine has been added
                         })
                     });
                 }
             });
         });
     }
-
-    // sleep goal
+    //gets the user's sleep goal
     getSleepGoal(currentComponent){
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -176,8 +143,9 @@ class UserSettings extends React.Component {
             });
         });
     }
+    //adds a sleep goal
     addSleepGoal(){
-        swal({
+        swal({ //prompt user to set a sleep goal
             title: "Add Sleep Goal",
             text: "Please enter the number of hours you would like to sleep each night: ",
             content: {
@@ -192,7 +160,6 @@ class UserSettings extends React.Component {
             },
             buttons: true,
         }).then((goal) => {
-            console.log(goal);
             if(goal){
                 let idPromise = getUserID();
                 idPromise.then(uid=>{
@@ -208,15 +175,13 @@ class UserSettings extends React.Component {
                         },
                         body: data
                     }).then(r => {
-                        console.log("Added Goal: ", r.status);
                         this.getSleepGoal(this)
                     })
                 });
             }
         });
     }
-
-    // get if user is willing to use fitbit to log sleep
+    //get if user is willing to use fitbit to log sleep
     getUseFitbit(currentComponent){
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -237,6 +202,7 @@ class UserSettings extends React.Component {
             });
         });
     }
+    //set user fitbit permission to false
     setUserFibitFalse(){
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -252,13 +218,12 @@ class UserSettings extends React.Component {
                 },
                 body: data
             }).then(r => {
-                console.log("Added fitbit boolean: ", r.status);
                 this.getUseFitbit(this)
             })
         });
     }
+    //set user fitbit permission to true
     setUserFibitTrue(){
-        this.toreport();
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({
@@ -273,11 +238,12 @@ class UserSettings extends React.Component {
                 },
                 body: data
             }).then(r => {
-                console.log("Added fibit boolean: ", r.status);
+                this.toreport();
                 this.getUseFitbit(this)
             })
         });
     }
+    //set message under fitbit usage depending on user had given permission or not
     useFibit(){
         let fitbitele = [];
         if(this.state.fitbit){
@@ -292,6 +258,7 @@ class UserSettings extends React.Component {
         }
         return fitbitele;
     }
+    //redirect user to fitbit authentication login
     toreport(){
         window.location.assign(OAUTHSettings);
     }
@@ -313,46 +280,6 @@ class UserSettings extends React.Component {
                         Edit Sleep Goal
                     </button>
                     <br/><br/>
-                    <h3 class = "blueHeader Hidden"> Change password </h3>
-                    <div class = "flex-row-nowrap Hidden">
-                        <p class = "blueHeader width80"> Enter new password: </p>
-                        <input id="chgPwd-NewPwd" className='editMe' type="password" placeholder='new password'/>
-                    </div>
-                    <div className="flex-row-nowrap Hidden">
-                        <p className="blueHeader width80"> Re-enter new password: </p>
-                        <input id="chgPwd-NewPwd2" className='editMe' type="password" placeholder='new password'/>
-                    </div>
-                    <p className="Hidden" style={{color: "#ff6666", marginTop: "10px", size: "10pt"}}>
-                        Password needs to be at least 6 characters long</p>
-
-                    <button className='btn Hidden' id = "extended" onClick={updatePwd}>
-                        Confirm
-                    </button><br className="Hidden"/><br className="Hidden"/>
-
-                    <h3 className="blueHeader Hidden"> Change email </h3>
-                    <div className="flex-row-nowrap Hidden">
-                        <p className="blueHeader width80"> Enter new email: </p>
-                        <input id="chgEmail-NewEmail" className='editMe' placeholder='example@gmail.com'/>
-                    </div>
-                    <div className="flex-row-nowrap Hidden">
-                        <p className="blueHeader width80"> Re-enter new email: </p>
-                        <input id="chgEmail-NewEmail2" className='editMe' placeholder='example@gmail.com'/>
-                    </div>
-
-                    <button className='btn Hidden' id="extended" onClick={updateEmail}>
-                        Confirm
-                    </button><br className="Hidden"/><br className="Hidden"/>
-
-                    <h3 className="blueHeader Hidden"> Change Profile Image </h3>
-                    <div className="flex-row-nowrap Hidden">
-                        <img id="chgImg" style={{marginRight: "20px"}} className="profile_pic" src={this.state.image} alt=""/>
-                        <input id="chgImageURL" className='editMe' type="text" placeholder='https://images.com/example.png'/>
-                    </div>
-
-                    <button className='btn Hidden' id="extended" onClick={updateImage}>
-                        Confirm
-                    </button><br className="Hidden"/><br className="Hidden"/>
-
                     <h1 className="blueHeader"> Fitbit Account Access</h1>
                     <hr className="hr-settings"/>
                     <br/>

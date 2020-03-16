@@ -9,6 +9,7 @@ class TaskSetting extends React.Component {
         super(props);
     }
 
+    //deletes the routine from bedtime routine list
     deleteRoutine(e) {
         e.preventDefault();
         const data = JSON.stringify({entryId: this.props.id});
@@ -20,16 +21,15 @@ class TaskSetting extends React.Component {
             },
             body: data
         }).then( r => {
-            console.log("Deleted Routine: ", r.status);
             window.location.reload();
         });
     }
-
+    //returns labels for the the bedtime routine task
     taskLabel(){
-        if(this.props.taskMin !== 0){
+        if(this.props.taskMin !== 0){ //task is timed, state minutes
             return this.props.taskMin + " minutes of " + this.props.taskTitle;
         }
-        return this.props.taskTitle;
+        return this.props.taskTitle; //task is not timed, just state task
     }
 
     render(){

@@ -33,7 +33,7 @@ function getUser(req, res, id, first) {
             throw error
         }
         console.log(results.rows);
-        if(results.rows.length == 0){
+        if(results.rows.length === 0){
             addUser(req, res, id, first);
         }
         res.send(results.rows);

@@ -22,10 +22,11 @@ class PersonalityResults extends React.Component {
             };
         }
     }
-
+    //opens the URL of the personality test in a separate window
     openURL(event: SyntheticEvent<any>): void {
         window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
     }
+    //re-adjust padding of content div if the page is less than 700 px wide
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -40,15 +41,16 @@ class PersonalityResults extends React.Component {
             }
         })
     }
-
     componentDidMount(){
         let currentComponent = this;
         this.getPersonality(currentComponent);
     }
+    //retrieves personality scores from the database
     getPersonality(currentComponent){
-        let idPromise = getUserID();
+        let idPromise = getUserID(); //get signed in user's ID
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
+            //request to get user's personality scores
             fetch('https://sleepwebapp.wpi.edu:5000/getPersonality', {
                 method: 'POST',
                 headers: {
@@ -59,10 +61,12 @@ class PersonalityResults extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
+                //stores personality scores in state
                 currentComponent.setState({personality : r});
             });
         });
     }
+    //translate number values of the personality score to match low, medium, or high
     getValue(perScore){
         if(perScore === 1)
             return "low";
@@ -71,41 +75,45 @@ class PersonalityResults extends React.Component {
         else
             return "high";
     }
+    //return the user's openness score
     getOpenness(){
         if(this.state.personality !== null){
-            console.log(this.state.personality);
             var perScore = this.state.personality[this.state.personality.length-1];
             return this.getValue(perScore.openness);
         }
-        return "NaN"
+        return "NaN" //no score available
     }
+    //return the user's conscientiousness score
     getConscientiousness(){
         if(this.state.personality !== null){
             var perScore = this.state.personality[this.state.personality.length-1];
             return this.getValue(perScore.conc);
         }
-        return "NaN"
+        return "NaN" //no score available
     }
+    //return the user's extraversion score
     getExtraversion(){
         if(this.state.personality !== null){
             var perScore = this.state.personality[this.state.personality.length-1];
             return this.getValue(perScore.extraver);
         }
-        return "NaN"
+        return "NaN" //no score available
     }
+    //return the user's agreeableness score
     getAgreeableness(){
         if(this.state.personality !== null){
             var perScore = this.state.personality[this.state.personality.length-1];
             return this.getValue(perScore.agree);
         }
-        return "NaN"
+        return "NaN" //no score available
     }
+    //return the user's neuroticism score
     getNeuroticism(){
         if(this.state.personality !== null){
             var perScore = this.state.personality[this.state.personality.length-1];
             return this.getValue(perScore.neuro);
         }
-        return "NaN"
+        return "NaN" //no score available
     }
 
     render(){

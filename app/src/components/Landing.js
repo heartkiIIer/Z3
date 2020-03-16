@@ -34,6 +34,7 @@ class Landing extends React.Component {
             };
         }
     }
+    //re-adjust sizing of contents if the page is less than 700 px wide
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 775){
@@ -64,7 +65,6 @@ class Landing extends React.Component {
             }
         })
     }
-    // <a href="http://localhost:5000/auth/google" className="btn">Login with Google</a>
     render(){
         this.resize();
         const styles = {

@@ -3,6 +3,9 @@ import {slide as Menu } from "react-burger-menu";
 import {getUserID, logout} from '../scripts/login'
 import {OAUTH} from "../scripts/FitbitScript";
 
+//redirect user to autentication with fibit and grab fitbit data if the
+// user allows for application to use fitbit data before directing them to reports page
+// otherwise direct user to reports page
 function useFitbit(){
     let idPromise = getUserID();
     idPromise.then(uid=>{

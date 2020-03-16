@@ -4,7 +4,7 @@ class WeatherHome extends React.Component {
     constructor(props){
         super(props);
     }
-
+    //converts temperature from Kelvin to Fahrenheit
     KelvintoFahrenheit(temp){
         return Math.floor((temp - 273.15) * 9 / 5 + 32);
     }

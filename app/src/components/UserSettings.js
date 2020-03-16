@@ -36,7 +36,6 @@ class UserSettings extends React.Component {
         });
         let currentComponent = this;
         this.getRoutine(currentComponent);
-        this.getUserImage(currentComponent);
         this.getUseFitbit(currentComponent);
         this.getSleepGoal(currentComponent);
     }

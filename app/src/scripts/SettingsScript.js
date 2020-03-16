@@ -7,6 +7,7 @@ import {getUserID} from "./login";
 function deleteAcc(){
     z3_firebase.auth().onAuthStateChanged(function(user) {
         if (user) { // User is signed in.
+            console.log(user);
             Swal.fire({ //send confirmation alert
                 title: "Are you sure?",
                 text: "Once deleted, you will not be able to recover your account!",
@@ -16,6 +17,7 @@ function deleteAcc(){
                 confirmButtonColor: "#cb1634",
                 cancelButtonColor: "#b9b9b9"
             }).then((willDelete) => {
+                console.log(willDelete);
                 if (willDelete.value) {
                     let promise = getUserID();
                     promise.then((uid) => {

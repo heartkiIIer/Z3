@@ -48,7 +48,8 @@ class Home extends React.Component {
                 },
                 weather: null,
                 fitbit: false,
-                asleep: false
+                asleep: false,
+                zipcode: "01609"
             }
         }
     }
@@ -295,6 +296,7 @@ class Home extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
+                console.log(r);
                 if(r.length !== 0){
                     if(r[0].zipcode === null){
                         console.log(currentComponent.state.zipcode);

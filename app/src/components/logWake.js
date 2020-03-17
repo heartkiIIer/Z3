@@ -105,7 +105,7 @@ class LogWake extends React.Component{
                     <div class = "time" align='center'>
                         <h1 className="wakeHeader" align='center'>Good Morning!</h1>
                         <h3 className="wakeHeaderTwo" align='center'>What time did you wake up?</h3>
-                        <a href="/logSleep"><button className='btn' id="extended2" onClick={() => this.myFunction()}>I just woke up</button></a>
+                        <button className='btn' id="extended2" onClick={() => this.myFunction()}>I just woke up</button>
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
                         <form>
                             <input className="inp2" type="time" name="usr_time" defaultValue="07:00"/>

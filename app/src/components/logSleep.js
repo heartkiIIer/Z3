@@ -74,14 +74,14 @@ class LogSleep extends React.Component{
                 },
                 body: data
             }).then( () => {
-                this.setAsleepTrue();
+                // this.setAsleepTrue();
                 console.log("Completed");
                 swal({
                     title: "Success",
                     icon: "success",
                     text: "Successfully logged sleep time."
                 }).then(()=>{
-                    window.location.href = "/logWake";
+                    window.location.replace("https://sleepwebapp.wpi.edu/logWake");
                 });
             })
         });

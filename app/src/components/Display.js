@@ -348,7 +348,7 @@ function Display() {
                     <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
-                    <br/><br/><br/>
+                    <br/>
                     <i><p>You have no upcoming events for today.</p></i>
                 </Tab.Pane>
         )

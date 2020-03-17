@@ -492,7 +492,7 @@ function getUseFitbit(req, res, id) {
 
 // set zip code of user
 function addZipcode(req, res, id, zipcode) {
-    pool.query("UPDATE users SET zipcode=" + zipcode + " WHERE firebase_id=" + id + ";", (error, results) => {
+    pool.query("UPDATE users SET zipcode='" + zipcode + "' WHERE firebase_id=" + id + ";", (error, results) => {
         if (error) {
             throw error
         }

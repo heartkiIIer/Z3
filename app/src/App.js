@@ -76,7 +76,7 @@ function App() {
   return (
       <Router>
           <Switch>
-              <Route exact path="" component={LandingComponent}/>
+              <Route exact path="/" component={LandingComponent}/>
               <Route path ="/bedtimeRoutine" component={BedtimeRoutineComponent}/>
               <Route path ="/home" component={HomeComponent}/>
               <Route path ="/register" component={RegisterComponent}/>

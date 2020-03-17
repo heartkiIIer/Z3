@@ -64,7 +64,10 @@ class BedtimeProgressBar extends React.Component {
                     if (--timer < 0) {
                         timer = 0;
                         if(alerted === 0){
-                            alert("Your timer has finished!");
+                            swal({
+                                title: "Time is up!",
+                                text: "Your timer has finished. Please click next item to continue your bedtime routine."
+                            });
                             alerted++;
                         }
                         return;

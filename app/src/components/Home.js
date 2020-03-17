@@ -297,9 +297,11 @@ class Home extends React.Component {
             }).then(r => {
                 if(r.length !== 0){
                     if(r[0].zipcode === null){
+                        console.log(currentComponent.state.zipcode);
                         currentComponent.getWeather(currentComponent, currentComponent.state.zipcode)
                     }
                     else {
+                        console.log(r[0].zipcode);
                         currentComponent.setState({zipcode: r[0].zipcode});
                         currentComponent.getWeather(currentComponent, r[0].zipcode)
                     }

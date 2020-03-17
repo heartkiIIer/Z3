@@ -9,7 +9,6 @@ class LogWake extends React.Component{
 
     constructor(props) {
         super(props);
-
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
@@ -87,8 +86,10 @@ class LogWake extends React.Component{
                     title: "Success",
                     icon: "success",
                     text: "Successfully logged wake time."
-                })
-                this.setAsleepFalse();
+                }).then(()=>{
+                    window.location.replace("https://sleepwebapp.wpi.edu/home");
+                });
+                // this.setAsleepFalse();
                 console.log("Completed")
             })
         });
@@ -108,7 +109,7 @@ class LogWake extends React.Component{
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
                         <form>
                             <input className="inp2" type="time" name="usr_time" defaultValue="07:00"/>
-                            <a href="/logSleep"><button className='btn' onClick={() => this.myFunction()}>At This Time</button></a>
+                            <button className='btn' onClick={() => this.myFunction()}>At This Time</button>
                         </form>
                     </div>
                 </div>

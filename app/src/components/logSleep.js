@@ -73,14 +73,16 @@ class LogSleep extends React.Component{
                     'Content-Type': 'application/json',
                 },
                 body: data
-            }).then( r => {
+            }).then( () => {
+                this.setAsleepTrue();
+                console.log("Completed");
                 swal({
                     title: "Success",
                     icon: "success",
                     text: "Successfully logged sleep time."
-                })
-                this.setAsleepTrue();
-                console.log("Completed")
+                }).then(()=>{
+                    window.location.href = "/logWake";
+                });
             })
         });
     }
@@ -94,7 +96,7 @@ class LogSleep extends React.Component{
                     <div className="inner" id="page-wrap">
                         <div class = "time" align='center'>
                             <h1 className="sleepHeader" align='center'>Are you going to sleep now?</h1>
-                            <a href="/LogWake"><button className='btn' onClick={() => this.myFunction()}>Goodnight</button></a>
+                            <button className='btn' onClick={() => this.myFunction()}>Goodnight</button>
                         </div>
                     </div>
                 </div>

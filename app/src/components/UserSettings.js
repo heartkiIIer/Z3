@@ -86,7 +86,7 @@ class UserSettings extends React.Component {
             },
             buttons: true,
         }).then((task) => {
-            console.log(typeof task);
+            console.log(task);
             swal({ //the prompts user to enter the duration of the task
                 title: "Add a Routine: Enter Duration",
                 text: "Please enter the number of minutes of your new task:",
@@ -99,10 +99,9 @@ class UserSettings extends React.Component {
                 },
                 buttons: true,
             }).then((minutes) => {
-                console.log(typeof minutes)
+                console.log(minutes);
                 if(task !== ""){ //if task name is enter add task to routine, else do nothing
-                    if(!minutes){ minutes = 0 } //set minutes to zero if user doesn't input duration
-                    console.log(minutes);
+                    if(minutes === ""){ minutes = 0 } //set minutes to zero if user doesn't input duration
                     let idPromise = getUserID();
                     idPromise.then(uid=>{
                         const data = JSON.stringify({

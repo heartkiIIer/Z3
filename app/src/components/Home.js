@@ -35,7 +35,8 @@ class Home extends React.Component {
                 },
                 weather: null,
                 fitbit: false,
-                asleep: false
+                asleep: false,
+                zipcode: "01609"
             }
         } else {
             this.state = {
@@ -60,7 +61,7 @@ class Home extends React.Component {
         });
         this.getUser(currentComponent);
         this.getPersonalityBasedMessage(currentComponent);
-        this.getWeather(currentComponent, "01609");
+        this.getZipcode(currentComponent);
         this.getUseFitbit(currentComponent);
         this.getAsleep(currentComponent);
     }
@@ -261,8 +262,48 @@ class Home extends React.Component {
             },
             buttons: true,
         }).then((zipcode) => {
-            this.getWeather(this, zipcode);
+            if(zipcode !== null && zipcode !== ""){
+                let idPromise = getUserID();
+                idPromise.then(uid=>{
+                    const data = JSON.stringify({uid: uid, zipcode: zipcode});
+                    fetch('https://sleepwebapp.wpi.edu:5000/addZipcode', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then(() => {
+                        this.getWeather(this, zipcode);
+                    });
+                });
+            }
         })
+    }
+    //grab zipcode from database under user to use as location for weather infomation
+    getZipcode(currentComponent){
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('https://sleepwebapp.wpi.edu:5000/getZipcode', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                if(r.length !== 0){
+                    currentComponent.setState({zipcode: r[0].zipcode});
+                    currentComponent.getWeather(currentComponent, r[0].zipcode)
+                }
+                else{
+                    currentComponent.getWeather(currentComponent, currentComponent.state.zipcode)
+                }
+            });
+        });
     }
 
     displayFunFact(){

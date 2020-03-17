@@ -490,6 +490,28 @@ function getUseFitbit(req, res, id) {
     });
 }
 
+// set zip code of user
+function addZipcode(req, res, id, zipcode) {
+    pool.query("UPDATE users SET zipcode=" + zipcode + " WHERE firebase_id=" + id + ";", (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+// get user's zip code
+function getZipcode(req, res, id) {
+    pool.query('SELECT zipcode FROM users WHERE firebase_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
 // set boolean determining if user is asleep
 function addAsleep(req, res, id, asleep) {
     pool.query("UPDATE users SET asleep=" + asleep +" WHERE firebase_id=" + id + ";", (error, results) => {
@@ -599,5 +621,7 @@ module.exports = {
     getAsleep,
     addAsleep,
     checkSavedState,
-    getSleepEntryById
+    getSleepEntryById,
+    addZipcode,
+    getZipcode
 }

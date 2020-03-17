@@ -130,6 +130,16 @@ app.post('/addUseFitbit/', cors(corsOptions), (req, res) => {
     db.addUseFitbit(req, res, uid, fitbit);
 });
 
+app.post('/getZipcode/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
+    db.getZipcode(req, res, uid)
+});
+
+app.post('/addZipcode/', cors(corsOptions), (req, res) => {
+    const {zipcode, uid} = req.body;
+    db.addZipcode(req, res, uid, zipcode);
+});
+
 app.post('/getSleepGoal/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
     db.getSleepGoalById(req, res, uid)

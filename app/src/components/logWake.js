@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/logSleep.css'
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
+import swal from "sweetalert";
 
 
 class LogWake extends React.Component{
@@ -82,6 +83,11 @@ class LogWake extends React.Component{
                 },
                 body: data
             }).then( r => {
+                swal({
+                    title: "Success",
+                    icon: "success",
+                    text: "Successfully logged wake time."
+                })
                 this.setAsleepFalse();
                 console.log("Completed")
             })

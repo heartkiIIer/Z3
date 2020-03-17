@@ -86,42 +86,55 @@ class UserSettings extends React.Component {
             },
             buttons: true,
         }).then((task) => {
-            console.log(task);
-            swal({ //the prompts user to enter the duration of the task
-                title: "Add a Routine: Enter Duration",
-                text: "Please enter the number of minutes of your new task:",
-                content: {
-                    element: "input",
-                    attributes: {
-                        placeholder: "0 if the task is not timed",
-                        type: "number"
-                    }
-                },
-                buttons: true,
-            }).then((minutes) => {
-                console.log(minutes);
-                if(task !== ""){ //if task name is enter add task to routine, else do nothing
-                    if(minutes === ""){ minutes = 0 } //set minutes to zero if user doesn't input duration
-                    let idPromise = getUserID();
-                    idPromise.then(uid=>{
-                        const data = JSON.stringify({
-                            minutes: minutes,
-                            task: task,
-                            uid: uid
+            if(task === ""){ //user clicked okay with nothing as input
+                swal({
+                    text: "No task was inputed",
+                    icon: "error"
+                });
+            }
+            else if(task !== null) { // user clicked okay with something in the input field
+                swal({ //the prompts user to enter the duration of the task
+                    title: "Add a Routine: Enter Duration",
+                    text: "Please enter the number of minutes of your new task:",
+                    content: {
+                        element: "input",
+                        attributes: {
+                            placeholder: "0 if the task is not timed",
+                            type: "number"
+                        }
+                    },
+                    buttons: true,
+                }).then((minutes) => {
+                    if (minutes !== null){
+                        if (minutes === "") { //user didn't enter input
+                            minutes = 0 //set minutes to zero if user doesn't input duration
+                        }
+                        let idPromise = getUserID();
+                        idPromise.then(uid => {
+                            const data = JSON.stringify({
+                                minutes: minutes,
+                                task: task,
+                                uid: uid
+                            });
+                            fetch('https://sleepwebapp.wpi.edu:5000/addRoutine', {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                body: data
+                            }).then(r => {
+                                swal({
+                                    title: "Success",
+                                    icon: "success",
+                                    text: "New routine have been added."
+                                });
+                                this.getRoutine(this) //get routine again now a new routine has been added
+                            })
                         });
-                        fetch('https://sleepwebapp.wpi.edu:5000/addRoutine', {
-                            method: 'POST',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
-                            },
-                            body: data
-                        }).then(r => {
-                            this.getRoutine(this) //get routine again now a new routine has been added
-                        })
-                    });
-                }
-            });
+                    }
+                });
+            }
         });
     }
     //gets the user's sleep goal
@@ -177,6 +190,11 @@ class UserSettings extends React.Component {
                         },
                         body: data
                     }).then(r => {
+                        swal({
+                            title: "Success",
+                            icon: "success",
+                            text: "Successfully set sleep goal."
+                        });
                         this.getSleepGoal(this)
                     })
                 });

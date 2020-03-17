@@ -343,6 +343,7 @@ function Display() {
         )
     } else {
         return (
+            <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
                     <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
@@ -350,13 +351,13 @@ function Display() {
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>
                     <i><p>You have no upcoming events for today.</p></i>
-                    <div className='float_center'>
-                        <div className='child'>
-                            {button}
-                            <br/><br/><br/>
-                        </div>
-                    </div>
                 </Tab.Pane>
+            <div className='float_center'>
+            <div className='child'>
+            {button}
+        <br/><br/><br/>
+        </div>
+    </div></div>
         )
     }
 

@@ -101,7 +101,7 @@ class ItsBedtimeRoutine extends React.Component {
             if(window.innerWidth < 700){
                 this.setState({
                     width: '170px',
-                    paddingTop: '500px'
+                    paddingTop: '300px'
                 });
             }
             else {

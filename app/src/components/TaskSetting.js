@@ -33,7 +33,7 @@ class TaskSetting extends React.Component {
     taskLabel(){
         if(this.state.edit) {
             return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" placeholder={this.props.taskTitle}/>,
-                <input className="editRoutine" id={"editminutes" + this.props.id} type="text"/>];
+                <input className="editRoutine" id={"editminutes" + this.props.id} type="text" placeholder={this.props.taskMin}/>];
         }
         else{
             if(this.props.taskMin !== 0){ //task is timed, state minutes
@@ -97,6 +97,7 @@ class TaskSetting extends React.Component {
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         {this.taskLabel()}
+                        <input className="editRoutine" id="editminutes" type="text"/>
                     </div>
                 </button>
                 {this.getbutton()}

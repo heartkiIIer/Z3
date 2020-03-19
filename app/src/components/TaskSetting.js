@@ -90,7 +90,7 @@ class TaskSetting extends React.Component {
                 <div id={"task" + this.props.id } className="list-group-item task">
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
-                        {this.taskLabel()}
+                        {this.taskLabel.bind(this)}
                     </div>
                 </div>
                 {this.getbutton()}

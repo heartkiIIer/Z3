@@ -84,12 +84,12 @@ class TaskSetting extends React.Component {
     render(){
         return (
             <div className="d-flex flex-row">
-                <button id={"task" + this.props.id } className="list-group-item">
+                <div id={"task" + this.props.id } className="list-group-item">
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         {this.taskLabel()}
                     </div>
-                </button>
+                </div>
                 {this.getbutton()}
                 <img className="routinebtn" style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
             </div>

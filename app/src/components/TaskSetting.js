@@ -10,7 +10,9 @@ class TaskSetting extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            edit: false
+            edit: false,
+            task: this.props.taskTitle,
+            minutes: this.props.taskMin
         }
     }
 
@@ -32,7 +34,7 @@ class TaskSetting extends React.Component {
     //returns labels for the the bedtime routine task
     taskLabel(){
         if(this.state.edit) {
-            return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" value={this.props.taskTitle}/>,
+            return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" value={this.state.task} onChange={e => this.setState({ task: e.target.value })}/>,
                 <input className="editRoutine" id={"editminutes" + this.props.id} type="number" placeholder={this.props.taskMin}/>];
         }
         else{
@@ -93,12 +95,12 @@ class TaskSetting extends React.Component {
     render(){
         return (
             <div className="d-flex flex-row">
-                <button id={"task" + this.props.id } className="list-group-item list-group-item-action">
+                <div id={"task" + this.props.id } className="list-group-item list-group-item-action">
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         {this.taskLabel()}
                     </div>
-                </button>
+                </div>
                 {this.getbutton()}
                 <img className="routinebtn" style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
             </div>

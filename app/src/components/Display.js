@@ -93,7 +93,7 @@ function LogoutButton(props) {
 function submitStressEntry() {
     let events = []
     let parentElement = document.getElementById('mainTab').children
-    for (let i = 6; i < parentElement.length; i++) {
+    for (let i = 7; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
         let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
         switch (date) {
@@ -326,7 +326,7 @@ function Display() {
                     <h5>Rate stress level for each event</h5>
                     <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
-                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest events from the calendar.</p></i>
+                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
                     {items.map(item => (
                         <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
@@ -343,12 +343,21 @@ function Display() {
         )
     } else {
         return (
+            <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
                     <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
-                    <br/><br/><br/>
+                    <br/><br/>
+                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
+                    <br/>
                     <i><p>You have no upcoming events for today.</p></i>
                 </Tab.Pane>
+            <div className='float_center'>
+            <div className='child'>
+            {button}
+        <br/><br/><br/>
+        </div>
+    </div></div>
         )
     }
 

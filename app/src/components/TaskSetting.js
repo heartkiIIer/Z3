@@ -90,6 +90,7 @@ class TaskSetting extends React.Component {
                 </button>
                 {this.getbutton()}
                 <img style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
+                <img style={{marginLeft: "10px"}} src={EditButton} onClick={this.toggleEdit.bind(this)}/>
             </div>
         );
     };

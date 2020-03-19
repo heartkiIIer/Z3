@@ -69,9 +69,13 @@ class TaskSetting extends React.Component {
             return <img style={{marginLeft: "10px"}} src={SaveButton} onClick={this.editRoutine.bind(this)}/>
         }
         else{
-            return <img style={{marginLeft: "10px"}} src={EditButton} onClick={this.state.edit = true}/>;
+            return <img style={{marginLeft: "10px"}} src={EditButton} onClick={this.toggleEdit.bind(this)}/>;
         }
 
+    }
+    toggleEdit(e){
+        e.preventDefault();
+        this.state.edit = true;
     }
 
     render(){

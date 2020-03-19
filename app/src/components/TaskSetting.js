@@ -69,16 +69,16 @@ class TaskSetting extends React.Component {
             return <img style={{marginLeft: "10px"}} src={SaveButton} onClick={this.editRoutine.bind(this)}/>
         }
         else{
-            return <img style={{marginLeft: "10px"}} src={EditButton} onClick={this.toggleEdit.bind(this)}/>;
+            return <img style={{marginLeft: "10px"}} src={EditButton} onClick={this.toggleEdit}/>;
         }
 
     }
-    toggleEdit(e){
-        e.preventDefault();
+    toggleEdit(){
         this.state.edit = true;
     }
 
     render(){
+        console.log(this.state.edit);
         return (
             <div className="d-flex flex-row">
                 <button id={"task" + this.props.id } type="button" className="list-group-item list-group-item-action" disabled={true}>
@@ -87,8 +87,8 @@ class TaskSetting extends React.Component {
                         {this.taskLabel()}
                     </div>
                 </button>
-                <img style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
                 {this.getbutton()}
+                <img style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
             </div>
         );
     };

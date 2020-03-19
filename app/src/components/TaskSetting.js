@@ -11,8 +11,8 @@ class TaskSetting extends React.Component {
         super(props);
         this.state = {
             edit: false,
-            task: props.taskTitle,
-            minutes: props.taskMin
+            task: "",
+            minutes: ""
         }
     }
 
@@ -33,9 +33,7 @@ class TaskSetting extends React.Component {
     }
     //returns labels for the the bedtime routine task
     taskLabel(){
-        console.log(this.state);
-        console.log("Props");
-        console.log(this.props);
+        this.setState({task: this.props.taskTitle, minutes: this.props.taskMin})
         if(this.state.edit) {
             return <div className="d-flex flex-column">
                      <input className="editRoutine" id={"edittask" + this.props.id} type="text" value={this.state.task} onChange={e => this.setState({ task: e.target.value })}/>

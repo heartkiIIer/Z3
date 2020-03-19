@@ -76,11 +76,10 @@ class TaskSetting extends React.Component {
     toggleEdit(e){
         e.preventDefault();
         this.state.edit = true;
-        console.log(this.state.edit);
     }
 
     render(){
-        console.log(this.state.edit);
+        console.log("hello");
         return (
             <div className="d-flex flex-row">
                 <button id={"task" + this.props.id } type="button" className="list-group-item list-group-item-action" disabled={true}>

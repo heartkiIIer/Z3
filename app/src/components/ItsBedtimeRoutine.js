@@ -76,7 +76,14 @@ class ItsBedtimeRoutine extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                currentComponent.setState({routine : r})
+                console.log(r);
+                console.log(typeof r);
+                currentComponent.setState({routine : r});
+                swal({
+                    title: "Empty Routine List",
+                    text: "You currently do not have a bedtime routine. You can go to settings page to set up a routine.",
+                    icon: "warning"
+                });
             })
         });
     }

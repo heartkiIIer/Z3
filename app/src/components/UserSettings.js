@@ -19,6 +19,7 @@ import {OAUTHSettings} from "../scripts/FitbitScript";
 class UserSettings extends React.Component {
     constructor(props){
         super(props);
+        this.handler = this.updateRoutine.bind(this);
         this.state = {
             isEditable: false,
             image: "",
@@ -60,13 +61,17 @@ class UserSettings extends React.Component {
         });
 
     }
+    //used in child component to update routine list when deleting/editing
+    updateRoutine(){
+        this.getRoutine(this);
+    }
     //returns a list of TaskSetting components which are each task in the bedtime routine
     listRoutine(){
         let list = [];
         if(this.state.routine !== null){
             for(let i = 0; i < this.state.routine.length; i++){
                 var task = this.state.routine[i];
-                list.push(<TaskSetting id={task.task_id} taskTitle={task.task_name} taskMin={task.minutes}/>);
+                list.push(<TaskSetting id={task.task_id} taskTitle={task.task_name} taskMin={task.minutes} action={this.handler}/>);
             }
         }
         return list;

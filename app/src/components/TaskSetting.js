@@ -28,7 +28,7 @@ class TaskSetting extends React.Component {
             },
             body: data
         }).then( r => {
-            window.location.reload();
+            this.props.action();
         });
     }
     //returns labels for the the bedtime routine task
@@ -65,7 +65,7 @@ class TaskSetting extends React.Component {
             },
             body: data
         }).then( r => {
-            window.location.reload();
+            this.props.action();
         });
     }
     //return edit button if edit is false, otherwise return save button

@@ -395,3 +395,8 @@ input:focus{
 .width300 {
     max-width: 300px;
 }
+
+.editRoutine{
+    width: 80%;
+    border: 2px solid #1f9ce4;
+}

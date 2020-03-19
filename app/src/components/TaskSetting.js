@@ -39,7 +39,7 @@ class TaskSetting extends React.Component {
         }
         else{
             if(this.props.taskMin !== 0){ //task is timed, state minutes
-                return <p>{this.props.taskMin + " minutes of " + this.props.taskTitle}</p>;
+                return <p>{this.props.taskTitle + " for " + this.props.taskMin + " minutes"}</p>;
             }
             return <p>{this.props.taskTitle}</p>; //task is not timed, just state task
         }

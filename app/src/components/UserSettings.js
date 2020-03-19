@@ -308,7 +308,7 @@ class UserSettings extends React.Component {
                     <h1 className="blueHeader"> Modify your Bedtime Routine</h1>
                     <hr className="hr-settings"/>
                     <br/>
-                    <div className="list-group" class ="width300">
+                    <div className="list-group" style={{maxWidth: "500px"}}>
                         {this.listRoutine()}
                         <button className={'btn'} onClick={this.addRoutine.bind(this)}> Add Task </button>
                     </div>

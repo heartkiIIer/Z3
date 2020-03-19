@@ -33,6 +33,7 @@ class TaskSetting extends React.Component {
     }
     //returns labels for the the bedtime routine task
     taskLabel(){
+        console.log(this.state);
         if(this.state.edit) {
             return <div className="d-flex flex-column">
                      <input className="editRoutine" id={"edittask" + this.props.id} type="text" value={this.state.task} onChange={e => this.setState({ task: e.target.value })}/>
@@ -90,7 +91,7 @@ class TaskSetting extends React.Component {
                 <div id={"task" + this.props.id } className="list-group-item task">
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
-                        {this.taskLabel.bind(this)}
+                        {this.taskLabel()}
                     </div>
                 </div>
                 {this.getbutton()}

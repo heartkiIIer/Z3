@@ -59,7 +59,7 @@ var firebase = require('firebase');
 export function logout(e){
     e.preventDefault();
     firebase.auth().signOut().then(function() {
-        window.replace("https://sleepwebapp.wpi.edu");
+        window.location.replace("https://sleepwebapp.wpi.edu");
     }, function(error) {
         console.error('Sign Out Error', error);
     });

@@ -32,8 +32,8 @@ class TaskSetting extends React.Component {
     //returns labels for the the bedtime routine task
     taskLabel(){
         if(this.state.edit) {
-            return [<input id={"edittask" + this.props.id} type="text" value={this.props.taskTitle}/>,
-                <input id={"editminutes" + this.props.id} type="text" value={this.props.taskMin}/>];
+            return [<input id={"edittask" + this.props.id} type="text" placeholder={this.props.taskTitle} onKeyPress={this.style.width = ((this.value.length + 1) * 8) + 'px'}/>,
+                <input id={"editminutes" + this.props.id} type="text" placeholder={this.props.taskMin} onKeyPress={this.style.width = ((this.value.length + 1) * 8) + 'px'}/>];
         }
         else{
             if(this.props.taskMin !== 0){ //task is timed, state minutes

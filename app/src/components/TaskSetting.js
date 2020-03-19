@@ -10,7 +10,9 @@ class TaskSetting extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            edit: false
+            edit: false,
+            task: this.props.taskTitle,
+            minutes: this.props.taskMin
         }
     }
 
@@ -32,8 +34,8 @@ class TaskSetting extends React.Component {
     //returns labels for the the bedtime routine task
     taskLabel(){
         if(this.state.edit) {
-            return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" value={this.props.taskTitle}/>,
-                <input className="editRoutine" id={"editminutes" + this.props.id} type="text" value={this.props.taskMin}/>];
+            return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" value={this.state.task} onChange={e=> this.setState({task: e.target.value})}/>,
+                <input className="editRoutine" id={"editminutes" + this.props.id} type="text" value={this.state.minutes}/>];
         }
         else{
             if(this.props.taskMin !== 0){ //task is timed, state minutes
@@ -44,24 +46,26 @@ class TaskSetting extends React.Component {
     }
     //edit the task from bedtime routine list
     editRoutine(e){
+        e.preventDefault();
         let minutes = document.getElementById("editminutes"+this.props.id).value;
         let task = document.getElementById("edittask"+this.props.id).value;
-        e.preventDefault();
         const data = JSON.stringify({
             entryId: this.props.id,
             minutes: minutes,
             task: task
         });
-        fetch('https://sleepwebapp.wpi.edu:5000/editRoutine', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: data
-        }).then( r => {
-            window.location.reload();
-        });
+        console.log("minutes:", minutes);
+        console.log("task:", task);
+        // fetch('https://sleepwebapp.wpi.edu:5000/editRoutine', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: data
+        // }).then( r => {
+        //     window.location.reload();
+        // });
     }
     //return edit button if edit is false, otherwise return save button
     getbutton(){

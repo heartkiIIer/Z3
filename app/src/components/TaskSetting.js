@@ -15,9 +15,6 @@ class TaskSetting extends React.Component {
             minutes: ""
         }
     }
-    componentDidMount() {
-        this.setState({task: this.props.taskTitle, minutes: this.props.taskMin});
-    }
 
     //deletes the routine from bedtime routine list
     deleteRoutine(e) {
@@ -84,7 +81,7 @@ class TaskSetting extends React.Component {
     }
     toggleEdit(e){
         e.preventDefault();
-        this.setState({edit: true});
+        this.setState({edit: true, task: this.props.taskTitle, minutes: this.props.taskMin});
     }
 
     render(){

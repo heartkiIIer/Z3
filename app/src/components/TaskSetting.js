@@ -35,7 +35,7 @@ class TaskSetting extends React.Component {
     taskLabel(){
         if(this.state.edit) {
             return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" value={this.state.task} onChange={e => this.setState({ task: e.target.value })}/>,
-                <input className="editRoutine" id={"editminutes" + this.props.id} type="number" placeholder={this.props.taskMin}/>];
+                <input className="editRoutine" id={"editminutes" + this.props.id} type="number" value={this.state.minutes} onChange={e => this.setState({ minutes: e.target.value })}/>];
         }
         else{
             if(this.props.taskMin !== 0){ //task is timed, state minutes
@@ -49,13 +49,13 @@ class TaskSetting extends React.Component {
         e.preventDefault();
         let minutes = document.getElementById("editminutes"+this.props.id).value;
         let task = document.getElementById("edittask"+this.props.id).value;
-
-        if(minutes === ""){
-            minutes = this.props.taskMin;
-        }
-        if(task === ""){
-            task = this.props.taskTitle;
-        }
+        //
+        // if(minutes === ""){
+        //     minutes = this.props.taskMin;
+        // }
+        // if(task === ""){
+        //     task = this.props.taskTitle;
+        // }
 
         const data = JSON.stringify({
             entryId: this.props.id,
@@ -95,7 +95,7 @@ class TaskSetting extends React.Component {
     render(){
         return (
             <div className="d-flex flex-row">
-                <div id={"task" + this.props.id } className="list-group-item list-group-item-action">
+                <div id={"task" + this.props.id } className="list-group-item">
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         {this.taskLabel()}

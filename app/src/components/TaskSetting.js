@@ -55,7 +55,9 @@ class TaskSetting extends React.Component {
             task: task
         });
         console.log("minutes:", minutes);
+        console.log(typeof minutes);
         console.log("task:", task);
+        console.log(typeof task);
         // fetch('https://sleepwebapp.wpi.edu:5000/editRoutine', {
         //     method: 'POST',
         //     headers: {
@@ -83,7 +85,6 @@ class TaskSetting extends React.Component {
     }
 
     render(){
-        console.log("hello");
         return (
             <div className="d-flex flex-row">
                 <button id={"task" + this.props.id } type="button" className="list-group-item list-group-item-action" disabled={true}>
@@ -94,6 +95,7 @@ class TaskSetting extends React.Component {
                 </button>
                 {this.getbutton()}
                 <img style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
+                <input type="text"/>
             </div>
         );
     };

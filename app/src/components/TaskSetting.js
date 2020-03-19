@@ -75,7 +75,7 @@ class TaskSetting extends React.Component {
     }
     toggleEdit(e){
         e.preventDefault();
-        this.state.edit = true;
+        this.setState({edit: true});
     }
 
     render(){

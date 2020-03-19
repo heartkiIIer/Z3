@@ -97,7 +97,7 @@ class TaskSetting extends React.Component {
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         {this.taskLabel()}
-                        <input className="editRoutine" type="text"/>
+                        <input type="text"/>
                     </div>
                 </button>
                 {this.getbutton()}

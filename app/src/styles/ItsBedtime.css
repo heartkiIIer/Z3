@@ -398,7 +398,7 @@ input:focus{
 
 .editRoutine{
     width: 100%;
-    border: 1px solid grey;
+    padding-right: 5px;
 }
 
 .routinebtn:hover{

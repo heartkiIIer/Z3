@@ -85,6 +85,11 @@ app.post('/deleteRoutine/', cors(corsOptions), (req, res) => {
     db.deleteBedtimeRoutinesById(req, res, entryId);
 });
 
+app.post('/editRoutine/', cors(corsOptions), (req, res) => {
+    const {entryId, task, minutes} = req.body;
+    db.deleteBedtimeRoutinesById(req, res, entryId, task, minutes);
+});
+
 app.post('/newSleep/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
     db.addSleepEntryById(req, res, uid);

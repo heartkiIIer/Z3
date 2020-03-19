@@ -413,6 +413,16 @@ function deleteBedtimeRoutinesById(req, res, id) {
     });
 }
 
+//Edit a task
+function editBedtimeRoutinesById(req, res, id, task, minutes) {
+    pool.query("UPDATE BedtimeRoutineTask SET task_name='" + task + "', minutes="+ minutes +" WHERE task_id ="+ id +';' , (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(results.rows);
+    });
+}
+
 //Chronotype functions
 //Get chronotype results
 function getChronotypeById(req, res, id) {
@@ -611,6 +621,7 @@ module.exports = {
     deleteCaffeineEntriesById,
     deleteExerciseEntriesById,
     deleteBedtimeRoutinesById,
+    editBedtimeRoutinesById,
     putChronotypeById,
     addSleepGoalById,
     getSleepGoalById,

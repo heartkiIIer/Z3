@@ -34,6 +34,7 @@ class TaskSetting extends React.Component {
     //returns labels for the the bedtime routine task
     taskLabel(){
         console.log(this.state);
+        console.log("Props");
         console.log(this.props);
         if(this.state.edit) {
             return <div className="d-flex flex-column">

@@ -32,7 +32,7 @@ class TaskSetting extends React.Component {
     //returns labels for the the bedtime routine task
     taskLabel(){
         if(this.state.edit) {
-            return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" placeholder={this.props.taskTitle}/>,
+            return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" value={this.props.taskTitle}/>,
                 <input className="editRoutine" id={"editminutes" + this.props.id} type="number" placeholder={this.props.taskMin}/>];
         }
         else{
@@ -78,10 +78,10 @@ class TaskSetting extends React.Component {
     //return edit button if edit is false, otherwise return save button
     getbutton(){
         if(this.state.edit){
-            return <img style={{marginLeft: "10px"}} src={SaveButton} onClick={this.editRoutine.bind(this)}/>
+            return <img className="routinebtn" style={{marginLeft: "10px"}} src={SaveButton} onClick={this.editRoutine.bind(this)}/>
         }
         else{
-            return <img style={{marginLeft: "10px"}} src={EditButton} onClick={this.toggleEdit.bind(this)}/>;
+            return <img className="routinebtn" style={{marginLeft: "10px"}} src={EditButton} onClick={this.toggleEdit.bind(this)}/>;
         }
 
     }
@@ -93,14 +93,14 @@ class TaskSetting extends React.Component {
     render(){
         return (
             <div className="d-flex flex-row">
-                <button id={"task" + this.props.id } type="button" className="list-group-item list-group-item-action">
+                <button id={"task" + this.props.id } className="list-group-item list-group-item-action">
                     <div className="align-check-and-label">
                         <img src={EmptyCheckbox} id={"checbox" + this.props.id} className="bedtime-checkbox"/>
                         {this.taskLabel()}
                     </div>
                 </button>
                 {this.getbutton()}
-                <img style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
+                <img className="routinebtn" style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
             </div>
         );
     };

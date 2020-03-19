@@ -400,3 +400,7 @@ input:focus{
     width: auto;
     border: 1px solid #1f9ce4;
 }
+
+.routinebtn:hover{
+    cursor: pointer;
+}

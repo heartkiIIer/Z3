@@ -397,6 +397,6 @@ input:focus{
 }
 
 .editRoutine{
-    width: 80%;
-    border: 2px solid #1f9ce4;
+    width: auto;
+    border: 1px solid #1f9ce4;
 }

@@ -95,7 +95,6 @@ class TaskSetting extends React.Component {
                 </button>
                 {this.getbutton()}
                 <img style={{marginLeft: "10px"}} src={DeleteButton} onClick={this.deleteRoutine.bind(this)}/>
-                <input type="text"/>
             </div>
         );
     };

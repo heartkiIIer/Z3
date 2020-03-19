@@ -10,9 +10,7 @@ class TaskSetting extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            edit: false,
-            task: this.props.taskTitle,
-            minutes: this.props.taskMin
+            edit: false
         }
     }
 
@@ -34,8 +32,8 @@ class TaskSetting extends React.Component {
     //returns labels for the the bedtime routine task
     taskLabel(){
         if(this.state.edit) {
-            return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" placeholder={this.state.task}/>,
-                <input className="editRoutine" id={"editminutes" + this.props.id} type="text" placeholder={this.state.minutes}/>];
+            return [<input className="editRoutine" id={"edittask" + this.props.id} type="text" placeholder={this.props.taskTitle}/>,
+                <input className="editRoutine" id={"editminutes" + this.props.id} type="text"/>];
         }
         else{
             if(this.props.taskMin !== 0){ //task is timed, state minutes
@@ -49,6 +47,14 @@ class TaskSetting extends React.Component {
         e.preventDefault();
         let minutes = document.getElementById("editminutes"+this.props.id).value;
         let task = document.getElementById("edittask"+this.props.id).value;
+
+        if(minutes === ""){
+            minutes = this.props.taskMin;
+        }
+        if(task === ""){
+            task = this.props.taskTitle;
+        }
+
         const data = JSON.stringify({
             entryId: this.props.id,
             minutes: minutes,

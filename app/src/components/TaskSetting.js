@@ -49,33 +49,22 @@ class TaskSetting extends React.Component {
         e.preventDefault();
         let minutes = document.getElementById("editminutes"+this.props.id).value;
         let task = document.getElementById("edittask"+this.props.id).value;
-        //
-        // if(minutes === ""){
-        //     minutes = this.props.taskMin;
-        // }
-        // if(task === ""){
-        //     task = this.props.taskTitle;
-        // }
 
         const data = JSON.stringify({
             entryId: this.props.id,
             minutes: minutes,
             task: task
         });
-        console.log("minutes:", minutes);
-        console.log(typeof minutes);
-        console.log("task:", task);
-        console.log(typeof task);
-        // fetch('https://sleepwebapp.wpi.edu:5000/editRoutine', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: data
-        // }).then( r => {
-        //     window.location.reload();
-        // });
+        fetch('https://sleepwebapp.wpi.edu:5000/editRoutine', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            window.location.reload();
+        });
     }
     //return edit button if edit is false, otherwise return save button
     getbutton(){

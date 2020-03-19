@@ -374,7 +374,7 @@ function getBedtimeRoutineById(req, res, id) {
     promise
         .then(function(internalId) {
             console.log(internalId.rows[0].user_id);
-            pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id =' + internalId.rows[0].user_id + ';', (error, results) => {
+            pool.query('SELECT * FROM BedtimeRoutineTask WHERE user_id =' + internalId.rows[0].user_id + ' ORDER BY task_id ASC;', (error, results) => {
                 if (error) {
                     throw error
                 }

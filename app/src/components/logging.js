@@ -56,6 +56,7 @@ class logging extends React.Component{
         const styles = {
             containerStyle:{
                 padding: this.state.padding,
+                width: this.state.width
             }
         };
         const { containerStyle } = styles;

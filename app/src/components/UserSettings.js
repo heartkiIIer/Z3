@@ -295,7 +295,7 @@ class UserSettings extends React.Component {
         return (
             <div class = "content settings" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <div className="inner" id="page-wrap">
+                <div className="inner-report" id="page-wrap">
                     <h1 class = "blueHeader"> Set Sleep Goal</h1>
                     <hr class = "hr-settings"/>
                     <br/>

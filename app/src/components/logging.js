@@ -8,16 +8,16 @@ import {getUserID} from "../scripts/login";
 class logging extends React.Component{
     constructor(props) {
         super(props);
-        if(window.innerWidth >= 800){
+        if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
-                maxWidth: '700px'
+                width: '100%'
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
-                maxWidth: '550px'
+                width: '70%'
             };
         }
     }
@@ -39,13 +39,13 @@ class logging extends React.Component{
             if(window.innerWidth < 800){
                 this.setState({
                     padding: '17% 17% 5%',
-                    maxWidth: '550px'
+                    width: '70%'
                 });
             }
             else {
                 this.setState({
                     padding: '75px 75px 40px',
-                    maxWidth: '700px'
+                    width: '100%'
                 })
             }
         })

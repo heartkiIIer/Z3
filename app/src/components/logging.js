@@ -8,7 +8,7 @@ import {getUserID} from "../scripts/login";
 class logging extends React.Component{
     constructor(props) {
         super(props);
-        if(window.innerWidth >= 700){
+        if(window.innerWidth >= 800){
             this.state = {
                 padding: '75px 75px 40px',
                 maxWidth: '700px'
@@ -36,7 +36,7 @@ class logging extends React.Component{
 
     resize(){
         window.addEventListener('resize', ()=> {
-            if(window.innerWidth < 700){
+            if(window.innerWidth < 800){
                 this.setState({
                     padding: '17% 17% 5%',
                     maxWidth: '550px'

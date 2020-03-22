@@ -11,13 +11,11 @@ class logging extends React.Component{
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
-                width: '100%'
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
-                width: '70%'
             };
         }
     }
@@ -36,16 +34,14 @@ class logging extends React.Component{
 
     resize(){
         window.addEventListener('resize', ()=> {
-            if(window.innerWidth < 800){
+            if(window.innerWidth < 700){
                 this.setState({
-                    padding: '17% 17% 5%',
-                    width: '70%'
+                    padding: '17% 17% 5%'
                 });
             }
             else {
                 this.setState({
-                    padding: '75px 75px 40px',
-                    width: '100%'
+                    padding: '75px 75px 40px'
                 })
             }
         })
@@ -56,7 +52,6 @@ class logging extends React.Component{
         const styles = {
             containerStyle:{
                 padding: this.state.padding,
-                width: this.state.width
             }
         };
         const { containerStyle } = styles;

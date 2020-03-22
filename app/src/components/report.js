@@ -244,7 +244,7 @@ class report extends React.Component{
             return (
                 <div class = "reportClass" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div className="inner" id="page-wrap" align="center">
+                    <div className="inner-report" id="page-wrap" align="center">
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>
                         <br/>
@@ -288,7 +288,7 @@ class report extends React.Component{
             return (
                 <div class = "reportClass" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div className="inner" id="page-wrap" align="center">
+                    <div className="inner-report" id="page-wrap" align="center">
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>
                         <br/>

@@ -11,11 +11,13 @@ class logging extends React.Component{
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
+                maxWidth: '700px'
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
+                maxWidth: '550px'
             };
         }
     }
@@ -36,12 +38,14 @@ class logging extends React.Component{
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
                 this.setState({
-                    padding: '17% 17% 5%'
+                    padding: '17% 17% 5%',
+                    maxWidth: '550px'
                 });
             }
             else {
                 this.setState({
-                    padding: '75px 75px 40px'
+                    padding: '75px 75px 40px',
+                    maxWidth: '700px'
                 })
             }
         })

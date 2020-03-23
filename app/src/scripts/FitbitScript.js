@@ -155,7 +155,7 @@ function InfoPopUp(){
                     }).then(r => {
                         if(r.length !== 0){
                             if(r[0].popup){ //if popup is true send popup about allowing fitbit. else do nothing
-                                Swal.fire({ //send popup
+                                swal.fire({ //send popup
                                     title: "Fitbit Feature",
                                     text: "If you have a Fitbit, you can auto log exercise and sleep using your Fitbit data. Go to settings to set that up!",
                                     showCancelButton: true,

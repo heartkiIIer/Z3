@@ -93,7 +93,7 @@ class LogSleep extends React.Component{
             <div className="content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="middle">
-                    <div className="inner" id="page-wrap">
+                    <div className="sleepInner" id="page-wrap">
                         <div class = "time" align='center'>
                             <h1 className="sleepHeader" align='center'>Are you going to sleep now?</h1>
                             <button className='btn' onClick={() => this.myFunction()}>Goodnight</button>

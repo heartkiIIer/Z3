@@ -1,7 +1,9 @@
+import {getUserID} from "./login";
+
 var z3_firebase = require('./firebase.js');
 var swal = require('sweetalert');
 var Swal = require('sweetalert2');
-import {getUserID} from "./login";
+
 
 // deletes user's account
 function deleteAcc(){

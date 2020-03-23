@@ -4,6 +4,7 @@ import "../styles/logging.css";
 import {Tabs} from "./sliders";
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
+import {InfoPopUp} from "../scripts/FitbitScript";
 
 class logging extends React.Component{
     constructor(props) {
@@ -28,8 +29,9 @@ class logging extends React.Component{
         let idPromise = getUserID();
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
-        })
+        });
         window.addEventListener('resize', this.updateDimensions);
+        InfoPopUp();
     }
 
     resize(){

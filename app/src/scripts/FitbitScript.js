@@ -1,5 +1,6 @@
 // get user ID
 import {getUserID} from "./login";
+import swal from "sweetalert2"
 
 var url = window.location.href;
 let OAUTH = "", OAUTHSettings = "";
@@ -124,4 +125,62 @@ if (url.includes("report") && url.includes("#")) {
 
 }
 
-export {OAUTH, OAUTHSettings}
+function InfoPopUp(){
+    //check if user set allow fitbit in User Settings
+    let idPromise = getUserID();
+    idPromise.then(uid=>{
+        const data = JSON.stringify({uid: uid});
+        fetch('https://sleepwebapp.wpi.edu:5000/getUseFitbit', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            return r.json();
+        }).then(r => {
+            if(r.length !== 0){
+                if(!r[0].fitbit){
+                    //check if user has set pop up to never show again
+                    fetch('https://sleepwebapp.wpi.edu:5000/getPopup', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then( r => {
+                        return r.json();
+                    }).then(r => {
+                        if(r.length !== 0){
+                            if(r[0].popup){ //if popup is true send popup about allowing fitbit. else do nothing
+                                Swal.fire({ //send popup
+                                    title: "Fitbit Feature",
+                                    text: "If you have a Fitbit, you can auto log exercise and sleep using your Fitbit data. Go to settings to set that up!",
+                                    showCancelButton: true,
+                                    confirmButtonText: "Do Not Show Again",
+                                    confirmButtonColor: "#b9b9b9",
+                                    cancelButtonColor: "#cb1634"
+                                }).then(noShow =>{
+                                    if(noShow.value){
+                                        fetch('https://sleepwebapp.wpi.edu:5000/setPopupFalse', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Accept': 'application/json',
+                                                'Content-Type': 'application/json',
+                                            },
+                                            body: data
+                                        })
+                                    }
+                                })
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    });
+}
+
+export {OAUTH, OAUTHSettings, InfoPopUp}

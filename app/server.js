@@ -205,6 +205,16 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     db.getSleepEntryById(req, res, uid);
 });
 
+app.post('/getPopup/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
+    db.getPopup(req, res, uid);
+});
+
+app.post('/setPopupFalse/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
+    db.setPopupFalse(req, res, uid);
+});
+
  https.createServer({
      key: fs.readFileSync( '../ssl/sleepwebapp.wpi.edu.key'),
      cert: fs.readFileSync('../ssl/sleepwebapp_wpi_edu_cert_comb.cer')

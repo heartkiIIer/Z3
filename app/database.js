@@ -500,6 +500,28 @@ function getUseFitbit(req, res, id) {
     });
 }
 
+// set boolean determing if to show popup about fitbit use
+function setPopupFalse(req, res, id) {
+    pool.query("UPDATE users SET popup=" + false + " WHERE firebase_id=" + id + ";", (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
+// get boolean determining if to show popup about fitbit use
+function getPopup(req, res, id) {
+    pool.query('SELECT popup FROM users WHERE firebase_id=' + id + ';', (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows);
+        res.status(200).send(results.rows);
+    });
+}
+
 // set zip code of user
 function addZipcode(req, res, id, zipcode) {
     pool.query("UPDATE users SET zipcode='" + zipcode + "' WHERE firebase_id=" + id + ";", (error, results) => {
@@ -634,5 +656,7 @@ module.exports = {
     checkSavedState,
     getSleepEntryById,
     addZipcode,
-    getZipcode
+    getZipcode,
+    setPopupFalse,
+    getPopup
 }

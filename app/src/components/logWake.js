@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/logSleep.css'
+import '../styles/ItsBedtime.css'
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 import swal from "sweetalert";
@@ -101,7 +102,7 @@ class LogWake extends React.Component{
             <div className = "content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="middle">
-                <div className = "sleepInner" id="page-wrap">
+                <div className = "inner-report" id="page-wrap">
                     <div class = "time" align='center'>
                         <h1 className="wakeHeader" align='center'>Good Morning!</h1>
                         <h3 className="wakeHeaderTwo" align='center'>What time did you wake up?</h3>

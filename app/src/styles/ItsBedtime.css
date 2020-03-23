@@ -1,4 +1,9 @@
 /* Limit the width of the menu */
+
+html, body {
+    height: 100%
+}
+
 .itsBedtime {
     max-width: 400px;
     margin-right: auto;

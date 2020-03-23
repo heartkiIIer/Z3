@@ -6,7 +6,7 @@ import {getUserID} from "../scripts/login";
 class sleep extends React.Component{
     constructor(props) {
         super(props);
-        if(window.innerWidth >= 500){
+        if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px'
             };

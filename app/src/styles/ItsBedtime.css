@@ -17,19 +17,7 @@ html, body {
 .width80 {
     padding-top: 9px;
 }
-.inner {
-    min-height: auto;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 700px;
-    width: 100%;
-    background: white;
-    padding: 75px 75px 40px;
-    border-right: 1px solid #e4e4e4;
-    border-left: 1px solid #e4e4e4;
-    height: 100vh;
-}
-.inner-report {
+.inner, .inner-report {
     min-height: auto;
     margin-right: auto;
     margin-left: auto;
@@ -41,6 +29,7 @@ html, body {
     border-left: 1px solid #e4e4e4;
     height: 100%;
 }
+
 .middle {
     display: table-cell;
     vertical-align: middle;

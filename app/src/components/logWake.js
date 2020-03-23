@@ -10,16 +10,14 @@ class LogWake extends React.Component{
 
     constructor(props) {
         super(props);
-        if(window.innerWidth >= 700 && window.innerWidth > window.innerHeight){
+        if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
-                maxWidth: '700px'
             };
         }
         else{
             this.state = {
                 padding: '10% 10% 5%',
-                maxWidth: '550px'
             };
         }
     }
@@ -38,16 +36,14 @@ class LogWake extends React.Component{
 
     resize(){
         window.addEventListener('resize', ()=> {
-            if(window.innerWidth < 700 && window.innerWidth < window.innerHeight){
+            if(window.innerWidth < 700){
                 this.setState({
-                    padding: '10% 10% 5%',
-                    maxWidth: '550px'
+                    padding: '10% 10% 5%'
                 });
             }
             else {
                 this.setState({
-                    padding: '75px 75px 40px',
-                    maxWidth: '700px'
+                    padding: '75px 75px 40px'
                 })
             }
         })
@@ -102,17 +98,11 @@ class LogWake extends React.Component{
     render(){
         //this.updateDimensions();
         this.resize();
-        const innerStyle = {
-            innerContainer:{
-                maxWidth: this.state.maxWidth,
-            }
-        };
-        const { innerContainer } = innerStyle;
         return (
             <div className = "content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="middle">
-                <div className = "sleepInner" style={innerContainer} id="page-wrap">
+                <div className = "sleepInner" id="page-wrap">
                     <div class = "time" align='center'>
                         <h1 className="wakeHeader" align='center'>Good Morning!</h1>
                         <h3 className="wakeHeaderTwo" align='center'>What time did you wake up?</h3>

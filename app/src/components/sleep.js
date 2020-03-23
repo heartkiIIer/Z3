@@ -46,7 +46,7 @@ class sleep extends React.Component{
             <div className="content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="middle">
-                    <div className="logsleepInner" id="page-wrap">
+                    <div className="inner" id="page-wrap">
                         <div class = "new-time" align='center'>
                             <h2 className="newsleepHeader" align='center'>Waking up?</h2>
                             <a href="/LogWake"><button className='btn'>Log wake time</button></a>

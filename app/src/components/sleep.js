@@ -60,7 +60,7 @@ class sleep extends React.Component{
             //         </div>
             //     </div>
             // </div>
-            <div className="reportClass" id="App">
+            <div className="content logSleep" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner-report" id="page-wrap" align="center">
                     <h1 className="blueHeader" align="center">Waking up?</h1>

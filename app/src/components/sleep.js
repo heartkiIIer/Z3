@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../styles/logSleep.css'
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
-import {InfoPopUp} from "../scripts/FitbitScript";
 
 class sleep extends React.Component{
     constructor(props) {
@@ -23,8 +22,7 @@ class sleep extends React.Component{
         let idPromise = getUserID();
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
-        })
-        InfoPopUp();
+        });
     }
 
     resize(){

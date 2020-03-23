@@ -4,6 +4,7 @@ import '../styles/ItsBedtime.css'
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 import swal from "sweetalert";
+import {InfoPopUp} from "../scripts/FitbitScript";
 
 
 class LogWake extends React.Component{
@@ -32,6 +33,7 @@ class LogWake extends React.Component{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
         window.addEventListener('resize', this.updateDimensions);
+        InfoPopUp();
     }
 
     resize(){

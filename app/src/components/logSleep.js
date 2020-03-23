@@ -3,6 +3,7 @@ import '../styles/logSleep.css'
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 import swal from "sweetalert";
+import {InfoPopUp} from "../scripts/FitbitScript";
 
 class LogSleep extends React.Component{
     constructor(props) {
@@ -24,6 +25,7 @@ class LogSleep extends React.Component{
         idPromise.then().catch(err =>{
             window.location.replace("https://sleepwebapp.wpi.edu/");
         })
+        InfoPopUp();
     }
 
     resize(){

@@ -3,6 +3,7 @@ import '../styles/landing.css'
 import {Link} from 'react-router-dom';
 import '../scripts/firebase'
 import '../scripts/login'
+import {getUserID} from "../scripts/login";
 
 class Landing extends React.Component {
     constructor(props) {
@@ -33,6 +34,13 @@ class Landing extends React.Component {
                 width: "104.2%"
             };
         }
+    }
+    componentDidMount() {
+        let idPromise = getUserID();
+        //if user is signed in redirect them to homepage
+        idPromise.then(id =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/home");
+        });
     }
     //re-adjust sizing of contents if the page is less than 700 px wide
     resize(){

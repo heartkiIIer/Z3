@@ -155,7 +155,7 @@ function InfoPopUp(){
                         return r.json();
                     }).then(r => {
                         if(r.length !== 0){
-                            console.log(popup);
+                            console.log(r[0].popup);
                             if(r[0].popup){ //if popup is true send popup about allowing fitbit. else do nothing
                                 swal.fire({ //send popup
                                     title: "Fitbit Feature",

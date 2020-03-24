@@ -10,6 +10,7 @@ import BedtimeProgressBar from "./BedtimeProgressBar";
 import Redirect from "react-router-dom/es/Redirect";
 import {getUserID} from "../scripts/login";
 import {Link} from "react-router-dom";
+import swal from "sweetalert"
 
 /**
  * @author Eliazbeth Del Monaco, Sarah Armstrong

@@ -141,7 +141,6 @@ function InfoPopUp(){
             return r.json();
         }).then(r => {
             if(r.length !== 0){
-                console.log(r[0].fitbit);
                 if(!r[0].fitbit){
                     //check if user has set pop up to never show again
                     fetch('https://sleepwebapp.wpi.edu:5000/getPopup', {
@@ -155,15 +154,14 @@ function InfoPopUp(){
                         return r.json();
                     }).then(r => {
                         if(r.length !== 0){
-                            console.log(r[0].popup);
                             if(r[0].popup){ //if popup is true send popup about allowing fitbit. else do nothing
                                 swal.fire({ //send popup
                                     title: "Fitbit Feature",
                                     text: "If you have a Fitbit, you can auto log exercise and sleep using your Fitbit data. Go to settings to set that up!",
                                     showCancelButton: true,
                                     confirmButtonText: "Do Not Show Again",
-                                    confirmButtonColor: "#b9b9b9",
-                                    cancelButtonColor: "#cb1634"
+                                    confirmButtonColor: "#cb1634",
+                                    cancelButtonColor: "#b9b9b9"
                                 }).then(noShow =>{
                                     if(noShow.value){
                                         fetch('https://sleepwebapp.wpi.edu:5000/setPopupFalse', {

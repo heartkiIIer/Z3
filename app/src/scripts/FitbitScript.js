@@ -141,7 +141,6 @@ function InfoPopUp(){
             return r.json();
         }).then(r => {
             if(r.length !== 0){
-                console.log(r[0].fitbit);
                 if(!r[0].fitbit){
                     //check if user has set pop up to never show again
                     fetch('https://sleepwebapp.wpi.edu:5000/getPopup', {
@@ -155,7 +154,6 @@ function InfoPopUp(){
                         return r.json();
                     }).then(r => {
                         if(r.length !== 0){
-                            console.log(r[0].popup);
                             if(r[0].popup){ //if popup is true send popup about allowing fitbit. else do nothing
                                 swal.fire({ //send popup
                                     title: "Fitbit Feature",

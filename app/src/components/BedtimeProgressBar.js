@@ -5,6 +5,7 @@ import {CircularProgressbar, CircularProgressbarWithChildren, buildStyles} from 
 import "react-circular-progressbar/dist/styles.css"
 import SideBar from "./sideMenu";
 import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
+import swal from "sweetalert"
 
 const h1 = {
     fontSize: '25px',

@@ -163,8 +163,6 @@
 
 .flip-card {
     background-color: transparent;
-    opacity: 1;
-    transition: opacity 0.5s linear;
     /*width: var(--iconsize);*/
     /*height: var(--iconsize);*/
 }
@@ -213,11 +211,17 @@
     height: 100%;
     /*backface-visibility: hidden;*/
 }
+.flip-card-fron {
+    opacity: 1;
+    transition: opacity 0.6s linear;
+}
 
 /* Style the back side */
 .flip-card-back {
     background: transparent;
     transform: rotateY(180deg);
+    opacity: 0;
+    transition: opacity 0.5s linear;
 }
 .carousel {
     height: 100%;

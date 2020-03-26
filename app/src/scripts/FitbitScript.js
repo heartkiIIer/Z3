@@ -1,6 +1,5 @@
-// get user ID
-import {getUserID} from "./login";
-import swal from "sweetalert2"
+import {getUserID} from "./login"; // get user ID
+import swal from "sweetalert2" // library for pop ups
 
 var url = window.location.href;
 let OAUTH = "", OAUTHSettings = "";

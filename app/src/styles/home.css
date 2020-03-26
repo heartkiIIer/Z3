@@ -65,6 +65,10 @@
 }
 .mindIconImg_h{
     display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
     background: url("../resources/icons/mind_icon_white.png") no-repeat center center;
     background-size: contain;
 }

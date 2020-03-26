@@ -29,7 +29,7 @@ export default class LoginControl extends React.Component {
 
     signUpdate(sign: boolean): any {
         this.setState({
-            sign: ApiCalendar.sign
+            sign: sign
         })
     }
 

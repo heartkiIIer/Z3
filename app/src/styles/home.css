@@ -186,7 +186,7 @@
     font-weight: bold;
     font-size: 15pt;
     opacity: 1;
-    transition: opacity 0.4s linear;
+    transition: opacity linear;
     -webkit-transition-delay: 0.4s;
     -moz-transition-delay: 0.4s;
     -o-transition-delay: 0.4s;
@@ -194,7 +194,7 @@
 }
 .flip-card:hover .flip-card-front {
     opacity: 0;
-    transition: opacity 0.4s linear;
+    transition: opacity linear;
     -webkit-transition-delay: 0.4s;
     -moz-transition-delay: 0.4s;
     -o-transition-delay: 0.4s;

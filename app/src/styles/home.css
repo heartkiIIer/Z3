@@ -201,7 +201,9 @@
     /*transition-delay: 0.4s;*/
 }
 .text{
-    text: white;
+    color: white;
+    font-weight: bold;
+    font-size: 15pt;
     opacity: 0;
     transition: opacity 0.5s linear;
 }

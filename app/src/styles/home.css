@@ -68,6 +68,7 @@
     transform: rotate(calc(var(--offsetDeg) - 240deg));
 }
 .perIconImg{
+    display: block;
     background: url("../resources/icons/person_white.png") no-repeat center center;
     background-size: contain;
 }
@@ -202,7 +203,6 @@
     width: 50px;
 }
 #logout_icon{
-    display: block;
     background: url("../resources/icons/logout_icon.svg") no-repeat;
     background-size: contain;
     height: 50px;

@@ -182,24 +182,26 @@
     transform: rotateY(180deg);
 }
 .flip-card:hover .text {
-    visibility: visible;
     color: white;
     font-weight: bold;
     font-size: 15pt;
+    opacity: 1;
+    transition: opacity 0.4s linear;
     -webkit-transition-delay: 0.4s;
     -moz-transition-delay: 0.4s;
     -o-transition-delay: 0.4s;
     transition-delay: 0.4s;
 }
 .flip-card:hover .flip-card-front {
-    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s linear;
     -webkit-transition-delay: 0.4s;
     -moz-transition-delay: 0.4s;
     -o-transition-delay: 0.4s;
     transition-delay: 0.4s;
 }
 .text{
-    visibility: hidden;
+    opacity: 0;
 }
 
 /* Position the front and back side */

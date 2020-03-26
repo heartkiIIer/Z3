@@ -182,6 +182,7 @@
     transform: rotateY(180deg);
 }
 .flip-card:hover .text {
+    visibility: visible;
     color: white;
     font-weight: bold;
     font-size: 15pt;

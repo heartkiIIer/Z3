@@ -81,7 +81,6 @@
 }
 .bedIconImg{
     display: block;
-    z-index: 10;
     background: url("../resources/icons/bedtime_icon_white.png") no-repeat center center;
     background-size: contain;
 }

@@ -191,14 +191,14 @@
     transition-delay: 0.4s;
 }
 .flip-card:hover .flip-card-front {
-    /*opacity: 0;*/
+    visibility: hidden;
     -webkit-transition-delay: 0.4s;
     -moz-transition-delay: 0.4s;
     -o-transition-delay: 0.4s;
     transition-delay: 0.4s;
 }
 .text{
-    color:transparent;
+    visibility: hidden;
 }
 
 /* Position the front and back side */

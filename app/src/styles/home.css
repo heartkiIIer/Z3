@@ -41,6 +41,10 @@
 }
 .sleepIconImg{
     display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
     background: url("../resources/icons/sleep_icon_white.png") no-repeat center center;
     background-size: contain;
 }
@@ -49,6 +53,10 @@
 }
 .reportIconImg{
     display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
     background: url("../resources/icons/Report_white.png") no-repeat center center;
     background-size: contain;
 }
@@ -57,6 +65,10 @@
 }
 .logIconImg_h{
     display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
     background: url("../resources/icons/log_icon_white.png") no-repeat center center;
     background-size: contain;
 }
@@ -77,6 +89,10 @@
 }
 .perIconImg{
     display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
     background: url("../resources/icons/person_white.png") no-repeat center center;
     background-size: contain;
 }
@@ -84,7 +100,11 @@
     transform: rotate(calc(var(--offsetDeg) - 300deg));
 }
 .bedIconImg{
-    display: block;
+    /*display: block;*/
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
     background: url("../resources/icons/bedtime_icon_white.png") no-repeat center center;
     background-size: contain;
 }

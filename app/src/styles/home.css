@@ -191,7 +191,7 @@
     transition-delay: 0.4s;
 }
 .flip-card:hover .flip-card-front {
-    opacity: 0;
+    /*opacity: 0;*/
     -webkit-transition-delay: 0.4s;
     -moz-transition-delay: 0.4s;
     -o-transition-delay: 0.4s;

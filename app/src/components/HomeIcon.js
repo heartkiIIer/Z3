@@ -49,7 +49,7 @@ class HomeIcon extends React.Component {
                     <div className="flip-card-inner">
                         <div className="flip-card-front">
                             <span className={this.props.iconClass}>
-
+                                {this.props.iconClass}
                             </span>
                             {/*<div className={this.props.iconClass}>hello</div>*/}
                         </div>

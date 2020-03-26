@@ -48,10 +48,10 @@ class HomeIcon extends React.Component {
                 <div style={containerStyle} className="flip-card">
                     <div className="flip-card-inner">
                         <div className="flip-card-front">
-                            <span>
-                                {this.props.iconClass}
-                            </span>
-                            {/*<div className={this.props.iconClass}>hello</div>*/}
+                            {/*<span className={this.props.iconClass}>*/}
+                                {/*{this.props.iconClass}*/}
+                            {/*</span>*/}
+                            <div className={this.props.iconClass}>{this.props.iconClass}</div>
                         </div>
                         <div className="flip-card-back">
                             <span style={containerStyle} className="dot_h text d-flex align-items-center justify-content-center">

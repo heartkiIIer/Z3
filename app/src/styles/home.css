@@ -188,8 +188,8 @@
     transition-delay: 0.4s;
 }
 .flip-card:hover .flip-card-front {
-    transition-delay: 0.4s;
     opacity: 0;
+    transition-delay: 0.4s;
 }
 .text{
     color:transparent;

@@ -273,6 +273,7 @@ class UserSettings extends React.Component {
         let fitbitele = [];
         if(this.state.fitbit){
             fitbitele.push(<h3 className='blueHeader'>Do you wish to stop auto logging your sleep and exercise through Fitbit? </h3>);
+            fitbitele.push(<p style={{color: "#ff6666", marginTop: "10px", size: "10pt"}}>* You will be asked again to authorize Fitbit on the <b>Report</b> page on other devices.</p>);
             fitbitele.push(<button className='btn' onClick={this.setUserFibitFalse.bind(this)}>Stop Fitbit</button>);
         }
         else{

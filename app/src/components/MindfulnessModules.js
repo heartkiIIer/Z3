@@ -6,7 +6,6 @@ import SideBar from "./sideMenu";
 import MobileMindfulnessModules from "./MobileMindfulnessModules";
 import {getUserID} from "../scripts/login";
 
-
 /**
  * @author Eliazbeth Del Monaco
  * This component renders the mindfulness modules page.

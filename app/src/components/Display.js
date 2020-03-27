@@ -324,8 +324,8 @@ async function f() {
     return items
 }
 
-let f = f()
-console.log(f)
+let fo = f()
+console.log(fo)
 
 function GetMoreEvents() {
     let items = GetEvents();

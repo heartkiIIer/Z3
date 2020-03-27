@@ -319,12 +319,13 @@ function GetEvents() {
     return items
 }
 
-let g = async () => {
+async function f() {
     let items = await fetchItems();
     return items
 }
 
-console.log(g)
+let f = f()
+console.log(f)
 
 function GetMoreEvents() {
     let items = GetEvents();

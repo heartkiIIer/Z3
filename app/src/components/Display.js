@@ -319,23 +319,29 @@ function GetEvents() {
     return items
 }
 
-// function GetMoreEvents() {
-//     let items = GetEvents();
-//     for (let i = 0; i < items.length; i++) {
-//         document.getElementById('calevent').appendChild(<Item key={items[i].id} itemSum={items[i].summary} itemStart={items[i].start.dateTime} itemEnd={items[i].end.dateTime} />)
-//     }
-// }
+let g = async () => {
+    let items = await fetchItems();
+    return items
+}
+
+console.log(g)
+
+function GetMoreEvents() {
+    let items = GetEvents();
+    for (let i = 0; i < items.length; i++) {
+        document.getElementById('calevent').appendChild(<Item key={items[i].id} itemSum={items[i].summary} itemStart={items[i].start.dateTime} itemEnd={items[i].end.dateTime} />)
+    }
+}
 
 function Display() {
     let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
     let items = GetEvents();
-    console.log(items)
     if (items.length != 0) {
         return (
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={GetEvents}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={GetMoreEvents}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
@@ -359,7 +365,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={GetEvents}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={GetMoreEvents}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>

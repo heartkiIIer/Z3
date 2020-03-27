@@ -331,13 +331,11 @@ function GetMoreEvents() {
 
 function Display() {
     let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
-    let items = () => {
-        (async () => {
+    let items = async () => {
             let items = await fetchItems();
             //Do not update state if component is unmounted
             return items
-        })();
-    }
+        };
     console.log(items)
     if (items.length != 0) {
         return (

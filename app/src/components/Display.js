@@ -34,12 +34,13 @@ export default class LoginControl extends React.Component {
     }
 
     componentDidMount(): void {
-        document.getElementById('page-wrap').children[5].children[0].children[0].id = 'active'
-        document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active1'
+        document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
         console.log(document.getElementById('active'))
         document.getElementById('active').click()
-        console.log(document.getElementById('active1'))
-        document.getElementById('active1').click()
+        document.getElementById('active').click()
+        document.getElementById('active').click()
+        document.getElementById('active').click()
+        document.getElementById('active').click()
     }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {

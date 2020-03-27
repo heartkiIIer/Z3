@@ -29,7 +29,7 @@ export default class LoginControl extends React.Component {
 
     signUpdate(sign: boolean): any {
         this.setState({
-            sign: sign
+            sign: ApiCalendar.sign
         })
     }
 
@@ -277,7 +277,6 @@ function getStress(events) {
     })
 }
 
-
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
     // console.log(result.result.items[result.result.items.length-1].start);
@@ -297,11 +296,9 @@ async function fetchItems() {
     return approved.map(({summary, start, end}) => ({summary, start, end}));
 }
 
-function Display() {
+function GetItems() {
     const [items, saveItems] = useState([]);
     const isMounted = useRef(true);
-
-    let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
 
     useEffect(() => {
         return () => {
@@ -319,18 +316,23 @@ function Display() {
         })();
     }, []);
 
-    if (items.length != 0) {
+    console.log(items)
+    return items
+}
+
+function Display() {
+    let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
+    let g = GetItems();
+    console.log(g)
         return (
             <div>
-                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
+                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>g
                     <h5>Rate stress level for each event</h5>
                     <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
-                    {items.map(item => (
-                        <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
-                    ))}
+                    {/*<Items/>*/}
                 </Tab.Pane>
                 <div className='float_center'>
                     <div className='child'>
@@ -341,25 +343,6 @@ function Display() {
                 </div>
             </div>
         )
-    } else {
-        return (
-            <div>
-                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
-                    <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
-                    <br/><br/>
-                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
-                    <br/>
-                    <i><p>You have no upcoming events for today.</p></i>
-                </Tab.Pane>
-            <div className='float_center'>
-            <div className='child'>
-            {button}
-        <br/><br/><br/>
-        </div>
-    </div></div>
-        )
-    }
-
 }
+
 

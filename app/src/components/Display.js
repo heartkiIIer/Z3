@@ -34,7 +34,7 @@ export default class LoginControl extends React.Component {
     }
 
     componentDidMount(): void {
-        document.getElementById('page-wrap').children[5].children[0].children[0].id = 'active'
+        document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
         console.log(document.getElementById('active'))
         document.getElementById('active').click()
     }

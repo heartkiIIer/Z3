@@ -320,7 +320,7 @@ function GetEvents() {
 }
 
 function f() {
-    let items = await fetchItems();
+    let items = fetchItems();
     return items
 }
 

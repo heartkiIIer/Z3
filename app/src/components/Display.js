@@ -34,7 +34,7 @@ export default class LoginControl extends React.Component {
     }
 
     componentDidMount(): void {
-        console.log(document.getElementsByClassName('active'))
+        console.log(document.getElementById('page-wrap').children[5].children[0].children[1])
     }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {

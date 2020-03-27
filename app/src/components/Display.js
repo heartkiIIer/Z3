@@ -319,7 +319,7 @@ function GetEvents() {
     return items
 }
 
-async function f() {
+function f() {
     let items = await fetchItems();
     return items
 }

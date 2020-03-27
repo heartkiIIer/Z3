@@ -33,6 +33,10 @@ export default class LoginControl extends React.Component {
         })
     }
 
+    // componentDidMount(): void {
+    //     document.getElementById().click();
+    // }
+
     handleItemClick(event: SyntheticEvent<any>, name: string): void {
         if (name === 'sign-in') {
             ApiCalendar.handleAuthClick();
@@ -65,19 +69,19 @@ let LoginControlClass = new LoginControl()
 function LoginButton(props) {
     return (
         <div>
-        <Tab.Pane attached={false}>
-            <h5>Rate stress level for each event</h5>
-            <br/><br/>
-            <i><p>You need to be logged into your Google Calendar to access this utility.</p></i>
-        </Tab.Pane>
-        <div className='float_center'>
-        <div className='child'>
-        <button className='btn' id='extended' onClick={props.onClick}>
-        Sync with Google Calendar
-    </button>
-    <br/><br/><br/>
-    </div>
-</div>
+            <Tab.Pane attached={false}>
+                <h5>Rate stress level for each event</h5>
+                <br/><br/>
+                <i><p>You need to be logged into your Google Calendar to access this utility.</p></i>
+            </Tab.Pane>
+            <div className='float_center'>
+                <div className='child'>
+                    <button className='btn' id='extended' onClick={props.onClick}>
+                        Sync with Google Calendar
+                    </button>
+                    <br/><br/><br/>
+                </div>
+            </div>
         </div>
     );
 }
@@ -165,7 +169,7 @@ function submitStressEntry() {
                 date: date,
                 value: parseInt(parentElement[i].children[1].children[2].value)
             }
-            );
+        );
     }
     console.log(events);
     getStress(events)
@@ -219,64 +223,64 @@ function getStress(events) {
         }).then( r => {
             return r.json();
         }).then( r => {
-            console.log(r);
-            let isduplicate = false;
-            let reps = [];
-            for (let i = 0; i < events.length; i++) {
-                 for (let j = 0; j < r.length; j++) {
-                     console.log(i + " : " + events[i].title);
-                     console.log(j + " : " + r[j].event);
-                     console.log(events[i].day);
-                     console.log(r[j].day);
-                     console.log(events[i].month);
-                     console.log(r[j].month);
-                     console.log(events[i].year);
-                     console.log(r[j].year);
-                     if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
-                         isduplicate = true;
-                         reps.push('<b>' + events[i].title + '</b>')
-                         //break;
-                     }
-                 }
-            }
-            console.log(reps)
-            console.log("duplicate?: ", isduplicate);
-            let duplicates = ''
-            for (let i = 0; i < reps.length; i++) {
-                if(i === reps.length - 2) {
-                    duplicates += reps[i] + ", and "
-                } else if (i === reps.length - 1){
-                    duplicates += reps[i] + ". "
-                } else {
-                    duplicates += reps[i] + ", "
-                }
-            }
-            console.log(duplicates)
-            if(isduplicate){
-                Swal.fire({
-                    title: "Warning: Duplicate Events",
-                    icon: "warning",
-                    html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, overwrite!',
-                    cancelButtonColor: '#d33'
-                }).then(result => {
-                        if(result.value) {
-                            addStresstoDatabase(events);
+                console.log(r);
+                let isduplicate = false;
+                let reps = [];
+                for (let i = 0; i < events.length; i++) {
+                    for (let j = 0; j < r.length; j++) {
+                        console.log(i + " : " + events[i].title);
+                        console.log(j + " : " + r[j].event);
+                        console.log(events[i].day);
+                        console.log(r[j].day);
+                        console.log(events[i].month);
+                        console.log(r[j].month);
+                        console.log(events[i].year);
+                        console.log(r[j].year);
+                        if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
+                            isduplicate = true;
+                            reps.push('<b>' + events[i].title + '</b>')
+                            //break;
                         }
                     }
-                )
-            }
-            else{
-                addStresstoDatabase(events);
-            }
-            console.log(names)
+                }
+                console.log(reps)
+                console.log("duplicate?: ", isduplicate);
+                let duplicates = ''
+                for (let i = 0; i < reps.length; i++) {
+                    if(i === reps.length - 2) {
+                        duplicates += reps[i] + ", and "
+                    } else if (i === reps.length - 1){
+                        duplicates += reps[i] + ". "
+                    } else {
+                        duplicates += reps[i] + ", "
+                    }
+                }
+                console.log(duplicates)
+                if(isduplicate){
+                    Swal.fire({
+                        title: "Warning: Duplicate Events",
+                        icon: "warning",
+                        html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Yes, overwrite!',
+                        cancelButtonColor: '#d33'
+                    }).then(result => {
+                            if(result.value) {
+                                addStresstoDatabase(events);
+                            }
+                        }
+                    )
+                }
+                else{
+                    addStresstoDatabase(events);
+                }
+                console.log(names)
             }
         )
     })
 }
-let po = []
+
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
@@ -297,9 +301,11 @@ async function fetchItems() {
     return approved.map(({summary, start, end}) => ({summary, start, end}));
 }
 
-function GetEvents() {
+function Display() {
     const [items, saveItems] = useState([]);
     const isMounted = useRef(true);
+
+    let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
 
     useEffect(() => {
         return () => {
@@ -317,40 +323,18 @@ function GetEvents() {
         })();
     }, []);
 
-    return items
-}
-
-
-
-function GetMoreEvents() {
-    //let items = GetEvents();
-    for (let i = 0; i < items.length; i++) {
-        document.getElementById('calevent').appendChild(<Item key={items[i].id} itemSum={items[i].summary} itemStart={items[i].start.dateTime} itemEnd={items[i].end.dateTime} />)
-    }
-}
-
-function Display() {
-    let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
-    let items = async () => {
-            let items = await fetchItems();
-            //Do not update state if component is unmounted
-            return items
-        };
-    console.log(items)
     if (items.length != 0) {
         return (
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={GetMoreEvents}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
-                    <div id='calevent'>
-                        {items.map(item => (
-                            <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
-                        ))}
-                    </div>
+                    {items.map(item => (
+                        <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
+                    ))}
                 </Tab.Pane>
                 <div className='float_center'>
                     <div className='child'>
@@ -366,7 +350,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={GetMoreEvents}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>
@@ -380,6 +364,5 @@ function Display() {
                 </div></div>
         )
     }
+
 }
-
-

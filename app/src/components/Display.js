@@ -33,9 +33,9 @@ export default class LoginControl extends React.Component {
         })
     }
 
-    // componentDidMount(): void {
-    //     document.getElementById().click();
-    // }
+    componentDidMount(): void {
+        console.log(document.getElementById('page-wrap').children[5].children[0].children[1])
+    }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {
         if (name === 'sign-in') {

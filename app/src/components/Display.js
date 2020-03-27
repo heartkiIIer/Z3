@@ -276,6 +276,7 @@ function getStress(events) {
         )
     })
 }
+let po = []
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
@@ -319,16 +320,10 @@ function GetEvents() {
     return items
 }
 
-function f() {
-    let items = fetchItems();
-    return items
-}
 
-let fo = f()
-console.log(fo)
 
 function GetMoreEvents() {
-    let items = GetEvents();
+    //let items = GetEvents();
     for (let i = 0; i < items.length; i++) {
         document.getElementById('calevent').appendChild(<Item key={items[i].id} itemSum={items[i].summary} itemStart={items[i].start.dateTime} itemEnd={items[i].end.dateTime} />)
     }
@@ -336,7 +331,14 @@ function GetMoreEvents() {
 
 function Display() {
     let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
-    let items = GetEvents();
+    let items = () => {
+        (async () => {
+            let items = await fetchItems();
+            //Do not update state if component is unmounted
+            return items
+        })();
+    }
+    console.log(items)
     if (items.length != 0) {
         return (
             <div>

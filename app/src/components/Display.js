@@ -34,9 +34,14 @@ export default class LoginControl extends React.Component {
     }
 
     componentDidMount(): void {
-        document.getElementById('page-wrap').children[5].children[0].children[0].id = 'active'
-        console.log(document.getElementById('active'))
-        document.getElementById('active').click()
+        let currentComponent = this;
+        currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
+        ApiCalendar.onLoad(() => {
+            ApiCalendar.listenSign(currentComponent.signUpdate);
+        })
+
+        // document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
+        // console.log(document.getElementById('active'))
     }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {
@@ -49,10 +54,11 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
+        console.log(isLoggedIn)
         console.log(ApiCalendar.sign)
         let ele;
 
-        if (ApiCalendar.sign) {
+        if (this.state.sign) {
             ele = <Display/>;
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;

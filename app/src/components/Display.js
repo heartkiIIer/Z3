@@ -295,7 +295,6 @@ async function fetchItems() {
             approved.push(result.result.items[i])
         }
     }
-    console.log(approved)
     return approved.map(({summary, start, end}) => ({summary, start, end}));
 }
 
@@ -326,7 +325,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={fetchItems}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={Display1}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
@@ -348,7 +347,72 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={fetchItems}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={Display1}><RefreshIcon style={refresh}/></button>
+                    <br/><br/>
+                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
+                    <br/>
+                    <i><p>You have no upcoming events for today.</p></i>
+                </Tab.Pane>
+                <div className='float_center'>
+                    <div className='child'>
+                        {button}
+                        <br/><br/><br/>
+                    </div>
+                </div></div>
+        )
+    }
+
+}
+function Display1() {
+    const [items, saveItems] = useState([]);
+    const isMounted = useRef(true);
+
+    let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
+
+    useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    useEffect(() => {
+        (async () => {
+            const items = await fetchItems();
+            //Do not update state if component is unmounted
+            if (isMounted.current) {
+                saveItems(items);
+            }
+        })();
+    }, []);
+
+    if (items.length != 0) {
+        return (
+            <div>
+                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
+                    <h5>Rate stress level for each event</h5>
+                    <button className='btn-info' onClick={Display}><RefreshIcon style={refresh}/></button>
+                    <br/><br/>
+                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
+                    <br/><br/>
+                    {items.map(item => (
+                        <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
+                    ))}
+                </Tab.Pane>
+                <div className='float_center'>
+                    <div className='child'>
+                        <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
+                        {button}
+                        <br/><br/><br/>
+                    </div>
+                </div>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
+                    <h5>Rate stress level for each event</h5>
+                    <button className='btn-info' onClick={Display}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>

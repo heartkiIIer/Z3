@@ -318,7 +318,27 @@ function addWakeById(req, res, id) {
         })
 }
 
-//Add wake to sleep entry
+//Add wake to sleep entry of specific time
+function addWakeByTime(req, res, id, time) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            const promise2 = promiseBuilderMaxEntry(internalId.rows[0].user_id);
+            promise2.then(function(entry_id){
+                pool.query("UPDATE sleepentry SET end_sleep = TO_TIMESTAMP('"+ time +"', 'YYYY/MM/DD HH24:MI:SS') WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                    if (error) {
+                        throw error
+                    }
+                    res.status(200).send(results.rows);
+                })
+            }).catch(function(error){
+                console.log(error)
+            })
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
 function checkSavedState(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
@@ -658,5 +678,6 @@ module.exports = {
     addZipcode,
     getZipcode,
     setPopupFalse,
-    getPopup
+    getPopup,
+    addWakeByTime
 }

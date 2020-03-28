@@ -21,17 +21,23 @@ export default class LoginControl extends React.Component {
         this.state = {
             sign: ApiCalendar.sign
         };
-        this.signUpdate = this.signUpdate.bind(this);
-        ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(this.signUpdate);
-        })
+        // this.signUpdate = this.signUpdate.bind(this);
+        // ApiCalendar.listenSign(this.signUpdate);
     }
 
-    signUpdate(sign: boolean): any {
-        this.setState({
-            sign: ApiCalendar.sign
-        })
-    }
+    // signUpdate(sign: boolean): any {
+    //     this.setState({
+    //         sign: ApiCalendar.sign
+    //     })
+    // }
+
+    // componentDidMount(): void {
+    //     let currentComponent = this;
+    //     currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
+    //     ApiCalendar.listenSign(currentComponent.signUpdate);
+    //     // document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
+    //     // console.log(document.getElementById('active'))
+    // }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {
         if (name === 'sign-in') {
@@ -43,10 +49,11 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
+        console.log(isLoggedIn)
         console.log(ApiCalendar.sign)
         let ele;
 
-        if (ApiCalendar.sign) {
+        if (this.state.sign) {
             ele = <Display/>;
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
@@ -65,19 +72,19 @@ let LoginControlClass = new LoginControl()
 function LoginButton(props) {
     return (
         <div>
-        <Tab.Pane attached={false}>
-            <h5>Rate stress level for each event</h5>
-            <br/><br/>
-            <i><p>You need to be logged into your Google Calendar to access this utility.</p></i>
-        </Tab.Pane>
-        <div className='float_center'>
-        <div className='child'>
-        <button className='btn' id='extended' onClick={props.onClick}>
-        Sync with Google Calendar
-    </button>
-    <br/><br/><br/>
-    </div>
-</div>
+            <Tab.Pane attached={false}>
+                <h5>Rate stress level for each event</h5>
+                <br/><br/>
+                <i><p>You need to be logged into your Google Calendar to access this utility.</p></i>
+            </Tab.Pane>
+            <div className='float_center'>
+                <div className='child'>
+                    <button className='btn' id='extended' onClick={props.onClick}>
+                        Sync with Google Calendar
+                    </button>
+                    <br/><br/><br/>
+                </div>
+            </div>
         </div>
     );
 }
@@ -165,7 +172,7 @@ function submitStressEntry() {
                 date: date,
                 value: parseInt(parentElement[i].children[1].children[2].value)
             }
-            );
+        );
     }
     console.log(events);
     getStress(events)
@@ -219,59 +226,59 @@ function getStress(events) {
         }).then( r => {
             return r.json();
         }).then( r => {
-            console.log(r);
-            let isduplicate = false;
-            let reps = [];
-            for (let i = 0; i < events.length; i++) {
-                 for (let j = 0; j < r.length; j++) {
-                     console.log(i + " : " + events[i].title);
-                     console.log(j + " : " + r[j].event);
-                     console.log(events[i].day);
-                     console.log(r[j].day);
-                     console.log(events[i].month);
-                     console.log(r[j].month);
-                     console.log(events[i].year);
-                     console.log(r[j].year);
-                     if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
-                         isduplicate = true;
-                         reps.push('<b>' + events[i].title + '</b>')
-                         //break;
-                     }
-                 }
-            }
-            console.log(reps)
-            console.log("duplicate?: ", isduplicate);
-            let duplicates = ''
-            for (let i = 0; i < reps.length; i++) {
-                if(i === reps.length - 2) {
-                    duplicates += reps[i] + ", and "
-                } else if (i === reps.length - 1){
-                    duplicates += reps[i] + ". "
-                } else {
-                    duplicates += reps[i] + ", "
-                }
-            }
-            console.log(duplicates)
-            if(isduplicate){
-                Swal.fire({
-                    title: "Warning: Duplicate Events",
-                    icon: "warning",
-                    html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, overwrite!',
-                    cancelButtonColor: '#d33'
-                }).then(result => {
-                        if(result.value) {
-                            addStresstoDatabase(events);
+                console.log(r);
+                let isduplicate = false;
+                let reps = [];
+                for (let i = 0; i < events.length; i++) {
+                    for (let j = 0; j < r.length; j++) {
+                        console.log(i + " : " + events[i].title);
+                        console.log(j + " : " + r[j].event);
+                        console.log(events[i].day);
+                        console.log(r[j].day);
+                        console.log(events[i].month);
+                        console.log(r[j].month);
+                        console.log(events[i].year);
+                        console.log(r[j].year);
+                        if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
+                            isduplicate = true;
+                            reps.push('<b>' + events[i].title + '</b>')
+                            //break;
                         }
                     }
-                )
-            }
-            else{
-                addStresstoDatabase(events);
-            }
-            console.log(names)
+                }
+                console.log(reps)
+                console.log("duplicate?: ", isduplicate);
+                let duplicates = ''
+                for (let i = 0; i < reps.length; i++) {
+                    if(i === reps.length - 2) {
+                        duplicates += reps[i] + ", and "
+                    } else if (i === reps.length - 1){
+                        duplicates += reps[i] + ". "
+                    } else {
+                        duplicates += reps[i] + ", "
+                    }
+                }
+                console.log(duplicates)
+                if(isduplicate){
+                    Swal.fire({
+                        title: "Warning: Duplicate Events",
+                        icon: "warning",
+                        html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Yes, overwrite!',
+                        cancelButtonColor: '#d33'
+                    }).then(result => {
+                            if(result.value) {
+                                addStresstoDatabase(events);
+                            }
+                        }
+                    )
+                }
+                else{
+                    addStresstoDatabase(events);
+                }
+                console.log(names)
             }
         )
     })
@@ -352,14 +359,13 @@ function Display() {
                     <br/>
                     <i><p>You have no upcoming events for today.</p></i>
                 </Tab.Pane>
-            <div className='float_center'>
-            <div className='child'>
-            {button}
-        <br/><br/><br/>
-        </div>
-    </div></div>
+                <div className='float_center'>
+                    <div className='child'>
+                        {button}
+                        <br/><br/><br/>
+                    </div>
+                </div></div>
         )
     }
 
 }
-

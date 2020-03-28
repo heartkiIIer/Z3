@@ -133,13 +133,13 @@ class ItsBedtimeRoutine extends React.Component {
                 document.getElementById("cycle").innerText = "Next Item";
                 //Timer
                 if(this.state.routine[this.state.stage].minutes !== 0) {
-                    return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
+                    return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks completed"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
                                                minutes={this.state.routine[this.state.stage].minutes} timer={true}/></div>;
                 }
                 //No Timer
 
-                    return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
+                    return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks completed"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
                                                minutes={this.state.routine[this.state.stage].minutes} timer={false}/></div>;
 
@@ -147,7 +147,7 @@ class ItsBedtimeRoutine extends React.Component {
             //Nothing remains
             else{
                 document.getElementById("cycle").innerText = "Log Sleep";
-                return <div><h1 className="alignTextRight">Fraction</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
+                return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString() + " tasks completed"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
                                            stage={100} stages={100}
                                            minutes={0} timer={false}/></div>;
             }

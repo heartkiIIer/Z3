@@ -112,7 +112,7 @@ class LogWake extends React.Component{
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
                         <form>
                             <input className="inp2" type="time" name="usr_time" defaultValue="07:00"/>
-                            <button className='btn' id="extended2" onClick={() => this.myFunction()}>At This Time</button>
+                            <button className='btn' id="extended2" onClick={() => this.myFunction()}>Not This Time</button>
                         </form>
                     </div>
                 </div>

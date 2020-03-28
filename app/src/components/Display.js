@@ -276,7 +276,6 @@ function getStress(events) {
         )
     })
 }
-let po = []
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
@@ -310,6 +309,7 @@ function GetEvents() {
     useEffect(() => {
         (async () => {
             const items = await fetchItems();
+            console.log(items)
             //Do not update state if component is unmounted
             if (isMounted.current) {
                 saveItems(items);

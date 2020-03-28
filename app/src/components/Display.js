@@ -42,8 +42,8 @@ export default class LoginControl extends React.Component {
     }
 
     render() {
-        // const isLoggedIn = this.state.sign;
-        // console.log(isLoggedIn)
+        const isLoggedIn = this.state.sign;
+        console.log(isLoggedIn)
         console.log(isLoggedIn)
         let ele;
 

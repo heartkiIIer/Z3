@@ -13,7 +13,7 @@ export default class StatusSign extends React.Component<any, any> {
         });
     }
 
-    public signUpdate(sign: boolean): any {
+    signUpdate(sign: boolean): any {
         this.setState({
             sign
         })

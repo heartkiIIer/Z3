@@ -5,10 +5,20 @@ import {Tabs} from "./sliders";
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 import {InfoPopUp} from "../scripts/FitbitScript";
+import ApiCalendar from "react-google-calendar-api";
 
 class logging extends React.Component{
     constructor(props) {
         super(props);
+        this.state = {
+            sign: ApiCalendar.sign
+        };
+
+        this.signUpdate = this.signUpdate.bind(this);
+        ApiCalendar.onLoad(() => {
+            ApiCalendar.listenSign(this.signUpdate);
+        });
+
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
@@ -19,6 +29,22 @@ class logging extends React.Component{
                 padding: '10% 10% 5%',
             };
         }
+    }
+
+    componentDidMount(): void {
+        let currentComponent = this;
+        currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
+        ApiCalendar.onLoad(() => {
+            ApiCalendar.listenSign(currentComponent.signUpdate);
+        });
+        // document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
+        // console.log(document.getElementById('active'))
+    }
+
+    signUpdate(sign: boolean): any {
+        this.setState({
+            sign: ApiCalendar.sign
+        })
     }
 
     updateDimensions = () => {

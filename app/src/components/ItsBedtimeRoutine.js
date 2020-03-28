@@ -133,23 +133,23 @@ class ItsBedtimeRoutine extends React.Component {
                 document.getElementById("cycle").innerText = "Next Item";
                 //Timer
                 if(this.state.routine[this.state.stage].minutes !== 0) {
-                    return <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
+                    return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
-                                               minutes={this.state.routine[this.state.stage].minutes} timer={true}/>;
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={true}/></div>;
                 }
                 //No Timer
                 else{
-                    return <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
+                    return <div><h1 className="alignTextRight">Fraction</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
-                                               minutes={this.state.routine[this.state.stage].minutes} timer={false}/>;
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={false}/></div>;
                 }
             }
             //Nothing remains
             else{
                 document.getElementById("cycle").innerText = "Log Sleep";
-                return <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
+                return <div><h1 className="alignTextRight">Fraction</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
                                            stage={100} stages={100}
-                                           minutes={0} timer={false}/>;
+                                           minutes={0} timer={false}/></div>;
             }
         }
     }
@@ -177,7 +177,6 @@ class ItsBedtimeRoutine extends React.Component {
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
                         <div className="inner" id="page-wrap" align='center'>
-                            <h1 class = "alignTextRight">Fraction</h1>
                             {this.selectComponent()}
                             <br/>
                             <hr className='hr-settings'/>

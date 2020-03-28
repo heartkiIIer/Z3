@@ -79,6 +79,12 @@ if (url.includes("report") && url.includes("#")) {
                 let activities = JSON.parse(exerciseXhr.responseText).summary;
                 let idPromise = getUserID();
                 idPromise.then(uid=> {
+                    let exerciseLog_low = {
+                        timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
+                        intensity: 2,
+                        minutes: activities.lightlyActiveMinutes,
+                        uid: uid
+                    };
                     let exerciseLog_med = {
                         timestamp: dates[i].replace(/-/g, "/") + " 00:00:00",
                         intensity: 50,
@@ -91,6 +97,18 @@ if (url.includes("report") && url.includes("#")) {
                         minutes: activities.veryActiveMinutes,
                         uid: uid
                     };
+                    //store lightly active minutes as medium intensity
+                    if (exerciseLog_low.minutes !== 0) {
+                        const data_low = JSON.stringify(exerciseLog_low);
+                        fetch('https://sleepwebapp.wpi.edu:5000/newFitbitExercise', {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            body: data_low
+                        })
+                    }
                     //store fairy active minutes as medium intensity
                     if (exerciseLog_med.minutes !== 0) {
                         const data_med = JSON.stringify(exerciseLog_med);

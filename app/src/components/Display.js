@@ -24,7 +24,7 @@ export default class LoginControl extends React.Component {
         this.signUpdate = this.signUpdate.bind(this);
         ApiCalendar.onLoad(() => {
             ApiCalendar.listenSign(this.signUpdate);
-        });
+        })
     }
 
     signUpdate(sign: boolean): any {
@@ -43,8 +43,7 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
-        console.log(isLoggedIn)
-        console.log(isLoggedIn)
+        console.log(ApiCalendar.sign)
         let ele;
 
         if (ApiCalendar.sign) {
@@ -277,7 +276,7 @@ function getStress(events) {
         )
     })
 }
-
+let po = []
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
@@ -298,40 +297,76 @@ async function fetchItems() {
     return approved.map(({summary, start, end}) => ({summary, start, end}));
 }
 
+function GetEvents() {
+    const [items, saveItems] = useState([]);
+    const isMounted = useRef(true);
+
+    useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    useEffect(() => {
+        (async () => {
+            const items = await fetchItems();
+            //Do not update state if component is unmounted
+            if (isMounted.current) {
+                saveItems(items);
+            }
+        })();
+    }, []);
+
+    return items
+}
+
+async function getMoreEvents() {
+    const result = await ApiCalendar.listUpcomingEvents(250);
+    // console.log(result.result.items[result.result.items.length-1].start);
+    let approved = [];
+    let todayDate = new Date().getDate();
+    let todayMonth = new Date().getMonth();
+    let todayYear = new Date().getFullYear();
+    for(let i = 0; i < result.result.items.length; i++) {
+        let calEvent = result.result.items[i].start.dateTime;
+        let calDate = new Date(calEvent).getDate();
+        let calMonth = new Date(calEvent).getMonth();
+        let calYear = new Date(calEvent).getFullYear();
+        if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
+            approved.push(result.result.items[i])
+        }
+    }
+    approved.map(({summary, start, end}) => ({summary, start, end}));
+    console.log(approved)
+    for (let i = 0; i < approved.length; i++) {
+        document.getElementById('calevent').appendChild(<Item key={approved[i].id} itemSum={approved[i].summary} itemStart={approved[i].start.dateTime} itemEnd={approved[i].end.dateTime} />)
+    }
+}
+
+// function GetMoreEvents() {
+//     let items = GetEvents();
+//     for (let i = 0; i < items.length; i++) {
+//         document.getElementById('calevent').appendChild(<Item key={items[i].id} itemSum={items[i].summary} itemStart={items[i].start.dateTime} itemEnd={items[i].end.dateTime} />)
+//     }
+// }
+
 function Display() {
-    const [items, saveItems] = useState([]);
-    const isMounted = useRef(true);
-
     let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
-
-    useEffect(() => {
-        return () => {
-            isMounted.current = false;
-        };
-    }, []);
-
-    useEffect(() => {
-        (async () => {
-            const items = await fetchItems();
-            //Do not update state if component is unmounted
-            if (isMounted.current) {
-                saveItems(items);
-            }
-        })();
-    }, []);
-
+    let items = GetEvents();
     if (items.length != 0) {
         return (
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={Display1}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={getMoreEvents}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
-                    {items.map(item => (
-                        <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
-                    ))}
+                    <div id='calevent'>
+                        {items.map(item => (
+                            <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
+                        ))}
+                    </div>
                 </Tab.Pane>
                 <div className='float_center'>
                     <div className='child'>
@@ -347,7 +382,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={Display1}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={getMoreEvents}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>
@@ -361,70 +396,6 @@ function Display() {
                 </div></div>
         )
     }
-
 }
-function Display1() {
-    const [items, saveItems] = useState([]);
-    const isMounted = useRef(true);
 
-    let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
 
-    useEffect(() => {
-        return () => {
-            isMounted.current = false;
-        };
-    }, []);
-
-    useEffect(() => {
-        (async () => {
-            const items = await fetchItems();
-            //Do not update state if component is unmounted
-            if (isMounted.current) {
-                saveItems(items);
-            }
-        })();
-    }, []);
-
-    if (items.length != 0) {
-        return (
-            <div>
-                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
-                    <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={Display}><RefreshIcon style={refresh}/></button>
-                    <br/><br/>
-                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
-                    <br/><br/>
-                    {items.map(item => (
-                        <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
-                    ))}
-                </Tab.Pane>
-                <div className='float_center'>
-                    <div className='child'>
-                        <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
-                        {button}
-                        <br/><br/><br/>
-                    </div>
-                </div>
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
-                    <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={Display}><RefreshIcon style={refresh}/></button>
-                    <br/><br/>
-                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
-                    <br/>
-                    <i><p>You have no upcoming events for today.</p></i>
-                </Tab.Pane>
-                <div className='float_center'>
-                    <div className='child'>
-                        {button}
-                        <br/><br/><br/>
-                    </div>
-                </div></div>
-        )
-    }
-
-}

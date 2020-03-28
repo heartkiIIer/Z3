@@ -92,14 +92,6 @@ function LoginButton(props) {
     );
 }
 
-function LogoutButton(props) {
-    return (
-        <button className='btn' onClick={props.onClick}>
-            Sign out from your Google Calendar
-        </button>
-    );
-}
-
 function submitStressEntry() {
     let events = []
     let parentElement = document.getElementById('mainTab').children

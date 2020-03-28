@@ -57,6 +57,14 @@ async function fetchItems() {
     return approved.map(({summary, start, end}) => ({summary, start, end}));
 }
 
+function LogoutButton(props) {
+    return (
+        <button className='btn' onClick={props.onClick}>
+            Sign out from your Google Calendar
+        </button>
+    );
+}
+
 function Display() {
     const [items, saveItems] = useState([]);
     const isMounted = useRef(true);

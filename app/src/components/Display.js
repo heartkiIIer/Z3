@@ -39,7 +39,7 @@ export default class LoginControl extends React.Component {
         // ApiCalendar.listenSign(currentComponent.signUpdate);
         document.getElementById('page-wrap').children[5].children[0].children[0].className = 'item'
         document.getElementById('page-wrap').children[5].children[0].children[1].className = 'active item'
-        console.log(document.getElementById(document.getElementById('page-wrap').children[5].children[0].children[1]))
+        console.log(document.getElementById('page-wrap').children[5].children[0].children[1])
     }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {

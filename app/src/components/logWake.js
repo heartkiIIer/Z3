@@ -95,12 +95,12 @@ class LogWake extends React.Component{
                     icon: "error"
                 });
             }
-            else if(task !== null) { // user clicked okay with something in the input field
+            else if(time !== null) { // user clicked okay with something in the input field
                 let idPromise = getUserID();
                 idPromise.then(uid => {
                     const data = JSON.stringify({
                         uid: uid,
-                        time: task
+                        time: time
                     });
                     fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime', {
                         method: 'POST',
@@ -137,8 +137,6 @@ class LogWake extends React.Component{
                         <h3 className="wakeHeaderTwo" align='center'>What time did you wake up?</h3>
                         <button className='btn' id="extended2" onClick={() => this.myFunction()}>I just woke up</button>
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
-                        <input className="inp2" type="time" name="usr_time" defaultValue="07:00"/>
-                        <br/>
                         <button className='btn' id="extended2" onClick={() => this.myFunctionTwo()}>At this time</button>
                     </div>
                 </div>

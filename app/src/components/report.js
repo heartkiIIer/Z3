@@ -406,6 +406,8 @@ class report extends React.Component{
                     var dateToEnter = new Date(this.state.stress[i].date);
                     if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
                         added=true;
+                        console.log("cards to generate j[3]")
+                        console.log(cardsToGenerate[j][3])
                         cardsToGenerate[j][3] = cardsToGenerate[j][3].push(this.state.stress[i].stress);
                     }
                 }

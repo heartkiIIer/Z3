@@ -132,11 +132,11 @@ class ItsBedtimeRoutine extends React.Component {
             if(this.state.stage < this.state.stages){
                 document.getElementById("cycle").innerText = "Next Item";
                 //Timer
-                /*if(this.state.routine[this.state.stage].minutes !== 0) {
+                if(this.state.routine[this.state.stage].minutes !== 0) {
                     return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
                                                minutes={this.state.routine[this.state.stage].minutes} timer={true}/></div>;
-                }*/
+                }
                 //No Timer
 
                     return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}

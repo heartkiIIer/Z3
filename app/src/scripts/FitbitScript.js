@@ -177,7 +177,7 @@ function InfoPopUp(){
                                 swal.fire({ //send popup
                                     title: "Fitbit Feature",
                                     text: "You currently have Fitbit connected, It will auto log your sleep and exercise information. " +
-                                        "If you manually log sleep, it will take priority over fitbit data and if you manually log exercise it will be additional to what was retrieved from your fitbit!",
+                                        "If you manually log sleep, it will take priority over fitbit data and if you manually log exercise it will be added to what was retrieved from your fitbit!",
                                     showCancelButton: true,
                                     confirmButtonText: "Do Not Show Again",
                                     confirmButtonColor: "#cb1634",

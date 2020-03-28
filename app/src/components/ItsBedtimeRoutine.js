@@ -147,7 +147,7 @@ class ItsBedtimeRoutine extends React.Component {
             //Nothing remains
             else{
                 document.getElementById("cycle").innerText = "Log Sleep";
-                return <div><h1 className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString() + " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
+                return <div><h1 className="alignTextRight">{this.state.stages.toString() + "/" + this.state.stages.toString() + " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
                                            stage={100} stages={100}
                                            minutes={0} timer={false}/></div>;
             }

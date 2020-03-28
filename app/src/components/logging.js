@@ -63,6 +63,8 @@ class logging extends React.Component{
         document.getElementById('page-wrap').children[5].children[0].children[1].className= 'active item'
         console.log(document.getElementById('active'))
         document.getElementById('active').click()
+        document.getElementById('active').click()
+        document.getElementById('active').click()
     }
 
     resize(){

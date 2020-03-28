@@ -58,6 +58,10 @@ class logging extends React.Component{
         });
         window.addEventListener('resize', this.updateDimensions);
         InfoPopUp();
+
+        document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
+        console.log(document.getElementById('active'))
+        document.getElementById('active').click()
     }
 
     resize(){

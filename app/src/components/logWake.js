@@ -137,7 +137,7 @@ class LogWake extends React.Component{
                         <h3 className="wakeHeaderTwo" align='center'>What time did you wake up?</h3>
                         <button className='btn' id="extended2" onClick={() => this.myFunction()}>I just woke up</button>
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
-                        <button className='btn' id="extended2" onClick={() => this.myFunctionTwo()}>At this time</button>
+                        <button className='btn' id="extended2" onClick={() => this.myFunctionTwo()}>At a different time</button>
                     </div>
                 </div>
                 </div>

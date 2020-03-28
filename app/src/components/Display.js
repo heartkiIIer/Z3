@@ -64,7 +64,6 @@ export default class LoginControl extends React.Component {
 
         return (
             <div>
-                <StatusSign/>
                 {ele}
             </div>
         );

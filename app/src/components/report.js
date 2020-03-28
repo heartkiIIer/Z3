@@ -408,7 +408,7 @@ class report extends React.Component{
                         added=true;
                         console.log("cards to generate j[3]")
                         console.log(cardsToGenerate[j][3])
-                        cardsToGenerate[j][3] = cardsToGenerate[j][3].push(this.state.stress[i].stress);
+                        cardsToGenerate[j][3].push(this.state.stress[i].stress);
                     }
                 }
                 //otherwise just add a new entry

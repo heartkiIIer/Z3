@@ -4,6 +4,11 @@ import {Tab} from "semantic-ui-react";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import Item from "./Item";
 
+const refresh = {
+    paddingRight: '6px',
+    fontSize: '175%'
+}
+
 export default class StatusSign extends React.Component<any, any> {
     constructor(props) {
         super(props);

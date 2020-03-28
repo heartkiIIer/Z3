@@ -223,12 +223,12 @@ app.post('/setPopupFalse/', cors(corsOptions), (req, res)=> {
 //fitbit in use
 app.post('/getPopup2/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
-    db.getPopup(req, res, uid);
+    db.getPopup2(req, res, uid);
 });
 //fitbit in use
 app.post('/setPopupFalse2/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
-    db.setPopupFalse(req, res, uid);
+    db.setPopupFalse2(req, res, uid);
 });
 
  https.createServer({

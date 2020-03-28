@@ -158,6 +158,7 @@ function InfoPopUp(){
             return r.json();
         }).then(r => {
             if(r.length !== 0){
+                console.log(r[0].fitbit);
                 if(r[0].fitbit){// fitbit use is true, warn users fitbit will auto fill sleep and exercise
                     //check if user has set pop up to never show again
                     fetch('https://sleepwebapp.wpi.edu:5000/getPopup2', {
@@ -171,6 +172,7 @@ function InfoPopUp(){
                         return r.json();
                     }).then(r => {
                         if(r.length !== 0){
+                            console.log(r[0].popup2);
                             if(r[0].popup2){ //if popup is true send popup about fitbit in use. else do nothing
                                 swal.fire({ //send popup
                                     title: "Fitbit Feature",

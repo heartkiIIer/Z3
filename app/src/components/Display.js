@@ -10,11 +10,6 @@ import Swal from "sweetalert2";
 
 let signIn = new StatusSign();
 
-const refresh = {
-    paddingRight: '6px',
-    fontSize: '175%'
-}
-
 let calevents, names = []
 
 export default class LoginControl extends React.Component {

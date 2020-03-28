@@ -173,10 +173,10 @@ class report extends React.Component{
                         </div>
                     </div>
                     <button className='btn' id = "extended">
-                            Next 7 Days
+                            Prev 7 Days
                     </button>
                     <button className='btn' style={{marginRight:'0px'}}>
-                            Prev 7 Days
+                            Next 7 Days
                     </button>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>

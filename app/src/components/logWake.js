@@ -76,26 +76,51 @@ class LogWake extends React.Component{
     }
 
     myFunctionTwo() {
-        let idPromise = getUserID();
-        idPromise.then(uid=>{
-            const data = JSON.stringify({uid: uid});
-            fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime/', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then( r => {
+        // prompt to enter Wake up time
+        swal({ //prompt user to enter the time
+            title: "Enter wake up time",
+            text: "Please enter the date and time you woke up",
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "YYYY/MM/DD HH24:MM:SS",
+                    type: "text"
+                }
+            },
+            buttons: true,
+        }).then((time) => {
+            if(time === ""){ //user clicked okay with nothing as input
                 swal({
-                    title: "Success",
-                    icon: "success",
-                    text: "Successfully logged wake time."
-                }).then(()=>{
-                    window.location.replace("https://sleepwebapp.wpi.edu/home");
+                    text: "No task was inputed",
+                    icon: "error"
                 });
-                console.log("Completed")
-            })
+            }
+            else if(task !== null) { // user clicked okay with something in the input field
+                let idPromise = getUserID();
+                idPromise.then(uid => {
+                    const data = JSON.stringify({
+                        uid: uid,
+                        time: task
+                    });
+                    fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then(r => {
+                        swal({
+                            title: "Success",
+                            icon: "success",
+                            text: "New routine have been added."
+                        }).then(()=>{
+                            window.location.replace("https://sleepwebapp.wpi.edu/home");
+                        });
+                        console.log("Completed")
+                    })
+                });
+            }
         });
     }
 

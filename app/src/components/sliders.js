@@ -295,7 +295,7 @@ const panes = [
 ]
 
 const Tabs = () => (
-    <Tab menu={{ secondary: true, pointing: true }} panes={panes} defaultActiveIndex={2}/>
+    <Tab menu={{ secondary: true, pointing: true }} panes={panes} defaultActiveIndex={1}/>
 )
 
 export {Tabs}

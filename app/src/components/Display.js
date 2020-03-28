@@ -21,23 +21,23 @@ export default class LoginControl extends React.Component {
         this.state = {
             sign: ApiCalendar.sign
         };
-        this.signUpdate = this.signUpdate.bind(this);
-        ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(this.signUpdate);
-        })
+        // this.signUpdate = this.signUpdate.bind(this);
+        // ApiCalendar.listenSign(this.signUpdate);
     }
 
-    signUpdate(sign: boolean): any {
-        this.setState({
-            sign: ApiCalendar.sign
-        })
-    }
+    // signUpdate(sign: boolean): any {
+    //     this.setState({
+    //         sign: ApiCalendar.sign
+    //     })
+    // }
 
-    componentDidMount(): void {
-        document.getElementById('page-wrap').children[5].children[0].children[0].id = 'active'
-        console.log(document.getElementById('active'))
-        document.getElementById('active').click()
-    }
+    // componentDidMount(): void {
+    //     let currentComponent = this;
+    //     currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
+    //     ApiCalendar.listenSign(currentComponent.signUpdate);
+    //     // document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
+    //     // console.log(document.getElementById('active'))
+    // }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {
         if (name === 'sign-in') {
@@ -49,10 +49,11 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
+        console.log(isLoggedIn)
         console.log(ApiCalendar.sign)
         let ele;
 
-        if (ApiCalendar.sign) {
+        if (this.state.sign) {
             ele = <Display/>;
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;

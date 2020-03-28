@@ -79,7 +79,7 @@ class LogWake extends React.Component{
         let idPromise = getUserID();
         idPromise.then(uid=>{
             const data = JSON.stringify({uid: uid});
-            fetch('https://sleepwebapp.wpi.edu:5000/newWake/', {
+            fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime/', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -98,6 +98,7 @@ class LogWake extends React.Component{
             })
         });
     }
+
     render(){
         //this.updateDimensions();
         this.resize();
@@ -112,7 +113,8 @@ class LogWake extends React.Component{
                         <button className='btn' id="extended2" onClick={() => this.myFunction()}>I just woke up</button>
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
                         <input className="inp2" type="time" name="usr_time" defaultValue="07:00"/>
-                        <button className='btn' id="extended2" onClick={() => this.myFunctionTwo()}>At this time Two</button>
+                        <br/>
+                        <button className='btn' id="extended2" onClick={() => this.myFunctionTwo()}>At this time</button>
                     </div>
                 </div>
                 </div>

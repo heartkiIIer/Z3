@@ -4,7 +4,6 @@ import "../styles/logging.css";
 import {Tabs} from "./sliders";
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
-import StatusSign from "./StatusSign";
 import {InfoPopUp} from "../scripts/FitbitScript";
 
 class logging extends React.Component{
@@ -66,7 +65,7 @@ class logging extends React.Component{
                         <h1 className="blueHeader">Logging </h1>
                         <hr className="hr-settings"/>
                         <br/>
-                        <h4>Log your exercise, caffeine, & stress</h4><StatusSign/>
+                        <h4>Log your exercise, caffeine, & stress</h4>
                         <br/>
                         <Tabs/>
                     </div>

@@ -210,14 +210,25 @@ app.post('/getWeekSleep/', cors(corsOptions), (req, res)=> {
     db.getSleepEntryById(req, res, uid);
 });
 
+//fitbit not in use
 app.post('/getPopup/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
     db.getPopup(req, res, uid);
 });
-
+//fitbit not in use
 app.post('/setPopupFalse/', cors(corsOptions), (req, res)=> {
     const {uid} = req.body;
     db.setPopupFalse(req, res, uid);
+});
+//fitbit in use
+app.post('/getPopup2/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
+    db.getPopup2(req, res, uid);
+});
+//fitbit in use
+app.post('/setPopupFalse2/', cors(corsOptions), (req, res)=> {
+    const {uid} = req.body;
+    db.setPopupFalse2(req, res, uid);
 });
 
  https.createServer({

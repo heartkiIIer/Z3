@@ -158,7 +158,48 @@ function InfoPopUp(){
             return r.json();
         }).then(r => {
             if(r.length !== 0){
-                if(!r[0].fitbit){
+                console.log(r[0].fitbit);
+                if(r[0].fitbit){// fitbit use is true, warn users fitbit will auto fill sleep and exercise
+                    //check if user has set pop up to never show again
+                    fetch('https://sleepwebapp.wpi.edu:5000/getPopup2', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then( r => {
+                        return r.json();
+                    }).then(r => {
+                        if(r.length !== 0){
+                            console.log(r[0].popup2);
+                            if(r[0].popup2){ //if popup is true send popup about fitbit in use. else do nothing
+                                swal.fire({ //send popup
+                                    title: "Fitbit Feature",
+                                    text: "You currently have Fitbit connected, It will auto log your sleep and exercise information. " +
+                                        "If you manually log sleep, it will take priority over fitbit data and if you manually log exercise it will be additional to what was retrieved from your fitbit!",
+                                    showCancelButton: true,
+                                    confirmButtonText: "Do Not Show Again",
+                                    confirmButtonColor: "#cb1634",
+                                    cancelButtonColor: "#b9b9b9",
+                                    icon: "warning"
+                                }).then(noShow =>{
+                                    if(noShow.value){
+                                        fetch('https://sleepwebapp.wpi.edu:5000/setPopupFalse2', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Accept': 'application/json',
+                                                'Content-Type': 'application/json',
+                                            },
+                                            body: data
+                                        })
+                                    }
+                                })
+                            }
+                        }
+                    });
+                }
+                else{ //fitbit is false, warn user they can connect fitbit to auto fill data
                     //check if user has set pop up to never show again
                     fetch('https://sleepwebapp.wpi.edu:5000/getPopup', {
                         method: 'POST',

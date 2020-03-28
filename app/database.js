@@ -701,5 +701,7 @@ module.exports = {
     getZipcode,
     setPopupFalse,
     getPopup,
+    setPopupFalse2,
+    getPopup2,
     addWakeByTime
 }

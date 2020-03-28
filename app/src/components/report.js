@@ -548,7 +548,7 @@ class report extends React.Component{
     changeWeek(element){
         if(element == 1){
             this.setState({
-                weeksAgo: this.state.weeksAgo + 1,
+                weeksAgo: this.state.weeksAgo - 1,
                 sleep: null,
                 stress: null,
                 goal: null,
@@ -568,7 +568,7 @@ class report extends React.Component{
         }
         else if(this.state.weeksAgo != 0){
             this.setState({
-                weeksAgo: this.state.weeksAgo - 1,
+                weeksAgo: this.state.weeksAgo + 1,
                 sleep: null,
                 stress: null,
                 goal: null,

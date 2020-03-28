@@ -177,6 +177,7 @@ class ItsBedtimeRoutine extends React.Component {
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="middle">
                         <div className="inner" id="page-wrap" align='center'>
+                            <h1>Fraction</h1>
                             {this.selectComponent()}
                             <br/>
                             <hr className='hr-settings'/>

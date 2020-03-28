@@ -3,9 +3,12 @@ import ApiCalendar from 'react-google-calendar-api';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
 import Item from './Item'
+import StatusSign from './StatusSign'
 import {getUserID} from "../scripts/login";
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
+
+let StatusSign = new StatusSign();
 
 const refresh = {
     paddingRight: '6px',
@@ -18,9 +21,9 @@ export default class LoginControl extends React.Component {
     constructor(props) {
         super(props);
         this.handleItemClick = this.handleItemClick.bind(this);
-        this.state = {
-            sign: ApiCalendar.sign
-        };
+        // this.state = {
+        //     sign: ApiCalendar.sign
+        // };
         // this.signUpdate = this.signUpdate.bind(this);
         // ApiCalendar.listenSign(this.signUpdate);
     }
@@ -48,12 +51,12 @@ export default class LoginControl extends React.Component {
     }
 
     render() {
-        const isLoggedIn = this.state.sign;
+        const isLoggedIn = StatusSign.state;
         console.log(isLoggedIn)
         console.log(ApiCalendar.sign)
         let ele;
 
-        if (this.state.sign) {
+        if (isLoggedIn) {
             ele = <Display/>;
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;

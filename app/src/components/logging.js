@@ -31,16 +31,6 @@ class logging extends React.Component{
         }
     }
 
-    componentDidMount(): void {
-        let currentComponent = this;
-        currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
-        ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(currentComponent.signUpdate);
-        });
-        // document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
-        // console.log(document.getElementById('active'))
-    }
-
     signUpdate(sign: boolean): any {
         this.setState({
             sign: ApiCalendar.sign
@@ -58,6 +48,11 @@ class logging extends React.Component{
         });
         window.addEventListener('resize', this.updateDimensions);
         InfoPopUp();
+        let currentComponent = this;
+        currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
+        ApiCalendar.onLoad(() => {
+            ApiCalendar.listenSign(currentComponent.signUpdate);
+        });
         // document.getElementById('page-wrap').children[5].children[0].children[0].className= 'item'
         // document.getElementById('page-wrap').children[5].children[0].children[1].id= 'active'
         // document.getElementById('page-wrap').children[5].children[0].children[1].className= 'active item'

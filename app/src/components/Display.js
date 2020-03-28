@@ -8,7 +8,7 @@ import {getUserID} from "../scripts/login";
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
 
-let StatusSign = new StatusSign();
+let signIn = new StatusSign();
 
 const refresh = {
     paddingRight: '6px',
@@ -51,7 +51,7 @@ export default class LoginControl extends React.Component {
     }
 
     render() {
-        const isLoggedIn = StatusSign.state;
+        const isLoggedIn = signIn.state;
         console.log(isLoggedIn)
         console.log(ApiCalendar.sign)
         let ele;

@@ -223,11 +223,21 @@ function getStressEntriesByDate(req, res, id, month, day, year) {
 
 //Add a stress entry
 function addStressEntriesById(req, res, id, title, year, month, day, date, value) {
+    let time = year + "/";
+    if(month < 10){
+        time += "0";
+    }
+    time += month + "/";
+    if(day < 10){
+        time += "0";
+    }
+    time += day;
+    console.log(time);
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise.then(
         function (internalId) {
-            pool.query('INSERT INTO stressEntry(user_id, event, month, day, year, dayofweek, stress) VALUES('+ internalId.rows[0].user_id +', ' +
-                "'" + title + "', " +  month + "," + day + "," + year + ", " + date + ", " + value +
+            pool.query('INSERT INTO stressEntry(user_id, event, month, day, year, dayofweek, stress, datetime) VALUES('+ internalId.rows[0].user_id +', ' +
+                "'" + title + "', " +  month + "," + day + "," + year + ", " + date + ", " + value + ", TO_TIMESTAMP('" + time + " 00:00:00', 'YYYY/MM/DD HH24:MI:SS')" +
                 ") ON CONFLICT (user_id, event, month, day, year) DO UPDATE SET stress="+value+";", (error, results) => {
                 if (error) {
                     throw error

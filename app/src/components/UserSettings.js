@@ -278,7 +278,7 @@ class UserSettings extends React.Component {
         }
         else{
             fitbitele.push(<h3 className='blueHeader'>Do you own a Fitbit and would like to auto fill your sleep and exercise log through Fitbit? </h3>);
-            fitbitele.push(<h4 className='blueHeader'>How it works: We will automatically retrieve the past week's data from your fitbit whenever you access your personal reports page. </h4>);
+            fitbitele.push(<h4 className='blueHeader'>How it works: We will automatically retrieve the past week's data from your fitbit whenever you access your personal reports page. For exercise minutes, we will take your lightly, fairly, and very active mintutes and store them as low, medium, and high intensity minutes respectively</h4>);
             fitbitele.push(<p style={{color: "#1B1E23", marginTop: "10px", size: "10pt"}}>* Manually logging sleep and exercise will still be available but sleep log will take precedence over Fibtit data whereas exercise log will add on to what Fitbit will record.</p>);
             fitbitele.push(<p style={{color: "#ff6666", marginTop: "10px", size: "10pt"}}>* Once you click the button, you will be redirected to Fitbit for authorization. However, you will have to authorize Fitbit again on the <b>Report</b> page on other (new) devices.</p>);
             fitbitele.push(<button className='btn' onClick={this.setUserFibitTrue.bind(this)}>Use Fitbit</button>);

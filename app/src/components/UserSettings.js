@@ -97,6 +97,12 @@ class UserSettings extends React.Component {
                     icon: "error"
                 });
             }
+            else if(task.length > 16){
+                swal({
+                    text: "Please input a task with 16 or less characters",
+                    icon: "error"
+                });
+            }
             else if(task !== null) { // user clicked okay with something in the input field
                 swal({ //the prompts user to enter the duration of the task
                     title: "Add a Routine: Enter Duration",

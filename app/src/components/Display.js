@@ -295,6 +295,7 @@ async function fetchItems() {
             approved.push(result.result.items[i])
         }
     }
+    console.log(approved)
     return approved.map(({summary, start, end}) => ({summary, start, end}));
 }
 

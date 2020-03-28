@@ -22,9 +22,9 @@ export default class LoginControl extends React.Component {
             sign: ApiCalendar.sign
         };
         this.signUpdate = this.signUpdate.bind(this);
-        ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(this.signUpdate);
-        })
+        // ApiCalendar.onLoad(() => {
+        //     ApiCalendar.listenSign(this.signUpdate);
+        // })
     }
 
     signUpdate(sign: boolean): any {
@@ -36,10 +36,7 @@ export default class LoginControl extends React.Component {
     componentDidMount(): void {
         let currentComponent = this;
         currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
-        ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(currentComponent.signUpdate);
-        })
-
+        ApiCalendar.listenSign(currentComponent.signUpdate);
         // document.getElementById('page-wrap').children[5].children[0].children[1].id = 'active'
         // console.log(document.getElementById('active'))
     }

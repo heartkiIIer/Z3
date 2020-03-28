@@ -336,7 +336,7 @@ async function getMoreEvents() {
             approved.push(result.result.items[i])
         }
     }
-    approved.map(({summary, start, end}) => ({summary, start, end}));
+    approved = approved.map(({summary, start, end}) => ({summary, start, end}));
     console.log(approved)
     for (let i = 0; i < approved.length; i++) {
         document.getElementById('calevent').appendChild(<Item key={approved[i].id} itemSum={approved[i].summary} itemStart={approved[i].start.dateTime} itemEnd={approved[i].end.dateTime} />)

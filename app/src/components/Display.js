@@ -18,20 +18,20 @@ export default class LoginControl extends React.Component {
     constructor(props) {
         super(props);
         this.handleItemClick = this.handleItemClick.bind(this);
-        // this.state = {
-        //     sign: ApiCalendar.sign
-        // };
-        // this.signUpdate = this.signUpdate.bind(this);
-        // ApiCalendar.onLoad(() => {
-        //     ApiCalendar.listenSign(this.signUpdate);
-        // });
+        this.state = {
+            sign: ApiCalendar.sign
+        };
+        this.signUpdate = this.signUpdate.bind(this);
+        ApiCalendar.onLoad(() => {
+            ApiCalendar.listenSign(this.signUpdate);
+        });
     }
 
-    // signUpdate(sign: boolean): any {
-    //     this.setState({
-    //         sign: ApiCalendar.sign
-    //     })
-    // }
+    signUpdate(sign: boolean): any {
+        this.setState({
+            sign: ApiCalendar.sign
+        })
+    }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {
         if (name === 'sign-in') {
@@ -44,7 +44,7 @@ export default class LoginControl extends React.Component {
     render() {
         // const isLoggedIn = this.state.sign;
         // console.log(isLoggedIn)
-        console.log(ApiCalendar.sign)
+        console.log(isLoggedIn)
         let ele;
 
         if (ApiCalendar.sign) {
@@ -325,7 +325,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={fetchItems}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
@@ -347,7 +347,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={() => window.location.reload()}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={fetchItems}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>

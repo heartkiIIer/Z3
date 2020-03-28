@@ -10,14 +10,6 @@ import ApiCalendar from "react-google-calendar-api";
 class logging extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            sign: ApiCalendar.sign
-        };
-
-        this.signUpdate = this.signUpdate.bind(this);
-        ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(this.signUpdate);
-        });
 
         if(window.innerWidth >= 700){
             this.state = {
@@ -31,12 +23,6 @@ class logging extends React.Component{
         }
     }
 
-    signUpdate(sign: boolean): any {
-        this.setState({
-            sign: ApiCalendar.sign
-        })
-    }
-
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     };
@@ -48,11 +34,6 @@ class logging extends React.Component{
         });
         window.addEventListener('resize', this.updateDimensions);
         InfoPopUp();
-        let currentComponent = this;
-        currentComponent.signUpdate = currentComponent.signUpdate.bind(currentComponent);
-        ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(currentComponent.signUpdate);
-        });
         // document.getElementById('page-wrap').children[5].children[0].children[0].className= 'item'
         // document.getElementById('page-wrap').children[5].children[0].children[1].id= 'active'
         // document.getElementById('page-wrap').children[5].children[0].children[1].className= 'active item'

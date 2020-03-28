@@ -49,9 +49,9 @@ export default class LoginControl extends React.Component {
 
         if (ApiCalendar.sign) {
             ele = <Display/>;
-        } else {
-            ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
-        }
+        } //else {
+        //     ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
+        // }
 
         return (
             <div>

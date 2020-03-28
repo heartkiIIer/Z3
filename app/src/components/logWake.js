@@ -51,28 +51,6 @@ class LogWake extends React.Component{
         })
     }
 
-    setAsleepFalse(){
-        let idPromise = getUserID();
-        idPromise.then(uid=>{
-            const data = JSON.stringify({
-                asleep: false,
-                uid: uid
-            });
-            fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then(r => {
-                console.log("Added asleep boolean: ", r.status);
-                this.getAsleep(this)
-            })
-        });
-    }
-
-
     myFunction() {
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -92,7 +70,30 @@ class LogWake extends React.Component{
                 }).then(()=>{
                     window.location.replace("https://sleepwebapp.wpi.edu/home");
                 });
-                // this.setAsleepFalse();
+                console.log("Completed")
+            })
+        });
+    }
+
+    myFunctionTwo() {
+        let idPromise = getUserID();
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            fetch('https://sleepwebapp.wpi.edu:5000/newWake/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                swal({
+                    title: "Success",
+                    icon: "success",
+                    text: "Successfully logged wake time."
+                }).then(()=>{
+                    window.location.replace("https://sleepwebapp.wpi.edu/home");
+                });
                 console.log("Completed")
             })
         });
@@ -112,7 +113,7 @@ class LogWake extends React.Component{
                         <h3 className="wakeHeaderThree" align='center'>or</h3>
                         <form>
                             <input className="inp2" type="time" name="usr_time" defaultValue="07:00"/>
-                            <button className='btn' id="extended2" onClick={() => this.myFunction()}>At This Time</button>
+                            <button className='btn' id="extended2" onClick={() => this.myFunctionTwo()}>I just woke up</button>
                         </form>
                     </div>
                 </div>

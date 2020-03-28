@@ -105,6 +105,11 @@ app.post('/newWake/', cors(corsOptions), (req, res)=> {
     db.addWakeById(req, res, uid);
 });
 
+app.post('/newWakeByTime/', cors(corsOptions), (req, res)=> {
+    const {uid, time} = req.body;
+    db.addWakeByTime(req, res, uid, time);
+});
+
 app.post('/submitChronoAnswers/', cors(corsOptions), (req, res) => {
     const{q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, uid} = req.body;
     db.putChronotypeById(req, res, uid, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13)

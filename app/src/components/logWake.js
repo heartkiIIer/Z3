@@ -83,7 +83,7 @@ class LogWake extends React.Component{
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "YYYY/MM/DD HH24:MM:SS",
+                    placeholder: "HH:MM ex:18:30",
                     type: "text"
                 }
             },

@@ -120,7 +120,7 @@ const Item = props => {
             </Typography>
             <PrettoSlider id="" aria-label="pretto slider" defaultValue={50}
                           step={null} marks={stresslevel}/>
-                          <br/><br/>
+            <br/><br/>
         </div>
     );
 }

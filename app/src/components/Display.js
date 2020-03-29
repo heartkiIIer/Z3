@@ -4,8 +4,60 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
 import Item from './Item'
 import {getUserID} from "../scripts/login";
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import { withStyles} from '@material-ui/core/styles';
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
+
+const buttonStyle = {
+    borderRadius: '5px'
+}
+
+const stresslevel = [
+    {
+        value: 0,
+        label: 'Low',
+    },
+    {
+        value: 50,
+        label: 'Medium',
+    },
+    {
+        value: 98,
+        label: 'High',
+    }
+];
+
+const PrettoSlider = withStyles({
+    root: {
+        color: 'mediumpurple',
+        height: 8,
+    },
+    thumb: {
+        height: 24,
+        width: 24,
+        backgroundColor: '#fff',
+        border: '2px solid currentColor',
+        marginTop: -8,
+        marginLeft: -12,
+        '&:focus,&:hover,&$active': {
+            boxShadow: 'inherit',
+        },
+    },
+    active: {},
+    valueLabel: {
+        left: 'calc(-50% + 4px)'
+    },
+    track: {
+        height: 8,
+        borderRadius: 4,
+    },
+    rail: {
+        height: 8,
+        borderRadius: 4,
+    }
+})(Slider);
 
 const refresh = {
     paddingRight: '6px',
@@ -320,7 +372,7 @@ function GetEvents() {
 }
 
 async function getMoreEvents() {
-    document.getElementById('calevent').innerHTML += ''
+    //document.getElementById('calevent').innerHTML += ''
     const result = await ApiCalendar.listUpcomingEvents(250);
     // console.log(result.result.items[result.result.items.length-1].start);
     let approved = [];
@@ -344,7 +396,8 @@ async function getMoreEvents() {
     }
     console.log(events)
     for (let i = 0; i < events.length; i++) {
-        document.getElementById('calevent').innerHTML += events[i]
+        document.getElementById('calevent').innerHTML += '<div><PrettoSlider id="" aria-label="pretto slider" defaultValue={50}\n' +
+            '                          step={null} marks={stresslevel}/></div>'
     }
 }
 

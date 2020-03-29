@@ -59,7 +59,7 @@ export default class LoginControl extends React.Component {
             }
         }
         approved = approved.map(({summary, start, end}) => ({summary, start, end}));
-        this.setState({events: approved})
+        this.state.events = approved
     }
 
     render() {
@@ -381,7 +381,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={LoginControlClass.fetchItems()}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={LoginControlClass.fetchItems}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
@@ -405,7 +405,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={LoginControlClass.fetchItems()}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={LoginControlClass.fetchItems}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>

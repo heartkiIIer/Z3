@@ -43,27 +43,6 @@ class LogSleep extends React.Component{
         })
     }
 
-    setAsleepTrue(){
-        let idPromise = getUserID();
-        idPromise.then(uid=>{
-            const data = JSON.stringify({
-                asleep: true,
-                uid: uid
-            });
-            fetch('https://sleepwebapp.wpi.edu:5000/addAsleep', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then(r => {
-                console.log("Added asleep boolean: ", r.status);
-                this.getAsleep(this)
-            })
-        });
-    }
-
     myFunction() {
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -76,7 +55,6 @@ class LogSleep extends React.Component{
                 },
                 body: data
             }).then( () => {
-                // this.setAsleepTrue();
                 console.log("Completed");
                 swal({
                     title: "Success",

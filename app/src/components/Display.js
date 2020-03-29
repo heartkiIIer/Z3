@@ -322,6 +322,7 @@ function GetEvents() {
 function Display() {
     let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
     let items = GetEvents()
+    console.log(items)
     if (items.length != 0) {
         return (
             <div>

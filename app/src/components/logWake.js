@@ -115,11 +115,11 @@ class LogWake extends React.Component{
                             'Content-Type': 'application/json',
                         },
                         body: data
-                    }).then(r => {
+                    }).then( r => {
                         swal({
                             title: "Success",
                             icon: "success",
-                            text: "New routine have been added."
+                            text: "Successfully logged wake time."
                         }).then(()=>{
                             window.location.replace("https://sleepwebapp.wpi.edu/home");
                         });

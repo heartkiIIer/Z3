@@ -83,7 +83,7 @@ class LogWake extends React.Component{
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "HH:MM ex:18:30",
+                    placeholder: "HH:MM ex:17:30",
                     type: "text"
                 }
             },
@@ -97,10 +97,16 @@ class LogWake extends React.Component{
             }
             else if(time !== null) { // user clicked okay with something in the input field
                 let idPromise = getUserID();
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+                today = yyyy + '/' + mm + '/' + dd + ' ';
+                document.write(today);
                 idPromise.then(uid => {
                     const data = JSON.stringify({
                         uid: uid,
-                        time: time
+                        time: today+time+':00'
                     });
                     fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime', {
                         method: 'POST',

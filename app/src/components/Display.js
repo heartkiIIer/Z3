@@ -344,7 +344,7 @@ async function getMoreEvents() {
     }
     console.log(events)
     for (let i = 0; i < events.length; i++) {
-        document.getElementById('calevent').innerHTML += events[i].toString();
+        document.getElementById('calevent').innerHTML += 'events[i]'
     }
 }
 

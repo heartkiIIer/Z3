@@ -19,8 +19,7 @@ export default class LoginControl extends React.Component {
         super(props);
         this.handleItemClick = this.handleItemClick.bind(this);
         this.state = {
-            sign: ApiCalendar.sign,
-            events: []
+            sign: ApiCalendar.sign
         };
         this.signUpdate = this.signUpdate.bind(this);
         ApiCalendar.onLoad(() => {
@@ -40,26 +39,6 @@ export default class LoginControl extends React.Component {
         } else if (name === 'sign-out') {
             ApiCalendar.handleSignoutClick();
         }
-    }
-
-    async fetchItems() {
-        const result = await ApiCalendar.listUpcomingEvents(250);
-        // console.log(result.result.items[result.result.items.length-1].start);
-        let approved = [];
-        let todayDate = new Date().getDate();
-        let todayMonth = new Date().getMonth();
-        let todayYear = new Date().getFullYear();
-        for(let i = 0; i < result.result.items.length; i++) {
-            let calEvent = result.result.items[i].start.dateTime;
-            let calDate = new Date(calEvent).getDate();
-            let calMonth = new Date(calEvent).getMonth();
-            let calYear = new Date(calEvent).getFullYear();
-            if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
-                approved.push(result.result.items[i])
-            }
-        }
-        approved = approved.map(({summary, start, end}) => ({summary, start, end}));
-        this.state.events = approved
     }
 
     render() {
@@ -298,25 +277,24 @@ function getStress(events) {
     })
 }
 
-// async function fetchItems() {
-//     const result = await ApiCalendar.listUpcomingEvents(250);
-//     // console.log(result.result.items[result.result.items.length-1].start);
-//     let approved = [];
-//     let todayDate = new Date().getDate();
-//     let todayMonth = new Date().getMonth();
-//     let todayYear = new Date().getFullYear();
-//     for(let i = 0; i < result.result.items.length; i++) {
-//         let calEvent = result.result.items[i].start.dateTime;
-//         let calDate = new Date(calEvent).getDate();
-//         let calMonth = new Date(calEvent).getMonth();
-//         let calYear = new Date(calEvent).getFullYear();
-//         if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
-//             approved.push(result.result.items[i])
-//         }
-//     }
-//     approved = approved.map(({summary, start, end}) => ({summary, start, end}));
-//
-// }
+async function fetchItems() {
+    const result = await ApiCalendar.listUpcomingEvents(250);
+    // console.log(result.result.items[result.result.items.length-1].start);
+    let approved = [];
+    let todayDate = new Date().getDate();
+    let todayMonth = new Date().getMonth();
+    let todayYear = new Date().getFullYear();
+    for(let i = 0; i < result.result.items.length; i++) {
+        let calEvent = result.result.items[i].start.dateTime;
+        let calDate = new Date(calEvent).getDate();
+        let calMonth = new Date(calEvent).getMonth();
+        let calYear = new Date(calEvent).getFullYear();
+        if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
+            approved.push(result.result.items[i])
+        }
+    }
+    return approved.map(({summary, start, end}) => ({summary, start, end}));
+}
 
 function GetEvents() {
     const [items, saveItems] = useState([]);
@@ -341,52 +319,20 @@ function GetEvents() {
     return items
 }
 
-async function getMoreEvents() {
-    document.getElementById('calevent').innerHTML += ''
-    const result = await ApiCalendar.listUpcomingEvents(250);
-    // console.log(result.result.items[result.result.items.length-1].start);
-    let approved = [];
-    let todayDate = new Date().getDate();
-    let todayMonth = new Date().getMonth();
-    let todayYear = new Date().getFullYear();
-    for(let i = 0; i < result.result.items.length; i++) {
-        let calEvent = result.result.items[i].start.dateTime;
-        let calDate = new Date(calEvent).getDate();
-        let calMonth = new Date(calEvent).getMonth();
-        let calYear = new Date(calEvent).getFullYear();
-        if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
-            approved.push(result.result.items[i])
-        }
-    }
-    approved = approved.map(({summary, start, end}) => ({summary, start, end}));
-    console.log(approved)
-
-    for (let i = 0; i < approved.length; i++) {
-        document.getElementById('calevent').innerHTML += "<Item key={approved[i].id} itemSum={approved[i].summary} itemStart={approved[i].start.dateTime} itemEnd={approved[i].end.dateTime} />"
-    }
-}
-
-// function GetMoreEvents() {
-//     let items = GetEvents();
-//     for (let i = 0; i < items.length; i++) {
-//         document.getElementById('calevent').appendChild(<Item key={items[i].id} itemSum={items[i].summary} itemStart={items[i].start.dateTime} itemEnd={items[i].end.dateTime} />)
-//     }
-// }
-
 function Display() {
     let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
-    LoginControlClass.fetchItems()
-    if (LoginControlClass.state.events.length != 0) {
+    let items = GetEvents()
+    if (items.length != 0) {
         return (
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={LoginControlClass.fetchItems}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
                     <div id='calevent'>
-                        {LoginControlClass.state.events.map(item => (
+                        {items.map(item => (
                             <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
                         ))}
                     </div>
@@ -405,7 +351,7 @@ function Display() {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={LoginControlClass.fetchItems}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>

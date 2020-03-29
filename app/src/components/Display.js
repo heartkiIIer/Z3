@@ -276,7 +276,6 @@ function getStress(events) {
         )
     })
 }
-let po = []
 
 async function fetchItems() {
     const result = await ApiCalendar.listUpcomingEvents(250);
@@ -321,6 +320,7 @@ function GetEvents() {
 }
 
 async function getMoreEvents() {
+    document.getElementById('calevent').innerHTML += ''
     const result = await ApiCalendar.listUpcomingEvents(250);
     // console.log(result.result.items[result.result.items.length-1].start);
     let approved = [];
@@ -336,10 +336,10 @@ async function getMoreEvents() {
             approved.push(result.result.items[i])
         }
     }
-    approved.map(({summary, start, end}) => ({summary, start, end}));
+    approved = approved.map(({summary, start, end}) => ({summary, start, end}));
     console.log(approved)
     for (let i = 0; i < approved.length; i++) {
-        document.getElementById('calevent').appendChild(<Item key={approved[i].id} itemSum={approved[i].summary} itemStart={approved[i].start.dateTime} itemEnd={approved[i].end.dateTime} />)
+        document.getElementById('calevent').innerHTML += "<Item key={items[i].id} itemSum={items[i].summary} itemStart={items[i].start.dateTime} itemEnd={items[i].end.dateTime} />"
     }
 }
 

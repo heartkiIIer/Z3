@@ -339,7 +339,7 @@ async function getMoreEvents() {
     approved = approved.map(({summary, start, end}) => ({summary, start, end}));
     console.log(approved)
     for (let i = 0; i < approved.length; i++) {
-        document.getElementById('calevent').innerHTML += "<Item key={items[i].id} itemSum={items[i].summary} itemStart={items[i].start.dateTime} itemEnd={items[i].end.dateTime} />"
+        document.getElementById('calevent').innerHTML += "<Item key={approved[i].id} itemSum={approved[i].summary} itemStart={approved[i].start.dateTime} itemEnd={approved[i].end.dateTime} />"
     }
 }
 

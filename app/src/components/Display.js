@@ -338,8 +338,13 @@ async function getMoreEvents() {
     }
     approved = approved.map(({summary, start, end}) => ({summary, start, end}));
     console.log(approved)
+    let events = []
     for (let i = 0; i < approved.length; i++) {
-        document.getElementById('calevent').innerHTML += "<Item key={approved[i].id} itemSum={approved[i].summary} itemStart={approved[i].start.dateTime} itemEnd={approved[i].end.dateTime} />"
+        events.push(<Item key={approved[i].id} itemSum={approved[i].summary} itemStart={approved[i].start.dateTime} itemEnd={approved[i].end.dateTime} />)
+    }
+    console.log(events)
+    for (let i = 0; i < events.length; i++) {
+        document.getElementById('calevent').innerHTML += events[i].toString();
     }
 }
 

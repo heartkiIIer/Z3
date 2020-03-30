@@ -273,59 +273,79 @@ function getStress(events) {
     })
 }
 
-async function fetchItems() {
-    const result = await ApiCalendar.listUpcomingEvents(250);
-    // console.log(result.result.items[result.result.items.length-1].start);
-    let approved = [];
-    let todayDate = new Date().getDate();
-    let todayMonth = new Date().getMonth();
-    let todayYear = new Date().getFullYear();
-    for(let i = 0; i < result.result.items.length; i++) {
-        let calEvent = result.result.items[i].start.dateTime;
-        let calDate = new Date(calEvent).getDate();
-        let calMonth = new Date(calEvent).getMonth();
-        let calYear = new Date(calEvent).getFullYear();
-        if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
-            approved.push(result.result.items[i])
-        }
-    }
-    return approved.map(({summary, start, end}) => ({summary, start, end}));
-}
+// async function fetchItems() {
+//     const result = await ApiCalendar.listUpcomingEvents(250);
+//     // console.log(result.result.items[result.result.items.length-1].start);
+//     let approved = [];
+//     let todayDate = new Date().getDate();
+//     let todayMonth = new Date().getMonth();
+//     let todayYear = new Date().getFullYear();
+//     for(let i = 0; i < result.result.items.length; i++) {
+//         let calEvent = result.result.items[i].start.dateTime;
+//         let calDate = new Date(calEvent).getDate();
+//         let calMonth = new Date(calEvent).getMonth();
+//         let calYear = new Date(calEvent).getFullYear();
+//         if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
+//             approved.push(result.result.items[i])
+//         }
+//     }
+//     return approved.map(({summary, start, end}) => ({summary, start, end}));
+// }
 
-function GetEvents() {
-    const [items, saveItems] = useState([]);
-    const isMounted = useRef(true);
-
-    useEffect(() => {
-        return () => {
-            isMounted.current = false;
-        };
-    }, []);
-
-    useEffect(() => {
-        (async () => {
-            const items = await fetchItems();
-            //Do not update state if component is unmounted
-            if (isMounted.current) {
-                saveItems(items);
-            }
-        })();
-    }, []);
-
-    return items
-}
-
-function Retrieve() {
-    return GetEvents()
-}
+// function GetEvents() {
+//     const [items, saveItems] = useState([]);
+//     const isMounted = useRef(true);
+//
+//     useEffect(() => {
+//         return () => {
+//             isMounted.current = false;
+//         };
+//     }, []);
+//
+//     useEffect(() => {
+//         (async () => {
+//             const items = await fetchItems();
+//             //Do not update state if component is unmounted
+//             if (isMounted.current) {
+//                 saveItems(items);
+//             }
+//         })();
+//     }, []);
+//
+//     return items
+// }
 
 class Display extends React.Component {
     constructor(props) {
         super(props);
+        this.fetchItems = this.fetchItems.bind(this);
         this.state = {
-            items: Retrieve()
+            items: []
         };
+    }
 
+    async fetchItems() {
+        const result = await ApiCalendar.listUpcomingEvents(250);
+        // console.log(result.result.items[result.result.items.length-1].start);
+        let approved = [];
+        let todayDate = new Date().getDate();
+        let todayMonth = new Date().getMonth();
+        let todayYear = new Date().getFullYear();
+        for(let i = 0; i < result.result.items.length; i++) {
+            let calEvent = result.result.items[i].start.dateTime;
+            let calDate = new Date(calEvent).getDate();
+            let calMonth = new Date(calEvent).getMonth();
+            let calYear = new Date(calEvent).getFullYear();
+            if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
+                approved.push(result.result.items[i])
+            }
+        }
+        approved = approved.map(({summary, start, end}) => ({summary, start, end}));
+        this.setState({items: approved})
+    }
+
+    componentDidMount(): void {
+        this.fetchItems();
     }
 
     render() {

@@ -1,6 +1,6 @@
-import {getUserID} from "./login";
+import {getUserID} from "./Login";
 
-var z3_firebase = require('./firebase.js');
+var z3_firebase = require('./Firebase.js');
 var swal = require('sweetalert');
 var Swal = require('sweetalert2');
 

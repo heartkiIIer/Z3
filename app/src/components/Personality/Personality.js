@@ -1,9 +1,9 @@
 import React from 'react';
 import "../../styles/ItsBedtime.css";
-import "../../styles/personalityIntro.css";
-import SideBar from "../sideMenu";
+import "../../styles/PersonalityIntro.css";
+import SideBar from "../SideMenu";
 import swal from 'sweetalert'
-import {getUserID} from "../../scripts/login";
+import {getUserID} from "../../scripts/Login";
 
 class Personality extends React.Component{
     constructor(props) {

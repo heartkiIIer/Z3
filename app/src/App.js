@@ -1,32 +1,32 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import Landing from './components/Landing.js';
-import Home from './components/Home.js';
+import Landing from './components/Landing/Landing.js';
+import Home from './components/Home/Home.js';
 import Register from './components/Register.js'
-import Logging from './components/logging'
-import UserSettings from "./components/UserSettings";
-import logSleep from './components/logSleep';
-import Chronotype from './components/Personality/chronotype';
-import ChronoResults from './components/Personality/chronoResults';
+import LogOther from './components/LogOther/LogOther'
+import UserSettings from "./components/UserSettings/UserSettings";
+import LogSleep from './components/Sleep/LogSleep';
+import Chronotype from './components/Personality/Chronotype';
+import ChronoResults from './components/Personality/ChronoResults';
 import Personality from './components/Personality/Personality';
 import PersonalityIntro from './components/Personality/PersonalityIntro';
 import PersonalityResults from './components/Personality/PersonalityResults';
-import MindfulnessModules from './components/MindfulnessModules';
-import report from "./components/report";
-import sleep from "./components/sleep";
-import ExampleModule from './components/ExampleModule';
+import MindfulnessModules from './components/Mindfulness/MindfulnessModules';
+import Report from "./components/Report/Report";
+import Sleep from "./components/Sleep/Sleep";
+import ExampleModule from './components/Mindfulness/ExampleModule';
 import NotFound from './components/NotFound';
-import logWake from "./components/logWake";
-import BedtimeRoutine from "./components/ItsBedtimeRoutine";
-import MobileBedtimeRoutine from "./components/MobileBedtimeRoutine";
-import MobileMindfulnessModules from "./components/MobileMindfulnessModules";
-import MobileExampleModule from "./components/MobileExampleModule";
-import MobileLanding from "./components/MobileLanding";
-import mindfulLeadership from "./components/mindfulLeadership";
-import MindfulYoga from "./components/MindfulYoga";
-import BodyScanMeditation from "./components/BodyScanMeditation";
-import MindfulnessOverview from "./components/MindfulnessOverview";
-import MindfulEating from "./components/MindfulEating";
+import LogWake from "./components/Sleep/LogWake";
+import BedtimeRoutine from "./components/BedtimeRoutine/ItsBedtimeRoutine";
+import MobileBedtimeRoutine from "./components/BedtimeRoutine/MobileBedtimeRoutine";
+import MobileMindfulnessModules from "./components/Mindfulness/MobileMindfulnessModules";
+import MobileExampleModule from "./components/Mindfulness/MobileExampleModule";
+import MobileLanding from "./components/Landing/MobileLanding";
+import MindfulLeadership from "./components/Mindfulness/MindfulLeadership";
+import MindfulYoga from "./components/Mindfulness/MindfulYoga";
+import BodyScanMeditation from "./components/Mindfulness/BodyScanMeditation";
+import MindfulnessOverview from "./components/Mindfulness/MindfulnessOverview";
+import MindfulEating from "./components/Mindfulness/MindfulEating";
 import TitleComponent from "./components/TitleComponent";
 
 // withTitle function
@@ -49,19 +49,19 @@ const BedtimeRoutineComponent = withTitle({ component: BedtimeRoutine, title: 'B
 const HomeComponent = withTitle({ component: Home, title: 'Home – Z³' });
 const RegisterComponent = withTitle({ component: Register, title: 'Sign Up – Z³' });
 const UserSettingsComponent = withTitle({ component: UserSettings, title: 'Settings – Z³' });
-const SleepComponent = withTitle({ component: sleep, title: 'Sleep – Z³' });
-const LogSleepComponent = withTitle({ component: logSleep, title: 'Log Sleep – Z³' });
-const logWakeComponent = withTitle({ component: logWake, title: 'Log Wake – Z³' });
+const SleepComponent = withTitle({ component: Sleep, title: 'Sleep – Z³' });
+const LogSleepComponent = withTitle({ component: LogSleep, title: 'Log Sleep – Z³' });
+const LogWakeComponent = withTitle({ component: LogWake, title: 'Log Wake – Z³' });
 const ChronotypeComponent = withTitle({ component: Chronotype, title: 'Chronotype Test– Z³' });
 const ChronoResultsComponent = withTitle({ component: ChronoResults, title: 'Chronotype Results– Z³' });
 const PersonalityComponent = withTitle({ component: Personality, title: 'Personality Test – Z³' });
 const PersonalityIntroComponent = withTitle({ component: PersonalityIntro, title: 'Find Your Personality – Z³' });
 const PersonalityResultsComponent = withTitle({ component: PersonalityResults, title: 'Personality Results – Z³' });
 const MindfulnessModulesComponent = withTitle({ component: MindfulnessModules, title: 'Mindfulness – Z³' });
-const LoggingComponent = withTitle({ component: Logging, title: 'Log Exercise, Caffeine, and Stress – Z³' });
-const reportComponent = withTitle({ component: report, title: 'Report – Z³' });
+const LogOtherComponent = withTitle({ component: LogOther, title: 'Log Exercise, Caffeine, and Stress – Z³' });
+const ReportComponent = withTitle({ component: Report, title: 'Report – Z³' });
 const ExampleModuleComponent = withTitle({ component: ExampleModule, title: '5-minute Meditation – Z³' });
-const mindfulLeadershipComponent = withTitle({ component: mindfulLeadership, title: 'Mindful Leadership – Z³' });
+const MindfulLeadershipComponent = withTitle({ component: MindfulLeadership, title: 'Mindful Leadership – Z³' });
 const MindfulYogaComponent = withTitle({ component: MindfulYoga, title: 'Mindful Yoga – Z³' });
 const BodyScanMeditationComponent = withTitle({ component: BodyScanMeditation, title: '10-minute Medication – Z³' });
 const MindfulnessOverviewComponent = withTitle({ component: MindfulnessOverview, title: 'Mindfulness Overview – Z³' });
@@ -77,23 +77,23 @@ function App() {
       <Router>
           <Switch>
               <Route exact path="/" component={LandingComponent}/>
-              <Route path ="/bedtimeRoutine" component={BedtimeRoutineComponent}/>
-              <Route path ="/home" component={HomeComponent}/>
-              <Route path ="/register" component={RegisterComponent}/>
-              <Route path="/settings" component={UserSettingsComponent}/>
-              <Route path="/sleep" component={SleepComponent}/>
-              <Route path="/logSleep" component={LogSleepComponent}/>
-              <Route path="/logWake" component={logWakeComponent}/>
-              <Route path="/chronotype" component={ChronotypeComponent}/>
-              <Route path="/chronoResults" component={ChronoResultsComponent}/>
-              <Route path="/personality" component={PersonalityComponent}/>
-              <Route path="/personalityIntro" component={PersonalityIntroComponent}/>
-              <Route path="/personalityResults" component={PersonalityResultsComponent}/>
-              <Route path="/mindfulnessModules" component={MindfulnessModulesComponent}/>
-              <Route path="/logging" component={LoggingComponent}/>
-              <Route path="/report" component={reportComponent}/>
+              <Route path ="/BedtimeRoutine" component={BedtimeRoutineComponent}/>
+              <Route path ="/Home" component={HomeComponent}/>
+              <Route path ="/Register" component={RegisterComponent}/>
+              <Route path="/Settings" component={UserSettingsComponent}/>
+              <Route path="/Sleep" component={SleepComponent}/>
+              <Route path="/LogSleep" component={LogSleepComponent}/>
+              <Route path="/LogWake" component={LogWakeComponent}/>
+              <Route path="/Chronotype" component={ChronotypeComponent}/>
+              <Route path="/ChronoResults" component={ChronoResultsComponent}/>
+              <Route path="/Personality" component={PersonalityComponent}/>
+              <Route path="/PersonalityIntro" component={PersonalityIntroComponent}/>
+              <Route path="/PersonalityResults" component={PersonalityResultsComponent}/>
+              <Route path="/MindfulnessModules" component={MindfulnessModulesComponent}/>
+              <Route path="/LogOther" component={LogOtherComponent}/>
+              <Route path="/Report" component={ReportComponent}/>
               <Route path="/ExampleModule" component={ExampleModuleComponent}/>
-              <Route path="/mindfulLeadership" component={mindfulLeadershipComponent}/>
+              <Route path="/MindfulLeadership" component={MindfulLeadershipComponent}/>
               <Route path="/MindfulYoga" component={MindfulYogaComponent}/>
               <Route path="/BodyScanMeditation" component={BodyScanMeditationComponent}/>
               <Route path="/MindfulnessOverview" component={MindfulnessOverviewComponent}/>
@@ -101,7 +101,7 @@ function App() {
               <Route path="/MobileBedtimeRoutine" component = {MobileBedtimeRoutineComponent}/>
               <Route path="/MobileMindfulnessModules" component = {MobileMindfulnessModulesComponent}/>
               <Route path="/MobileExampleModule" component = {MobileExampleModuleComponent}/>
-              <Route path="/mobile" component = {MobileLandingComponent}/>
+              <Route path="/Mobile" component = {MobileLandingComponent}/>
               <Route component = {NotFoundComponent}/>
           </Switch>
       </Router>

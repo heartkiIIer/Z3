@@ -1,8 +1,8 @@
 import React, {SyntheticEvent} from 'react';
 import "../../styles/ItsBedtime.css";
-import "../../styles/personalityIntro.css";
+import "../../styles/PersonalityIntro.css";
 import {Link} from 'react-router-dom';
-import SideBar from "../sideMenu";
+import SideBar from "../SideMenu";
 
 class PersonalityIntro extends React.Component {
     constructor(props) {

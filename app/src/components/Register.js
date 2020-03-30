@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Register.css'
+import '../styles/ItsBedtime.css'
 
 class Register extends React.Component{
     constructor(props) {

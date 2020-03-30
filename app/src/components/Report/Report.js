@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/ItsBedtime.css';
+import '../../styles/ItsBedtime.css';
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import SideBar from "../SideMenu";

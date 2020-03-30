@@ -1,6 +1,6 @@
 import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
-import "../styles/ItsBedtime.css";
+import "../../styles/ItsBedtime.css";
 import EmptyCheckbox from "../../resources/icons/square-regular.svg";
 import DeleteButton from "../../resources/icons/minus-circle-solid.svg";
 import EditButton from "../../resources/icons/edit-solid.svg"

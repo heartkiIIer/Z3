@@ -315,11 +315,15 @@ function GetEvents() {
     return items
 }
 
+function Retrieve() {
+    return GetEvents()
+}
+
 class Display extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: GetEvents()
+            items: Retrieve()
         };
 
     }

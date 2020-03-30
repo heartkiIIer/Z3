@@ -12,8 +12,6 @@ const refresh = {
     fontSize: '175%'
 }
 
-let calevents, names = []
-
 export default class LoginControl extends React.Component {
     constructor(props) {
         super(props);
@@ -284,37 +282,26 @@ function getStress(events) {
         }).then( r => {
                 console.log(r);
                 let isduplicate = false;
-                let reps = [];
+                let duplicatesArray = [];
                 for (let i = 0; i < events.length; i++) {
                     for (let j = 0; j < r.length; j++) {
-                        console.log(i + " : " + events[i].title);
-                        console.log(j + " : " + r[j].event);
-                        console.log(events[i].day);
-                        console.log(r[j].day);
-                        console.log(events[i].month);
-                        console.log(r[j].month);
-                        console.log(events[i].year);
-                        console.log(r[j].year);
                         if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
                             isduplicate = true;
-                            reps.push('<b>' + events[i].title + '</b>')
+                            duplicatesArray.push('<b>' + events[i].title + '</b>')
                             //break;
                         }
                     }
                 }
-                console.log(reps)
-                console.log("duplicate?: ", isduplicate);
                 let duplicates = ''
-                for (let i = 0; i < reps.length; i++) {
-                    if(i === reps.length - 2) {
-                        duplicates += reps[i] + ", and "
-                    } else if (i === reps.length - 1){
-                        duplicates += reps[i] + ". "
+                for (let i = 0; i < duplicatesArray.length; i++) {
+                    if(i === duplicatesArray.length - 2) {
+                        duplicates += duplicatesArray[i] + ", and "
+                    } else if (i === duplicatesArray.length - 1){
+                        duplicates += duplicatesArray[i] + ". "
                     } else {
-                        duplicates += reps[i] + ", "
+                        duplicates += duplicatesArray[i] + ", "
                     }
                 }
-                console.log(duplicates)
                 if(isduplicate){
                     Swal.fire({
                         title: "Warning: Duplicate Events",
@@ -334,7 +321,6 @@ function getStress(events) {
                 else{
                     addStresstoDatabase(events);
                 }
-                console.log(names)
             }
         )
     })

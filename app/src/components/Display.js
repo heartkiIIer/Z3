@@ -21,16 +21,6 @@ export default class LoginControl extends React.Component {
         this.state = {
             sign: ApiCalendar.sign
         };
-        this.signUpdate = this.signUpdate.bind(this);
-        ApiCalendar.onLoad(() => {
-            ApiCalendar.listenSign(this.signUpdate);
-        })
-    }
-
-    signUpdate(sign: boolean): any {
-        this.setState({
-            sign: ApiCalendar.sign
-        })
     }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {
@@ -43,20 +33,87 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
-        console.log(ApiCalendar.sign)
+        //console.log(ApiCalendar.sign)
         let ele;
 
-        if (ApiCalendar.sign) {
+        if (isLoggedIn) {
             ele = <Display/>;
         } else {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
         }
 
-        return (<div>{ele}</div>);
+        return (
+            <div>
+                {ele}
+            </div>);
     }
 }
 
 let LoginControlClass = new LoginControl()
+
+class Display extends React.Component {
+    constructor(props) {
+        super(props);
+        this.fetchItems = this.fetchItems.bind(this);
+        this.state = {
+            items: []
+        };
+    }
+
+    async fetchItems() {
+        const result = await ApiCalendar.listUpcomingEvents(250);
+        // console.log(result.result.items[result.result.items.length-1].start);
+        let approved = [];
+        let todayDate = new Date().getDate();
+        let todayMonth = new Date().getMonth();
+        let todayYear = new Date().getFullYear();
+        for(let i = 0; i < result.result.items.length; i++) {
+            let calEvent = result.result.items[i].start.dateTime;
+            let calDate = new Date(calEvent).getDate();
+            let calMonth = new Date(calEvent).getMonth();
+            let calYear = new Date(calEvent).getFullYear();
+            if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
+                approved.push(result.result.items[i])
+            }
+        }
+        approved = approved.map(({summary, start, end}) => ({summary, start, end}));
+        this.setState({items: []})
+        this.setState({items: approved})
+    }
+
+    componentDidMount(): void {
+        this.fetchItems();
+    }
+
+    render() {
+        let ele;
+        if (this.state.items.length != 0) {
+            ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />))}</div>
+        } else {
+            ele = <i><p>You have no upcoming events for today.</p></i>;
+        }
+
+        return (
+            <div>
+                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
+                    <h5>Rate stress level for each event</h5>
+                    <button className='btn-info' onClick={this.fetchItems}><RefreshIcon style={refresh}/></button>
+                    <br/><br/>
+                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
+                    <br/>
+                    {ele}
+                </Tab.Pane>
+                <div className='float_center'>
+                    <div className='child'>
+                        <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
+                        <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />
+                        <br/><br/><br/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
 
 function LoginButton(props) {
     return (
@@ -271,70 +328,6 @@ function getStress(events) {
             }
         )
     })
-}
-
-class Display extends React.Component {
-    constructor(props) {
-        super(props);
-        this.fetchItems = this.fetchItems.bind(this);
-        this.state = {
-            items: []
-        };
-    }
-
-    async fetchItems() {
-        const result = await ApiCalendar.listUpcomingEvents(250);
-        // console.log(result.result.items[result.result.items.length-1].start);
-        let approved = [];
-        let todayDate = new Date().getDate();
-        let todayMonth = new Date().getMonth();
-        let todayYear = new Date().getFullYear();
-        for(let i = 0; i < result.result.items.length; i++) {
-            let calEvent = result.result.items[i].start.dateTime;
-            let calDate = new Date(calEvent).getDate();
-            let calMonth = new Date(calEvent).getMonth();
-            let calYear = new Date(calEvent).getFullYear();
-            if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
-                approved.push(result.result.items[i])
-            }
-        }
-        approved = approved.map(({summary, start, end}) => ({summary, start, end}));
-        this.setState({items: []})
-        this.setState({items: approved})
-    }
-
-    componentDidMount(): void {
-        this.fetchItems();
-    }
-
-    render() {
-        let ele;
-        if (this.state.items.length != 0) {
-            ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />))}</div>
-        } else {
-            ele = <i><p>You have no upcoming events for today.</p></i>;
-        }
-
-        return (
-            <div>
-                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
-                    <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={this.fetchItems}><RefreshIcon style={refresh}/></button>
-                    <br/><br/>
-                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
-                    <br/>
-                    {ele}
-                </Tab.Pane>
-                <div className='float_center'>
-                    <div className='child'>
-                        <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
-                        <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />
-                        <br/><br/><br/>
-                    </div>
-                </div>
-            </div>
-        );
-    }
 }
 
 

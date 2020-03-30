@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../../styles/LogSleep.css'
-import SideBar from "./SideMenu";
-import {getUserID} from "../scripts/login";
+import SideBar from "../SideMenu";
+import {getUserID} from "../../scripts/login";
 import swal from "sweetalert";
-import {InfoPopUp} from "../scripts/FitbitScript";
+import {InfoPopUp} from "../../scripts/FitbitScript";
 
 class LogSleep extends React.Component{
     constructor(props) {

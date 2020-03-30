@@ -1,10 +1,10 @@
 import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
-import "../styles/ItsBedtime.css";
+import "../../styles/ItsBedtime.css";
 import Tile from "./Tile.js";
-import SideBar from "./SideMenu";
+import SideBar from "../SideMenu";
 import MobileExampleModule from "./Mindfulness/MobileExampleModule";
-import {getUserID} from "../scripts/login";
+import {getUserID} from "../../scripts/login";
 
 class MindfulYoga extends React.Component {
     constructor(props) {

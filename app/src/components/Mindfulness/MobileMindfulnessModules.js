@@ -1,9 +1,9 @@
 import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
-import "../styles/ItsBedtime.css";
-import SideBar from "./SideMenu";
+import "../../styles/ItsBedtime.css";
+import SideBar from "../SideMenu";
 import MobileTile from "./MobileTile";
-import {getUserID} from "../scripts/login";
+import {getUserID} from "../../scripts/login";
 
 
 /**

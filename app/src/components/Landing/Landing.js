@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../styles/Landing.css'
 import '../../scripts/firebase'
-import '../scripts/login'
-import {getUserID} from "../scripts/login";
+import '../../scripts/login'
+import {getUserID} from "../../scripts/login";
 
 class Landing extends React.Component {
     constructor(props) {

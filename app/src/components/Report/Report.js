@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import '../../styles/ItsBedtime.css';
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import SideBar from "./SideMenu";
+import SideBar from "../SideMenu";
 import ReportComponent from "./ReportComponent";
-import {getUserID} from "../scripts/login";
+import {getUserID} from "../../scripts/login";
 
 class Report extends React.Component{
     constructor(props) {

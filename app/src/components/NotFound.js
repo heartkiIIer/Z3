@@ -1,8 +1,6 @@
 import React from 'react';
 import "../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../styles/ItsBedtime.css";
-import Tile from "./Mindfulness/Tile.js";
-
 
 /**
  * @author Eliazbeth Del Monaco

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../../styles/LogSleep.css'
-import '../styles/ItsBedtime.css'
-import SideBar from "./SideMenu";
-import {getUserID} from "../scripts/login";
+import '../../styles/ItsBedtime.css'
+import SideBar from "../SideMenu";
+import {getUserID} from "../../scripts/login";
 import swal from "sweetalert";
-import {InfoPopUp} from "../scripts/FitbitScript";
+import {InfoPopUp} from "../../scripts/FitbitScript";
 
 
 class LogWake extends React.Component{

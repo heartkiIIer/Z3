@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useRef, SyntheticEvent} from 'react';
-import ApiCalendar from 'react-google-calendar-api';
+import React, {SyntheticEvent} from 'react';
+import ApiCalendar from "react-google-calendar-api"
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
 import SingleEvent from "./SingleEvent";

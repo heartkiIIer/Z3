@@ -1,12 +1,12 @@
 import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
-import "../styles/ItsBedtime.css";
-import SideBar from "./SideMenu";
-import {deleteAcc} from "../scripts/SettingsScript"
+import "../../styles/ItsBedtime.css";
+import SideBar from "../SideMenu";
+import {deleteAcc} from "../../scripts/SettingsScript"
 import swal from 'sweetalert'
 import TaskSetting from "./TaskSetting"
-import {getUserID} from "../scripts/login";
-import {OAUTHSettings} from "../scripts/FitbitScript";
+import {getUserID} from "../../scripts/login";
+import {OAUTHSettings} from "../../scripts/FitbitScript";
 
 /**
  * @author Eliazbeth Del Monaco

@@ -52,7 +52,7 @@ export default class LoginControl extends React.Component {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
         }
 
-        return ({ele});
+        return (<div>{ele}</div>);
     }
 }
 

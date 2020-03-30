@@ -1,6 +1,6 @@
 import React from 'react';
-import "../../styles/LogOther.css";
 import "../../styles/ItsBedtime.css";
+import "../../styles/LogOther.css";
 import {AllTabs} from "./AllTabs";
 import SideBar from "../SideMenu";
 import {getUserID} from "../../scripts/login";

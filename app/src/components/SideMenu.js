@@ -1,5 +1,5 @@
 import React from "react";
-import {slide as Menu} from "react-burger-menu";
+import {slide as Menu} from "react-burger-menu"
 import {getUserID, logout} from '../scripts/login'
 import {OAUTH} from "../scripts/FitbitScript";
 

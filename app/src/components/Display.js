@@ -21,6 +21,16 @@ export default class LoginControl extends React.Component {
         this.state = {
             sign: ApiCalendar.sign
         };
+        this.signUpdate = this.signUpdate.bind(this);
+        ApiCalendar.onLoad(() => {
+            ApiCalendar.listenSign(this.signUpdate);
+        })
+    }
+
+    signUpdate(sign: boolean): any {
+        this.setState({
+            sign: ApiCalendar.sign
+        })
     }
 
     handleItemClick(event: SyntheticEvent<any>, name: string): void {
@@ -33,7 +43,7 @@ export default class LoginControl extends React.Component {
 
     render() {
         const isLoggedIn = this.state.sign;
-        //console.log(ApiCalendar.sign)
+        console.log(ApiCalendar.sign)
         let ele;
 
         if (isLoggedIn) {

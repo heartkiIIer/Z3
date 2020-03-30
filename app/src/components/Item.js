@@ -113,7 +113,7 @@ const Item = props => {
     }
 
     return (
-        <div isvisible={!fading} style={visible ? null : { display: "none" }}>
+        <div isvisible={!fading.toString()} style={visible ? null : { display: "none" }}>
             <Typography id="discrete-slider-restrict" gutterBottom>
                 <b>{summary}</b> <span>{dayOfWeek}</span> <i>{month} {day} {year}</i> {time}
                 <button class="btn-danger" style={buttonStyle} onClick={hideMe}>Hide</button>

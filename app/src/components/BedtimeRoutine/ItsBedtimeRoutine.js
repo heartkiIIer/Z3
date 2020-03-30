@@ -1,6 +1,6 @@
 import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
-import "../../styles/ItsBedtime.css";
+import "../../styles/ItsBedtime.css"
 import "../../styles/PersonalityIntro.css";
 import {CircularProgressbar, CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css"

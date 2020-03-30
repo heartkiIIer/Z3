@@ -99,7 +99,7 @@ class Events extends React.Component {
     render() {
         let ele;
         if (this.state.events.length != 0) {
-            ele = <div>{this.state.events.map(event => (<SingleEvent key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime}/>))}</div>
+            ele = <div>{this.state.events.map(event => (<SingleEvent key={event.id} itemSum={event.summary} itemStart={event.start.dateTime} itemEnd={event.end.dateTime}/>))}</div>
         } else {
             ele = <i><p>You have no upcoming events for today.</p></i>;
         }

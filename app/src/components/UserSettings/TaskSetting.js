@@ -3,7 +3,7 @@ import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbo
 import "../../styles/ItsBedtime.css";
 import EmptyCheckbox from "../../resources/icons/square-regular.svg";
 import DeleteButton from "../../resources/icons/minus-circle-solid.svg";
-import EditButton from "../../resources/icons/edit-solid.svg.svg"
+import EditButton from "../../resources/icons/edit-solid.svg"
 import SaveButton from "../../resources/icons/save-solid.svg"
 
 class TaskSetting extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/Landing.css'
+import '../styles/Landing.css'
 import '../../scripts/firebase'
 import '../../scripts/login'
 import {getUserID} from "../../scripts/login";

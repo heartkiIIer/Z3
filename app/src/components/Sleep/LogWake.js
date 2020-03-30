@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../../styles/LogSleep.css'
-import '../../styles/ItsBedtime.css'
+import '../styles/LogSleep.css'
+import '../styles/ItsBedtime.css'
 import SideBar from "../SideMenu";
 import {getUserID} from "../../scripts/login";
 import swal from "sweetalert";

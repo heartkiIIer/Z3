@@ -63,7 +63,7 @@ class PersonalityIntro extends React.Component {
                         When you are done taking the quiz, report your scores for the
                         Big Five Personality Test
                     </h5>
-                    <Link to="/personality">
+                    <Link to="/Personality">
                         <button className="test_btn person_img shadow p-3 mb-5" onClick={(e) => this.openURL(e)}>Personailty Test</button>
                     </Link>
 
@@ -77,7 +77,7 @@ class PersonalityIntro extends React.Component {
                         Chronotype tells you whether you are a morning or evening type. A
                         short survey will help you find out your chronotype!
                     </h5>
-                    <Link to="/chronotype">
+                    <Link to="/Chronotype">
                         <button className="test_btn chrono_img shadow p-3 mb-5">Chronotype Test</button>
                     </Link>
                 </div>

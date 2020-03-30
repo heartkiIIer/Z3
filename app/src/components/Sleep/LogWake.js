@@ -68,7 +68,7 @@ class LogWake extends React.Component{
                     icon: "success",
                     text: "Successfully logged wake time."
                 }).then(()=>{
-                    window.location.replace("https://sleepwebapp.wpi.edu/home");
+                    window.location.replace("https://sleepwebapp.wpi.edu/Home");
                 });
                 console.log("Completed")
             })

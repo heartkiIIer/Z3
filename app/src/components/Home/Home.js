@@ -214,13 +214,13 @@ class Home extends React.Component {
 
     setSleepState(){
         if(this.getAsleep()===true){
-            return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
+            return <Link to="/LogSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
         else if(this.getAsleep() === false){
-            return <Link to="/logWake"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
+            return <Link to="/LogWake"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
         else{
-            return <Link to="/logSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
+            return <Link to="/LogSleep"><HomeIcon spanID={"sleepIcon_h"} iconClass={"iconImages_h sleepIconImg"} iconInfo={"Log Your Sleep"}/></Link>
         }
     }
 
@@ -453,7 +453,7 @@ class Home extends React.Component {
             window.location.assign(OAUTH); //authenticate user for fibit and grab fitbit data
         }
         else {
-            window.location.assign("https://sleepwebapp.wpi.edu/report");
+            window.location.assign("https://sleepwebapp.wpi.edu/Report");
         }
     }
 
@@ -467,7 +467,7 @@ class Home extends React.Component {
                     </div>
                     <div>
                         <button id="logout_icon" className="float-right" onClick={logout}></button>
-                        <Link to="/settings">
+                        <Link to="/Settings">
                             <div id="setting_icon" className="float-right"></div>
                         </Link>
                     </div>
@@ -475,7 +475,7 @@ class Home extends React.Component {
                 <div className="col-lg-6 circleview" >
                     <ul className="circle">
                         <li>
-                            <Link to="/sleep">
+                            <Link to="/Sleep">
                                 <HomeIcon spanID={"sleepIcon_h"}
                                           iconClass={"iconImages_h sleepIconImg"}
                                           iconInfo={"Log Your Sleep"}/>
@@ -489,28 +489,28 @@ class Home extends React.Component {
                             </a>
                         </li>
                         <li>
-                            <Link to="/logging">
+                            <Link to="/LogOther">
                                 <HomeIcon spanID={"logIcon_h"}
                                           iconClass={"iconImages_h logIconImg_h"}
                                           iconInfo={"Log Your Exercise, Caffeine, & Stress"}/>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/mindfulnessModules">
+                            <Link to="/MindfulnessModules">
                                 <HomeIcon spanID={"mindIcon_h"}
                                           iconClass={"iconImages_h mindIconImg_h"}
                                           iconInfo={"Mindfulness Modules"}/>
                             </Link>
                         </li>
                         <li>
-                            <Link to="personalityIntro">
+                            <Link to="PersonalityIntro">
                                 <HomeIcon spanID={"perIcon"}
                                           iconClass={"iconImages_h perIconImg"}
                                           iconInfo={"Personality Test"}/>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/bedtimeRoutine">
+                            <Link to="/BedtimeRoutine">
                                 <HomeIcon spanID={"bedIcon"}
                                           iconClass={"iconImages_h bedIconImg"}
                                           iconInfo={"Your Bedtime Routine"}/>

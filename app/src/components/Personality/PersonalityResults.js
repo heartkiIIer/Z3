@@ -148,10 +148,10 @@ class PersonalityResults extends React.Component {
                     <p id="n_score">Score: <span>{this.getNeuroticism()}</span></p>
 
                     <div className="d-flex justify-content-between">
-                        <Link to="/personality">
+                        <Link to="/Personality">
                             <button className="btn" onClick={(e) => this.openURL(e)}>Retake Personality Test</button>
                         </Link>
-                        <Link to="/personalityIntro">
+                        <Link to="/PersonalityIntro">
                             <button className="btn">Done</button>
                         </Link>
                     </div>

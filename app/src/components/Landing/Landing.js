@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../styles/Landing.css'
-import {Link} from 'react-router-dom';
-import '../scripts/firebase'
+import '../../scripts/firebase'
 import '../scripts/login'
 import {getUserID} from "../scripts/login";
 

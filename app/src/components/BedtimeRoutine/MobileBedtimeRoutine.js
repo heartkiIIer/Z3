@@ -1,12 +1,6 @@
 import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../../styles/ItsBedtime.css";
-import SaveButton from "../resources/icons/save-solid.svg";
-import EditButton from "../resources/icons/edit-solid.svg";
-import DeleteButton from "../resources/icons/minus-circle-solid.svg";
-import AddButton from "../resources/icons/plus-circle-solid.svg";
-import EmptyCheckbox from "../resources/icons/square-regular.svg";
-import CheckedBox from "../resources/icons/check-square-solid.svg";
 import SideBar from "./SideMenu";
 import {buildStyles, CircularProgressbar, CircularProgressbarWithChildren} from "react-circular-progressbar";
 import {getUserID} from "../scripts/login";

@@ -363,7 +363,7 @@ class Display extends React.Component {
                     <button className='btn-info' ><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
-                    <br/><br/>
+                    <br/>
                     {ele}
                 </Tab.Pane>
                 <div className='float_center'>

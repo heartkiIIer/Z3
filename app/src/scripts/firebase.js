@@ -1,4 +1,4 @@
-var Firebase = require('firebase');
+var firebase = require('firebase');
 
 (function(){
     //Firebase Configurations under sleephealth.z3@gmail.com account
@@ -13,8 +13,8 @@ var Firebase = require('firebase');
         measurementId: "G-7ECGRCW0S1"
     };
     // Initialize Firebase
-    Firebase.initializeApp(firebaseConfig);
-    Firebase.analytics();
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
 
-    module.exports = Firebase;
+    module.exports = firebase;
 })();

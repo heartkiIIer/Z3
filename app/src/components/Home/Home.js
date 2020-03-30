@@ -2,7 +2,7 @@ import React from 'react';
 import '../../styles/Home.css'
 import HomeIcon from "./HomeIcon.js";
 import {Link} from 'react-router-dom';
-import {logout, getUserID, getUserImage, getUserName} from '../scripts/login'
+import {logout, getUserID, getUserImage, getUserName} from '../scripts/Login'
 import swal from 'sweetalert'
 import WeatherHome from './Weather'
 import {OAUTH} from "../scripts/FitbitScript";

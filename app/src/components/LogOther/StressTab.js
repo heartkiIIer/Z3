@@ -60,7 +60,7 @@ export default class StressTab extends React.Component {
     }
 }
 
-let LoginControlClass = new LoginControl()
+let StressTabClass = new StressTab()
 
 class Events extends React.Component {
     constructor(props) {
@@ -117,7 +117,7 @@ class Events extends React.Component {
                 <div className='float_center'>
                     <div className='child'>
                         <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
-                        <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />
+                        <LogoutButton onClick={(e) => StressTabClass.handleItemClick(e, 'sign-out')} />
                         <br/><br/><br/>
                     </div>
                 </div>

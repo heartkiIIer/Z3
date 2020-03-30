@@ -1,6 +1,6 @@
 import React from "react";
 import {slide as Menu } from "react-burger-menu";
-import {getUserID, logout} from '../scripts/Login'
+import {getUserID, logout} from '../scripts/login'
 import {OAUTH} from "../scripts/FitbitScript";
 
 //redirect user to autentication with fibit and grab fitbit data if the

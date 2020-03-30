@@ -1,4 +1,4 @@
-import {getUserID} from "./Login"; // get user ID
+import {getUserID} from "./login"; // get user ID
 import swal from "sweetalert2" // library for pop ups
 
 /**

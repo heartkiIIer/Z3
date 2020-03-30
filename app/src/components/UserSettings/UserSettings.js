@@ -5,7 +5,7 @@ import SideBar from "./SideMenu";
 import {deleteAcc} from "../scripts/SettingsScript"
 import swal from 'sweetalert'
 import TaskSetting from "./TaskSetting"
-import {getUserID} from "../scripts/Login";
+import {getUserID} from "../scripts/login";
 import {OAUTHSettings} from "../scripts/FitbitScript";
 
 /**

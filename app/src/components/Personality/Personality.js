@@ -3,7 +3,7 @@ import "../../styles/ItsBedtime.css";
 import "../../styles/PersonalityIntro.css";
 import SideBar from "../SideMenu";
 import swal from 'sweetalert'
-import {getUserID} from "../../scripts/Login";
+import {getUserID} from "../../scripts/login";
 
 class Personality extends React.Component{
     constructor(props) {

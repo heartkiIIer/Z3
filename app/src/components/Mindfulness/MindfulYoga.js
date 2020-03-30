@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../../styles/ItsBedtime.css";
-import SideBar from "../SideMenu";
+import SideBar from "../sideMenu";
 import {getUserID} from "../../scripts/login";
 
 class MindfulYoga extends React.Component {

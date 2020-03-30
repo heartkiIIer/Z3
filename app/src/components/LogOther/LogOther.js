@@ -2,7 +2,7 @@ import React from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/LogOther.css";
 import {AllTabs} from "./AllTabs";
-import SideBar from "../SideMenu";
+import SideBar from "../sideMenu";
 import {getUserID} from "../../scripts/login";
 import {InfoPopUp} from "../../scripts/FitbitScript";
 

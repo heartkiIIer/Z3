@@ -2,7 +2,7 @@ import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../../styles/ItsBedtime.css";
 import Tile from "./Tile"
-import SideBar from "../SideMenu";
+import SideBar from "../sideMenu";
 import MobileMindfulnessModules from "./MobileMindfulnessModules";
 import {getUserID} from "../../scripts/login";
 

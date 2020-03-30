@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/PersonalityIntro.css";
-import SideBar from "../SideMenu";
+import SideBar from "../sideMenu";
 import swal from 'sweetalert'
 import {getUserID} from "../../scripts/login";
 

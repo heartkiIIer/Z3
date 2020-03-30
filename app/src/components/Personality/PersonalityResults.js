@@ -2,7 +2,7 @@ import React, {SyntheticEvent} from 'react';
 import "../../styles/ItsBedtime.css";
 import "../../styles/PersonalityIntro.css";
 import {Link} from 'react-router-dom';
-import SideBar from "../SideMenu";
+import SideBar from "../sideMenu";
 import {getUserID} from "../../scripts/login";
 
 class PersonalityResults extends React.Component {

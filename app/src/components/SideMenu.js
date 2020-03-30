@@ -1,5 +1,5 @@
 import React from "react";
-import {slide as Menu } from "react-burger-menu";
+import {slide as Menu} from "react-burger-menu";
 import {getUserID, logout} from '../scripts/login'
 import {OAUTH} from "../scripts/FitbitScript";
 
@@ -35,28 +35,28 @@ function useFitbit(){
 export default props => {
     return (
         <Menu {...props}>
-            <a className="menu-item" href='/home'>
+            <a className="menu-item" href='/Home'>
                 Home
             </a>
-            <a className="menu-item" href="/sleep">
+            <a className="menu-item" href="/Sleep">
                 Log Sleep
             </a>
-            <a className="menu-item" href="/logging">
+            <a className="menu-item" href="/LogOther">
                 Log Exercise, Caffeine, and Stress
             </a>
             <a className="menu-item" onClick={useFitbit}>
                 Report
             </a>
-            <a className="menu-item" href="/mindfulnessModules">
+            <a className="menu-item" href="/MindfulnessModules">
                 Mindfulness
             </a>
-            <a className="menu-item" href="/personalityIntro">
+            <a className="menu-item" href="/PersonalityIntro">
                 Personality Test
             </a>
-            <a className="menu-item" href="/bedtimeRoutine">
+            <a className="menu-item" href="/BedtimeRoutine">
                 Bedtime Routine
             </a>
-            <a className="menu-item" href="/settings">
+            <a className="menu-item" href="/Settings">
                 Settings
             </a>
             <a className="menu-item" onClick={logout}>

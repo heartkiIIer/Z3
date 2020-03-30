@@ -14,7 +14,7 @@ class Landing extends React.Component {
                                 <form>
                                     <input className="inp" type="text" name="username" placeholder="Username or Email"/>
                                     <input className="inp" type="password" name="password" placeholder="Password"/>
-                                    <Link to="/home">
+                                    <Link to="/Home">
                                         <button className="btn" id="loginbtn">Login</button>
                                     </Link>
                                 </form>
@@ -25,8 +25,10 @@ class Landing extends React.Component {
                                 <h1 className="whiteText">Z<sup>3</sup></h1>
                                 <h3 className="whiteText">Stabilize your sleep and bring sleep back into your control! </h3>
                                 <div>
-                                    <Link to="/register">
-                                        <button style={{marginRight: "20px"}} className="btn" id="joinbtn">Join Us! Register Here</button>
+                                    <Link to="/Register">
+                                        <button style={{marginRight: "20px"}} className="btn" id="joinbtn">Join Us!
+                                            Register Here
+                                        </button>
                                     </Link>
                                     <a href={"#features"}>
                                         <button className="btn" id="morebtn">Learn What We Are All About</button>

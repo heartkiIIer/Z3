@@ -52,11 +52,7 @@ export default class LoginControl extends React.Component {
             ele = <LoginButton onClick={(e) => this.handleItemClick(e, 'sign-in')} />;
         }
 
-        return (
-            <div>
-                {ele}
-            </div>
-        );
+        return ({ele});
     }
 }
 
@@ -319,11 +315,23 @@ function GetEvents() {
     return items
 }
 
-function Display() {
-    let button = <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />;
-    let items = GetEvents()
-    console.log(items)
-    if (items.length != 0) {
+class Display extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: GetEvents()
+        };
+
+    }
+
+    render() {
+        let ele;
+        if (this.state.items.length != 0) {
+            ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />))}</div>
+        } else {
+            ele = <i><p>You have no upcoming events for today.</p></i>;
+        }
+
         return (
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
@@ -332,39 +340,17 @@ function Display() {
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/><br/>
-                    <div id='calevent'>
-                        {items.map(item => (
-                            <Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />
-                        ))}
-                    </div>
+                    {ele}
                 </Tab.Pane>
                 <div className='float_center'>
                     <div className='child'>
                         <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
-                        {button}
+                        <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />
                         <br/><br/><br/>
                     </div>
                 </div>
             </div>
-        )
-    } else {
-        return (
-            <div>
-                <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
-                    <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' ><RefreshIcon style={refresh}/></button>
-                    <br/><br/>
-                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
-                    <br/>
-                    <i><p>You have no upcoming events for today.</p></i>
-                </Tab.Pane>
-                <div className='float_center'>
-                    <div className='child'>
-                        {button}
-                        <br/><br/><br/>
-                    </div>
-                </div></div>
-        )
+        );
     }
 }
 

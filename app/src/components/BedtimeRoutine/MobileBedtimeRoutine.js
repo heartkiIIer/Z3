@@ -3,7 +3,7 @@ import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbo
 import "../../styles/ItsBedtime.css";
 import SideBar from "../SideMenu";
 import {buildStyles, CircularProgressbar, CircularProgressbarWithChildren} from "react-circular-progressbar";
-import {getUserID} from "../scripts/login";
+import {getUserID} from "../../scripts/login";
 import BedtimeProgressBar from "./BedtimeProgressBar";
 
 

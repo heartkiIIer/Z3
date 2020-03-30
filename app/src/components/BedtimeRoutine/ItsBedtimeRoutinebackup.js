@@ -5,7 +5,7 @@ import {CircularProgressbar, CircularProgressbarWithChildren, buildStyles} from 
 import "react-circular-progressbar/dist/styles.css"
 import SideBar from "../SideMenu";
 import MobileBedtimeRoutine from "./MobileBedtimeRoutine";
-import {getUserID} from "../scripts/login";
+import {getUserID} from "../../scripts/login";
 
 /**
  * @author Eliazbeth Del Monaco, Sarah Armstrong

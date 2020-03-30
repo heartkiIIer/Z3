@@ -151,10 +151,72 @@ function LogoutButton(props) {
     );
 }
 
+
+function getStress(events) {
+    let idPromise = getUserID();
+    let today = new Date();
+    idPromise.then((uid)=>{
+        const data = JSON.stringify({uid: uid, month: today.getMonth(), day: today.getDate(), year: today.getFullYear()});
+        fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+        }).then( r => {
+            return r.json();
+        }).then( r => {
+                console.log(r);
+                let isduplicate = false;
+                let duplicatesArray = [];
+                for (let i = 0; i < events.length; i++) {
+                    for (let j = 0; j < r.length; j++) {
+                        if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
+                            isduplicate = true;
+                            duplicatesArray.push('<b>' + events[i].title + '</b>')
+                            //break;
+                        }
+                    }
+                }
+                let duplicates = ''
+                for (let i = 0; i < duplicatesArray.length; i++) {
+                    if(i === duplicatesArray.length - 2) {
+                        duplicates += duplicatesArray[i] + ", and "
+                    } else if (i === duplicatesArray.length - 1){
+                        duplicates += duplicatesArray[i] + ". "
+                    } else {
+                        duplicates += duplicatesArray[i] + ", "
+                    }
+                }
+                if(isduplicate){
+                    Swal.fire({
+                        title: "Warning: Duplicate Events",
+                        icon: "warning",
+                        html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Yes, overwrite!',
+                        cancelButtonColor: '#d33'
+                    }).then(result => {
+                            if(result.value) {
+                                addStresstoDatabase(events);
+                            }
+                        }
+                    )
+                }
+                else{
+                    addStresstoDatabase(events);
+                }
+            }
+        )
+    })
+}
+
 function submitStressEntry() {
     let events = []
     let parentElement = document.getElementById('mainTab').children
-    for (let i = 7; i < parentElement.length; i++) {
+    for (let i = 6; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
         let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
         switch (date) {
@@ -263,67 +325,6 @@ function addStresstoDatabase(events){
             })
         })
     });
-}
-
-function getStress(events) {
-    let idPromise = getUserID();
-    let today = new Date();
-    idPromise.then((uid)=>{
-        const data = JSON.stringify({uid: uid, month: today.getMonth(), day: today.getDate(), year: today.getFullYear()});
-        fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: data
-        }).then( r => {
-            return r.json();
-        }).then( r => {
-                console.log(r);
-                let isduplicate = false;
-                let duplicatesArray = [];
-                for (let i = 0; i < events.length; i++) {
-                    for (let j = 0; j < r.length; j++) {
-                        if(events[i].title === r[j].event && events[i].day === r[j].day && events[i].month === r[j].month && events[i].year === r[j].year) {
-                            isduplicate = true;
-                            duplicatesArray.push('<b>' + events[i].title + '</b>')
-                            //break;
-                        }
-                    }
-                }
-                let duplicates = ''
-                for (let i = 0; i < duplicatesArray.length; i++) {
-                    if(i === duplicatesArray.length - 2) {
-                        duplicates += duplicatesArray[i] + ", and "
-                    } else if (i === duplicatesArray.length - 1){
-                        duplicates += duplicatesArray[i] + ". "
-                    } else {
-                        duplicates += duplicatesArray[i] + ", "
-                    }
-                }
-                if(isduplicate){
-                    Swal.fire({
-                        title: "Warning: Duplicate Events",
-                        icon: "warning",
-                        html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Yes, overwrite!',
-                        cancelButtonColor: '#d33'
-                    }).then(result => {
-                            if(result.value) {
-                                addStresstoDatabase(events);
-                            }
-                        }
-                    )
-                }
-                else{
-                    addStresstoDatabase(events);
-                }
-            }
-        )
-    })
 }
 
 

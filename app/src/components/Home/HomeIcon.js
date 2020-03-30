@@ -1,5 +1,5 @@
 import React, {SyntheticEvent} from 'react';
-import '../../styles/Home.css'
+import '../../styles/home.css'
 
 class HomeIcon extends React.Component {
     constructor(props) {

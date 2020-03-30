@@ -7,7 +7,7 @@ import DeleteButton from "../../resources/icons/minus-circle-solid.svg";
 import AddButton from "../../resources/icons/plus-circle-solid.svg";
 import EmptyCheckbox from "../../resources/icons/square-regular.svg";
 import CheckedBox from "../../resources/icons/check-square-solid.svg"
-import SideBar from "../sideMenu";
+import SideBar from "../SideMenu";
 
 
 /**

@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../styles/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css";
 import "../../styles/ItsBedtime.css";
-import SideBar from "../sideMenu";
+import SideBar from "../SideMenu";
 import {deleteAcc} from "../../scripts/SettingsScript"
 import swal from 'sweetalert'
 import TaskSetting from "./TaskSetting"

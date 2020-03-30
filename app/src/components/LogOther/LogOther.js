@@ -1,8 +1,8 @@
 import React from 'react';
 import "../../styles/ItsBedtime.css";
-import "../../styles/LogOther.css";
+import "../../styles/logging.css";
 import {AllTabs} from "./AllTabs";
-import SideBar from "../sideMenu";
+import SideBar from "../SideMenu";
 import {getUserID} from "../../scripts/login";
 import {InfoPopUp} from "../../scripts/FitbitScript";
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../styles/ItsBedtime.css';
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import SideBar from "../sideMenu";
+import SideBar from "../SideMenu";
 import ReportComponent from "./ReportComponent";
 import {getUserID} from "../../scripts/login";
 

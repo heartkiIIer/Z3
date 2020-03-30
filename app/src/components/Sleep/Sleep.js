@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../../styles/LogSleep.css'
-import SideBar from "../sideMenu";
+import '../../styles/logSleep.css'
+import SideBar from "../SideMenu";
 import {getUserID} from "../../scripts/login";
 
 class Sleep extends React.Component{

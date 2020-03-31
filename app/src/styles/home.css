@@ -37,7 +37,7 @@
     margin: 7%;
 }
 .transparent{
-    background: transparent;
+    pointer-events: none;
 }
 #sleepIcon_h{
     transform: rotate(var(--offsetDeg));

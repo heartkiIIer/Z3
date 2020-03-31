@@ -474,42 +474,42 @@ class Home extends React.Component {
                 </div>
                 <div className="col-lg-6 circleview" >
                     <ul className="circle">
-                        <li id="logsleepicon">
+                        <li className="icon">
                             <Link to="/sleep">
                                 <HomeIcon spanID={"sleepIcon_h"}
                                           iconClass={"iconImages_h sleepIconImg"}
                                           iconInfo={"Log Your Sleep"}/>
                             </Link>
                         </li>
-                        <li>
+                        <li className="icon">
                             <a onClick={this.usefitbit.bind(this)}>
                                 <HomeIcon spanID={"reportIcon_h"}
                                           iconClass={"iconImages_h reportIconImg"}
                                           iconInfo={"Personal Report"}/>
                             </a>
                         </li>
-                        <li>
+                        <li className="icon">
                             <Link to="/logging">
                                 <HomeIcon spanID={"logIcon_h"}
                                           iconClass={"iconImages_h logIconImg_h"}
                                           iconInfo={"Log Your Exercise, Caffeine, & Stress"}/>
                             </Link>
                         </li>
-                        <li>
+                        <li className="icon">
                             <Link to="/mindfulnessModules">
                                 <HomeIcon spanID={"mindIcon_h"}
                                           iconClass={"iconImages_h mindIconImg_h"}
                                           iconInfo={"Mindfulness Modules"}/>
                             </Link>
                         </li>
-                        <li>
+                        <li className="icon">
                             <Link to="personalityIntro">
                                 <HomeIcon spanID={"perIcon"}
                                           iconClass={"iconImages_h perIconImg"}
                                           iconInfo={"Personality Test"}/>
                             </Link>
                         </li>
-                        <li>
+                        <li className="icon">
                             <Link to="/bedtimeRoutine">
                                 <HomeIcon spanID={"bedIcon"}
                                           iconClass={"iconImages_h bedIconImg"}

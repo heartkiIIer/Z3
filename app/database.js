@@ -285,8 +285,7 @@ function addFitbitSleepEntryById(req, res, id, start, end) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            // let uid = internalId.rows[0].user_id;
-            let uid = 1;
+            let uid = internalId.rows[0].user_id;
             pool.query("INSERT INTO SleepEntry(user_id, start_sleep, end_sleep) SELECT "+
                 uid+", "+starttime+", "+endtime+ ' WHERE NOT EXISTS(SELECT 1 FROM sleepentry WHERE'+
                 " start_sleep <= "+starttime+" AND end_sleep >= "+starttime+" AND user_id="+uid+" OR start_sleep >= "

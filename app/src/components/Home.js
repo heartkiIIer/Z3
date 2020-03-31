@@ -510,13 +510,11 @@ class Home extends React.Component {
                             </Link>
                         </li>
                         <li className="noevents">
-                            <div className="allevents">
                             <Link to="/bedtimeRoutine">
                                 <HomeIcon spanID={"bedIcon"}
                                           iconClass={"iconImages_h bedIconImg"}
                                           iconInfo={"Your Bedtime Routine"}/>
                             </Link>
-                            </div>
                         </li>
                     </ul>
                 </div>

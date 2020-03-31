@@ -44,7 +44,7 @@ class HomeIcon extends React.Component {
         };
         const { containerStyle } = styles;
         return (
-            <span style={containerStyle} id={this.props.spanID} className="dot_h">
+            <span style={containerStyle} id={this.props.spanID} className="dot_h allevents">
                 <div style={containerStyle} className="flip-card">
                     <div className="flip-card-inner">
                         <div className="flip-card-front">

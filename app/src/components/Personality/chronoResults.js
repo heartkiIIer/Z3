@@ -132,7 +132,7 @@ class ChronoResults extends React.Component {
         else{
             //grabs the users most recent chronotype quiz answers
             var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
-            return qAnswers.date.substring(0, 10);
+            return qAnswers.date.substring(5, 10) + "-" + qAnswers.date.substring(0, 4);
         }
     }
     render(){

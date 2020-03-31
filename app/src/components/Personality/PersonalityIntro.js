@@ -3,22 +3,33 @@ import "../../styles/ItsBedtime.css";
 import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
 import SideBar from "../sideMenu";
+import {getUserID} from "../../scripts/login";
 
 class PersonalityIntro extends React.Component {
     constructor(props) {
         super(props);
-        this.openURL = this.openURL.bind(this);
+        this.openURL = this.openURL.bind(this); // eww js
         if(window.innerWidth >= 700){
             this.state = {
                 padding: '75px 75px 40px',
+                takenperson: false,
+                takenchorno: false
             };
         }
         else{
             this.state = {
                 padding: '17% 17% 5%',
+                takenperson: false,
+                takenchorno: false
             };
         }
     }
+    componentDidMount() {
+        let currentcomponent = this;
+        this.personalitytaken(currentcomponent);
+        this.chornotaken(currentcomponent);
+    }
+
     //opens the URL page of the personality test in a different window.
     openURL(event: SyntheticEvent<any>): void {
         window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
@@ -37,6 +48,65 @@ class PersonalityIntro extends React.Component {
                 })
             }
         })
+    }
+    //stores a boolean stating if the user has taken the personality test
+    personalitytaken(currentcomponent){
+        let idPromise = getUserID(); //get signed in user's ID
+        idPromise.then(uid=>{
+            const data = JSON.stringify({uid: uid});
+            //request to get user's personality scores
+            fetch('https://sleepwebapp.wpi.edu:5000/getPersonality', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                console.log(r);
+                console.log(typeof r);
+                if(r.length > 0){
+                    currentcomponent.setState({takenperson: true});
+                }
+            });
+        });
+    }
+    //stores a boolean stating if the user has taken the chronotype test
+    chornotaken(currentcomponent){
+        let idPromise = getUserID();
+        idPromise.then(uid =>{
+            const data = JSON.stringify({uid: uid});
+            //request chronotype of user data from the server and database
+            fetch('https://sleepwebapp.wpi.edu:5000/getChronoAnswers', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then(r => {
+                console.log(r);
+                console.log(typeof r);
+                if(r.length > 0){
+                    currentcomponent.setState({takenchrono: true});
+                }
+            });
+        });
+    }
+    //redirect to test or results based on if user has taken test
+    getredirect(){
+        let redirectURL = ["/personality", "/chronotype"];
+        if(this.state.takenperson){
+            redirectURL[0] = "/personalityResults";
+        }
+        if(this.state.takenchorno){
+            redirectURL[1] = "/chronoResults";
+        }
+        return redirectURL;
     }
     render(){
         this.resize();
@@ -63,7 +133,7 @@ class PersonalityIntro extends React.Component {
                         When you are done taking the quiz, report your scores for the
                         Big Five Personality Test
                     </h5>
-                    <Link to="/personality">
+                    <Link to={this.getredirect()[0]}>
                         <button className="test_btn person_img shadow p-3 mb-5" onClick={(e) => this.openURL(e)}>Personailty Test</button>
                     </Link>
 
@@ -77,7 +147,7 @@ class PersonalityIntro extends React.Component {
                         Chronotype tells you whether you are a morning or evening type. A
                         short survey will help you find out your chronotype!
                     </h5>
-                    <Link to="/chronotype">
+                    <Link to={this.getredirect()[1]}>
                         <button className="test_btn chrono_img shadow p-3 mb-5">Chronotype Test</button>
                     </Link>
                 </div>

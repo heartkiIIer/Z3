@@ -37,7 +37,7 @@
     margin: 7%;
 }
 .leftPadding{
-    padding-bottom: 70px;
+    background: transparent;
 }
 #sleepIcon_h{
     transform: rotate(var(--offsetDeg));

@@ -509,7 +509,7 @@ class Home extends React.Component {
                                           iconInfo={"Personality Test"}/>
                             </Link>
                         </li>
-                        <li className="leftPadding">
+                        <li className="transparent">
                             <Link to="/bedtimeRoutine">
                                 <HomeIcon spanID={"bedIcon"}
                                           iconClass={"iconImages_h bedIconImg"}

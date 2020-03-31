@@ -42,7 +42,6 @@ if (url.includes("report") && url.includes("#")) {
     sleepXhr.onload = function () {
         if (sleepXhr.status === 200) {
             let logs = JSON.parse(sleepXhr.responseText).sleep;
-            console.log(logs);
             //each sleep log data, parse and store in database
             for(let i = 0; i < logs.length; i++){
                 //parse date and time, reformat date and time to allow translation to timestamp in database
@@ -56,7 +55,6 @@ if (url.includes("report") && url.includes("#")) {
                         end: end,
                         uid: uid
                     });
-                    console.log(data);
                     fetch('https://sleepwebapp.wpi.edu:5000/newFitbitSleep', {
                         method: 'POST',
                         headers: {
@@ -67,27 +65,7 @@ if (url.includes("report") && url.includes("#")) {
                     })
                 });
             }
-            let idPromise = getUserID();
-            idPromise.then(uid=>{
-                const data = JSON.stringify({
-                    start: "2019/01/24 08:23:24",
-                    end: "2019/01/24 10:09:10",
-                    uid: uid
-                });
-                console.log(data);
-                fetch('https://sleepwebapp.wpi.edu:5000/newFitbitSleep', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: data
-                })
-            });
             window.history.pushState("object or string", "Report", "/report")
-        }
-        else{
-            console.log(sleepXhr.status);
         }
     };
     sleepXhr.send();

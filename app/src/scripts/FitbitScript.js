@@ -33,6 +33,7 @@ for (let i = 6; i >= 0; i--) {
     day += previousDay.getDate();
     dates.push(day)
 }
+console.log(dates);
 
 if (url.includes("report") && url.includes("#")) {
     //getting the access token from url
@@ -47,6 +48,7 @@ if (url.includes("report") && url.includes("#")) {
     sleepXhr.onload = function () {
         if (sleepXhr.status === 200) {
             let logs = JSON.parse(sleepXhr.responseText).sleep;
+            console.log(logs);
             //each sleep log data, parse and store in database
             for(let i = 0; i < logs.length; i++){
                 //parse date and time, reformat date and time to allow translation to timestamp in database

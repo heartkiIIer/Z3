@@ -72,8 +72,6 @@ class PersonalityIntro extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                console.log(r);
-                console.log(typeof r);
                 if(r.length > 0){
                     currentcomponent.setState({takenperson: true});
                 }
@@ -96,8 +94,6 @@ class PersonalityIntro extends React.Component {
             }).then( r => {
                 return r.json();
             }).then(r => {
-                console.log(r);
-                console.log(typeof r);
                 if(r.length > 0){
                     currentcomponent.setState({takenchrono: true});
                 }
@@ -113,6 +109,7 @@ class PersonalityIntro extends React.Component {
         if(this.state.takenchorno){
             redirectURL[1] = "/chronoResults";
         }
+        console.log(redirectURL);
         return redirectURL;
     }
     render(){

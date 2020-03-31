@@ -118,6 +118,9 @@ class PersonalityResults extends React.Component {
     getdate(){
         if(this.state.personality !== null){
             var perScore = this.state.personality[this.state.personality.length-1];
+            if(perScore.date === null){
+                return "NaN"
+            }
             return perScore.date.substring(5, 10) + "-" + perScore.date.substring(0, 4);
         }
         return "NaN" //no score available

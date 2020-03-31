@@ -474,7 +474,7 @@ class Home extends React.Component {
                 </div>
                 <div className="col-lg-6 circleview" >
                     <ul className="circle">
-                        <li className="leftPadding">
+                        <li>
                             <Link to="/sleep">
                                 <HomeIcon spanID={"sleepIcon_h"}
                                           iconClass={"iconImages_h sleepIconImg"}
@@ -509,7 +509,7 @@ class Home extends React.Component {
                                           iconInfo={"Personality Test"}/>
                             </Link>
                         </li>
-                        <li>
+                        <li className="leftPadding">
                             <Link to="/bedtimeRoutine">
                                 <HomeIcon spanID={"bedIcon"}
                                           iconClass={"iconImages_h bedIconImg"}

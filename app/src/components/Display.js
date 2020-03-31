@@ -215,89 +215,90 @@ function getStress(events) {
 
 function submitStressEntry() {
     let events = []
-    let parentElement = document.getElementById('mainTab').children
-    console.log("Title:" + parentElement[6].children[0].children[0].innerText)
-    console.log("Year:" + parentElement[6].children[0].children[2].innerText.slice(-4))
-    console.log("Month:" + parentElement[6].children[0].children[2].innerText.slice(0, 3))
-    console.log("Day:" + parentElement[6].children[0].children[2].innerText.slice(4, 6))
-    console.log("Date:" + parentElement[6].children[0].children[1].innerText.slice(1, 4))
-    console.log("Value:" + parentElement[6].children[0].children[2])
-    for (let i = 6; i < parentElement.length; i++) {
-        let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
-        let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
-        switch (date) {
-            case 'Mon':
-                date = 1;
-                break;
-            case 'Tue':
-                date = 2;
-                break;
-            case 'Wed':
-                date = 3;
-                break;
-            case 'Thu':
-                date = 4;
-                break;
-            case 'Fri':
-                date = 5;
-                break;
-            case 'Sat':
-                date = 6;
-                break;
-            case 'Sun':
-                date = 7;
-                break;
-        }
-        switch (month) {
-            case 'Jan':
-                month = 1;
-                break;
-            case 'Feb':
-                month = 2;
-                break;
-            case 'Mar':
-                month = 3;
-                break;
-            case 'Apr':
-                month = 4;
-                break;
-            case 'May':
-                month = 5;
-                break;
-            case 'Jun':
-                month = 6;
-                break;
-            case 'Jul':
-                month = 7;
-                break;
-            case 'Aug':
-                month = 8;
-                break;
-            case 'Sep':
-                month = 9;
-                break;
-            case 'Oct':
-                month = 10;
-                break;
-            case 'Nov':
-                month = 11;
-                break;
-            case 'Dec':
-                month = 12;
-                break;
-        }
-        events.push({
-                title: parentElement[i].children[0].children[0].innerText,
-                year: parseInt(parentElement[i].children[0].children[2].innerText.slice(-4)),
-                month: month,
-                day: parseInt(parentElement[i].children[0].children[2].innerText.slice(4, 6)),
-                date: date,
-                value: parseInt(parentElement[i].children[0].children[2].value)
-            }
-        );
-    }
-    console.log(events);
-    getStress(events)
+    let parentElement = document.getElementById('calevent').children
+    console.log(parentElement)
+    // console.log("Title:" + parentElement[6].children[0].children[0].innerText)
+    // console.log("Year:" + parentElement[6].children[0].children[2].innerText.slice(-4))
+    // console.log("Month:" + parentElement[6].children[0].children[2].innerText.slice(0, 3))
+    // console.log("Day:" + parentElement[6].children[0].children[2].innerText.slice(4, 6))
+    // console.log("Date:" + parentElement[6].children[0].children[1].innerText.slice(1, 4))
+    // console.log("Value:" + parentElement[6].children[0].children[2])
+    // for (let i = 6; i < parentElement.length; i++) {
+    //     let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
+    //     let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);
+    //     switch (date) {
+    //         case 'Mon':
+    //             date = 1;
+    //             break;
+    //         case 'Tue':
+    //             date = 2;
+    //             break;
+    //         case 'Wed':
+    //             date = 3;
+    //             break;
+    //         case 'Thu':
+    //             date = 4;
+    //             break;
+    //         case 'Fri':
+    //             date = 5;
+    //             break;
+    //         case 'Sat':
+    //             date = 6;
+    //             break;
+    //         case 'Sun':
+    //             date = 7;
+    //             break;
+    //     }
+    //     switch (month) {
+    //         case 'Jan':
+    //             month = 1;
+    //             break;
+    //         case 'Feb':
+    //             month = 2;
+    //             break;
+    //         case 'Mar':
+    //             month = 3;
+    //             break;
+    //         case 'Apr':
+    //             month = 4;
+    //             break;
+    //         case 'May':
+    //             month = 5;
+    //             break;
+    //         case 'Jun':
+    //             month = 6;
+    //             break;
+    //         case 'Jul':
+    //             month = 7;
+    //             break;
+    //         case 'Aug':
+    //             month = 8;
+    //             break;
+    //         case 'Sep':
+    //             month = 9;
+    //             break;
+    //         case 'Oct':
+    //             month = 10;
+    //             break;
+    //         case 'Nov':
+    //             month = 11;
+    //             break;
+    //         case 'Dec':
+    //             month = 12;
+    //             break;
+    //     }
+    //     events.push({
+    //             title: parentElement[i].children[0].children[0].innerText,
+    //             year: parseInt(parentElement[i].children[0].children[2].innerText.slice(-4)),
+    //             month: month,
+    //             day: parseInt(parentElement[i].children[0].children[2].innerText.slice(4, 6)),
+    //             date: date,
+    //             value: parseInt(parentElement[i].children[0].children[2].value)
+    //         }
+    //     );
+    // }
+    // console.log(events);
+    // getStress(events)
 
 }
 

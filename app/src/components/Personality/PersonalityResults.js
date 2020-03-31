@@ -1,8 +1,8 @@
 import React, {SyntheticEvent} from 'react';
 import "../../styles/ItsBedtime.css";
-import "../../styles/PersonalityIntro.css";
+import "../../styles/personalityIntro.css";
 import {Link} from 'react-router-dom';
-import SideBar from "../SideMenu";
+import SideBar from "../sideMenu";
 import {getUserID} from "../../scripts/login";
 
 class PersonalityResults extends React.Component {
@@ -148,10 +148,10 @@ class PersonalityResults extends React.Component {
                     <p id="n_score">Score: <span>{this.getNeuroticism()}</span></p>
 
                     <div className="d-flex justify-content-between">
-                        <Link to="/Personality">
+                        <Link to="/personality">
                             <button className="btn" onClick={(e) => this.openURL(e)}>Retake Personality Test</button>
                         </Link>
-                        <Link to="/PersonalityIntro">
+                        <Link to="/personalityIntro">
                             <button className="btn">Done</button>
                         </Link>
                     </div>

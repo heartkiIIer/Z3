@@ -1,15 +1,10 @@
 import {getUserID} from "./login"; // get user ID
 import swal from "sweetalert2" // library for pop ups
 
-/**
- * @author Shine Linn Thant, Ching Wing Cheng
- * This script authorizes Fitbit, executes get requests from the Fitbit API, and post requests to the database.
- * */
-
 var url = window.location.href;
 let OAUTH = "", OAUTHSettings = "";
 
-//authenticate the user with Fitbit API
+//authenticate the user with fitbit API
 if (url.includes("localhost")) {
     OAUTH = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Freport&scope=activity%20sleep&expires_in=31536000";
     OAUTHSettings = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BG2J&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fsettings&scope=activity%20sleep&expires_in=31536000";

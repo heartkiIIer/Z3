@@ -36,8 +36,8 @@
     width: 80%;
     margin: 7%;
 }
-.bringfront{
-    z-index: 1;
+.leftPadding{
+    padding-left: 70px;
 }
 #sleepIcon_h{
     transform: rotate(var(--offsetDeg));

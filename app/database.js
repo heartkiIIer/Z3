@@ -280,18 +280,18 @@ function addSleepEntryById(req, res, id) {
 }
 
 function addFitbitSleepEntryById(req, res, id, start, end) {
+    let starttime = "TO_TIMESTAMP('"+start+"', 'YYYY/MM/DD HH24:MI:SS')";
+    let endtime = "TO_TIMESTAMP('"+end+"', 'YYYY/MM/DD HH24:MI:SS')";
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
+            // let uid = internalId.rows[0].user_id;
+            let uid = 1;
             pool.query("INSERT INTO SleepEntry(user_id, start_sleep, end_sleep) SELECT "+
-                internalId.rows[0].user_id+", TO_TIMESTAMP('"+
-                start+"', 'YYYY/MM/DD HH24:MI:SS'), TO_TIMESTAMP('"+
-                end+"', 'YYYY/MM/DD HH24:MI:SS')" + ' WHERE NOT EXISTS(SELECT 1 FROM sleepentry WHERE'+
-                " start_sleep <= TO_TIMESTAMP('"+start
-                +"', 'YYYY/MM/DD HH24:MI:SS') AND end_sleep >= TO_TIMESTAMP('"
-                +start+"', 'YYYY/MM/DD HH24:MI:SS') OR start_sleep >= TO_TIMESTAMP('"
-                +end+"', 'YYYY/MM/DD HH24:MI:SS') AND end_sleep <= TO_TIMESTAMP('"
-                +end+"', 'YYYY/MM/DD HH24:MI:SS'));" , (error, results) => {
+                uid+", "+starttime+", "+endtime+ ' WHERE NOT EXISTS(SELECT 1 FROM sleepentry WHERE'+
+                " start_sleep <= "+starttime+" AND end_sleep >= "+starttime+" AND user_id="+uid+" OR start_sleep >= "
+                +starttime+" AND end_sleep <= "+endtime+" AND user_id="+uid+" OR start_sleep <= "
+                +endtime+" AND end_sleep >= "+endtime+" AND user_id="+uid+");" , (error, results) => {
                 if (error) {
                     throw error
                 }

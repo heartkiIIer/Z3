@@ -70,7 +70,7 @@ if (url.includes("report") && url.includes("#")) {
             let idPromise = getUserID();
             idPromise.then(uid=>{
                 const data = JSON.stringify({
-                    start: "2019/01/23 20:23:24",
+                    start: "2019/01/23 23:23:24",
                     end: "2019/01/24 10:09:10",
                     uid: uid
                 });

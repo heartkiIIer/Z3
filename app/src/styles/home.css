@@ -36,9 +36,11 @@
     width: 80%;
     margin: 7%;
 }
-#sleepIcon_h{
+#logsleepicon{
     position: relative;
     z-index: 1;
+}
+#sleepIcon_h{
     transform: rotate(var(--offsetDeg));
 }
 .sleepIconImg{

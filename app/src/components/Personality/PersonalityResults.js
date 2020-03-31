@@ -23,7 +23,7 @@ class PersonalityResults extends React.Component {
         }
     }
     //opens the URL of the personality test in a separate window
-    openURL(event: SyntheticEvent<any>): void {
+    openURL(){
         window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
     }
     //re-adjust padding of content div if the page is less than 700 px wide
@@ -62,6 +62,7 @@ class PersonalityResults extends React.Component {
                 return r.json();
             }).then(r => {
                 //stores personality scores in state
+                console.log(r);
                 currentComponent.setState({personality : r});
             });
         });
@@ -130,6 +131,7 @@ class PersonalityResults extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Your Big 5 Personality Results</h1>
                     <hr className="hr-settings"/>
+                    <p>Results was last submitted on </p>
                     <br/>
 
                     <h5 className="blueHeader"><b>Openness</b></h5>

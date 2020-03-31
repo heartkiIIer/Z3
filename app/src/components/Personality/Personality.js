@@ -97,7 +97,7 @@ class Personality extends React.Component{
                     <br/>
                     <h5>
                         Use the results from the Big 5 quiz to fill
-                        in your scores below.
+                        in your scores below. <br/>0% - 33% = low<br/>34% - 66% = medium<br/>67% - 100% = high
                     </h5>
                     <br/><br/>
                     <form id="personality" method="post">

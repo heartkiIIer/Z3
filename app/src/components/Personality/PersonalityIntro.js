@@ -36,7 +36,7 @@ class PersonalityIntro extends React.Component {
     }
 
     //opens the URL page of the personality test in a different window.
-    openURL(event: SyntheticEvent<any>): void {
+    openURL(){
         if(!this.state.takenperson) {
             window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
         }

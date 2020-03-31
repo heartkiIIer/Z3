@@ -139,6 +139,7 @@ class ChronoResults extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Chronotype Results</h1>
                     <hr className="hr-settings"/>
+                    <p>Quiz was last taken on </p>
                     <br/>
 
                     <h3 className="blueHeader">Chronotype Score: {this.calculateScore()}</h3>

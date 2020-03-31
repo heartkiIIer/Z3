@@ -132,7 +132,7 @@ class ChronoResults extends React.Component {
         else{
             //grabs the users most recent chronotype quiz answers
             var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
-            return qAnswers.date;
+            return qAnswers.date.substring(0, 10);
         }
     }
     render(){
@@ -149,6 +149,7 @@ class ChronoResults extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Chronotype Results</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     <p className="blueHeader">Quiz was last taken on {this.getdate()}</p>
                     <br/>
 

@@ -118,7 +118,7 @@ class PersonalityResults extends React.Component {
     getdate(){
         if(this.state.personality !== null){
             var perScore = this.state.personality[this.state.personality.length-1];
-            return perScore.date;
+            return perScore.date.substring(0, 10);
         }
         return "NaN" //no score available
     }
@@ -137,6 +137,7 @@ class PersonalityResults extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Your Big 5 Personality Results</h1>
                     <hr className="hr-settings"/>
+                    <br/>
                     <p className="blueHeader">Results was last submitted on {this.getdate()}</p>
                     <br/>
 

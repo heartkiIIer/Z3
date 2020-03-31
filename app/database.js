@@ -473,7 +473,7 @@ function putChronotypeById(req, res, id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('INSERT INTO chronotype(user_id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13) VALUES('+internalId.rows[0].user_id+', ' + q1+', ' + q2+ ', ' + q3+ ', ' + q4+ ', ' + q5+ ', ' + q6+ ', ' + q7+ ', ' + q8+ ', ' + q9+ ', ' + q10+ ', ' + q11+ ', ' + q12+ ', ' + q13+');', (error, results) => {
+            pool.query('INSERT INTO chronotype(user_id, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, date) VALUES('+internalId.rows[0].user_id+', ' + q1+', ' + q2+ ', ' + q3+ ', ' + q4+ ', ' + q5+ ', ' + q6+ ', ' + q7+ ', ' + q8+ ', ' + q9+ ', ' + q10+ ', ' + q11+ ', ' + q12+ ', ' + q13+' , current_timestamp);', (error, results) => {
                 if (error) {
                     throw error
                 }
@@ -622,7 +622,7 @@ function putPersonalityById(req, res, id, open, cons, extra, agree, neuro) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
         .then(function(internalId) {
-            pool.query('INSERT INTO personality(user_id, openness, conc, extraver, agree, neuro) VALUES('+internalId.rows[0].user_id+', ' + open +', ' + cons+', ' + extra+', ' + agree+', ' + neuro+');' , (error, results) => {
+            pool.query('INSERT INTO personality(user_id, openness, conc, extraver, agree, neuro, date) VALUES('+internalId.rows[0].user_id+', ' + open +', ' + cons+', ' + extra+', ' + agree+', ' + neuro+', current_timestamp);' , (error, results) => {
                 if (error) {
                     throw error
                 }

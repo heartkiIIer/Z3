@@ -216,6 +216,12 @@ function getStress(events) {
 function submitStressEntry() {
     let events = []
     let parentElement = document.getElementById('mainTab').children
+    console.log("Title:" + parentElement[6].children[0].children[0].innerText)
+    console.log("Year:" + parentElement[6].children[0].children[2].innerText.slice(-4))
+    console.log("Month:" + parentElement[6].children[0].children[2].innerText.slice(0, 3))
+    console.log("Day:" + parentElement[6].children[0].children[2].innerText.slice(4, 6))
+    console.log("Date:" + parentElement[6].children[0].children[1].innerText.slice(1, 4))
+    console.log("Value:" + parentElement[6].children[1].children[2].value)
     for (let i = 6; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
         let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);

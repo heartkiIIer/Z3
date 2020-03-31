@@ -220,7 +220,7 @@ function submitStressEntry() {
     let dayOfWeekList = document.getElementsByClassName("dayOfWeek")
     let timeList = document.getElementsByClassName("time")
     for (let i = 0; i < parentElement.length; i++) {
-        let month = dayOfWeekList[i].innerText.slice(0, 3);
+        let month = timeList[i].innerText.slice(0, 3);
         let date = dayOfWeekList[i].innerText.slice(1, 4);
         switch (date) {
             case 'Mon':

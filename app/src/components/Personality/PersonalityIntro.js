@@ -25,6 +25,11 @@ class PersonalityIntro extends React.Component {
         }
     }
     componentDidMount() {
+        let idPromise = getUserID();
+        //if no user signed in redirect them back to landing
+        idPromise.then().catch(err =>{
+            window.location.replace("https://sleepwebapp.wpi.edu/");
+        });
         let currentcomponent = this;
         this.personalitytaken(currentcomponent);
         this.chornotaken(currentcomponent);
@@ -32,7 +37,9 @@ class PersonalityIntro extends React.Component {
 
     //opens the URL page of the personality test in a different window.
     openURL(event: SyntheticEvent<any>): void {
-        window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
+        if(!this.state.takenperson) {
+            window.open("https://www.truity.com/test/big-five-personality-test", "_blank", "width=1000, height=600");
+        }
     }
     //re-adjust padding of content div if the page is less than 700 px wide
     resize(){

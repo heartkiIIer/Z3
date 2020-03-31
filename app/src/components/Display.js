@@ -219,7 +219,7 @@ function submitStressEntry() {
     console.log(document.getElementsByClassName("title"))
     console.log(document.getElementsByClassName("dayOfWeek"))
     console.log(document.getElementsByClassName("time"))
-    console.log(document.getElementById("calevent").children[0].children[1].children[2])
+    console.log(document.getElementById("calevent").children[0].children[1].children[2].value)
     // console.log("Title:" + parentElement[6].children[0].children[0].innerText)
     // console.log("Year:" + parentElement[6].children[0].children[2].innerText.slice(-4))
     // console.log("Month:" + parentElement[6].children[0].children[2].innerText.slice(0, 3))

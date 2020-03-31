@@ -62,7 +62,6 @@ class PersonalityResults extends React.Component {
                 return r.json();
             }).then(r => {
                 //stores personality scores in state
-                console.log(r);
                 currentComponent.setState({personality : r});
             });
         });
@@ -116,6 +115,13 @@ class PersonalityResults extends React.Component {
         }
         return "NaN" //no score available
     }
+    getdate(){
+        if(this.state.personality !== null){
+            var perScore = this.state.personality[this.state.personality.length-1];
+            return perScore.date;
+        }
+        return "NaN" //no score available
+    }
 
     render(){
         this.resize();
@@ -131,7 +137,7 @@ class PersonalityResults extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Your Big 5 Personality Results</h1>
                     <hr className="hr-settings"/>
-                    <p>Results was last submitted on </p>
+                    <p className="blueHeader">Results was last submitted on {this.getdate()}</p>
                     <br/>
 
                     <h5 className="blueHeader"><b>Openness</b></h5>

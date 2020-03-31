@@ -13,14 +13,14 @@ class PersonalityIntro extends React.Component {
             this.state = {
                 padding: '75px 75px 40px',
                 takenperson: false,
-                takenchorno: false
+                takenchrono: false
             };
         }
         else{
             this.state = {
                 padding: '17% 17% 5%',
                 takenperson: false,
-                takenchorno: false
+                takenchrono: false
             };
         }
     }
@@ -106,7 +106,7 @@ class PersonalityIntro extends React.Component {
         if(this.state.takenperson){
             redirectURL[0] = "/personalityResults";
         }
-        if(this.state.takenchorno){
+        if(this.state.takenchrono){
             redirectURL[1] = "/chronoResults";
         }
         console.log(redirectURL);

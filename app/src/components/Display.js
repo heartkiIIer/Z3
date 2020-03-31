@@ -215,8 +215,10 @@ function getStress(events) {
 
 function submitStressEntry() {
     let events = []
-    let parentElement = document.getElementById('calevent').children
-    console.log(parentElement[0].innerHTML)
+    //let parentElement = document.getElementById('calevent').children
+    console.log(document.getElementsByClassName("title"))
+    console.log(document.getElementsByClassName("dayOfWeek"))
+    console.log(document.getElementsByClassName("time"))
     // console.log("Title:" + parentElement[6].children[0].children[0].innerText)
     // console.log("Year:" + parentElement[6].children[0].children[2].innerText.slice(-4))
     // console.log("Month:" + parentElement[6].children[0].children[2].innerText.slice(0, 3))

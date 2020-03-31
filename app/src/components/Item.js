@@ -115,7 +115,7 @@ const Item = props => {
     return (
         <div isvisible={!fading} style={visible ? null : { display: "none" }}>
             <Typography id="discrete-slider-restrict" gutterBottom>
-                <b id="title">{summary}</b> <span id="dayOfWeek">{dayOfWeek}</span> <i id="time">{month} {day} {year}</i> {time}
+                <b class="title">{summary}</b> <span class="dayOfWeek">{dayOfWeek}</span> <i class="time">{month} {day} {year}</i> {time}
                 <button class="btn-danger" style={buttonStyle} onClick={hideMe}>Hide</button>
             </Typography>
             <PrettoSlider id="myslider" aria-label="pretto slider" defaultValue={50}

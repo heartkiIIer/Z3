@@ -118,7 +118,7 @@ const Item = props => {
                 <b class="title">{summary}</b> <span class="dayOfWeek">{dayOfWeek}</span> <i class="time">{month} {day} {year}</i> {time}
                 <button class="btn-danger" style={buttonStyle} onClick={hideMe}>Hide</button>
             </Typography>
-            <PrettoSlider class="pslider" aria-label="pretto slider" defaultValue={50}
+            <PrettoSlider aria-label="pretto slider" defaultValue={50}
                           step={null} marks={stresslevel}/>
             <br/>
         </div>

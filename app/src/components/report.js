@@ -172,11 +172,11 @@ class report extends React.Component{
                             <h1 className="smallTimeHeader">-- Cups</h1>
                         </div>
                     </div>
+                    <button className='btn' style={{marginRight:'0px'}}>
+                        Prev 7 Days
+                    </button>
                     <button className='btn' id = "extended">
                             Next 7 Days
-                    </button>
-                    <button className='btn' style={{marginRight:'0px'}}>
-                            Prev 7 Days
                     </button>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
                     <ReportComponent date={"--"} sleep ={"--"} stress = {"--"} exer = {"--"} caf = {"--"}/>
@@ -264,11 +264,11 @@ class report extends React.Component{
                                 <h1 className="smallTimeHeader">{caf.toString() + " cups"}</h1>
                             </div>
                         </div>
-                        <button className='btn' id = "extended" onClick={()=>this.changeWeek(0)}>
-                            Next 7 Days
-                        </button>
                         <button className='btn' style={{marginRight:'0px'}}  onClick={()=>this.changeWeek(1)}>
                             Prev 7 Days
+                        </button>
+                        <button className='btn' id = "extended" onClick={()=>this.changeWeek(0)}>
+                            Next 7 Days
                         </button>
                         {this.generateComponent()}
                     </div>
@@ -308,11 +308,11 @@ class report extends React.Component{
                                 <h1 className="smallTimeHeader">-- Cups</h1>
                             </div>
                         </div>
-                        <button className='btn' id = "extended">
-                            Next 7 Days
-                        </button>
                         <button className='btn' style={{marginRight:'0px'}}>
                             Prev 7 Days
+                        </button>
+                        <button className='btn' id = "extended">
+                            Next 7 Days
                         </button>
                         {this.generateComponent()}
                     </div>

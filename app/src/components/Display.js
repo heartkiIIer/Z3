@@ -221,7 +221,7 @@ function submitStressEntry() {
     console.log("Month:" + parentElement[6].children[0].children[2].innerText.slice(0, 3))
     console.log("Day:" + parentElement[6].children[0].children[2].innerText.slice(4, 6))
     console.log("Date:" + parentElement[6].children[0].children[1].innerText.slice(1, 4))
-    console.log("Value:" + parentElement[6].children[0].children[2].value)
+    console.log("Value:" + parentElement[6].children[0].children[2])
     for (let i = 6; i < parentElement.length; i++) {
         let month = parentElement[i].children[0].children[2].innerText.slice(0, 3);
         let date = parentElement[i].children[0].children[1].innerText.slice(1, 4);

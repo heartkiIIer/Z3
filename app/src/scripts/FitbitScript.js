@@ -18,19 +18,19 @@ let dates = [];
 //get dates of the past week including current day
 for (let i = 6; i >= 0; i--) {
     let previousDay = new Date(today);
-    previousDay.setDate(previousDay.getDate()-i);
+    previousDay.setDate(previousDay.getDate() - i);
     let day = previousDay.getFullYear() + "-";
-    if(previousDay.getMonth()+1 < 10)
+    if (previousDay.getMonth() + 1 < 10)
         day += "0";
-    day += previousDay.getMonth()+1 + "-";
-    if(previousDay.getDate() < 10)
+    day += previousDay.getMonth() + 1 + "-";
+    if (previousDay.getDate() < 10)
         day += "0";
     day += previousDay.getDate();
     dates.push(day)
 }
-console.log(dates);
 
 if (url.includes("report") && url.includes("#")) {
+    console.log("hello");
     //getting the access token from url
     var access_token = url.split("#")[1].split("=")[1].split("&")[0];
     // get the userid
@@ -41,8 +41,10 @@ if (url.includes("report") && url.includes("#")) {
     sleepXhr.open('GET', 'https://api.fitbit.com/1/user/' + userId + '/sleep/date/'+dates[0]+'/'+dates[6]+'.json');
     sleepXhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
     sleepXhr.onload = function () {
+        console.log("hello2");
         if (sleepXhr.status === 200) {
             let logs = JSON.parse(sleepXhr.responseText).sleep;
+            console.log("hello3");
             console.log(logs);
             //each sleep log data, parse and store in database
             for(let i = 0; i < logs.length; i++){

@@ -37,6 +37,8 @@
     margin: 7%;
 }
 #sleepIcon_h{
+    position: relative;
+    z-index: 1;
     transform: rotate(var(--offsetDeg));
 }
 .sleepIconImg{

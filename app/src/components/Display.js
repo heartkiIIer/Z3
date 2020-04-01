@@ -69,10 +69,6 @@ class Display extends React.Component {
         };
     }
 
-    getStress(events) {
-
-    }
-
     async fetchItems() {
         const result = await ApiCalendar.listUpcomingEvents(250);
         // console.log(result.result.items[result.result.items.length-1].start);
@@ -109,7 +105,7 @@ class Display extends React.Component {
                     for (let i = 0; i < this.state.items.length; i++) {
                         for (let j = 0; j < r.length; j++) {
                             let day = this.state.items[i].start.dateTime[8] +  this.state.items[i].start.dateTime[9]
-                            let month = this.state.items[i].this.state.items[5] + this.state.items[i].start.dateTime[6]
+                            let month = this.state.items[i].start.dateTime[5] + this.state.items[i].start.dateTime[6]
                             switch (day) {
                                 case '01':
                                     day = 1;
@@ -209,7 +205,7 @@ class Display extends React.Component {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={this.fetchItems.bind(this)}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={this.fetchItems}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>

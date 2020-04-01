@@ -102,6 +102,7 @@ class Display extends React.Component {
                     console.log(r);
                     this.setState({items: []})
                     this.setState({items: approved})
+                    let currentItems = this.state.items
                     for (let i = 0; i < this.state.items.length; i++) {
                         for (let j = 0; j < r.length; j++) {
                             let day = this.state.items[i].start.dateTime[8] +  this.state.items[i].start.dateTime[9]
@@ -174,12 +175,12 @@ class Display extends React.Component {
                                     break;
                             }
                             if(this.state.items[i].summary === r[j].event && day == r[j].day && month === r[j].month && this.state.items[i].start.dateTime.slice(0, 4) == r[j].year) {
-                                this.state.items[i].etag = r[j].stress
-                                this.forceUpdate()
+                                currentItems[i].etag = r[j].stress
+                                this.setState({items: currentItems})
                                 console.log(r[j].event + ' = ' + this.state.items[i].summary + ': ' + this.state.items[i].etag)
                             } else {
-                                this.state.items[i].etag = 50
-                                this.forceUpdate()
+                                currentItems[i].etag = 50
+                                this.setState({items: currentItems})
                             }
                         }
                     }

@@ -6,6 +6,7 @@ import Item from './Item'
 import {getUserID} from "../scripts/login";
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
+import {forEach} from "react-bootstrap/cjs/ElementChildren";
 
 const refresh = {
     paddingRight: '6px',
@@ -103,10 +104,12 @@ class Display extends React.Component {
                 return r.json();
             }).then( r => {
                     console.log(r);
-                    for (let i = 0; i < approved.length; i++) {
+                    this.setState({items: []})
+                    this.setState({items: approved})
+                    for (let i = 0; i < this.state.items.length; i++) {
                         for (let j = 0; j < r.length; j++) {
-                            let day = approved[i].start.dateTime[8] +  approved[i].start.dateTime[9]
-                            let month = approved[i].start.dateTime[5] + approved[i].start.dateTime[6]
+                            let day = this.state.items[i].start.dateTime[8] +  this.state.items[i].start.dateTime[9]
+                            let month = this.state.items[i].this.state.items[5] + this.state.items[i].start.dateTime[6]
                             switch (day) {
                                 case '01':
                                     day = 1;
@@ -174,17 +177,17 @@ class Display extends React.Component {
                                     month = 12;
                                     break;
                             }
-                            if(approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
-                                approved[i].etag = r[j].stress
-                                console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
+                            if(this.state.items[i].summary === r[j].event && day == r[j].day && month === r[j].month && this.state.items[i].start.dateTime.slice(0, 4) == r[j].year) {
+                                this.setState({
+                                    items: update(this.state.items, {i: {etag: {$set: r[j].stress}}})
+                                })
+                                console.log(r[j].event + ' = ' + this.state.items[i].summary + ': ' + this.state.items[i].etag)
                             } else {
-                                approved[i].etag = 50
+                                this.state.items[i].etag = 50
                             }
                         }
                     }
-                console.log(approved)
-                this.setState({items: []})
-                this.setState({items: approved})
+                    console.log(this.state.items)
                 }
             )
         })

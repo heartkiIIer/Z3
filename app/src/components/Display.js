@@ -105,8 +105,76 @@ class Display extends React.Component {
                     console.log(r);
                     for (let i = 0; i < approved.length; i++) {
                         for (let j = 0; j < r.length; j++) {
+                            switch (r[j].day) {
+                                case 1:
+                                    r[j].day = '01';
+                                    break;
+                                case 2:
+                                    r[j].day = '02';
+                                    break;
+                                case 3:
+                                    r[j].day = '03';
+                                    break;
+                                case 4:
+                                    r[j].day = '04';
+                                    break;
+                                case 5:
+                                    r[j].day = '05';
+                                    break;
+                                case 6:
+                                    r[j].day = '06';
+                                    break;
+                                case 7:
+                                    r[j].day = '07';
+                                    break;
+                                case 8:
+                                    r[j].day = '08';
+                                    break;
+                                case 9:
+                                    r[j].day = '09';
+                                    break;
+                            }
+                            switch (r[j].month) {
+                                case 1:
+                                    r[j].month = '01';
+                                    break;
+                                case 2:
+                                    r[j].month = '02';
+                                    break;
+                                case 3:
+                                    r[j].month = '03';
+                                    break;
+                                case 4:
+                                    r[j].month = '04';
+                                    break;
+                                case 5:
+                                    r[j].month = '05';
+                                    break;
+                                case 6:
+                                    r[j].month = '06';
+                                    break;
+                                case 7:
+                                    r[j].month = '07';
+                                    break;
+                                case 8:
+                                    r[j].month = '08';
+                                    break;
+                                case 9:
+                                    r[j].month = '09';
+                                    break;
+                                case 10:
+                                    r[j].month = '10';
+                                    break;
+                                case 11:
+                                    r[j].month = '11';
+                                    break;
+                                case 12:
+                                    r[j].month = '12';
+                                    break;
+                            }
                             if(approved[i].summary === r[j].event && approved[i].start.dateTime[8] +  approved[i].start.dateTime[9] == r[j].day && approved[i].start.dateTime[5] + approved[i].start.dateTime[6] === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
+                                console.log(r[j].stress)
                             } else {
                                 approved[i].etag = 50
                             }

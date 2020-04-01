@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef, SyntheticEvent} from 'react';
+import update from 'react-addons-update'
 import ApiCalendar from 'react-google-calendar-api';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
@@ -179,7 +180,9 @@ class Display extends React.Component {
                                 })
                                 console.log(r[j].event + ' = ' + this.state.items[i].summary + ': ' + this.state.items[i].etag)
                             } else {
-                                this.state.items[i].etag = 50
+                                this.setState({
+                                    items: update(this.state.items, {i: {etag: {$set: 50}}})
+                                })
                             }
                         }
                     }

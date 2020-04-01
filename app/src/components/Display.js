@@ -71,6 +71,7 @@ class Display extends React.Component {
     async fetchItems() {
         const result = await ApiCalendar.listUpcomingEvents(250);
         // console.log(result.result.items[result.result.items.length-1].start);
+        console.log(result.result.items)
         let approved = [];
         let todayDate = new Date().getDate();
         let todayMonth = new Date().getMonth();
@@ -96,7 +97,7 @@ class Display extends React.Component {
     render() {
         let ele;
         if (this.state.items.length != 0) {
-            ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} />))}</div>
+            ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} itemValue={item.val}/>))}</div>
         } else {
             ele = <i><p>You have no upcoming events for today.</p></i>;
         }

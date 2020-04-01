@@ -62,6 +62,7 @@ const Item = props => {
     let summary = props.itemSum
     let year = props.itemStart.slice(0, 4)
     let month = props.itemStart[5] + props.itemStart[6]
+    let stressLvl =props.itemValue
     switch (month) {
         case '01':
             month = "Jan ";
@@ -118,7 +119,7 @@ const Item = props => {
                 <b class="title">{summary}</b> <span class="dayOfWeek">{dayOfWeek}</span> <i class="time">{month} {day} {year}</i> {time}
                 <button class="btn-danger" style={buttonStyle} onClick={hideMe}>Hide</button>
             </Typography>
-            <PrettoSlider aria-label="pretto slider" defaultValue={50}
+            <PrettoSlider aria-label="pretto slider" defaultValue={stressLvl}
                           step={null} marks={stresslevel}/>
             <br/>
         </div>

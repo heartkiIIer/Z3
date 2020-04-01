@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useRef, SyntheticEvent} from 'react';
-import update from 'react-addons-update'
 import ApiCalendar from 'react-google-calendar-api';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
@@ -87,7 +86,7 @@ class Display extends React.Component {
         }
         approved = approved.map(({summary, start, end, etag}) => ({summary, start, end, etag}));
         let idPromise = getUserID();
-        idPromise.then((uid)=>{
+        await idPromise.then((uid) => {
             const data = JSON.stringify({uid: uid, month: todayMonth, day: todayDate, year: todayYear});
             fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
                 method: 'POST',
@@ -96,17 +95,14 @@ class Display extends React.Component {
                     'Content-Type': 'application/json',
                 },
                 body: data
-            }).then( r => {
+            }).then(r => {
                 return r.json();
-            }).then( r => {
+            }).then(r => {
                     console.log(r);
-                    this.setState({items: []})
-                    this.setState({items: approved})
-                    let currentItems = this.state.items
-                    for (let i = 0; i < this.state.items.length; i++) {
+                    for (let i = 0; i < approved.length; i++) {
                         for (let j = 0; j < r.length; j++) {
-                            let day = this.state.items[i].start.dateTime[8] +  this.state.items[i].start.dateTime[9]
-                            let month = this.state.items[i].start.dateTime[5] + this.state.items[i].start.dateTime[6]
+                            let day = approved[i].start.dateTime[8] + approved[i].start.dateTime[9]
+                            let month = approved[i].start.dateTime[5] + approved[i].start.dateTime[6]
                             switch (day) {
                                 case '01':
                                     day = 1;
@@ -136,6 +132,7 @@ class Display extends React.Component {
                                     day = 9;
                                     break;
                             }
+
                             switch (month) {
                                 case '01':
                                     month = 1;
@@ -174,17 +171,17 @@ class Display extends React.Component {
                                     month = 12;
                                     break;
                             }
-                            if(this.state.items[i].summary === r[j].event && day == r[j].day && month === r[j].month && this.state.items[i].start.dateTime.slice(0, 4) == r[j].year) {
-                                currentItems[i].etag = r[j].stress
-                                console.log(r[j].event + ' = ' + this.state.items[i].summary + ': ' + this.state.items[i].etag)
+                            if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
+                                approved[i].etag = r[j].stress
+                                console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
                             } else {
-                                currentItems[i].etag = 50
+                                approved[i].etag = 50
                             }
                         }
                     }
-                    console.log(currentItems)
-                    this.setState({items: currentItems})
-                    console.log(this.state.items)
+                    console.log(approved)
+                    this.setState({items: []})
+                    this.setState({items: approved})
                 }
             )
         })

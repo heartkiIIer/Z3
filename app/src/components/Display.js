@@ -7,7 +7,6 @@ import Item from './Item'
 import {getUserID} from "../scripts/login";
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
-import {forEach} from "react-bootstrap/cjs/ElementChildren";
 
 const refresh = {
     paddingRight: '6px',
@@ -175,14 +174,12 @@ class Display extends React.Component {
                                     break;
                             }
                             if(this.state.items[i].summary === r[j].event && day == r[j].day && month === r[j].month && this.state.items[i].start.dateTime.slice(0, 4) == r[j].year) {
-                                this.setState({
-                                    items: update(this.state.items, {i: {etag: {$set: r[j].stress}}})
-                                })
+                                this.state.items[i].etag = r[j].stress
+                                this.forceUpdate()
                                 console.log(r[j].event + ' = ' + this.state.items[i].summary + ': ' + this.state.items[i].etag)
                             } else {
-                                this.setState({
-                                    items: update(this.state.items, {i: {etag: {$set: 50}}})
-                                })
+                                this.state.items[i].etag = r[j].stress
+                                this.forceUpdate()
                             }
                         }
                     }

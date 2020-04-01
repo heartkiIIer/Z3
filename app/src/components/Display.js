@@ -178,7 +178,7 @@ class Display extends React.Component {
                                 this.forceUpdate()
                                 console.log(r[j].event + ' = ' + this.state.items[i].summary + ': ' + this.state.items[i].etag)
                             } else {
-                                this.state.items[i].etag = r[j].stress
+                                this.state.items[i].etag = 50
                                 this.forceUpdate()
                             }
                         }

@@ -81,7 +81,7 @@ class MindfulYoga extends React.Component {
 
                             <hr className="hr-settings"/>
                             <br/>
-                            <a href="https://www.umassmed.edu/psychiatry/resources/mindfulness/">Source</a>
+                            <a href="https://www.umassmed.edu/psychiatry/resources/mindfulness/resources/">Source</a>
                         </div>
                     </div>
                 </div>

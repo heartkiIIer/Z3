@@ -36,6 +36,12 @@
     width: 80%;
     margin: 7%;
 }
+.noevents{
+    pointer-events: none;
+}
+.allevents{
+    pointer-events: all;
+}
 #sleepIcon_h{
     transform: rotate(var(--offsetDeg));
 }

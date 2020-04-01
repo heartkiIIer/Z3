@@ -125,6 +125,19 @@ class ChronoResults extends React.Component {
         else
             return "You tend towards a morning type but fall somewhere in between a morning or evening type.";
     }
+    getdate(){
+        if(this.state.chronoAnswers.length === 0){
+            return "NaN"; //user has not taken the chronotype quiz, no answers stored in the database
+        }
+        else{
+            //grabs the users most recent chronotype quiz answers
+            var qAnswers = this.state.chronoAnswers[this.state.chronoAnswers.length-1];
+            if(qAnswers.date === null){
+                return "NaN"
+            }
+            return qAnswers.date.substring(5, 10) + "-" + qAnswers.date.substring(0, 4);
+        }
+    }
     render(){
         this.resize();
         const styles = {
@@ -139,6 +152,8 @@ class ChronoResults extends React.Component {
                 <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">Chronotype Results</h1>
                     <hr className="hr-settings"/>
+                    <br/>
+                    <p className="blueHeader">Quiz was last taken on {this.getdate()}</p>
                     <br/>
 
                     <h3 className="blueHeader">Chronotype Score: {this.calculateScore()}</h3>

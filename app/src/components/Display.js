@@ -105,74 +105,76 @@ class Display extends React.Component {
                     console.log(r);
                     for (let i = 0; i < approved.length; i++) {
                         for (let j = 0; j < r.length; j++) {
-                            switch (r[j].day) {
-                                case 1:
-                                    r[j].day = '01';
+                            let day = approved[i].start.dateTime[8] +  approved[i].start.dateTime[9]
+                            let month = approved[i].start.dateTime[5] + approved[i].start.dateTime[6]
+                            switch (day) {
+                                case '01':
+                                    day = 1;
                                     break;
-                                case 2:
-                                    r[j].day = '02';
+                                case '02':
+                                    day = 2;
                                     break;
-                                case 3:
-                                    r[j].day = '03';
+                                case '03':
+                                    day = 3;
                                     break;
-                                case 4:
-                                    r[j].day = '04';
+                                case '04':
+                                    day = 4;
                                     break;
-                                case 5:
-                                    r[j].day = '05';
+                                case '05':
+                                    day = 5;
                                     break;
-                                case 6:
-                                    r[j].day = '06';
+                                case '06':
+                                    day = 6;
                                     break;
-                                case 7:
-                                    r[j].day = '07';
+                                case '07':
+                                    day = 7;
                                     break;
-                                case 8:
-                                    r[j].day = '08';
+                                case '08':
+                                    day = 8;
                                     break;
-                                case 9:
-                                    r[j].day = '09';
-                                    break;
-                            }
-                            switch (r[j].month) {
-                                case 1:
-                                    r[j].month = '01';
-                                    break;
-                                case 2:
-                                    r[j].month = '02';
-                                    break;
-                                case 3:
-                                    r[j].month = '03';
-                                    break;
-                                case 4:
-                                    r[j].month = '04';
-                                    break;
-                                case 5:
-                                    r[j].month = '05';
-                                    break;
-                                case 6:
-                                    r[j].month = '06';
-                                    break;
-                                case 7:
-                                    r[j].month = '07';
-                                    break;
-                                case 8:
-                                    r[j].month = '08';
-                                    break;
-                                case 9:
-                                    r[j].month = '09';
-                                    break;
-                                case 10:
-                                    r[j].month = '10';
-                                    break;
-                                case 11:
-                                    r[j].month = '11';
-                                    break;
-                                case 12:
-                                    r[j].month = '12';
+                                case '09':
+                                    day = 9;
                                     break;
                             }
-                            if(approved[i].summary === r[j].event && approved[i].start.dateTime[8] +  approved[i].start.dateTime[9] == r[j].day && approved[i].start.dateTime[5] + approved[i].start.dateTime[6] === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
+                            switch (month) {
+                                case '01':
+                                    month = 1;
+                                    break;
+                                case '02':
+                                    month = 2;
+                                    break;
+                                case '03':
+                                    month = 3;
+                                    break;
+                                case '04':
+                                    month = 4;
+                                    break;
+                                case '05':
+                                    month = 5;
+                                    break;
+                                case '06':
+                                    month = 6;
+                                    break;
+                                case '07':
+                                    month = 7;
+                                    break;
+                                case '08':
+                                    month = 8;
+                                    break;
+                                case '09':
+                                    month = 9;
+                                    break;
+                                case '10':
+                                    month = 10;
+                                    break;
+                                case '11':
+                                    month = 11;
+                                    break;
+                                case '12':
+                                    month = 12;
+                                    break;
+                            }
+                            if(approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
                                 console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
                             } else {

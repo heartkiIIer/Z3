@@ -62,7 +62,7 @@ const Item = props => {
     let summary = props.itemSum
     let year = props.itemStart.slice(0, 4)
     let month = props.itemStart[5] + props.itemStart[6]
-    let stressLvl =props.itemValue
+    let stressLvl = props.itemValue
     switch (month) {
         case '01':
             month = "Jan ";

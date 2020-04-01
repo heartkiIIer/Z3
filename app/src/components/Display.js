@@ -68,10 +68,13 @@ class Display extends React.Component {
         };
     }
 
+    getStress(events) {
+
+    }
+
     async fetchItems() {
         const result = await ApiCalendar.listUpcomingEvents(250);
         // console.log(result.result.items[result.result.items.length-1].start);
-        console.log(result.result.items)
         let approved = [];
         let todayDate = new Date().getDate();
         let todayMonth = new Date().getMonth();
@@ -85,7 +88,100 @@ class Display extends React.Component {
                 approved.push(result.result.items[i])
             }
         }
-        approved = approved.map(({summary, start, end}) => ({summary, start, end}));
+        approved = approved.map(({summary, start, end, etag}) => ({summary, start, end, etag}));
+        let idPromise = getUserID();
+        idPromise.then((uid)=>{
+            const data = JSON.stringify({uid: uid, month: todayMonth, day: todayDate, year: todayYear});
+            fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then( r => {
+                return r.json();
+            }).then( r => {
+                    console.log(r);
+                    for (let i = 0; i < approved.length; i++) {
+                        for (let j = 0; j < r.length; j++) {
+                            switch (r[j].day) {
+                                case 1:
+                                    r[j].day = '01';
+                                    break;
+                                case 2:
+                                    r[j].day = '02';
+                                    break;
+                                case 3:
+                                    r[j].day = '03';
+                                    break;
+                                case 4:
+                                    r[j].day = '04';
+                                    break;
+                                case 5:
+                                    r[j].day = '05';
+                                    break;
+                                case 6:
+                                    r[j].day = '06';
+                                    break;
+                                case 7:
+                                    r[j].day = '07';
+                                    break;
+                                case 8:
+                                    r[j].day = '08';
+                                    break;
+                                case 9:
+                                    r[j].day = '09';
+                                    break;
+                            }
+                            switch (r[j].month) {
+                                case 1:
+                                    r[j].month = '01';
+                                    break;
+                                case 2:
+                                    r[j].month = '02';
+                                    break;
+                                case 3:
+                                    r[j].month = '03';
+                                    break;
+                                case 4:
+                                    r[j].month = '04';
+                                    break;
+                                case 5:
+                                    r[j].month = '05';
+                                    break;
+                                case 6:
+                                    r[j].month = '06';
+                                    break;
+                                case 7:
+                                    r[j].month = '07';
+                                    break;
+                                case 8:
+                                    r[j].month = '08';
+                                    break;
+                                case 9:
+                                    r[j].month = '09';
+                                    break;
+                                case 10:
+                                    r[j].month = '10';
+                                    break;
+                                case 11:
+                                    r[j].month = '11';
+                                    break;
+                                case 12:
+                                    r[j].month = '12';
+                                    break;
+                            }
+                            if(approved[i].summary === r[j].event && approved[i].start.dateTime[8] +  approved[i].start.dateTime[9] == r[j].day && approved[i].start.dateTime[5] + approved[i].start.dateTime[6] === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
+                                approved[i].etag = r[j].value
+                            } else {
+                                approved[i].etag = 50
+                            }
+                        }
+                    }
+                }
+            )
+        })
         this.setState({items: []})
         this.setState({items: approved})
     }
@@ -97,7 +193,7 @@ class Display extends React.Component {
     render() {
         let ele;
         if (this.state.items.length != 0) {
-            ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} itemValue={item.val}/>))}</div>
+            ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} itemValue={item.etag}/>))}</div>
         } else {
             ele = <i><p>You have no upcoming events for today.</p></i>;
         }

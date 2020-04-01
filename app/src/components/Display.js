@@ -176,14 +176,14 @@ class Display extends React.Component {
                             }
                             if(this.state.items[i].summary === r[j].event && day == r[j].day && month === r[j].month && this.state.items[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 currentItems[i].etag = r[j].stress
-                                this.setState({items: currentItems})
                                 console.log(r[j].event + ' = ' + this.state.items[i].summary + ': ' + this.state.items[i].etag)
                             } else {
                                 currentItems[i].etag = 50
-                                this.setState({items: currentItems})
                             }
                         }
                     }
+                    console.log(currentItems)
+                    this.setState({items: currentItems})
                     console.log(this.state.items)
                 }
             )

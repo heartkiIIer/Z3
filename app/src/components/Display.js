@@ -105,7 +105,7 @@ class Display extends React.Component {
                     console.log(r);
                     for (let i = 0; i < approved.length; i++) {
                         for (let j = 0; j < r.length; j++) {
-                            if(approved[i].summary === r[j].event && approved[i].start.dateTime[8] +  approved[i].start.dateTime[9] === r[j].day && approved[i].start.dateTime[5] + approved[i].start.dateTime[6] === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
+                            if(approved[i].summary === r[j].event && approved[i].start.dateTime[8] +  approved[i].start.dateTime[9] == r[j].day && approved[i].start.dateTime[5] + approved[i].start.dateTime[6] === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
                             } else {
                                 approved[i].etag = 50

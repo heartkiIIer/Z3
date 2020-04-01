@@ -180,12 +180,12 @@ class Display extends React.Component {
                             }
                         }
                     }
+                console.log(approved)
+                this.setState({items: []})
+                this.setState({items: approved})
                 }
             )
         })
-        console.log(approved)
-        this.setState({items: []})
-        this.setState({items: approved})
     }
 
     componentDidMount(): void {

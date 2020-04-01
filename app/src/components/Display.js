@@ -174,7 +174,7 @@ class Display extends React.Component {
                             }
                             if(approved[i].summary === r[j].event && approved[i].start.dateTime[8] +  approved[i].start.dateTime[9] == r[j].day && approved[i].start.dateTime[5] + approved[i].start.dateTime[6] === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
-                                console.log(r[j].event + ' = ' + approved[i].summary + ': ' + r[j].stress)
+                                console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
                             } else {
                                 approved[i].etag = 50
                             }

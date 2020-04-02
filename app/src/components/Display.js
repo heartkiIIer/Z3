@@ -65,7 +65,7 @@ class Display extends React.Component {
         this.fetchItems = this.fetchItems.bind(this);
         this.state = {
             items: [],
-            events: ''
+            events: []
         };
     }
 
@@ -175,14 +175,14 @@ class Display extends React.Component {
                             if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
                                 console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
+                                this.setState({items: approved})
                             } else {
                                 approved[i].etag = 50
+                                this.setState({items: approved})
                             }
                         }
                     }
                     console.log(approved)
-                    this.setState({items: []})
-                    this.setState({items: approved})
 
                 }
             )

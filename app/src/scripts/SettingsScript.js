@@ -16,10 +16,10 @@ function deleteAcc(){
             });
             var provider;
             console.log(providerID);
-            if(providerID === "facebook"){
+            if(providerID === "facebook.com"){
                 provider = new z3_firebase.auth.FacebookAuthProvider();
             }
-            if(providerID === "google"){
+            if(providerID === "google.com"){
                 provider = new z3_firebase.auth.GoogleAuthProvider();
             }
             // Reauthenticate with popup:

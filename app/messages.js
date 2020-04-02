@@ -2,8 +2,8 @@
 // dayofweek value 0-6 where 0 = Sunday, 1 = Monday, and so on
 let code0 = {
     dayofweek: 1,
-    subject: "Reach Your Sleep Goal",
-    message: "Your sleep goal is listed in Settings (If you have not set a sleep goal, you can set it in Settings) . Try to reach that this week to improve your sleep health! "
+    subject: "Try to Reach Your Sleep Goal",
+    message: "Your sleep goal is listed in Settings (If you have not set a sleep goal, you can set it in Settings). Try to reach that this week to improve your sleep health! "
 };
 let code1_1 = {
     dayofweek: 1,
@@ -62,12 +62,12 @@ let code2_1 = {
 };
 let code2_2 = {
     dayofweek: 2,
-    subject: "Sleep and Academics",
+    subject: "Keep In Mind Sleep and Academics",
     message: "All-nighters and caffeine consumption can throw off your sleep schedule and are correlated with lower GPAs. "
 };
 let code3_1 = {
     dayofweek: 0,
-    subject: "What Does the National Sleep Foundation Say? ",
+    subject: "Get Enough Sleep",
     message: "The National Sleep Foundation recommends 8-10 hours per night of sleep."
 };
 let code4_1 = {

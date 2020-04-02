@@ -30,7 +30,7 @@ class Home extends React.Component {
                 name: "",
                 image: "",
                 perMessage: { //default message if the user has not taken the personality and chronotype quizzes
-                    subject: "Personality and Chronotype:",
+                    subject: "......",
                     message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
                 },
                 weather: null,
@@ -537,7 +537,7 @@ class Home extends React.Component {
                                     <button style={{marginTop: "20px", background: "transparent", border: "2px solid white"}} onClick={this.changeZip.bind(this)}>Change Location</button>
                                 </div>
                                 <div className="carousel-item text-center">
-                                    <h2 style={h2} className="whiteText">{this.state.perMessage.subject}</h2>
+                                    <h2 style={h2} className="whiteText">{"Based on your personality results, you should: \n" + this.state.perMessage.subject}</h2>
                                     <h4 style={h3} className="whiteText">{this.state.perMessage.message}</h4>
                                 </div>
                             </div>

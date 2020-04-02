@@ -174,13 +174,17 @@ class Display extends React.Component {
                             if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
                                 console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
-                                this.setState({events: this.state.events + approved[i].etag.toString()})
+                                this.setState({events: this.state.events + approved[i].etag.toString() + ' '})
                             } else {
                                 approved[i].etag = 50
+                                this.setState({events: this.state.events + approved[i].etag.toString() + ' '})
                             }
                         }
                     }
                     console.log(approved)
+                    console.log(this.state.events)
+                    let con = this.state.events.split(' ').map(x=>+x)
+                    console.log(con)
                     this.setState({items: []})
                     this.setState({items: approved})
                 }
@@ -194,7 +198,6 @@ class Display extends React.Component {
 
     render() {
         let ele;
-        console.log(this.state.events)
         if (this.state.items.length != 0) {
             ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} itemValue={item.etag}/>))}</div>
         } else {

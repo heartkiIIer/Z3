@@ -80,6 +80,7 @@ class Display extends React.Component {
             let calEvent = result.result.items[i].start.dateTime;
             let calDate = new Date(calEvent).getDate();
             let calMonth = new Date(calEvent).getMonth();
+            console.log(calMonth)
             let calYear = new Date(calEvent).getFullYear();
             if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
                 approved.push(result.result.items[i])

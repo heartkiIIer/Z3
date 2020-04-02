@@ -5,7 +5,6 @@ import {Tabs} from "./sliders";
 import SideBar from "./sideMenu";
 import {getUserID} from "../scripts/login";
 import {InfoPopUp} from "../scripts/FitbitScript";
-import ApiCalendar from "react-google-calendar-api";
 
 class logging extends React.Component{
     constructor(props) {
@@ -34,13 +33,6 @@ class logging extends React.Component{
         });
         window.addEventListener('resize', this.updateDimensions);
         InfoPopUp();
-        // document.getElementById('page-wrap').children[5].children[0].children[0].className= 'item'
-        // document.getElementById('page-wrap').children[5].children[0].children[1].id= 'active'
-        // document.getElementById('page-wrap').children[5].children[0].children[1].className= 'active item'
-        // console.log(document.getElementById('active'))
-        // document.getElementById('active').click()
-        // document.getElementById('active').click()
-        // document.getElementById('active').click()
     }
 
     resize(){

@@ -64,8 +64,7 @@ class Display extends React.Component {
         super(props);
         this.fetchItems = this.fetchItems.bind(this);
         this.state = {
-            items: [],
-            events: ''
+            items: []
         };
     }
 
@@ -172,14 +171,14 @@ class Display extends React.Component {
                                     month = 12;
                                     break;
                             }
-                            console.log('Comparing ' + approved[i].summary + ' and ' + r[j].event)
+                            // console.log('Comparing ' + approved[i].summary + ' and ' + r[j].event)
                             if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
-                                console.log('YES!!! ' + approved[i].summary + ' = ' + r[j].event + ': ' + approved[i].etag)
+                                // console.log('YES!!! ' + approved[i].summary + ' = ' + r[j].event + ': ' + approved[i].etag)
                                 break;
                             } else {
                                 approved[i].etag = 50
-                                console.log('NO:((( ' + approved[i].summary + ' != ' + r[j].event + ': ' + approved[i].etag)
+                                // console.log('NO:((( ' + approved[i].summary + ' != ' + r[j].event + ': ' + approved[i].etag)
                             }
                         }
                     }

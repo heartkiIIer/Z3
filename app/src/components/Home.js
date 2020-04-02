@@ -30,7 +30,7 @@ class Home extends React.Component {
                 name: "",
                 image: "",
                 perMessage: { //default message if the user has not taken the personality and chronotype quizzes
-                    subject: "......",
+                    subject: ". . . \n Personality and Chronotype:",
                     message: "Take the two quizzes under Personality Test! \n We will make some reminder/suggestions based on your personality."
                 },
                 weather: null,

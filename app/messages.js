@@ -3,7 +3,7 @@
 let code0 = {
     dayofweek: 1,
     subject: "Try to Reach Your Sleep Goal",
-    message: "Your sleep goal is listed in Settings (If you have not set a sleep goal, you can set it in Settings). Try to reach that this week to improve your sleep health! "
+    message: "Your sleep goal is listed in Settings and Personal Report (If you have not set a sleep goal, you can set it in Settings). Try to reach that this week to improve your sleep health! "
 };
 let code1_1 = {
     dayofweek: 1,

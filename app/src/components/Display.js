@@ -256,7 +256,7 @@ function getStress(events) {
     let idPromise = getUserID();
     let today = new Date();
     idPromise.then((uid)=>{
-        const data = JSON.stringify({uid: uid, month: today.getMonth(), day: today.getDate(), year: today.getFullYear()});
+        const data = JSON.stringify({uid: uid, month: today.getMonth() + 1, day: today.getDate(), year: today.getFullYear()});
         fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
             method: 'POST',
             headers: {
@@ -396,7 +396,7 @@ function submitStressEntry() {
     console.log(events);
     getStress(events)
 }
-let DisplayClass = new Display()
+
 function addStresstoDatabase(events){
     let idPromise = getUserID();
     idPromise.then(uid=>{

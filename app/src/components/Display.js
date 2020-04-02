@@ -196,8 +196,6 @@ class Display extends React.Component {
     render() {
         let ele;
         console.log(this.state.events)
-        let con = this.state.events.split(' ').map(x=>+x)
-        console.log(con)
         if (this.state.items.length != 0) {
             ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} itemValue={item.etag}/>))}</div>
         } else {

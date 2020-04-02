@@ -87,8 +87,6 @@ class Display extends React.Component {
             }
         }
         approved = approved.map(({summary, start, end, etag}) => ({summary, start, end, etag}));
-        this.setState({items: []})
-        this.setState({items: approved})
         let idPromise = getUserID();
         idPromise.then((uid) => {
             console.log(todayMonth + '/' + todayDate + '/' + todayYear)
@@ -178,24 +176,14 @@ class Display extends React.Component {
                             if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
                                 console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
-                                this.setState(prevState => ({
-                                    items: {
-                                        ...prevState.items,
-                                        [prevState.items[i].etag]: approved[i].etag
-                                    }
-                                }))
                             } else {
                                 approved[i].etag = 50
-                                this.setState(prevState => ({
-                                    items: {
-                                        ...prevState.items,
-                                        [prevState.items[i].etag]: approved[i].etag
-                                    }
-                                }))
                             }
                         }
                     }
                     console.log(approved)
+                    this.setState({items: []})
+                    this.setState({items: approved})
 
                 }
             )

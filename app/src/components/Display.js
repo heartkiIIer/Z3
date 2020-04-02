@@ -86,6 +86,8 @@ class Display extends React.Component {
             }
         }
         approved = approved.map(({summary, start, end, etag}) => ({summary, start, end, etag}));
+        this.setState({items: []})
+        this.setState({items: approved})
         let idPromise = getUserID();
         idPromise.then((uid) => {
             console.log(todayMonth + '/' + todayDate + '/' + todayYear)
@@ -182,7 +184,7 @@ class Display extends React.Component {
                             }
                         }
                     }
-                console.log(this.state.events)
+                    console.log(this.state.events)
                 }
             )
         })

@@ -182,11 +182,12 @@ class Display extends React.Component {
                             }
                         }
                     }
+                console.log(this.state.events)
                 }
             )
         })
         console.log(approved)
-        console.log(this.state.events)
+
     }
 
     componentDidMount(): void {

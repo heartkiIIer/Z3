@@ -10,13 +10,16 @@ function deleteAcc(){
     z3_firebase.auth().onAuthStateChanged(function(user) {
         if (user) { // User is signed in.
             // Creates the provider object.
-            console.log(user.providerId);
-
+            let providerID = "";
+            user.providerData.forEach(function (profile) {
+                providerID = profile.providerId;
+            });
             var provider;
-            if(user.providerId === "facebook"){
+            console.log(providerID);
+            if(providerID === "facebook"){
                 provider = new z3_firebase.auth.FacebookAuthProvider();
             }
-            if(user.providerId === "google"){
+            if(providerID === "google"){
                 provider = new z3_firebase.auth.GoogleAuthProvider();
             }
             // Reauthenticate with popup:

@@ -6,7 +6,6 @@ import Item from './Item'
 import {getUserID} from "../scripts/login";
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
-import {forEach} from "react-bootstrap/cjs/ElementChildren";
 
 const refresh = {
     paddingRight: '6px',
@@ -69,10 +68,6 @@ class Display extends React.Component {
         };
     }
 
-    getStress(events) {
-
-    }
-
     async fetchItems() {
         const result = await ApiCalendar.listUpcomingEvents(250);
         // console.log(result.result.items[result.result.items.length-1].start);
@@ -90,8 +85,9 @@ class Display extends React.Component {
             }
         }
         approved = approved.map(({summary, start, end, etag}) => ({summary, start, end, etag}));
+        this.setState({items: []})
         let idPromise = getUserID();
-        idPromise.then((uid)=>{
+        idPromise.then((uid) => {
             const data = JSON.stringify({uid: uid, month: todayMonth, day: todayDate, year: todayYear});
             fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
                 method: 'POST',
@@ -100,16 +96,14 @@ class Display extends React.Component {
                     'Content-Type': 'application/json',
                 },
                 body: data
-            }).then( r => {
+            }).then(r => {
                 return r.json();
-            }).then( r => {
+            }).then(r => {
                     console.log(r);
-                    this.setState({items: []})
-                    this.setState({items: approved})
-                    for (let i = 0; i < this.state.items.length; i++) {
+                    for (let i = 0; i < approved.length; i++) {
                         for (let j = 0; j < r.length; j++) {
-                            let day = this.state.items[i].start.dateTime[8] +  this.state.items[i].start.dateTime[9]
-                            let month = this.state.items[i].this.state.items[5] + this.state.items[i].start.dateTime[6]
+                            let day = approved[i].start.dateTime[8] + approved[i].start.dateTime[9]
+                            let month = approved[i].start.dateTime[5] + approved[i].start.dateTime[6]
                             switch (day) {
                                 case '01':
                                     day = 1;
@@ -139,6 +133,7 @@ class Display extends React.Component {
                                     day = 9;
                                     break;
                             }
+
                             switch (month) {
                                 case '01':
                                     month = 1;
@@ -177,17 +172,18 @@ class Display extends React.Component {
                                     month = 12;
                                     break;
                             }
-                            if(this.state.items[i].summary === r[j].event && day == r[j].day && month === r[j].month && this.state.items[i].start.dateTime.slice(0, 4) == r[j].year) {
-                                this.setState({
-                                    items: update(this.state.items, {i: {etag: {$set: r[j].stress}}})
-                                })
-                                console.log(r[j].event + ' = ' + this.state.items[i].summary + ': ' + this.state.items[i].etag)
+                            if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
+                                approved[i].etag = r[j].stress
+                                console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
+                                this.setState({items: approved})
                             } else {
-                                this.state.items[i].etag = 50
+                                approved[i].etag = 50
+                                this.setState({items: approved})
                             }
                         }
                     }
-                    console.log(this.state.items)
+                    console.log(approved)
+
                 }
             )
         })
@@ -209,7 +205,7 @@ class Display extends React.Component {
             <div>
                 <Tab.Pane id="mainTab" style={{overflow: 'auto', maxHeight: 500 }} attached={false}>
                     <h5>Rate stress level for each event</h5>
-                    <button className='btn-info' onClick={this.fetchItems.bind(this)}><RefreshIcon style={refresh}/></button>
+                    <button className='btn-info' onClick={this.fetchItems}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
                     <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>

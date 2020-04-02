@@ -80,7 +80,6 @@ class Display extends React.Component {
             let calEvent = result.result.items[i].start.dateTime;
             let calDate = new Date(calEvent).getDate();
             let calMonth = new Date(calEvent).getMonth();
-            console.log(calMonth)
             let calYear = new Date(calEvent).getFullYear();
             if(calDate == todayDate && calMonth == todayMonth && calYear == todayYear) {
                 approved.push(result.result.items[i])
@@ -90,7 +89,7 @@ class Display extends React.Component {
         let idPromise = getUserID();
         idPromise.then((uid) => {
             console.log(todayMonth + '/' + todayDate + '/' + todayYear)
-            const data = JSON.stringify({uid: uid, month: todayMonth, day: todayDate, year: todayYear});
+            const data = JSON.stringify({uid: uid, month: todayMonth + 1, day: todayDate, year: todayYear});
             fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
                 method: 'POST',
                 headers: {

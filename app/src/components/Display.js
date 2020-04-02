@@ -64,7 +64,8 @@ class Display extends React.Component {
         super(props);
         this.fetchItems = this.fetchItems.bind(this);
         this.state = {
-            items: []
+            items: [],
+            events: ''
         };
     }
 
@@ -85,7 +86,6 @@ class Display extends React.Component {
             }
         }
         approved = approved.map(({summary, start, end, etag}) => ({summary, start, end, etag}));
-        this.setState({items: []})
         let idPromise = getUserID();
         idPromise.then((uid) => {
             const data = JSON.stringify({uid: uid, month: todayMonth, day: todayDate, year: todayYear});
@@ -133,7 +133,6 @@ class Display extends React.Component {
                                     day = 9;
                                     break;
                             }
-
                             switch (month) {
                                 case '01':
                                     month = 1;
@@ -175,15 +174,15 @@ class Display extends React.Component {
                             if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
                                 approved[i].etag = r[j].stress
                                 console.log(r[j].event + ' = ' + approved[i].summary + ': ' + approved[i].etag)
-                                this.setState({items: approved})
+                                this.setState({events: this.state.events + approved[i].etag.toString()})
                             } else {
                                 approved[i].etag = 50
-                                this.setState({items: approved})
                             }
                         }
                     }
                     console.log(approved)
-
+                    this.setState({items: []})
+                    this.setState({items: approved})
                 }
             )
         })
@@ -195,6 +194,7 @@ class Display extends React.Component {
 
     render() {
         let ele;
+        console.log(this.state.events)
         if (this.state.items.length != 0) {
             ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} itemValue={item.etag}/>))}</div>
         } else {

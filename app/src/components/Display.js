@@ -90,6 +90,7 @@ class Display extends React.Component {
         this.setState({items: approved})
         let idPromise = getUserID();
         idPromise.then((uid) => {
+            console.log(todayMonth + '/' + todayDate + '/' + todayYear)
             const data = JSON.stringify({uid: uid, month: todayMonth, day: todayDate, year: todayYear});
             fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
                 method: 'POST',

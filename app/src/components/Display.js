@@ -87,7 +87,7 @@ class Display extends React.Component {
         approved = approved.map(({summary, start, end, etag}) => ({summary, start, end, etag}));
         this.setState({items: []})
         let idPromise = getUserID();
-        await idPromise.then((uid) => {
+        idPromise.then((uid) => {
             const data = JSON.stringify({uid: uid, month: todayMonth, day: todayDate, year: todayYear});
             fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
                 method: 'POST',

@@ -12,6 +12,11 @@ const h1 = {
     color: '#3e98c7'
 }
 
+const h1Big = {
+    fontSize: '45px',
+    color: '#3e98c7'
+}
+
 class BedtimeProgressBar extends React.Component {
     constructor(props) {
         super(props)
@@ -85,6 +90,7 @@ class BedtimeProgressBar extends React.Component {
             this.startTimer(duration)
         }
     }
+
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -102,36 +108,52 @@ class BedtimeProgressBar extends React.Component {
 
     render(){
         this.resize();
+        let title, timer;
+
         const styles = {
             containerStyle:{
                 width: this.state.width,
             }
         };
+
         const { containerStyle } = styles;
+        console.log(window.innerWidth)
+        if(window.innerWidth < 700){
+            if(this.props.title.length <= 12) {
+                title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b></div>
+            } else {
+                title = <div class='marquee' style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b></div>
+            }
+            timer = <div style={{ marginTop: -5 }}><h1 style={h1}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
+        }
+        else {
+            title = <div style={{ marginTop: -5 }}><b><h1 style={h1Big}>{this.props.title}</h1></b></div>
+            timer = <div style={{ marginTop: -5 }}><h1 style={h1Big}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
+        }
+
+
         if(this.props.timer){
             return(
                 <div style={containerStyle}>
                     <CircularProgressbarWithChildren value={(this.props.stage/this.props.stages)*100} styles={buildStyles({
                         pathColor: "mediumpurple",
-                        textSize: 10
+                        textSize: 12
                     })}>
-                        <div style={{ marginTop: -5 }}>
-                            <b><h1 style={h1}>{this.props.title}</h1></b>
-                        </div>
+                        {title}
                         <br/>
-                        <div style={{ marginTop: -5 }}>
-                            <h1 style={h1}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1>
-                        </div>
+                        {timer}
                     </CircularProgressbarWithChildren>
                 </div>)
         }
         else{
             return(
                 <div style={containerStyle}>
-                    <CircularProgressbar value={(this.props.stage/this.props.stages)*100} text={this.props.title} styles={buildStyles({
+                    <CircularProgressbarWithChildren value={(this.props.stage/this.props.stages)*100} styles={buildStyles({
                         pathColor: "mediumpurple",
-                        textSize: 10
-                    })}/>
+                        textSize: 12
+                    })}>
+                        {title}
+                    </CircularProgressbarWithChildren>
                 </div>
             );
         }

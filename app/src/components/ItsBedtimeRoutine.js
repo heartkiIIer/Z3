@@ -156,21 +156,21 @@ class ItsBedtimeRoutine extends React.Component {
 
     render(){
         this.resize();
-
-        const hrStyle = {
-            hrContainer:{
-                width: this.state.width,
-            }
-        };
-        const { hrContainer } = hrStyle;
-
-        const bdStyle = {
-            bdContainer:{
-                paddingTop: this.state.paddingTop,
-            }
-        };
-
-        const { bdContainer } = bdStyle;
+        //
+        // const hrStyle = {
+        //     hrContainer:{
+        //         width: this.state.width,
+        //     }
+        // };
+        // const { hrContainer } = hrStyle;
+        //
+        // const bdStyle = {
+        //     bdContainer:{
+        //         paddingTop: this.state.paddingTop,
+        //     }
+        // };
+        //
+        // const { bdContainer } = bdStyle;
 
             return (
                 <div className = "content" id="App">

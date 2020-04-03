@@ -459,13 +459,13 @@ class report extends React.Component{
         console.log(cardsToGenerate);
 
         //reference : https://stackoverflow.com/questions/5210376/how-to-get-first-and-last-day-of-the-week-in-javascript
-        var curr = new Date; // get current date
-        var end = curr.getDate() - curr.getDay(); // the day of the month - the day of the week
-        var start = end + 6; // the end day + 6
+        // var curr = new Date; // get current date
+        // var end = curr.getDate() - curr.getDay(); // the day of the month - the day of the week
+        // var start = end + 6; // the end day + 6
 
         // date ranges where it ranges from firstday to lastday
-        var lastday = new Date(curr.setDate(end));
-        var firstday = new Date(curr.setDate(start));
+        // var lastday = new Date(curr.setDate(end));
+        // var firstday = new Date(curr.setDate(start));
 
         var avgCaf = 0;
         var numCaf = 0;
@@ -513,26 +513,26 @@ class report extends React.Component{
                 formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
                 //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
-                console.log(date.getTime());
-                console.log(date.getMonth()+1 + "-"  + date.getDate()+ "-" + date.getFullYear());
-                console.log(firstday.getTime());
-                console.log(firstday.getMonth()+1 + "-"  + firstday.getDate()+ "-" + firstday.getFullYear());
-                console.log(lastday.getTime());
-                console.log(lastday.getMonth()+1 + "-"  + lastday.getDate()+ "-" + lastday.getFullYear());
+                // console.log(date.getTime());
+                // console.log(date.getMonth()+1 + "-"  + date.getDate()+ "-" + date.getFullYear());
+                // console.log(firstday.getTime());
+                // console.log(firstday.getMonth()+1 + "-"  + firstday.getDate()+ "-" + firstday.getFullYear());
+                // console.log(lastday.getTime());
+                // console.log(lastday.getMonth()+1 + "-"  + lastday.getDate()+ "-" + lastday.getFullYear());
 
-                if((date.getTime() >= firstday.getTime() && date.getTime() <= lastday.getTime())){
-                    console.log("Hello");
+                //if((date.getTime() >= firstday.getTime() && date.getTime() <= lastday.getTime())){
+                //     console.log("Hello");
                     avgCaf += cardsToGenerate[i][1];
                     numCaf++;
                     avgSleep += cardsToGenerate[i][2];
-                    console.log(avgSleep);
+                    // console.log(avgSleep);
                     numSleep++;
                     for(var k = 0; k < cardsToGenerate[i][3].length; k++) {
                         arrStress.push(cardsToGenerate[i][3][k]);
                     }
                     avgExer += cardsToGenerate[i][4];
                     numExer++;
-                }
+                //}
 
                 arrToReturn.push(<ReportComponent date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
             }

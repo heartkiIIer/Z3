@@ -75,25 +75,6 @@ class LogWake extends React.Component{
         });
     }
 
-    getSleepTime(){
-        let idPromise = getUserID();
-        idPromise.then(uid=>{
-            const data = JSON.stringify({uid: uid});
-            fetch('https://sleepwebapp.wpi.edu:5000/getLatestSleep/', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: data
-            }).then( r => {
-                return r.json();
-            }).then(r => {
-            })
-        });
-    }
-
-
     myFunctionTwo() {
         // prompt to enter Wake up time
         swal({ //prompt user to enter the time
@@ -118,6 +99,7 @@ class LogWake extends React.Component{
                 let idPromise = getUserID();
                 idPromise.then(uid=>{
                     const data = JSON.stringify({uid: uid});
+                    //get time user last went to sleep
                     fetch('https://sleepwebapp.wpi.edu:5000/getLatestSleep/', {
                         method: 'POST',
                         headers: {
@@ -128,21 +110,28 @@ class LogWake extends React.Component{
                     }).then( s => {
                         return s.json();
                     }).then(s => {
+                        //get todays date
                         var today = new Date();
                         var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                         var yyyy = today.getFullYear();
                         today = yyyy + '/' + mm + '/' + dd + ' ';
+                        //declare Date obj for todays date and entered wake up time
                         var fullDate = new Date(today+time+':00');
-                        console.log(s);
-                        var sleepDate = new Date(s);
+                        console.log(s[0]);
+                        var sleep = String(s[0]);
+                        console.log(sleep);
+                        //declare Date obj for date and time user last went to sleep
+                        var sleepDate = new Date(sleep);
                         console.log(sleepDate);
+                        //check if wake up time before sleep time
                         if(fullDate.getTime() < sleepDate.getTime){
                             swal({
                                 text: "Time entered is earlier than time you went to sleep",
                                 icon: "error"
                             });
                         }
+                        //submit wake time
                         else if(fullDate.getTime() >= sleepDate.getTime()) {
                             idPromise.then(uid => {
                                 const data = JSON.stringify({

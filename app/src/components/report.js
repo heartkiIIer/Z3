@@ -461,11 +461,12 @@ class report extends React.Component{
         var curr = new Date; // get current date
 
         //date ranges where it ranges from firstday to lastday
-        var lastday = new Date(curr.setDate(curr));
-        var firstday = new Date(curr.setDate(curr.getDate()-6));
+        var lastday = new Date(curr);
+        var firstday = new Date(curr);
+        firstday.setDate(firstday.getDate() - 6);
 
-        console.log(firstday);
-        console.log(lastday);
+        console.log((firstday.getMonth()+1) + "-"  + firstday.getDate()+ "-" + firstday.getFullYear());
+        console.log((lastday.getMonth()+1) + "-"  + lastday.getDate()+ "-" + lastday.getFullYear());
 
         var avgCaf = 0;
         var numCaf = 0;
@@ -513,6 +514,7 @@ class report extends React.Component{
                 formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
                 //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
+                //filter data to only be past week's
                 if((date.getTime() >= firstday.getTime() && date.getTime() <= lastday.getTime())){
                     avgCaf += cardsToGenerate[i][1];
                     numCaf++;

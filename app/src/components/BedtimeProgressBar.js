@@ -127,7 +127,11 @@ class BedtimeProgressBar extends React.Component {
             timer = <div style={{ marginTop: -5 }}><h1 style={h1}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }
         else {
-            title = <div style={{ marginTop: -5 }}><b><h1 style={h1Big}>{this.props.title}</h1></b></div>
+            if(this.props.title.length <= 12) {
+                title = <div style={{ marginTop: -5 }}><b><h1 style={h1Big}>{this.props.title}</h1></b></div>
+            } else {
+                title = <div class='marquee' style={{ marginTop: -5 }}><b><h1 style={h1Big}>{this.props.title}</h1></b></div>
+            }
             timer = <div style={{ marginTop: -5 }}><h1 style={h1Big}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }
 

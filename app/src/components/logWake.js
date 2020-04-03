@@ -105,7 +105,7 @@ class LogWake extends React.Component{
                 var fullDate = new Date(today+time+':00');
                 idPromise.then(uid=> {
                     const data = JSON.stringify({uid: uid});
-                    fetch('https://sleepwebapp.wpi.edu:5000/getRoutine', {
+                    fetch('https://sleepwebapp.wpi.edu:5000/getLatestSleep', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -113,6 +113,7 @@ class LogWake extends React.Component{
                         },
                         body: data
                     }).then(s => {
+                        console.log(s);
                         var sleepDate = new Date(s);
                         if (fullDate < sleepDate) {
                             swal({

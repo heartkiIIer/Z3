@@ -129,6 +129,7 @@ class ItsBedtimeRoutine extends React.Component {
             }
         } else {
             h1Style = {
+                marginBottom: '7px !important',
                 fontSize: '2.5rem'
             }
         }

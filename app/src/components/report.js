@@ -512,6 +512,10 @@ class report extends React.Component{
                 formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
                 //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
+                console.log(date.getTime());
+                console.log(lastday.getTime());
+                console.log(firstday.getTime());
+
                 if((date.getTime() <= lastday.getTime() && date.getTime() >= firstday.getTime())){
                     console.log("Hello");
                     avgCaf += cardsToGenerate[i][1];

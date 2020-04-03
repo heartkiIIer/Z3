@@ -458,14 +458,14 @@ class report extends React.Component{
 
         console.log(cardsToGenerate);
 
-        //reference : https://stackoverflow.com/questions/5210376/how-to-get-first-and-last-day-of-the-week-in-javascript
-        // var curr = new Date; // get current date
-        // var end = curr.getDate() - curr.getDay(); // the day of the month - the day of the week
-        // var start = end + 6; // the end day + 6
+        var curr = new Date; // get current date
 
-        // date ranges where it ranges from firstday to lastday
-        // var lastday = new Date(curr.setDate(end));
-        // var firstday = new Date(curr.setDate(start));
+        //date ranges where it ranges from firstday to lastday
+        var lastday = new Date(curr.setDate(curr));
+        var firstday = new Date(curr.setDate(curr.getDate()-6));
+
+        console.log(firstday);
+        console.log(lastday);
 
         var avgCaf = 0;
         var numCaf = 0;
@@ -513,7 +513,7 @@ class report extends React.Component{
                 formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
                 //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
-                //if((date.getTime() >= firstday.getTime() && date.getTime() <= lastday.getTime())){
+                if((date.getTime() >= firstday.getTime() && date.getTime() <= lastday.getTime())){
                     avgCaf += cardsToGenerate[i][1];
                     numCaf++;
                     avgSleep += cardsToGenerate[i][2];
@@ -523,7 +523,7 @@ class report extends React.Component{
                     }
                     avgExer += cardsToGenerate[i][4];
                     numExer++;
-                //}
+                }
 
                 arrToReturn.push(<ReportComponent date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
             }

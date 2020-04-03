@@ -147,6 +147,11 @@ class report extends React.Component{
 
     render(){
         this.resize();
+        console.log("Average Sleep: ", this.state.avgSleep);
+        console.log("Average Sleep: ", this.state.arrStress);
+        console.log("Average Sleep: ", this.state.avgExer);
+        console.log("Average Sleep: ", this.state.avgCaf);
+
         if((this.state.sleep == null || this.state.goal == null || this.state.stress == null || this.state.caf == null || this.state.exer == null) && (this.state.avgCaf == null || this.state.numCaf ==null || this.state.avgSleep == null || this.state.arrStress.length != 0 || this.state.numSleep == null || this.state.avgExer == null || this.state.numExer ==null)){
             return (
             <div class = "reportClass" id="App">
@@ -202,25 +207,26 @@ class report extends React.Component{
             var stress;
             var exer;
 
-            if(this.state.numCaf !=0){
+            if(this.state.numCaf !== 0){
                 caf = Math.round(this.state.avgCaf/this.state.numCaf);
             }
             else{
                 caf = 0;
             }
-            if(this.state.numSleep !=0){
+            if(this.state.numSleep !== 0){
                 sleep = Math.round(this.state.avgSleep/this.state.numSleep);
             }
             else{
+                console.log("000000000000");
                 sleep = 0;
             }
-            if(this.state.numExer !=0){
+            if(this.state.numExer !== 0){
                 exer = Math.round(this.state.avgExer/this.state.numExer);
             }
             else{
                 exer = 0;
             }
-            if(this.state.arrStress.length !=0){
+            if(this.state.arrStress.length !== 0){
                 var sortArr = this.state.arrStress.sort();
                 var mid = Math.floor(sortArr.length/2)
                 var median = sortArr[mid];

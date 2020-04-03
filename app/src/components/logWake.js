@@ -87,9 +87,9 @@ class LogWake extends React.Component{
                 },
                 body: data
             }).then( r => {
-                console.log(r);
-                return new Date('r');
-            });
+                return r.json();
+            }).then(r => {
+            })
         });
     }
 
@@ -116,44 +116,59 @@ class LogWake extends React.Component{
             }
             else if(time !== null) { // user clicked okay with something in the input field
                 let idPromise = getUserID();
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-                var yyyy = today.getFullYear();
-                today = yyyy + '/' + mm + '/' + dd + ' ';
-                var fullDate = new Date(today+time+':00');
-                let sleepDate = new Date(today+time+':00');
-                if(fullDate.getTime() <= sleepDate.getTime){
-                    swal({
-                        text: "Time entered is earlier than time you went to sleep",
-                        icon: "error"
-                    });
-                }
-                else {
-                    idPromise.then(uid => {
-                        const data = JSON.stringify({
-                            uid: uid,
-                            time: today + time + ':00'
-                        });
-                        fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime', {
-                            method: 'POST',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
-                            },
-                            body: data
-                        }).then(r => {
+                idPromise.then(uid=>{
+                    const data = JSON.stringify({uid: uid});
+                    fetch('https://sleepwebapp.wpi.edu:5000/getLatestSleep/', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: data
+                    }).then( r => {
+                        return r.json();
+                    }).then(r => {
+                        var today = new Date();
+                        var dd = String(today.getDate()).padStart(2, '0');
+                        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                        var yyyy = today.getFullYear();
+                        today = yyyy + '/' + mm + '/' + dd + ' ';
+                        var fullDate = Date.parse(today+time+':00');
+                        var sleepDate = Date.parse(r);
+                        if(fullDate.getTime() < sleepDate.getTime){
                             swal({
-                                title: "Success",
-                                icon: "success",
-                                text: "Successfully logged wake time."
-                            }).then(() => {
-                                window.location.replace("https://sleepwebapp.wpi.edu/home");
+                                text: "Time entered is earlier than time you went to sleep",
+                                icon: "error"
                             });
-                            console.log("Completed")
-                        })
+                        }
+                        else if(fullDate.getTime() < sleepDate.getTime()) {
+                            idPromise.then(uid => {
+                                const data = JSON.stringify({
+                                    uid: uid,
+                                    time: today + time + ':00'
+                                });
+                                fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: data
+                                }).then(r => {
+                                    swal({
+                                        title: "Success",
+                                        icon: "success",
+                                        text: "Successfully logged wake time."
+                                    }).then(() => {
+                                        window.location.replace("https://sleepwebapp.wpi.edu/home");
+                                    });
+                                    console.log("Completed")
+                                })
+                            });
+                        }
                     });
-                }
+
+                });
             }
         });
     }

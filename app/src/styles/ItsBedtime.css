@@ -51,7 +51,7 @@ html, body {
     box-sizing: border-box;
 }
 
-.marquee:hover {
+.h1:hover {
     animation-play-state: paused;
 }
 .marquee h1 {

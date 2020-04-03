@@ -461,7 +461,7 @@ class report extends React.Component{
         //reference : https://stackoverflow.com/questions/5210376/how-to-get-first-and-last-day-of-the-week-in-javascript
         var curr = new Date; // get current date
         var end = curr.getDate() - curr.getDay(); // the day of the month - the day of the week
-        var start = first + 6; // the end day + 6
+        var start = end + 6; // the end day + 6
 
         // date ranges where it ranges from firstday to lastday
         var lastday = new Date(curr.setDate(end));

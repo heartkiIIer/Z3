@@ -121,18 +121,13 @@ class ItsBedtimeRoutine extends React.Component {
     }
 
     selectComponent(){
-        let divStyle, h1Style;
+        let h1Style;
         if(window.innerWidth < 700) {
-            divStyle = {
-                marginBottom: '30px !important',
-            }
             h1Style = {
+                marginBottom: '30px !important',
                 fontSize: '2rem'
             }
         } else {
-            divStyle = {
-                marginBottom: '7px',
-            }
             h1Style = {
                 fontSize: '2.5rem'
             }
@@ -149,13 +144,13 @@ class ItsBedtimeRoutine extends React.Component {
                 document.getElementById("cycle").innerText = "Next Item";
                 //Timer
                 if(this.state.routine[this.state.stage].minutes !== 0) {
-                    return <div style={divStyle}><h1 style={h1Style} className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
+                    return <div><h1 style={h1Style} className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
                                                minutes={this.state.routine[this.state.stage].minutes} timer={true}/></div>;
                 }
                 //No Timer
 
-                    return <div style={divStyle}><h1 style={h1Style} className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
+                    return <div><h1 style={h1Style} className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
                                                minutes={this.state.routine[this.state.stage].minutes} timer={false}/></div>;
 
@@ -163,7 +158,7 @@ class ItsBedtimeRoutine extends React.Component {
             //Nothing remains
             else{
                 document.getElementById("cycle").innerText = "Log Sleep";
-                return <div style={divStyle}><h1 style={h1Style} className="alignTextRight">{this.state.stages.toString() + "/" + this.state.stages.toString() + " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
+                return <div><h1 style={h1Style} className="alignTextRight">{this.state.stages.toString() + "/" + this.state.stages.toString() + " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
                                            stage={100} stages={100}
                                            minutes={0} timer={false}/></div>;
             }

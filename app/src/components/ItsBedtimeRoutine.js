@@ -23,18 +23,6 @@ import swal from "sweetalert"
 class ItsBedtimeRoutine extends React.Component {
     constructor(props){
         super(props)
-        var mobile;
-        // if(window.innerWidth >= 700){
-        //     this.state = {
-        //         width: '350px'
-        //     };
-        // }
-        // else{
-        //     this.state = {
-        //         width: '170px',
-        //         paddingTop: '300px'
-        //     };
-        // }
         this.state = { isEditable: false, stage: -1, stages: 0, isMobile: mobile, routine : null, timer: null, timerRunning: false};
     }
 
@@ -48,21 +36,11 @@ class ItsBedtimeRoutine extends React.Component {
          window.addEventListener('resize', this.updateDimensions);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        /*if(this.state.stage !== -1){
-            if(this.state.stage < this.state.stages){
-                if(this.state.routine[this.state.stage].minutes !== 0) {
-                    this.startTimer(this.state.routine[this.state.stage].minutes*60);
-                }
-            }
-        }*/
-    }
-
     getRoutine(currentComponent) {
-        function updateStates(r) {
-            //console.log(JSON.stringify(r))
-            currentComponent.setState({routine : r.json()})
-        }
+        // function updateStates(r) {
+        //     //console.log(JSON.stringify(r))
+        //     currentComponent.setState({routine : r.json()})
+        // }
 
         let idPromise = getUserID();
         idPromise.then(uid=>{
@@ -124,12 +102,10 @@ class ItsBedtimeRoutine extends React.Component {
         let h1Style;
         if(window.innerWidth < 700) {
             h1Style = {
-                marginBottom: '30px !important',
                 fontSize: '2rem'
             }
         } else {
             h1Style = {
-                marginBottom: '7px !important',
                 fontSize: '2.5rem'
             }
         }
@@ -147,13 +123,12 @@ class ItsBedtimeRoutine extends React.Component {
                 if(this.state.routine[this.state.stage].minutes !== 0) {
                     return <div><h1 style={h1Style} className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
-                                               minutes={this.state.routine[this.state.stage].minutes} timer={true}/></div>;
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={true}/><br/></div>;
                 }
                 //No Timer
-
-                    return <div><h1 style={h1Style} className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
+                return <div><h1 style={h1Style} className="alignTextRight">{this.state.stage.toString() + "/" + this.state.stages.toString()+ " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={this.state.routine[this.state.stage].task_name}
                                                stage={this.state.stage} stages={this.state.stages}
-                                               minutes={this.state.routine[this.state.stage].minutes} timer={false}/></div>;
+                                               minutes={this.state.routine[this.state.stage].minutes} timer={false}/><br/></div>;
 
             }
             //Nothing remains
@@ -161,29 +136,13 @@ class ItsBedtimeRoutine extends React.Component {
                 document.getElementById("cycle").innerText = "Log Sleep";
                 return <div><h1 style={h1Style} className="alignTextRight">{this.state.stages.toString() + "/" + this.state.stages.toString() + " tasks"}</h1> <BedtimeProgressBar key = {this.state.stage} id="items" title={"You're done!"}
                                            stage={100} stages={100}
-                                           minutes={0} timer={false}/></div>;
+                                           minutes={0} timer={false}/><br/></div>;
             }
         }
     }
 
     render(){
         this.resize();
-        //
-        // const hrStyle = {
-        //     hrContainer:{
-        //         width: this.state.width,
-        //     }
-        // };
-        // const { hrContainer } = hrStyle;
-        //
-        // const bdStyle = {
-        //     bdContainer:{
-        //         paddingTop: this.state.paddingTop,
-        //     }
-        // };
-        //
-        // const { bdContainer } = bdStyle;
-
             return (
                 <div className = "content" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
@@ -197,24 +156,6 @@ class ItsBedtimeRoutine extends React.Component {
                         </div>
                     </div>
                 </div>
-
-
-                // <div>
-                //     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                //     <div class = "content" id="App">
-                //         <div class ="middle">
-                //             <div className="inner" id="page-wrap">
-                //                 <div style={bdContainer} class = "itsBedtime">
-                //                     {this.selectComponent()}
-                //                     <hr className="bedtime-hr"/>
-                //                     <div className = "center" id = "button">
-                //                         <button style={btnContainer} className='btn' id = "cycle" onClick={() => this.startRoutine()}>Begin your routine</button>
-                //                     </div>
-                //                 </div>
-                //             </div>
-                //         </div>
-                //     </div>
-                // </div>
             );
     };
 }

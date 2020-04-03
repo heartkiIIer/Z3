@@ -102,28 +102,49 @@ class LogWake extends React.Component{
                 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                 var yyyy = today.getFullYear();
                 today = yyyy + '/' + mm + '/' + dd + ' ';
-                idPromise.then(uid => {
-                    const data = JSON.stringify({
-                        uid: uid,
-                        time: today+time+':00'
-                    });
-                    fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime', {
+                var fullDate = new Date(today+time+':00');
+                idPromise.then(uid=> {
+                    const data = JSON.stringify({uid: uid});
+                    fetch('https://sleepwebapp.wpi.edu:5000/getRoutine', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
                         },
                         body: data
-                    }).then( r => {
-                        swal({
-                            title: "Success",
-                            icon: "success",
-                            text: "Successfully logged wake time."
-                        }).then(()=>{
-                            window.location.replace("https://sleepwebapp.wpi.edu/home");
-                        });
-                        console.log("Completed")
-                    })
+                    }).then(s => {
+                        var sleepDate = new Date(s);
+                        if (fullDate < sleepDate) {
+                            swal({
+                                text: "Time entered is earlier than time you went to sleep",
+                                icon: "error"
+                            });
+                        } else if (fullDate >= sleepDate) {
+                            idPromise.then(uid => {
+                                const data = JSON.stringify({
+                                    uid: uid,
+                                    time: today + time + ':00'
+                                });
+                                fetch('https://sleepwebapp.wpi.edu:5000/newWakeByTime', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: data
+                                }).then(r => {
+                                    swal({
+                                        title: "Success",
+                                        icon: "success",
+                                        text: "Successfully logged wake time."
+                                    }).then(() => {
+                                        window.location.replace("https://sleepwebapp.wpi.edu/home");
+                                    });
+                                    console.log("Completed")
+                                });
+                            });
+                        }
+                    });
                 });
             }
         });

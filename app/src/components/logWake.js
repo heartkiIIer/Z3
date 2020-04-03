@@ -118,6 +118,7 @@ class LogWake extends React.Component{
                         today = yyyy + '/' + mm + '/' + dd + ' ';
                         //declare Date obj for todays date and entered wake up time
                         var fullDate = new Date(today+time+':00');
+                        console.log(s);
                         console.log(s[0]);
                         var sleep = String(s[0]);
                         console.log(sleep);

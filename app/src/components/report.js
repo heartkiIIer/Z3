@@ -209,7 +209,7 @@ class report extends React.Component{
                 caf = 0;
             }
             if(this.state.numSleep !=0){
-                sleep = Math.round(this.state.avgSleep/this.state.numSleep);
+                sleep = Math.round(this.state.avgSleep/this.state.numSleep*10)/10;
             }
             else{
                 sleep = 0;
@@ -513,19 +513,10 @@ class report extends React.Component{
                 formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
                 //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
-                // console.log(date.getTime());
-                // console.log(date.getMonth()+1 + "-"  + date.getDate()+ "-" + date.getFullYear());
-                // console.log(firstday.getTime());
-                // console.log(firstday.getMonth()+1 + "-"  + firstday.getDate()+ "-" + firstday.getFullYear());
-                // console.log(lastday.getTime());
-                // console.log(lastday.getMonth()+1 + "-"  + lastday.getDate()+ "-" + lastday.getFullYear());
-
                 //if((date.getTime() >= firstday.getTime() && date.getTime() <= lastday.getTime())){
-                //     console.log("Hello");
                     avgCaf += cardsToGenerate[i][1];
                     numCaf++;
                     avgSleep += cardsToGenerate[i][2];
-                    // console.log(avgSleep);
                     numSleep++;
                     for(var k = 0; k < cardsToGenerate[i][3].length; k++) {
                         arrStress.push(cardsToGenerate[i][3][k]);
@@ -541,11 +532,6 @@ class report extends React.Component{
 
             }
         }
-
-        console.log("Average Sleep: ", avgSleep);
-        console.log("Stress Array: ", arrStress);
-        console.log("Average Exercise: ", avgExer);
-        console.log("Average Caf: ", avgCaf);
 
         if(this.state.avgCaf == null){
             this.setState({

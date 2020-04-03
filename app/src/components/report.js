@@ -513,9 +513,11 @@ class report extends React.Component{
                 //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
                 if((date.getTime() <= lastday.getTime() && date.getTime() >= firstday.getTime())){
+                    console.log("Hello");
                     avgCaf += cardsToGenerate[i][1];
                     numCaf++;
                     avgSleep += cardsToGenerate[i][2];
+                    console.log(avgSleep);
                     numSleep++;
                     for(var k = 0; k < cardsToGenerate[i][3].length; k++) {
                         arrStress.push(cardsToGenerate[i][3][k]);

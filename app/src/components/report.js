@@ -251,7 +251,7 @@ class report extends React.Component{
                         <h1 className="blueHeader">Weekly Overview</h1>
                         <div className="week" class="flex-report">
                             <div className="goalProg">
-                                <CircularProgressbar value={(sleep/this.state.goal[0].sleepgoal)*10} text={`${(sleep/this.state.goal[0].sleepgoal)*10}%`} />
+                                <CircularProgressbar value={(sleep/this.state.goal[0].sleepgoal)*10} text={`${Math.round(sleep/this.state.goal[0].sleepgoal*100)/10}%`} />
                             </div>
                             <div className="percentage">
                                 <p>Average Sleep:</p>

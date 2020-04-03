@@ -303,6 +303,28 @@ function addFitbitSleepEntryById(req, res, id, start, end) {
 }
 
 //Add wake to sleep entry
+function getLatestSleepById(req, res, id) {
+    const promise = promiseBuildergoogleIdtoInternal(id);
+    promise
+        .then(function(internalId) {
+            const promise2 = promiseBuilderMaxEntry(internalId.rows[0].user_id);
+            promise2.then(function(entry_id){
+                pool.query("SELECT 1 FROM sleepentry WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                    if (error) {
+                        throw error
+                    }
+                    console.log(results.rows);
+                    res.status(200).send(results.rows);
+                })
+            }).catch(function(error){
+                console.log(error)
+            })
+        }).catch(function(error){
+        console.log(error)
+    })
+}
+
+//Add wake to sleep entry
 function addWakeById(req, res, id) {
     const promise = promiseBuildergoogleIdtoInternal(id);
     promise
@@ -712,5 +734,6 @@ module.exports = {
     getPopup,
     setPopupFalse2,
     getPopup2,
-    addWakeByTime
+    addWakeByTime,
+    getLatestSleepById
 }

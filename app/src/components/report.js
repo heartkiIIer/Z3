@@ -203,19 +203,22 @@ class report extends React.Component{
             var exer;
 
             if(this.state.numCaf !=0){
-                caf = Math.round(this.state.avgCaf/this.state.numCaf);
+                // caf = Math.round(this.state.avgCaf/this.state.numCaf);
+                caf = Math.round(this.state.avgCaf/7);
             }
             else{
                 caf = 0;
             }
             if(this.state.numSleep !=0){
-                sleep = Math.round(this.state.avgSleep/this.state.numSleep*10)/10;
+                // sleep = Math.round(this.state.avgSleep/this.state.numSleep*10)/10;
+                sleep = Math.round(this.state.avgSleep/7*10)/10;
             }
             else{
                 sleep = 0;
             }
             if(this.state.numExer !=0){
-                exer = Math.round(this.state.avgExer/this.state.numExer);
+                // exer = Math.round(this.state.avgExer/this.state.numExer);
+                exer = Math.round(this.state.avgExer/7);
             }
             else{
                 exer = 0;

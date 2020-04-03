@@ -124,7 +124,7 @@ class ItsBedtimeRoutine extends React.Component {
         let divStyle, h1Style;
         if(window.innerWidth < 700) {
             divStyle = {
-                marginBottom: '40px',
+                marginBottom: '30px !important',
             }
             h1Style = {
                 fontSize: '2rem'

@@ -331,7 +331,7 @@ function addWakeById(req, res, id) {
         .then(function(internalId) {
             const promise2 = promiseBuilderMaxEntry(internalId.rows[0].user_id);
             promise2.then(function(entry_id){
-                pool.query("UPDATE sleepentry SET end_sleep = CASE end_sleep WHEN null THEN current_timestamp ELSE end_sleep END WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                pool.query("UPDATE sleepentry SET end_sleep = CASE WHEN end_sleep IS NULL THEN current_timestamp ELSE end_sleep END WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
                     if (error) {
                         throw error
                     }
@@ -353,7 +353,7 @@ function addWakeByTime(req, res, id, time) {
         .then(function(internalId) {
             const promise2 = promiseBuilderMaxEntry(internalId.rows[0].user_id);
             promise2.then(function(entry_id){
-                pool.query("UPDATE sleepentry SET end_sleep = CASE end_sleep WHEN null THEN TO_TIMESTAMP('"+ time +"', 'YYYY/MM/DD HH24:MI:SS') ELSE end_sleep END WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                pool.query("UPDATE sleepentry SET end_sleep = CASE WHEN end_sleep IS NULL THEN TO_TIMESTAMP('"+ time +"', 'YYYY/MM/DD HH24:MI:SS') ELSE end_sleep END WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
                     if (error) {
                         throw error
                     }

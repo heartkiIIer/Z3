@@ -126,6 +126,8 @@ class LogWake extends React.Component{
                         },
                         body: data
                     }).then( s => {
+                        console.log(s)
+                        console.log(data)
                         return s.json();
                     }).then(s => {
                         var today = new Date();
@@ -135,6 +137,7 @@ class LogWake extends React.Component{
                         today = yyyy + '/' + mm + '/' + dd + ' ';
                         var fullDate = new Date(today+time+':00');
                         console.log(s);
+                        console.log(data)
                         var sleepDate = new Date(s);
                         console.log(sleepDate);
                         if(fullDate.getTime() < sleepDate.getTime){

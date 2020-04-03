@@ -125,16 +125,16 @@ class LogWake extends React.Component{
                             'Content-Type': 'application/json',
                         },
                         body: data
-                    }).then( r => {
-                        return r.json();
-                    }).then(r => {
+                    }).then( s => {
+                        return s.json();
+                    }).then(s => {
                         var today = new Date();
                         var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                         var yyyy = today.getFullYear();
                         today = yyyy + '/' + mm + '/' + dd + ' ';
                         var fullDate = new Date(today+time+':00');
-                        var sleepDate = new Date(r);
+                        var sleepDate = new Date(s);
                         if(fullDate.getTime() < sleepDate.getTime){
                             swal({
                                 text: "Time entered is earlier than time you went to sleep",

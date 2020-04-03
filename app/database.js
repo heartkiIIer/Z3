@@ -309,7 +309,7 @@ function getLatestSleepById(req, res, id) {
         .then(function(internalId) {
             const promise2 = promiseBuilderMaxEntry(internalId.rows[0].user_id);
             promise2.then(function(entry_id){
-                pool.query("SELECT 1 FROM sleepentry WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
+                pool.query("SELECT * FROM sleepentry WHERE entry_id ="+entry_id.rows[0].max+";" , (error, results) => {
                     if (error) {
                         throw error
                     }

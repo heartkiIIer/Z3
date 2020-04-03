@@ -120,7 +120,7 @@ class LogWake extends React.Component{
                         var fullDate = new Date(today+time+':00');
                         console.log(s);
                         console.log(s[0]);
-                        var sleep = String(s[0]);
+                        var sleep = s[0]["start_sleep"];
                         console.log(sleep);
                         //declare Date obj for date and time user last went to sleep
                         var sleepDate = new Date(sleep);

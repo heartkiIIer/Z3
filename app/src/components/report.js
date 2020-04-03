@@ -147,11 +147,6 @@ class report extends React.Component{
 
     render(){
         this.resize();
-        console.log("Average Sleep: ", this.state.avgSleep);
-        console.log("Average Sleep: ", this.state.arrStress);
-        console.log("Average Sleep: ", this.state.avgExer);
-        console.log("Average Sleep: ", this.state.avgCaf);
-
         if((this.state.sleep == null || this.state.goal == null || this.state.stress == null || this.state.caf == null || this.state.exer == null) && (this.state.avgCaf == null || this.state.numCaf ==null || this.state.avgSleep == null || this.state.arrStress.length != 0 || this.state.numSleep == null || this.state.avgExer == null || this.state.numExer ==null)){
             return (
             <div class = "reportClass" id="App">
@@ -217,7 +212,6 @@ class report extends React.Component{
                 sleep = Math.round(this.state.avgSleep/this.state.numSleep);
             }
             else{
-                console.log("000000000000");
                 sleep = 0;
             }
             if(this.state.numExer !== 0){
@@ -283,7 +277,7 @@ class report extends React.Component{
         }
 
         else {
-            var sleepGoal;
+            let sleepGoal;
             if(this.state.goal[0].sleepgoal == null){
                 sleepGoal = "Sleep Goal: -- hrs per day";
             }
@@ -333,9 +327,9 @@ class report extends React.Component{
 
         //Iterate through all entries and sort them together by date
         //Caffeine
-        for(var i = 0; i < Object.keys(this.state.caf).length; i++){
+        for(let i = 0; i < Object.keys(this.state.caf).length; i++){
             //if empty, add to the array
-            if(cardsToGenerate.length == 0){
+            if(cardsToGenerate.length === 0){
                 cardsToGenerate.push([this.state.caf[i].date, this.state.caf[i].cups, 0, [], 0]);
             }
             //otherwise
@@ -343,10 +337,10 @@ class report extends React.Component{
                 var added = false; //record true when finished
 
                 //check if that date is already entered
-                for(var j = 0; j < cardsToGenerate.length; j++){
-                    var dateInArr = new Date(cardsToGenerate[j][0]);
-                    var dateToEnter = new Date(this.state.caf[i].date);
-                    if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                for(let j = 0; j < cardsToGenerate.length; j++){
+                    let dateInArr = new Date(cardsToGenerate[j][0]);
+                    let dateToEnter = new Date(this.state.caf[i].date);
+                    if(dateInArr.getDate() === dateToEnter.getDate() && dateInArr.getFullYear() === dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
                         added=true;
                         cardsToGenerate[j][1] = cardsToGenerate[j][1] + this.state.caf[i].cups;
                     }
@@ -359,13 +353,13 @@ class report extends React.Component{
         }
 
         //Sleep
-        for(var i = 0; i < Object.keys(this.state.sleep).length; i++){
+        for(let i = 0; i < Object.keys(this.state.sleep).length; i++){
             //disregard entries where wake up is not recorded
-            if(this.state.sleep[i].end_sleep != null || this.state.sleep[i].end_sleep != undefined){
+            if(this.state.sleep[i].end_sleep !== null || this.state.sleep[i].end_sleep !== undefined){
                 //if empty, add to the array
-                if(cardsToGenerate.length == 0){
-                    var initial = new Date (this.state.sleep[i].start_sleep);
-                    var terminate = new Date(this.state.sleep[i].end_sleep);
+                if(cardsToGenerate.length === 0){
+                    let initial = new Date (this.state.sleep[i].start_sleep);
+                    let terminate = new Date(this.state.sleep[i].end_sleep);
                     console.log("sleep entry info");
                     console.log(initial)
                     console.log(terminate)
@@ -373,14 +367,14 @@ class report extends React.Component{
                 }
                 //otherwise
                 else{
-                    var added = false; //record true when finished
+                    let added = false; //record true when finished
 
                     //check if that date is already entered
-                    for(var j = 0; j < cardsToGenerate.length; j++){
-                        var dateInArr = new Date(cardsToGenerate[j][0]);
-                        var dateToEnter = new Date(this.state.sleep[i].start_sleep);
-                        var terminate = new Date(this.state.sleep[i].end_sleep);
-                        if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                    for(let j = 0; j < cardsToGenerate.length; j++){
+                        let dateInArr = new Date(cardsToGenerate[j][0]);
+                        let dateToEnter = new Date(this.state.sleep[i].start_sleep);
+                        let terminate = new Date(this.state.sleep[i].end_sleep);
+                        if(dateInArr.getDate() === dateToEnter.getDate() && dateInArr.getFullYear() === dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
                             added=true;
                             cardsToGenerate[j][2] = cardsToGenerate[j][2] + (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
                         }
@@ -397,20 +391,20 @@ class report extends React.Component{
         }
 
         //Stress
-        for(var i = 0; i < Object.keys(this.state.stress).length; i++){
+        for(let i = 0; i < Object.keys(this.state.stress).length; i++){
             //if empty, add to the array
-            if(cardsToGenerate.length == 0){
+            if(cardsToGenerate.length === 0){
                 cardsToGenerate.push([this.state.stress[i].date, 0, 0, [this.state.stress[i].stress], 0]);
             }
             //otherwise
             else{
-                var added = false; //record true when finished
+                let added = false; //record true when finished
 
                 //check if that date is already entered
-                for(var j = 0; j < cardsToGenerate.length; j++){
-                    var dateInArr = new Date(cardsToGenerate[j][0]);
-                    var dateToEnter = new Date(this.state.stress[i].date);
-                    if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                for(let j = 0; j < cardsToGenerate.length; j++){
+                    let dateInArr = new Date(cardsToGenerate[j][0]);
+                    let dateToEnter = new Date(this.state.stress[i].date);
+                    if(dateInArr.getDate() === dateToEnter.getDate() && dateInArr.getFullYear() === dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
                         added=true;
                         console.log("cards to generate j[3]")
                         console.log(cardsToGenerate[j][3])
@@ -424,20 +418,20 @@ class report extends React.Component{
             }
         }
         //Exercise
-        for(var i = 0; i < Object.keys(this.state.exer).length; i++){
+        for(let i = 0; i < Object.keys(this.state.exer).length; i++){
             //if empty, add to the array
-            if(cardsToGenerate.length == 0){
+            if(cardsToGenerate.length === 0){
                 cardsToGenerate.push([this.state.exer[i].date, 0, 0, [], this.state.exer[i].minutes]);
             }
             //otherwise
             else{
-                var added = false; //record true when finished
+                let added = false; //record true when finished
 
                 //check if that date is already entered
-                for(var j = 0; j < cardsToGenerate.length; j++){
-                    var dateInArr = new Date(cardsToGenerate[j][0]);
-                    var dateToEnter = new Date(this.state.exer[i].date);
-                    if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
+                for(let j = 0; j < cardsToGenerate.length; j++){
+                    let dateInArr = new Date(cardsToGenerate[j][0]);
+                    let dateToEnter = new Date(this.state.exer[i].date);
+                    if(dateInArr.getDate() === dateToEnter.getDate() && dateInArr.getFullYear() === dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
                         added=true;
                         cardsToGenerate[j][4] = cardsToGenerate[j][4] + this.state.exer[i].minutes;
                     }
@@ -483,7 +477,7 @@ class report extends React.Component{
         var arrToReturn = [];
         //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
-        for(var i = 7*this.state.weeksAgo; i < (7*this.state.weeksAgo) +7; i++){
+        for(let i = 7*this.state.weeksAgo; i < (7*this.state.weeksAgo) +7; i++){
             if(cardsToGenerate[i] != null) {
                 var formatStress;
                 var formatCaf;
@@ -492,7 +486,7 @@ class report extends React.Component{
                 var formatDate;
 
                 //Stress
-                if(cardsToGenerate[i][3].length != 0){
+                if(cardsToGenerate[i][3].length !== 0){
                     var sortArr = cardsToGenerate[i][3].sort();
                     var mid = Math.floor(sortArr.length/2)
                     var median = sortArr[mid];
@@ -537,6 +531,11 @@ class report extends React.Component{
 
             }
         }
+
+        console.log("Average Sleep: ", avgSleep);
+        console.log("Stress Array: ", arrStress);
+        console.log("Average Exercise: ", avgExer);
+        console.log("Average Caf: ", avgCaf);
 
         if(this.state.avgCaf == null){
             this.setState({

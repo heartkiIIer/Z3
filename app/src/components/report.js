@@ -512,7 +512,7 @@ class report extends React.Component{
                 formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
                 //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
-                console.log(date.getTime());
+                console.log(date.getTime().toString());
                 console.log(lastday.getTime());
                 console.log(firstday.getTime());
 

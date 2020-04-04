@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
 import {getUserID} from "../scripts/login";
+import swal from "sweetalert";
 
 class report extends React.Component{
     constructor(props) {
@@ -130,6 +131,15 @@ class report extends React.Component{
         });
 
     };
+
+    displayInfo(){
+        swal({
+            title: "Report Page Information",
+            icon: "success",
+            text: "Set your nightly sleep goal in settings"
+        });
+    }
+
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -152,6 +162,7 @@ class report extends React.Component{
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner-report" id="page-wrap" align="center">
+                    <button onClick={() => this.displayInfo()}>ignore this</button>
                     <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-report"/>
                     <br/>

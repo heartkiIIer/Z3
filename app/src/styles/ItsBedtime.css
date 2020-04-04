@@ -52,10 +52,6 @@ html, body {
     box-sizing: border-box;
 }
 
-.marquee h1:hover {
-    animation-play-state: paused;
-}
-
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }

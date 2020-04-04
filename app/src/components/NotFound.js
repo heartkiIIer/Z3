@@ -13,7 +13,7 @@ class NotFound extends React.Component {
 
     render(){
         return (
-            <div class = "content modules">
+            <div class = "content personality">
                 <div class = "inner">
                     <h1 class = "blueHeader"> File not Found</h1>
                     <hr class = "hr-settings"/>

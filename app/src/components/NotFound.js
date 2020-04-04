@@ -11,14 +11,10 @@ import Tile from "./Tile.js";
 
 class NotFound extends React.Component {
 
-    componentDidMount(): void {
-        document.getElementById('notfound').height = '100vh !important'
-    }
-
     render(){
         return (
             <div class = "content modules">
-                <div id ="notfound" class = "inner">
+                <div id ="notfound" class = "inner" style="height: 100vh;">
                     <h1 class = "blueHeader"> File not Found</h1>
                     <hr class = "hr-settings"/>
                     <br/>

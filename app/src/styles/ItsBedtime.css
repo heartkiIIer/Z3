@@ -46,7 +46,7 @@ html, body {
 }
 
 .marquee, .marquee-mobile {
-    width: 80%;
+    width: 70%;
     white-space: nowrap;
     overflow: hidden;
     box-sizing: border-box;

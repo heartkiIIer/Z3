@@ -151,7 +151,7 @@ class BedtimeProgressBar extends React.Component {
         console.log(window.innerWidth)
         if(window.innerWidth < 700){
             if(this.props.title.length <= 12) {
-                title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b></div>
+                title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b><br/></div>
             } else {
                 title = <div class='marquee-mobile' style={{ marginTop: -5}} ><b><h1 id='marquee' style={h1} >{this.props.title}</h1></b></div>
                 button = <a href="#" className="play"/>
@@ -160,7 +160,7 @@ class BedtimeProgressBar extends React.Component {
         }
         else {
             if(this.props.title.length <= 12) {
-                title = <div style={{ marginTop: -5 }}><b><h1 style={h1Big}>{this.props.title}</h1></b></div>
+                title = <div style={{ marginTop: -5 }}><b><h1 style={h1Big}>{this.props.title}</h1></b><br/></div>
             } else {
                 title = <div class='marquee' style={{ marginTop: -5 }}><b><h1 style={h1Big} onClick={this.stopAnimation}>{this.props.title}</h1></b></div>
             }
@@ -177,7 +177,6 @@ class BedtimeProgressBar extends React.Component {
                     })}>
                         {title}
                         {button}
-                        <br/>
                         {timer}
                     </CircularProgressbarWithChildren>
                 </div>)

@@ -71,27 +71,27 @@ html, body {
     display: block;
     width: 0;
     height: 0;
-    border-top: 55px solid transparent;
-    border-bottom: 55px solid transparent;
-    border-left: 66px solid #3e98c7;
-    margin: 110px auto 55px auto;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 12px solid #3e98c7;
+    margin: 20px auto 10px auto;
     position: relative;
     z-index: 1;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    left: 11px;
+    left: 2px;
 }
 
 .play:before {
     content: '';
     position: absolute;
-    top: -82.5px;
-    left: -126.5px;
-    bottom: -82.5px;
-    right: -38.5px;
+    top: -15px;
+    left: -23px;
+    bottom: -15px;
+    right: -7px;
     border-radius: 50%;
-    border: 11px solid #3e98c7;
+    border: 2px solid #3e98c7;
     z-index: 2;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
@@ -119,14 +119,13 @@ html, body {
 .play.active:after {
     content: '';
     opacity: 1;
-    width: 55px;
-    height: 88px;
+    width: 10px;
+    height: 16px;
     background: #3e98c7;
     position: absolute;
-    right: 5.5px;
-    top: -44px;
-    border-left: 22px solid #3e98c7;
-    box-shadow: inset 33px 0 0 0 #f9f9f9;
+    right: 1px;
+    top: -8px;
+    border-left: 4px solid #3e98c7;
 }
 
 .timeHeader {

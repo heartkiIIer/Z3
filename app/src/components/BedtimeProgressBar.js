@@ -92,11 +92,11 @@ class BedtimeProgressBar extends React.Component {
         }
     }
 
-    stopAnimation(e){
-        if (e.target.style.animationPlayState == ""){
-            e.target.style.animationPlayState = "paused";
+    stopAnimation(event){
+        if (event.target.style.animationPlayState == ""){
+            event.target.style.animationPlayState = "paused";
         } else {
-            e.target.style.animationPlayState = "";
+            event.target.style.animationPlayState = "";
         }
     }
 
@@ -131,7 +131,7 @@ class BedtimeProgressBar extends React.Component {
             if(this.props.title.length <= 12) {
                 title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b></div>
             } else {
-                title = <div class='marquee' style={{ marginTop: -5}} ><b><h1 style={h1} onClick={this.stopAnimation(event)}>{this.props.title}</h1></b></div>
+                title = <div class='marquee' style={{ marginTop: -5}} ><b><h1 style={h1} onClick={this.stopAnimation}>{this.props.title}</h1></b></div>
             }
             timer = <div style={{ marginTop: -5 }}><h1 style={h1}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }
@@ -139,7 +139,7 @@ class BedtimeProgressBar extends React.Component {
             if(this.props.title.length <= 12) {
                 title = <div style={{ marginTop: -5 }}><b><h1 style={h1Big}>{this.props.title}</h1></b></div>
             } else {
-                title = <div class='marquee' style={{ marginTop: -5 }}><b><h1 style={h1Big} onClick={this.stopAnimation(event)}>{this.props.title}</h1></b></div>
+                title = <div class='marquee' style={{ marginTop: -5 }}><b><h1 style={h1Big} onClick={this.stopAnimation}>{this.props.title}</h1></b></div>
             }
             timer = <div style={{ marginTop: -5 }}><h1 style={h1Big}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }

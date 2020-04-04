@@ -123,7 +123,8 @@ class PersonalityIntro extends React.Component {
         return (
             <div className = "content personality" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                <div style={containerStyle} className="inner" id="page-wrap">
+                <div className="middle">
+                    <div style={containerStyle} className="inner" id="page-wrap">
                     <h1 className="blueHeader">What is Your Personality?</h1>
                     <hr className="hr-settings"/>
                     <br/>
@@ -155,7 +156,7 @@ class PersonalityIntro extends React.Component {
                         <button className="test_btn chrono_img shadow p-3 mb-5">Chronotype Test</button>
                     </Link>
                 </div>
-
+                </div>
             </div>
         );
     };

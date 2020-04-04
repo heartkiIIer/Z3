@@ -144,7 +144,7 @@ class BedtimeProgressBar extends React.Component {
                         textSize: 12
                     })}>
                         {title}
-                        <br/>
+                        <br/><br/>
                         {timer}
                     </CircularProgressbarWithChildren>
                 </div>)

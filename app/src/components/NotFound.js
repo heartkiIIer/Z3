@@ -8,18 +8,20 @@ import Tile from "./Tile.js";
  * @author Eliazbeth Del Monaco
  * This component renders the file not found page
  * */
+const style = {
+    height: '100vh'
+}
 
 class NotFound extends React.Component {
 
     render(){
         return (
             <div class = "content modules">
-                <div class = "inner">
+                <div id ="notfound" class = "inner" style={style}>
                     <h1 class = "blueHeader"> File not Found</h1>
                     <hr class = "hr-settings"/>
                     <br/>
                     <h3>Sorry, the page you are looking for does not exist or no longer exists.</h3>
-
                 </div>
             </div>
         );

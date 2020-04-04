@@ -71,13 +71,7 @@ class MindfulYoga extends React.Component {
                                 for Healthy for Life guides you through the practice of mindful yoga.  Mindful hatha
                                 yoga consists of gentle stretching and strengthening exercises, done slowly, with
                                 moment-to-moment awareness of breathing and of the sensations that arise as you put
-                                your body into various postures.    While you will be following Rossy's instructions,
-                                it is very important to simultaneously listen to your own body in order to discover
-                                your version of each posture--honoring the wisdom of your body and what it tells you
-                                about how to move into a posture, how long to hold it, and if you need to move out of
-                                a posture before Rossy say to, then do so.  If you find yourself unable to do a particular
-                                posture, please feel free to skip it. We always recommend that you check with your health
-                                care provider before starting a new practice of physical activity.</p>
+                                your body into various postures.</p>
 
                             <hr className="hr-settings"/>
                             <br/>

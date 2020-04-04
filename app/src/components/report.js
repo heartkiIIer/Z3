@@ -136,11 +136,6 @@ class report extends React.Component{
         swal({
             title: "Report Page Information",
             text: "Set your nightly sleep goal in settings",
-            html: "<h3>Sleep Goal</h3></br><p>a</p></br>" +
-                "<h3>Total Sleep</h3></br><p>a</p></br>"+
-                "<h3>Average Stress Level</h3></br><p>a</p></br>"+
-                "<h3>Total Exercise</h3></br><p>a</p></br>"+
-                "<h3>Average stress level</h3></br><p>a</p></br>",
         });
     }
 
@@ -166,7 +161,9 @@ class report extends React.Component{
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner-report" id="page-wrap" align="center">
-                    <button onClick={() => this.displayInfo()}>ignore this</button>
+                    <div align='end'>
+                    <button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>
+                    </div>
                     <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-report"/>
                     <br/>

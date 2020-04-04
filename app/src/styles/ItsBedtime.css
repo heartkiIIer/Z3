@@ -439,6 +439,12 @@ input:focus{
     width: 100%;
 }
 
+.infoBut{
+    background-image: url("../resources/icons/info_icon.png");
+    min-height: 24px;
+    min-width: 24px;
+}
+
 .alignTextRight {
     text-align: right;
     color: #337ab7;

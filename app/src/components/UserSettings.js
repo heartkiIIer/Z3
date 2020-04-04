@@ -97,9 +97,9 @@ class UserSettings extends React.Component {
                     icon: "error"
                 });
             }
-            else if(task.length > 16){
+            else if(task.length > 30){
                 swal({
-                    text: "Please input a task with 16 or less characters",
+                    text: "Please input a task with 30 or less characters",
                     icon: "error"
                 });
             }

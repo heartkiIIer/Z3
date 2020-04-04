@@ -45,14 +45,14 @@ html, body {
     padding-top: 30px;
 }
 
-.marquee {
-    width: 80%;
+.marquee, .marquee-mobile {
+    width: 75%;
     white-space: nowrap;
     overflow: hidden;
     box-sizing: border-box;
 }
 
-.marquee h1 {
+.marquee h1, .marquee-mobile h1 {
     display: inline-block;
     padding-left: 100%;
     animation: marquee 15s linear infinite;
@@ -65,6 +65,67 @@ html, body {
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
+}
+
+.play {
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 12px solid #3e98c7;
+    margin: 10px auto 10px auto;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    left: 2px;
+}
+
+.play:before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -23px;
+    bottom: -15px;
+    right: -7px;
+    border-radius: 50%;
+    border: 2px solid #3e98c7;
+    z-index: 2;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+}
+
+.play:after {
+    content: '';
+    opacity: 0;
+    transition: opacity 0.6s;
+    -webkit-transition: opacity 0.6s;
+    -moz-transition: opacity 0.6s;
+}
+
+.play:hover:before, .play:focus:before {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+}
+
+.play.active {
+    border-color: transparent;
+}
+
+.play.active:after {
+    content: '';
+    opacity: 1;
+    width: 10px;
+    height: 16px;
+    background: #3e98c7;
+    position: absolute;
+    right: 1px;
+    top: -8px;
+    border-left: 4px solid #3e98c7;
 }
 
 .timeHeader {

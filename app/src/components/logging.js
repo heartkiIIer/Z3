@@ -60,7 +60,7 @@ class logging extends React.Component{
         const { containerStyle } = styles;
 
         return(
-            <div class="content logging-background" id="App">
+            <div class="content" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div style={containerStyle} className="inner " id="page-wrap">
                         <h1 className="blueHeader">Logging </h1>

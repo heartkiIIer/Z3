@@ -27,12 +27,13 @@ html, body {
     padding: 75px 75px 40px;
     border-right: 1px solid #e4e4e4;
     border-left: 1px solid #e4e4e4;
-    height: 100%;
+    height: inherit;
 }
 
 .middle {
     display: table-cell;
     vertical-align: middle;
+    height: inherit;
 }
 
 .blueHeader {
@@ -51,14 +52,10 @@ html, body {
     box-sizing: border-box;
 }
 
-.marquee:hover {
-    animation-play-state: paused;
-}
 .marquee h1 {
     display: inline-block;
     padding-left: 100%;
     animation: marquee 15s linear infinite;
-    animation-play-state: running, paused;
 }
 
 @keyframes marquee {

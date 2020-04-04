@@ -166,7 +166,8 @@ class report extends React.Component{
             <div class = "reportClass" id="App">
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner-report" id="page-wrap" align="center">
-                    <button onClick={() => this.displayInfo()}>ignore this</button>
+                    <button className='btn' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}>info</button>
+                    <br/>
                     <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-report"/>
                     <br/>

@@ -12,9 +12,19 @@ const h1 = {
     color: '#3e98c7'
 }
 
+const timer = {
+    fontSize: '25px',
+    color: 'black'
+}
+
 const h1Big = {
     fontSize: '45px',
     color: '#3e98c7'
+}
+
+const timerBig = {
+    fontSize: '45px',
+    color: 'black'
 }
 
 class BedtimeProgressBar extends React.Component {
@@ -133,7 +143,7 @@ class BedtimeProgressBar extends React.Component {
             } else {
                 title = <div class='marquee' style={{ marginTop: -5}} ><b><h1 style={h1} onClick={this.stopAnimation}>{this.props.title}</h1></b></div>
             }
-            timer = <div style={{ marginTop: -5 }}><h1 style={h1}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
+            timer = <div style={{ marginTop: -5 }}><h1 style={timer}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }
         else {
             if(this.props.title.length <= 12) {
@@ -141,7 +151,7 @@ class BedtimeProgressBar extends React.Component {
             } else {
                 title = <div class='marquee' style={{ marginTop: -5 }}><b><h1 style={h1Big} onClick={this.stopAnimation}>{this.props.title}</h1></b></div>
             }
-            timer = <div style={{ marginTop: -5 }}><h1 style={h1Big}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
+            timer = <div style={{ marginTop: -5 }}><h1 style={timerBig}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }
 
 

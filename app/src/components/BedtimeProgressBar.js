@@ -110,6 +110,14 @@ class BedtimeProgressBar extends React.Component {
         }
     }
 
+    stopAnimationMobile(){
+        if (document.getElementById('marquee').style.animationPlayState == ""){
+            document.getElementById('marquee').style.animationPlayState = "paused";
+        } else {
+            document.getElementById('marquee').style.animationPlayState = "";
+        }
+    }
+
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){
@@ -128,7 +136,7 @@ class BedtimeProgressBar extends React.Component {
     render(){
         this.resize();
         let title, timer;
-
+        let button = <div></div>;
         const styles = {
             containerStyle:{
                 width: this.state.width,
@@ -141,7 +149,8 @@ class BedtimeProgressBar extends React.Component {
             if(this.props.title.length <= 12) {
                 title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b></div>
             } else {
-                title = <div class='marquee' style={{ marginTop: -5}} ><b><h1 style={h1} onClick={this.stopAnimation}>{this.props.title}</h1></b></div>
+                title = <div class='marquee' style={{ marginTop: -5}} ><b><h1 id='marquee' style={h1} >{this.props.title}</h1></b></div>
+                button = <button onClick={this.stopAnimationMobile}>Pause/Play</button>
             }
             timer = <div style={{ marginTop: -5 }}><h1 style={timerStyle}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }
@@ -163,7 +172,8 @@ class BedtimeProgressBar extends React.Component {
                         textSize: 12
                     })}>
                         {title}
-                        <br/><br/>
+                        {button}
+                        <br/>
                         {timer}
                     </CircularProgressbarWithChildren>
                 </div>)

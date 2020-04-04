@@ -574,7 +574,11 @@ class report extends React.Component{
     }
 
     changeWeek(element){
-        if(element == 1){
+        if(element == 1 && this.state.sleep == null && this.state.stress == null && this.state.caf == null && this.state.exer == null){
+
+        }
+
+        else if(element == 1){
             this.setState({
                 weeksAgo: this.state.weeksAgo + 1,
                 sleep: null,

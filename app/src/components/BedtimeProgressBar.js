@@ -49,6 +49,13 @@ class BedtimeProgressBar extends React.Component {
         if(this.props.timer){
             this.startTimer(this.props.minutes*60)
         }
+        $(document).ready(function() {
+            const icon = $('.play');
+            icon.click(function() {
+                icon.toggleClass('active');
+                return false;
+            });
+        });
     }
 
     componentWillUnmount() {
@@ -150,7 +157,7 @@ class BedtimeProgressBar extends React.Component {
                 title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b></div>
             } else {
                 title = <div class='marquee-mobile' style={{ marginTop: -5}} ><b><h1 id='marquee' style={h1} >{this.props.title}</h1></b></div>
-                button = <button onClick={this.stopAnimationMobile}>Pause/Play</button>
+                button = <a href="#" onClick={this.stopAnimationMobile} className="play"></a>
             }
             timer = <div style={{ marginTop: -5 }}><h1 style={timerStyle}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }

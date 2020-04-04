@@ -229,7 +229,7 @@ function LoginButton(props) {
             <Tab.Pane attached={false}>
                 <h5>Rate stress level for each event</h5>
                 <br/><br/>
-                <i><p>You need to be logged into your Google Calendar to access this utility.</p></i>
+                <i><p>You need to <b>log in</b> to your Google Calendar to access this utility.</p></i>
             </Tab.Pane>
             <div className='float_center'>
                 <div className='child'>

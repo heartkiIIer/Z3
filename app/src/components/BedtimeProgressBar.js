@@ -140,9 +140,6 @@ class BedtimeProgressBar extends React.Component {
     render(){
         this.resize();
         let title, timer;
-        const style = {
-            color: '#3e98c7'
-        }
         let button = <div></div>;
         const styles = {
             containerStyle:{
@@ -157,7 +154,7 @@ class BedtimeProgressBar extends React.Component {
                 title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b><br/></div>
             } else {
                 title = <div class='marquee-mobile' style={{ marginTop: -5}} ><b><h1 id='marquee' style={h1} >{this.props.title}</h1></b></div>
-                button = <a style={style} href="#" className="play"/>
+                button = <a href="#" className="play"/>
             }
             timer = <div style={{ marginTop: -5 }}><h1 style={timerStyle}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }

@@ -574,7 +574,7 @@ class report extends React.Component{
     }
 
     changeWeek(element){
-        if(element == 1 && this.state.sleep == null && this.state.stress == null && this.state.caf == null && this.state.exer == null){
+        if(element == 1 && this.state.numCaf == null && this.state.arrStress.length == 0 && this.state.numCaf == null && this.state.numExer == null){
 
         }
 

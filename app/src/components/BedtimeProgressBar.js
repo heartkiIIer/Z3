@@ -122,14 +122,6 @@ class BedtimeProgressBar extends React.Component {
         }
     }
 
-    stopAnimationMobile(){
-        if (document.getElementById('marquee').style.animationPlayState == ""){
-            document.getElementById('marquee').style.animationPlayState = "paused";
-        } else {
-            document.getElementById('marquee').style.animationPlayState = "";
-        }
-    }
-
     resize(){
         window.addEventListener('resize', ()=> {
             if(window.innerWidth < 700){

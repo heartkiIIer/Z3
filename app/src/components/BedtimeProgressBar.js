@@ -92,10 +92,10 @@ class BedtimeProgressBar extends React.Component {
     }
 
     stopAnimation(e){
-        if (e.style.animationPlayState == ""){
-            e.style.animationPlayState = "paused";
+        if (e.target.style.animationPlayState == ""){
+            e.target.style.animationPlayState = "paused";
         } else {
-            e.style.animationPlayState = "";
+            e.target.style.animationPlayState = "";
         }
     }
 

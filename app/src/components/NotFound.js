@@ -11,15 +11,18 @@ import Tile from "./Tile.js";
 
 class NotFound extends React.Component {
 
+    componentDidMount(): void {
+        document.getElementById('notfound').height = '100vh'
+    }
+
     render(){
         return (
-            <div class = "content personality">
-                <div class = "inner">
+            <div class = "content modules">
+                <div id ="notfound" class = "inner">
                     <h1 class = "blueHeader"> File not Found</h1>
                     <hr class = "hr-settings"/>
                     <br/>
                     <h3>Sorry, the page you are looking for does not exist or no longer exists.</h3>
-
                 </div>
             </div>
         );

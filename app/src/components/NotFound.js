@@ -12,7 +12,7 @@ import Tile from "./Tile.js";
 class NotFound extends React.Component {
 
     componentDidMount(): void {
-        document.getElementById('notfound').height = '100vh'
+        document.getElementById('notfound').height = '100vh !important'
     }
 
     render(){

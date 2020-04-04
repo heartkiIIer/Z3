@@ -155,7 +155,9 @@ class ItsBedtimeRoutine extends React.Component {
 
     render(){
         this.resize();
-        let style = {overflow: 'visible'};
+        let style = {
+            overflow: 'hidden'
+        };
         if (window.innerWidth < 700) {
             style = {
                 overflow: 'hidden'
@@ -164,8 +166,8 @@ class ItsBedtimeRoutine extends React.Component {
             return (
                 <div className = "content" style={style} id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
-                    <div className="middle">
-                        <div className="inner" id="page-wrap" align='center'>
+                    <div className="middle" style={style}>
+                        <div className="inner" style={style} id="page-wrap" align='center'>
                             {this.selectComponent()}
                             <br/>
                             <hr className='hr-settings'/>

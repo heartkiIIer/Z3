@@ -198,7 +198,7 @@ class Display extends React.Component {
         if (this.state.items.length != 0) {
             ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} itemValue={item.etag}/>))}</div>
         } else {
-            ele = <i><p>You have no upcoming events for today.</p></i>;
+            ele = <i><p>You have <b>no upcoming events</b> for today.</p></i>;
         }
 
         return (
@@ -207,7 +207,7 @@ class Display extends React.Component {
                     <h5>Rate stress level for each event</h5>
                     <button className='btn-info' onClick={this.fetchItems}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
-                    <i><p>Upcoming events of the day will be listed. Click the Refresh icon to unhide events and sync latest/newly added events from the calendar.</p></i>
+                    <i><p>Upcoming events of the day will be listed. Click the <b>Refresh</b> icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>
                     {ele}
                 </Tab.Pane>

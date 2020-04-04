@@ -135,7 +135,12 @@ class report extends React.Component{
     displayInfo(){
         swal({
             title: "Report Page Information",
-            text: "Set your nightly sleep goal in settings",
+            text: "Set your nightly sleep goal in settings" +
+                  "Total Sleep is the elapsed time between the time you went to bed and time woken up in the morning. If using fitbit, this does not include 'restless/awake' periods."+
+                  "Total Exercise is the sum of minutes of all your exercise for the day. When using fitbit this number is calculated the same as your 'active minutes'."+
+                    "Total Caffeine is the sum of all of your caffeine intake for the day"+
+                    "Average stress level is takes all your events rated for stress and calculates the average level of stress for that day."+
+                "The weekly overview shows the averages of each category for that week, as well as the percentage of your sleep goal completed based on your average hours of sleep."
         });
     }
 
@@ -260,6 +265,9 @@ class report extends React.Component{
                 <div class = "reportClass" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="inner-report" id="page-wrap" align="center">
+                        <div align='end'>
+                            <button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>
+                        </div>
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>
                         <br/>
@@ -304,6 +312,9 @@ class report extends React.Component{
                 <div class = "reportClass" id="App">
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="inner-report" id="page-wrap" align="center">
+                        <div align='end'>
+                            <button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>
+                        </div>
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>
                         <br/>

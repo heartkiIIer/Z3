@@ -156,7 +156,7 @@ class ItsBedtimeRoutine extends React.Component {
     render(){
         this.resize();
         let style = {
-            overflow: 'hidden'
+            overflow: 'visible'
         };
         if (window.innerWidth < 700) {
             style = {

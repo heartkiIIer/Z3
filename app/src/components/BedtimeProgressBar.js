@@ -53,6 +53,11 @@ class BedtimeProgressBar extends React.Component {
             const icon = $('.play');
             icon.click(function() {
                 icon.toggleClass('active');
+                if (document.getElementById('marquee').style.animationPlayState == ""){
+                    document.getElementById('marquee').style.animationPlayState = "paused";
+                } else {
+                    document.getElementById('marquee').style.animationPlayState = "";
+                }
                 return false;
             });
         });
@@ -157,7 +162,7 @@ class BedtimeProgressBar extends React.Component {
                 title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b></div>
             } else {
                 title = <div class='marquee-mobile' style={{ marginTop: -5}} ><b><h1 id='marquee' style={h1} >{this.props.title}</h1></b></div>
-                button = <a href="#" onClick={this.stopAnimationMobile} className="play"></a>
+                button = <a href="#" className="play"/>
             }
             timer = <div style={{ marginTop: -5 }}><h1 style={timerStyle}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }

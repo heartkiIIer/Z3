@@ -135,8 +135,12 @@ class report extends React.Component{
     displayInfo(){
         swal({
             title: "Report Page Information",
-            icon: "success",
-            text: "Set your nightly sleep goal in settings"
+            text: "Set your nightly sleep goal in settings",
+            html: "<h3>Sleep Goal</h3></br><p>a</p></br>" +
+                "<h3>Total Sleep</h3></br><p>a</p></br>"+
+                "<h3>Average Stress Level</h3></br><p>a</p></br>"+
+                "<h3>Total Exercise</h3></br><p>a</p></br>"+
+                "<h3>Average stress level</h3></br><p>a</p></br>",
         });
     }
 

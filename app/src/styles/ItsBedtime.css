@@ -74,7 +74,7 @@ html, body {
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     border-left: 12px solid #3e98c7;
-    margin: 20px auto 10px auto;
+    margin: 10px auto 10px auto;
     position: relative;
     z-index: 1;
     transition: all 0.3s;

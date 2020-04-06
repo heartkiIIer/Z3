@@ -260,6 +260,8 @@ class report extends React.Component{
                 let stressSum = stressArr.reduce((a,b) => a + b, 0);
                 let avgStress = Math.floor(stressSum / stressArr.length);
 
+                console.log(stressArr);
+
                 if(avgStress <= 34){
                     stress = "Low";
                 }

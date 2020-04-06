@@ -100,7 +100,7 @@ class Landing extends React.Component {
                                 <h1 className="whiteBoldText">Track your sleep and bring sleep back under your control!</h1>
                                 <div>
                                     <a href={"#features"}>
-                                        <button className="btnLearn" id="morebtn">Learn What We Are All About</button>
+                                        <button className="btnLearn">Learn What We Are All About</button>
                                     </a>
                                 </div>
                             </div>

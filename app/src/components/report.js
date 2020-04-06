@@ -579,22 +579,38 @@ class report extends React.Component{
         }
 
         if(this.state.avgCaf == null){
-            this.setState({
-                avgCaf : avgCaf,
-                numCaf : numCaf,
-                avgSleep : avgSleep,
-                numSleep : numSleep,
-                arrStress : arrStress,
-                avgExer : avgExer,
-                numExer : numExer,
-            })
+            if(emptyWeek == 7){
+                this.setState({
+                    avgCaf : avgCaf,
+                    numCaf : numCaf,
+                    avgSleep : avgSleep,
+                    numSleep : numSleep,
+                    arrStress : arrStress,
+                    avgExer : avgExer,
+                    numExer : numExer,
+                    weekEmpty : true,
+                })
+            }
+            else{
+                this.setState({
+                    avgCaf : avgCaf,
+                    numCaf : numCaf,
+                    avgSleep : avgSleep,
+                    numSleep : numSleep,
+                    arrStress : arrStress,
+                    avgExer : avgExer,
+                    numExer : numExer,
+                })
+            }
         }
 
-        if(emptyWeek == 7){
-            console.log("set true")
-            this.setState({
-                weekEmpty: true,
-            })
+        else{
+            if(emptyWeek == 7){
+                console.log("set true")
+                this.setState({
+                    weekEmpty: true,
+                })
+            }
         }
 
         return (arrToReturn) ;

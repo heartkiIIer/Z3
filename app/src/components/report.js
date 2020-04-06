@@ -584,8 +584,8 @@ class report extends React.Component{
     }
 
     changeWeek(element){
-        console.log("blank card");
-        console.log(document.getElementById("blankCard"));
+        console.log("weeksAgo");
+        console.log(this.state.weeksAgo);
         if(document.getElementById("blankCard") == null) {
             if (element == 1) {
                 this.setState({

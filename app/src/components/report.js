@@ -528,7 +528,7 @@ class report extends React.Component{
         var emptyWeek = 0;
 
         for(var i = 7*this.state.weeksAgo; i < (7*this.state.weeksAgo) +7; i++){
-            if(cardsToGenerate[i] != null) {
+            if(cardsToGenerate[i] != null && cardsToGenerate[i] != undefined) {
                 var formatStress;
                 var formatCaf;
                 var formatExer;
@@ -570,7 +570,7 @@ class report extends React.Component{
                     formatStress = "--"
                 }
 
-                formatCaf = cardsToGenerate[i][1];
+                formatCaf = cardsToGenerate[i][1]
                 formatExer = cardsToGenerate[i][4];
                 formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(1);
                 var date = new Date (cardsToGenerate[i][0]);

@@ -263,7 +263,7 @@ class report extends React.Component{
                 if(median < 40){
                     stress = "Low";
                 }
-                else if (median >= 45){
+                else if (median >= 45 && median < 60){
                     stress = "Medium";
                 }
                 else {

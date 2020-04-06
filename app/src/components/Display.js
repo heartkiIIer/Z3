@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, SyntheticEvent} from 'react';
+import React, {SyntheticEvent} from 'react';
 import ApiCalendar from 'react-google-calendar-api';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Tab } from 'semantic-ui-react'
@@ -27,7 +27,7 @@ export default class LoginControl extends React.Component {
 
     signUpdate(sign: boolean): any {
         this.setState({
-            sign: ApiCalendar.sign
+            sign: sign
         })
     }
 
@@ -87,7 +87,6 @@ class Display extends React.Component {
         approved = approved.map(({summary, start, end, etag}) => ({summary, start, end, etag}));
         let idPromise = getUserID();
         idPromise.then((uid) => {
-            console.log(todayMonth + '/' + todayDate + '/' + todayYear)
             const data = JSON.stringify({uid: uid, month: todayMonth + 1, day: todayDate, year: todayYear});
             fetch('https://sleepwebapp.wpi.edu:5000/getStressByDate', {
                 method: 'POST',
@@ -101,89 +100,94 @@ class Display extends React.Component {
             }).then(r => {
                     console.log(r);
                     for (let i = 0; i < approved.length; i++) {
-                        for (let j = 0; j < r.length; j++) {
-                            let day = approved[i].start.dateTime[8] + approved[i].start.dateTime[9]
-                            let month = approved[i].start.dateTime[5] + approved[i].start.dateTime[6]
-                            switch (day) {
-                                case '01':
-                                    day = 1;
+                        if (r.length === 0) {
+                            approved[i].etag = 50
+                        } else {
+                            for (let j = 0; j < r.length; j++) {
+                                let day = approved[i].start.dateTime[8] + approved[i].start.dateTime[9]
+                                let month = approved[i].start.dateTime[5] + approved[i].start.dateTime[6]
+                                switch (day) {
+                                    case '01':
+                                        day = 1;
+                                        break;
+                                    case '02':
+                                        day = 2;
+                                        break;
+                                    case '03':
+                                        day = 3;
+                                        break;
+                                    case '04':
+                                        day = 4;
+                                        break;
+                                    case '05':
+                                        day = 5;
+                                        break;
+                                    case '06':
+                                        day = 6;
+                                        break;
+                                    case '07':
+                                        day = 7;
+                                        break;
+                                    case '08':
+                                        day = 8;
+                                        break;
+                                    case '09':
+                                        day = 9;
+                                        break;
+                                }
+                                switch (month) {
+                                    case '01':
+                                        month = 1;
+                                        break;
+                                    case '02':
+                                        month = 2;
+                                        break;
+                                    case '03':
+                                        month = 3;
+                                        break;
+                                    case '04':
+                                        month = 4;
+                                        break;
+                                    case '05':
+                                        month = 5;
+                                        break;
+                                    case '06':
+                                        month = 6;
+                                        break;
+                                    case '07':
+                                        month = 7;
+                                        break;
+                                    case '08':
+                                        month = 8;
+                                        break;
+                                    case '09':
+                                        month = 9;
+                                        break;
+                                    case '10':
+                                        month = 10;
+                                        break;
+                                    case '11':
+                                        month = 11;
+                                        break;
+                                    case '12':
+                                        month = 12;
+                                        break;
+                                }
+                                // console.log('Comparing ' + approved[i].summary + ' and ' + r[j].event)
+                                if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
+                                    approved[i].etag = r[j].stress
+                                    // console.log('YES!!! ' + approved[i].summary + ' = ' + r[j].event + ': ' + approved[i].etag)
                                     break;
-                                case '02':
-                                    day = 2;
-                                    break;
-                                case '03':
-                                    day = 3;
-                                    break;
-                                case '04':
-                                    day = 4;
-                                    break;
-                                case '05':
-                                    day = 5;
-                                    break;
-                                case '06':
-                                    day = 6;
-                                    break;
-                                case '07':
-                                    day = 7;
-                                    break;
-                                case '08':
-                                    day = 8;
-                                    break;
-                                case '09':
-                                    day = 9;
-                                    break;
-                            }
-                            switch (month) {
-                                case '01':
-                                    month = 1;
-                                    break;
-                                case '02':
-                                    month = 2;
-                                    break;
-                                case '03':
-                                    month = 3;
-                                    break;
-                                case '04':
-                                    month = 4;
-                                    break;
-                                case '05':
-                                    month = 5;
-                                    break;
-                                case '06':
-                                    month = 6;
-                                    break;
-                                case '07':
-                                    month = 7;
-                                    break;
-                                case '08':
-                                    month = 8;
-                                    break;
-                                case '09':
-                                    month = 9;
-                                    break;
-                                case '10':
-                                    month = 10;
-                                    break;
-                                case '11':
-                                    month = 11;
-                                    break;
-                                case '12':
-                                    month = 12;
-                                    break;
-                            }
-                            // console.log('Comparing ' + approved[i].summary + ' and ' + r[j].event)
-                            if (approved[i].summary === r[j].event && day == r[j].day && month === r[j].month && approved[i].start.dateTime.slice(0, 4) == r[j].year) {
-                                approved[i].etag = r[j].stress
-                                // console.log('YES!!! ' + approved[i].summary + ' = ' + r[j].event + ': ' + approved[i].etag)
-                                break;
-                            } else {
-                                approved[i].etag = 50
-                                // console.log('NO:((( ' + approved[i].summary + ' != ' + r[j].event + ': ' + approved[i].etag)
+                                } else {
+                                    approved[i].etag = 50
+                                    // console.log('NO:((( ' + approved[i].summary + ' != ' + r[j].event + ': ' + approved[i].etag)
+                                }
                             }
                         }
+
                     }
-                this.setState({items: []})
-                this.setState({items: approved})
+                    this.setState({items: []})
+                    this.setState({items: approved})
                 }
             )
         })

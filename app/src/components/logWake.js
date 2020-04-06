@@ -79,11 +79,11 @@ class LogWake extends React.Component{
         // prompt to enter Wake up time
         swal({ //prompt user to enter the time
             title: "Enter wake up time",
-            text: "Please enter the time you woke up",
+            text: "Please enter the time you woke up in military time, any input not in the specified format will NOT be recorded.",
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "HH:MM ex:07:30",
+                    placeholder: "HH:MM (e.g. 07:30)",
                     type: "text"
                 }
             },
@@ -126,11 +126,15 @@ class LogWake extends React.Component{
                         var sleepDate = new Date(sleep);
                         console.log(sleepDate);
                         //check if wake up time before sleep time
-                        console.log(fullDate.getTime());
                         console.log(sleepDate.getTime());
                         if(fullDate.getTime() < sleepDate.getTime()){
                             swal({
-                                text: "Time entered is earlier than time you went to sleep",
+                                text: "Time entered is earlier than time you went to sleep.",
+                                icon: "error"
+                            });
+                        } else if (fullDate.getTime() > new Date().getTime()) {
+                            swal({
+                                text: "Time entered cannot be later than current time.",
                                 icon: "error"
                             });
                         }

@@ -586,8 +586,8 @@ class report extends React.Component{
     changeWeek(element){
         console.log("blank card");
         console.log(document.getElementById("blankCard"));
-        if(document.getElementById("blankCard") == null){
-        if(element == 1){
+        if(document.getElementById("blankCard") == null) {
+            if (element == 1) {
                 this.setState({
                     weeksAgo: this.state.weeksAgo + 1,
                     sleep: null,
@@ -595,19 +595,20 @@ class report extends React.Component{
                     goal: null,
                     caf: null,
                     exer: null,
-                    avgCaf : null,
-                    numCaf : null,
-                    avgSleep : null,
-                    numSleep : null,
-                    arrStress : null,
-                    avgExer : null,
-                    numExer : null,
-                    weekEmpty : false,
-                }, ()=>{
+                    avgCaf: null,
+                    numCaf: null,
+                    avgSleep: null,
+                    numSleep: null,
+                    arrStress: null,
+                    avgExer: null,
+                    numExer: null,
+                    weekEmpty: false,
+                }, () => {
                     let currentComponent = this;
                     this.getWeek(currentComponent)
                 });
-           // }
+                // }
+            }
         }
         else if(this.state.weeksAgo != 0){
             this.setState({
@@ -630,6 +631,5 @@ class report extends React.Component{
                 this.getWeek(currentComponent)
             });
         }}
-    }
 }
 export default report;

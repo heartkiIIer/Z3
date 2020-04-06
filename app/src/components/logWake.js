@@ -126,7 +126,8 @@ class LogWake extends React.Component{
                         var sleepDate = new Date(sleep);
                         console.log(sleepDate);
                         //check if wake up time before sleep time
-                        console.log(fullDate.getTime());
+                        console.log('time entered:' + fullDate.getTime());
+                        console.log('current time: ' + new Date().getTime());
                         console.log(sleepDate.getTime());
                         if(fullDate.getTime() < sleepDate.getTime()){
                             swal({

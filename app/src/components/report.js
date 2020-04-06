@@ -26,7 +26,6 @@ class report extends React.Component{
                 arrStress : null,
                 avgExer : null,
                 numExer : null,
-                weekEmpty : false,
             };
         }
         else{
@@ -45,8 +44,6 @@ class report extends React.Component{
                 arrStress : null,
                 avgExer : null,
                 numExer : null,
-                weekEmpty : false,
-
             };
         }
     }
@@ -574,43 +571,19 @@ class report extends React.Component{
             }
             else{
                 arrToReturn.push(<ReportComponent date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
-                emptyWeek++;
             }
         }
 
         if(this.state.avgCaf == null){
-            if(emptyWeek == 7){
                 this.setState({
-                    avgCaf : avgCaf,
-                    numCaf : numCaf,
-                    avgSleep : avgSleep,
-                    numSleep : numSleep,
-                    arrStress : arrStress,
-                    avgExer : avgExer,
-                    numExer : numExer,
-                    weekEmpty : true,
-                })
-            }
-            else{
-                this.setState({
-                    avgCaf : avgCaf,
-                    numCaf : numCaf,
-                    avgSleep : avgSleep,
-                    numSleep : numSleep,
-                    arrStress : arrStress,
-                    avgExer : avgExer,
-                    numExer : numExer,
-                })
-            }
-        }
-
-        else{
-            if(emptyWeek == 7){
-                console.log("set true")
-                this.setState({
-                    weekEmpty: true,
-                })
-            }
+                    avgCaf: avgCaf,
+                    numCaf: numCaf,
+                    avgSleep: avgSleep,
+                    numSleep: numSleep,
+                    arrStress: arrStress,
+                    avgExer: avgExer,
+                    numExer: numExer,
+                });
         }
 
         return (arrToReturn) ;
@@ -618,10 +591,6 @@ class report extends React.Component{
 
     changeWeek(element){
         if(element == 1){
-            //if(this.state.weekEmpty){
-            //    console.log("weekEmpty + button clicked")
-            //}
-            //else{
                 this.setState({
                     weeksAgo: this.state.weeksAgo + 1,
                     sleep: null,

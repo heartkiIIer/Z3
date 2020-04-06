@@ -12,7 +12,7 @@ class ReportComponent extends React.Component{
                     <br/>
                     <h1 className="blueHeader">{this.props.date}</h1>
                     <br/>
-                    <div className="day" class="flex-report">
+                    <div className="day" class="flex-report" id = {this.props.id}>
                         <div className="goalProg">
                             <p>Total Sleep:</p>
                             <h1 className="timeHeader">{this.props.sleep} hrs</h1>

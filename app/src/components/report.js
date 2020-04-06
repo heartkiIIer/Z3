@@ -561,10 +561,10 @@ class report extends React.Component{
                     numExer++;
                 // }
 
-                arrToReturn.push(<ReportComponent date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
+                arrToReturn.push(<ReportComponent id = {""} date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
             }
             else{
-                arrToReturn.push(<ReportComponent id = "blankCard" date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
+                arrToReturn.push(<ReportComponent id = {"blankCard"} date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
             }
         }
 

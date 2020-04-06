@@ -141,7 +141,7 @@ class PersonalityResults extends React.Component {
                     <h1 className="blueHeader">Your Big 5 Personality Results</h1>
                     <hr className="hr-settings"/>
                     <br/>
-                    <p className="blueHeader">Results was last submitted on {this.getdate()}</p>
+                    <p className="blueHeader">Results were last submitted on {this.getdate()}</p>
                     <br/>
 
                     <h5 className="blueHeader"><b>Openness</b></h5>

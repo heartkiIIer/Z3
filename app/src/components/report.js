@@ -5,7 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
 import {getUserID} from "../scripts/login";
-import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 class report extends React.Component{
     constructor(props) {
@@ -136,30 +136,15 @@ class report extends React.Component{
     };
 
     displayInfo(){
-        Swal.fire({
-            title: '<strong><u>Report Page Information</u></strong>',
-            icon: 'info',
-            html:
-                "Set your nightly <b>Sleep Goal</b> in settings. " +
-                "<b>Total Sleep</b> is the elapsed time between the time " +
-                "you went to bed and the time you wake up in the morning. " +
-                "If using Fitbit, this does not include 'restless/awake' " +
-                "periods. <b>Total Exercise</b> is the sum of minutes of all your " +
-                "exercise for the day. When using Fitbit this number is " +
-                "calculated the same as your 'active minutes'. <b>Total " +
-                "Caffeine</b> is the sum of all of your caffeine intake for" +
-                " the day. <b>Average Stress Level</b> takes all your rated" +
-                "stress levels of your events and calculates the average level of " +
-                "stress for that day. The <b>Weekly Overview</b> shows the averages" +
-                " of each category for that week, as well as the percentage " +
-                "of your sleep goal completed based on your average hours " +
-                "of sleep.",
-            showCloseButton: true,
-            focusConfirm: false,
-            confirmButtonText:
-                '<i class="fa fa-thumbs-up"></i> Great!',
-            confirmButtonAriaLabel: 'Thumbs up, great!',
-        })
+        swal({
+            title: "Report Page Information",
+            content: <p>Set your nightly sleep goal in settings.</p>+<br/>+
+                <p>Total Sleep is the elapsed time between the time you went to bed and time woken up in the morning. If using fitbit, this does not include 'restless/awake' periods.</p>+<br/>+
+                <p>Total Exercise is the sum of minutes of all your exercise for the day. When using fitbit this number is calculated the same as your 'active minutes'.</p>+<br/>+
+                <p>Total Caffeine is the sum of all of your caffeine intake for the day</p>+<br/>+
+                <p>Average stress level is takes all your events rated for stress and calculates the average level of stress for that day.</p>+<br/>+
+                <p>The weekly overview shows the averages of each category for that week, as well as the percentage of your sleep goal completed based on your average hours of sleep.</p>
+        });
     }
 
     resize(){
@@ -574,43 +559,19 @@ class report extends React.Component{
             }
             else{
                 arrToReturn.push(<ReportComponent date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
-                emptyWeek++;
             }
         }
 
         if(this.state.avgCaf == null){
-            if(emptyWeek == 7){
-                this.setState({
-                    avgCaf : avgCaf,
-                    numCaf : numCaf,
-                    avgSleep : avgSleep,
-                    numSleep : numSleep,
-                    arrStress : arrStress,
-                    avgExer : avgExer,
-                    numExer : numExer,
-                    weekEmpty : true,
-                })
-            }
-            else{
-                this.setState({
-                    avgCaf : avgCaf,
-                    numCaf : numCaf,
-                    avgSleep : avgSleep,
-                    numSleep : numSleep,
-                    arrStress : arrStress,
-                    avgExer : avgExer,
-                    numExer : numExer,
-                })
-            }
-        }
-
-        else{
-            if(emptyWeek == 7){
-                console.log("set true")
-                this.setState({
-                    weekEmpty: true,
-                })
-            }
+            this.setState({
+                avgCaf : avgCaf,
+                numCaf : numCaf,
+                avgSleep : avgSleep,
+                numSleep : numSleep,
+                arrStress : arrStress,
+                avgExer : avgExer,
+                numExer : numExer,
+            })
         }
 
         return (arrToReturn) ;
@@ -618,30 +579,24 @@ class report extends React.Component{
 
     changeWeek(element){
         if(element == 1){
-            //if(this.state.weekEmpty){
-            //    console.log("weekEmpty + button clicked")
-            //}
-            //else{
-                this.setState({
-                    weeksAgo: this.state.weeksAgo + 1,
-                    sleep: null,
-                    stress: null,
-                    goal: null,
-                    caf: null,
-                    exer: null,
-                    avgCaf : null,
-                    numCaf : null,
-                    avgSleep : null,
-                    numSleep : null,
-                    arrStress : null,
-                    avgExer : null,
-                    numExer : null,
-                    weekEmpty : false,
-                }, ()=>{
-                    let currentComponent = this;
-                    this.getWeek(currentComponent)
-                });
-           // }
+            this.setState({
+                weeksAgo: this.state.weeksAgo + 1,
+                sleep: null,
+                stress: null,
+                goal: null,
+                caf: null,
+                exer: null,
+                avgCaf : null,
+                numCaf : null,
+                avgSleep : null,
+                numSleep : null,
+                arrStress : null,
+                avgExer : null,
+                numExer : null,
+            }, ()=>{
+                let currentComponent = this;
+                this.getWeek(currentComponent)
+            });
         }
         else if(this.state.weeksAgo != 0){
             this.setState({
@@ -658,7 +613,6 @@ class report extends React.Component{
                 arrStress : null,
                 avgExer : null,
                 numExer : null,
-                weekEmpty : false,
             },  ()=>{
                 let currentComponent = this;
                 this.getWeek(currentComponent)

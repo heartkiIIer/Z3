@@ -570,8 +570,7 @@ class report extends React.Component{
                     formatStress = "--"
                 }
 
-                if(cardsToGenerate[i] != undefined) {formatCaf = cardsToGenerate[i][1]}
-                else {formatCaf = "--"}
+                formatCaf = cardsToGenerate[i][1]
                 formatExer = cardsToGenerate[i][4];
                 formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(1);
                 var date = new Date (cardsToGenerate[i][0]);

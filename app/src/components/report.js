@@ -611,6 +611,7 @@ class report extends React.Component{
             }
         }
         else if(this.state.weeksAgo != 0 && element == 0){
+            console.log("subtracting one..")
             this.setState({
                 weeksAgo: this.state.weeksAgo - 1,
                 sleep: null,

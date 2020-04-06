@@ -96,8 +96,8 @@ class Landing extends React.Component {
                         </div>
                         <div style={{marginTop: this.state.marginTop75, paddingTop: this.state.paddingTop50}} className={"box col-md-6 order-md-1" + this.state.alignStart}>
                             <div id="title">
-                                <h1 className="whiteText">Z<sup>3</sup></h1>
-                                <h3 className="whiteText">Stabilize your sleep and bring sleep back into your control! </h3>
+                                <h1 className="whiteText">Z<sup>3</sup>-Wellness</h1>
+                                <h3 className="whiteText">Track your sleep and bring sleep back under your control!</h3>
                                 <div>
                                     <a href={"#features"}>
                                         <button className="btn" id="morebtn">Learn What We Are All About</button>
@@ -141,12 +141,13 @@ class Landing extends React.Component {
                                 <div style={{display: this.state.display}} className="image-wrapper float-left pr-3 iconImages calIconImg icon"></div>
                                 <div className="single-post-content-wrapper p-3">
                                     <h3 className="whiteText sidePadding">
-                                        Keep a nightly routine with or bedtime routine tracker.
-                                        Set your nightly tasks and we will time you to make sure you are getting to bed
-                                        consistently and the right way.<br/><br/>
-                                        Sync Z<sup>3</sup> with your Google Calendar and view all the events you have coming up
-                                        and rate them on stress level. Z<sup>3</sup> We will allow you to visualize your stress level in order to
-                                        accurately adjust your sleep habits.
+                                        Keep track of your nightly routine steps  with our bedtime
+                                        routine tracker. Set your nightly tasks and Z<sup>3</sup>-Wellness
+                                        will time you to make sure your routine stays consistent
+                                        so you set yourself up for a good night’s sleep.<br/><br/>
+                                        Sync Z<sup>3</sup>-Wellness with your Google Calendar and view all the
+                                        events you have coming up and rate them on stress level.
+                                        Z<sup>3</sup>-Wellness will allow you to keep track of  your stress level and how it is affecting your sleep.
                                     </h3>
                                 </div>
                             </div>
@@ -161,10 +162,10 @@ class Landing extends React.Component {
                                 <div className="single-post-content-wrapper p-3">
                                     <h3 className="whiteText sidePadding">
                                         Did you know that exercise has an effect on your quality of sleep?
-                                        Keeping track of your exercise will allow you to take control of your sleep health.<br/><br/>
-                                        Z<sup>3</sup> allows you to sync it up to your fitness tracker to track
-                                        both exercise and sleep! If you do not own a fitness tracker, do not fret!
-                                        There are options to self log your sleep hours and exercise amount.
+                                        Keeping track of your exercise will allow you to be more in control of your sleep health.<br/><br/>
+                                        Z<sup>3</sup>-Wellness allows you to sync with your fitness tracker to track both exercise and sleep!
+                                        If you do not own a fitness tracker, do not fret! Z<sup>3</sup>-Wellness provides options to self
+                                        log your sleep hours and exercise amount.
                                     </h3>
                                 </div>
                             </div>
@@ -178,12 +179,12 @@ class Landing extends React.Component {
                                 <div style={{display: this.state.display}} className="image-wrapper float-left pr-3 iconImages mindIconImg icon"></div>
                                 <div className="single-post-content-wrapper p-3">
                                     <h3 className="whiteText sidePadding">
-                                        Are you more of a morning or night person?
-                                        How do other traits of your personality line up with your sleep habits?
-                                        Take our personality tests and see how your personality affects your sleep needs.
+                                        Are you more of a morning or evening person? How do other traits of your personality
+                                        line up with your sleep habits? Take our personality tests and see how your personality
+                                        affects your sleep health.
                                         <br/><br/>
-                                        Take physical steps to improve your sleep.
-                                        We offer in depth mindfulness activities to help calm your body and mind before bed!<br/><br/>
+                                        Take steps to improve your sleep. We offer in depth mindfulness activities to help calm
+                                        your body and mind before bed!<br/><br/>
 
                                     </h3>
                                 </div>

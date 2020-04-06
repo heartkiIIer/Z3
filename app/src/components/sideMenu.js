@@ -42,7 +42,7 @@ export default props => {
                 Log Sleep
             </a>
             <a className="menu-item" href="/logging">
-                Log Exercise, Caffeine, and Stress
+                Log Exercise, Stress & Caffeine
             </a>
             <a className="menu-item" onClick={useFitbit}>
                 Report

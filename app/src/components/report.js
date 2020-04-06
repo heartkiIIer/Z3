@@ -137,20 +137,20 @@ class report extends React.Component{
             title: '<strong><u>Report Page Information</u></strong>',
             icon: 'info',
             html:
-                "Set your nightly <b>Sleep Goal</b> in settings. " +
-                "<b>Total Sleep</b> is the elapsed time between the time " +
-                "you went to bed and the time you wake up in the morning. " +
-                "If using Fitbit, this does not include 'restless/awake' " +
-                "periods. <b>Total Exercise</b> is the sum of minutes of all your " +
-                "exercise for the day. When using Fitbit this number is " +
-                "calculated the same as your 'active minutes'. <b>Total " +
+                "<ul><li>Set your nightly <b>Sleep Goal</b> in settings.</li>" +
+                "<li><b>Total Sleep</b> is the elapsed time between the time " +
+                "you went to bed and the time you wake up in the morning.</li>" +
+                "<li>If using Fitbit, this does not include 'restless/awake' " +
+                "periods. </li> <li><b>Total Exercise</b> is the sum of minutes of all your " +
+                "exercise for the day.</li> <li>When using Fitbit this number is " +
+                "calculated the same as your 'active minutes'.</li> <li><b>Total " +
                 "Caffeine</b> is the sum of all of your caffeine intake for" +
-                " the day. <b>Average Stress Level</b> takes all your rated" +
+                " the day.</li> <li><b>Average Stress Level</b> takes all your rated " +
                 "stress levels of your events and calculates the average level of " +
-                "stress for that day. The <b>Weekly Overview</b> shows the averages" +
+                "stress for that day.</li> <li>The <b>Weekly Overview</b> shows the averages" +
                 " of each category for that week, as well as the percentage " +
                 "of your sleep goal completed based on your average hours " +
-                "of sleep.",
+                "of sleep.</li></ul>",
             showCloseButton: true,
             focusConfirm: false,
             confirmButtonText:
@@ -257,30 +257,16 @@ class report extends React.Component{
             }
             if(this.state.arrStress.length !=0){
                 var sortArr = this.state.arrStress.sort();
-                var convTotal = 0;
-                for(var i = 0; i < sortArr.length; i++){
-                    //medium
-                    if(sortArr[i] == 50){
-                        convTotal = convTotal +1;
-                    }
-                    //high
-                    else if (sortArr[i] == 98){
-                        convTotal = convTotal +2;
-                    }
-                }
+                var mid = Math.floor(sortArr.length/2)
+                var median = sortArr[mid];
 
-                var avg = Math.floor(convTotal/sortArr.length)
-
-                //0
-                if(avg == 0){
+                if(median < 40){
                     stress = "Low";
                 }
-                //50
-                else if (avg == 1){
+                else if (median >= 45 && median < 98){
                     stress = "Medium";
                 }
-                //98
-                else if (avg == 2) {
+                else {
                     stress = "High";
                 }
             }
@@ -528,7 +514,7 @@ class report extends React.Component{
         var emptyWeek = 0;
 
         for(var i = 7*this.state.weeksAgo; i < (7*this.state.weeksAgo) +7; i++){
-            if(cardsToGenerate[i] != null) {
+            if(cardsToGenerate[i] != null && cardsToGenerate[i] != undefined) {
                 var formatStress;
                 var formatCaf;
                 var formatExer;
@@ -538,31 +524,16 @@ class report extends React.Component{
                 //Stress
                 if(cardsToGenerate[i][3].length != 0){
                     var sortArr = cardsToGenerate[i][3].sort();
-                    var convTotal = 0;
+                    var mid = Math.floor(sortArr.length/2)
+                    var median = sortArr[mid];
 
-                    for(var i = 0; i < sortArr.length; i++){
-                        //medium
-                        if(sortArr[i] == 50){
-                            convTotal = convTotal +1;
-                        }
-                        //high
-                        else if (sortArr[i] == 98){
-                            convTotal = convTotal +2;
-                        }
-                    }
-
-                    var avg = Math.floor(convTotal/sortArr.length)
-
-                    //0
-                    if(avg == 0){
+                    if(median < 40){
                         formatStress = "Low";
                     }
-                    //50
-                    else if (avg == 1){
+                    else if (median >= 45){
                         formatStress = "Medium";
                     }
-                    //98
-                    else if (avg == 2) {
+                    else {
                         formatStress = "High";
                     }
                 }
@@ -570,7 +541,7 @@ class report extends React.Component{
                     formatStress = "--"
                 }
 
-                formatCaf = cardsToGenerate[i][1];
+                formatCaf = cardsToGenerate[i][1]
                 formatExer = cardsToGenerate[i][4];
                 formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(1);
                 var date = new Date (cardsToGenerate[i][0]);

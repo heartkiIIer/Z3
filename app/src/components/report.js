@@ -564,8 +564,7 @@ class report extends React.Component{
                 arrToReturn.push(<ReportComponent date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
             }
             else{
-                arrToReturn.push(<ReportComponent date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
-                document.getElementById("prevButton").disabled = true;
+                arrToReturn.push(<ReportComponent id = "blankCard" date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
             }
         }
 
@@ -585,6 +584,9 @@ class report extends React.Component{
     }
 
     changeWeek(element){
+        console.log("blank card");
+        console.log(document.getElementById("blankCard"));
+        if(document.getElementById("blankCard") != null){
         if(element == 1){
                 this.setState({
                     weeksAgo: this.state.weeksAgo + 1,
@@ -627,7 +629,7 @@ class report extends React.Component{
                 let currentComponent = this;
                 this.getWeek(currentComponent)
             });
-        }
+        }}
     }
 }
 export default report;

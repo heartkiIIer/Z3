@@ -79,11 +79,11 @@ class LogWake extends React.Component{
         // prompt to enter Wake up time
         swal({ //prompt user to enter the time
             title: "Enter wake up time",
-            text: "Please enter the time you woke up, any input not in the specified format will NOT be recorded.",
+            text: "Please enter the time you woke up in military time, any input not in the specified format will NOT be recorded.",
             content: {
                 element: "input",
                 attributes: {
-                    placeholder: "HH:MM ex:07:30",
+                    placeholder: "HH:MM (e.g. 07:30)",
                     type: "text"
                 }
             },

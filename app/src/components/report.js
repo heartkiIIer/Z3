@@ -256,14 +256,14 @@ class report extends React.Component{
                 exer = 0;
             }
             if(this.state.arrStress.length !=0){
-                var sortArr = this.state.arrStress.sort();
-                var mid = Math.floor(sortArr.length/2)
-                var median = sortArr[mid];
+                let stressArr = this.state.arrStress;
+                let stressSum = stressArr.reduce((a,b) => a + b, 0);
+                let avgStress = Math.floor(stressSum / stressArr.length);
 
-                if(median < 40){
+                if(avgStress <= 34){
                     stress = "Low";
                 }
-                else if (median >= 45 && median < 98){
+                else if (avgStress > 34 && avgStress <= 66 ){
                     stress = "Medium";
                 }
                 else {
@@ -541,7 +541,7 @@ class report extends React.Component{
                     formatStress = "--"
                 }
 
-                formatCaf = cardsToGenerate[i][1]
+                formatCaf = cardsToGenerate[i][1];
                 formatExer = cardsToGenerate[i][4];
                 formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(1);
                 var date = new Date (cardsToGenerate[i][0]);

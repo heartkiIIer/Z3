@@ -70,9 +70,7 @@ nav{
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-    background: rgba(50, 36, 133, 0.65);
-    border: white;
-    border-width: 1px;
+    background: rgb(152, 65, 255);
 }
 
 /* Position and sizing of clickable cross button */

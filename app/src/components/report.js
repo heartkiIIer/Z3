@@ -523,15 +523,14 @@ class report extends React.Component{
 
                 //Stress
                 if(cardsToGenerate[i][3].length != 0){
-                    console.log(cardsToGenerate[i][3]);
-                    var sortArr = cardsToGenerate[i][3].sort();
-                    var mid = Math.floor(sortArr.length/2)
-                    var median = sortArr[mid];
+                    let stressArr = cardsToGenerate[i][3];
+                    let stressSum = stressArr.reduce((a,b) => a + b, 0);
+                    let avgStress = Math.floor(stressSum / stressArr.length);
 
-                    if(median < 40){
+                    if(avgStress < 34){
                         formatStress = "Low";
                     }
-                    else if (median >= 45){
+                    else if (avgStress >= 34 && avgStress < 66 ){
                         formatStress = "Medium";
                     }
                     else {

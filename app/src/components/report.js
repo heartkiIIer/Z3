@@ -602,10 +602,10 @@ class report extends React.Component{
 
     changeWeek(element){
         if(element == 1){
-            if(this.state.weekEmpty){
-                console.log("weekEmpty + button clicked")
-            }
-            else{
+            //if(this.state.weekEmpty){
+            //    console.log("weekEmpty + button clicked")
+            //}
+            //else{
                 this.setState({
                     weeksAgo: this.state.weeksAgo + 1,
                     sleep: null,
@@ -625,7 +625,7 @@ class report extends React.Component{
                     let currentComponent = this;
                     this.getWeek(currentComponent)
                 });
-            }
+           // }
         }
         else if(this.state.weeksAgo != 0){
             this.setState({

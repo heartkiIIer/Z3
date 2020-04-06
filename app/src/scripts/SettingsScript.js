@@ -1,4 +1,5 @@
 import {getUserID} from "./login";
+import ApiCalendar from "react-google-calendar-api";
 
 var z3_firebase = require('./firebase.js');
 var swal = require('sweetalert');
@@ -44,6 +45,7 @@ function deleteAcc(){
                         cancelButtonColor: "#b9b9b9"
                     }).then((willDelete) => {
                         if (willDelete.value) {
+                            ApiCalendar.handleSignoutClick();
                             let promise = getUserID();
                             promise.then((uid) => {
                                 user.delete().then(function () {

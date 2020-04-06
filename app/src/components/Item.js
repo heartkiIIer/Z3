@@ -54,8 +54,6 @@ const PrettoSlider = withStyles({
     }
 })(Slider);
 
-let datesArray = [];
-
 const Item = props => {
     let date = props.itemStart.slice(0, 10)
     let dayOfWeek = '(' + String(moment(date)).slice(0, 3)

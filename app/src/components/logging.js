@@ -67,7 +67,7 @@ class logging extends React.Component{
                         <h1 className="blueHeader">Logging </h1>
                         <hr className="hr-settings"/>
                         <br/>
-                        <h4>Log your exercise, caffeine, & stress</h4>
+                        <h4>Log your exercise, stress & caffeine</h4>
                         <br/>
                         <Tabs/>
                     </div>

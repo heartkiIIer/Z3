@@ -137,20 +137,20 @@ class report extends React.Component{
             title: '<strong><u>Report Page Information</u></strong>',
             icon: 'info',
             html:
-                "Set your nightly <b>Sleep Goal</b> in settings. " +
-                "<b>Total Sleep</b> is the elapsed time between the time " +
-                "you went to bed and the time you wake up in the morning. " +
-                "If using Fitbit, this does not include 'restless/awake' " +
-                "periods. <b>Total Exercise</b> is the sum of minutes of all your " +
-                "exercise for the day. When using Fitbit this number is " +
-                "calculated the same as your 'active minutes'. <b>Total " +
+                "<ul><li>Set your nightly <b>Sleep Goal</b> in settings.</li>" +
+                "<li><b>Total Sleep</b> is the elapsed time between the time " +
+                "you went to bed and the time you wake up in the morning.</li>" +
+                "<li>If using Fitbit, this does not include 'restless/awake' " +
+                "periods. </li> <li><b>Total Exercise</b> is the sum of minutes of all your " +
+                "exercise for the day.</li> <li>When using Fitbit this number is " +
+                "calculated the same as your 'active minutes'.</li> <li><b>Total " +
                 "Caffeine</b> is the sum of all of your caffeine intake for" +
-                " the day. <b>Average Stress Level</b> takes all your rated" +
+                " the day.</li> <li><b>Average Stress Level</b> takes all your rated " +
                 "stress levels of your events and calculates the average level of " +
-                "stress for that day. The <b>Weekly Overview</b> shows the averages" +
+                "stress for that day.</li> <li>The <b>Weekly Overview</b> shows the averages" +
                 " of each category for that week, as well as the percentage " +
                 "of your sleep goal completed based on your average hours " +
-                "of sleep.",
+                "of sleep.</li></ul>",
             showCloseButton: true,
             focusConfirm: false,
             confirmButtonText:

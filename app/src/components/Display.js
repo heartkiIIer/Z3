@@ -286,7 +286,7 @@ function getStress(events) {
                 let duplicates = ''
                 for (let i = 0; i < duplicatesArray.length; i++) {
                     if(i === duplicatesArray.length - 2) {
-                        duplicates += duplicatesArray[i] + ", and "
+                        duplicates += duplicatesArray[i] + " and "
                     } else if (i === duplicatesArray.length - 1){
                         duplicates += duplicatesArray[i] + ". "
                     } else {
@@ -297,7 +297,7 @@ function getStress(events) {
                     Swal.fire({
                         title: "Warning: Duplicate Events",
                         icon: "warning",
-                        html: "You have already logged and submitted these events: " + duplicates + "You can choose not to re-submit these events by clicking on <i>Hide</i>. Otherwise your old data will be overwritten upon submission.",
+                        html: "You have already logged and submitted the ratings of these events: " + duplicates + "You can choose not to re-submit the rating of an event by clicking on <i>Hide</i>. Otherwise your old stress ratings will be overwritten upon submission.",
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         confirmButtonText: 'Yes, overwrite!',
@@ -324,6 +324,7 @@ function submitStressEntry() {
     let dayOfWeekList = document.getElementsByClassName("dayOfWeek")
     let timeList = document.getElementsByClassName("time")
     for (let i = 0; i < parentElement.length; i++) {
+        console.log(parentElement[i].style.display)
         let month = timeList[i].innerText.slice(0, 3);
         let date = dayOfWeekList[i].innerText.slice(1, 4);
         switch (date) {

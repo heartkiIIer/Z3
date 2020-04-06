@@ -137,7 +137,7 @@ class report extends React.Component{
             title: '<strong><u>Report Page Information</u></strong>',
             icon: 'info',
             html:
-                "Set your nightly <b>Sleep Goal</b> in settings. " +
+                "Set your nightly <b>Sleep Goal</b> in settings. \n" +
                 "<b>Total Sleep</b> is the elapsed time between the time " +
                 "you went to bed and the time you wake up in the morning. " +
                 "If using Fitbit, this does not include 'restless/awake' " +

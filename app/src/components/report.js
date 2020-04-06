@@ -349,7 +349,7 @@ class report extends React.Component{
                                 <h1 className="smallTimeHeader">-- Cups</h1>
                             </div>
                         </div>
-                        <button className='btn' style={{marginRight:'0px'}}>
+                        <button className='btn' id = "prevButton" style={{marginRight:'0px'}}>
                             Prev 7 Days
                         </button>
                         <button className='btn' id = "extended">
@@ -499,12 +499,6 @@ class report extends React.Component{
 
         console.log(cardsToGenerate);
 
-        // var curr = new Date; // get current date
-        //
-        // //date ranges where it ranges from firstday to lastday
-        // var lastday = new Date(curr);
-        // var firstday = new Date(curr);
-        // firstday.setDate(firstday.getDate() - 6);
 
         var avgCaf = 0;
         var numCaf = 0;
@@ -571,6 +565,7 @@ class report extends React.Component{
             }
             else{
                 arrToReturn.push(<ReportComponent date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
+                document.getElementById("prevButton").disabled = true;
             }
         }
 

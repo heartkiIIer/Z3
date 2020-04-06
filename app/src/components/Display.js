@@ -324,7 +324,9 @@ function submitStressEntry() {
     let dayOfWeekList = document.getElementsByClassName("dayOfWeek")
     let timeList = document.getElementsByClassName("time")
     for (let i = 0; i < parentElement.length; i++) {
-        console.log(parentElement[i].style.display)
+        if(parentElement[i].style.display == "none") {
+            continue;
+        }
         let month = timeList[i].innerText.slice(0, 3);
         let date = dayOfWeekList[i].innerText.slice(1, 4);
         switch (date) {
@@ -397,9 +399,18 @@ function submitStressEntry() {
                 value: parseInt(parentElement[i].children[1].children[2].value)
             }
         );
+
     }
     console.log(events);
-    getStress(events)
+    if (events.length === 0) {
+        swal({
+            text: "You have no rated stress levels to submit!",
+            icon: "error"
+        });
+    } else {
+        getStress(events)
+    }
+
 }
 
 function addStresstoDatabase(events){

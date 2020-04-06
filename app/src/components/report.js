@@ -26,6 +26,7 @@ class report extends React.Component{
                 arrStress : null,
                 avgExer : null,
                 numExer : null,
+                weekEmpty : false,
             };
         }
         else{
@@ -44,6 +45,8 @@ class report extends React.Component{
                 arrStress : null,
                 avgExer : null,
                 numExer : null,
+                weekEmpty : false,
+
             };
         }
     }
@@ -502,6 +505,8 @@ class report extends React.Component{
         var arrToReturn = [];
         //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
+        var emptyWeek = 0;
+
         for(var i = 7*this.state.weeksAgo; i < (7*this.state.weeksAgo) +7; i++){
             if(cardsToGenerate[i] != null) {
                 var formatStress;
@@ -554,7 +559,7 @@ class report extends React.Component{
             }
             else{
                 arrToReturn.push(<ReportComponent date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
-
+                emptyWeek++;
             }
         }
 
@@ -570,33 +575,39 @@ class report extends React.Component{
             })
         }
 
+        if(emptyWeek == 7){
+            this.setState({
+                weekEmpty : true,
+            }, () => {return (arrToReturn) ;})
+        }
+
         return (arrToReturn) ;
     }
 
     changeWeek(element){
-        if(element == 1 && this.state.numCaf == null && this.state.arrStress.length == 0 && this.state.numCaf == null && this.state.numExer == null){
-
-        }
-
-        else if(element == 1){
-            this.setState({
-                weeksAgo: this.state.weeksAgo + 1,
-                sleep: null,
-                stress: null,
-                goal: null,
-                caf: null,
-                exer: null,
-                avgCaf : null,
-                numCaf : null,
-                avgSleep : null,
-                numSleep : null,
-                arrStress : null,
-                avgExer : null,
-                numExer : null,
-            }, ()=>{
-                let currentComponent = this;
-                this.getWeek(currentComponent)
-            });
+        if(element == 1){
+            if(this.state.weekEmpty){}
+            else{
+                this.setState({
+                    weeksAgo: this.state.weeksAgo + 1,
+                    sleep: null,
+                    stress: null,
+                    goal: null,
+                    caf: null,
+                    exer: null,
+                    avgCaf : null,
+                    numCaf : null,
+                    avgSleep : null,
+                    numSleep : null,
+                    arrStress : null,
+                    avgExer : null,
+                    numExer : null,
+                    weekEmpty : false,
+                }, ()=>{
+                    let currentComponent = this;
+                    this.getWeek(currentComponent)
+                });
+            }
         }
         else if(this.state.weeksAgo != 0){
             this.setState({
@@ -613,6 +624,7 @@ class report extends React.Component{
                 arrStress : null,
                 avgExer : null,
                 numExer : null,
+                weekEmpty : false,
             },  ()=>{
                 let currentComponent = this;
                 this.getWeek(currentComponent)

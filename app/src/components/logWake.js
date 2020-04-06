@@ -63,14 +63,33 @@ class LogWake extends React.Component{
                 },
                 body: data
             }).then( r => {
-                swal({
-                    title: "Success",
-                    icon: "success",
-                    text: "Successfully logged wake time."
-                }).then(()=>{
-                    window.location.replace("https://sleepwebapp.wpi.edu/home");
+                fetch('https://sleepwebapp.wpi.edu:5000/getLatestSleep/', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: data
+                }).then( s => {
+                    return s.json();
+                }).then(s => {
+                    //if there is already a wake entry send error
+                    if (s[0].end_sleep !== null) {
+                        swal({
+                            text: "You either do not have a sleep time entry or have already submitted a wake time.",
+                            icon: "error"
+                        });
+                        return;
+                    }
+                    swal({
+                        title: "Success",
+                        icon: "success",
+                        text: "Successfully logged wake time."
+                    }).then(()=>{
+                        window.location.replace("https://sleepwebapp.wpi.edu/home");
+                    });
+                    console.log("Completed")
                 });
-                console.log("Completed")
             })
         });
     }
@@ -110,6 +129,14 @@ class LogWake extends React.Component{
                     }).then( s => {
                         return s.json();
                     }).then(s => {
+                        //if there is already a wake entry send error
+                        if(s[0].end_sleep !== null){
+                            swal({
+                                text: "You either do not have a sleep time entry or have already submitted a wake time.",
+                                icon: "error"
+                            });
+                            return;
+                        }
                         //get todays date
                         var today = new Date();
                         var dd = String(today.getDate()).padStart(2, '0');

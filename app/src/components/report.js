@@ -592,8 +592,8 @@ class report extends React.Component{
 
         if(emptyWeek == 7){
             this.setState({
-                weekEmpty : true,
-            }, () => {return (arrToReturn) ;})
+                weekEmpty: true,
+            })
         }
 
         return (arrToReturn) ;

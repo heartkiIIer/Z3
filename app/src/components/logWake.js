@@ -126,12 +126,15 @@ class LogWake extends React.Component{
                         var sleepDate = new Date(sleep);
                         console.log(sleepDate);
                         //check if wake up time before sleep time
-                        console.log('time entered:' + fullDate.getTime());
-                        console.log('current time: ' + new Date().getTime());
                         console.log(sleepDate.getTime());
                         if(fullDate.getTime() < sleepDate.getTime()){
                             swal({
-                                text: "Time entered is earlier than time you went to sleep",
+                                text: "Time entered is earlier than time you went to sleep.",
+                                icon: "error"
+                            });
+                        } else if (fullDate.getTime() > new Date().getTime()) {
+                            swal({
+                                text: "Time entered cannot be later than current time.",
                                 icon: "error"
                             });
                         }

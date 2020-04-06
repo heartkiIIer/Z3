@@ -529,67 +529,67 @@ class report extends React.Component{
 
         for(var i = 7*this.state.weeksAgo; i < (7*this.state.weeksAgo) +7; i++){
             if(cardsToGenerate[i] != null && cardsToGenerate[i] != undefined) {
-                var formatStress = "--";
-                var formatCaf = "--";
-                var formatExer ="--";
-                var formatSleep ="--";
-                var formatDate = "";
+                var formatStress;
+                var formatCaf;
+                var formatExer;
+                var formatSleep;
+                var formatDate;
 
                 //Stress
-                if (cardsToGenerate[i][3].length != 0) {
+                if(cardsToGenerate[i][3].length != 0){
                     var sortArr = cardsToGenerate[i][3].sort();
                     var convTotal = 0;
 
-                    for (var i = 0; i < sortArr.length; i++) {
+                    for(var i = 0; i < sortArr.length; i++){
                         //medium
-                        if (sortArr[i] == 50) {
-                            convTotal = convTotal + 1;
+                        if(sortArr[i] == 50){
+                            convTotal = convTotal +1;
                         }
                         //high
-                        else if (sortArr[i] == 98) {
-                            convTotal = convTotal + 2;
+                        else if (sortArr[i] == 98){
+                            convTotal = convTotal +2;
                         }
                     }
 
-                    var avg = Math.floor(convTotal / sortArr.length)
+                    var avg = Math.floor(convTotal/sortArr.length)
 
                     //0
-                    if (avg == 0) {
+                    if(avg == 0){
                         formatStress = "Low";
                     }
                     //50
-                    else if (avg == 1) {
+                    else if (avg == 1){
                         formatStress = "Medium";
                     }
                     //98
                     else if (avg == 2) {
                         formatStress = "High";
                     }
-                } else {
+                }
+                else{
                     formatStress = "--"
                 }
 
-                if (cardsToGenerate[i] != undefined) {
-                    formatCaf = cardsToGenerate[i][1];
-                    formatExer = cardsToGenerate[i][4];
-                    formatSleep = (Math.round(cardsToGenerate[i][2] * 10) / 10).toFixed(1);
-                    var date = new Date(cardsToGenerate[i][0]);
-                    formatDate = (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear();
-                    //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
+                formatCaf = cardsToGenerate[i][1]
+                formatExer = cardsToGenerate[i][4];
+                formatSleep = (Math.round(cardsToGenerate[i][2] * 10)/10).toFixed(1);
+                var date = new Date (cardsToGenerate[i][0]);
+                formatDate = (date.getMonth()+1) + "-"  + date.getDate()+ "-" + date.getFullYear();
+                //[x][0] date [x][1] cups [x][2] sleep [x][3] stressEntries (array) [x][4] exercise
 
-                    //filter data to only be past week's
-                    // if((date.getTime() >= firstday.getTime() && date.getTime() <= lastday.getTime())){
+                //filter data to only be past week's
+                // if((date.getTime() >= firstday.getTime() && date.getTime() <= lastday.getTime())){
                     avgCaf += cardsToGenerate[i][1];
                     numCaf++;
                     avgSleep += cardsToGenerate[i][2];
                     numSleep++;
-                    for (var k = 0; k < cardsToGenerate[i][3].length; k++) {
+                    for(var k = 0; k < cardsToGenerate[i][3].length; k++) {
                         arrStress.push(cardsToGenerate[i][3][k]);
                     }
                     avgExer += cardsToGenerate[i][4];
                     numExer++;
                 // }
-            }
+
                 arrToReturn.push(<ReportComponent id = {""} date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
             }
             else{

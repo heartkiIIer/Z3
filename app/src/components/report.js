@@ -257,30 +257,16 @@ class report extends React.Component{
             }
             if(this.state.arrStress.length !=0){
                 var sortArr = this.state.arrStress.sort();
-                var convTotal = 0;
-                for(var i = 0; i < sortArr.length; i++){
-                    //medium
-                    if(sortArr[i] == 50){
-                        convTotal = convTotal +1;
-                    }
-                    //high
-                    else if (sortArr[i] == 98){
-                        convTotal = convTotal +2;
-                    }
-                }
+                var mid = Math.floor(sortArr.length/2)
+                var median = sortArr[mid];
 
-                var avg = Math.floor(convTotal/sortArr.length)
-
-                //0
-                if(avg == 0){
+                if(median < 40){
                     stress = "Low";
                 }
-                //50
-                else if (avg == 1){
+                else if (median >= 45 && median < 98){
                     stress = "Medium";
                 }
-                //98
-                else if (avg == 2) {
+                else {
                     stress = "High";
                 }
             }
@@ -538,31 +524,16 @@ class report extends React.Component{
                 //Stress
                 if(cardsToGenerate[i][3].length != 0){
                     var sortArr = cardsToGenerate[i][3].sort();
-                    var convTotal = 0;
+                    var mid = Math.floor(sortArr.length/2)
+                    var median = sortArr[mid];
 
-                    for(var i = 0; i < sortArr.length; i++){
-                        //medium
-                        if(sortArr[i] == 50){
-                            convTotal = convTotal +1;
-                        }
-                        //high
-                        else if (sortArr[i] == 98){
-                            convTotal = convTotal +2;
-                        }
-                    }
-
-                    var avg = Math.floor(convTotal/sortArr.length)
-
-                    //0
-                    if(avg == 0){
+                    if(median < 40){
                         formatStress = "Low";
                     }
-                    //50
-                    else if (avg == 1){
+                    else if (median >= 45){
                         formatStress = "Medium";
                     }
-                    //98
-                    else if (avg == 2) {
+                    else {
                         formatStress = "High";
                     }
                 }

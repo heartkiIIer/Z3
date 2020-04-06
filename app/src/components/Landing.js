@@ -96,8 +96,8 @@ class Landing extends React.Component {
                         </div>
                         <div style={{marginTop: this.state.marginTop75, paddingTop: this.state.paddingTop50}} className={"box col-md-6 order-md-1" + this.state.alignStart}>
                             <div id="title">
-                                <h1 className="whiteText">Z<sup>3</sup>-Wellness</h1>
-                                <h3 className="whiteText">Track your sleep and bring sleep back under your control!</h3>
+                                <h1 className="whiteBoldText">Z<sup>3</sup>-Wellness</h1>
+                                <h1 className="whiteBoldText">Track your sleep and bring sleep back under your control!</h1>
                                 <div>
                                     <a href={"#features"}>
                                         <button className="btn" id="morebtn">Learn What We Are All About</button>

@@ -262,10 +262,10 @@ class report extends React.Component{
 
                 console.log(stressArr);
 
-                if(avgStress <= 34){
+                if(avgStress <= 35){
                     stress = "Low";
                 }
-                else if (avgStress > 34 && avgStress <= 66 ){
+                else if (avgStress > 35 && avgStress <= 66 ){
                     stress = "Medium";
                 }
                 else {
@@ -529,10 +529,10 @@ class report extends React.Component{
                     let stressSum = stressArr.reduce((a,b) => a + b, 0);
                     let avgStress = Math.floor(stressSum / stressArr.length);
 
-                    if(avgStress <= 34){
+                    if(avgStress <= 35){
                         formatStress = "Low";
                     }
-                    else if (avgStress > 34 && avgStress <= 66 ){
+                    else if (avgStress > 35 && avgStress <= 66 ){
                         formatStress = "Medium";
                     }
                     else {

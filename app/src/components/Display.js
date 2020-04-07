@@ -198,11 +198,18 @@ class Display extends React.Component {
     }
 
     render() {
-        let ele;
+        let ele, buttons;
+
         if (this.state.items.length != 0) {
             ele = <div id='calevent'>{this.state.items.map(item => (<Item key={item.id} itemSum={item.summary} itemStart={item.start.dateTime} itemEnd={item.end.dateTime} itemValue={item.etag}/>))}</div>
         } else {
             ele = <i><p>You have <b>no upcoming events</b> for today.</p></i>;
+        }
+
+        if (window.innerWidth < 700) {
+            buttons = <div className='float_center'><div className='child'><button className='btn' onClick={submitStressEntry}>Submit Stress</button></div><div className='child'><LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} /></div><br/><br/><br/></div>
+        } else {
+            buttons = <div className='float_center'><div className='child'><button className='btn' onClick={submitStressEntry}>Submit Stress</button><LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} /><br/><br/><br/></div></div>
         }
 
         return (
@@ -214,14 +221,9 @@ class Display extends React.Component {
                     <i><p>Upcoming events of the day will be listed. Click the <b>Hide</b> icon to hide events you do not wish to rate/submit. Click the <b>Refresh</b> icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>
                     {ele}
+                    {buttons}
                 </Tab.Pane>
-                <div className='float_center'>
-                    <div className='child'>
-                        <button className='btn' onClick={submitStressEntry}>Submit Stress</button>
-                        <LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} />
-                        <br/><br/><br/>
-                    </div>
-                </div>
+
             </div>
         );
     }

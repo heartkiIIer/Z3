@@ -6,6 +6,7 @@ import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
 import {getUserID} from "../scripts/login";
 import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 class report extends React.Component{
     constructor(props) {
@@ -597,6 +598,10 @@ class report extends React.Component{
         console.log("weeksAgo");
         console.log(this.state.weeksAgo);
         if(document.getElementById("blankCard") == null) {
+            swal({
+                text: "You have no data recorded for the previous 7 days.",
+                icon: "error"
+            });
             if (element == 1) {
                 this.setState({
                     weeksAgo: this.state.weeksAgo + 1,

@@ -207,7 +207,7 @@ class Display extends React.Component {
         }
 
         if (window.innerWidth < 700) {
-            buttons = <div className='float_center'><div><button className='btn' onClick={submitStressEntry}>Submit Stress</button></div><div><LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} /><br/><br/><br/></div></div>
+            buttons = <div><div className='float_center'><div className='child'><button className='btn' onClick={submitStressEntry}>Submit Stress</button></div></div><div className='float_center'><div className='child'><LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} /><br/><br/><br/></div></div></div>
         } else {
             buttons = <div className='float_center'><div className='child'><button className='btn' onClick={submitStressEntry}>Submit Stress</button><LogoutButton onClick={(e) => LoginControlClass.handleItemClick(e, 'sign-out')} /><br/><br/><br/></div></div>
         }

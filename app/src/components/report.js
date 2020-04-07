@@ -188,7 +188,6 @@ class report extends React.Component{
                 <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                 <div className="inner-report" id="page-wrap" align="center">
                     <div align='end'>
-                    {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
                         <a href='javascript:undefined' onClick={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                     </div>
                     <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
@@ -290,13 +289,13 @@ class report extends React.Component{
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="inner-report" id="page-wrap" align="center">
                         <div align='end'>
-                            {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
                             <a href='javascript:undefined' onClick={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                         </div>
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>
                         <br/>
                         <h1 className="blueHeader">Weekly Overview</h1>
+                        <br/>
                         <div className="week" class="flex-report">
                             <div className="goalProg">
                                 <CircularProgressbar value={Math.round(sleep/this.state.goal[0].sleepgoal*100)} text={`${Math.round(sleep/this.state.goal[0].sleepgoal*100)}%`} />
@@ -338,13 +337,13 @@ class report extends React.Component{
                     <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"}/>
                     <div className="inner-report" id="page-wrap" align="center">
                         <div align='end'>
-                            {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
                             <a href="javascript:undefined" onClick={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                         </div>
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>
                         <br/>
                         <h1 className="blueHeader">Weekly Overview</h1>
+                        <br/>
                         <div className="week" class="flex-report">
                             <div className="goalProg">
                                 <CircularProgressbar value={0} text={`--`} />

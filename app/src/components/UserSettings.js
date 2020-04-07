@@ -94,7 +94,7 @@ class UserSettings extends React.Component {
         }).then((task) => {
             if(task === ""){ //user clicked okay with nothing as input
                 swal({
-                    text: "No task was inputed",
+                    text: "No task was inputted",
                     icon: "error"
                 });
             }

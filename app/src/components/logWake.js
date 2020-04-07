@@ -94,6 +94,33 @@ class LogWake extends React.Component{
         });
     }
 
+    // returns true if the input is invalid and false if the input is valid
+    static invalidTimeInput(time){
+        let vaildInput = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+        //string length of valid input is 5 as format is HH:MI so anything outside of that is invalid
+        if(time.length !== 5)
+            return true;
+
+        //check if first character is 0, 1, or 2
+        if(!vaildInput.slice(0, 3).includes(time[0]))
+            return true;
+        //check if second character is 0-9
+        if(!vaildInput.includes(time[1]))
+            return true;
+        //check if third character is ':'
+        if(time[2] !== ':')
+            return true;
+        //check if fourth character is 0-5
+        if(!vaildInput.slice(0, 6).includes(time[3]))
+            return true;
+        //check if last character is 0-9
+        if(!vaildInput.includes(time[4]))
+            return true;
+
+        return false;
+    }
+
     myFunctionTwo() {
         // prompt to enter Wake up time
         swal({ //prompt user to enter the time
@@ -110,7 +137,13 @@ class LogWake extends React.Component{
         }).then((time) => {
             if(time === ""){ //user clicked okay with nothing as input
                 swal({
-                    text: "No task was inputed",
+                    text: "No time was inputted",
+                    icon: "error"
+                });
+            }
+            else if(LogWake.invalidTimeInput(time)){
+                swal({
+                    text: "invalid input",
                     icon: "error"
                 });
             }

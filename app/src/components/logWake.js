@@ -98,27 +98,12 @@ class LogWake extends React.Component{
     static invalidTimeInput(time){
         let vaildInput = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-        //string length of valid input is 5 as format is HH:MI so anything outside of that is invalid
-        if(time.length !== 5)
-            return true;
-
-        //check if first character is 0, 1, or 2
-        if(!vaildInput.slice(0, 3).includes(time[0]))
-            return true;
-        //check if second character is 0-9
-        if(!vaildInput.includes(time[1]))
-            return true;
-        //check if third character is ':'
-        if(time[2] !== ':')
-            return true;
-        //check if fourth character is 0-5
-        if(!vaildInput.slice(0, 6).includes(time[3]))
-            return true;
-        //check if last character is 0-9
-        if(!vaildInput.includes(time[4]))
-            return true;
-
-        return false;
+        return time.length !== 5 || //string length of valid input is 5 as format is HH:MI so anything outside of that is invalid
+            !vaildInput.slice(0, 3).includes(time[0]) || //check if first character is 0, 1, or 2
+            !vaildInput.includes(time[1]) || //check if second character is 0-9
+            time[2] !== ':' || //check if third character is ':'
+            !vaildInput.slice(0, 6).includes(time[3]) || //check if fourth character is 0-5
+            !vaildInput.includes(time[4]); //check if last character is 0-9
     }
 
     myFunctionTwo() {
@@ -144,7 +129,7 @@ class LogWake extends React.Component{
             else if(LogWake.invalidTimeInput(time)){
                 swal({
                     title: "Invalid Input",
-                    text: "Please make sure the input is a numeric time with the format HH:MI. Example: 09:30",
+                    text: "Please make sure the input is a valid numeric time with the format HH:MI. Example: 09:30",
                     icon: "error"
                 });
             }

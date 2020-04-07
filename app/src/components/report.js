@@ -284,7 +284,7 @@ class report extends React.Component{
             }
 
             var val = Math.round(sleep/this.state.goal[0].sleepgoal*100);
-            var text = val;
+            var text = val + "%";
             if(this.state.goal[0].sleepgoal == null ){
                 val = 0;
                 text = "No goal set"
@@ -304,7 +304,7 @@ class report extends React.Component{
                         <br/>
                         <div className="week" class="flex-report">
                             <div className="goalProg">
-                                <CircularProgressbar value={val} text={`${text}%`} />
+                                <CircularProgressbar value={val} text={`${text}`} />
                             </div>
                             <div className="percentage">
                                 <p>Average Sleep:</p>

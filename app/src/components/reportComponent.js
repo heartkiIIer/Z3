@@ -7,7 +7,7 @@ class ReportComponent extends React.Component{
 
     render(){
         return (
-            <div>
+            <div className={this.props.id}>
                     <hr className="hr-report"/>
                     <br/>
                     <h1 className="blueHeader">{this.props.date}</h1>

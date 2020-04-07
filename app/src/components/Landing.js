@@ -80,6 +80,11 @@ class Landing extends React.Component {
                 paddingBottom: this.state.paddingBottom
             }
         };
+        const style ={
+            color: 'white',
+            marginBottom: '15px',
+            fontSize: '2.5rem'
+        }
         const { containerStyle } = styles;
         return (
             <div>
@@ -96,7 +101,7 @@ class Landing extends React.Component {
                         <div style={{marginTop: this.state.marginTop75, paddingTop: this.state.paddingTop50}} className={"box col-md-6 order-md-1" + this.state.alignStart}>
                             <div id="title">
                                 <h1 className="whiteBoldText">Z<sup>3</sup> - Wellness</h1>
-                                <h2 className="whiteBoldText">Track your sleep and bring sleep back under your control!</h2>
+                                <h2 style={style}>Track your sleep and bring sleep back under your control!</h2>
                                 <div>
                                     <a href={"#features"}>
                                         <button className="btnLearn">Learn What We Are All About</button>

@@ -596,8 +596,7 @@ class report extends React.Component{
                     numExer: numExer,
                 });
         }
-        let set = new Set(arrToReturn);
-        return (set) ;
+        return (arrToReturn) ;
     }
 
     changeWeek(element){

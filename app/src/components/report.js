@@ -582,7 +582,7 @@ class report extends React.Component{
             }
             else{
                 arrToReturn.push(<ReportComponent id = {"blankCard"} date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
-                arrToReturn.push(<p> End of your data! </p>)
+                arrToReturn.push(<h1> End of your data! </h1>)
                 break;
             }
         }

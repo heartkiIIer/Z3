@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { withStyles} from '@material-ui/core/styles';
 import moment from "moment";
-import {getUserID} from "../scripts/login";
 
 const buttonStyle = {
     borderRadius: '5px'

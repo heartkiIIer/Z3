@@ -6,6 +6,7 @@ import SideBar from "./sideMenu";
 import ReportComponent from "./reportComponent";
 import {getUserID} from "../scripts/login";
 import Swal from "sweetalert2";
+import {textAlign} from "@material-ui/system";
 
 class report extends React.Component{
     constructor(props) {
@@ -56,6 +57,7 @@ class report extends React.Component{
         let currentComponent = this;
         this.getWeek(currentComponent);
         // this.getUseFitbit();
+        document.getElementById('swal2-content').style.textAlign = 'initial';
     }
 
     getWeek(currentComponent) {

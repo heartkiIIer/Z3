@@ -211,7 +211,7 @@ class Display extends React.Component {
                     <h5>Rate stress level for each event</h5>
                     <button className='btn-info' onClick={this.fetchItems}><RefreshIcon style={refresh}/></button>
                     <br/><br/>
-                    <i><p>Upcoming events of the day will be listed. Click the <b>Refresh</b> icon to unhide events and sync latest/newly added events from the calendar.</p></i>
+                    <i><p>Upcoming events of the day will be listed. Click the <b>Hide</b> icon to hide events you do not wish to rate/submit. Click the <b>Refresh</b> icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>
                     {ele}
                 </Tab.Pane>

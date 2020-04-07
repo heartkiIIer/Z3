@@ -602,12 +602,14 @@ class report extends React.Component{
     changeWeek(element){
         console.log("weeksAgo");
         console.log(this.state.weeksAgo);
-        if(document.getElementById("blankCard") == null) {
+        if(document.getElementById("blankCard") != null) {
+            swal({
+                text: "You have no data recorded.",
+                icon: "error"
+            });
+        }
+        else if(document.getElementById("blankCard") == null) {
             if (element == 1) {
-                swal({
-                    text: "You have no data recorded.",
-                    icon: "error"
-                });
                 this.setState({
                     weeksAgo: this.state.weeksAgo + 1,
                     sleep: null,

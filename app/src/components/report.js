@@ -420,7 +420,7 @@ class report extends React.Component{
                     console.log("sleep entry info");
                     console.log(initial)
                     console.log(terminate)
-                    cardsToGenerate.push([this.state.sleep[i].start_sleep, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);
+                    cardsToGenerate.push([this.state.sleep[i].end_sleep, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);
                 }
                 //otherwise
                 else{
@@ -429,11 +429,12 @@ class report extends React.Component{
                     //check if that date is already entered
                     for(var j = 0; j < cardsToGenerate.length; j++){
                         var dateInArr = new Date(cardsToGenerate[j][0]);
-                        var dateToEnter = new Date(this.state.sleep[i].start_sleep);
+                        var dateToEnter = new Date(this.state.sleep[i].end_sleep);
+                        var startSleep = new Date(this.state.sleep[i].start_sleep);
                         var terminate = new Date(this.state.sleep[i].end_sleep);
                         if(dateInArr.getDate() == dateToEnter.getDate() && dateInArr.getFullYear() == dateToEnter.getFullYear() && dateInArr.getMonth() == dateToEnter.getMonth()){
                             added=true;
-                            cardsToGenerate[j][2] = cardsToGenerate[j][2] + (terminate.getTime() - dateToEnter.getTime())/(1000*3600);
+                            cardsToGenerate[j][2] = cardsToGenerate[j][2] + (terminate.getTime() - startSleep.getTime())/(1000*3600);
                         }
                         console.log("found a same date entry")
                     }
@@ -442,7 +443,7 @@ class report extends React.Component{
                         console.log("adding a new entry")
                         var initial = new Date (this.state.sleep[i].start_sleep);
                         var terminate = new Date(this.state.sleep[i].end_sleep);
-                        cardsToGenerate.push([this.state.sleep[i].start_sleep, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);                }
+                        cardsToGenerate.push([this.state.sleep[i].end_sleep, 0, (terminate.getTime() - initial.getTime())/(1000*3600), [], 0]);                }
                 }
             }
         }

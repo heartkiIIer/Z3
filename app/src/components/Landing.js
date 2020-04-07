@@ -100,7 +100,7 @@ class Landing extends React.Component {
                         </div>
                         <div style={{marginTop: this.state.marginTop75, paddingTop: this.state.paddingTop50}} className={"box col-md-6 order-md-1" + this.state.alignStart}>
                             <div id="title">
-                                <h1 className="whiteBoldText">Z<sup>3</sup> - Wellness</h1>
+                                <h1 className="whiteBoldText">Z<sup>3</sup>-Wellness</h1>
                                 <h2 style={style}>Track your sleep and bring sleep back under your control!</h2>
                                 <div>
                                     <a href={"#features"}>
@@ -146,12 +146,12 @@ class Landing extends React.Component {
                                 <div className="single-post-content-wrapper p-3">
                                     <h3 className="whiteText sidePadding">
                                         Keep track of your nightly routine steps  with our bedtime
-                                        routine tracker. Set your nightly tasks and Z<sup>3</sup> - Wellness
+                                        routine tracker. Set your nightly tasks and Z<sup>3</sup>-Wellness
                                         will time you to make sure your routine stays consistent
                                         so you set yourself up for a good night’s sleep.<br/><br/>
-                                        Sync Z<sup>3</sup> - Wellness with your Google Calendar and view all the
+                                        Sync Z<sup>3</sup>-Wellness with your Google Calendar and view all the
                                         events you have coming up and rate them on stress level.
-                                        Z<sup>3</sup> - Wellness will allow you to keep track of  your stress level and how it is affecting your sleep.
+                                        Z<sup>3</sup>-Wellness will allow you to keep track of  your stress level and how it is affecting your sleep.
                                     </h3>
                                 </div>
                             </div>
@@ -167,8 +167,8 @@ class Landing extends React.Component {
                                     <h3 className="whiteText sidePadding">
                                         Did you know that exercise has an effect on your quality of sleep?
                                         Keeping track of your exercise will allow you to be more in control of your sleep health.<br/><br/>
-                                        Z<sup>3</sup> - Wellness allows you to sync with your fitness tracker to track both exercise and sleep!
-                                        If you do not own a fitness tracker, do not fret! Z<sup>3</sup> - Wellness provides options to self
+                                        Z<sup>3</sup>-Wellness allows you to sync with your fitness tracker to track both exercise and sleep!
+                                        If you do not own a fitness tracker, do not fret! Z<sup>3</sup>-Wellness provides options to self
                                         log your sleep hours and exercise amount.
                                     </h3>
                                 </div>

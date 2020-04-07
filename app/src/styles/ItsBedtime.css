@@ -510,3 +510,6 @@ input:focus{
     text-align: right;
     color: #337ab7;
 }
+#blankCard{
+    display: none;
+}

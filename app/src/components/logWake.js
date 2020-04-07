@@ -144,7 +144,7 @@ class LogWake extends React.Component{
             else if(LogWake.invalidTimeInput(time)){
                 swal({
                     title: "Invalid Input",
-                    text: "Please make sure the input is formatted as HH:MI. Example: 09:30",
+                    text: "Please make sure the input is a numeric time with the format HH:MI. Example: 09:30",
                     icon: "error"
                 });
             }

@@ -98,6 +98,10 @@ class LogWake extends React.Component{
     static invalidTimeInput(time){
         let vaildInput = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+        if(time === null){
+            return false;
+        }
+
         return time.length !== 5 || //string length of valid input is 5 as format is HH:MI so anything outside of that is invalid
             !vaildInput.slice(0, 3).includes(time[0]) || //check if first character is 0, 1, or 2
             !vaildInput.includes(time[1]) || //check if second character is 0-9

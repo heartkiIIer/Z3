@@ -44,32 +44,32 @@ const withTitle = ({ component: Component, title }) => {
 };
 
 // Adding titles
-const LandingComponent = withTitle({ component: Landing, title: 'Welcome to Z³!' });
-const BedtimeRoutineComponent = withTitle({ component: BedtimeRoutine, title: 'Bedtime Routine – Z³' });
-const HomeComponent = withTitle({ component: Home, title: 'Home – Z³' });
-const RegisterComponent = withTitle({ component: Register, title: 'Sign Up – Z³' });
-const UserSettingsComponent = withTitle({ component: UserSettings, title: 'Settings – Z³' });
-const SleepComponent = withTitle({ component: sleep, title: 'Sleep – Z³' });
-const LogSleepComponent = withTitle({ component: logSleep, title: 'Log Sleep – Z³' });
-const logWakeComponent = withTitle({ component: logWake, title: 'Log Wake – Z³' });
-const ChronotypeComponent = withTitle({ component: Chronotype, title: 'Chronotype Test– Z³' });
-const ChronoResultsComponent = withTitle({ component: ChronoResults, title: 'Chronotype Results– Z³' });
-const PersonalityComponent = withTitle({ component: Personality, title: 'Personality Test – Z³' });
-const PersonalityIntroComponent = withTitle({ component: PersonalityIntro, title: 'Find Your Personality – Z³' });
-const PersonalityResultsComponent = withTitle({ component: PersonalityResults, title: 'Personality Results – Z³' });
-const MindfulnessModulesComponent = withTitle({ component: MindfulnessModules, title: 'Mindfulness – Z³' });
-const LoggingComponent = withTitle({ component: Logging, title: 'Log Exercise, Caffeine, and Stress – Z³' });
-const reportComponent = withTitle({ component: report, title: 'Report – Z³' });
-const ExampleModuleComponent = withTitle({ component: ExampleModule, title: '5-minute Meditation – Z³' });
-const mindfulLeadershipComponent = withTitle({ component: mindfulLeadership, title: 'Mindful Leadership – Z³' });
-const MindfulYogaComponent = withTitle({ component: MindfulYoga, title: 'Mindful Yoga – Z³' });
-const BodyScanMeditationComponent = withTitle({ component: BodyScanMeditation, title: '10-minute Medication – Z³' });
-const MindfulnessOverviewComponent = withTitle({ component: MindfulnessOverview, title: 'Mindfulness Overview – Z³' });
-const MindfulEatingComponent = withTitle({ component: MindfulEating, title: 'Mindful Eating – Z³' });
-const MobileBedtimeRoutineComponent = withTitle({ component: MobileBedtimeRoutine, title: 'Bedtime Routine – Z³' });
-const MobileMindfulnessModulesComponent = withTitle({ component: MobileMindfulnessModules, title: 'Mindfulness Modules – Z³' });
-const MobileExampleModuleComponent = withTitle({ component: MobileExampleModule, title: '5-minute Meditation – Z³' });
-const MobileLandingComponent = withTitle({ component: MobileLanding, title: 'Welcome to Z³!' });
+const LandingComponent = withTitle({ component: Landing, title: 'Welcome to Z³ - Wellness!' });
+const BedtimeRoutineComponent = withTitle({ component: BedtimeRoutine, title: 'Bedtime Routine – Z³ - Wellness' });
+const HomeComponent = withTitle({ component: Home, title: 'Home – Z³ - Wellness' });
+const RegisterComponent = withTitle({ component: Register, title: 'Sign Up – Z³ - Wellness' });
+const UserSettingsComponent = withTitle({ component: UserSettings, title: 'Settings – Z³ - Wellness' });
+const SleepComponent = withTitle({ component: sleep, title: 'Sleep – Z³ - Wellness' });
+const LogSleepComponent = withTitle({ component: logSleep, title: 'Log Sleep – Z³ - Wellness' });
+const logWakeComponent = withTitle({ component: logWake, title: 'Log Wake – Z³ - Wellness' });
+const ChronotypeComponent = withTitle({ component: Chronotype, title: 'Chronotype Test– Z³ - Wellness' });
+const ChronoResultsComponent = withTitle({ component: ChronoResults, title: 'Chronotype Results– Z³ - Wellness' });
+const PersonalityComponent = withTitle({ component: Personality, title: 'Personality Test – Z³ - Wellness' });
+const PersonalityIntroComponent = withTitle({ component: PersonalityIntro, title: 'Find Your Personality – Z³ - Wellness' });
+const PersonalityResultsComponent = withTitle({ component: PersonalityResults, title: 'Personality Results – Z³ - Wellness' });
+const MindfulnessModulesComponent = withTitle({ component: MindfulnessModules, title: 'Mindfulness – Z³ - Wellness' });
+const LoggingComponent = withTitle({ component: Logging, title: 'Log Exercise, Caffeine, and Stress – Z³ - Wellness' });
+const reportComponent = withTitle({ component: report, title: 'Report – Z³ - Wellness' });
+const ExampleModuleComponent = withTitle({ component: ExampleModule, title: '5-minute Meditation – Z³ - Wellness' });
+const mindfulLeadershipComponent = withTitle({ component: mindfulLeadership, title: 'Mindful Leadership – Z³ - Wellness' });
+const MindfulYogaComponent = withTitle({ component: MindfulYoga, title: 'Mindful Yoga – Z³ - Wellness' });
+const BodyScanMeditationComponent = withTitle({ component: BodyScanMeditation, title: '10-minute Medication – Z³ - Wellness' });
+const MindfulnessOverviewComponent = withTitle({ component: MindfulnessOverview, title: 'Mindfulness Overview – Z³ - Wellness' });
+const MindfulEatingComponent = withTitle({ component: MindfulEating, title: 'Mindful Eating – Z³ - Wellness' });
+const MobileBedtimeRoutineComponent = withTitle({ component: MobileBedtimeRoutine, title: 'Bedtime Routine – Z³ - Wellness' });
+const MobileMindfulnessModulesComponent = withTitle({ component: MobileMindfulnessModules, title: 'Mindfulness Modules – Z³ - Wellness' });
+const MobileExampleModuleComponent = withTitle({ component: MobileExampleModule, title: '5-minute Meditation – Z³ - Wellness' });
+const MobileLandingComponent = withTitle({ component: MobileLanding, title: 'Welcome to Z³ - Wellness!' });
 const NotFoundComponent = withTitle({ component: NotFound, title: 'Page Not Found :\'(' });
 
 function App() {

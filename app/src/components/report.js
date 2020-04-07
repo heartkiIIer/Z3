@@ -140,10 +140,10 @@ class report extends React.Component{
                 "<ul><li>Set your nightly <b>Sleep Goal</b> in settings.</li>" +
                 "<li><b>Total Sleep</b> is the elapsed time between the time " +
                 "you went to bed and the time you wake up in the morning. " +
-                "If using Fitbit, this does not include 'restless/awake' " +
+                "If using Fitbit, this does not include <i>restless/awake</i> " +
                 "periods.</li> <li><b>Total Exercise</b> is the sum of the minutes of all your " +
                 "exercise for the day. When using Fitbit, this number is " +
-                "calculated the same as your 'active minutes'.</li> <li><b>Total " +
+                "calculated the same as your <i>active minutes</i>.</li> <li><b>Total " +
                 "Caffeine</b> is the sum of all of your caffeine intake for" +
                 " the day.</li> <li><b>Average Stress Level</b> takes all the rated " +
                 "stress levels of your events and calculates the average level of " +

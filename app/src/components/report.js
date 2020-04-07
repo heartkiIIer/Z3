@@ -177,6 +177,11 @@ class report extends React.Component{
 
     render(){
         this.resize();
+        const style = {
+            fontSize: '36px',
+            color: '#3e98c7',
+            marginRight: '0px'
+        }
         if((this.state.sleep == null || this.state.goal == null || this.state.stress == null || this.state.caf == null || this.state.exer == null) && (this.state.avgCaf == null || this.state.numCaf ==null || this.state.avgSleep == null || this.state.arrStress.length != 0 || this.state.numSleep == null || this.state.avgExer == null || this.state.numExer ==null)){
             return (
             <div class = "reportClass" id="App">
@@ -184,7 +189,7 @@ class report extends React.Component{
                 <div className="inner-report" id="page-wrap" align="center">
                     <div align='end'>
                     {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
-                        <a href={this.displayInfo}><i className="material-icons" style="font-size:36px;color:#3e98c7">info_outline</i></a>
+                        <a href={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                     </div>
                     <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-report"/>
@@ -286,7 +291,7 @@ class report extends React.Component{
                     <div className="inner-report" id="page-wrap" align="center">
                         <div align='end'>
                             {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
-                            <a href={this.displayInfo}><i className="material-icons" style="font-size:36px;color:#3e98c7">info_outline</i></a>
+                            <a href={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                         </div>
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>
@@ -334,7 +339,7 @@ class report extends React.Component{
                     <div className="inner-report" id="page-wrap" align="center">
                         <div align='end'>
                             {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
-                            <a href={this.displayInfo}><i className="material-icons" style="font-size:36px;color:#3e98c7">info_outline</i></a>
+                            <a href={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                         </div>
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>

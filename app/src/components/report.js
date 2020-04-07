@@ -283,7 +283,12 @@ class report extends React.Component{
                 stress = "--";
             }
 
-            console.log((sleep/this.state.goal[0].sleepgoal)*10);
+            var val = Math.round(sleep/this.state.goal[0].sleepgoal*100);
+            var text = val;
+            if(this.state.goal[0].sleepgoal == null ){
+                val = 0;
+                text = "No goal set"
+            }
 
             return (
                 <div class = "reportClass" id="App">
@@ -299,7 +304,7 @@ class report extends React.Component{
                         <br/>
                         <div className="week" class="flex-report">
                             <div className="goalProg">
-                                <CircularProgressbar value={Math.round(sleep/this.state.goal[0].sleepgoal*100)} text={`${Math.round(sleep/this.state.goal[0].sleepgoal*100)}%`} />
+                                <CircularProgressbar value={val} text={`${text}%`} />
                             </div>
                             <div className="percentage">
                                 <p>Average Sleep:</p>

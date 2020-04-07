@@ -189,7 +189,7 @@ class report extends React.Component{
                 <div className="inner-report" id="page-wrap" align="center">
                     <div align='end'>
                     {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
-                        <a href={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
+                        <a href='#' onClick={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                     </div>
                     <h1 className="blueHeader" align="center">Sleep Goal: -- hrs per day</h1>
                     <hr className="hr-report"/>
@@ -291,7 +291,7 @@ class report extends React.Component{
                     <div className="inner-report" id="page-wrap" align="center">
                         <div align='end'>
                             {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
-                            <a href={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
+                            <a href='#' onClick={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                         </div>
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>
@@ -339,7 +339,7 @@ class report extends React.Component{
                     <div className="inner-report" id="page-wrap" align="center">
                         <div align='end'>
                             {/*<button className='infoBut' style={{marginRight:'0px'}} onClick={() => this.displayInfo()}/>*/}
-                            <a href={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
+                            <a href='#' onClick={this.displayInfo}><i className="material-icons" style={style}>info_outline</i></a>
                         </div>
                         <h1 className="blueHeader" align="center">{sleepGoal}</h1>
                         <hr className="hr-report"/>

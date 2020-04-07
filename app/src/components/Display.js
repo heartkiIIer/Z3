@@ -221,9 +221,8 @@ class Display extends React.Component {
                     <i><p>Upcoming events of the day will be listed. Click the <b>Hide</b> icon to hide events you do not wish to rate/submit. Click the <b>Refresh</b> icon to unhide events and sync latest/newly added events from the calendar.</p></i>
                     <br/>
                     {ele}
-                    {buttons}
                 </Tab.Pane>
-
+                {buttons}
             </div>
         );
     }

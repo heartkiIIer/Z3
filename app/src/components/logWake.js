@@ -66,6 +66,13 @@ class LogWake extends React.Component{
                 return s.json();
             }).then(s => {
                 //if there is already a wake entry send error
+                if(s.length === 0){
+                    swal({
+                        text: "You either do not have a sleep time entry or have already submitted a wake time.",
+                        icon: "error"
+                    });
+                    return;
+                }
                 if (s[0].end_sleep !== null) {
                     swal({
                         text: "You either do not have a sleep time entry or have already submitted a wake time.",
@@ -153,6 +160,13 @@ class LogWake extends React.Component{
                         return s.json();
                     }).then(s => {
                         //if there is already a wake entry send error
+                        if(s.length === 0){
+                            swal({
+                                text: "You either do not have a sleep time entry or have already submitted a wake time.",
+                                icon: "error"
+                            });
+                            return;
+                        }
                         if(s[0].end_sleep !== null){
                             swal({
                                 text: "You either do not have a sleep time entry or have already submitted a wake time.",

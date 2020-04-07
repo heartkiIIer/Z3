@@ -581,7 +581,9 @@ class report extends React.Component{
                 arrToReturn.push(<ReportComponent id = {""} date={formatDate} sleep={formatSleep} stress={formatStress} exer={formatExer} caf={formatCaf}/>)
             }
             else{
-                arrToReturn.push(<ReportComponent id = {"blankCard"} date={"--"} sleep={"--"} stress={"--"} exer={"--"} caf={"--"}/>)
+                arrToReturn.push(<p id = "blankCard"> No more data</p>)
+                return (arrToReturn) ;
+
             }
         }
 

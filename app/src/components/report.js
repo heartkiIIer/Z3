@@ -57,7 +57,6 @@ class report extends React.Component{
         let currentComponent = this;
         this.getWeek(currentComponent);
         // this.getUseFitbit();
-        document.getElementById('swal2-content').style.textAlign = 'initial';
     }
 
     getWeek(currentComponent) {
@@ -159,6 +158,7 @@ class report extends React.Component{
                 '<i class="fa fa-thumbs-up"></i> Great!',
             confirmButtonAriaLabel: 'Thumbs up, great!',
         })
+        document.getElementById('swal2-content').style.textAlign = 'initial';
     }
 
     resize(){

@@ -83,7 +83,7 @@ class Landing extends React.Component {
         const style ={
             color: 'white',
             marginBottom: '15px',
-            fontSize: '2.5rem'
+            fontSize: '2rem'
         }
         const { containerStyle } = styles;
         return (

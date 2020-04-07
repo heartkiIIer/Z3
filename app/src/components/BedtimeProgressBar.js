@@ -150,7 +150,7 @@ class BedtimeProgressBar extends React.Component {
         const { containerStyle } = styles;
         console.log(window.innerWidth)
         if(window.innerWidth < 700){
-            if(this.props.title.length <= 12) {
+            if(this.props.title.length <= 15) {
                 title = <div style={{ marginTop: -5 }}><b><h1 style={h1}>{this.props.title}</h1></b><br/></div>
             } else {
                 title = <div class='marquee-mobile' style={{ marginTop: -5}} ><b><h1 id='marquee' style={h1} >{this.props.title}</h1></b></div>
@@ -159,7 +159,7 @@ class BedtimeProgressBar extends React.Component {
             timer = <div style={{ marginTop: -5 }}><h1 style={timerStyle}><span id = "timer">{this.props.minutes.toString() + ':00' }</span> minutes</h1></div>
         }
         else {
-            if(this.props.title.length <= 12) {
+            if(this.props.title.length <= 15) {
                 title = <div style={{ marginTop: -5 }}><b><h1 style={h1Big}>{this.props.title}</h1></b><br/></div>
             } else {
                 title = <div class='marquee' style={{ marginTop: -5 }}><b><h1 style={h1Big} onClick={this.stopAnimation}>{this.props.title}</h1></b><br/><br/></div>

@@ -603,10 +603,12 @@ class report extends React.Component{
         console.log("weeksAgo");
         console.log(this.state.weeksAgo);
         if(document.getElementById("blankCard") != null) {
-            swal({
-                text: "You have no data recorded.",
-                icon: "error"
-            });
+            if(element) {
+                swal({
+                    text: "You have no data recorded.",
+                    icon: "error"
+                });
+            }
         }
         else if(document.getElementById("blankCard") == null) {
             if (element == 1) {

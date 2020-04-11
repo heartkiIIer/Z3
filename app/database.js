@@ -4,7 +4,7 @@ const pool = new Pool({
     host: 'localhost',
     database: *****,
     password: *****,
-    port: 5432,
+    port: *****,
 })
 
 function checkQuery(string){
